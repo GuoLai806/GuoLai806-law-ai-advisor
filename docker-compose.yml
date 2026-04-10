@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  law-ai-advisor:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - BAILIAN_API_KEY=${BAILIAN_API_KEY}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_BASE_URL=${OPENAI_BASE_URL}
+      - OPENAI_MODEL=${OPENAI_MODEL}
+      - PORT=8000
+      - DEBUG=${DEBUG:-False}
+    volumes:
+      # 挂载模型文件（如果本地有）
+      - ./models:/app/models
+      # 挂载向量数据库（持久化）
+      - ./chroma_civil_code:/app/chroma_civil_code
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # 可选：Redis缓存服务
+  # redis:
+  #   image: redis:7-alpine
+  #   ports:
+  #     - "6379:6379"
+  #   volumes:
+  #     - redis_data:/data
+  #   restart: unless-stopped
+
+# 数据卷声明
+volumes:
+  redis_data:

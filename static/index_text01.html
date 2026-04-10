@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雅子 · AI法律顾问</title>
+    <style>
+        /* 苹果风格设计系统 */
+        :root {
+            --beige-50: #fefefe;
+            --beige-100: #fafafa;
+            --beige-200: #f5f5f5;
+            --beige-300: #f0f0f0;
+            --beige-400: #e8e8e8;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --blue-500: #3b82f6;
+            --blue-600: #2563eb;
+            --green-500: #10b981;
+            --green-600: #059669;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+            --radius-2xl: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #fefefe 0%, #fafafa 100%);
+            color: var(--gray-800);
+            line-height: 1.6;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .chat-container {
+            width: 100%;
+            max-width: 800px;
+            height: 90vh;
+            background: var(--beige-50);
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-xl);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid var(--beige-300);
+        }
+
+        .chat-header {
+            background: var(--beige-50);
+            border-bottom: 1px solid var(--beige-200);
+            padding: 24px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 600;
+            box-shadow: var(--shadow-md);
+        }
+
+        .header-info h1 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 4px;
+        }
+
+        .header-info p {
+            font-size: 14px;
+            color: var(--gray-500);
+            font-weight: 400;
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .control-button {
+            padding: 10px 16px;
+            background: var(--beige-100);
+            border: 1px solid var(--beige-300);
+            border-radius: var(--radius-lg);
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--gray-700);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            user-select: none;
+            pointer-events: auto;
+        }
+
+        .control-button:hover {
+            background: var(--beige-200);
+            border-color: var(--beige-400);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .control-button.active {
+            background: var(--blue-500);
+            border-color: var(--blue-500);
+            color: white;
+        }
+
+        /* 语音设置面板 */
+        .voice-settings {
+            position: relative;
+        }
+
+        .voice-settings-panel {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 280px;
+            background: white;
+            border: 1px solid var(--beige-300);
+            border-radius: var(--radius-lg);
+            padding: 16px;
+            box-shadow: var(--shadow-xl);
+            z-index: 10000;
+            display: none;
+            margin-top: 8px;
+        }
+
+        .voice-settings-panel.active {
+            display: block;
+        }
+
+        .voice-settings-panel h3 {
+            margin: 0 0 12px 0;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+
+        #voiceList {
+            max-height: 200px;
+            overflow-y: auto;
+            margin-bottom: 12px;
+            border: 1px solid var(--beige-200);
+            border-radius: var(--radius-md);
+            padding: 8px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--beige-300) var(--beige-100);
+            scroll-behavior: smooth;
+        }
+
+        #voiceList::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #voiceList::-webkit-scrollbar-track {
+            background: var(--beige-100);
+            border-radius: 3px;
+        }
+
+        #voiceList::-webkit-scrollbar-thumb {
+            background: var(--beige-300);
+            border-radius: 3px;
+        }
+
+        #voiceList::-webkit-scrollbar-thumb:hover {
+            background: var(--beige-400);
+        }
+
+        #voiceList:hover {
+            scrollbar-width: auto;
+        }
+
+        #voiceList:hover::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .voice-option {
+            padding: 6px 8px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            margin-bottom: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .voice-option:hover {
+            background: var(--beige-100);
+        }
+
+        .voice-option.selected {
+            background: var(--blue-500);
+            color: white;
+        }
+
+        .voice-option-name {
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .voice-option-lang {
+            font-size: 10px;
+            color: var(--gray-500);
+        }
+
+        .voice-test-btn {
+            width: 100%;
+            padding: 8px;
+            background: var(--blue-500);
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+
+        .voice-test-btn:hover {
+            background: var(--blue-600);
+        }
+
+        .speed-control {
+            border-top: 1px solid var(--beige-200);
+            padding-top: 12px;
+        }
+
+        .speed-control label {
+            display: block;
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--gray-700);
+        }
+
+        .speed-slider-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .speed-slider {
+            flex: 1;
+            height: 4px;
+            background: var(--beige-200);
+            border-radius: 2px;
+            outline: none;
+        }
+
+        .speed-value {
+            font-size: 11px;
+            color: var(--gray-600);
+            min-width: 30px;
+        }
+
+        .speed-presets {
+            display: flex;
+            gap: 4px;
+        }
+
+        .speed-preset {
+            flex: 1;
+            padding: 4px 8px;
+            background: var(--beige-100);
+            border: 1px solid var(--beige-300);
+            border-radius: var(--radius-sm);
+            font-size: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .speed-preset:hover {
+            background: var(--beige-200);
+        }
+
+        .speed-preset.active {
+            background: var(--blue-500);
+            color: white;
+            border-color: var(--blue-600);
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 24px 32px;
+            overflow-y: auto;
+            background: var(--beige-50);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .message {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            max-width: 85%;
+            animation: messageSlideIn 0.3s ease-out;
+        }
+
+        .message.user {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .message.user .message-avatar {
+            background: var(--blue-500);
+            color: white;
+        }
+
+        .message.bot .message-avatar {
+            background: var(--beige-200);
+            color: var(--gray-600);
+            border: 1px solid var(--beige-300);
+        }
+
+        .message-content {
+            padding: 16px 20px;
+            border-radius: var(--radius-xl);
+            line-height: 1.5;
+            font-size: 15px;
+            position: relative;
+            word-wrap: break-word;
+        }
+
+        .message.user .message-content {
+            background: var(--blue-500);
+            color: white;
+            border-bottom-right-radius: var(--radius-sm);
+        }
+
+        .message.bot .message-content {
+            background: white;
+            color: var(--gray-800);
+            border: 1px solid var(--beige-200);
+            border-bottom-left-radius: var(--radius-sm);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .message-time {
+            font-size: 11px;
+            color: var(--gray-400);
+            margin-top: 6px;
+            text-align: right;
+        }
+
+        .chat-input-area {
+            padding: 24px 32px;
+            background: var(--beige-50);
+            border-top: 1px solid var(--beige-200);
+        }
+
+        .input-container {
+            display: flex;
+            align-items: flex-end;
+            gap: 12px;
+            background: white;
+            border: 1px solid var(--beige-300);
+            border-radius: var(--radius-xl);
+            padding: 12px 16px;
+            transition: all 0.2s ease;
+        }
+
+        .input-container:focus-within {
+            border-color: var(--blue-500);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .message-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 15px;
+            line-height: 1.5;
+            resize: none;
+            max-height: 120px;
+            background: transparent;
+            color: var(--gray-800);
+        }
+
+        .message-input::placeholder {
+            color: var(--gray-400);
+        }
+
+        .send-button {
+            padding: 10px 16px;
+            background: var(--blue-500);
+            border: none;
+            border-radius: var(--radius-lg);
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            user-select: none;
+            pointer-events: auto;
+        }
+
+        .send-button:hover:not(:disabled) {
+            background: var(--blue-600);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .send-button:disabled {
+            background: var(--gray-300);
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .typing-indicator {
+            display: none;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 20px;
+            background: white;
+            border: 1px solid var(--beige-200);
+            border-radius: var(--radius-xl);
+            border-bottom-left-radius: var(--radius-sm);
+            box-shadow: var(--shadow-sm);
+            max-width: 85%;
+            align-self: flex-start;
+        }
+
+        .typing-indicator.active {
+            display: flex;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 4px;
+        }
+
+        .typing-dots span {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--gray-400);
+            animation: typingBounce 1.4s infinite;
+        }
+
+        .typing-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .welcome-message {
+            text-align: center;
+            padding: 60px 40px;
+            color: var(--gray-500);
+        }
+
+        .welcome-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .welcome-message h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+        }
+
+        .welcome-message p {
+            font-size: 15px;
+            line-height: 1.6;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        @keyframes messageSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes typingBounce {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-4px);
+            }
+        }
+
+        .chat-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .chat-messages::-webkit-scrollbar-track {
+            background: var(--beige-100);
+            border-radius: 3px;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: var(--beige-300);
+            border-radius: 3px;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb:hover {
+            background: var(--beige-400);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+            }
+            
+            .chat-container {
+                height: 95vh;
+                border-radius: var(--radius-xl);
+            }
+            
+            .chat-header {
+                padding: 20px 24px;
+            }
+            
+            .chat-messages {
+                padding: 20px 24px;
+            }
+            
+            .chat-input-area {
+                padding: 20px 24px;
+            }
+            
+            .message {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="header-left">
+                <div class="avatar">👩</div>
+                <div class="header-info">
+                    <h1>雅子 · AI法律顾问</h1>
+                    <p>专业法律咨询 · 智能对话助手</p>
+                </div>
+            </div>
+            <div class="header-controls">
+                <button id="modelToggle" class="control-button" title="切换AI模型">
+                    <span id="modelIcon">🌐</span>
+                    <span id="modelText">线上模型</span>
+                </button>
+                <div class="voice-settings">
+                    <button id="voiceToggle" class="control-button" title="语音设置">
+                        <span>🔊</span>
+                        <span>语音</span>
+                    </button>
+                    <div id="voiceSettingsPanel" class="voice-settings-panel">
+                        <h3>🎤 选择语音</h3>
+                        <div id="voiceList"></div>
+                        <button id="voiceTestBtn" class="voice-test-btn">🔊 测试语音</button>
+                        <div class="speed-control">
+                            <label>⚡ 播放速度</label>
+                            <div class="speed-slider-container">
+                                <input type="range" id="speedSlider" class="speed-slider" min="0.5" max="2" step="0.1" value="1">
+                                <span id="speedValue" class="speed-value">1.0x</span>
+                            </div>
+                            <div class="speed-presets">
+                                <button class="speed-preset" data-speed="0.5">0.5x</button>
+                                <button class="speed-preset active" data-speed="1">1.0x</button>
+                                <button class="speed-preset" data-speed="1.5">1.5x</button>
+                                <button class="speed-preset" data-speed="2">2.0x</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="welcome-message">
+                <div class="welcome-icon">👩⚖️</div>
+                <h2>欢迎使用雅子AI法律顾问</h2>
+                <p>我是您的专业法律咨询助手，可以为您提供法律条文查询、案例分析、法律建议等服务。请随时向我提问！</p>
+            </div>
+        </div>
+
+        <div class="typing-indicator" id="typingIndicator">
+            <div class="message-avatar">👩</div>
+            <div class="typing-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <span style="color: var(--gray-500); font-size: 13px;">正在思考...</span>
+        </div>
+
+        <div class="chat-input-area">
+            <div class="input-container">
+                <textarea 
+                    id="messageInput" 
+                    class="message-input" 
+                    placeholder="请输入您的法律问题..." 
+                    rows="1"
+                    autocomplete="off"
+                ></textarea>
+                <button id="sendButton" class="send-button">
+                    <span>发送</span>
+                    <span>→</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const chatMessages = document.getElementById('chatMessages');
+        const messageInput = document.getElementById('messageInput');
+        const sendButton = document.getElementById('sendButton');
+        const typingIndicator = document.getElementById('typingIndicator');
+        const modelToggle = document.getElementById('modelToggle');
+        const voiceToggle = document.getElementById('voiceToggle');
+        const modelIcon = document.getElementById('modelIcon');
+        const modelText = document.getElementById('modelText');
+        const voiceSettingsPanel = document.getElementById('voiceSettingsPanel');
+        const voiceList = document.getElementById('voiceList');
+        const voiceTestBtn = document.getElementById('voiceTestBtn');
+        const speedSlider = document.getElementById('speedSlider');
+        const speedValue = document.getElementById('speedValue');
+        const speedPresets = document.querySelectorAll('.speed-preset');
+        
+        let currentModelType = 'online';
+        let voiceEnabled = false;
+        let sessionId = null;
+        let synthesis = window.speechSynthesis;
+        let availableVoices = [];
+        let selectedVoice = null;
+        let speechRate = 1.0;
+
+        function getCurrentTime() {
+            const now = new Date();
+            return now.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' });
+        }
+
+        function addMessage(content, isUser) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
+            
+            const avatar = document.createElement('div');
+            avatar.className = 'message-avatar';
+            avatar.textContent = isUser ? '👤' : '👩';
+            
+            const messageContent = document.createElement('div');
+            messageContent.className = 'message-content';
+            messageContent.textContent = content;
+            
+            const messageTime = document.createElement('div');
+            messageTime.className = 'message-time';
+            messageTime.textContent = getCurrentTime();
+            
+            messageDiv.appendChild(avatar);
+            messageDiv.appendChild(messageContent);
+            messageDiv.appendChild(messageTime);
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function showTyping() {
+            typingIndicator.style.display = 'flex';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function hideTyping() {
+            typingIndicator.style.display = 'none';
+        }
+
+        function toggleModel() {
+            currentModelType = currentModelType === 'online' ? 'local' : 'online';
+            
+            if (currentModelType === 'online') {
+                modelIcon.textContent = '🌐';
+                modelText.textContent = '线上模型';
+                modelToggle.classList.remove('active');
+            } else {
+                modelIcon.textContent = '💻';
+                modelText.textContent = '本地模型';
+                modelToggle.classList.add('active');
+            }
+            
+            // 发送模型切换请求
+            if (sessionId) {
+                fetch('/api/switch_model', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        session_id: sessionId,
+                        model_type: currentModelType
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('模型切换成功:', data);
+                })
+                .catch(error => {
+                    console.error('模型切换失败:', error);
+                });
+            }
+        }
+
+        function sendMessage() {
+            const message = messageInput.value.trim();
+            if (!message) return;
+            
+            addMessage(message, true);
+            messageInput.value = '';
+            messageInput.style.height = 'auto';
+            showTyping();
+            
+            // 生成或获取sessionId
+            if (!sessionId) {
+                sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+            }
+            
+            fetch('/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    message: message,
+                    session_id: sessionId,
+                    model_type: currentModelType
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                hideTyping();
+                addMessage(data.response, false);
+                if (voiceEnabled) {
+                    speak(data.response);
+                }
+            })
+            .catch(error => {
+                hideTyping();
+                addMessage('抱歉，系统暂时无法响应，请稍后再试。', false);
+                console.error('发送消息失败:', error);
+            });
+        }
+
+        function speak(text) {
+            if (!voiceEnabled || !synthesis) return;
+            
+            synthesis.cancel();
+            
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'zh-CN';
+            utterance.rate = speechRate;
+            utterance.pitch = 1.1;
+            utterance.volume = 1.0;
+            
+            if (selectedVoice) {
+                utterance.voice = selectedVoice;
+            } else {
+                const voices = synthesis.getVoices();
+                const chineseVoice = voices.find(voice => 
+                    voice.lang.includes('zh') || voice.lang.includes('CN')
+                );
+                if (chineseVoice) {
+                    utterance.voice = chineseVoice;
+                }
+            }
+            
+            synthesis.speak(utterance);
+        }
+
+        function loadVoices() {
+            availableVoices = synthesis.getVoices();
+            const chineseVoices = availableVoices.filter(voice => 
+                voice.lang.includes('zh') || voice.lang.includes('CN')
+            );
+            
+            voiceList.innerHTML = '';
+            
+            if (chineseVoices.length === 0) {
+                voiceList.innerHTML = '<div style="padding: 10px; color: #999; font-size: 12px;">没有找到中文语音</div>';
+                return;
+            }
+            
+            const savedVoiceName = localStorage.getItem('selectedVoiceName');
+            const savedSpeed = localStorage.getItem('speechRate');
+            
+            if (savedSpeed) {
+                speechRate = parseFloat(savedSpeed);
+                speedValue.textContent = speechRate.toFixed(1) + 'x';
+                speedSlider.value = speechRate;
+                
+                speedPresets.forEach(preset => {
+                    const presetSpeed = parseFloat(preset.dataset.speed);
+                    if (presetSpeed === speechRate) {
+                        preset.classList.add('active');
+                    } else {
+                        preset.classList.remove('active');
+                    }
+                });
+            }
+            
+            chineseVoices.forEach((voice, index) => {
+                const option = document.createElement('div');
+                option.className = 'voice-option';
+                
+                if (savedVoiceName && voice.name === savedVoiceName) {
+                    option.classList.add('selected');
+                    selectedVoice = voice;
+                } else if (!savedVoiceName && index === 0) {
+                    option.classList.add('selected');
+                    selectedVoice = voice;
+                }
+                
+                const name = document.createElement('div');
+                name.className = 'voice-option-name';
+                name.textContent = voice.name;
+                
+                const lang = document.createElement('div');
+                lang.className = 'voice-option-lang';
+                lang.textContent = voice.lang;
+                
+                option.appendChild(name);
+                option.appendChild(lang);
+                
+                option.addEventListener('click', () => {
+                    document.querySelectorAll('.voice-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    option.classList.add('selected');
+                    selectedVoice = voice;
+                    localStorage.setItem('selectedVoiceName', voice.name);
+                });
+                
+                voiceList.appendChild(option);
+            });
+        }
+
+        function toggleVoiceSettings() {
+            voiceSettingsPanel.classList.toggle('active');
+            if (voiceSettingsPanel.classList.contains('active')) {
+                loadVoices();
+            }
+        }
+
+        function testVoice() {
+            if (!selectedVoice) {
+                addMessage('请先选择一个语音', false);
+                return;
+            }
+            
+            synthesis.cancel();
+            const testUtterance = new SpeechSynthesisUtterance('你好，我是雅子，这是语音测试');
+            testUtterance.voice = selectedVoice;
+            testUtterance.rate = speechRate;
+            testUtterance.pitch = 1.1;
+            testUtterance.volume = 1.0;
+            synthesis.speak(testUtterance);
+        }
+
+        function updateSpeed(value) {
+            speechRate = parseFloat(value);
+            speedValue.textContent = speechRate.toFixed(1) + 'x';
+            speedSlider.value = speechRate;
+            localStorage.setItem('speechRate', speechRate.toString());
+            
+            speedPresets.forEach(preset => {
+                const presetSpeed = parseFloat(preset.dataset.speed);
+                if (presetSpeed === speechRate) {
+                    preset.classList.add('active');
+                } else {
+                    preset.classList.remove('active');
+                }
+            });
+        }
+
+        function toggleVoice() {
+            voiceEnabled = !voiceEnabled;
+            voiceToggle.classList.toggle('active', voiceEnabled);
+            
+            if (voiceEnabled) {
+                speak('语音功能已开启');
+            } else {
+                synthesis.cancel();
+            }
+        }
+
+        // 文本区域自动调整高度
+        function autoResizeTextarea() {
+            messageInput.style.height = 'auto';
+            messageInput.style.height = Math.min(messageInput.scrollHeight, 120) + 'px';
+        }
+
+        // 事件监听器
+        sendButton.addEventListener('click', function(e) {
+            console.log('发送按钮被点击');
+            sendMessage();
+        });
+
+        messageInput.addEventListener('input', autoResizeTextarea);
+
+        messageInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                console.log('Enter键被按下');
+                sendMessage();
+            }
+        });
+
+        modelToggle.addEventListener('click', function(e) {
+            console.log('模型切换按钮被点击');
+            toggleModel();
+        });
+
+        voiceToggle.addEventListener('click', function(e) {
+            console.log('语音按钮被点击');
+            toggleVoice();
+        });
+
+        voiceToggle.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            toggleVoiceSettings();
+        });
+
+        voiceTestBtn.addEventListener('click', testVoice);
+
+        speedSlider.addEventListener('input', (e) => {
+            updateSpeed(e.target.value);
+        });
+
+        speedPresets.forEach(preset => {
+            preset.addEventListener('click', () => {
+                updateSpeed(preset.dataset.speed);
+            });
+        });
+
+        if (synthesis) {
+            synthesis.onvoiceschanged = () => {
+                loadVoices();
+            };
+            loadVoices();
+        }
+
+        // 语音列表鼠标滚轮支持
+        voiceList.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            voiceList.scrollTop += e.deltaY;
+        });
+
+        document.addEventListener('click', (e) => {
+            // 只有当点击在语音设置面板外部时才关闭
+            if (!e.target.closest('.voice-settings-panel') && !e.target.closest('#voiceToggle')) {
+                voiceSettingsPanel.classList.remove('active');
+            }
+        });
+
+        // 初始化
+        console.log('页面加载完成，事件监听器已绑定');
+        messageInput.focus();
+    </script>
+</body>
+</html>

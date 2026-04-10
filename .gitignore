@@ -1,0 +1,30 @@
+# 保留的文件和文件夹
+!中华人民共和国民法典 - 中华人民共和国最高人民法院.pdf
+!models/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ChromaDB
+chroma_civil_code/
+
+# Docker
+.env
+.env.*
+
+# 其他
+images/
+*.log
