@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(dir:*)",
+      "Bash(test:*)",
+      "Bash(pip install:*)",
+      "Bash(set PYTHONUTF8=1:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(findstr rank-bm25:*)",
+      "Bash(findstr:*)",
+      "Bash(mkdir:*)",
+      "Bash(curl:*)",
+      "Bash(netstat:*)",
+      "Bash(taskkill:*)",
+      "Bash(wmic process:*)",
+      "Bash(cmd.exe:*)",
+      "Bash(powershell:*)",
+      "Bash(tasklist:*)",
+      "Bash(ls:*)",
+      "Bash(rm:*)"
+    ]
+  }
+}
