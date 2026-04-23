@@ -6,11 +6,9 @@ uvicorn[standard]==0.24.0
 torch==2.1.0
 transformers==4.35.0
 
-# LangChain生态
-langchain==0.0.346
-langchain-openai==0.0.5
-langchain-community==0.0.10
-langchain-core==0.1.16
+# LangChain生态（移除版本限制，让pip自动处理）
+langchain
+langchain-community
 
 # 向量数据库
 chromadb==0.4.15
@@ -27,6 +25,13 @@ pydantic==2.5.0
 # 其他工具
 python-multipart==0.0.6
 httpx==0.25.2
+redis==6.2.0
+
+# 中文分词
+jieba==0.42.1
+
+# BM25检索
+whoosh==2.7.4
 
 # 开发工具（可选）
 # black==23.11.0

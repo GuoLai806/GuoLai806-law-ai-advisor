@@ -7,11 +7,15 @@ services:
       - "8000:8000"
     environment:
       - BAILIAN_API_KEY=${BAILIAN_API_KEY}
+      - ARK_API_KEY=${ARK_API_KEY}
+      - DOUBAO_MODEL_ID=${DOUBAO_MODEL_ID:-4f25eabc-e908-4a70-af39-e844447bad4e}
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - OPENAI_BASE_URL=${OPENAI_BASE_URL}
-      - OPENAI_MODEL=${OPENAI_MODEL}
+      - OPENAI_MODEL=${OPENAI_MODEL:-gemini-3.0-flash}
       - PORT=8000
       - DEBUG=${DEBUG:-False}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
     volumes:
       # 挂载模型文件（如果本地有）
       - ./models:/app/models
@@ -24,15 +28,17 @@ services:
       timeout: 10s
       retries: 3
       start_period: 40s
+    depends_on:
+      - redis
 
-  # 可选：Redis缓存服务
-  # redis:
-  #   image: redis:7-alpine
-  #   ports:
-  #     - "6379:6379"
-  #   volumes:
-  #     - redis_data:/data
-  #   restart: unless-stopped
+  # Redis缓存服务
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
 
 # 数据卷声明
 volumes:
