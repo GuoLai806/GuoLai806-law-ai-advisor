@@ -9,12 +9,17 @@ from langchain.memory import ConversationBufferMemory
 from langchain.prompts import PromptTemplate
 from volcenginesdkarkruntime import Ark
 
-# 配置日志
+# 配置日志 - 隐藏volcenginesdkarkruntime的HTTP请求日志
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.WARNING,
     format="%(asctime)s - %(levelname)s - %(message)s"
 )
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
+# 禁止volcenginesdkarkruntime和urllib3的INFO级日志
+logging.getLogger("volcenginesdkarkruntime").setLevel(logging.WARNING)
+logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 # ==================== 配置直接写在这里 ====================
 ARK_API_KEY = "f775bf4f-cfc1-452f-9346-2f5221b0ca51"
