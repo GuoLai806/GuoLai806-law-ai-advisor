@@ -1,0 +1,123 @@
+{
+  "source_trace_sha256": "8e0aefb4bb506874c0fbd475af660a3420c19bce73d7196beeddd90dd7becb2e",
+  "data": {
+    "timestamp_utc": "2026-11-05T17:09:43Z",
+    "revision": "revision_4f00bca1e710",
+    "source_kind": "synthetic",
+    "unauth_status": 401,
+    "readiness_status": 503,
+    "retrieve_status": 200,
+    "response": {
+      "query_plan": {
+        "mode": "general_retrieval",
+        "profile": "general",
+        "event_date": null,
+        "applicability_review": false
+      },
+      "budget": {
+        "state": "tokenizer_unavailable",
+        "used_tokens": null,
+        "omitted": [
+          "323f5f6af31d4cbaf156b8e2f7eb09a1",
+          "02ff5a68d4cb6abd46118a1a494be9ff"
+        ]
+      },
+      "status": "ready",
+      "corpus_revision": "revision_4f00bca1e710",
+      "degraded": true,
+      "degraded_reasons": [
+        "reranker_not_configured"
+      ],
+      "missing_facts": [],
+      "token_budget_status": "tokenizer_unavailable",
+      "evidence": [
+        {
+          "citation_id": "E1",
+          "unit_id": "323f5f6af31d4cbaf156b8e2f7eb09a1",
+          "document_id": "ocean-1",
+          "title": "Ocean currents",
+          "text": "Ocean currents transport heat across the sea. Wind drives surface water.",
+          "source_url": null,
+          "source_kind": "synthetic",
+          "source_locator": {
+            "kind": "text",
+            "pages": [],
+            "char_start": 0,
+            "char_end": 72
+          },
+          "content_sha256": "432022fa67be0973af0b64136f875ef994642fad378c484d493a081ca025de1c",
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 1,
+              "raw_score": -3.602030102365748e-06,
+              "score_kind": "sqlite_bm25_lower_is_better"
+            },
+            {
+              "source": "dense",
+              "rank": 1,
+              "raw_score": 0.8879260420799255,
+              "score_kind": "dense_backend_score"
+            }
+          ],
+          "reranker_score": null,
+          "verification_state": "provided",
+          "profile": "general",
+          "part_no": 1,
+          "document_sha256": "432022fa67be0973af0b64136f875ef994642fad378c484d493a081ca025de1c",
+          "has_more": false
+        },
+        {
+          "citation_id": "E2",
+          "unit_id": "02ff5a68d4cb6abd46118a1a494be9ff",
+          "document_id": "mountain-2",
+          "title": "Mountain weather",
+          "text": "Mountain snowfall reflects sunlight and affects local climate.",
+          "source_url": null,
+          "source_kind": "synthetic",
+          "source_locator": {
+            "kind": "text",
+            "pages": [],
+            "char_start": 0,
+            "char_end": 62
+          },
+          "content_sha256": "9cb39231021564a1b5151a8716144ea9dfeaaa2d57df2bd60f3fc05cafe4b77a",
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 2,
+              "raw_score": 0.6799067258834839,
+              "score_kind": "dense_backend_score"
+            }
+          ],
+          "reranker_score": null,
+          "verification_state": "provided",
+          "profile": "general",
+          "part_no": 1,
+          "document_sha256": "9cb39231021564a1b5151a8716144ea9dfeaaa2d57df2bd60f3fc05cafe4b77a",
+          "has_more": false
+        }
+      ],
+      "retrieval_ms": 311.02,
+      "trace_id": "tr_7f1bbe0516074b91b39668ddb995f0e4"
+    },
+    "passed": true,
+    "server_log": "INFO:     Started server process [62275]\nINFO:     Waiting for application startup.\nINFO:     Application startup complete.\nINFO:     Uvicorn running on http://127.0.0.1:51580 (Press CTRL+C to quit)\nINFO:     127.0.0.1:51583 - \"GET /health/live HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:51583 - \"POST /api/v2/retrieve HTTP/1.1\" 401 Unauthorized\nINFO:     127.0.0.1:51583 - \"GET /health/ready HTTP/1.1\" 503 Service Unavailable\nBuilding prefix dict from the default dictionary ...\nLoading model from cache /var/folders/lt/wg99779n3xzd_zth2zx9sbth0000gn/T/jieba.cache\nLoading model cost 0.242 seconds.\nPrefix dict has been built successfully.\nINFO:     127.0.0.1:51583 - \"POST /api/v2/retrieve HTTP/1.1\" 200 OK\nINFO:     Shutting down\nINFO:     Waiting for application shutdown.\nINFO:     Application shutdown complete.\nINFO:     Finished server process [62275]\n",
+    "process_exit": -15,
+    "code_sha256": {
+      "evidence_rag/__init__.py": "1944c8ecacab2bea3d8ff1eb5bb77ccd9f2510a0449f94345a08593cbb2acf22",
+      "evidence_rag/__main__.py": "d80d69e4e9774964f1a463eeef35cf8251b20d050626280748e90fdaeead6376",
+      "evidence_rag/answer.py": "a5747cd5a9e61acd3c2eb51ad6b11fd065cc9b1442c51d31d0122deb1091035f",
+      "evidence_rag/api.py": "960038e42e65fe9d52c1cd759dff083a74981c356115a58cdc27625edd52eec9",
+      "evidence_rag/budget.py": "72670d033e4d8ce6363c7504b84f0e14b121e61e312eb8eb243c488482ce70fb",
+      "evidence_rag/catalog.py": "6f34a1e09d3bb604f57c11e8c951ffa5980d8ba71d771eeafe0a97f821bbca47",
+      "evidence_rag/cli.py": "4180f2b1d4051f15e416c6eba8efb81ea78ebcfbacec88692a897f8e0f16c71f",
+      "evidence_rag/generate_benchmark.py": "16d0beafab70dbf9afab9d0ba551aafcf61c0220e2f8303919597d38a18e5ac2",
+      "evidence_rag/ingest.py": "247c3bddebc869295be4cd30c54f59dfd22de796d3fdffd48f7f30856a517e23",
+      "evidence_rag/model_experiment.py": "d671e0de227ae4ed5913a94b6ecde78240c94520b39eba2f4ef427594d027da4",
+      "evidence_rag/retrieval.py": "c87a7f5dfcf18517d8a503b2adf6f59ada780d072888ac8de9abb5ce8c108837",
+      "evidence_rag/viking_index.py": "e55e582e815f8a9bd95411a814b06af28610ab2e9fd684909fed2f0a95f0d36d"
+    }
+  },
+  "limitation": "Synthetic integration only; not public benchmark or human quality validation."
+}

@@ -1,0 +1,117 @@
+{
+  "source_trace_sha256": "6381dfa059635ce83747a313360ecf1b9ab6c186868cf3f3267c68bde8fd0297",
+  "data": {
+    "timestamp_utc": "2026-11-05T16:59:56Z",
+    "source_trace": "trace-revision_d8505d20bb7e.json",
+    "previous_revision": "revision_3ecc5321ef44",
+    "active_revision": "revision_d8505d20bb7e",
+    "query": {
+      "query_plan": {
+        "mode": "general_retrieval",
+        "profile": "general",
+        "event_date": null,
+        "applicability_review": false
+      },
+      "budget": {
+        "state": "tokenizer_unavailable",
+        "used_tokens": null,
+        "omitted": [
+          "08df4510e18798541da665434bd9f570",
+          "97664f41074101531091badfdce23371"
+        ]
+      },
+      "status": "ready",
+      "corpus_revision": "revision_d8505d20bb7e",
+      "degraded": true,
+      "degraded_reasons": [
+        "reranker_not_configured"
+      ],
+      "missing_facts": [],
+      "token_budget_status": "tokenizer_unavailable",
+      "evidence": [
+        {
+          "citation_id": "E1",
+          "unit_id": "08df4510e18798541da665434bd9f570",
+          "document_id": "ocean-1",
+          "title": "Ocean currents",
+          "text": "Ocean currents transport heat across the sea. Wind drives surface water.",
+          "source_url": null,
+          "source_kind": "synthetic",
+          "source_locator": {
+            "kind": "text",
+            "pages": [],
+            "char_start": 0,
+            "char_end": 72
+          },
+          "content_sha256": "432022fa67be0973af0b64136f875ef994642fad378c484d493a081ca025de1c",
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 1,
+              "raw_score": -3.602030102365748e-06,
+              "score_kind": "sqlite_bm25_lower_is_better"
+            },
+            {
+              "source": "dense",
+              "rank": 1,
+              "raw_score": 0.9016186594963074,
+              "score_kind": "openviking_backend_score"
+            }
+          ],
+          "reranker_score": null,
+          "verification_state": "provided",
+          "profile": "general"
+        },
+        {
+          "citation_id": "E2",
+          "unit_id": "97664f41074101531091badfdce23371",
+          "document_id": "mountain-2",
+          "title": "Mountain weather",
+          "text": "Mountain snowfall reflects sunlight and affects local climate.",
+          "source_url": null,
+          "source_kind": "synthetic",
+          "source_locator": {
+            "kind": "text",
+            "pages": [],
+            "char_start": 0,
+            "char_end": 62
+          },
+          "content_sha256": "9cb39231021564a1b5151a8716144ea9dfeaaa2d57df2bd60f3fc05cafe4b77a",
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 2,
+              "raw_score": 0.7050172090530396,
+              "score_kind": "openviking_backend_score"
+            }
+          ],
+          "reranker_score": null,
+          "verification_state": "provided",
+          "profile": "general"
+        }
+      ],
+      "retrieval_ms": 86.31
+    },
+    "scope_hits": [
+      {
+        "context_type": "resource",
+        "uri": "viking://resources/rag/integration_fixture/revision_d8505d20bb7e/08df4510e18798541da665434bd9f570/08df4510e18798541da665434bd9f570.md",
+        "level": 2,
+        "score": 0.9285324811935425,
+        "abstract": "",
+        "tags": []
+      },
+      {
+        "context_type": "resource",
+        "uri": "viking://resources/rag/integration_fixture/revision_d8505d20bb7e/97664f41074101531091badfdce23371/97664f41074101531091badfdce23371.md",
+        "level": 2,
+        "score": 0.7204282283782959,
+        "abstract": "",
+        "tags": []
+      }
+    ],
+    "passed": true,
+    "note": "CAS activation after inspecting prior revision; no resource writes were replayed."
+  },
+  "limitation": "Synthetic integration; not public benchmark or human quality validation."
+}

@@ -1,0 +1,99 @@
+{
+  "timestamp_utc": "2026-11-05T16:39:38Z",
+  "source_kind": "synthetic",
+  "revision": "smoke-9c4195d5229e",
+  "unauth_status": 401,
+  "readiness_status": 503,
+  "readiness": {
+    "ready": false,
+    "active_revision": "smoke-9c4195d5229e",
+    "missing": [
+      "tokenizer",
+      "answer_model"
+    ]
+  },
+  "retrieve_status": 200,
+  "retrieve": {
+    "query_plan": {
+      "mode": "source_lookup",
+      "event_date": null,
+      "applicability_review": false
+    },
+    "budget": {
+      "state": "tokenizer_unavailable",
+      "used_tokens": null,
+      "omitted": [
+        "61cb92c432397aea08790b2325878858"
+      ]
+    },
+    "status": "ready",
+    "corpus_revision": "smoke-9c4195d5229e",
+    "degraded": false,
+    "degraded_reasons": [],
+    "missing_facts": [],
+    "token_budget_status": "tokenizer_unavailable",
+    "evidence": [
+      {
+        "citation_id": "E1",
+        "unit_id": "61cb92c432397aea08790b2325878858",
+        "title": "合成检索测试",
+        "article_label": "第一条",
+        "text": "第一条 测试合同双方依约履行，不是法律原文。",
+        "source_url": null,
+        "source_locator": {
+          "pages": [
+            1
+          ],
+          "char_start": 0,
+          "char_end": 23
+        },
+        "candidate_relations": [],
+        "content_sha256": "f006770fba3b9ac003fe431759da0de6535680af94d2842c70f5f2b3c2f7e429",
+        "retrieval_sources": [
+          {
+            "source": "exact",
+            "rank": 1
+          },
+          {
+            "source": "bm25",
+            "rank": 1,
+            "raw_score": -5.124999999999999e-06,
+            "score_kind": "sqlite_bm25_lower_is_better"
+          },
+          {
+            "source": "dense",
+            "rank": 1,
+            "raw_score": 0.7485114932060242,
+            "score_kind": "openviking_backend_score"
+          }
+        ],
+        "reranker_score": 0.7050747871398926,
+        "verification_state": "approved",
+        "effective_from": null,
+        "effective_to": null,
+        "applicability_review": false
+      }
+    ],
+    "retrieval_ms": 329.1,
+    "trace_id": "tr_99728f12a7064066b1d380c03f66fa81"
+  },
+  "http_latency_ms": 330.838,
+  "passed": true,
+  "process_exit": -15,
+  "server_log": "INFO:     Started server process [54497]\nINFO:     Waiting for application startup.\nW1106 00:39:40.299000 54497 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.\n\nLoading weights:   0%|          | 0/393 [00:00<?, ?it/s]\nLoading weights: 100%|██████████| 393/393 [00:00<00:00, 7095.68it/s]\nINFO:     Application startup complete.\nINFO:     Uvicorn running on http://127.0.0.1:62610 (Press CTRL+C to quit)\nINFO:     127.0.0.1:62650 - \"GET /health/live HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:62650 - \"POST /api/v2/retrieve HTTP/1.1\" 401 Unauthorized\nINFO:     127.0.0.1:62650 - \"GET /health/ready HTTP/1.1\" 503 Service Unavailable\nBuilding prefix dict from the default dictionary ...\nLoading model from cache /var/folders/lt/wg99779n3xzd_zth2zx9sbth0000gn/T/jieba.cache\nLoading model cost 0.193 seconds.\nPrefix dict has been built successfully.\nINFO:     127.0.0.1:62650 - \"POST /api/v2/retrieve HTTP/1.1\" 200 OK\nINFO:     Shutting down\nINFO:     Waiting for application shutdown.\nINFO:     Application shutdown complete.\nINFO:     Finished server process [54497]\n<local-path> Support/violoop/runtime/python/py/cpython-3.12.13-macos-aarch64-none/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown\n  warnings.warn('resource_tracker: There appear to be %d '\n",
+  "total_seconds": 3.52,
+  "raw_trace_sha256": "317d688bea011429291d6260401289589ac6fee4db53dbd3b743c19cc9381c18",
+  "code_sha256": {
+    "legal_rag/__init__.py": "530de0972cc52557a06e77fc645c5f72c6db0e46d33ab48f5e857f369b0d12e6",
+    "legal_rag/answer.py": "5b334c78b00ba06bc958b5d4166487c4f0a42bd403b23cabc89894729e243564",
+    "legal_rag/api.py": "7269e5235bc3f2a6764f1fdf34182d7dee4c9051e22c04ea2fc0012b7858c77a",
+    "legal_rag/budget.py": "72670d033e4d8ce6363c7504b84f0e14b121e61e312eb8eb243c488482ce70fb",
+    "legal_rag/catalog.py": "067c9adc724807bb11859d0cba80d84ef4237f6637cf0d99ee5e5e0463681f76",
+    "legal_rag/cli.py": "63743591eaadda29649d2e6964d445e3af149a477630e5ad6d817a166f942861",
+    "legal_rag/generate_benchmark.py": "16d0beafab70dbf9afab9d0ba551aafcf61c0220e2f8303919597d38a18e5ac2",
+    "legal_rag/model_experiment.py": "afb20658de0be8c1a246c2c9c327761abddaca2acc85ec60a8e15414b02af140",
+    "legal_rag/retrieval.py": "a94ca15ecd3266dfc91923debde9ee2c7f94756d605b7a1884a44cf20535d917",
+    "legal_rag/viking_index.py": "34fef1298b8468f35d3d16595286eaed732cc42b1e7010b6dc4a9ecb044c9fb7"
+  },
+  "limitation": "Synthetic single-unit service integration; no generator or tokenizer, not legal quality or performance acceptance."
+}

@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "pipeline_config_sha256": "1c92761be46dc6fac96aad7d3c4fdb9c9d5585d73a5d113dd18c680c5f76a278",
+  "manifest_sha256": "d09a41513c30092312905e568c73c9e1e914b04881345e9350125f9701f812cb",
+  "config": {
+    "mode": "product-lexical",
+    "embedding": null,
+    "reranker": null,
+    "device": null,
+    "dtype": null,
+    "batch_size": 2
+  },
+  "code_sha256": {
+    "benchmarks/run_product.py": "b405576f7247f4b462b4509382fc5fa7826ac6d9becb3d6333b2565dab804805",
+    "benchmarks/product.py": "c438becd7f230ef18e02cedf28d48520b636dbaa06a27cd9dc31a0e525b493ae",
+    "benchmarks/run.py": "b1bde1b02d00c4268f75bab65c371887f4b0b37a1e63a36c44d767180dead092",
+    "benchmarks/core.py": "c7c9b2bf7bd6b1b46a995f858dd8743dda4918542bb8be88cdcda96a65f7fcf6",
+    "benchmarks/metrics.py": "93cf6a4a5477dcbbd15329f0645211ead1d22736d8654f6283a3d2f33660bb3a",
+    "benchmarks/prepare.py": "5dd3ea880fbaa29bc101b1245dbdee95995bfb9f335be9ab32869f5d122e7066",
+    "benchmarks/select.py": "df007d42436493123d6f14fdf932e190f6fe160f49f5e290b7bba2c295bd9a45",
+    "benchmarks/freeze_product.py": "a6c1f21814a3fd3e95c85a2a208e81878af04db81dc3a8a1df8a2a8f8a17c62a",
+    "evidence_rag/catalog.py": "d52166e499a47bf0749ecbb11fdf4d090b118b957c9fb9c9389a2814cc50cc84",
+    "evidence_rag/retrieval.py": "058fbe365e83e2e30c7a4458ec38efeaaa8eeb26677bffb716b3a90489b3c12c",
+    "evidence_rag/viking_index.py": "e55e582e815f8a9bd95411a814b06af28610ab2e9fd684909fed2f0a95f0d36d"
+  },
+  "validation_report_sha256": "9e68e5953cc06c054924ae2115e0284acf4bea76d9a7dcf328a88b7fcf7ca7ae",
+  "validation_failures": 0,
+  "selection_reason": "Explicit operator selection from frozen validation; official test not used to select configuration."
+}

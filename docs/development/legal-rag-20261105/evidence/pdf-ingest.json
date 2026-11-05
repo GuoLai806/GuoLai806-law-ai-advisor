@@ -1,0 +1,25 @@
+{
+  "timestamp_utc": "2026-11-05T16:01:00Z",
+  "revision": "repository-unverified",
+  "units": 1260,
+  "parts": 2126,
+  "fts": 1260,
+  "candidate_relations": 53,
+  "manifest": {
+    "doc_id": "cn-civil-code",
+    "effective_from": null,
+    "effective_to": null,
+    "extracted_text_sha256": "37cd6b887c9c5bf89293d4433fbf3b4231714643b8773884a0285c117b9f35d4",
+    "issuer": "全国人民代表大会",
+    "note": "仓库内 PDF 仅供离线解析，来源、文本完整性及版本尚未完成核验，不能作为权威资料激活。",
+    "parser_version": "article-v4-section-crosscheck",
+    "source_kind": "repository-source-unverified",
+    "source_sha256": "4cef5e4a1e5f82c5a52e949093ba0cfec4f7290e78d04d837c292e2a62c4065e",
+    "source_url": null,
+    "title": "中华人民共和国民法典",
+    "verification_state": "pending",
+    "version_id": "2020-repository-pdf"
+  },
+  "activation": "not attempted; source pending",
+  "limitations": "counts do not prove source or extracted relation correctness"
+}

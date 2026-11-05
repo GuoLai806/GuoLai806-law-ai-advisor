@@ -1,0 +1,59 @@
+{
+  "timestamp_utc": "2026-11-05T16:00:12Z",
+  "script_sha256": "94eb9a0e506c792ef6272dd96d0b7d44ea6d59dba4848b8943cad4d9cf888af3",
+  "corpus_manifest": {
+    "doc_id": "cn-civil-code",
+    "effective_from": null,
+    "effective_to": null,
+    "extracted_text_sha256": "37cd6b887c9c5bf89293d4433fbf3b4231714643b8773884a0285c117b9f35d4",
+    "issuer": "全国人民代表大会",
+    "note": "仓库内 PDF 仅供离线解析，来源、文本完整性及版本尚未完成核验，不能作为权威资料激活。",
+    "parser_version": "article-v3-search-relations",
+    "source_kind": "repository-source-unverified",
+    "source_sha256": "4cef5e4a1e5f82c5a52e949093ba0cfec4f7290e78d04d837c292e2a62c4065e",
+    "source_url": null,
+    "title": "中华人民共和国民法典",
+    "verification_state": "pending",
+    "version_id": "2020-repository-pdf"
+  },
+  "input_sha256": {
+    "miit": "01b313d50e5946e9cf09462db1b34dedcb23d5bda976a0de92376f759172d4e2",
+    "samr": "6f77b647758f0235e080c33c164c840fb1b8b7f7d99c01ace40b988d1c023da1"
+  },
+  "method": "HTML paragraph boundaries and PDF extracted article text; NFKC plus whitespace removal; not visual review",
+  "results": {
+    "miit": {
+      "article_count": 1260,
+      "missing_numbers": [],
+      "comparable_articles": 1260,
+      "normalized_exact_matches": 1259,
+      "differences": [
+        {
+          "article": 1258,
+          "pdf_length": 111,
+          "official_length": 109,
+          "first_diff_offset": 109,
+          "pdf_excerpt": "能证明尽到管理职责的,应当承担侵权责任。附则",
+          "official_excerpt": "能证明尽到管理职责的,应当承担侵权责任。"
+        }
+      ]
+    },
+    "samr": {
+      "article_count": 1260,
+      "missing_numbers": [],
+      "comparable_articles": 1260,
+      "normalized_exact_matches": 1259,
+      "differences": [
+        {
+          "article": 1258,
+          "pdf_length": 111,
+          "official_length": 109,
+          "first_diff_offset": 109,
+          "pdf_excerpt": "能证明尽到管理职责的,应当承担侵权责任。附则",
+          "official_excerpt": "能证明尽到管理职责的,应当承担侵权责任。"
+        }
+      ]
+    }
+  },
+  "limitation": "Government repost is not the promulgating authority; software extraction and differences need human validation."
+}

@@ -1,0 +1,130 @@
+{
+  "kind": "ai-curated-human-review-pending",
+  "original_dataset_sha256": "b98b09d2a490f65a8f83b513dc5bcfec9d2992c305e63f94e249af21ec0e8b77",
+  "split": "dev",
+  "purpose": "development",
+  "excluded_abstention_ids": [
+    "AI-CIVIL-110",
+    "AI-CIVIL-111",
+    "AI-CIVIL-112",
+    "AI-CIVIL-115",
+    "AI-CIVIL-116",
+    "AI-CIVIL-118"
+  ],
+  "queries": [
+    {
+      "id": "AI-CIVIL-004",
+      "query": "需要监护的成年人，配偶、父母子女和其他亲属之间通常如何确定监护顺序？",
+      "expected_labels": [
+        "第二十八条"
+      ]
+    },
+    {
+      "id": "AI-CIVIL-005",
+      "query": "监护人能否随意卖掉被监护人的财产？判断应看什么？",
+      "expected_labels": [
+        "第三十五条"
+      ]
+    },
+    {
+      "id": "AI-CIVIL-012",
+      "query": "所有民事事务都能委托别人办理吗？有哪些不能代理的情形？",
+      "expected_labels": [
+        "第一百六十一条"
+      ]
+    },
+    {
+      "id": "AI-CIVIL-013",
+      "query": "有人超出授权替别人签约，未经追认时对本人有什么影响？",
+      "expected_labels": [
+        "第一百七十一条"
+      ]
+    },
+    {
+      "id": "AI-CIVIL-014",
+      "query": "虽然对方实际没有代理权，但交易相对人有理由相信其有权代理，应关注什么规则？",
+      "expected_labels": [
+        "第一百七十二条"
+      ]
+    },
+    {
+      "id": "AI-CIVIL-021",
+      "query": "尚未造成实际损失，但某种行为正在妨碍或威胁物权，可以要求什么？",
+      "expected_labels": [
+        "第二百三十六条"
+      ]
+    },
+    {
+      "id": "AI-CIVIL-029",
+      "query": "先履行的一方发现对方经营严重恶化，什么情况下可以暂时中止履行？",
+      "expected_labels": [
+        "第五百二十七条"
+      ]
+    },
+    {
+      "id": "AI-CIVIL-030",
+      "query": "一方中止履行后对方提供了适当担保，接下来应怎样处理？",
+      "expected_labels": [
+        "第五百二十八条"
+      ]
+    },
+    {
+      "id": "AI-CIVIL-031",
+      "query": "签约后发生订约时无法预见且非商业风险的重大变化，继续履行明显不公平，有哪些步骤？",
+      "expected_labels": [
+        "第五百三十三条"
+      ]
+    },
+    {
+      "id": "AI-CIVIL-062",
+      "query": "婚姻期间取得的财产与婚前财产，判断共同或个人财产有哪些主要规则？",
+      "expected_labels": [
+        "第一千零六十二条",
+        "第一千零六十三条"
+      ]
+    },
+    {
+      "id": "AI-CIVIL-063",
+      "query": "夫妻想对婚前和婚后财产另作安排，应采用什么形式？",
+      "expected_labels": [
+        "第一千零六十五条"
+      ]
+    },
+    {
+      "id": "AI-CIVIL-074",
+      "query": "自己手写遗嘱，形式上应具备哪些要素？",
+      "expected_labels": [
+        "第一千一百三十四条"
+      ]
+    },
+    {
+      "id": "AI-CIVIL-075",
+      "query": "请别人代写遗嘱时，见证和签名需要满足什么要求？",
+      "expected_labels": [
+        "第一千一百三十五条"
+      ]
+    },
+    {
+      "id": "AI-CIVIL-076",
+      "query": "危急时口头立的遗嘱，在危急情况过去以后是否仍然有效？",
+      "expected_labels": [
+        "第一千一百三十八条"
+      ]
+    },
+    {
+      "id": "AI-CIVIL-085",
+      "query": "一名限制行为能力的孩子造成他人损失，监护人已经尽责，这会影响其责任吗？",
+      "expected_labels": [
+        "第一千一百八十八条"
+      ]
+    },
+    {
+      "id": "AI-CIVIL-102",
+      "query": "婚后工资的归属能否由夫妻事先另作书面约定？",
+      "expected_labels": [
+        "第一千零六十二条",
+        "第一千零六十五条"
+      ]
+    }
+  ]
+}

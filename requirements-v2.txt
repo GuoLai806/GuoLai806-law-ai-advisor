@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+httpx
+jieba
+pymupdf
+# Optional local rerank: sentence-transformers plus torch, with the pinned model revisions in retrieval.py.

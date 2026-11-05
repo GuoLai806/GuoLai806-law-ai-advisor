@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "dataset": "nfcorpus",
+  "url": "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/nfcorpus.zip",
+  "expected_md5": "a89dba18a62ef92f7d323ec890a0d38d",
+  "archive_sha256": "efe5be03f8c5b86a5870102d0599d227c8c6e2484328e68c6522560385671b0b",
+  "corpus_sha256": "10cc83ef1826b1425e6a87090b5140b39b27755d5a27e48215a88611c899991f",
+  "queries_sha256": "d024e6621b84925d485ae473d316a0c3af31c62c8068a59fb29d22f7613aef2a",
+  "corpus_count": 3633,
+  "query_count_total": 3237,
+  "qrels": {
+    "train": {
+      "qids": 2590,
+      "qrels": 110575,
+      "sha256": "6336b80f9bffc4f063f3aa450047ad35c0b7c534efe4a6ba35e16dbace047f6a"
+    },
+    "dev": {
+      "qids": 324,
+      "qrels": 11385,
+      "sha256": "b1d38b5e8f78c4a5820bce2b7ec2db54911d7690dc601e76811846b211180bd8"
+    },
+    "test": {
+      "qids": 323,
+      "qrels": 12334,
+      "sha256": "f8fba6ef3d4dd9c3a242a8ba4ae38276fc3622fce7dcbae764766d564542fd2a"
+    }
+  },
+  "validation": {
+    "source_split": "dev",
+    "selection": "first N SHA-256(query_id UTF-8), lexical tie break",
+    "query_ids": [
+      "PLAIN-1866",
+      "PLAIN-2144",
+      "PLAIN-1846",
+      "PLAIN-3096",
+      "PLAIN-1097",
+      "PLAIN-2529",
+      "PLAIN-2007",
+      "PLAIN-55",
+      "PLAIN-3351",
+      "PLAIN-3401",
+      "PLAIN-164",
+      "PLAIN-3036",
+      "PLAIN-976",
+      "PLAIN-132",
+      "PLAIN-1783",
+      "PLAIN-1017",
+      "PLAIN-2310",
+      "PLAIN-560",
+      "PLAIN-3461",
+      "PLAIN-859",
+      "PLAIN-2829",
+      "PLAIN-216",
+      "PLAIN-456",
+      "PLAIN-1771",
+      "PLAIN-1994",
+      "PLAIN-2374",
+      "PLAIN-2469",
+      "PLAIN-881",
+      "PLAIN-644",
+      "PLAIN-1087",
+      "PLAIN-1556",
+      "PLAIN-2018"
+    ],
+    "count": 32
+  },
+  "official_test_count": 323,
+  "official_test_policy": "no model run before explicit config selection",
+  "license": "Original NFCorpus terms specify academic use; other NutritionFacts use requires consulting terms and author",
+  "license_source": "https://www.cl.uni-heidelberg.de/statnlpgroup/nfcorpus/",
+  "beir_readme": "https://github.com/beir-cellar/beir/blob/ef83d29307061c65d04b035b4f4e7c18bd8374af/README.md",
+  "hf_card_license": "CC-BY-SA-4.0 (dataset card); original producer terms also apply and should be reviewed",
+  "hf_card_url": "https://huggingface.co/datasets/BeIR/nfcorpus"
+}

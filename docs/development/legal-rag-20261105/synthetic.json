@@ -1,0 +1,1 @@
+{"kind":"synthetic-fixture-not-human-verified","queries":[{"query":"第一条","expected_labels":["第一条"]},{"query":"第二条","expected_labels":["第二条"]},{"query":"第三条","expected_labels":["第三条"]}]}

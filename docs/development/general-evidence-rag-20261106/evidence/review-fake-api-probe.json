@@ -1,0 +1,103 @@
+{
+  "finish_reason": [
+    {
+      "reason": "length",
+      "accepted_without_exception": true,
+      "events": [
+        {
+          "type": "delta",
+          "delta": "partial [E1]"
+        }
+      ],
+      "validation": {
+        "status": "structurally_valid",
+        "unknown_citations": [],
+        "cited": [
+          "E1"
+        ],
+        "claim_support": "not_verified"
+      }
+    },
+    {
+      "reason": "content_filter",
+      "accepted_without_exception": true,
+      "events": [
+        {
+          "type": "delta",
+          "delta": "partial [E1]"
+        }
+      ],
+      "validation": {
+        "status": "structurally_valid",
+        "unknown_citations": [],
+        "cited": [
+          "E1"
+        ],
+        "claim_support": "not_verified"
+      }
+    },
+    {
+      "reason": "tool_calls",
+      "accepted_without_exception": true,
+      "events": [
+        {
+          "type": "delta",
+          "delta": "partial [E1]"
+        }
+      ],
+      "validation": {
+        "status": "structurally_valid",
+        "unknown_citations": [],
+        "cited": [
+          "E1"
+        ],
+        "claim_support": "not_verified"
+      }
+    }
+  ],
+  "invalid_citation": {
+    "normal": {
+      "trace_id": "fake",
+      "status": "insufficient_evidence",
+      "answer": "生成结果的引用未通过检查，请查看原文并进一步核验。",
+      "claims": [],
+      "citations": [
+        {
+          "citation_id": "E1",
+          "title": "Source",
+          "text": "valid evidence"
+        }
+      ],
+      "verification": {
+        "status": "invalid",
+        "unknown_citations": [
+          "E999"
+        ],
+        "cited": [
+          "E999"
+        ],
+        "claim_support": "not_verified"
+      },
+      "usage": null,
+      "usage_source": "unavailable",
+      "budget": {
+        "state": "measured",
+        "omitted": []
+      },
+      "degraded": true
+    },
+    "sse": "event: retrieval_started\ndata: {\"trace_id\": \"tr_f22cd2fb010c41509fa9a40593c0fb71\", \"seq\": 1}\n\nevent: evidence_ready\ndata: {\"trace_id\": \"tr_f22cd2fb010c41509fa9a40593c0fb71\", \"seq\": 2, \"bundle\": {\"trace_id\": \"tr_f22cd2fb010c41509fa9a40593c0fb71\", \"status\": \"ready\", \"query_plan\": {\"profile\": \"general\", \"mode\": \"source_lookup\", \"applicability_review\": false}, \"evidence\": [{\"citation_id\": \"E1\", \"title\": \"Source\", \"text\": \"valid evidence\"}], \"degraded\": false, \"budget\": {\"state\": \"measured\", \"omitted\": []}, \"corpus_revision\": \"r1\"}}\n\nevent: answer_delta\ndata: {\"trace_id\": \"tr_f22cd2fb010c41509fa9a40593c0fb71\", \"seq\": 3, \"delta\": \"Unverified factual claim [E999]\", \"verification\": \"pending\"}\n\nevent: verification\ndata: {\"trace_id\": \"tr_f22cd2fb010c41509fa9a40593c0fb71\", \"seq\": 4, \"status\": \"invalid\", \"unknown_citations\": [\"E999\"], \"cited\": [\"E999\"], \"claim_support\": \"not_verified\"}\n\nevent: completed\ndata: {\"trace_id\": \"tr_f22cd2fb010c41509fa9a40593c0fb71\", \"seq\": 5, \"status\": \"ready\", \"first_answer_ms\": 1.01, \"total_ms\": 1.71, \"usage\": null, \"usage_source\": \"unavailable\"}\n\n",
+    "turns": {
+      "session_id": "test-session",
+      "turns": [
+        {
+          "turn_id": "turn_d04ec594ca134a6997fca2739a22ce5e",
+          "query": "question",
+          "answer": "Unverified factual claim [E999]",
+          "revision": "r1",
+          "created": 1793900430.231251
+        }
+      ]
+    }
+  }
+}

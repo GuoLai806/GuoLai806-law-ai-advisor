@@ -1,0 +1,296 @@
+{
+  "timestamp_utc": "2026-11-05T16:37:04Z",
+  "engine_health": {
+    "status": "ok",
+    "healthy": true,
+    "version": "0.5.3",
+    "auth_mode": "dev"
+  },
+  "embedding_health": {
+    "ready": true,
+    "model": "BAAI/bge-m3",
+    "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+    "dimension": 1024,
+    "device": "mps:0",
+    "dtype": "torch.float16",
+    "load_seconds": 2.090733289718628,
+    "torch": "2.15.0"
+  },
+  "server_config_sha256": "a7dce157927e2c44bd473eaa9e8e26a447b4f8fe416217547ad3ae3deeefd630",
+  "source_trace_sha256": "d66cc803102250ae516d8ba7eb1004e192d707867d8f0d24f5d80923352558f8",
+  "trace": {
+    "revision": "smoke-9c4195d5229e",
+    "unit_id": "61cb92c432397aea08790b2325878858",
+    "source_kind": "synthetic",
+    "job": {
+      "job_id": "job_c727398bdd0e460098537f36e1429431",
+      "idem": "67930b99a3bb4c7aefdb9f0f448a8e1a973a61fe550250844b7127e92dd56fe6",
+      "revision": "smoke-9c4195d5229e",
+      "state": "indexed",
+      "error": null
+    },
+    "engine_version": "0.5.3",
+    "embedding_model_requested": "BAAI/bge-m3",
+    "embedding_revision_requested": "5617a9f61b028005a4858fdac845db406aefb181",
+    "model_identity_verified_by_this_script": false,
+    "stage": "validated",
+    "generated_utc": "2026-11-05T16:32:24Z",
+    "ingest": {
+      "state": "delivery_unknown",
+      "uri": "viking://resources/law-cn/smoke-9c4195d5229e/61cb92c432397aea08790b2325878858/61cb92c432397aea08790b2325878858.md"
+    },
+    "reconcile": {
+      "state": "content_verified",
+      "uri": "viking://resources/law-cn/smoke-9c4195d5229e/61cb92c432397aea08790b2325878858/61cb92c432397aea08790b2325878858.md",
+      "note": "vector visibility still requires separate validation"
+    },
+    "find": [
+      {
+        "context_type": "resource",
+        "uri": "viking://resources/law-cn/smoke-9c4195d5229e/61cb92c432397aea08790b2325878858/61cb92c432397aea08790b2325878858.md",
+        "level": 2,
+        "score": 0.8910692930221558,
+        "abstract": "",
+        "tags": []
+      }
+    ],
+    "validate": {
+      "revision": "smoke-9c4195d5229e",
+      "index_visibility_validated": true,
+      "units": [
+        {
+          "unit_id": "61cb92c432397aea08790b2325878858",
+          "result": "visible"
+        }
+      ]
+    },
+    "events": [
+      {
+        "method": "POST",
+        "path": "/api/v1/resources/temp_upload",
+        "query": "",
+        "started_utc": "2026-11-05T16:32:24Z",
+        "status": 200,
+        "elapsed_ms": 41.93,
+        "response_sha256": "59b8bbb1ec7d79302c2662f47d3da5c57104d68bb821eb0d5327d6ffc52d016c",
+        "response": {
+          "status": "ok",
+          "result": {
+            "temp_file_id": "upload_6325a29d78534344bdf109c1ce5b4e83.md"
+          }
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/api/v1/resources",
+        "query": "",
+        "started_utc": "2026-11-05T16:32:24Z",
+        "status": 200,
+        "elapsed_ms": 771.93,
+        "response_sha256": "fddcc72c8174942cc0555a100c5f10b22c5e0f5bf5233595fb9fc4e4f220c79f",
+        "response": {
+          "status": "ok",
+          "result": {
+            "status": "success",
+            "errors": [],
+            "source_path": "61cb92c432397aea08790b2325878858.md",
+            "meta": {},
+            "root_uri": "viking://resources/law-cn/smoke-9c4195d5229e/61cb92c432397aea08790b2325878858",
+            "temp_uri": "<isolated-workspace>/parse/artifact-e714408a9ca44efc91e6225a89e0ac23/61cb92c432397aea08790b2325878858",
+            "queue_status": {
+              "Semantic": {
+                "processed": 0,
+                "requeue_count": 0,
+                "error_count": 0,
+                "errors": []
+              },
+              "Embedding": {
+                "processed": 1,
+                "requeue_count": 0,
+                "error_count": 0,
+                "errors": []
+              }
+            },
+            "context_count": 1,
+            "telemetry": {
+              "id": "tm_13779cd527b94a598345ee752689f61c",
+              "summary": {
+                "operation": "add_resource_job",
+                "status": "ok",
+                "duration_ms": 373.818,
+                "tokens": {
+                  "total": 17,
+                  "embedding": {
+                    "total": 17
+                  },
+                  "stages": {
+                    "embed_resource": {
+                      "embedding": {
+                        "total": 17
+                      }
+                    }
+                  }
+                },
+                "queue": {
+                  "embedding": {
+                    "processed": 1,
+                    "queue_wait": {
+                      "duration_ms": 164.454
+                    },
+                    "execute": {
+                      "duration_ms": 71.717
+                    }
+                  }
+                },
+                "resource": {
+                  "total": {
+                    "duration_ms": 373.814
+                  },
+                  "source_execute": {
+                    "duration_ms": 10.122
+                  },
+                  "source_prepare": {
+                    "duration_ms": 3.338
+                  },
+                  "parse_artifact": {
+                    "duration_ms": 3.917
+                  },
+                  "target_resolve": {
+                    "duration_ms": 0.259
+                  },
+                  "update_plan": {
+                    "duration_ms": 1.571,
+                    "artifact_inventory": {
+                      "duration_ms": 0.324
+                    },
+                    "rnfv_snapshot": {
+                      "duration_ms": 0.81
+                    },
+                    "diff_and_compile": {
+                      "duration_ms": 0.335
+                    }
+                  },
+                  "content_commit": {
+                    "duration_ms": 1.043
+                  },
+                  "derived_enqueue": {
+                    "duration_ms": 1.187
+                  },
+                  "embedding": {
+                    "queue_wait": {
+                      "duration_ms": 164.454
+                    },
+                    "execute": {
+                      "duration_ms": 71.717
+                    }
+                  },
+                  "flags": {
+                    "wait": false,
+                    "build_index": true,
+                    "summarize": false,
+                    "watch_enabled": false
+                  }
+                }
+              }
+            },
+            "usage": {
+              "tokens": {
+                "total": 17,
+                "embedding": {
+                  "total": 17
+                },
+                "stages": {
+                  "embed_resource": {
+                    "embedding": {
+                      "total": 17
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/content/read",
+        "query": "uri=viking%3A%2F%2Fresources%2Flaw-cn%2Fsmoke-9c4195d5229e%2F61cb92c432397aea08790b2325878858%2F61cb92c432397aea08790b2325878858.md&raw=true",
+        "started_utc": "2026-11-05T16:32:25Z",
+        "status": 200,
+        "elapsed_ms": 21.11,
+        "response_sha256": "0b9c74a3557f15d174bdde0d5e4ad3edb0a62f8bbb9bca18e857dda4f2a5e6fe",
+        "response": {
+          "status": "ok",
+          "result": "第一条 测试合同双方依约履行，不是法律原文。",
+          "error": null,
+          "telemetry": null,
+          "profile": null
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/api/v1/search/find",
+        "query": "",
+        "started_utc": "2026-11-05T16:32:25Z",
+        "status": 200,
+        "elapsed_ms": 123.1,
+        "response_sha256": "87b341bec93a5ae3ae55ad723dfb1d9458449e2a02ba1aad64deabfd8281f121",
+        "response": {
+          "status": "ok",
+          "result": {
+            "memories": [],
+            "resources": [
+              {
+                "context_type": "resource",
+                "uri": "viking://resources/law-cn/smoke-9c4195d5229e/61cb92c432397aea08790b2325878858/61cb92c432397aea08790b2325878858.md",
+                "level": 2,
+                "score": 0.8910692930221558,
+                "abstract": "",
+                "tags": []
+              }
+            ],
+            "skills": [],
+            "total": 1
+          }
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/api/v1/search/find",
+        "query": "",
+        "started_utc": "2026-11-05T16:32:25Z",
+        "status": 200,
+        "elapsed_ms": 90.62,
+        "response_sha256": "dfe5c24224e69245accd0a1baca086f39285390b7ff01be59e74a4b1ed61c869",
+        "response": {
+          "status": "ok",
+          "result": {
+            "memories": [],
+            "resources": [
+              {
+                "context_type": "resource",
+                "uri": "viking://resources/law-cn/smoke-9c4195d5229e/61cb92c432397aea08790b2325878858/61cb92c432397aea08790b2325878858.md",
+                "level": 2,
+                "score": 0.9934903383255005,
+                "abstract": "",
+                "tags": []
+              }
+            ],
+            "skills": [],
+            "total": 1
+          }
+        }
+      }
+    ],
+    "journal": [
+      {
+        "revision": "smoke-9c4195d5229e",
+        "unit_id": "61cb92c432397aea08790b2325878858",
+        "uri": "viking://resources/law-cn/smoke-9c4195d5229e/61cb92c432397aea08790b2325878858/61cb92c432397aea08790b2325878858.md",
+        "content_hash": "f006770fba3b9ac003fe431759da0de6535680af94d2842c70f5f2b3c2f7e429",
+        "state": "content_verified"
+      }
+    ]
+  },
+  "limitations": "Synthetic 1-unit integration only; unverified legal quality and no official source approval."
+}

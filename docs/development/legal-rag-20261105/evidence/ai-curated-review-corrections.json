@@ -1,0 +1,463 @@
+{
+  "previous_dataset_sha256": "b871f5bb6e7b26ef4d8f036597a3cbaeb4c4c219e2a152e79c90ecfb66f68089",
+  "new_dataset_sha256": "381bc2db3d2a4c093d781b41fd2d5cd3172bd4b99d00a9d0eb9cca05ea645ae6",
+  "review": "outputs/development-20261105/ai-dataset-review.md",
+  "changes": [
+    {
+      "id": "AI-CIVIL-002",
+      "reason": "明确本条特殊规则的年龄下限与主要生活来源",
+      "before": {
+        "query": "未满十八岁但靠自己工作收入生活的人，民事行为能力如何判断？",
+        "required": [
+          "第十八条"
+        ],
+        "kind": "concept_or_condition",
+        "abstain_reason": null
+      },
+      "after": {
+        "query": "一名已满十六岁但还没成年的劳动者，主要依靠自己的劳动收入生活，民事行为能力怎样认定？",
+        "required": [
+          "第十八条"
+        ],
+        "kind": "concept_or_condition",
+        "abstain_reason": null,
+        "metric_eligible": true,
+        "annotation_note": null
+      }
+    },
+    {
+      "id": "AI-CIVIL-012",
+      "reason": "限定为条文直接规范的民事法律行为",
+      "before": {
+        "query": "所有民事事务都能委托别人办理吗？有哪些不能代理的情形？",
+        "required": [
+          "第一百六十一条"
+        ],
+        "kind": "exception_or_negation",
+        "abstain_reason": null
+      },
+      "after": {
+        "query": "民事法律行为都能委托别人代为实施吗？哪些必须由本人办理？",
+        "required": [
+          "第一百六十一条"
+        ],
+        "kind": "exception_or_negation",
+        "abstain_reason": null,
+        "metric_eligible": true,
+        "annotation_note": null
+      }
+    },
+    {
+      "id": "AI-CIVIL-013",
+      "reason": "不能遗漏可能构成表见代理的分支",
+      "before": {
+        "query": "有人超出授权替别人签约，未经追认时对本人有什么影响？",
+        "required": [
+          "第一百七十一条"
+        ],
+        "kind": "concept_or_condition",
+        "abstain_reason": null
+      },
+      "after": {
+        "query": "有人超出授权替别人签约，未经追认时对本人是否一定不发生效力？",
+        "required": [
+          "第一百七十一条",
+          "第一百七十二条"
+        ],
+        "kind": "multi_article",
+        "abstain_reason": null,
+        "metric_eligible": true,
+        "annotation_note": null
+      }
+    },
+    {
+      "id": "AI-CIVIL-024",
+      "reason": "仅询问不可撤销情形，避免漏评撤销通知的时间规则",
+      "before": {
+        "query": "发出要约后总能撤销吗？哪些情形可能不能撤销？",
+        "required": [
+          "第四百七十六条"
+        ],
+        "kind": "exception_or_negation",
+        "abstain_reason": null
+      },
+      "after": {
+        "query": "要约有哪些情况下不能由发出方撤销？",
+        "required": [
+          "第四百七十六条"
+        ],
+        "kind": "exception_or_negation",
+        "abstain_reason": null,
+        "metric_eligible": true,
+        "annotation_note": null
+      }
+    },
+    {
+      "id": "AI-CIVIL-051",
+      "reason": "收窄至普通非拍卖出售，避免遗漏司法或其他拍卖规则",
+      "before": {
+        "query": "房东准备卖租赁住房，租客的优先购买权有哪些条件和例外？",
+        "required": [
+          "第七百二十六条"
+        ],
+        "kind": "exception_or_negation",
+        "abstain_reason": null
+      },
+      "after": {
+        "query": "房东通过普通买卖而非拍卖出售出租住房时，租客优先购买有哪些条件和例外？",
+        "required": [
+          "第七百二十六条"
+        ],
+        "kind": "exception_or_negation",
+        "abstain_reason": null,
+        "metric_eligible": true,
+        "annotation_note": null
+      }
+    },
+    {
+      "id": "AI-CIVIL-055",
+      "reason": "修正重复措辞并限定总体规则，而非要求列尽所有例外",
+      "before": {
+        "query": "未经本人同意使用其肖像，规则是否允许任何情况下都使用？",
+        "required": [
+          "第一千零一十九条"
+        ],
+        "kind": "exception_or_negation",
+        "abstain_reason": null
+      },
+      "after": {
+        "query": "未经本人同意制作或公开他人肖像，一般有什么限制？法律另有规定时怎么办？",
+        "required": [
+          "第一千零一十九条"
+        ],
+        "kind": "exception_or_negation",
+        "abstain_reason": null,
+        "metric_eligible": true,
+        "annotation_note": null
+      }
+    },
+    {
+      "id": "AI-CIVIL-060",
+      "reason": "限定2020版民法典登记一般规则，不评价历史事实婚姻或补办时点",
+      "before": {
+        "query": "只是举行婚礼但未办理结婚登记，婚姻关系何时确立？",
+        "required": [
+          "第一千零四十九条"
+        ],
+        "kind": "concept_or_condition",
+        "abstain_reason": null
+      },
+      "after": {
+        "query": "按照2020年民法典的结婚登记一般规定，婚姻关系在哪一步确立？不讨论历史事实婚姻或补办登记的效力时点。",
+        "required": [
+          "第一千零四十九条"
+        ],
+        "kind": "concept_or_condition",
+        "abstain_reason": null,
+        "metric_eligible": true,
+        "annotation_note": "仅评价1049条的一般登记规则；历史事实婚姻及补办效力需相关司法解释，当前语料不覆盖。"
+      }
+    },
+    {
+      "id": "AI-CIVIL-062",
+      "reason": "补充财产书面约定对默认规则的影响",
+      "before": {
+        "query": "婚姻期间取得的财产与婚前财产，判断共同或个人财产有哪些主要规则？",
+        "required": [
+          "第一千零六十二条",
+          "第一千零六十三条"
+        ],
+        "kind": "multi_article",
+        "abstain_reason": null
+      },
+      "after": {
+        "query": "婚姻期间取得的财产与婚前财产，判断共同或个人财产有哪些主要规则？",
+        "required": [
+          "第一千零六十二条",
+          "第一千零六十三条",
+          "第一千零六十五条"
+        ],
+        "kind": "multi_article",
+        "abstain_reason": null,
+        "metric_eligible": true,
+        "annotation_note": null
+      }
+    },
+    {
+      "id": "AI-CIVIL-071",
+      "reason": "限定没有遗嘱及遗赠扶养协议，避免遗漏不同优先安排",
+      "before": {
+        "query": "没有遗嘱时，配偶、父母、兄弟姐妹的继承顺位怎样区分？",
+        "required": [
+          "第一千一百二十七条"
+        ],
+        "kind": "concept_or_condition",
+        "abstain_reason": null
+      },
+      "after": {
+        "query": "没有遗嘱和遗赠扶养协议时，配偶、父母、兄弟姐妹的继承顺位怎样区分？",
+        "required": [
+          "第一千一百二十七条"
+        ],
+        "kind": "concept_or_condition",
+        "abstain_reason": null,
+        "metric_eligible": true,
+        "annotation_note": null
+      }
+    },
+    {
+      "id": "AI-CIVIL-074",
+      "reason": "明确仅询问形式而不是完整有效性",
+      "before": {
+        "query": "自己手写遗嘱，形式上应具备哪些要素？",
+        "required": [
+          "第一千一百三十四条"
+        ],
+        "kind": "concept_or_condition",
+        "abstain_reason": null
+      },
+      "after": {
+        "query": "只看形式要求，自己手写遗嘱需要具备哪些要素？",
+        "required": [
+          "第一千一百三十四条"
+        ],
+        "kind": "concept_or_condition",
+        "abstain_reason": null,
+        "metric_eligible": true,
+        "annotation_note": null
+      }
+    },
+    {
+      "id": "AI-CIVIL-075",
+      "reason": "补充见证人资格限制",
+      "before": {
+        "query": "请别人代写遗嘱时，见证和签名需要满足什么要求？",
+        "required": [
+          "第一千一百三十五条"
+        ],
+        "kind": "concept_or_condition",
+        "abstain_reason": null
+      },
+      "after": {
+        "query": "请别人代写遗嘱时，见证和签名需要满足什么要求？",
+        "required": [
+          "第一千一百三十五条",
+          "第一千一百四十条"
+        ],
+        "kind": "multi_article",
+        "abstain_reason": null,
+        "metric_eligible": true,
+        "annotation_note": null
+      }
+    },
+    {
+      "id": "AI-CIVIL-076",
+      "reason": "强调危急情况结束后能否采用其他形式的条件",
+      "before": {
+        "query": "危急时口头立的遗嘱，在危急情况过去以后是否仍然有效？",
+        "required": [
+          "第一千一百三十八条"
+        ],
+        "kind": "concept_or_condition",
+        "abstain_reason": null
+      },
+      "after": {
+        "query": "危急时口头立遗嘱，险情过去后还要看什么条件才能判断其效力？",
+        "required": [
+          "第一千一百三十八条"
+        ],
+        "kind": "concept_or_condition",
+        "abstain_reason": null,
+        "metric_eligible": true,
+        "annotation_note": null
+      }
+    },
+    {
+      "id": "AI-CIVIL-100",
+      "reason": "单一条文题不应归为多条组合",
+      "before": {
+        "query": "这部2020年通过的民法典从哪一天开始施行？",
+        "required": [
+          "第一千二百六十条"
+        ],
+        "kind": "multi_article",
+        "abstain_reason": null
+      },
+      "after": {
+        "query": "这部2020年通过的民法典从哪一天开始施行？",
+        "required": [
+          "第一千二百六十条"
+        ],
+        "kind": "version_effective_date",
+        "abstain_reason": null,
+        "metric_eligible": true,
+        "annotation_note": null
+      }
+    },
+    {
+      "id": "AI-CIVIL-101",
+      "reason": "要约已被假定成立；472是否必需、477时点及替代组需专家裁决，暂不计分",
+      "before": {
+        "query": "报价符合要约条件后，发出方是否可以在对方准备履行时随意撤销？",
+        "required": [
+          "第四百七十二条",
+          "第四百七十六条"
+        ],
+        "kind": "multi_article",
+        "abstain_reason": null
+      },
+      "after": {
+        "query": "报价符合要约条件后，发出方是否可以在对方准备履行时随意撤销？",
+        "required": [
+          "第四百七十二条",
+          "第四百七十六条",
+          "第四百七十七条"
+        ],
+        "kind": "multi_article",
+        "abstain_reason": null,
+        "metric_eligible": false,
+        "annotation_note": "必要条文和充分依据组待法律专业人员裁决；包含472、476、477作候选背景，暂不纳入正向指标。"
+      }
+    },
+    {
+      "id": "AI-CIVIL-102",
+      "reason": "1065可直接回应，1062是否为必需背景存在争议；暂不计分",
+      "before": {
+        "query": "婚后工资的归属能否由夫妻事先另作书面约定？",
+        "required": [
+          "第一千零六十二条",
+          "第一千零六十五条"
+        ],
+        "kind": "multi_article",
+        "abstain_reason": null
+      },
+      "after": {
+        "query": "婚后工资的归属能否由夫妻事先另作书面约定？",
+        "required": [
+          "第一千零六十二条",
+          "第一千零六十五条"
+        ],
+        "kind": "multi_article",
+        "abstain_reason": null,
+        "metric_eligible": false,
+        "annotation_note": "必要条文及可接受依据组待专业人员裁决；暂不纳入正向指标。"
+      }
+    },
+    {
+      "id": "AI-CIVIL-104",
+      "reason": "明确未防护行为同时违反管理规定",
+      "before": {
+        "query": "动物伤人且饲养人没有采取安全措施时，受害人重大过失与故意的影响有何区别？",
+        "required": [
+          "第一千二百四十五条",
+          "第一千二百四十六条"
+        ],
+        "kind": "multi_article",
+        "abstain_reason": null
+      },
+      "after": {
+        "query": "饲养人违反动物管理规定又未做好防护，损害由受害人故意或重大过失引起时，责任可能怎样区分？",
+        "required": [
+          "第一千二百四十五条",
+          "第一千二百四十六条"
+        ],
+        "kind": "multi_article",
+        "abstain_reason": null,
+        "metric_eligible": true,
+        "annotation_note": null
+      }
+    },
+    {
+      "id": "AI-CIVIL-110",
+      "reason": "原题询问一般年限规则而非个人金额",
+      "before": {
+        "query": "劳动者被单位解除劳动合同，经济补偿的计算年限如何认定？",
+        "required": [],
+        "kind": "out_of_corpus",
+        "abstain_reason": "需劳动合同法和当地适用规则，不能凭本库确定金额。"
+      },
+      "after": {
+        "query": "劳动者被单位解除劳动合同，经济补偿的计算年限如何认定？",
+        "required": [],
+        "kind": "out_of_corpus",
+        "abstain_reason": "需要劳动合同法等专门规则才能说明经济补偿年限的计算；当前民法典种子库不足以支持。",
+        "metric_eligible": false,
+        "annotation_note": null
+      }
+    },
+    {
+      "id": "AI-CIVIL-117",
+      "reason": "补充与拒绝确定结论理由相关的时效中止、中断条文",
+      "before": {
+        "query": "只知道某笔债务已经过去几年，能否判断它现在是否超过诉讼时效？",
+        "required": [
+          "第一百八十八条"
+        ],
+        "kind": "insufficient_facts",
+        "abstain_reason": "缺少起算、期间、中止中断及是否抗辩等关键事实，不能断言结果。"
+      },
+      "after": {
+        "query": "只知道某笔债务已经过去几年，能否判断它现在是否超过诉讼时效？",
+        "required": [
+          "第一百八十八条",
+          "第一百九十四条",
+          "第一百九十五条"
+        ],
+        "kind": "insufficient_facts",
+        "abstain_reason": "缺少起算、期间、中止中断及是否抗辩等关键事实，不能断言结果。",
+        "metric_eligible": false,
+        "annotation_note": "条文用于说明一般规则和需要补充的事实，不用于判定具体债务已经过期。"
+      }
+    },
+    {
+      "id": "AI-CIVIL-118",
+      "reason": "补充个人财产及夫妻书面财产约定背景",
+      "before": {
+        "query": "某人婚后收到一笔钱，但未说明来源或夫妻约定，这笔钱具体归谁？",
+        "required": [
+          "第一千零六十二条"
+        ],
+        "kind": "insufficient_facts",
+        "abstain_reason": "缺少来源、遗嘱赠与约定和财产协议等事实，不能作确定归属结论。"
+      },
+      "after": {
+        "query": "某人婚后收到一笔钱，但未说明来源或夫妻约定，这笔钱具体归谁？",
+        "required": [
+          "第一千零六十二条",
+          "第一千零六十三条",
+          "第一千零六十五条"
+        ],
+        "kind": "insufficient_facts",
+        "abstain_reason": "缺少来源、遗嘱赠与约定和财产协议等事实，不能作确定归属结论。",
+        "metric_eligible": false,
+        "annotation_note": "仅作为需补充事实的背景，不能据此确定个案归属。"
+      }
+    },
+    {
+      "id": "AI-CIVIL-120",
+      "reason": "补充遗嘱优先及同顺序分配背景",
+      "before": {
+        "query": "亲人去世了，我肯定能按第一顺序分到多少遗产？",
+        "required": [
+          "第一千一百二十七条"
+        ],
+        "kind": "insufficient_facts",
+        "abstain_reason": "缺少身份、遗嘱、财产范围、其他继承人与分配情况，不应计算份额。"
+      },
+      "after": {
+        "query": "亲人去世了，我肯定能按第一顺序分到多少遗产？",
+        "required": [
+          "第一千一百二十七条",
+          "第一千一百二十三条",
+          "第一千一百三十条"
+        ],
+        "kind": "insufficient_facts",
+        "abstain_reason": "缺少身份、遗嘱、财产范围、其他继承人与分配情况，不应计算份额。",
+        "metric_eligible": false,
+        "annotation_note": "仅用于解释信息缺口，不计算具体分配份额。"
+      }
+    }
+  ],
+  "split_note": "all partitions are author-reviewed development data, no independent blind test",
+  "human_legal_review": false
+}

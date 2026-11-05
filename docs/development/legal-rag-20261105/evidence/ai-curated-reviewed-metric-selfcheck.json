@@ -1,0 +1,17 @@
+{
+  "dataset_sha256": "381bc2db3d2a4c093d781b41fd2d5cd3172bd4b99d00a9d0eb9cca05ea645ae6",
+  "script_sha256": "e7eb6cf89fc8d2de0ecac21a5f55a42d4e7b9715d95b0b99c709fd5296ea9ad3",
+  "source_references_validated": 127,
+  "checks": {
+    "no_long_copied_fragments": true,
+    "unresolved_excluded": true,
+    "reviewed_partition_guard": true,
+    "dataset_hash_guard": true,
+    "ranking_metrics": true,
+    "projection_hash_guard": true,
+    "duplicate_query_guard": true,
+    "split_leak_guard": true
+  },
+  "kind": "synthetic scorer self-check; no model run",
+  "human_reviewed": false
+}

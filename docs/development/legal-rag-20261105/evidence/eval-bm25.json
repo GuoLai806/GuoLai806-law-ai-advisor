@@ -1,0 +1,54 @@
+{
+  "dataset_kind": "synthetic-fixture-not-human-verified",
+  "variant": "bm25",
+  "revision": "repository-unverified",
+  "corpus_manifest": {
+    "doc_id": "cn-civil-code",
+    "effective_from": null,
+    "effective_to": null,
+    "issuer": "全国人民代表大会",
+    "note": "仓库内 PDF 仅供离线解析，来源、文本完整性及版本尚未完成核验，不能作为权威资料激活。",
+    "parser_version": "article-v1",
+    "source_kind": "repository-source-unverified",
+    "source_sha256": "4cef5e4a1e5f82c5a52e949093ba0cfec4f7290e78d04d837c292e2a62c4065e",
+    "source_url": null,
+    "title": "中华人民共和国民法典",
+    "verification_state": "pending",
+    "version_id": "2020-repository-pdf"
+  },
+  "timestamp_utc": "2026-11-05T15:25:36Z",
+  "dataset_sha256": "f09e6e289838fe097954d585baf72f827957f47518fcb50790817c01e880aa3b",
+  "results": [
+    {
+      "query": "第一条",
+      "expected_labels": [
+        "第一条"
+      ],
+      "ranked_labels": [
+        "第一条"
+      ],
+      "recall_at_20": 1.0
+    },
+    {
+      "query": "第二条",
+      "expected_labels": [
+        "第二条"
+      ],
+      "ranked_labels": [
+        "第二条"
+      ],
+      "recall_at_20": 1.0
+    },
+    {
+      "query": "第三条",
+      "expected_labels": [
+        "第三条"
+      ],
+      "ranked_labels": [
+        "第三条"
+      ],
+      "recall_at_20": 1.0
+    }
+  ],
+  "mean_recall_at_20": 1.0
+}

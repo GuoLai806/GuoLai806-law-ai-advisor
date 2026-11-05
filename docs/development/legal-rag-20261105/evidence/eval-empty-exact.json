@@ -1,0 +1,97 @@
+{
+  "dataset_kind": "synthetic-empty-retrieval-proxy-not-human-verified",
+  "variant": "exact",
+  "revision": "repository-unverified",
+  "corpus_manifest": {
+    "doc_id": "cn-civil-code",
+    "effective_from": null,
+    "effective_to": null,
+    "extracted_text_sha256": "37cd6b887c9c5bf89293d4433fbf3b4231714643b8773884a0285c117b9f35d4",
+    "issuer": "全国人民代表大会",
+    "note": "仓库内 PDF 仅供离线解析，来源、文本完整性及版本尚未完成核验，不能作为权威资料激活。",
+    "parser_version": "article-v2-search-tokenizer",
+    "source_kind": "repository-source-unverified",
+    "source_sha256": "4cef5e4a1e5f82c5a52e949093ba0cfec4f7290e78d04d837c292e2a62c4065e",
+    "source_url": null,
+    "title": "中华人民共和国民法典",
+    "verification_state": "pending",
+    "version_id": "2020-repository-pdf"
+  },
+  "timestamp_utc": "2026-11-05T15:41:15Z",
+  "dataset_sha256": "ee1e8d175df8dd1a9044f3bc6d2b772a3632e84f2d5a1358d524d6295b250567",
+  "results": [
+    {
+      "query": "查询第一条原文",
+      "generation": "exact",
+      "expected_labels": [
+        "第一条"
+      ],
+      "ranked_labels": [
+        "第一条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.858,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "火星量子飞船 ZXQ0017",
+      "generation": "out_of_scope",
+      "expected_labels": [],
+      "ranked_labels": [],
+      "recall_at_20": null,
+      "ndcg_at_10": null,
+      "latency_ms": 0.006,
+      "empty_retrieval": true,
+      "expect_empty": true,
+      "failure": null
+    },
+    {
+      "query": "外星晶体引擎 ZXQ0029",
+      "generation": "out_of_scope",
+      "expected_labels": [],
+      "ranked_labels": [],
+      "recall_at_20": null,
+      "ndcg_at_10": null,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": true,
+      "failure": null
+    }
+  ],
+  "code_sha256": {
+    "legal_rag/__init__.py": "530de0972cc52557a06e77fc645c5f72c6db0e46d33ab48f5e857f369b0d12e6",
+    "legal_rag/answer.py": "93cdda5d1a3daf28616d5549055248ce0df4eda56281e3be62d2212ecbc8462d",
+    "legal_rag/api.py": "6ad31ea39da4e323b084ad95275b3369e316b54ae4adcaccba1e3d42eb1340a1",
+    "legal_rag/budget.py": "72670d033e4d8ce6363c7504b84f0e14b121e61e312eb8eb243c488482ce70fb",
+    "legal_rag/catalog.py": "ec3614bd414e35b72ab39a9f652a4763f6ae3446542a396dabb9167c5a4a06c5",
+    "legal_rag/cli.py": "63743591eaadda29649d2e6964d445e3af149a477630e5ad6d817a166f942861",
+    "legal_rag/generate_benchmark.py": "16d0beafab70dbf9afab9d0ba551aafcf61c0220e2f8303919597d38a18e5ac2",
+    "legal_rag/model_experiment.py": "819061412a295612b01b91c0ee9c1c6f098e1eb9d3b9f6ca8a9624d438d22a8e",
+    "legal_rag/retrieval.py": "7b30b9306ae6c931b508f76bd661add09b800915c523becf2d4267c3b26a3890",
+    "legal_rag/viking_index.py": "6d46828e3bf16663626c2ec450c20991635ecc6a779ec6b3a5e5dc16626246c4"
+  },
+  "mean_recall_at_20": 1.0,
+  "mean_ndcg_at_10": 1.0,
+  "empty_retrieval_proxy": {
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "f1": 1.0,
+    "notice": "Only empty-retrieval proxy, not answer-level abstention or legal correctness"
+  },
+  "slices": {
+    "exact": {
+      "count": 1,
+      "mean_recall_at_20": 1.0,
+      "mean_ndcg_at_10": 1.0
+    },
+    "out_of_scope": {
+      "count": 2,
+      "mean_recall_at_20": null,
+      "mean_ndcg_at_10": null
+    }
+  }
+}

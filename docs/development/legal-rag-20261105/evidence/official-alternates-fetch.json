@@ -1,0 +1,45 @@
+[
+  {
+    "name": "miit",
+    "url": "https://tjca.miit.gov.cn/zwgk/zcwj/flfg/art/2020/art_20cf1a2e1b854924b5caa744c8045d1f.html",
+    "timestamp_utc": "2026-11-05T15:57:37Z",
+    "status": 200,
+    "final_url": "https://tjca.miit.gov.cn/zwgk/zcwj/flfg/art/2020/art_20cf1a2e1b854924b5caa744c8045d1f.html",
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 1164455,
+    "sha256": "01b313d50e5946e9cf09462db1b34dedcb23d5bda976a0de92376f759172d4e2",
+    "pdf_header": false
+  },
+  {
+    "name": "samr",
+    "url": "https://www.samr.gov.cn/zw/zfxxgk/fdzdgknr/bgt/art/2023/art_60fb3863b7364b759123a42d1df568ca.html",
+    "timestamp_utc": "2026-11-05T15:57:37Z",
+    "status": 200,
+    "final_url": "https://www.samr.gov.cn/zw/zfxxgk/fdzdgknr/bgt/art/2023/art_60fb3863b7364b759123a42d1df568ca.html",
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 1593629,
+    "sha256": "6f77b647758f0235e080c33c164c840fb1b8b7f7d99c01ace40b988d1c023da1",
+    "pdf_header": false
+  },
+  {
+    "name": "court",
+    "url": "https://ipc.court.gov.cn/zh-cn/news/view-371.html",
+    "timestamp_utc": "2026-11-05T15:57:37Z",
+    "error": "URLError",
+    "message": "<urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>"
+  },
+  {
+    "name": "npc_gazette",
+    "url": "https://www.npc.gov.cn/wxzlhgb/c27214/gb2020/202006/P020230313538731037747.pdf",
+    "timestamp_utc": "2026-11-05T15:57:37Z",
+    "error": "URLError",
+    "message": "<urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] ssl/tls alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+    "name": "fuzhou_pdf",
+    "url": "https://wlj.fuzhou.gov.cn/zwgk/lyfg/202007/P020200708571723041605.pdf",
+    "timestamp_utc": "2026-11-05T15:57:37Z",
+    "error": "TimeoutError",
+    "message": "The read operation timed out"
+  }
+]

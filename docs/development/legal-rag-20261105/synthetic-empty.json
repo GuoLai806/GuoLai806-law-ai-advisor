@@ -1,0 +1,1 @@
+{"kind":"synthetic-empty-retrieval-proxy-not-human-verified","queries":[{"query":"查询第一条原文","expected_labels":["第一条"],"generation":"exact"},{"query":"火星量子飞船 ZXQ0017","expected_labels":[],"generation":"out_of_scope"},{"query":"外星晶体引擎 ZXQ0029","expected_labels":[],"generation":"out_of_scope"}]}

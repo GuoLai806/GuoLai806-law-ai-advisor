@@ -1,0 +1,17 @@
+{
+  "method": "all query rankings and scores exactly match previously trec_eval -c checked reports",
+  "datasets": {
+    "scifact": {
+      "rankings_and_scores_identical": true,
+      "metrics_identical": true,
+      "old_report_sha256": "4242ef79621bbf138104bc8e577794a13e700e0a66b4bc1ec4731b95b8ff4ff6",
+      "new_report_sha256": "4eb99690e54a559f7ff1fde8ec360505d02e2148a59b5237bc85ecc2a31ccda4"
+    },
+    "nfcorpus": {
+      "rankings_and_scores_identical": true,
+      "metrics_identical": true,
+      "old_report_sha256": "1f228f91f12563c58f371c20fdaec022b610a1e33e85ec06096943a3c53db5ea",
+      "new_report_sha256": "667336c07cc702bbb4f5e2089d25b47f929402195865b9c23405357231648191"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "initial_original_sha256": "9adb45a755708ae55a13eae9647ac9ab11a8dee1618ca6c0eaf5e23cf5df44f1",
+  "initial_original_bytes_retained": false,
+  "initial_reconstructed_sha256": "c9f5e0c036d5e459d25d72f5231f8173800850e38c220e4fe86ded771e9362fe",
+  "initial_dev_projection_sha256": "3d9cf4429e0ce04fad15cc0c15552ca04fabc811f896d6cd125fbd174d23a83b",
+  "initial_dev_projection_byte_exact": true,
+  "candidate_sha256": "b98b09d2a490f65a8f83b513dc5bcfec9d2992c305e63f94e249af21ec0e8b77",
+  "changes": [
+    {
+      "id": "AI-CIVIL-020",
+      "before": "车辆转让后尚未登记，能否对抗善意第三人？",
+      "after": "机动车转让后尚未登记，能否对抗善意第三人？",
+      "reason": "机动车与一般车辆的物权登记规则范围不同"
+    },
+    {
+      "id": "AI-CIVIL-085",
+      "before": "未成年人造成他人损害，监护人尽到职责会不会影响责任？",
+      "after": "一名限制行为能力的孩子造成他人损失，监护人已经尽责，这会影响其责任吗？",
+      "reason": "未成年人不必然属于限制行为能力人；补充限定并重新表述"
+    },
+    {
+      "id": "AI-CIVIL-087",
+      "before": "承揽人施工损害第三人，定作人是否在任何情况下都免责？",
+      "after": "承揽人修理设备时损害第三人，定作人是否在任何情况下都免责？",
+      "reason": "施工可能涉及不同合同及建筑物规则；改为设备修理承揽"
+    },
+    {
+      "id": "AI-CIVIL-101",
+      "before": "报价符合要约条件后，发出方是否可以在对方准备履行时随意撤回？",
+      "after": "报价符合要约条件后，发出方是否可以在对方准备履行时随意撤销？",
+      "reason": "要约撤回与撤销不同；原标注第476条涉及撤销"
+    }
+  ],
+  "test_split_model_runs": "none reported",
+  "limitation": "Original dataset bytes overwritten before retention; reconstruction is explicitly not the original byte sequence."
+}

@@ -1,0 +1,4151 @@
+{
+  "format": "ai-curated-retrieval-evaluation-v1",
+  "frozen_at_utc": "2026-11-05T16:25:32.100132+00:00",
+  "author": "AI",
+  "review_state": "needs_human_review",
+  "scope": "民法典种子语料，来源待审核；非人工标注或法律专业基准",
+  "source_revision": "repository-unverified",
+  "source_pdf_sha256": "4cef5e4a1e5f82c5a52e949093ba0cfec4f7290e78d04d837c292e2a62c4065e",
+  "parser_version": "article-v4-section-crosscheck",
+  "source_crosscheck_sha256": "adc65a1bbdcfdd567826736856d7186b237aaad611672de1dedce72a60a896d7",
+  "source_crosscheck": "政府转载全文与仓库 PDF 提取的1260条做 NFKC/空白归一化后机器比对一致；非颁布机关原始载体，不等于人工法律审核",
+  "questions": [
+    {
+      "id": "AI-CIVIL-001",
+      "query": "胎儿尚未出生时，接受赠与的权利能力如何处理？如果出生时没有生命呢？",
+      "expected_labels": {
+        "required": [
+          "第十六条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "capacity",
+      "section": "总则",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "涉及赠与时胎儿视为具有民事权利能力及娩出为死体的例外",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "bbbdb4c8aca210d33db2c236508a7a42",
+          "label": "第十六条",
+          "sha256": "3435537a682435d0a36dbeb3df3ca0eb8578263a28df248ea4f9b8094b96dc1b",
+          "locator": {
+            "pages": [
+              3
+            ],
+            "char_start": 2508,
+            "char_end": 2576
+          },
+          "support_basis": "涉及赠与时胎儿视为具有民事权利能力及娩出为死体的例外"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-002",
+      "query": "未满十八岁但靠自己工作收入生活的人，民事行为能力如何判断？",
+      "expected_labels": {
+        "required": [
+          "第十八条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "capacity",
+      "section": "总则",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "十六周岁以上劳动收入为主要生活来源的特别规则",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "d4b7f8cbfe9c2407079df7a027d7fb4c",
+          "label": "第十八条",
+          "sha256": "99a077f0437da40e1739ea09faeab4e1740b35f39a52ffed09a2b0605359492e",
+          "locator": {
+            "pages": [
+              4
+            ],
+            "char_start": 2616,
+            "char_end": 2695
+          },
+          "support_basis": "十六周岁以上劳动收入为主要生活来源的特别规则"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-003",
+      "query": "九岁孩子接受纯粹的礼物，和未经同意购买高价商品，效力审查有什么区别？",
+      "expected_labels": {
+        "required": [
+          "第十九条",
+          "第一百四十五条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "multi_article",
+      "topic": "capacity",
+      "section": "总则",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "限制行为能力人的独立行为与其他行为追认规则",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "121164915255eea91f45e7bf9c3222d6",
+          "label": "第十九条",
+          "sha256": "1a447247d9878f22acaac11d8df5bddb5ca801c406b6ce4b1a97fb60a1ee1e70",
+          "locator": {
+            "pages": [
+              4
+            ],
+            "char_start": 2695,
+            "char_end": 2797
+          },
+          "support_basis": "限制行为能力人的独立行为与其他行为追认规则"
+        },
+        {
+          "revision": "repository-unverified",
+          "unit_id": "a268bc706887871bcf0068ed61fe39f9",
+          "label": "第一百四十五条",
+          "sha256": "46b0675079628034e5b3a1a227a43031aad144cf50c0cde286df11ca15081cd1",
+          "locator": {
+            "pages": [
+              10
+            ],
+            "char_start": 13514,
+            "char_end": 13692
+          },
+          "support_basis": "限制行为能力人的独立行为与其他行为追认规则"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-004",
+      "query": "需要监护的成年人，配偶、父母子女和其他亲属之间通常如何确定监护顺序？",
+      "expected_labels": {
+        "required": [
+          "第二十八条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "guardianship",
+      "section": "总则",
+      "split": "dev",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "成年人监护顺序和其他人员担任的条件",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "7e501020d1b84f4db93cd6aaa91ec77f",
+          "label": "第二十八条",
+          "sha256": "adbcb2ca15571a120fa5bcd92c81427e1b6b4014d6fc79033042539add31436a",
+          "locator": {
+            "pages": [
+              4
+            ],
+            "char_start": 3590,
+            "char_end": 3729
+          },
+          "support_basis": "成年人监护顺序和其他人员担任的条件"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-005",
+      "query": "监护人能否随意卖掉被监护人的财产？判断应看什么？",
+      "expected_labels": {
+        "required": [
+          "第三十五条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "guardianship",
+      "section": "总则",
+      "split": "dev",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "监护处分财产以维护被监护人利益为边界",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "f8b65bf448634f3daa99e7accdf53d0f",
+          "label": "第三十五条",
+          "sha256": "ce49c0b8763e5817330b490aa876cfdb26556f95734fc147fac30802a7b4dab3",
+          "locator": {
+            "pages": [
+              5
+            ],
+            "char_start": 4511,
+            "char_end": 4732
+          },
+          "support_basis": "监护处分财产以维护被监护人利益为边界"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-006",
+      "query": "一个人长期下落不明，申请法院宣告失踪的时间条件是什么？",
+      "expected_labels": {
+        "required": [
+          "第四十条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "absence",
+      "section": "总则",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "申请宣告失踪的下落不明期间",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "8d7a2e2307e1217727e9433786aa07ef",
+          "label": "第四十条",
+          "sha256": "63379c8d1d709ca2e745f1503c89a3805d9244bc6f54254ab7f7d3c3f607d85c",
+          "locator": {
+            "pages": [
+              5
+            ],
+            "char_start": 5417,
+            "char_end": 5462
+          },
+          "support_basis": "申请宣告失踪的下落不明期间"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-007",
+      "query": "意外事故后人员失踪，申请宣告死亡有哪些时间条件和例外？",
+      "expected_labels": {
+        "required": [
+          "第四十六条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "exception_or_negation",
+      "topic": "absence",
+      "section": "总则",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "一般失踪与意外失踪的期限及不可能生存的例外",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "6edecaaeac6c75b5f4564fa23ac98973",
+          "label": "第四十六条",
+          "sha256": "6769ca51f1c76904f1cb5014957c75dd4877bfe24f2e1f5b471b51922cbbf1bb",
+          "locator": {
+            "pages": [
+              5
+            ],
+            "char_start": 5973,
+            "char_end": 6098
+          },
+          "support_basis": "一般失踪与意外失踪的期限及不可能生存的例外"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-008",
+      "query": "判断一项民事法律行为是否有效，通常需要检查哪几类条件？",
+      "expected_labels": {
+        "required": [
+          "第一百四十三条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "validity",
+      "section": "总则",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "行为能力、真实意思及不违反强制规定和公序良俗",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "58cf8b94e8de2832dcace63320b49e3c",
+          "label": "第一百四十三条",
+          "sha256": "9d4e6b69e1a2fd557921b6efdebcc0dff96f1ecf672373010c525353bc3a549d",
+          "locator": {
+            "pages": [
+              9,
+              10
+            ],
+            "char_start": 13390,
+            "char_end": 13483
+          },
+          "support_basis": "行为能力、真实意思及不违反强制规定和公序良俗"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-009",
+      "query": "双方故意做一份表面交易文件来掩盖真实交易，表面行为如何评价？",
+      "expected_labels": {
+        "required": [
+          "第一百四十六条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "validity",
+      "section": "总则",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "虚假意思表示行为无效与隐藏行为另行判断",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "0dc9c3eeaca1da8bb200e4892612ef90",
+          "label": "第一百四十六条",
+          "sha256": "75c833a08df3d7e9ef7bf9820af62eee44edd48e3b43acae2f56dd9cfdbf6a77",
+          "locator": {
+            "pages": [
+              10
+            ],
+            "char_start": 13692,
+            "char_end": 13765
+          },
+          "support_basis": "虚假意思表示行为无效与隐藏行为另行判断"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-010",
+      "query": "签约方因对方欺骗而违背本意作出决定，可以向谁请求什么救济？",
+      "expected_labels": {
+        "required": [
+          "第一百四十八条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "validity",
+      "section": "总则",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "一方欺诈产生的撤销请求",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "09374d801d193563e56f4b5994789cbe",
+          "label": "第一百四十八条",
+          "sha256": "60d365426b2be86fad2ba37a77b03cdeeb82107d2d1c757021c7aa2ab1422c16",
+          "locator": {
+            "pages": [
+              10
+            ],
+            "char_start": 13814,
+            "char_end": 13881
+          },
+          "support_basis": "一方欺诈产生的撤销请求"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-011",
+      "query": "违反强制性规定的交易是否必然无效？还要看哪些限定？",
+      "expected_labels": {
+        "required": [
+          "第一百五十三条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "exception_or_negation",
+      "topic": "validity",
+      "section": "总则",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "强制性规定导致无效的例外及公序良俗",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "17db669f4316a3bb91e30c725a7039fa",
+          "label": "第一百五十三条",
+          "sha256": "7c0d7afe67583c57ee6f0e33a406f593f92af3381a79a07a9aeb34a87d863e40",
+          "locator": {
+            "pages": [
+              10
+            ],
+            "char_start": 14311,
+            "char_end": 14392
+          },
+          "support_basis": "强制性规定导致无效的例外及公序良俗"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-012",
+      "query": "所有民事事务都能委托别人办理吗？有哪些不能代理的情形？",
+      "expected_labels": {
+        "required": [
+          "第一百六十一条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "exception_or_negation",
+      "topic": "agency",
+      "section": "总则",
+      "split": "dev",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "依法、约定或性质须本人实施时不能代理",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "e55c5f9829c15a147c8568c1b3348c78",
+          "label": "第一百六十一条",
+          "sha256": "b0943a81d147e6797d0ba2331c8e84be9cfe6393a669dce415cc24e8e8124338",
+          "locator": {
+            "pages": [
+              10
+            ],
+            "char_start": 14924,
+            "char_end": 15004
+          },
+          "support_basis": "依法、约定或性质须本人实施时不能代理"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-013",
+      "query": "有人超出授权替别人签约，未经追认时对本人有什么影响？",
+      "expected_labels": {
+        "required": [
+          "第一百七十一条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "agency",
+      "section": "总则",
+      "split": "dev",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "无权代理的效力、追认及善意相对人规则",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "b81fab92798abc9d1ee71b92a6c6583b",
+          "label": "第一百七十一条",
+          "sha256": "9f7cfc188b62c992e10d485c80c506f931d1c4e999950a767e7ec03b1bfc3c4f",
+          "locator": {
+            "pages": [
+              11
+            ],
+            "char_start": 15845,
+            "char_end": 16120
+          },
+          "support_basis": "无权代理的效力、追认及善意相对人规则"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-014",
+      "query": "虽然对方实际没有代理权，但交易相对人有理由相信其有权代理，应关注什么规则？",
+      "expected_labels": {
+        "required": [
+          "第一百七十二条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "agency",
+      "section": "总则",
+      "split": "dev",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "相对人有理由相信有代理权的代理效力",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "d34fbf8e645f215538d9456e2c551e08",
+          "label": "第一百七十二条",
+          "sha256": "89e95d6ddf22619946ed8f85d72bf680c8900aca4eed06cfc318f96d4736cea2",
+          "locator": {
+            "pages": [
+              11
+            ],
+            "char_start": 16120,
+            "char_end": 16188
+          },
+          "support_basis": "相对人有理由相信有代理权的代理效力"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-015",
+      "query": "一般民事请求的诉讼时效如何起算？最长保护期间有何特别规则？",
+      "expected_labels": {
+        "required": [
+          "第一百八十八条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "limitation",
+      "section": "总则",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "三年期间、知悉起算和二十年例外",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "5735a242509057799637a5448dde2dc0",
+          "label": "第一百八十八条",
+          "sha256": "36bb645017ba6615dddc66252e6575fe117883dc8fc421705b3fdad1f28c960c",
+          "locator": {
+            "pages": [
+              12
+            ],
+            "char_start": 17713,
+            "char_end": 17871
+          },
+          "support_basis": "三年期间、知悉起算和二十年例外"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-016",
+      "query": "时效届满后，债务人自愿还了钱，能否仅以时效为由要求返还？",
+      "expected_labels": {
+        "required": [
+          "第一百九十二条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "limitation",
+      "section": "总则",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "届满后的抗辩、自愿履行及返还限制",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "d9d5aad8b7c6321e94aa6cd2a856604b",
+          "label": "第一百九十二条",
+          "sha256": "27f2dd76f2c2798a120f2ae85ae97cdcd2447c1e159101bf4ca5b61f57193381",
+          "locator": {
+            "pages": [
+              12
+            ],
+            "char_start": 18035,
+            "char_end": 18129
+          },
+          "support_basis": "届满后的抗辩、自愿履行及返还限制"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-017",
+      "query": "债权人向债务人提出履行请求，会怎样影响诉讼时效的计算？",
+      "expected_labels": {
+        "required": [
+          "第一百九十五条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "limitation",
+      "section": "总则",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "履行请求构成中断并重新计算",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "28ef06fc1bfff44f1bf52f2007ccb884",
+          "label": "第一百九十五条",
+          "sha256": "066578a4a9e4759e3d6bd7df97b2f165ae18857e82a674c691f774a083820a7a",
+          "locator": {
+            "pages": [
+              12
+            ],
+            "char_start": 18376,
+            "char_end": 18512
+          },
+          "support_basis": "履行请求构成中断并重新计算"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-018",
+      "query": "房屋买卖合同成立后尚未登记，合同效力与房屋物权变动应如何区分？",
+      "expected_labels": {
+        "required": [
+          "第二百零九条",
+          "第二百一十五条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "multi_article",
+      "topic": "registration",
+      "section": "物权",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "合同效力与不动产登记效力分别规定",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "5e4891cbafd1fc3a9fb1dc789b7e9d94",
+          "label": "第二百零九条",
+          "sha256": "3517eb6fc5afe366b928f21629e2d79510f0c218e229e7dd1aaa1ab4a5d3fbbe",
+          "locator": {
+            "pages": [
+              13
+            ],
+            "char_start": 19523,
+            "char_end": 19612
+          },
+          "support_basis": "合同效力与不动产登记效力分别规定"
+        },
+        {
+          "revision": "repository-unverified",
+          "unit_id": "a27e2718d5a339058513d667792b1d46",
+          "label": "第二百一十五条",
+          "sha256": "beaef395d31c3f8c7e92d604f28944783442281aaccef631a6aaa93747c41f02",
+          "locator": {
+            "pages": [
+              13
+            ],
+            "char_start": 20036,
+            "char_end": 20121
+          },
+          "support_basis": "合同效力与不动产登记效力分别规定"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-019",
+      "query": "办理房屋预告登记后，未经权利人同意处分房屋有什么影响，何时可能失效？",
+      "expected_labels": {
+        "required": [
+          "第二百二十一条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "registration",
+      "section": "物权",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "预告登记的对抗效果及失效条件",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "07c63d59364d37220e2729cb10918603",
+          "label": "第二百二十一条",
+          "sha256": "87ed8470ebbc695ac03c89bb58333d638c1f728d71ff29f6969d096e7927b113",
+          "locator": {
+            "pages": [
+              14
+            ],
+            "char_start": 20546,
+            "char_end": 20694
+          },
+          "support_basis": "预告登记的对抗效果及失效条件"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-020",
+      "query": "机动车转让后尚未登记，能否对抗善意第三人？",
+      "expected_labels": {
+        "required": [
+          "第二百二十五条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "movable",
+      "section": "物权",
+      "split": "test",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "机动车物权变动未登记的对抗限制",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "75e8ff655bb162fb2b6f3dd4f29fd33f",
+          "label": "第二百二十五条",
+          "sha256": "238da278efd6f3863614b422200d64a77770a489367dbc7802e4155a9e782e39",
+          "locator": {
+            "pages": [
+              14
+            ],
+            "char_start": 20887,
+            "char_end": 20941
+          },
+          "support_basis": "机动车物权变动未登记的对抗限制"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-021",
+      "query": "尚未造成实际损失，但某种行为正在妨碍或威胁物权，可以要求什么？",
+      "expected_labels": {
+        "required": [
+          "第二百三十六条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "protection",
+      "section": "物权",
+      "split": "dev",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "排除妨碍和消除危险请求",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "e80773d1cb751ca914dce22565836cd9",
+          "label": "第二百三十六条",
+          "sha256": "67957273aa7469875927cc005c5e8721291be0c3a76d8cf3cb6bb5bb90573797",
+          "locator": {
+            "pages": [
+              14
+            ],
+            "char_start": 21463,
+            "char_end": 21506
+          },
+          "support_basis": "排除妨碍和消除危险请求"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-022",
+      "query": "双方用电子邮件约定交易，什么情况下可以被视作书面形式？",
+      "expected_labels": {
+        "required": [
+          "第四百六十九条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "formation",
+      "section": "合同",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "数据电文有形表现并可随时调取的条件",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "a7f1580611db4ded5bcb598682c58df1",
+          "label": "第四百六十九条",
+          "sha256": "66651fc546b4a75576f69dce65f9385fa88dad84f543cdccd2bcf57597090e6d",
+          "locator": {
+            "pages": [
+              25
+            ],
+            "char_start": 41737,
+            "char_end": 41867
+          },
+          "support_basis": "数据电文有形表现并可随时调取的条件"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-023",
+      "query": "一份报价要具备什么特点，才可能构成具有约束力的要约？",
+      "expected_labels": {
+        "required": [
+          "第四百七十二条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "formation",
+      "section": "合同",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "具体确定及承诺即受约束的意思表示",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "779158c501677791ce965e6211404180",
+          "label": "第四百七十二条",
+          "sha256": "8e6f447b7b5db29d351808dbe0bdf10da55504ae33be328fb48b2b94dbe7837e",
+          "locator": {
+            "pages": [
+              25
+            ],
+            "char_start": 42061,
+            "char_end": 42146
+          },
+          "support_basis": "具体确定及承诺即受约束的意思表示"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-024",
+      "query": "发出要约后总能撤销吗？哪些情形可能不能撤销？",
+      "expected_labels": {
+        "required": [
+          "第四百七十六条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "exception_or_negation",
+      "topic": "formation",
+      "section": "合同",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "要约撤销例外及信赖准备",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "8e2c33e0ac87042e5db25e6cd320bf3e",
+          "label": "第四百七十六条",
+          "sha256": "95df4abba9bee6d1674e3fa8a211b6667cf2043f35e292dabaa9b3478b31b38f",
+          "locator": {
+            "pages": [
+              26
+            ],
+            "char_start": 42328,
+            "char_end": 42431
+          },
+          "support_basis": "要约撤销例外及信赖准备"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-025",
+      "query": "合同书还没签完，其中一方已经履行主要义务且另一方接受，合同是否一定未成立？",
+      "expected_labels": {
+        "required": [
+          "第四百九十条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "exception_or_negation",
+      "topic": "formation",
+      "section": "合同",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "书面签署前主要履行并接受的成立规则",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "afee32265f5c22462929d49a6e552e84",
+          "label": "第四百九十条",
+          "sha256": "6c294c93c7e25263c334bab4c87ed5d9a7b4377149417d19898c4991006e84ef",
+          "locator": {
+            "pages": [
+              26
+            ],
+            "char_start": 43485,
+            "char_end": 43641
+          },
+          "support_basis": "书面签署前主要履行并接受的成立规则"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-026",
+      "query": "商家预先拟好的免责条款，提供方对消费者需要尽哪些提示说明义务？",
+      "expected_labels": {
+        "required": [
+          "第四百九十六条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "formation",
+      "section": "合同",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "格式条款重大利害关系提示说明",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "a0941843f73ae60fe3e693e3770d2b50",
+          "label": "第四百九十六条",
+          "sha256": "f22aa6a3df44080e40b3d26d766458238554f0b100b3da0afcec5cb5cd4397b4",
+          "locator": {
+            "pages": [
+              26,
+              27
+            ],
+            "char_start": 44188,
+            "char_end": 44406
+          },
+          "support_basis": "格式条款重大利害关系提示说明"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-027",
+      "query": "格式条款把对方的主要权利全部排除，效力应怎样审查？",
+      "expected_labels": {
+        "required": [
+          "第四百九十七条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "formation",
+      "section": "合同",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "排除对方主要权利的格式条款效力",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "d36246addbd6a21114eaa877dd5d7c70",
+          "label": "第四百九十七条",
+          "sha256": "8c4a910199ec22e6f219437bcd6f8636a7573e466f8e9b3ad1f2fef117175420",
+          "locator": {
+            "pages": [
+              27
+            ],
+            "char_start": 44406,
+            "char_end": 44537
+          },
+          "support_basis": "排除对方主要权利的格式条款效力"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-028",
+      "query": "谈判没谈成，就可以随意泄露谈判中获得的商业秘密吗？",
+      "expected_labels": {
+        "required": [
+          "第五百零一条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "formation",
+      "section": "合同",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "合同未成立仍有保密及损害责任规则",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "07916e5a2a331d029857bab712e4c76d",
+          "label": "第五百零一条",
+          "sha256": "6c195346b1f3b79c4543f80de9e54a56b92414ff43c78f2d2a589f02e8abfd02",
+          "locator": {
+            "pages": [
+              27
+            ],
+            "char_start": 44799,
+            "char_end": 44898
+          },
+          "support_basis": "合同未成立仍有保密及损害责任规则"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-029",
+      "query": "先履行的一方发现对方经营严重恶化，什么情况下可以暂时中止履行？",
+      "expected_labels": {
+        "required": [
+          "第五百二十七条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "performance",
+      "section": "合同",
+      "split": "dev",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "不安抗辩需要确切证据及无证据后果",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "faa616d73362de1c1c7d139f05d1a475",
+          "label": "第五百二十七条",
+          "sha256": "8cd415ee47348a86d71ba5ddaab4d481cf4412c1486b2ff6f288549bb6fe788f",
+          "locator": {
+            "pages": [
+              28
+            ],
+            "char_start": 48106,
+            "char_end": 48259
+          },
+          "support_basis": "不安抗辩需要确切证据及无证据后果"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-030",
+      "query": "一方中止履行后对方提供了适当担保，接下来应怎样处理？",
+      "expected_labels": {
+        "required": [
+          "第五百二十八条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "performance",
+      "section": "合同",
+      "split": "dev",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "中止后通知、适当担保及恢复履行",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "e564036f34fd842ac78ae265347ce975",
+          "label": "第五百二十八条",
+          "sha256": "769bd608487e2328e981040102236e7cc8aa9348841ff1a304271b3df2313a72",
+          "locator": {
+            "pages": [
+              29
+            ],
+            "char_start": 48259,
+            "char_end": 48389
+          },
+          "support_basis": "中止后通知、适当担保及恢复履行"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-031",
+      "query": "签约后发生订约时无法预见且非商业风险的重大变化，继续履行明显不公平，有哪些步骤？",
+      "expected_labels": {
+        "required": [
+          "第五百三十三条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "performance",
+      "section": "合同",
+      "split": "dev",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "情势变更、重新协商和法院或仲裁救济",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "18cc9faa7c4637a6fa573b77f95fa6fe",
+          "label": "第五百三十三条",
+          "sha256": "deec1ec461bc1b1757c7b551851e95f4f71ea08a45dd9f1b61d48d5b93f72a50",
+          "locator": {
+            "pages": [
+              29
+            ],
+            "char_start": 48661,
+            "char_end": 48835
+          },
+          "support_basis": "情势变更、重新协商和法院或仲裁救济"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-032",
+      "query": "债权已经转给别人但没有通知债务人，这次转让对债务人有效吗？",
+      "expected_labels": {
+        "required": [
+          "第五百四十六条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "transfer",
+      "section": "合同",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "债权转让通知的对债务人效力",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "fb96fef40a17aa4e2d28347ff504ba0d",
+          "label": "第五百四十六条",
+          "sha256": "161692aff4cf9437d7cbb4037012513905e7d3f4c984b6461a50c16a225705b2",
+          "locator": {
+            "pages": [
+              29
+            ],
+            "char_start": 49941,
+            "char_end": 50008
+          },
+          "support_basis": "债权转让通知的对债务人效力"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-033",
+      "query": "一方迟延履行主要义务，被催告后合理期限内仍不履行，另一方可能有什么权利？",
+      "expected_labels": {
+        "required": [
+          "第五百六十三条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "breach",
+      "section": "合同",
+      "split": "test",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "迟延履行催告后的法定解除条件",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "2ec6a8a2f358b3958c28347bb8d84a82",
+          "label": "第五百六十三条",
+          "sha256": "856faeb39f91f5593f278d20b5d93bae53152c93cb331fa5a0980f9d0257c0d8",
+          "locator": {
+            "pages": [
+              30
+            ],
+            "char_start": 51344,
+            "char_end": 51575
+          },
+          "support_basis": "迟延履行催告后的法定解除条件"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-034",
+      "query": "合同义务未履行或履行不符合约定，一般有哪些违约责任方式？",
+      "expected_labels": {
+        "required": [
+          "第五百七十七条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "breach",
+      "section": "合同",
+      "split": "test",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "继续履行、补救及赔偿等责任方式",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "994acbe48159b7041b318c66293ce16b",
+          "label": "第五百七十七条",
+          "sha256": "8e5bc78216456b6b5ffb529c6c5346e014c179f51cde63388707855bc398abba",
+          "locator": {
+            "pages": [
+              31
+            ],
+            "char_start": 53005,
+            "char_end": 53071
+          },
+          "support_basis": "继续履行、补救及赔偿等责任方式"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-035",
+      "query": "对方没有履行非金钱义务时，要求继续履行有哪些例外？",
+      "expected_labels": {
+        "required": [
+          "第五百八十条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "exception_or_negation",
+      "topic": "breach",
+      "section": "合同",
+      "split": "test",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "非金钱债务继续履行的法律或事实障碍等例外",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "20a2ecd5e59e15ebeb1ff0661c622df1",
+          "label": "第五百八十条",
+          "sha256": "4ef0f4db5c9b7b9cdc8a9fec5eefd64eb904bd485b218c626c05b09700de7cde",
+          "locator": {
+            "pages": [
+              31
+            ],
+            "char_start": 53188,
+            "char_end": 53390
+          },
+          "support_basis": "非金钱债务继续履行的法律或事实障碍等例外"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-036",
+      "query": "违约损失赔偿是否可以无限扩大？订约时可预见性有什么作用？",
+      "expected_labels": {
+        "required": [
+          "第五百八十四条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "breach",
+      "section": "合同",
+      "split": "test",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "赔偿范围包括可得利益并受可预见性限制",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "ce99d39ae6da7d9866ad25abc9dec909",
+          "label": "第五百八十四条",
+          "sha256": "4e059419ebbe7ed0af0b01429fc21f4e298a60af854a36589a61874eaefa45be",
+          "locator": {
+            "pages": [
+              31
+            ],
+            "char_start": 53664,
+            "char_end": 53784
+          },
+          "support_basis": "赔偿范围包括可得利益并受可预见性限制"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-037",
+      "query": "合同约定的违约金明显过高或者低于损失时，可以请求怎样调整？",
+      "expected_labels": {
+        "required": [
+          "第五百八十五条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "breach",
+      "section": "合同",
+      "split": "test",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "违约金过高或过低时的调整机制",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "7b3ed1b6732be6c19c3f5b5e5354f07a",
+          "label": "第五百八十五条",
+          "sha256": "fd573bcb9ea13dc5e073edd76203aadb5cdf711165f425390d4d9a2c371f6a5e",
+          "locator": {
+            "pages": [
+              31
+            ],
+            "char_start": 53784,
+            "char_end": 53976
+          },
+          "support_basis": "违约金过高或过低时的调整机制"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-038",
+      "query": "已经交付定金的一方违约，是否任何违约都当然丧失定金？",
+      "expected_labels": {
+        "required": [
+          "第五百八十七条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "exception_or_negation",
+      "topic": "breach",
+      "section": "合同",
+      "split": "test",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "定金后果与不能实现合同目的的条件",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "0f07b07c7ed50d74f3789f0c78089d56",
+          "label": "第五百八十七条",
+          "sha256": "5bf2d8a7b459d165453ddf6e2c52213407b1494321af7b87c05e0cdd01cc9565",
+          "locator": {
+            "pages": [
+              32
+            ],
+            "char_start": 54109,
+            "char_end": 54234
+          },
+          "support_basis": "定金后果与不能实现合同目的的条件"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-039",
+      "query": "一方已迟延履行后才发生不可抗力，能否因此免除违约责任？",
+      "expected_labels": {
+        "required": [
+          "第五百九十条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "breach",
+      "section": "合同",
+      "split": "test",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "迟延后发生不可抗力的例外",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "921e9b7afcfc7b716d5e916d4d54bc15",
+          "label": "第五百九十条",
+          "sha256": "c56b7a08095566501f0f6d8ec801dd25c6956a75536f13d56d1ac892620bbeb9",
+          "locator": {
+            "pages": [
+              32
+            ],
+            "char_start": 54405,
+            "char_end": 54546
+          },
+          "support_basis": "迟延后发生不可抗力的例外"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-040",
+      "query": "买卖货物在交付前后损坏，风险通常由谁承担？",
+      "expected_labels": {
+        "required": [
+          "第六百零四条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "sale",
+      "section": "合同",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "交付前后风险分配及法律约定例外",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "fcbbee24da144dc2c0e9c74aded836de",
+          "label": "第六百零四条",
+          "sha256": "4033b182529ce36b04d291a97d784220fe726f38cb6e29a116ab03c365f13bdd",
+          "locator": {
+            "pages": [
+              32
+            ],
+            "char_start": 55565,
+            "char_end": 55635
+          },
+          "support_basis": "交付前后风险分配及法律约定例外"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-041",
+      "query": "交付的货物质量问题导致合同目的不能实现，买方可以选择什么？",
+      "expected_labels": {
+        "required": [
+          "第六百一十条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "sale",
+      "section": "合同",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "不合格导致目的落空时拒收或解除及风险",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "312c251c07dd937120ad21d6deb2ebb2",
+          "label": "第六百一十条",
+          "sha256": "83d8bd8dbd8887e696f931013b2576203b12e08c9b5e49fac0d987de38b39e20",
+          "locator": {
+            "pages": [
+              33
+            ],
+            "char_start": 56042,
+            "char_end": 56132
+          },
+          "support_basis": "不合格导致目的落空时拒收或解除及风险"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-042",
+      "query": "自然人之间借钱，一定要签书面借款合同吗？",
+      "expected_labels": {
+        "required": [
+          "第六百六十八条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "exception_or_negation",
+      "topic": "loans",
+      "section": "合同",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "借款书面形式及自然人另有约定例外",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "ac24f36419d654e05dc7886c063bdd0e",
+          "label": "第六百六十八条",
+          "sha256": "88a7904cc5ae4e8a18daf73f4ec95bbdbfe3989b0861e2b28c3b56f150871a60",
+          "locator": {
+            "pages": [
+              35
+            ],
+            "char_start": 61108,
+            "char_end": 61191
+          },
+          "support_basis": "借款书面形式及自然人另有约定例外"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-043",
+      "query": "借条没有写还款期限且补充协商也无法确定，贷款人能否马上要求当天还清？",
+      "expected_labels": {
+        "required": [
+          "第六百七十五条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "loans",
+      "section": "合同",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "未约定期限时可催告在合理期限返还",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "5c56e0c093ce598c520601772d31bee0",
+          "label": "第六百七十五条",
+          "sha256": "911605088dcbcc1b8c2e6b9072baf50e14a1903ce13a4e1b522336aac8aafd1e",
+          "locator": {
+            "pages": [
+              35
+            ],
+            "char_start": 61650,
+            "char_end": 61745
+          },
+          "support_basis": "未约定期限时可催告在合理期限返还"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-044",
+      "query": "借款合同对利息没有约定，规则如何处理？",
+      "expected_labels": {
+        "required": [
+          "第六百八十条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "loans",
+      "section": "合同",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "未约定利息及不明确时的区分",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "1b175dc5669b9bc206b0607e8bdc2cdb",
+          "label": "第六百八十条",
+          "sha256": "ca3e79a4de5a83eaf4770158a164e389778d4d6d0216e6e6bfa386f66de8fa25",
+          "locator": {
+            "pages": [
+              35
+            ],
+            "char_start": 61921,
+            "char_end": 62059
+          },
+          "support_basis": "未约定利息及不明确时的区分"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-045",
+      "query": "保证合同没写清楚是一般保证还是连带保证，应怎样确定保证方式？",
+      "expected_labels": {
+        "required": [
+          "第六百八十六条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "guarantees",
+      "section": "合同",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "未约定或不明确按一般保证",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "881f678333394fc97644ccbaf500909a",
+          "label": "第六百八十六条",
+          "sha256": "09f3903f110b36abfaa0bcb0d94d7f49ab3aa6ae97ad306d47edec104d54e422",
+          "locator": {
+            "pages": [
+              36
+            ],
+            "char_start": 62504,
+            "char_end": 62577
+          },
+          "support_basis": "未约定或不明确按一般保证"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-046",
+      "query": "一般保证人什么时候可以拒绝先向债权人付款？是否有例外？",
+      "expected_labels": {
+        "required": [
+          "第六百八十七条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "exception_or_negation",
+      "topic": "guarantees",
+      "section": "合同",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "先诉抗辩及法定例外",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "398dfedc0d0427a2605fb1286a396b63",
+          "label": "第六百八十七条",
+          "sha256": "c787a3a3717f2bf4b97f578f095220b78b0078bb2754127ea8422c778ba3589e",
+          "locator": {
+            "pages": [
+              36
+            ],
+            "char_start": 62577,
+            "char_end": 62814
+          },
+          "support_basis": "先诉抗辩及法定例外"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-047",
+      "query": "保证期间可以像诉讼时效那样中断或延长吗？没有约定时通常多长？",
+      "expected_labels": {
+        "required": [
+          "第六百九十二条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "guarantees",
+      "section": "合同",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "保证期间性质与无约定的六个月规则",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "5a807b0927298c570f50d36758c98851",
+          "label": "第六百九十二条",
+          "sha256": "49a25e8934c523a6a0652e766830a98a27665723b9ce9e1a7720f0a634e19bdb",
+          "locator": {
+            "pages": [
+              36
+            ],
+            "char_start": 63131,
+            "char_end": 63330
+          },
+          "support_basis": "保证期间性质与无约定的六个月规则"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-048",
+      "query": "租赁约定了二十五年，超过上限的部分如何处理？",
+      "expected_labels": {
+        "required": [
+          "第七百零五条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "leases",
+      "section": "合同",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "租赁期限上限和超出部分效力",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "fe06cf55dc67fd1e5420db62aefc220e",
+          "label": "第七百零五条",
+          "sha256": "773114ecdd1e5c4d4b26836466e86bb3ca50455b0c3011232b74fc24f6eaf4de",
+          "locator": {
+            "pages": [
+              37
+            ],
+            "char_start": 64409,
+            "char_end": 64491
+          },
+          "support_basis": "租赁期限上限和超出部分效力"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-049",
+      "query": "承租人没有正当理由拖欠租金，出租人解除前通常需要做什么？",
+      "expected_labels": {
+        "required": [
+          "第七百二十二条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "leases",
+      "section": "合同",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "合理期限催告后逾期不付的解除条件",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "cbeb4709b53f6dc503b1b351c7cb9537",
+          "label": "第七百二十二条",
+          "sha256": "c253f3e731f9cb4ee3feb5d5960524ed6bf36115b66255e326c119a5a2faf620",
+          "locator": {
+            "pages": [
+              37
+            ],
+            "char_start": 65737,
+            "char_end": 65809
+          },
+          "support_basis": "合理期限催告后逾期不付的解除条件"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-050",
+      "query": "租户按合同占有房屋期间，房东把房子卖了，租赁关系会怎样？",
+      "expected_labels": {
+        "required": [
+          "第七百二十五条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "leases",
+      "section": "合同",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "租赁期间所有权变动对租约效力",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "4f19768de5bbdad166489fe6ac66266e",
+          "label": "第七百二十五条",
+          "sha256": "e1807443ff555ab525db791879f5960fae3f1aca7bc4ec3a53f03de7ec81b8dc",
+          "locator": {
+            "pages": [
+              37
+            ],
+            "char_start": 66017,
+            "char_end": 66067
+          },
+          "support_basis": "租赁期间所有权变动对租约效力"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-051",
+      "query": "房东准备卖租赁住房，租客的优先购买权有哪些条件和例外？",
+      "expected_labels": {
+        "required": [
+          "第七百二十六条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "exception_or_negation",
+      "topic": "leases",
+      "section": "合同",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "合理通知、同等条件优先购买及法定例外",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "fbbd91da59d87533c09e1d6559a41743",
+          "label": "第七百二十六条",
+          "sha256": "344dfa8328045204f22648167d8284d64fd5a9ec1654edcedf52dd6f9ef12059",
+          "locator": {
+            "pages": [
+              38
+            ],
+            "char_start": 66067,
+            "char_end": 66206
+          },
+          "support_basis": "合理通知、同等条件优先购买及法定例外"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-052",
+      "query": "租期无法确定并被视为不定期租赁时，解除需要提前通知吗？",
+      "expected_labels": {
+        "required": [
+          "第七百三十条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "leases",
+      "section": "合同",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "不定期租赁可解除但需合理期限通知",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "0ad62707f356768c31a4f53ce1655e5d",
+          "label": "第七百三十条",
+          "sha256": "eca0bf794acb051d8f5be30af066b28db592ca7ffec00fab04c942ebaaf3c411",
+          "locator": {
+            "pages": [
+              38
+            ],
+            "char_start": 66454,
+            "char_end": 66541
+          },
+          "support_basis": "不定期租赁可解除但需合理期限通知"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-053",
+      "query": "法律中的隐私保护通常包括哪些个人生活领域？",
+      "expected_labels": {
+        "required": [
+          "第一千零三十二条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "privacy",
+      "section": "人格权",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "私人生活安宁与私密空间活动信息",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "b30869b68422ad719fc87b0bb2957ac1",
+          "label": "第一千零三十二条",
+          "sha256": "221fa697e1e24477eb453803af04fdfe6308033b9dafcb7f0d2a662f03715414",
+          "locator": {
+            "pages": [
+              52
+            ],
+            "char_start": 94557,
+            "char_end": 94653
+          },
+          "support_basis": "私人生活安宁与私密空间活动信息"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-054",
+      "query": "组织处理个人信息，除了取得同意，还要遵守哪些基本要求？",
+      "expected_labels": {
+        "required": [
+          "第一千零三十五条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "privacy",
+      "section": "人格权",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "合法正当必要与处理规则目的范围等条件",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "83ffa85fc0b393c0f85b8ab5bd842a88",
+          "label": "第一千零三十五条",
+          "sha256": "2e68afc081be33e3b7ce8445d54dd3bacb3fcae4a179846e4d29297190574191",
+          "locator": {
+            "pages": [
+              52
+            ],
+            "char_start": 95024,
+            "char_end": 95215
+          },
+          "support_basis": "合法正当必要与处理规则目的范围等条件"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-055",
+      "query": "未经本人同意使用其肖像，规则是否允许任何情况下都使用？",
+      "expected_labels": {
+        "required": [
+          "第一千零一十九条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "exception_or_negation",
+      "topic": "portrait",
+      "section": "人格权",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "肖像使用原则及法律另有规定例外",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "74c3166a1f8783fab33c43efb71f417a",
+          "label": "第一千零一十九条",
+          "sha256": "f732b5ba45856ded8c845d7bb6ba721d3dd569d697bcfa7bcdbb43e5b78f5ef6",
+          "locator": {
+            "pages": [
+              51
+            ],
+            "char_start": 93004,
+            "char_end": 93151
+          },
+          "support_basis": "肖像使用原则及法律另有规定例外"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-056",
+      "query": "课堂教学使用已公开肖像时，什么情况下可以不另行取得本人同意？",
+      "expected_labels": {
+        "required": [
+          "第一千零二十条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "portrait",
+      "section": "人格权",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "必要范围内课堂教学使用已公开肖像的例外",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "05b58ae63aacc512741da92bb0f8ef10",
+          "label": "第一千零二十条",
+          "sha256": "aa4c4b2a153097ed6ac7df15d5079d634da36347d47724a21efbec82b4568516",
+          "locator": {
+            "pages": [
+              51
+            ],
+            "char_start": 93151,
+            "char_end": 93388
+          },
+          "support_basis": "必要范围内课堂教学使用已公开肖像的例外"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-057",
+      "query": "发现别人持有的个人信息有错误，个人可以提出哪些请求？",
+      "expected_labels": {
+        "required": [
+          "第一千零三十七条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "privacy-rights",
+      "section": "人格权",
+      "split": "test",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "查阅复制、更正及违法处理删除请求",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "e6090216768e17b68e18f591a4a1a156",
+          "label": "第一千零三十七条",
+          "sha256": "4916f45a93151a6157adc7636e58cee21b95468b3d9d1a7e3a02938d13630ff4",
+          "locator": {
+            "pages": [
+              53
+            ],
+            "char_start": 95382,
+            "char_end": 95506
+          },
+          "support_basis": "查阅复制、更正及违法处理删除请求"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-058",
+      "query": "双方准备结婚，能否由父母替一方决定是否同意？",
+      "expected_labels": {
+        "required": [
+          "第一千零四十六条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "marriage",
+      "section": "婚姻家庭",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "双方完全自愿及禁止强迫干涉",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "784fa7f7e89c2d08323e490493c78720",
+          "label": "第一千零四十六条",
+          "sha256": "666c4c87d9a075e548b75f66e22b37970de4321829fa8b5d4fe98e4f6eecc3a3",
+          "locator": {
+            "pages": [
+              53
+            ],
+            "char_start": 96249,
+            "char_end": 96305
+          },
+          "support_basis": "双方完全自愿及禁止强迫干涉"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-059",
+      "query": "民法典对男女结婚年龄分别有什么要求？",
+      "expected_labels": {
+        "required": [
+          "第一千零四十七条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "marriage",
+      "section": "婚姻家庭",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "法定婚龄及不得早于的边界",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "fa187b7e70febf7e5cefb7cc9eea9e7c",
+          "label": "第一千零四十七条",
+          "sha256": "775c1600e70d3a1e8dbde5943c9a0c1e2bc96846a6dda1201b7f7141fced0f7f",
+          "locator": {
+            "pages": [
+              53
+            ],
+            "char_start": 96305,
+            "char_end": 96343
+          },
+          "support_basis": "法定婚龄及不得早于的边界"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-060",
+      "query": "只是举行婚礼但未办理结婚登记，婚姻关系何时确立？",
+      "expected_labels": {
+        "required": [
+          "第一千零四十九条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "marriage",
+      "section": "婚姻家庭",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "完成结婚登记确立婚姻关系",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "d76a705728931a8b04b23ab066429ad9",
+          "label": "第一千零四十九条",
+          "sha256": "9486dbd007abdc2f0653a41df42282761eb6238766d5e4aef3bfe024abd3de82",
+          "locator": {
+            "pages": [
+              53
+            ],
+            "char_start": 96375,
+            "char_end": 96465
+          },
+          "support_basis": "完成结婚登记确立婚姻关系"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-061",
+      "query": "哪些情形会导致婚姻无效？",
+      "expected_labels": {
+        "required": [
+          "第一千零五十一条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "marriage",
+      "section": "婚姻家庭",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "重婚、禁止结婚亲属关系和未到婚龄",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "5673e35680c659afebfea9c71b954f84",
+          "label": "第一千零五十一条",
+          "sha256": "94af66d88443c57f947340f3ea5ee936a1a0fad7dd915342ff25fd523db7da15",
+          "locator": {
+            "pages": [
+              53
+            ],
+            "char_start": 96520,
+            "char_end": 96585
+          },
+          "support_basis": "重婚、禁止结婚亲属关系和未到婚龄"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-062",
+      "query": "婚姻期间取得的财产与婚前财产，判断共同或个人财产有哪些主要规则？",
+      "expected_labels": {
+        "required": [
+          "第一千零六十二条",
+          "第一千零六十三条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "multi_article",
+      "topic": "family-property",
+      "section": "婚姻家庭",
+      "split": "dev",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "共同财产范围与个人财产的对照",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "32c89eb7e63a3dee62ec39289d015694",
+          "label": "第一千零六十二条",
+          "sha256": "e294438dc7f8a670ca65c81299135008621f6c834cd4ae54ba76f96a19998e47",
+          "locator": {
+            "pages": [
+              54
+            ],
+            "char_start": 97350,
+            "char_end": 97522
+          },
+          "support_basis": "共同财产范围与个人财产的对照"
+        },
+        {
+          "revision": "repository-unverified",
+          "unit_id": "869a924c0a63df89ff9201e791161563",
+          "label": "第一千零六十三条",
+          "sha256": "8b8f3c8c4c5ff8010ece21cb78f4f2f5d8c248fdcbccfead8fcada9e0286a69e",
+          "locator": {
+            "pages": [
+              54
+            ],
+            "char_start": 97522,
+            "char_end": 97646
+          },
+          "support_basis": "共同财产范围与个人财产的对照"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-063",
+      "query": "夫妻想对婚前和婚后财产另作安排，应采用什么形式？",
+      "expected_labels": {
+        "required": [
+          "第一千零六十五条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "family-property",
+      "section": "婚姻家庭",
+      "split": "dev",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "财产约定的书面形式和未约定时规则",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "2e304c56473cc3f5671836508ac7683c",
+          "label": "第一千零六十五条",
+          "sha256": "5ac1f1d56accd5855abeb6924761ee4bc24a275ec49ffa763348c1e423e1d6fd",
+          "locator": {
+            "pages": [
+              54
+            ],
+            "char_start": 97828,
+            "char_end": 98051
+          },
+          "support_basis": "财产约定的书面形式和未约定时规则"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-064",
+      "query": "申请协议离婚后，双方反悔或期限届满不去领证会怎样？",
+      "expected_labels": {
+        "required": [
+          "第一千零七十七条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "divorce-procedure",
+      "section": "婚姻家庭",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "撤回期限及未申请领证视为撤回",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "503fea58538b438e133c86e7d883ef0a",
+          "label": "第一千零七十七条",
+          "sha256": "599e34e65eeedeb9f36164c0052ba65839948cd50bab87f92868d02b978c75e7",
+          "locator": {
+            "pages": [
+              55
+            ],
+            "char_start": 99084,
+            "char_end": 99204
+          },
+          "support_basis": "撤回期限及未申请领证视为撤回"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-065",
+      "query": "怀孕期间男方提出离婚是否一律不被受理？有哪些例外？",
+      "expected_labels": {
+        "required": [
+          "第一千零八十二条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "exception_or_negation",
+      "topic": "divorce-procedure",
+      "section": "婚姻家庭",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "男方提出离婚的限制及例外",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "373cfc08c6789ef845afc854c0e6a239",
+          "label": "第一千零八十二条",
+          "sha256": "13779fe4e0e3fc85df38fd71a53dcec3828b478335774e86c9e260845ddbf628",
+          "locator": {
+            "pages": [
+              55
+            ],
+            "char_start": 99646,
+            "char_end": 99727
+          },
+          "support_basis": "男方提出离婚的限制及例外"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-066",
+      "query": "父母离婚后对子女的抚养责任会不会自动消失？",
+      "expected_labels": {
+        "required": [
+          "第一千零八十四条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "exception_or_negation",
+      "topic": "divorce-child",
+      "section": "婚姻家庭",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "离婚不消除亲子关系及抚养教育保护义务",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "9b62a7a037b84e7637d953f276491949",
+          "label": "第一千零八十四条",
+          "sha256": "616d356fce5d58efbfd68e120846fcdd2b5e596ba9e30cfce856116f736c8b94",
+          "locator": {
+            "pages": [
+              55
+            ],
+            "char_start": 99775,
+            "char_end": 99970
+          },
+          "support_basis": "离婚不消除亲子关系及抚养教育保护义务"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-067",
+      "query": "不直接抚养子女的一方能否探望？什么情况下可能中止？",
+      "expected_labels": {
+        "required": [
+          "第一千零八十六条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "divorce-child",
+      "section": "婚姻家庭",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "探望权、协助义务和不利身心健康时的中止",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "1c46360dd37cb6c91dedcedc2008512c",
+          "label": "第一千零八十六条",
+          "sha256": "8eb4c4d5d54b79d7594dee1c88c86ce4eda5eab12ca5eef883df11fc518c8005",
+          "locator": {
+            "pages": [
+              55
+            ],
+            "char_start": 100100,
+            "char_end": 100235
+          },
+          "support_basis": "探望权、协助义务和不利身心健康时的中止"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-068",
+      "query": "离婚时共同财产协商不成，法院处理时有哪些照顾原则？",
+      "expected_labels": {
+        "required": [
+          "第一千零八十七条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "divorce-assets",
+      "section": "婚姻家庭",
+      "split": "test",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "协商不成时结合财产状况及法定照顾原则",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "fc8676c4452aaf0eb4321d0e0a43a7df",
+          "label": "第一千零八十七条",
+          "sha256": "98ac2e8c622028dbb52705de63f2a52a4424f6e01883e9c293282e456c31ee88",
+          "locator": {
+            "pages": [
+              55
+            ],
+            "char_start": 100235,
+            "char_end": 100344
+          },
+          "support_basis": "协商不成时结合财产状况及法定照顾原则"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-069",
+      "query": "所有死者名下的东西都一定属于可继承的遗产吗？",
+      "expected_labels": {
+        "required": [
+          "第一千一百二十二条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "exception_or_negation",
+      "topic": "succession",
+      "section": "继承",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "遗产为个人合法财产且不得继承情形排除",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "bf754cb28094806fe25b303c3bbc16b2",
+          "label": "第一千一百二十二条",
+          "sha256": "b673f27d85bb3206a08e7c8966616f963831b53f7f76f4823cdaf809b0207bfb",
+          "locator": {
+            "pages": [
+              57
+            ],
+            "char_start": 103409,
+            "char_end": 103470
+          },
+          "support_basis": "遗产为个人合法财产且不得继承情形排除"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-070",
+      "query": "继承人不表态与受遗赠人不表态，法律后果为什么不同？",
+      "expected_labels": {
+        "required": [
+          "第一千一百二十四条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "succession",
+      "section": "继承",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "放弃继承书面表示与受遗赠六十日规则",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "18e6398743a486198ee78b3328028434",
+          "label": "第一千一百二十四条",
+          "sha256": "df15b02c63fd1b37c7d461e8e022b2893ddd94fdaaba9ae49de16c468f229460",
+          "locator": {
+            "pages": [
+              57
+            ],
+            "char_start": 103533,
+            "char_end": 103651
+          },
+          "support_basis": "放弃继承书面表示与受遗赠六十日规则"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-071",
+      "query": "没有遗嘱时，配偶、父母、兄弟姐妹的继承顺位怎样区分？",
+      "expected_labels": {
+        "required": [
+          "第一千一百二十七条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "succession",
+      "section": "继承",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "法定继承顺序及第一顺位排除第二顺位",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "7d8465d4d80fa29da8d1b40c7ef691bf",
+          "label": "第一千一百二十七条",
+          "sha256": "03cb92f88f10cac8a5750faa7d245761b2f675aa820bd81d0ae1da2670399e71",
+          "locator": {
+            "pages": [
+              57
+            ],
+            "char_start": 103931,
+            "char_end": 104182
+          },
+          "support_basis": "法定继承顺序及第一顺位排除第二顺位"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-072",
+      "query": "子女早于被继承人去世，其后代能否参与继承？",
+      "expected_labels": {
+        "required": [
+          "第一千一百二十八条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "succession",
+      "section": "继承",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "子女先死亡时直系晚辈血亲代位规则",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "670b10a79bc0e635a62719901b605868",
+          "label": "第一千一百二十八条",
+          "sha256": "e41bf7b1cd865eca5cf0d9fb02af690f5c113fb90a2077d2c51df2ab103ef683",
+          "locator": {
+            "pages": [
+              58
+            ],
+            "char_start": 104182,
+            "char_end": 104302
+          },
+          "support_basis": "子女先死亡时直系晚辈血亲代位规则"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-073",
+      "query": "同一顺位继承人分遗产一定平均分吗？",
+      "expected_labels": {
+        "required": [
+          "第一千一百三十条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "exception_or_negation",
+      "topic": "succession",
+      "section": "继承",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "一般均等及照顾、多分、少分和协商例外",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "0b7693b8ff1705ca5c02b6cf78c3906a",
+          "label": "第一千一百三十条",
+          "sha256": "b123fc4af48b6e2d6d41a3ba8fb45fb474de2a155d00bd6bc3b00f6c96d0d772",
+          "locator": {
+            "pages": [
+              58
+            ],
+            "char_start": 104352,
+            "char_end": 104526
+          },
+          "support_basis": "一般均等及照顾、多分、少分和协商例外"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-074",
+      "query": "自己手写遗嘱，形式上应具备哪些要素？",
+      "expected_labels": {
+        "required": [
+          "第一千一百三十四条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "wills",
+      "section": "继承",
+      "split": "dev",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "自书遗嘱亲笔、签名及日期",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "e6a2da9a753f4726ffd5bbf11bf90bd2",
+          "label": "第一千一百三十四条",
+          "sha256": "a4b38c8b845c5f7837486f18fdb0670f683292d3cd3ec7c2a952b0bc5cccfd40",
+          "locator": {
+            "pages": [
+              58
+            ],
+            "char_start": 104834,
+            "char_end": 104871
+          },
+          "support_basis": "自书遗嘱亲笔、签名及日期"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-075",
+      "query": "请别人代写遗嘱时，见证和签名需要满足什么要求？",
+      "expected_labels": {
+        "required": [
+          "第一千一百三十五条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "wills",
+      "section": "继承",
+      "split": "dev",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "代书遗嘱至少两名见证人及签名日期",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "ac93c11182f335e88a5d692c9a96e09d",
+          "label": "第一千一百三十五条",
+          "sha256": "1154beb34c401f7f45a42da8f059b06370d4f1cf7c853dce196a15c813ea4a0b",
+          "locator": {
+            "pages": [
+              58
+            ],
+            "char_start": 104871,
+            "char_end": 104938
+          },
+          "support_basis": "代书遗嘱至少两名见证人及签名日期"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-076",
+      "query": "危急时口头立的遗嘱，在危急情况过去以后是否仍然有效？",
+      "expected_labels": {
+        "required": [
+          "第一千一百三十八条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "wills",
+      "section": "继承",
+      "split": "dev",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "口头遗嘱成立条件和危急解除后的失效条件",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "328c953a7df437ee8606e64632bf27fc",
+          "label": "第一千一百三十八条",
+          "sha256": "c11e7340a79e0160c392b68fbf733a8601f4be368486f8ea2444dd2c72f35bc0",
+          "locator": {
+            "pages": [
+              58
+            ],
+            "char_start": 105071,
+            "char_end": 105161
+          },
+          "support_basis": "口头遗嘱成立条件和危急解除后的失效条件"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-077",
+      "query": "分割遗产前，夫妻共同财产和被继承人的遗产应怎样区分？",
+      "expected_labels": {
+        "required": [
+          "第一千一百五十三条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "estate",
+      "section": "继承",
+      "split": "test",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "先分出配偶份额及家庭共有财产中他人份额",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "7919fd4e693c59884f72541ed253d542",
+          "label": "第一千一百五十三条",
+          "sha256": "fcc3e81dbe048f7a4d52ce05be126c403509ee2a5488a9b381e23ff1cc4df159",
+          "locator": {
+            "pages": [
+              59
+            ],
+            "char_start": 106299,
+            "char_end": 106403
+          },
+          "support_basis": "先分出配偶份额及家庭共有财产中他人份额"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-078",
+      "query": "遗嘱只处理了一部分财产，未涉及的部分应怎样处理？",
+      "expected_labels": {
+        "required": [
+          "第一千一百五十四条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "estate",
+      "section": "继承",
+      "split": "test",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "遗嘱未处分部分按法定继承",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "fd96e0427da042db5cb32b9866eea4d3",
+          "label": "第一千一百五十四条",
+          "sha256": "a746b790821564157719b49b09026ea542082894e7ef84ba048ced7a4618c5ac",
+          "locator": {
+            "pages": [
+              59
+            ],
+            "char_start": 106403,
+            "char_end": 106560
+          },
+          "support_basis": "遗嘱未处分部分按法定继承"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-079",
+      "query": "分配遗产时涉及尚未出生的胎儿，应如何处理份额？",
+      "expected_labels": {
+        "required": [
+          "第一千一百五十五条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "estate",
+      "section": "继承",
+      "split": "test",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "保留胎儿继承份额及娩出为死体的处理",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "3cf3cbc2b1b27193d0366a2a869e8339",
+          "label": "第一千一百五十五条",
+          "sha256": "3b15e32cf30f5779fe7a160a9f0d6b4494cd75cf877b9e9cb4fee351b8a94925",
+          "locator": {
+            "pages": [
+              59
+            ],
+            "char_start": 106560,
+            "char_end": 106616
+          },
+          "support_basis": "保留胎儿继承份额及娩出为死体的处理"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-080",
+      "query": "继承人清偿被继承人债务是否需要超过取得遗产的实际价值？",
+      "expected_labels": {
+        "required": [
+          "第一千一百六十一条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "estate",
+      "section": "继承",
+      "split": "test",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "遗产实际价值限额、自愿超额和放弃继承",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "88cb7e2855745be84345c4da1ebfa02d",
+          "label": "第一千一百六十一条",
+          "sha256": "ac7f39a0760d1ac7182afd66af7e8c6a6c7f67dd389a382b1b57d807e3c21f97",
+          "locator": {
+            "pages": [
+              59
+            ],
+            "char_start": 106954,
+            "char_end": 107063
+          },
+          "support_basis": "遗产实际价值限额、自愿超额和放弃继承"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-081",
+      "query": "过错导致他人民事权益受损时，侵权责任的基本规则是什么？",
+      "expected_labels": {
+        "required": [
+          "第一千一百六十五条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "general-tort",
+      "section": "侵权",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "过错责任和法律规定过错推定",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "5d6bf5041e690e728e957dee27748652",
+          "label": "第一千一百六十五条",
+          "sha256": "a411c0267bd8a84c773e8c664a8e4c13bf0bca808bee45200456b18478f2350d",
+          "locator": {
+            "pages": [
+              59
+            ],
+            "char_start": 107249,
+            "char_end": 107331
+          },
+          "support_basis": "过错责任和法律规定过错推定"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-082",
+      "query": "两个人一起实施侵权并造成同一损害，责任如何承担？",
+      "expected_labels": {
+        "required": [
+          "第一千一百六十八条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "general-tort",
+      "section": "侵权",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "共同实施侵权的连带责任",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "d29d999588f88d8c3b53ce5fdd9a79f3",
+          "label": "第一千一百六十八条",
+          "sha256": "12ff3750941b00f5a57c3b7819397351ec441ef5efcf3b5539cb09ad155831b5",
+          "locator": {
+            "pages": [
+              59
+            ],
+            "char_start": 107453,
+            "char_end": 107496
+          },
+          "support_basis": "共同实施侵权的连带责任"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-083",
+      "query": "受害人自己对损害扩大也有过错，是否会影响侵权人责任？",
+      "expected_labels": {
+        "required": [
+          "第一千一百七十三条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "general-tort",
+      "section": "侵权",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "被侵权人对发生或扩大有过错可减轻责任",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "2aced85d72befe138b955dc45d72e2f5",
+          "label": "第一千一百七十三条",
+          "sha256": "f677c33a9cc471b6d0d9ff557070cb38faf1f935ee072b8283b6a5e42fdb7307",
+          "locator": {
+            "pages": [
+              59
+            ],
+            "char_start": 107848,
+            "char_end": 107894
+          },
+          "support_basis": "被侵权人对发生或扩大有过错可减轻责任"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-084",
+      "query": "自愿参加有风险的运动时，其他参与者什么情况下仍可能承担责任？",
+      "expected_labels": {
+        "required": [
+          "第一千一百七十六条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "general-tort",
+      "section": "侵权",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "自甘风险规则及故意重大过失例外",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "edc28eb1e24952fb14c10d80bf171aa8",
+          "label": "第一千一百七十六条",
+          "sha256": "76e4ab0a0fee9199aa20572b87931a4210108765e74ba5e376fb30be39776312",
+          "locator": {
+            "pages": [
+              60
+            ],
+            "char_start": 107965,
+            "char_end": 108093
+          },
+          "support_basis": "自甘风险规则及故意重大过失例外"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-085",
+      "query": "一名限制行为能力的孩子造成他人损失，监护人已经尽责，这会影响其责任吗？",
+      "expected_labels": {
+        "required": [
+          "第一千一百八十八条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "guardian-tort",
+      "section": "侵权",
+      "split": "dev",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "监护人责任、尽责减轻及本人财产赔偿规则",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "e7184b9729818368b0850e1ffb8b2651",
+          "label": "第一千一百八十八条",
+          "sha256": "f1e24a49335f8cbc969dc3bcd3460f21c10e5792bbf574c86d4fe05e366ef0a4",
+          "locator": {
+            "pages": [
+              60
+            ],
+            "char_start": 109092,
+            "char_end": 109223
+          },
+          "support_basis": "监护人责任、尽责减轻及本人财产赔偿规则"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-086",
+      "query": "员工执行工作任务时伤害他人，受害人应关注哪类责任主体？",
+      "expected_labels": {
+        "required": [
+          "第一千一百九十一条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "employer",
+      "section": "侵权",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "用人单位责任及有故意重大过失时追偿",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "a0f02029601e81eed7866a7329199299",
+          "label": "第一千一百九十一条",
+          "sha256": "8d870dbbfc38eb2443b81e5af24f3c447d7ab0527a6eb0fb0f45d5258453b3e8",
+          "locator": {
+            "pages": [
+              60
+            ],
+            "char_start": 109454,
+            "char_end": 109608
+          },
+          "support_basis": "用人单位责任及有故意重大过失时追偿"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-087",
+      "query": "承揽人修理设备时损害第三人，定作人是否在任何情况下都免责？",
+      "expected_labels": {
+        "required": [
+          "第一千一百九十三条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "exception_or_negation",
+      "topic": "employer",
+      "section": "侵权",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "定作人原则不承担及定作指示选任过错例外",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "97aa2fd67ab3dc9dd1b2133bd72156db",
+          "label": "第一千一百九十三条",
+          "sha256": "17b324d0a36a5490e379d942bc7f96837ae3b1b9a503b129de7fabe9534bf433",
+          "locator": {
+            "pages": [
+              60
+            ],
+            "char_start": 109818,
+            "char_end": 109900
+          },
+          "support_basis": "定作人原则不承担及定作指示选任过错例外"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-088",
+      "query": "平台收到权利人的侵权通知后，通常需要做什么？",
+      "expected_labels": {
+        "required": [
+          "第一千一百九十五条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "platform",
+      "section": "侵权",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "通知转送与依据初步证据采取必要措施",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "ebc4fbb308a063f6954108a3e6a53bdb",
+          "label": "第一千一百九十五条",
+          "sha256": "662d35e308ed7400dc43c3f6789c15c88790f0db6c87004c06680d0ec937cf90",
+          "locator": {
+            "pages": [
+              60,
+              61
+            ],
+            "char_start": 109963,
+            "char_end": 110199
+          },
+          "support_basis": "通知转送与依据初步证据采取必要措施"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-089",
+      "query": "商场里顾客被第三人伤害，商场未尽安全保障义务时如何区分责任？",
+      "expected_labels": {
+        "required": [
+          "第一千一百九十八条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "public-safety",
+      "section": "侵权",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "第三人责任与经营者未尽义务的补充责任",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "8758131a0c871ab55830eb5455af8de2",
+          "label": "第一千一百九十八条",
+          "sha256": "e7780dd603d70bff8867edd744ad4325b2ebac4766355e6b31c56ddb09a1ef75",
+          "locator": {
+            "pages": [
+              61
+            ],
+            "char_start": 110469,
+            "char_end": 110656
+          },
+          "support_basis": "第三人责任与经营者未尽义务的补充责任"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-090",
+      "query": "无民事行为能力人在学校受到人身损害，学校如何证明自己不承担责任？",
+      "expected_labels": {
+        "required": [
+          "第一千一百九十九条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "public-safety",
+      "section": "侵权",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "教育机构尽到教育管理职责的免责",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "df890af6e616eab6f9a77bd4dfbc1556",
+          "label": "第一千一百九十九条",
+          "sha256": "690cb9c6ef771dcf0239cfc116409073f5c78697629e23107aabc1aaf6f134a1",
+          "locator": {
+            "pages": [
+              61
+            ],
+            "char_start": 110656,
+            "char_end": 110757
+          },
+          "support_basis": "教育机构尽到教育管理职责的免责"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-091",
+      "query": "产品缺陷造成损害，消费者只能找生产者赔偿吗？",
+      "expected_labels": {
+        "required": [
+          "第一千二百零三条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "exception_or_negation",
+      "topic": "product",
+      "section": "侵权",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "可向生产者或销售者请求及内部追偿",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "201c655e2ea0e4b4c3ecf1a4347f7162",
+          "label": "第一千二百零三条",
+          "sha256": "6f5b5cc4d2ada36ebc837f3622eabe23069b4a841b5a3948e949872809ef948f",
+          "locator": {
+            "pages": [
+              61
+            ],
+            "char_start": 111043,
+            "char_end": 111168
+          },
+          "support_basis": "可向生产者或销售者请求及内部追偿"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-092",
+      "query": "借来的车发生交通事故，车主与使用人责任应怎样区分？",
+      "expected_labels": {
+        "required": [
+          "第一千二百零九条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "traffic",
+      "section": "侵权",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "使用人责任及所有人管理人有过错时相应责任",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "4efbb676aeb987044a5544e948093d8d",
+          "label": "第一千二百零九条",
+          "sha256": "fc67535c97821397b3b89d29a3ac302ff8976f035a1b6b5d6d91edd4a36ffaa3",
+          "locator": {
+            "pages": [
+              61
+            ],
+            "char_start": 111592,
+            "char_end": 111704
+          },
+          "support_basis": "使用人责任及所有人管理人有过错时相应责任"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-093",
+      "query": "病历被隐匿或者违法销毁时，医疗机构的过错如何判断？",
+      "expected_labels": {
+        "required": [
+          "第一千二百二十二条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "medical",
+      "section": "侵权",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "推定医疗机构有过错的法定情形",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "bc4d19b80355676da4d60759afa5c91e",
+          "label": "第一千二百二十二条",
+          "sha256": "d3905ee9203f0cdda715d039eef0cdf78dafa5c4251b8a7cf3637c61b5e92b9f",
+          "locator": {
+            "pages": [
+              62
+            ],
+            "char_start": 112976,
+            "char_end": 113103
+          },
+          "support_basis": "推定医疗机构有过错的法定情形"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-094",
+      "query": "患者就医受到损害，医院在哪些情况下可能不承担赔偿责任？",
+      "expected_labels": {
+        "required": [
+          "第一千二百二十四条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "medical",
+      "section": "侵权",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "医疗免责情形及机构医务人员有过错的限制",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "7de6ab63e97a2a8c526670b2c5db3c96",
+          "label": "第一千二百二十四条",
+          "sha256": "f98b1b355bd1f221334997fa080b11dabc57e0fc1c339afff166eaf33f380307",
+          "locator": {
+            "pages": [
+              62
+            ],
+            "char_start": 113248,
+            "char_end": 113426
+          },
+          "support_basis": "医疗免责情形及机构医务人员有过错的限制"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-095",
+      "query": "饲养动物伤人时，如果受害人故意或者重大过失，责任是否可能调整？",
+      "expected_labels": {
+        "required": [
+          "第一千二百四十五条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "animal",
+      "section": "侵权",
+      "split": "test",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "动物饲养责任及受害人故意重大过失",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "b1b94d06087cf27688cb31f46a635029",
+          "label": "第一千二百四十五条",
+          "sha256": "76547417c00a78cebbeb17012c774ce7143fb0d918602d8acfd8c1e5ae8c2e0b",
+          "locator": {
+            "pages": [
+              63
+            ],
+            "char_start": 115229,
+            "char_end": 115314
+          },
+          "support_basis": "动物饲养责任及受害人故意重大过失"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-096",
+      "query": "未按管理规定给动物采取安全措施而造成损害，有什么例外？",
+      "expected_labels": {
+        "required": [
+          "第一千二百四十六条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "exception_or_negation",
+      "topic": "animal",
+      "section": "侵权",
+      "split": "test",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "违反动物管理规定的责任及受害人故意减轻",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "950afca36513ffa585a9ec13bf03f171",
+          "label": "第一千二百四十六条",
+          "sha256": "a28ac993b0a83293d96cf26cc511ab94c1a23550553c81fd692aa1e223484760",
+          "locator": {
+            "pages": [
+              63
+            ],
+            "char_start": 115314,
+            "char_end": 115400
+          },
+          "support_basis": "违反动物管理规定的责任及受害人故意减轻"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-097",
+      "query": "动物园的动物伤人，动物园可以怎样证明免责？",
+      "expected_labels": {
+        "required": [
+          "第一千二百四十八条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "animal",
+      "section": "侵权",
+      "split": "test",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "动物园证明尽到管理职责的免责",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "fc14ceba21e68d3d1a4dd23396b194f0",
+          "label": "第一千二百四十八条",
+          "sha256": "835a13e0109a56eb931578808ab9c011647c7366cf3415e095b4e0e1f78619e8",
+          "locator": {
+            "pages": [
+              63
+            ],
+            "char_start": 115454,
+            "char_end": 115517
+          },
+          "support_basis": "动物园证明尽到管理职责的免责"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-098",
+      "query": "遗弃或逃逸的动物伤人，由谁承担责任？",
+      "expected_labels": {
+        "required": [
+          "第一千二百四十九条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "animal",
+      "section": "侵权",
+      "split": "test",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "遗弃逃逸期间原饲养人管理人的责任",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "4525e28c64ce75aaf9d840a6e2e10c71",
+          "label": "第一千二百四十九条",
+          "sha256": "09b5c7c20c73e5a02746531cefb93f524b3f2f9528a81df031d7bad846929d65",
+          "locator": {
+            "pages": [
+              63
+            ],
+            "char_start": 115517,
+            "char_end": 115574
+          },
+          "support_basis": "遗弃逃逸期间原饲养人管理人的责任"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-099",
+      "query": "高空抛物难以查明具体加害人时，可能加害的建筑物使用人如何处理？",
+      "expected_labels": {
+        "required": [
+          "第一千二百五十四条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "concept_or_condition",
+      "topic": "building",
+      "section": "侵权",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "无法确定侵权人时的补偿及可证明非侵权人例外",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "1c8a6f192fb7b189e161a9fb5d7f9b09",
+          "label": "第一千二百五十四条",
+          "sha256": "0d8128fe6b3a6f502c05e8081f37ce100674fa81ed60eba5e45e2f8d16887f79",
+          "locator": {
+            "pages": [
+              63,
+              64
+            ],
+            "char_start": 116032,
+            "char_end": 116286
+          },
+          "support_basis": "无法确定侵权人时的补偿及可证明非侵权人例外"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-100",
+      "query": "这部2020年通过的民法典从哪一天开始施行？",
+      "expected_labels": {
+        "required": [
+          "第一千二百六十条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "multi_article",
+      "topic": "enactment",
+      "section": "版本",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "民法典第1260条规定施行日期",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "aceb1cad47f237895d8c0d8ff82537c2",
+          "label": "第一千二百六十条",
+          "sha256": "99626f9fc682ea0f4ad80a57c29e71f993d798790b6458a3b3e3bbd39b6a558d",
+          "locator": {
+            "pages": [
+              64
+            ],
+            "char_start": 116693,
+            "char_end": 116849
+          },
+          "support_basis": "民法典第1260条规定施行日期"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-101",
+      "query": "报价符合要约条件后，发出方是否可以在对方准备履行时随意撤销？",
+      "expected_labels": {
+        "required": [
+          "第四百七十二条",
+          "第四百七十六条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "multi_article",
+      "topic": "formation",
+      "section": "合同",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "要约构成条件与撤销例外共同审查",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "779158c501677791ce965e6211404180",
+          "label": "第四百七十二条",
+          "sha256": "8e6f447b7b5db29d351808dbe0bdf10da55504ae33be328fb48b2b94dbe7837e",
+          "locator": {
+            "pages": [
+              25
+            ],
+            "char_start": 42061,
+            "char_end": 42146
+          },
+          "support_basis": "要约构成条件与撤销例外共同审查"
+        },
+        {
+          "revision": "repository-unverified",
+          "unit_id": "8e2c33e0ac87042e5db25e6cd320bf3e",
+          "label": "第四百七十六条",
+          "sha256": "95df4abba9bee6d1674e3fa8a211b6667cf2043f35e292dabaa9b3478b31b38f",
+          "locator": {
+            "pages": [
+              26
+            ],
+            "char_start": 42328,
+            "char_end": 42431
+          },
+          "support_basis": "要约构成条件与撤销例外共同审查"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-102",
+      "query": "婚后工资的归属能否由夫妻事先另作书面约定？",
+      "expected_labels": {
+        "required": [
+          "第一千零六十二条",
+          "第一千零六十五条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "multi_article",
+      "topic": "family-property",
+      "section": "婚姻家庭",
+      "split": "dev",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "共同财产默认规则和双方书面财产约定",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "32c89eb7e63a3dee62ec39289d015694",
+          "label": "第一千零六十二条",
+          "sha256": "e294438dc7f8a670ca65c81299135008621f6c834cd4ae54ba76f96a19998e47",
+          "locator": {
+            "pages": [
+              54
+            ],
+            "char_start": 97350,
+            "char_end": 97522
+          },
+          "support_basis": "共同财产默认规则和双方书面财产约定"
+        },
+        {
+          "revision": "repository-unverified",
+          "unit_id": "2e304c56473cc3f5671836508ac7683c",
+          "label": "第一千零六十五条",
+          "sha256": "5ac1f1d56accd5855abeb6924761ee4bc24a275ec49ffa763348c1e423e1d6fd",
+          "locator": {
+            "pages": [
+              54
+            ],
+            "char_start": 97828,
+            "char_end": 98051
+          },
+          "support_basis": "共同财产默认规则和双方书面财产约定"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-103",
+      "query": "被继承人的子女先去世，该子女的后代能否代替其参与第一顺序继承？",
+      "expected_labels": {
+        "required": [
+          "第一千一百二十七条",
+          "第一千一百二十八条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "multi_article",
+      "topic": "succession",
+      "section": "继承",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "继承顺序与子女先死亡的代位继承",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "7d8465d4d80fa29da8d1b40c7ef691bf",
+          "label": "第一千一百二十七条",
+          "sha256": "03cb92f88f10cac8a5750faa7d245761b2f675aa820bd81d0ae1da2670399e71",
+          "locator": {
+            "pages": [
+              57
+            ],
+            "char_start": 103931,
+            "char_end": 104182
+          },
+          "support_basis": "继承顺序与子女先死亡的代位继承"
+        },
+        {
+          "revision": "repository-unverified",
+          "unit_id": "670b10a79bc0e635a62719901b605868",
+          "label": "第一千一百二十八条",
+          "sha256": "e41bf7b1cd865eca5cf0d9fb02af690f5c113fb90a2077d2c51df2ab103ef683",
+          "locator": {
+            "pages": [
+              58
+            ],
+            "char_start": 104182,
+            "char_end": 104302
+          },
+          "support_basis": "继承顺序与子女先死亡的代位继承"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-104",
+      "query": "动物伤人且饲养人没有采取安全措施时，受害人重大过失与故意的影响有何区别？",
+      "expected_labels": {
+        "required": [
+          "第一千二百四十五条",
+          "第一千二百四十六条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "multi_article",
+      "topic": "animal",
+      "section": "侵权",
+      "split": "test",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "普通饲养责任和违反管理规定时的不同免责减责边界",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "b1b94d06087cf27688cb31f46a635029",
+          "label": "第一千二百四十五条",
+          "sha256": "76547417c00a78cebbeb17012c774ce7143fb0d918602d8acfd8c1e5ae8c2e0b",
+          "locator": {
+            "pages": [
+              63
+            ],
+            "char_start": 115229,
+            "char_end": 115314
+          },
+          "support_basis": "普通饲养责任和违反管理规定时的不同免责减责边界"
+        },
+        {
+          "revision": "repository-unverified",
+          "unit_id": "950afca36513ffa585a9ec13bf03f171",
+          "label": "第一千二百四十六条",
+          "sha256": "a28ac993b0a83293d96cf26cc511ab94c1a23550553c81fd692aa1e223484760",
+          "locator": {
+            "pages": [
+              63
+            ],
+            "char_start": 115314,
+            "char_end": 115400
+          },
+          "support_basis": "普通饲养责任和违反管理规定时的不同免责减责边界"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-105",
+      "query": "债权请求的一般时效怎样起算，权利人催讨又可能怎样影响期间？",
+      "expected_labels": {
+        "required": [
+          "第一百八十八条",
+          "第一百九十五条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "multi_article",
+      "topic": "limitation",
+      "section": "总则",
+      "split": "train",
+      "should_abstain": false,
+      "abstain_reason": null,
+      "rationale": "一般时效起算与履行请求的时效中断",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "5735a242509057799637a5448dde2dc0",
+          "label": "第一百八十八条",
+          "sha256": "36bb645017ba6615dddc66252e6575fe117883dc8fc421705b3fdad1f28c960c",
+          "locator": {
+            "pages": [
+              12
+            ],
+            "char_start": 17713,
+            "char_end": 17871
+          },
+          "support_basis": "一般时效起算与履行请求的时效中断"
+        },
+        {
+          "revision": "repository-unverified",
+          "unit_id": "28ef06fc1bfff44f1bf52f2007ccb884",
+          "label": "第一百九十五条",
+          "sha256": "066578a4a9e4759e3d6bd7df97b2f165ae18857e82a674c691f774a083820a7a",
+          "locator": {
+            "pages": [
+              12
+            ],
+            "char_start": 18376,
+            "char_end": 18512
+          },
+          "support_basis": "一般时效起算与履行请求的时效中断"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-106",
+      "query": "寻衅滋事罪的构成要件和量刑幅度是什么？",
+      "expected_labels": {
+        "required": [],
+        "alternatives": []
+      },
+      "question_kind": "out_of_corpus",
+      "topic": "criminal",
+      "section": "库外",
+      "split": "test",
+      "should_abstain": true,
+      "abstain_reason": "需要刑法及现行司法解释，不得从民法典替代刑法。",
+      "rationale": "刑事犯罪与量刑不在本民法典语料范围",
+      "source_units": [],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-107",
+      "query": "盗窃多少金额必然构成犯罪？",
+      "expected_labels": {
+        "required": [],
+        "alternatives": []
+      },
+      "question_kind": "out_of_corpus",
+      "topic": "criminal",
+      "section": "库外",
+      "split": "test",
+      "should_abstain": true,
+      "abstain_reason": "需核对刑法、相关解释与地域标准，不能给出统一确定数额。",
+      "rationale": "刑事入罪和地域标准不在本语料",
+      "source_units": [],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-108",
+      "query": "醉酒驾驶车辆的刑事处罚标准是什么？",
+      "expected_labels": {
+        "required": [],
+        "alternatives": []
+      },
+      "question_kind": "out_of_corpus",
+      "topic": "criminal",
+      "section": "库外",
+      "split": "test",
+      "should_abstain": true,
+      "abstain_reason": "需核对刑法和相关规范及事实。",
+      "rationale": "道路刑事责任不在民法典种子库",
+      "source_units": [],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-109",
+      "query": "诈骗案件的追诉标准和刑罚档位如何计算？",
+      "expected_labels": {
+        "required": [],
+        "alternatives": []
+      },
+      "question_kind": "out_of_corpus",
+      "topic": "criminal",
+      "section": "库外",
+      "split": "test",
+      "should_abstain": true,
+      "abstain_reason": "需刑法及相应解释，不能由民事条文推断。",
+      "rationale": "诈骗刑事责任不属于民法典语料",
+      "source_units": [],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-110",
+      "query": "劳动者被单位解除劳动合同，经济补偿的计算年限如何认定？",
+      "expected_labels": {
+        "required": [],
+        "alternatives": []
+      },
+      "question_kind": "out_of_corpus",
+      "topic": "labor",
+      "section": "库外",
+      "split": "dev",
+      "should_abstain": true,
+      "abstain_reason": "需劳动合同法和当地适用规则，不能凭本库确定金额。",
+      "rationale": "劳动合同专门制度不在当前种子语料",
+      "source_units": [],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-111",
+      "query": "加班费的法定倍数在休息日和法定节假日有何区别？",
+      "expected_labels": {
+        "required": [],
+        "alternatives": []
+      },
+      "question_kind": "out_of_corpus",
+      "topic": "labor",
+      "section": "库外",
+      "split": "dev",
+      "should_abstain": true,
+      "abstain_reason": "需劳动法律及工时事实。",
+      "rationale": "劳动工时及加班费标准不在当前语料",
+      "source_units": [],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-112",
+      "query": "单位是否必须给实习生缴纳失业保险？",
+      "expected_labels": {
+        "required": [],
+        "alternatives": []
+      },
+      "question_kind": "out_of_corpus",
+      "topic": "labor",
+      "section": "库外",
+      "split": "dev",
+      "should_abstain": true,
+      "abstain_reason": "需社会保险和劳动规则与身份信息。",
+      "rationale": "保险覆盖需专门法律及人员身份事实",
+      "source_units": [],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-113",
+      "query": "行政机关作出处罚后申请行政复议的期限是多少？",
+      "expected_labels": {
+        "required": [],
+        "alternatives": []
+      },
+      "question_kind": "out_of_corpus",
+      "topic": "administrative",
+      "section": "库外",
+      "split": "train",
+      "should_abstain": true,
+      "abstain_reason": "需核对行政复议法及决定送达时间。",
+      "rationale": "行政复议程序不在民法典语料",
+      "source_units": [],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-114",
+      "query": "行政许可被撤销后的复议期限按哪一条计算？",
+      "expected_labels": {
+        "required": [],
+        "alternatives": []
+      },
+      "question_kind": "out_of_corpus",
+      "topic": "administrative",
+      "section": "库外",
+      "split": "train",
+      "should_abstain": true,
+      "abstain_reason": "需适用行政复议及许可的专门规定。",
+      "rationale": "行政程序时限不在民法典种子库",
+      "source_units": [],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-115",
+      "query": "出售普通住宅应缴哪些税、税率各是多少？",
+      "expected_labels": {
+        "required": [],
+        "alternatives": []
+      },
+      "question_kind": "out_of_corpus",
+      "topic": "tax",
+      "section": "库外",
+      "split": "dev",
+      "should_abstain": true,
+      "abstain_reason": "需税法及地域、交易事实，不可据民法典给出税率。",
+      "rationale": "税种和税率不在当前民法典语料",
+      "source_units": [],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-116",
+      "query": "个人工资达到什么金额需要缴纳多少个人所得税？",
+      "expected_labels": {
+        "required": [],
+        "alternatives": []
+      },
+      "question_kind": "out_of_corpus",
+      "topic": "tax",
+      "section": "库外",
+      "split": "dev",
+      "should_abstain": true,
+      "abstain_reason": "需个税法和纳税事实，不能据民法典计算。",
+      "rationale": "税率及扣除规则不在当前种子语料",
+      "source_units": [],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-117",
+      "query": "这笔债过了几年，现在是否一定不能起诉？",
+      "expected_labels": {
+        "required": [
+          "第一百八十八条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "insufficient_facts",
+      "topic": "limitation",
+      "section": "事实不足",
+      "split": "train",
+      "should_abstain": true,
+      "abstain_reason": "缺少起算、期间、中止中断及是否抗辩等关键事实，不能断言结果。",
+      "rationale": "时效需权利受损及义务人知悉、起算等事实",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "5735a242509057799637a5448dde2dc0",
+          "label": "第一百八十八条",
+          "sha256": "36bb645017ba6615dddc66252e6575fe117883dc8fc421705b3fdad1f28c960c",
+          "locator": {
+            "pages": [
+              12
+            ],
+            "char_start": 17713,
+            "char_end": 17871
+          },
+          "support_basis": "时效需权利受损及义务人知悉、起算等事实"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-118",
+      "query": "婚后收到一笔钱，就一定属于夫妻共同财产吗？",
+      "expected_labels": {
+        "required": [
+          "第一千零六十二条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "insufficient_facts",
+      "topic": "family-property",
+      "section": "事实不足",
+      "split": "dev",
+      "should_abstain": true,
+      "abstain_reason": "缺少来源、遗嘱赠与约定和财产协议等事实，不能作确定归属结论。",
+      "rationale": "婚后所得可能属于共同财产，但需要来源和约定",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "32c89eb7e63a3dee62ec39289d015694",
+          "label": "第一千零六十二条",
+          "sha256": "e294438dc7f8a670ca65c81299135008621f6c834cd4ae54ba76f96a19998e47",
+          "locator": {
+            "pages": [
+              54
+            ],
+            "char_start": 97350,
+            "char_end": 97522
+          },
+          "support_basis": "婚后所得可能属于共同财产，但需要来源和约定"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-119",
+      "query": "合同写了违约金，法院一定会把它调低吗？",
+      "expected_labels": {
+        "required": [
+          "第五百八十五条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "insufficient_facts",
+      "topic": "breach",
+      "section": "事实不足",
+      "split": "test",
+      "should_abstain": true,
+      "abstain_reason": "缺少数额、损失、违约情况及是否提出调整请求，不能预测。",
+      "rationale": "违约金调整须根据实际损失及请求判断",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "7b3ed1b6732be6c19c3f5b5e5354f07a",
+          "label": "第五百八十五条",
+          "sha256": "fd573bcb9ea13dc5e073edd76203aadb5cdf711165f425390d4d9a2c371f6a5e",
+          "locator": {
+            "pages": [
+              31
+            ],
+            "char_start": 53784,
+            "char_end": 53976
+          },
+          "support_basis": "违约金调整须根据实际损失及请求判断"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    },
+    {
+      "id": "AI-CIVIL-120",
+      "query": "亲人去世了，我肯定能按第一顺序分到多少遗产？",
+      "expected_labels": {
+        "required": [
+          "第一千一百二十七条"
+        ],
+        "alternatives": []
+      },
+      "question_kind": "insufficient_facts",
+      "topic": "succession",
+      "section": "事实不足",
+      "split": "train",
+      "should_abstain": true,
+      "abstain_reason": "缺少身份、遗嘱、财产范围、其他继承人与分配情况，不应计算份额。",
+      "rationale": "法定顺序不能代替遗嘱、继承人和财产事实",
+      "source_units": [
+        {
+          "revision": "repository-unverified",
+          "unit_id": "7d8465d4d80fa29da8d1b40c7ef691bf",
+          "label": "第一千一百二十七条",
+          "sha256": "03cb92f88f10cac8a5750faa7d245761b2f675aa820bd81d0ae1da2670399e71",
+          "locator": {
+            "pages": [
+              57
+            ],
+            "char_start": 103931,
+            "char_end": 104182
+          },
+          "support_basis": "法定顺序不能代替遗嘱、继承人和财产事实"
+        }
+      ],
+      "author": "AI",
+      "review_state": "needs_human_review"
+    }
+  ]
+}

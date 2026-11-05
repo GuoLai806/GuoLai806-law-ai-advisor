@@ -1,0 +1,12 @@
+{
+  "dataset_sha256": "b871f5bb6e7b26ef4d8f036597a3cbaeb4c4c219e2a152e79c90ecfb66f68089",
+  "validator_sha256": "f77b708a059aa4db3ed713eb47ad0ca5df5e29adc9152fdb390083f02729f353",
+  "catalog_main_sha256": "a8378491eaa9f6575c0e1aa88162b45ddceefc0936b861f4e113b7bfb174dc90",
+  "catalog_wal_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "catalog_wal_bytes": 0,
+  "question_count": 120,
+  "source_references_validated": 117,
+  "normalized_overlap_threshold": 14,
+  "overlap_flags": [],
+  "human_legal_review": false
+}

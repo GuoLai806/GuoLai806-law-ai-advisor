@@ -1,0 +1,463 @@
+{
+  "source_trace_sha256": "e5bc065a7b5dca66e2760314d4f7c1848c15af7a7079e4a69ec5ca51a322e84c",
+  "data": {
+    "timestamp_utc": "2026-11-05T16:59:45Z",
+    "profile": "general",
+    "source_kind": "synthetic",
+    "revision": "revision_d8505d20bb7e",
+    "engine": "OpenViking 0.5.3",
+    "embedding": "BAAI/bge-m3@5617a9f61b028005a4858fdac845db406aefb181",
+    "steps": [
+      {
+        "document_id": "mountain-2",
+        "ingest": {
+          "state": "delivery_unknown",
+          "uri": "viking://resources/rag/integration_fixture/revision_d8505d20bb7e/97664f41074101531091badfdce23371/97664f41074101531091badfdce23371.md"
+        },
+        "read": {
+          "state": "content_verified",
+          "uri": "viking://resources/rag/integration_fixture/revision_d8505d20bb7e/97664f41074101531091badfdce23371/97664f41074101531091badfdce23371.md",
+          "note": "vector visibility still requires separate validation"
+        }
+      },
+      {
+        "document_id": "ocean-1",
+        "ingest": {
+          "state": "delivery_unknown",
+          "uri": "viking://resources/rag/integration_fixture/revision_d8505d20bb7e/08df4510e18798541da665434bd9f570/08df4510e18798541da665434bd9f570.md"
+        },
+        "read": {
+          "state": "content_verified",
+          "uri": "viking://resources/rag/integration_fixture/revision_d8505d20bb7e/08df4510e18798541da665434bd9f570/08df4510e18798541da665434bd9f570.md",
+          "note": "vector visibility still requires separate validation"
+        }
+      }
+    ],
+    "validation": {
+      "revision": "revision_d8505d20bb7e",
+      "index_visibility_validated": true,
+      "units": [
+        {
+          "unit_id": "08df4510e18798541da665434bd9f570",
+          "result": "visible"
+        },
+        {
+          "unit_id": "97664f41074101531091badfdce23371",
+          "result": "visible"
+        }
+      ]
+    },
+    "passed": false,
+    "error": "ValueError: active revision changed",
+    "events": [
+      {
+        "method": "POST",
+        "path": "/api/v1/resources/temp_upload",
+        "query": "",
+        "started_utc": "2026-11-05T16:59:45Z",
+        "status": 200,
+        "elapsed_ms": 11.55,
+        "response_sha256": "e655a7cd44be452eff6f0fdf3e7473b731c01fd95f5e4020faef06d5600a7bf5",
+        "response": {
+          "status": "ok",
+          "result": {
+            "temp_file_id": "upload_ae1321d0471f4277b2a785896d6aa4ae.md"
+          }
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/api/v1/resources",
+        "query": "",
+        "started_utc": "2026-11-05T16:59:45Z",
+        "status": 200,
+        "elapsed_ms": 761.06,
+        "response_sha256": "0597f3060e9e698b65396f059140d7d8215d8b5023d258061a4d846c86ff0571",
+        "response": {
+          "status": "ok",
+          "result": {
+            "status": "success",
+            "errors": [],
+            "source_path": "97664f41074101531091badfdce23371.md",
+            "meta": {},
+            "root_uri": "viking://resources/rag/integration_fixture/revision_d8505d20bb7e/97664f41074101531091badfdce23371",
+            "temp_uri": "<isolated-workspace>/parse/artifact-39fffd45e0e94efda542e5103aa50cc7/97664f41074101531091badfdce23371",
+            "queue_status": {
+              "Semantic": {
+                "processed": 0,
+                "requeue_count": 0,
+                "error_count": 0,
+                "errors": []
+              },
+              "Embedding": {
+                "processed": 1,
+                "requeue_count": 0,
+                "error_count": 0,
+                "errors": []
+              }
+            },
+            "context_count": 1,
+            "telemetry": {
+              "id": "tm_8fd590ac6364417db2ae34bc65710b12",
+              "summary": {
+                "operation": "add_resource_job",
+                "status": "ok",
+                "duration_ms": 164.469,
+                "tokens": {
+                  "total": 15,
+                  "embedding": {
+                    "total": 15
+                  },
+                  "stages": {
+                    "embed_resource": {
+                      "embedding": {
+                        "total": 15
+                      }
+                    }
+                  }
+                },
+                "queue": {
+                  "embedding": {
+                    "processed": 1,
+                    "queue_wait": {
+                      "duration_ms": 57.481
+                    },
+                    "execute": {
+                      "duration_ms": 73.154
+                    }
+                  }
+                },
+                "resource": {
+                  "total": {
+                    "duration_ms": 164.468
+                  },
+                  "source_execute": {
+                    "duration_ms": 6.845
+                  },
+                  "source_prepare": {
+                    "duration_ms": 1.197
+                  },
+                  "parse_artifact": {
+                    "duration_ms": 1.057
+                  },
+                  "target_resolve": {
+                    "duration_ms": 0.217
+                  },
+                  "update_plan": {
+                    "duration_ms": 1.18,
+                    "artifact_inventory": {
+                      "duration_ms": 0.322
+                    },
+                    "rnfv_snapshot": {
+                      "duration_ms": 0.572
+                    },
+                    "diff_and_compile": {
+                      "duration_ms": 0.252
+                    }
+                  },
+                  "content_commit": {
+                    "duration_ms": 1.091
+                  },
+                  "derived_enqueue": {
+                    "duration_ms": 1.387
+                  },
+                  "embedding": {
+                    "queue_wait": {
+                      "duration_ms": 57.481
+                    },
+                    "execute": {
+                      "duration_ms": 73.154
+                    }
+                  },
+                  "flags": {
+                    "wait": false,
+                    "build_index": true,
+                    "summarize": false,
+                    "watch_enabled": false
+                  }
+                }
+              }
+            },
+            "usage": {
+              "tokens": {
+                "total": 15,
+                "embedding": {
+                  "total": 15
+                },
+                "stages": {
+                  "embed_resource": {
+                    "embedding": {
+                      "total": 15
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/content/read",
+        "query": "uri=viking%3A%2F%2Fresources%2Frag%2Fintegration_fixture%2Frevision_d8505d20bb7e%2F97664f41074101531091badfdce23371%2F97664f41074101531091badfdce23371.md&raw=true",
+        "started_utc": "2026-11-05T16:59:45Z",
+        "status": 200,
+        "elapsed_ms": 2.43,
+        "response_sha256": "a445f102b4508cc6dc9e338c0785617ed7ddf6a0399216a15b792ec876ec714e",
+        "response": {
+          "status": "ok",
+          "result": "Mountain snowfall reflects sunlight and affects local climate.",
+          "error": null,
+          "telemetry": null,
+          "profile": null
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/api/v1/resources/temp_upload",
+        "query": "",
+        "started_utc": "2026-11-05T16:59:45Z",
+        "status": 200,
+        "elapsed_ms": 2.28,
+        "response_sha256": "14b9efc69cf6f0c1233a53520f0388ea3a5ba94951558650b19db31bd4ed66a5",
+        "response": {
+          "status": "ok",
+          "result": {
+            "temp_file_id": "upload_2d2ad8607aa442a2b2185abb76370bb0.md"
+          }
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/api/v1/resources",
+        "query": "",
+        "started_utc": "2026-11-05T16:59:45Z",
+        "status": 200,
+        "elapsed_ms": 358.98,
+        "response_sha256": "0ad23135da2bccfc6a7c7c725964cedbbe9f31ef208c9842463c96487a3e8be2",
+        "response": {
+          "status": "ok",
+          "result": {
+            "status": "success",
+            "errors": [],
+            "source_path": "08df4510e18798541da665434bd9f570.md",
+            "meta": {},
+            "root_uri": "viking://resources/rag/integration_fixture/revision_d8505d20bb7e/08df4510e18798541da665434bd9f570",
+            "temp_uri": "<isolated-workspace>/parse/artifact-fb87906bb0d943e98e586685b4bb0cb8/08df4510e18798541da665434bd9f570",
+            "queue_status": {
+              "Semantic": {
+                "processed": 0,
+                "requeue_count": 0,
+                "error_count": 0,
+                "errors": []
+              },
+              "Embedding": {
+                "processed": 1,
+                "requeue_count": 0,
+                "error_count": 0,
+                "errors": []
+              }
+            },
+            "context_count": 1,
+            "telemetry": {
+              "id": "tm_e650055f065a40739f10a4b7f37e790e",
+              "summary": {
+                "operation": "add_resource_job",
+                "status": "ok",
+                "duration_ms": 163.595,
+                "tokens": {
+                  "total": 17,
+                  "embedding": {
+                    "total": 17
+                  },
+                  "stages": {
+                    "embed_resource": {
+                      "embedding": {
+                        "total": 17
+                      }
+                    }
+                  }
+                },
+                "queue": {
+                  "embedding": {
+                    "processed": 1,
+                    "queue_wait": {
+                      "duration_ms": 59.211
+                    },
+                    "execute": {
+                      "duration_ms": 30.007
+                    }
+                  }
+                },
+                "resource": {
+                  "total": {
+                    "duration_ms": 163.594
+                  },
+                  "source_execute": {
+                    "duration_ms": 6.058
+                  },
+                  "source_prepare": {
+                    "duration_ms": 1.483
+                  },
+                  "parse_artifact": {
+                    "duration_ms": 1.025
+                  },
+                  "target_resolve": {
+                    "duration_ms": 0.189
+                  },
+                  "update_plan": {
+                    "duration_ms": 0.959,
+                    "artifact_inventory": {
+                      "duration_ms": 0.265
+                    },
+                    "rnfv_snapshot": {
+                      "duration_ms": 0.424
+                    },
+                    "diff_and_compile": {
+                      "duration_ms": 0.241
+                    }
+                  },
+                  "content_commit": {
+                    "duration_ms": 0.999
+                  },
+                  "derived_enqueue": {
+                    "duration_ms": 1.258
+                  },
+                  "embedding": {
+                    "queue_wait": {
+                      "duration_ms": 59.211
+                    },
+                    "execute": {
+                      "duration_ms": 30.007
+                    }
+                  },
+                  "flags": {
+                    "wait": false,
+                    "build_index": true,
+                    "summarize": false,
+                    "watch_enabled": false
+                  }
+                }
+              }
+            },
+            "usage": {
+              "tokens": {
+                "total": 17,
+                "embedding": {
+                  "total": 17
+                },
+                "stages": {
+                  "embed_resource": {
+                    "embedding": {
+                      "total": 17
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/content/read",
+        "query": "uri=viking%3A%2F%2Fresources%2Frag%2Fintegration_fixture%2Frevision_d8505d20bb7e%2F08df4510e18798541da665434bd9f570%2F08df4510e18798541da665434bd9f570.md&raw=true",
+        "started_utc": "2026-11-05T16:59:46Z",
+        "status": 200,
+        "elapsed_ms": 1.71,
+        "response_sha256": "4299a83d4edc1f34b605073a1597b6ff84de29816355961b4eb5e6d4c7fa973d",
+        "response": {
+          "status": "ok",
+          "result": "Ocean currents transport heat across the sea. Wind drives surface water.",
+          "error": null,
+          "telemetry": null,
+          "profile": null
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/api/v1/search/find",
+        "query": "",
+        "started_utc": "2026-11-05T16:59:46Z",
+        "status": 200,
+        "elapsed_ms": 21.23,
+        "response_sha256": "4541761080e7c04e5ae8b5063eb0b61b728043d818e046a34b6e75cc96598a9f",
+        "response": {
+          "status": "ok",
+          "result": {
+            "memories": [],
+            "resources": [
+              {
+                "context_type": "resource",
+                "uri": "viking://resources/rag/integration_fixture/revision_d8505d20bb7e/08df4510e18798541da665434bd9f570/08df4510e18798541da665434bd9f570.md",
+                "level": 2,
+                "score": 0.9408780336380005,
+                "abstract": "",
+                "tags": []
+              },
+              {
+                "context_type": "resource",
+                "uri": "viking://resources/rag/integration_fixture/revision_d8505d20bb7e/97664f41074101531091badfdce23371/97664f41074101531091badfdce23371.md",
+                "level": 2,
+                "score": 0.7571969032287598,
+                "abstract": "",
+                "tags": []
+              }
+            ],
+            "skills": [],
+            "total": 2
+          }
+        }
+      },
+      {
+        "method": "POST",
+        "path": "/api/v1/search/find",
+        "query": "",
+        "started_utc": "2026-11-05T16:59:46Z",
+        "status": 200,
+        "elapsed_ms": 20.24,
+        "response_sha256": "a724f78e8437bd966f30658dae1e4187815810586fa1392d0349823dc951d9b8",
+        "response": {
+          "status": "ok",
+          "result": {
+            "memories": [],
+            "resources": [
+              {
+                "context_type": "resource",
+                "uri": "viking://resources/rag/integration_fixture/revision_d8505d20bb7e/97664f41074101531091badfdce23371/97664f41074101531091badfdce23371.md",
+                "level": 2,
+                "score": 0.9618721008300781,
+                "abstract": "",
+                "tags": []
+              },
+              {
+                "context_type": "resource",
+                "uri": "viking://resources/rag/integration_fixture/revision_d8505d20bb7e/08df4510e18798541da665434bd9f570/08df4510e18798541da665434bd9f570.md",
+                "level": 2,
+                "score": 0.7555495500564575,
+                "abstract": "",
+                "tags": []
+              }
+            ],
+            "skills": [],
+            "total": 2
+          }
+        }
+      }
+    ],
+    "code_sha256": {
+      "evidence_rag/__init__.py": "530de0972cc52557a06e77fc645c5f72c6db0e46d33ab48f5e857f369b0d12e6",
+      "evidence_rag/answer.py": "a5747cd5a9e61acd3c2eb51ad6b11fd065cc9b1442c51d31d0122deb1091035f",
+      "evidence_rag/api.py": "b3ad29c70b3f4746a93975b1501f485a2c631d6f8760c654f7d6a25da682752c",
+      "evidence_rag/budget.py": "72670d033e4d8ce6363c7504b84f0e14b121e61e312eb8eb243c488482ce70fb",
+      "evidence_rag/catalog.py": "97249bd15a65c041e437823acb5515fbd47f0055ace1659326fa908c1254ef1a",
+      "evidence_rag/cli.py": "721ec25334fec0c5fe989141aa05324a7dded15ec5526d3209d9686fe28a1f27",
+      "evidence_rag/generate_benchmark.py": "16d0beafab70dbf9afab9d0ba551aafcf61c0220e2f8303919597d38a18e5ac2",
+      "evidence_rag/ingest.py": "247c3bddebc869295be4cd30c54f59dfd22de796d3fdffd48f7f30856a517e23",
+      "evidence_rag/model_experiment.py": "b23f90710b7498588761e649ea4064b21728fd7c192f51837fb6be3755ad850b",
+      "evidence_rag/retrieval.py": "2eaf9c0ba3101e127647971bebf395d081556f7ae4ca45f9dd950d0b894f851a",
+      "evidence_rag/viking_index.py": "5b898c3a7fa484d3f4bdde019838ab237c6072c44a5bf08262a9d6512ceedc76"
+    }
+  },
+  "limitation": "Synthetic integration; not public benchmark or human quality validation."
+}

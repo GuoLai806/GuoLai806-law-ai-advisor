@@ -1,0 +1,6 @@
+{
+  "url": "https://wb.flk.npc.gov.cn/flfg/PDF/bd53dd912c1048f2aecbaa229238334b.pdf",
+  "timestamp_utc": "2026-11-05T15:35:24Z",
+  "error": "URLError",
+  "message": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1010)>"
+}

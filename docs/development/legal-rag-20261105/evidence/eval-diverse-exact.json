@@ -1,0 +1,4417 @@
+{
+  "dataset_kind": "synthetic-source-derived-not-human-verified",
+  "variant": "exact",
+  "revision": "repository-unverified",
+  "corpus_manifest": {
+    "doc_id": "cn-civil-code",
+    "effective_from": null,
+    "effective_to": null,
+    "extracted_text_sha256": "37cd6b887c9c5bf89293d4433fbf3b4231714643b8773884a0285c117b9f35d4",
+    "issuer": "全国人民代表大会",
+    "note": "仓库内 PDF 仅供离线解析，来源、文本完整性及版本尚未完成核验，不能作为权威资料激活。",
+    "parser_version": "article-v4-section-crosscheck",
+    "source_kind": "repository-source-unverified",
+    "source_sha256": "4cef5e4a1e5f82c5a52e949093ba0cfec4f7290e78d04d837c292e2a62c4065e",
+    "source_url": null,
+    "title": "中华人民共和国民法典",
+    "verification_state": "pending",
+    "version_id": "2020-repository-pdf"
+  },
+  "timestamp_utc": "2026-11-05T16:38:49Z",
+  "dataset_sha256": "0a238aba2af687516ae03191e2eddc57cd2e7843328d33377ac0f29d69fcdba0",
+  "results": [
+    {
+      "query": "请查询第一条",
+      "generation": "exact",
+      "expected_labels": [
+        "第一条"
+      ],
+      "ranked_labels": [
+        "第一条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.853,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第二条",
+      "generation": "exact",
+      "expected_labels": [
+        "第二条"
+      ],
+      "ranked_labels": [
+        "第二条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.323,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第三条",
+      "generation": "exact",
+      "expected_labels": [
+        "第三条"
+      ],
+      "ranked_labels": [
+        "第三条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.318,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第四条",
+      "generation": "exact",
+      "expected_labels": [
+        "第四条"
+      ],
+      "ranked_labels": [
+        "第四条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.314,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第五条",
+      "generation": "exact",
+      "expected_labels": [
+        "第五条"
+      ],
+      "ranked_labels": [
+        "第五条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.313,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第六条",
+      "generation": "exact",
+      "expected_labels": [
+        "第六条"
+      ],
+      "ranked_labels": [
+        "第六条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.32,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第七条",
+      "generation": "exact",
+      "expected_labels": [
+        "第七条"
+      ],
+      "ranked_labels": [
+        "第七条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.301,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第八条",
+      "generation": "exact",
+      "expected_labels": [
+        "第八条"
+      ],
+      "ranked_labels": [
+        "第八条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.327,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第九条",
+      "generation": "exact",
+      "expected_labels": [
+        "第九条"
+      ],
+      "ranked_labels": [
+        "第九条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.239,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第十条",
+      "generation": "exact",
+      "expected_labels": [
+        "第十条"
+      ],
+      "ranked_labels": [
+        "第十条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.207,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第十一条",
+      "generation": "exact",
+      "expected_labels": [
+        "第十一条"
+      ],
+      "ranked_labels": [
+        "第十一条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.24,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第十二条",
+      "generation": "exact",
+      "expected_labels": [
+        "第十二条"
+      ],
+      "ranked_labels": [
+        "第十二条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.274,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第十三条",
+      "generation": "exact",
+      "expected_labels": [
+        "第十三条"
+      ],
+      "ranked_labels": [
+        "第十三条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.389,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第十四条",
+      "generation": "exact",
+      "expected_labels": [
+        "第十四条"
+      ],
+      "ranked_labels": [
+        "第十四条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.308,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第十五条",
+      "generation": "exact",
+      "expected_labels": [
+        "第十五条"
+      ],
+      "ranked_labels": [
+        "第十五条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.373,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第十六条",
+      "generation": "exact",
+      "expected_labels": [
+        "第十六条"
+      ],
+      "ranked_labels": [
+        "第十六条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.272,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第十七条",
+      "generation": "exact",
+      "expected_labels": [
+        "第十七条"
+      ],
+      "ranked_labels": [
+        "第十七条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.248,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第十八条",
+      "generation": "exact",
+      "expected_labels": [
+        "第十八条"
+      ],
+      "ranked_labels": [
+        "第十八条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.31,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第十九条",
+      "generation": "exact",
+      "expected_labels": [
+        "第十九条"
+      ],
+      "ranked_labels": [
+        "第十九条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.328,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第二十条",
+      "generation": "exact",
+      "expected_labels": [
+        "第二十条"
+      ],
+      "ranked_labels": [
+        "第二十条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.313,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第二十一条",
+      "generation": "exact",
+      "expected_labels": [
+        "第二十一条"
+      ],
+      "ranked_labels": [
+        "第二十一条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.311,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第二十二条",
+      "generation": "exact",
+      "expected_labels": [
+        "第二十二条"
+      ],
+      "ranked_labels": [
+        "第二十二条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.308,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第二十三条",
+      "generation": "exact",
+      "expected_labels": [
+        "第二十三条"
+      ],
+      "ranked_labels": [
+        "第二十三条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.373,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第二十四条",
+      "generation": "exact",
+      "expected_labels": [
+        "第二十四条"
+      ],
+      "ranked_labels": [
+        "第二十四条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.301,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第二十五条",
+      "generation": "exact",
+      "expected_labels": [
+        "第二十五条"
+      ],
+      "ranked_labels": [
+        "第二十五条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.516,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第二十六条",
+      "generation": "exact",
+      "expected_labels": [
+        "第二十六条"
+      ],
+      "ranked_labels": [
+        "第二十六条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.348,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第二十七条",
+      "generation": "exact",
+      "expected_labels": [
+        "第二十七条"
+      ],
+      "ranked_labels": [
+        "第二十七条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.33,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第二十八条",
+      "generation": "exact",
+      "expected_labels": [
+        "第二十八条"
+      ],
+      "ranked_labels": [
+        "第二十八条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.347,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第二十九条",
+      "generation": "exact",
+      "expected_labels": [
+        "第二十九条"
+      ],
+      "ranked_labels": [
+        "第二十九条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.312,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第三十条",
+      "generation": "exact",
+      "expected_labels": [
+        "第三十条"
+      ],
+      "ranked_labels": [
+        "第三十条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.397,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第三十一条",
+      "generation": "exact",
+      "expected_labels": [
+        "第三十一条"
+      ],
+      "ranked_labels": [
+        "第三十一条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.32,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第三十二条",
+      "generation": "exact",
+      "expected_labels": [
+        "第三十二条"
+      ],
+      "ranked_labels": [
+        "第三十二条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.283,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第三十三条",
+      "generation": "exact",
+      "expected_labels": [
+        "第三十三条"
+      ],
+      "ranked_labels": [
+        "第三十三条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.264,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第三十四条",
+      "generation": "exact",
+      "expected_labels": [
+        "第三十四条"
+      ],
+      "ranked_labels": [
+        "第三十四条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.297,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第三十五条",
+      "generation": "exact",
+      "expected_labels": [
+        "第三十五条"
+      ],
+      "ranked_labels": [
+        "第三十五条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.286,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第三十六条",
+      "generation": "exact",
+      "expected_labels": [
+        "第三十六条"
+      ],
+      "ranked_labels": [
+        "第三十六条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.299,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第三十七条",
+      "generation": "exact",
+      "expected_labels": [
+        "第三十七条"
+      ],
+      "ranked_labels": [
+        "第三十七条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.315,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第三十八条",
+      "generation": "exact",
+      "expected_labels": [
+        "第三十八条"
+      ],
+      "ranked_labels": [
+        "第三十八条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.35,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第三十九条",
+      "generation": "exact",
+      "expected_labels": [
+        "第三十九条"
+      ],
+      "ranked_labels": [
+        "第三十九条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.361,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第四十条",
+      "generation": "exact",
+      "expected_labels": [
+        "第四十条"
+      ],
+      "ranked_labels": [
+        "第四十条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.347,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第四十一条",
+      "generation": "exact",
+      "expected_labels": [
+        "第四十一条"
+      ],
+      "ranked_labels": [
+        "第四十一条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.346,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第四十二条",
+      "generation": "exact",
+      "expected_labels": [
+        "第四十二条"
+      ],
+      "ranked_labels": [
+        "第四十二条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.319,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第四十三条",
+      "generation": "exact",
+      "expected_labels": [
+        "第四十三条"
+      ],
+      "ranked_labels": [
+        "第四十三条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.34,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第四十四条",
+      "generation": "exact",
+      "expected_labels": [
+        "第四十四条"
+      ],
+      "ranked_labels": [
+        "第四十四条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.331,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第四十五条",
+      "generation": "exact",
+      "expected_labels": [
+        "第四十五条"
+      ],
+      "ranked_labels": [
+        "第四十五条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.333,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第四十六条",
+      "generation": "exact",
+      "expected_labels": [
+        "第四十六条"
+      ],
+      "ranked_labels": [
+        "第四十六条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.321,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第四十七条",
+      "generation": "exact",
+      "expected_labels": [
+        "第四十七条"
+      ],
+      "ranked_labels": [
+        "第四十七条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.315,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第四十八条",
+      "generation": "exact",
+      "expected_labels": [
+        "第四十八条"
+      ],
+      "ranked_labels": [
+        "第四十八条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.309,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第四十九条",
+      "generation": "exact",
+      "expected_labels": [
+        "第四十九条"
+      ],
+      "ranked_labels": [
+        "第四十九条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.307,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第五十条",
+      "generation": "exact",
+      "expected_labels": [
+        "第五十条"
+      ],
+      "ranked_labels": [
+        "第五十条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.32,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第五十一条",
+      "generation": "exact",
+      "expected_labels": [
+        "第五十一条"
+      ],
+      "ranked_labels": [
+        "第五十一条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.343,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第五十二条",
+      "generation": "exact",
+      "expected_labels": [
+        "第五十二条"
+      ],
+      "ranked_labels": [
+        "第五十二条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.314,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第五十三条",
+      "generation": "exact",
+      "expected_labels": [
+        "第五十三条"
+      ],
+      "ranked_labels": [
+        "第五十三条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.385,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第五十四条",
+      "generation": "exact",
+      "expected_labels": [
+        "第五十四条"
+      ],
+      "ranked_labels": [
+        "第五十四条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.254,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第五十五条",
+      "generation": "exact",
+      "expected_labels": [
+        "第五十五条"
+      ],
+      "ranked_labels": [
+        "第五十五条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.286,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第五十六条",
+      "generation": "exact",
+      "expected_labels": [
+        "第五十六条"
+      ],
+      "ranked_labels": [
+        "第五十六条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.303,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第五十七条",
+      "generation": "exact",
+      "expected_labels": [
+        "第五十七条"
+      ],
+      "ranked_labels": [
+        "第五十七条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.308,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第五十八条",
+      "generation": "exact",
+      "expected_labels": [
+        "第五十八条"
+      ],
+      "ranked_labels": [
+        "第五十八条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.307,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第五十九条",
+      "generation": "exact",
+      "expected_labels": [
+        "第五十九条"
+      ],
+      "ranked_labels": [
+        "第五十九条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.323,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第六十条",
+      "generation": "exact",
+      "expected_labels": [
+        "第六十条"
+      ],
+      "ranked_labels": [
+        "第六十条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.31,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第六十一条",
+      "generation": "exact",
+      "expected_labels": [
+        "第六十一条"
+      ],
+      "ranked_labels": [
+        "第六十一条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.296,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第六十二条",
+      "generation": "exact",
+      "expected_labels": [
+        "第六十二条"
+      ],
+      "ranked_labels": [
+        "第六十二条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.231,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第六十三条",
+      "generation": "exact",
+      "expected_labels": [
+        "第六十三条"
+      ],
+      "ranked_labels": [
+        "第六十三条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.265,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第六十四条",
+      "generation": "exact",
+      "expected_labels": [
+        "第六十四条"
+      ],
+      "ranked_labels": [
+        "第六十四条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.296,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第六十五条",
+      "generation": "exact",
+      "expected_labels": [
+        "第六十五条"
+      ],
+      "ranked_labels": [
+        "第六十五条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.307,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第六十六条",
+      "generation": "exact",
+      "expected_labels": [
+        "第六十六条"
+      ],
+      "ranked_labels": [
+        "第六十六条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.285,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第六十七条",
+      "generation": "exact",
+      "expected_labels": [
+        "第六十七条"
+      ],
+      "ranked_labels": [
+        "第六十七条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.298,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第六十八条",
+      "generation": "exact",
+      "expected_labels": [
+        "第六十八条"
+      ],
+      "ranked_labels": [
+        "第六十八条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.299,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第六十九条",
+      "generation": "exact",
+      "expected_labels": [
+        "第六十九条"
+      ],
+      "ranked_labels": [
+        "第六十九条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.304,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第七十条",
+      "generation": "exact",
+      "expected_labels": [
+        "第七十条"
+      ],
+      "ranked_labels": [
+        "第七十条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.292,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第七十一条",
+      "generation": "exact",
+      "expected_labels": [
+        "第七十一条"
+      ],
+      "ranked_labels": [
+        "第七十一条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.277,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第七十二条",
+      "generation": "exact",
+      "expected_labels": [
+        "第七十二条"
+      ],
+      "ranked_labels": [
+        "第七十二条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.282,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第七十三条",
+      "generation": "exact",
+      "expected_labels": [
+        "第七十三条"
+      ],
+      "ranked_labels": [
+        "第七十三条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.275,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第七十四条",
+      "generation": "exact",
+      "expected_labels": [
+        "第七十四条"
+      ],
+      "ranked_labels": [
+        "第七十四条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.403,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "请查询第七十五条",
+      "generation": "exact",
+      "expected_labels": [
+        "第七十五条"
+      ],
+      "ranked_labels": [
+        "第七十五条"
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_ms": 1.315,
+      "empty_retrieval": false,
+      "expect_empty": false,
+      "failure": null
+    },
+    {
+      "query": "关于“为了保护民事主体的合法权益，调整民事”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第一条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.02,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“民法调整平等主体的自然人、法人和非法”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第二条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.004,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“民事主体的人身权利、财产权利以及其他”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第三条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“民事主体在民事活动中的法律地位一律平”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第四条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“民事主体从事民事活动，应当遵循自愿原”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第五条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“民事主体从事民事活动，应当遵循公平原”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第六条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“民事主体从事民事活动，应当遵循诚信原”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第七条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“民事主体从事民事活动，不得违反法律，”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第八条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“民事主体从事民事活动，应当有利于节约”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第九条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“处理民事纠纷，应当依照法律；法律没有”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第十条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“其他法律对民事关系有特别规定的，依照”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第十一条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“中华人民共和国领域内的民事活动，适用”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第十二条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“自然人从出生时起到死亡时止，具有民事”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第十三条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“自然人的民事权利能力一律平等。”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第十四条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“自然人的出生时间和死亡时间，以出生证”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第十五条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“涉及遗产继承、接受赠与等胎儿利益保护”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第十六条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“十八周岁以上的自然人为成年人。不满十”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第十七条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“成年人为完全民事行为能力人，可以独立”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第十八条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“八周岁以上的未成年人为限制民事行为能”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第十九条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“不满八周岁的未成年人为无民事行为能力”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第二十条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“不能辨认自己行为的成年人为无民事行为”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第二十一条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“不能完全辨认自己行为的成年人为限制民”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第二十二条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“无民事行为能力人、限制民事行为能力人”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第二十三条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“不能辨认或者不能完全辨认自己行为的成”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第二十四条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“自然人以户籍登记或者其他有效身份登记”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第二十五条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“父母对未成年子女负有抚养、教育和保护”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第二十六条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“父母是未成年子女的监护人。未成年人的”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第二十七条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“无民事行为能力或者限制民事行为能力的”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第二十八条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“被监护人的父母担任监护人的，可以通过”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第二十九条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“依法具有监护资格的人之间可以协议确定”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第三十条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“对监护人的确定有争议的，由被监护人住”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第三十一条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“没有依法具有监护资格的人的，监护人由”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第三十二条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“具有完全民事行为能力的成年人，可以与”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第三十三条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“监护人的职责是代理被监护人实施民事法”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第三十四条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“监护人应当按照最有利于被监护人的原则”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第三十五条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“监护人有下列情形之一的，人民法院根据”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第三十六条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“依法负担被监护人抚养费、赡养费、扶养”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第三十七条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“被监护人的父母或者子女被人民法院撤销”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第三十八条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“有下列情形之一的，监护关系终止：（一”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第三十九条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“自然人下落不明满二年的，利害关系人可”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第四十条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“自然人下落不明的时间自其失去音讯之日”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第四十一条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“失踪人的财产由其配偶、成年子女、父母”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第四十二条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“财产代管人应当妥善管理失踪人的财产，”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第四十三条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“财产代管人不履行代管职责、侵害失踪人”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第四十四条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“失踪人重新出现，经本人或者利害关系人”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第四十五条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“自然人有下列情形之一的，利害关系人可”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第四十六条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“对同一自然人，有的利害关系人申请宣告”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第四十七条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“被宣告死亡的人，人民法院宣告死亡的判”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第四十八条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“自然人被宣告死亡但是并未死亡的，不影”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第四十九条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“被宣告死亡的人重新出现，经本人或者利”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第五十条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“被宣告死亡的人的婚姻关系，自死亡宣告”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第五十一条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.004,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“被宣告死亡的人在被宣告死亡期间，其子”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第五十二条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“被撤销死亡宣告的人有权请求依照本法第”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第五十三条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“自然人从事工商业经营，经依法登记，为”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第五十四条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“农村集体经济组织的成员，依法取得农村”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第五十五条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“个体工商户的债务，个人经营的，以个人”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第五十六条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“法人是具有民事权利能力和民事行为能力”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第五十七条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“法人应当依法成立。法人应当有自己的名”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第五十八条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“法人的民事权利能力和民事行为能力，从”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第五十九条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“法人以其全部财产独立承担民事责任。”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第六十条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“依照法律或者法人章程的规定，代表法人”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第六十一条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“法定代表人因执行职务造成他人损害的，”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第六十二条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“法人以其主要办事机构所在地为住所。依”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第六十三条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“法人存续期间登记事项发生变化的，应当”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第六十四条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“法人的实际情况与登记的事项不一致的，”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第六十五条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“登记机关应当依法及时公示法人登记的有”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第六十六条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“法人合并的，其权利和义务由合并后的法”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第六十七条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“有下列原因之一并依法完成清算、注销登”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第六十八条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“有下列情形之一的，法人解散：（一）法”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第六十九条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“法人解散的，除合并或者分立的情形外，”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第七十条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“法人的清算程序和清算组职权，依照有关”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第七十一条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“清算期间法人存续，但是不得从事与清算”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第七十二条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“法人被宣告破产的，依法进行破产清算并”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第七十三条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“法人可以依法设立分支机构。法律、行政”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第七十四条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "关于“设立人为设立法人从事的民事活动，其法”的规定是什么？",
+      "generation": "excerpt",
+      "expected_labels": [
+        "第七十五条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "为了 保护 民事 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第一条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "民法 调整 平等 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第二条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "民事 主体 人身 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第三条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "民事 主体 民事 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第四条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.001,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "民事 主体 从事 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第五条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "民事 主体 从事 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第六条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "民事 主体 从事 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第七条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "民事 主体 从事 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第八条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "民事 主体 从事 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第九条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "处理 民事 纠纷 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第十条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "其他 法律 民事 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第十一条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.001,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "中华 华人 人民 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第十二条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "自然 自然人 出生 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第十三条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "自然 自然人 民事 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第十四条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "自然 自然人 出生 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第十五条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "涉及 遗产 继承 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第十六条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.001,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "十八 八周 周岁 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第十七条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.001,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "成年 成年人 完全 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第十八条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "周岁 以上 未成 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第十九条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "不满 周岁 未成 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第二十条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "不能 辨认 自己 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第二十一条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "不能 完全 辨认 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第二十二条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "民事 行为 民事行为 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第二十三条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "不能 辨认 或者 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第二十四条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "自然 自然人 户籍 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第二十五条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "父母 未成 成年 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第二十六条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "父母 未成 成年 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第二十七条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "民事 行为 民事行为 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第二十八条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "监护 护人 监护人 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第二十九条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "依法 具有 监护 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第三十条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "监护 护人 监护人 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第三十一条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "没有 依法 具有 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第三十二条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.001,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "具有 完全 民事 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第三十三条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.001,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "监护 护人 监护人 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第三十四条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "监护 护人 监护人 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第三十五条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "监护 护人 监护人 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第三十六条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "依法 负担 监护 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第三十七条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "监护 护人 监护人 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第三十八条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "下列 情形 之一 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第三十九条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.001,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "自然 自然人 下落 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第四十条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "自然 自然人 下落 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第四十一条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "失踪 财产 配偶 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第四十二条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "财产 代管 管人 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第四十三条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "财产 代管 管人 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第四十四条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "失踪 重新 出现 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第四十五条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.001,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "自然 自然人 下列 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第四十六条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "同一 自然 自然人 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第四十七条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "宣告 死亡 人民 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第四十八条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "自然 自然人 宣告 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第四十九条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "宣告 死亡 重新 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第五十条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "宣告 死亡 婚姻 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第五十一条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "宣告 死亡 宣告 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第五十二条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "撤销 死亡 宣告 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第五十三条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "自然 自然人 从事 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第五十四条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "农村 集体 经济 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第五十五条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "个体 工商 商户 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第五十六条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.001,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "法人 具有 民事 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第五十七条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.001,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "法人 应当 依法 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第五十八条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "法人 民事 事权 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第五十九条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "法人 全部 财产 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第六十条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "依照 法律 或者 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第六十一条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "法定 代表 法定代表 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第六十二条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "法人 主要 办事 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第六十三条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "法人 存续 期间 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第六十四条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.001,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "法人 实际 情况 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第六十五条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "登记 机关 应当 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第六十六条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.001,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "法人 合并 权利 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第六十七条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "下列 原因 之一 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第六十八条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.001,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "下列 情形 之一 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第六十九条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "法人 解散 合并 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第七十条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "法人 清算 程序 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第七十一条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.001,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "清算 期间 法人 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第七十二条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "法人 宣告 告破 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第七十三条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "法人 可以 依法 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第七十四条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "设立 人为 设立 有什么规定？",
+      "generation": "keywords",
+      "expected_labels": [
+        "第七十五条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“任何组织或者个人不得侵犯。”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第三条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“体从事民事活动，不得违反法律，不得违”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第八条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“，可以适用习惯，但是不得违背公序良俗”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第十条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“有民事权利能力。但是，胎儿娩出时为死”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第十六条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“理人同意、追认；但是，可以独立实施纯”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第十九条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“理人同意、追认；但是，可以独立实施纯”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第二十二条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“的个人或者组织，但是须经未成年人住所”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第二十七条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“的个人或者组织，但是须经被监护人住所”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第二十八条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“监护人被指定后，不得擅自变更；擅自变”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第三十一条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“被监护人利益外，不得处分被监护人的财”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第三十五条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“自然人被宣告死亡但是并未死亡的，不影”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第四十九条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“之日起自行恢复。但是，其配偶再婚或者”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第五十一条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“亡宣告被撤销后，不得以未经本人同意为”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第五十二条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“人代表权的限制，不得对抗善意相对人。”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第六十一条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“的事项不一致的，不得对抗善意相对人。”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第六十五条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“，承担连带债务，但是债权人和债务人另”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第六十七条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“算期间法人存续，但是不得从事与清算无”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第七十二条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“营利法人的出资人不得滥用出资人权利损”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第八十三条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“事、高级管理人员不得利用其关联关系损”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第八十四条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“法院撤销该决议。但是，营利法人依据该”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第八十五条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“法院撤销该决定。但是，捐助法人依据该”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第九十四条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“营利法人终止时，不得向出资人、设立人”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第九十五条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“不具有法人资格，但是能够依法以自己的”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第一百零二条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“并确保信息安全，不得非法收集、使用、”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第一百一十一条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“民事主体不得滥用民事权利损害”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第一百三十二条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“为自成立时生效，但是法律另有规定或者”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第一百三十六条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“事法律行为无效。但是，该强制性规定不”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第一百五十三条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“行为可以附条件，但是根据其性质不得附”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第一百五十八条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“行为可以附期限，但是根据其性质不得附”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第一百六十条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“的民事法律行为，不得代理。”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第一百六十一条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“共同行使代理权，但是当事人另有约定的”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第一百六十六条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“代理人不得以被代理人的名义”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第一百六十八条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“的行为承担责任；但是，在紧急情况下代”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第一百六十九条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“职权范围的限制，不得对抗善意相对人。”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第一百七十条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“请求行为人赔偿。但是，赔偿的范围不得”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第一百七十一条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“的，依照其规定。但是，自权利受到损害”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第一百八十八条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“务人同意履行的，不得以诉讼时效期间届”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第一百九十二条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“人民法院不得主动适用诉讼时效”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第一百九十三条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“依照本法的规定，但是法律另有规定或者”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第二百零四条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“任何组织或者个人不得侵犯。”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第二百零七条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“记，不发生效力，但是法律另有规定的除”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第二百零九条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“登记机构不得有下列行为：（一”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第二百一十三条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“利害关系人不得公开、非法使用权”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第二百一十九条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“登记费按件收取，不得按照不动产的面积”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第二百二十三条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“交付时发生效力，但是法律另有规定的除”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第二百二十四条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“消灭，未经登记，不得对抗善意第三人。”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第二百二十五条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“物权人行使权利，不得损害所有权人的权”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第二百四十一条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“任何组织或者个人不得贪污、挪用、私分”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第二百四十三条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“制建设用地总量。不得违反法律规定的权”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第二百四十四条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“，属于国家所有，但是法律规定属于集体”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第二百五十条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“利。业主行使权利不得危及建筑物的安全”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第二百七十二条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“权利，承担义务；不得以放弃权利为由不”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第二百七十三条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“，属于业主共有，但是属于城镇公共道路”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第二百七十四条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“业主不得违反法律、法规以”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第二百七十九条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“建造建筑物，不得违反国家有关工程”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第二百九十三条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“不动产权利人不得违反国家规定弃置”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第二百九十四条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“以及安装设备等，不得危及相邻不动产的”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第二百九十五条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“共同共有人同意，但是共有人之间另有约”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第三百零一条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“共有人约定不得分割共有的不动产”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第三百零三条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“、承担连带债务，但是法律另有规定或者”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第三百零七条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“人请求返还原物；但是，受让人通过拍卖”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第三百一十二条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“的原有权利消灭。但是，善意受让人在受”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第三百一十三条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“从物随主物转让，但是当事人另有约定的”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第三百二十条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“源有偿使用制度，但是法律另有规定的除”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第三百二十五条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“的规定。所有权人不得干涉用益物权人行”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第三百二十六条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“。未经依法批准，不得将承包地用于非农”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第三百三十四条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.016,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“登记；未经登记，不得对抗善意第三人。”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第三百三十五条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“承包期内发包人不得调整承包地。因自”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第三百三十六条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“承包期内发包人不得收回承包地。法律”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第三百三十七条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“登记；未经登记，不得对抗善意第三人。”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第三百四十一条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.002,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“土地用途的规定，不得损害已经设立的用”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第三百四十六条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“当合理利用土地，不得改变土地用途；需”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第三百五十条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“设用地使用权人，但是有相反证据证明的”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第三百五十二条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“、赠与或者抵押，但是法律另有规定的除”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第三百五十三条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    },
+    {
+      "query": "规定中“限由当事人约定，但是不得超过建设用地”有哪些条件？",
+      "generation": "exception",
+      "expected_labels": [
+        "第三百五十四条"
+      ],
+      "ranked_labels": [],
+      "recall_at_20": 0.0,
+      "ndcg_at_10": 0.0,
+      "latency_ms": 0.003,
+      "empty_retrieval": true,
+      "expect_empty": false,
+      "failure": "miss"
+    }
+  ],
+  "code_sha256": {
+    "legal_rag/__init__.py": "530de0972cc52557a06e77fc645c5f72c6db0e46d33ab48f5e857f369b0d12e6",
+    "legal_rag/answer.py": "5b334c78b00ba06bc958b5d4166487c4f0a42bd403b23cabc89894729e243564",
+    "legal_rag/api.py": "194dbda764c19f413f59c2cc57c7f94e4f0d0b456dbb15da8a9d1737e44efafe",
+    "legal_rag/budget.py": "72670d033e4d8ce6363c7504b84f0e14b121e61e312eb8eb243c488482ce70fb",
+    "legal_rag/catalog.py": "067c9adc724807bb11859d0cba80d84ef4237f6637cf0d99ee5e5e0463681f76",
+    "legal_rag/cli.py": "63743591eaadda29649d2e6964d445e3af149a477630e5ad6d817a166f942861",
+    "legal_rag/generate_benchmark.py": "16d0beafab70dbf9afab9d0ba551aafcf61c0220e2f8303919597d38a18e5ac2",
+    "legal_rag/model_experiment.py": "afb20658de0be8c1a246c2c9c327761abddaca2acc85ec60a8e15414b02af140",
+    "legal_rag/retrieval.py": "a94ca15ecd3266dfc91923debde9ee2c7f94756d605b7a1884a44cf20535d917",
+    "legal_rag/viking_index.py": "34fef1298b8468f35d3d16595286eaed732cc42b1e7010b6dc4a9ecb044c9fb7"
+  },
+  "mean_recall_at_20": 0.25,
+  "mean_ndcg_at_10": 0.25,
+  "empty_retrieval_proxy": {
+    "tp": 0,
+    "fp": 225,
+    "fn": 0,
+    "f1": 0.0,
+    "notice": "Only empty-retrieval proxy, not answer-level abstention or legal correctness"
+  },
+  "slices": {
+    "exact": {
+      "count": 75,
+      "mean_recall_at_20": 1.0,
+      "mean_ndcg_at_10": 1.0
+    },
+    "exception": {
+      "count": 75,
+      "mean_recall_at_20": 0.0,
+      "mean_ndcg_at_10": 0.0
+    },
+    "excerpt": {
+      "count": 75,
+      "mean_recall_at_20": 0.0,
+      "mean_ndcg_at_10": 0.0
+    },
+    "keywords": {
+      "count": 75,
+      "mean_recall_at_20": 0.0,
+      "mean_ndcg_at_10": 0.0
+    }
+  }
+}

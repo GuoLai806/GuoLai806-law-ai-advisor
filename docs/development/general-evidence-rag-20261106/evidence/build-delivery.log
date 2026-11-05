@@ -1,0 +1,117 @@
+* Creating isolated environment: venv+pip...
+* Installing packages in isolated environment:
+  - setuptools>=75
+* Getting build dependencies for wheel...
+running egg_info
+creating evidence_rag.egg-info
+writing evidence_rag.egg-info/PKG-INFO
+writing dependency_links to evidence_rag.egg-info/dependency_links.txt
+writing entry points to evidence_rag.egg-info/entry_points.txt
+writing requirements to evidence_rag.egg-info/requires.txt
+writing top-level names to evidence_rag.egg-info/top_level.txt
+writing manifest file 'evidence_rag.egg-info/SOURCES.txt'
+reading manifest file 'evidence_rag.egg-info/SOURCES.txt'
+writing manifest file 'evidence_rag.egg-info/SOURCES.txt'
+* Installed build dependency versions:
+  - setuptools==84.2.1
+* Building wheel...
+running bdist_wheel
+running build
+running build_py
+creating build/lib/legal_rag
+copying legal_rag/catalog.py -> build/lib/legal_rag
+copying legal_rag/answer.py -> build/lib/legal_rag
+copying legal_rag/budget.py -> build/lib/legal_rag
+copying legal_rag/__init__.py -> build/lib/legal_rag
+copying legal_rag/viking_index.py -> build/lib/legal_rag
+copying legal_rag/api.py -> build/lib/legal_rag
+copying legal_rag/cli.py -> build/lib/legal_rag
+copying legal_rag/retrieval.py -> build/lib/legal_rag
+copying legal_rag/model_experiment.py -> build/lib/legal_rag
+copying legal_rag/__main__.py -> build/lib/legal_rag
+copying legal_rag/generate_benchmark.py -> build/lib/legal_rag
+creating build/lib/evidence_rag
+copying evidence_rag/catalog.py -> build/lib/evidence_rag
+copying evidence_rag/ingest.py -> build/lib/evidence_rag
+copying evidence_rag/answer.py -> build/lib/evidence_rag
+copying evidence_rag/budget.py -> build/lib/evidence_rag
+copying evidence_rag/__init__.py -> build/lib/evidence_rag
+copying evidence_rag/viking_index.py -> build/lib/evidence_rag
+copying evidence_rag/api.py -> build/lib/evidence_rag
+copying evidence_rag/cli.py -> build/lib/evidence_rag
+copying evidence_rag/retrieval.py -> build/lib/evidence_rag
+copying evidence_rag/model_experiment.py -> build/lib/evidence_rag
+copying evidence_rag/__main__.py -> build/lib/evidence_rag
+copying evidence_rag/generate_benchmark.py -> build/lib/evidence_rag
+running egg_info
+writing evidence_rag.egg-info/PKG-INFO
+writing dependency_links to evidence_rag.egg-info/dependency_links.txt
+writing entry points to evidence_rag.egg-info/entry_points.txt
+writing requirements to evidence_rag.egg-info/requires.txt
+writing top-level names to evidence_rag.egg-info/top_level.txt
+reading manifest file 'evidence_rag.egg-info/SOURCES.txt'
+writing manifest file 'evidence_rag.egg-info/SOURCES.txt'
+installing to build/bdist.macosx-11.0-arm64/wheel
+running install
+running install_lib
+creating build/bdist.macosx-11.0-arm64/wheel
+creating build/bdist.macosx-11.0-arm64/wheel/legal_rag
+copying build/lib/legal_rag/catalog.py -> build/bdist.macosx-11.0-arm64/wheel/./legal_rag
+copying build/lib/legal_rag/answer.py -> build/bdist.macosx-11.0-arm64/wheel/./legal_rag
+copying build/lib/legal_rag/budget.py -> build/bdist.macosx-11.0-arm64/wheel/./legal_rag
+copying build/lib/legal_rag/__init__.py -> build/bdist.macosx-11.0-arm64/wheel/./legal_rag
+copying build/lib/legal_rag/viking_index.py -> build/bdist.macosx-11.0-arm64/wheel/./legal_rag
+copying build/lib/legal_rag/api.py -> build/bdist.macosx-11.0-arm64/wheel/./legal_rag
+copying build/lib/legal_rag/cli.py -> build/bdist.macosx-11.0-arm64/wheel/./legal_rag
+copying build/lib/legal_rag/retrieval.py -> build/bdist.macosx-11.0-arm64/wheel/./legal_rag
+copying build/lib/legal_rag/model_experiment.py -> build/bdist.macosx-11.0-arm64/wheel/./legal_rag
+copying build/lib/legal_rag/__main__.py -> build/bdist.macosx-11.0-arm64/wheel/./legal_rag
+copying build/lib/legal_rag/generate_benchmark.py -> build/bdist.macosx-11.0-arm64/wheel/./legal_rag
+creating build/bdist.macosx-11.0-arm64/wheel/evidence_rag
+copying build/lib/evidence_rag/catalog.py -> build/bdist.macosx-11.0-arm64/wheel/./evidence_rag
+copying build/lib/evidence_rag/ingest.py -> build/bdist.macosx-11.0-arm64/wheel/./evidence_rag
+copying build/lib/evidence_rag/answer.py -> build/bdist.macosx-11.0-arm64/wheel/./evidence_rag
+copying build/lib/evidence_rag/budget.py -> build/bdist.macosx-11.0-arm64/wheel/./evidence_rag
+copying build/lib/evidence_rag/__init__.py -> build/bdist.macosx-11.0-arm64/wheel/./evidence_rag
+copying build/lib/evidence_rag/viking_index.py -> build/bdist.macosx-11.0-arm64/wheel/./evidence_rag
+copying build/lib/evidence_rag/api.py -> build/bdist.macosx-11.0-arm64/wheel/./evidence_rag
+copying build/lib/evidence_rag/cli.py -> build/bdist.macosx-11.0-arm64/wheel/./evidence_rag
+copying build/lib/evidence_rag/retrieval.py -> build/bdist.macosx-11.0-arm64/wheel/./evidence_rag
+copying build/lib/evidence_rag/model_experiment.py -> build/bdist.macosx-11.0-arm64/wheel/./evidence_rag
+copying build/lib/evidence_rag/__main__.py -> build/bdist.macosx-11.0-arm64/wheel/./evidence_rag
+copying build/lib/evidence_rag/generate_benchmark.py -> build/bdist.macosx-11.0-arm64/wheel/./evidence_rag
+running install_egg_info
+Copying evidence_rag.egg-info to build/bdist.macosx-11.0-arm64/wheel/./evidence_rag-0.2.0-py3.12.egg-info
+running install_scripts
+creating build/bdist.macosx-11.0-arm64/wheel/evidence_rag-0.2.0.dist-info/WHEEL
+creating '<WORKSPACE>/outputs/development-20261105/rag-delivery-wheel/.tmp-r7hh9p33/evidence_rag-0.2.0-py3-none-any.whl' and adding 'build/bdist.macosx-11.0-arm64/wheel' to it
+adding 'evidence_rag/__init__.py'
+adding 'evidence_rag/__main__.py'
+adding 'evidence_rag/answer.py'
+adding 'evidence_rag/api.py'
+adding 'evidence_rag/budget.py'
+adding 'evidence_rag/catalog.py'
+adding 'evidence_rag/cli.py'
+adding 'evidence_rag/generate_benchmark.py'
+adding 'evidence_rag/ingest.py'
+adding 'evidence_rag/model_experiment.py'
+adding 'evidence_rag/retrieval.py'
+adding 'evidence_rag/viking_index.py'
+adding 'legal_rag/__init__.py'
+adding 'legal_rag/__main__.py'
+adding 'legal_rag/answer.py'
+adding 'legal_rag/api.py'
+adding 'legal_rag/budget.py'
+adding 'legal_rag/catalog.py'
+adding 'legal_rag/cli.py'
+adding 'legal_rag/generate_benchmark.py'
+adding 'legal_rag/model_experiment.py'
+adding 'legal_rag/retrieval.py'
+adding 'legal_rag/viking_index.py'
+adding 'evidence_rag-0.2.0.dist-info/METADATA'
+adding 'evidence_rag-0.2.0.dist-info/WHEEL'
+adding 'evidence_rag-0.2.0.dist-info/entry_points.txt'
+adding 'evidence_rag-0.2.0.dist-info/top_level.txt'
+adding 'evidence_rag-0.2.0.dist-info/RECORD'
+removing build/bdist.macosx-11.0-arm64/wheel
+Successfully built evidence_rag-0.2.0-py3-none-any.whl

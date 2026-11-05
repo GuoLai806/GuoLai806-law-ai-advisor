@@ -1,0 +1,28 @@
+{
+  "kind": "synthetic inference smoke; not benchmark score",
+  "model": "Qwen/Qwen3-Reranker-4B",
+  "revision": "22e683669bc0f0bd69640a1354a6d0aebcfeede5",
+  "device_requested": "mps",
+  "dtype_requested": "float16",
+  "batch_size": 2,
+  "status": "passed",
+  "actual_device": "mps:0",
+  "parameter_dtypes": [
+    "torch.float16"
+  ],
+  "tokenizer_chat_template_loaded": true,
+  "default_prompt_name": "query",
+  "load_ms": 4388.08,
+  "predict_ms": 447.63,
+  "ranked": [
+    {
+      "fixture_id": "fixture-a",
+      "score": 4.2265625
+    },
+    {
+      "fixture_id": "fixture-b",
+      "score": -11.6953125
+    }
+  ],
+  "total_ms": 5023.05
+}

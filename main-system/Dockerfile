@@ -1,43 +1,12 @@
-# 使用官方Python运行时作为基础镜像
-FROM python:3.11-slim
-
-# 设置工作目录
+# Build from repository root: docker build -f main-system/Dockerfile .
+FROM python:3.12-slim
 WORKDIR /app
-
-# 设置环境变量
-ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1 \
-    PIP_NO_CACHE_DIR=1
-
-# 安装系统依赖
-RUN apt-get update && apt-get install -y \
-    gcc \
-    g++ \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
-
-# 复制依赖文件
-COPY requirements.txt .
-
-# 使用国内镜像加速安装
-RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple/ --no-cache-dir -r requirements.txt
-
-# 复制应用代码
-COPY . .
-
-# 创建非root用户
-RUN groupadd -r appuser && useradd -r -g appuser appuser
-
-# 设置文件权限
-RUN chown -R appuser:appuser /app
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PIP_NO_CACHE_DIR=1 EVIDENCE_RAG_DB=/data/evidence.sqlite3
+COPY pyproject.toml ./
+COPY evidence_rag ./evidence_rag
+COPY legal_rag ./legal_rag
+RUN pip install . && useradd --create-home --uid 10001 appuser && mkdir /data && chown appuser:appuser /data
 USER appuser
-
-# 暴露端口
 EXPOSE 8000
-
-# 健康检查
-HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:8000/health || exit 1
-
-# 启动命令
-CMD ["uvicorn", "server_text01:app", "--host", "0.0.0.0", "--port", "8000"]
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 CMD ["python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/live', timeout=3)"]
+CMD ["uvicorn", "evidence_rag.api:app", "--host", "0.0.0.0", "--port", "8000"]

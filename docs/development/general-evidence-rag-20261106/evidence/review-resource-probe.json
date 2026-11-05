@@ -1,0 +1,14 @@
+{
+  "measured_gate": {
+    "used_prompt_tokens": 5000,
+    "hypothetical_model_window": 4096,
+    "max_output_tokens": null,
+    "allowed": true,
+    "limitation": "gate has no configured model window; illustrative fake inputs, no provider called"
+  },
+  "ingest": {
+    "exception": "READ_ATTEMPTED_BEFORE_SIZE_CHECK",
+    "logical_file_bytes": 60000000,
+    "real_file_read": false
+  }
+}

@@ -1,0 +1,8 @@
+# Retained test output is evidence; preserve its original whitespace.
+docs/**/*.log -whitespace
+docs/**/*.xml -whitespace
+docs/**/*.log linguist-generated=true
+docs/**/*.xml linguist-generated=true
+docs/**/*.json linguist-generated=true
+docs/**/*.jsonl linguist-generated=true
+docs/**/source-snapshots/** linguist-generated=true

@@ -1,0 +1,2405 @@
+{
+  "kind": "synthetic-source-derived-not-human-verified",
+  "queries": [
+    {
+      "query": "为了保护民事主体的合法权益，调整民事关系，维护社",
+      "expected_labels": [
+        "第一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 0
+    },
+    {
+      "query": "民法调整平等主体的自然人、法人和非法人组织之间的",
+      "expected_labels": [
+        "第二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 1
+    },
+    {
+      "query": "民事主体的人身权利、财产权利以及其他合法权益受法",
+      "expected_labels": [
+        "第三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 2
+    },
+    {
+      "query": "民事主体在民事活动中的法律地位一律平等。",
+      "expected_labels": [
+        "第四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 3
+    },
+    {
+      "query": "民事主体从事民事活动，应当遵循自愿原则，按照自己",
+      "expected_labels": [
+        "第五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 4
+    },
+    {
+      "query": "民事主体从事民事活动，应当遵循公平原则，合理确定",
+      "expected_labels": [
+        "第六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 5
+    },
+    {
+      "query": "民事主体从事民事活动，应当遵循诚信原则，秉持诚实",
+      "expected_labels": [
+        "第七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 6
+    },
+    {
+      "query": "民事主体从事民事活动，不得违反法律，不得违背公序",
+      "expected_labels": [
+        "第八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 7
+    },
+    {
+      "query": "民事主体从事民事活动，应当有利于节约资源、保护生",
+      "expected_labels": [
+        "第九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 8
+    },
+    {
+      "query": "处理民事纠纷，应当依照法律；法律没有规定的，可以",
+      "expected_labels": [
+        "第十条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 9
+    },
+    {
+      "query": "其他法律对民事关系有特别规定的，依照其规定。",
+      "expected_labels": [
+        "第十一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 10
+    },
+    {
+      "query": "中华人民共和国领域内的民事活动，适用中华人民共和",
+      "expected_labels": [
+        "第十二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 11
+    },
+    {
+      "query": "自然人从出生时起到死亡时止，具有民事权利能力，依",
+      "expected_labels": [
+        "第十三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 12
+    },
+    {
+      "query": "自然人的民事权利能力一律平等。",
+      "expected_labels": [
+        "第十四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 13
+    },
+    {
+      "query": "自然人的出生时间和死亡时间，以出生证明、死亡证明",
+      "expected_labels": [
+        "第十五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 14
+    },
+    {
+      "query": "涉及遗产继承、接受赠与等胎儿利益保护的，胎儿视为",
+      "expected_labels": [
+        "第十六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 15
+    },
+    {
+      "query": "十八周岁以上的自然人为成年人。不满十八周岁的自然",
+      "expected_labels": [
+        "第十七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 16
+    },
+    {
+      "query": "成年人为完全民事行为能力人，可以独立实施民事法律",
+      "expected_labels": [
+        "第十八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 17
+    },
+    {
+      "query": "八周岁以上的未成年人为限制民事行为能力人，实施民",
+      "expected_labels": [
+        "第十九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 18
+    },
+    {
+      "query": "不满八周岁的未成年人为无民事行为能力人，由其法定",
+      "expected_labels": [
+        "第二十条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 19
+    },
+    {
+      "query": "不能辨认自己行为的成年人为无民事行为能力人，由其",
+      "expected_labels": [
+        "第二十一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 20
+    },
+    {
+      "query": "不能完全辨认自己行为的成年人为限制民事行为能力人",
+      "expected_labels": [
+        "第二十二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 21
+    },
+    {
+      "query": "无民事行为能力人、限制民事行为能力人的监护人是其",
+      "expected_labels": [
+        "第二十三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 22
+    },
+    {
+      "query": "不能辨认或者不能完全辨认自己行为的成年人，其利害",
+      "expected_labels": [
+        "第二十四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 23
+    },
+    {
+      "query": "自然人以户籍登记或者其他有效身份登记记载的居所为",
+      "expected_labels": [
+        "第二十五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 24
+    },
+    {
+      "query": "父母对未成年子女负有抚养、教育和保护的义务。成年",
+      "expected_labels": [
+        "第二十六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 25
+    },
+    {
+      "query": "父母是未成年子女的监护人。未成年人的父母已经死亡",
+      "expected_labels": [
+        "第二十七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 26
+    },
+    {
+      "query": "无民事行为能力或者限制民事行为能力的成年人，由下",
+      "expected_labels": [
+        "第二十八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 27
+    },
+    {
+      "query": "被监护人的父母担任监护人的，可以通过遗嘱指定监护",
+      "expected_labels": [
+        "第二十九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 28
+    },
+    {
+      "query": "依法具有监护资格的人之间可以协议确定监护人。协议",
+      "expected_labels": [
+        "第三十条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 29
+    },
+    {
+      "query": "对监护人的确定有争议的，由被监护人住所地的居民委",
+      "expected_labels": [
+        "第三十一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 30
+    },
+    {
+      "query": "没有依法具有监护资格的人的，监护人由民政部门担任",
+      "expected_labels": [
+        "第三十二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 31
+    },
+    {
+      "query": "具有完全民事行为能力的成年人，可以与其近亲属、其",
+      "expected_labels": [
+        "第三十三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 32
+    },
+    {
+      "query": "监护人的职责是代理被监护人实施民事法律行为，保护",
+      "expected_labels": [
+        "第三十四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 33
+    },
+    {
+      "query": "监护人应当按照最有利于被监护人的原则履行监护职责",
+      "expected_labels": [
+        "第三十五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 34
+    },
+    {
+      "query": "监护人有下列情形之一的，人民法院根据有关个人或者",
+      "expected_labels": [
+        "第三十六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 35
+    },
+    {
+      "query": "依法负担被监护人抚养费、赡养费、扶养费的父母、子",
+      "expected_labels": [
+        "第三十七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 36
+    },
+    {
+      "query": "被监护人的父母或者子女被人民法院撤销监护人资格后",
+      "expected_labels": [
+        "第三十八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 37
+    },
+    {
+      "query": "有下列情形之一的，监护关系终止：（一）被监护人取",
+      "expected_labels": [
+        "第三十九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 38
+    },
+    {
+      "query": "自然人下落不明满二年的，利害关系人可以向人民法院",
+      "expected_labels": [
+        "第四十条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 39
+    },
+    {
+      "query": "自然人下落不明的时间自其失去音讯之日起计算。战争",
+      "expected_labels": [
+        "第四十一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 40
+    },
+    {
+      "query": "失踪人的财产由其配偶、成年子女、父母或者其他愿意",
+      "expected_labels": [
+        "第四十二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 41
+    },
+    {
+      "query": "财产代管人应当妥善管理失踪人的财产，维护其财产权",
+      "expected_labels": [
+        "第四十三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 42
+    },
+    {
+      "query": "财产代管人不履行代管职责、侵害失踪人财产权益或者",
+      "expected_labels": [
+        "第四十四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 43
+    },
+    {
+      "query": "失踪人重新出现，经本人或者利害关系人申请，人民法",
+      "expected_labels": [
+        "第四十五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 44
+    },
+    {
+      "query": "自然人有下列情形之一的，利害关系人可以向人民法院",
+      "expected_labels": [
+        "第四十六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 45
+    },
+    {
+      "query": "对同一自然人，有的利害关系人申请宣告死亡，有的利",
+      "expected_labels": [
+        "第四十七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 46
+    },
+    {
+      "query": "被宣告死亡的人，人民法院宣告死亡的判决作出之日视",
+      "expected_labels": [
+        "第四十八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 47
+    },
+    {
+      "query": "自然人被宣告死亡但是并未死亡的，不影响该自然人在",
+      "expected_labels": [
+        "第四十九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 48
+    },
+    {
+      "query": "被宣告死亡的人重新出现，经本人或者利害关系人申请",
+      "expected_labels": [
+        "第五十条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 49
+    },
+    {
+      "query": "被宣告死亡的人的婚姻关系，自死亡宣告之日起消除。",
+      "expected_labels": [
+        "第五十一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 50
+    },
+    {
+      "query": "被宣告死亡的人在被宣告死亡期间，其子女被他人依法",
+      "expected_labels": [
+        "第五十二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 51
+    },
+    {
+      "query": "被撤销死亡宣告的人有权请求依照本法第六编取得其财",
+      "expected_labels": [
+        "第五十三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 52
+    },
+    {
+      "query": "自然人从事工商业经营，经依法登记，为个体工商户。",
+      "expected_labels": [
+        "第五十四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 53
+    },
+    {
+      "query": "农村集体经济组织的成员，依法取得农村土地承包经营",
+      "expected_labels": [
+        "第五十五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 54
+    },
+    {
+      "query": "个体工商户的债务，个人经营的，以个人财产承担；家",
+      "expected_labels": [
+        "第五十六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 55
+    },
+    {
+      "query": "法人是具有民事权利能力和民事行为能力，依法独立享",
+      "expected_labels": [
+        "第五十七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 56
+    },
+    {
+      "query": "法人应当依法成立。法人应当有自己的名称、组织机构",
+      "expected_labels": [
+        "第五十八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 57
+    },
+    {
+      "query": "法人的民事权利能力和民事行为能力，从法人成立时产",
+      "expected_labels": [
+        "第五十九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 58
+    },
+    {
+      "query": "法人以其全部财产独立承担民事责任。",
+      "expected_labels": [
+        "第六十条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 59
+    },
+    {
+      "query": "依照法律或者法人章程的规定，代表法人从事民事活动",
+      "expected_labels": [
+        "第六十一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 60
+    },
+    {
+      "query": "法定代表人因执行职务造成他人损害的，由法人承担民",
+      "expected_labels": [
+        "第六十二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 61
+    },
+    {
+      "query": "法人以其主要办事机构所在地为住所。依法需要办理法",
+      "expected_labels": [
+        "第六十三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 62
+    },
+    {
+      "query": "法人存续期间登记事项发生变化的，应当依法向登记机",
+      "expected_labels": [
+        "第六十四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 63
+    },
+    {
+      "query": "法人的实际情况与登记的事项不一致的，不得对抗善意",
+      "expected_labels": [
+        "第六十五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 64
+    },
+    {
+      "query": "登记机关应当依法及时公示法人登记的有关信息。",
+      "expected_labels": [
+        "第六十六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 65
+    },
+    {
+      "query": "法人合并的，其权利和义务由合并后的法人享有和承担",
+      "expected_labels": [
+        "第六十七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 66
+    },
+    {
+      "query": "有下列原因之一并依法完成清算、注销登记的，法人终",
+      "expected_labels": [
+        "第六十八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 67
+    },
+    {
+      "query": "有下列情形之一的，法人解散：（一）法人章程规定的",
+      "expected_labels": [
+        "第六十九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 68
+    },
+    {
+      "query": "法人解散的，除合并或者分立的情形外，清算义务人应",
+      "expected_labels": [
+        "第七十条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 69
+    },
+    {
+      "query": "法人的清算程序和清算组职权，依照有关法律的规定；",
+      "expected_labels": [
+        "第七十一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 70
+    },
+    {
+      "query": "清算期间法人存续，但是不得从事与清算无关的活动。",
+      "expected_labels": [
+        "第七十二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 71
+    },
+    {
+      "query": "法人被宣告破产的，依法进行破产清算并完成法人注销",
+      "expected_labels": [
+        "第七十三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 72
+    },
+    {
+      "query": "法人可以依法设立分支机构。法律、行政法规规定分支",
+      "expected_labels": [
+        "第七十四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 73
+    },
+    {
+      "query": "设立人为设立法人从事的民事活动，其法律后果由法人",
+      "expected_labels": [
+        "第七十五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 74
+    },
+    {
+      "query": "以取得利润并分配给股东等出资人为目的成立的法人，",
+      "expected_labels": [
+        "第七十六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 75
+    },
+    {
+      "query": "营利法人经依法登记成立。",
+      "expected_labels": [
+        "第七十七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 76
+    },
+    {
+      "query": "依法设立的营利法人，由登记机关发给营利法人营业执",
+      "expected_labels": [
+        "第七十八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 77
+    },
+    {
+      "query": "设立营利法人应当依法制定法人章程。",
+      "expected_labels": [
+        "第七十九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 78
+    },
+    {
+      "query": "营利法人应当设权力机构。权力机构行使修改法人章程",
+      "expected_labels": [
+        "第八十条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 79
+    },
+    {
+      "query": "营利法人应当设执行机构。执行机构行使召集权力机构",
+      "expected_labels": [
+        "第八十一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 80
+    },
+    {
+      "query": "营利法人设监事会或者监事等监督机构的，监督机构依",
+      "expected_labels": [
+        "第八十二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 81
+    },
+    {
+      "query": "营利法人的出资人不得滥用出资人权利损害法人或者其",
+      "expected_labels": [
+        "第八十三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 82
+    },
+    {
+      "query": "营利法人的控股出资人、实际控制人、董事、监事、高",
+      "expected_labels": [
+        "第八十四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 83
+    },
+    {
+      "query": "营利法人的权力机构、执行机构作出决议的会议召集程",
+      "expected_labels": [
+        "第八十五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 84
+    },
+    {
+      "query": "营利法人从事经营活动，应当遵守商业道德，维护交易",
+      "expected_labels": [
+        "第八十六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 85
+    },
+    {
+      "query": "为公益目的或者其他非营利目的成立，不向出资人、设",
+      "expected_labels": [
+        "第八十七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 86
+    },
+    {
+      "query": "具备法人条件，为适应经济社会发展需要，提供公益服",
+      "expected_labels": [
+        "第八十八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 87
+    },
+    {
+      "query": "事业单位法人设理事会的，除法律另有规定外，理事会",
+      "expected_labels": [
+        "第八十九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 88
+    },
+    {
+      "query": "具备法人条件，基于会员共同意愿，为公益目的或者会",
+      "expected_labels": [
+        "第九十条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 89
+    },
+    {
+      "query": "设立社会团体法人应当依法制定法人章程。社会团体法",
+      "expected_labels": [
+        "第九十一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 90
+    },
+    {
+      "query": "具备法人条件，为公益目的以捐助财产设立的基金会、",
+      "expected_labels": [
+        "第九十二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 91
+    },
+    {
+      "query": "设立捐助法人应当依法制定法人章程。捐助法人应当设",
+      "expected_labels": [
+        "第九十三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 92
+    },
+    {
+      "query": "捐助人有权向捐助法人查询捐助财产的使用、管理情况",
+      "expected_labels": [
+        "第九十四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 93
+    },
+    {
+      "query": "为公益目的成立的非营利法人终止时，不得向出资人、",
+      "expected_labels": [
+        "第九十五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 94
+    },
+    {
+      "query": "本节规定的机关法人、农村集体经济组织法人、城镇农",
+      "expected_labels": [
+        "第九十六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 95
+    },
+    {
+      "query": "有独立经费的机关和承担行政职能的法定机构从成立之",
+      "expected_labels": [
+        "第九十七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 96
+    },
+    {
+      "query": "机关法人被撤销的，法人终止，其民事权利和义务由继",
+      "expected_labels": [
+        "第九十八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 97
+    },
+    {
+      "query": "农村集体经济组织依法取得法人资格。法律、行政法规",
+      "expected_labels": [
+        "第九十九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 98
+    },
+    {
+      "query": "城镇农村的合作经济组织依法取得法人资格。法律、行",
+      "expected_labels": [
+        "第一百条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 99
+    },
+    {
+      "query": "居民委员会、村民委员会具有基层群众性自治组织法人",
+      "expected_labels": [
+        "第一百零一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 100
+    },
+    {
+      "query": "非法人组织是不具有法人资格，但是能够依法以自己的",
+      "expected_labels": [
+        "第一百零二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 101
+    },
+    {
+      "query": "非法人组织应当依照法律的规定登记。设立非法人组织",
+      "expected_labels": [
+        "第一百零三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 102
+    },
+    {
+      "query": "非法人组织的财产不足以清偿债务的，其出资人或者设",
+      "expected_labels": [
+        "第一百零四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 103
+    },
+    {
+      "query": "非法人组织可以确定一人或者数人代表该组织从事民事",
+      "expected_labels": [
+        "第一百零五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 104
+    },
+    {
+      "query": "有下列情形之一的，非法人组织解散：（一）章程规定",
+      "expected_labels": [
+        "第一百零六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 105
+    },
+    {
+      "query": "非法人组织解散的，应当依法进行清算。",
+      "expected_labels": [
+        "第一百零七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 106
+    },
+    {
+      "query": "非法人组织除适用本章规定外，参照适用本编第三章第",
+      "expected_labels": [
+        "第一百零八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 107
+    },
+    {
+      "query": "自然人的人身自由、人格尊严受法律保护。",
+      "expected_labels": [
+        "第一百零九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 108
+    },
+    {
+      "query": "自然人享有生命权、身体权、健康权、姓名权、肖像权",
+      "expected_labels": [
+        "第一百一十条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 109
+    },
+    {
+      "query": "自然人的个人信息受法律保护。任何组织或者个人需要",
+      "expected_labels": [
+        "第一百一十一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 110
+    },
+    {
+      "query": "自然人因婚姻家庭关系等产生的人身权利受法律保护。",
+      "expected_labels": [
+        "第一百一十二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 111
+    },
+    {
+      "query": "民事主体的财产权利受法律平等保护。",
+      "expected_labels": [
+        "第一百一十三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 112
+    },
+    {
+      "query": "民事主体依法享有物权。物权是权利人依法对特定的物",
+      "expected_labels": [
+        "第一百一十四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 113
+    },
+    {
+      "query": "物包括不动产和动产。法律规定权利作为物权客体的，",
+      "expected_labels": [
+        "第一百一十五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 114
+    },
+    {
+      "query": "物权的种类和内容，由法律规定。",
+      "expected_labels": [
+        "第一百一十六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 115
+    },
+    {
+      "query": "为了公共利益的需要，依照法律规定的权限和程序征收",
+      "expected_labels": [
+        "第一百一十七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 116
+    },
+    {
+      "query": "民事主体依法享有债权。债权是因合同、侵权行为、无",
+      "expected_labels": [
+        "第一百一十八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 117
+    },
+    {
+      "query": "依法成立的合同，对当事人具有法律约束力。",
+      "expected_labels": [
+        "第一百一十九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 118
+    },
+    {
+      "query": "民事权益受到侵害的，被侵权人有权请求侵权人承担侵",
+      "expected_labels": [
+        "第一百二十条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 119
+    },
+    {
+      "query": "没有法定的或者约定的义务，为避免他人利益受损失而",
+      "expected_labels": [
+        "第一百二十一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 120
+    },
+    {
+      "query": "因他人没有法律根据，取得不当利益，受损失的人有权",
+      "expected_labels": [
+        "第一百二十二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 121
+    },
+    {
+      "query": "民事主体依法享有知识产权。知识产权是权利人依法就",
+      "expected_labels": [
+        "第一百二十三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 122
+    },
+    {
+      "query": "自然人依法享有继承权。自然人合法的私有财产，可以",
+      "expected_labels": [
+        "第一百二十四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 123
+    },
+    {
+      "query": "民事主体依法享有股权和其他投资性权利。",
+      "expected_labels": [
+        "第一百二十五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 124
+    },
+    {
+      "query": "民事主体享有法律规定的其他民事权利和利益。",
+      "expected_labels": [
+        "第一百二十六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 125
+    },
+    {
+      "query": "法律对数据、网络虚拟财产的保护有规定的，依照其规",
+      "expected_labels": [
+        "第一百二十七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 126
+    },
+    {
+      "query": "法律对未成年人、老年人、残疾人、妇女、消费者等的",
+      "expected_labels": [
+        "第一百二十八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 127
+    },
+    {
+      "query": "民事权利可以依据民事法律行为、事实行为、法律规定",
+      "expected_labels": [
+        "第一百二十九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 128
+    },
+    {
+      "query": "民事主体按照自己的意愿依法行使民事权利，不受干涉",
+      "expected_labels": [
+        "第一百三十条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 129
+    },
+    {
+      "query": "民事主体行使权利时，应当履行法律规定的和当事人约",
+      "expected_labels": [
+        "第一百三十一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 130
+    },
+    {
+      "query": "民事主体不得滥用民事权利损害国家利益、社会公共利",
+      "expected_labels": [
+        "第一百三十二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 131
+    },
+    {
+      "query": "民事法律行为是民事主体通过意思表示设立、变更、终",
+      "expected_labels": [
+        "第一百三十三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 132
+    },
+    {
+      "query": "民事法律行为可以基于双方或者多方的意思表示一致成",
+      "expected_labels": [
+        "第一百三十四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 133
+    },
+    {
+      "query": "民事法律行为可以采用书面形式、口头形式或者其他形",
+      "expected_labels": [
+        "第一百三十五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 134
+    },
+    {
+      "query": "民事法律行为自成立时生效，但是法律另有规定或者当",
+      "expected_labels": [
+        "第一百三十六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 135
+    },
+    {
+      "query": "以对话方式作出的意思表示，相对人知道其内容时生效",
+      "expected_labels": [
+        "第一百三十七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 136
+    },
+    {
+      "query": "无相对人的意思表示，表示完成时生效。法律另有规定",
+      "expected_labels": [
+        "第一百三十八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 137
+    },
+    {
+      "query": "以公告方式作出的意思表示，公告发布时生效。",
+      "expected_labels": [
+        "第一百三十九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 138
+    },
+    {
+      "query": "行为人可以明示或者默示作出意思表示。沉默只有在有",
+      "expected_labels": [
+        "第一百四十条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 139
+    },
+    {
+      "query": "行为人可以撤回意思表示。撤回意思表示的通知应当在",
+      "expected_labels": [
+        "第一百四十一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 140
+    },
+    {
+      "query": "有相对人的意思表示的解释，应当按照所使用的词句，",
+      "expected_labels": [
+        "第一百四十二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 141
+    },
+    {
+      "query": "具备下列条件的民事法律行为有效：（一）行为人具有",
+      "expected_labels": [
+        "第一百四十三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 142
+    },
+    {
+      "query": "无民事行为能力人实施的民事法律行为无效。",
+      "expected_labels": [
+        "第一百四十四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 143
+    },
+    {
+      "query": "限制民事行为能力人实施的纯获利益的民事法律行为或",
+      "expected_labels": [
+        "第一百四十五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 144
+    },
+    {
+      "query": "行为人与相对人以虚假的意思表示实施的民事法律行为",
+      "expected_labels": [
+        "第一百四十六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 145
+    },
+    {
+      "query": "基于重大误解实施的民事法律行为，行为人有权请求人",
+      "expected_labels": [
+        "第一百四十七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 146
+    },
+    {
+      "query": "一方以欺诈手段，使对方在违背真实意思的情况下实施",
+      "expected_labels": [
+        "第一百四十八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 147
+    },
+    {
+      "query": "第三人实施欺诈行为，使一方在违背真实意思的情况下",
+      "expected_labels": [
+        "第一百四十九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 148
+    },
+    {
+      "query": "一方或者第三人以胁迫手段，使对方在违背真实意思的",
+      "expected_labels": [
+        "第一百五十条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 149
+    },
+    {
+      "query": "一方利用对方处于危困状态、缺乏判断能力等情形，致",
+      "expected_labels": [
+        "第一百五十一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 150
+    },
+    {
+      "query": "有下列情形之一的，撤销权消灭：（一）当事人自知道",
+      "expected_labels": [
+        "第一百五十二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 151
+    },
+    {
+      "query": "违反法律、行政法规的强制性规定的民事法律行为无效",
+      "expected_labels": [
+        "第一百五十三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 152
+    },
+    {
+      "query": "行为人与相对人恶意串通，损害他人合法权益的民事法",
+      "expected_labels": [
+        "第一百五十四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 153
+    },
+    {
+      "query": "无效的或者被撤销的民事法律行为自始没有法律约束力",
+      "expected_labels": [
+        "第一百五十五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 154
+    },
+    {
+      "query": "民事法律行为部分无效，不影响其他部分效力的，其他",
+      "expected_labels": [
+        "第一百五十六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 155
+    },
+    {
+      "query": "民事法律行为无效、被撤销或者确定不发生效力后，行",
+      "expected_labels": [
+        "第一百五十七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 156
+    },
+    {
+      "query": "民事法律行为可以附条件，但是根据其性质不得附条件",
+      "expected_labels": [
+        "第一百五十八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 157
+    },
+    {
+      "query": "附条件的民事法律行为，当事人为自己的利益不正当地",
+      "expected_labels": [
+        "第一百五十九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 158
+    },
+    {
+      "query": "民事法律行为可以附期限，但是根据其性质不得附期限",
+      "expected_labels": [
+        "第一百六十条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 159
+    },
+    {
+      "query": "民事主体可以通过代理人实施民事法律行为。依照法律",
+      "expected_labels": [
+        "第一百六十一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 160
+    },
+    {
+      "query": "代理人在代理权限内，以被代理人名义实施的民事法律",
+      "expected_labels": [
+        "第一百六十二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 161
+    },
+    {
+      "query": "代理包括委托代理和法定代理。委托代理人按照被代理",
+      "expected_labels": [
+        "第一百六十三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 162
+    },
+    {
+      "query": "代理人不履行或者不完全履行职责，造成被代理人损害",
+      "expected_labels": [
+        "第一百六十四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 163
+    },
+    {
+      "query": "委托代理授权采用书面形式的，授权委托书应当载明代",
+      "expected_labels": [
+        "第一百六十五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 164
+    },
+    {
+      "query": "数人为同一代理事项的代理人的，应当共同行使代理权",
+      "expected_labels": [
+        "第一百六十六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 165
+    },
+    {
+      "query": "代理人知道或者应当知道代理事项违法仍然实施代理行",
+      "expected_labels": [
+        "第一百六十七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 166
+    },
+    {
+      "query": "代理人不得以被代理人的名义与自己实施民事法律行为",
+      "expected_labels": [
+        "第一百六十八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 167
+    },
+    {
+      "query": "代理人需要转委托第三人代理的，应当取得被代理人的",
+      "expected_labels": [
+        "第一百六十九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 168
+    },
+    {
+      "query": "执行法人或者非法人组织工作任务的人员，就其职权范",
+      "expected_labels": [
+        "第一百七十条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 169
+    },
+    {
+      "query": "行为人没有代理权、超越代理权或者代理权终止后，仍",
+      "expected_labels": [
+        "第一百七十一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 170
+    },
+    {
+      "query": "行为人没有代理权、超越代理权或者代理权终止后，仍",
+      "expected_labels": [
+        "第一百七十二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 171
+    },
+    {
+      "query": "有下列情形之一的，委托代理终止：（一）代理期限届",
+      "expected_labels": [
+        "第一百七十三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 172
+    },
+    {
+      "query": "被代理人死亡后，有下列情形之一的，委托代理人实施",
+      "expected_labels": [
+        "第一百七十四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 173
+    },
+    {
+      "query": "有下列情形之一的，法定代理终止：（一）被代理人取",
+      "expected_labels": [
+        "第一百七十五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 174
+    },
+    {
+      "query": "民事主体依照法律规定或者按照当事人约定，履行民事",
+      "expected_labels": [
+        "第一百七十六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 175
+    },
+    {
+      "query": "二人以上依法承担按份责任，能够确定责任大小的，各",
+      "expected_labels": [
+        "第一百七十七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 176
+    },
+    {
+      "query": "二人以上依法承担连带责任的，权利人有权请求部分或",
+      "expected_labels": [
+        "第一百七十八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 177
+    },
+    {
+      "query": "承担民事责任的方式主要有：（一）停止侵害；（二）",
+      "expected_labels": [
+        "第一百七十九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 178
+    },
+    {
+      "query": "因不可抗力不能履行民事义务的，不承担民事责任。法",
+      "expected_labels": [
+        "第一百八十条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 179
+    },
+    {
+      "query": "因正当防卫造成损害的，不承担民事责任。正当防卫超",
+      "expected_labels": [
+        "第一百八十一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 180
+    },
+    {
+      "query": "因紧急避险造成损害的，由引起险情发生的人承担民事",
+      "expected_labels": [
+        "第一百八十二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 181
+    },
+    {
+      "query": "因保护他人民事权益使自己受到损害的，由侵权人承担",
+      "expected_labels": [
+        "第一百八十三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 182
+    },
+    {
+      "query": "因自愿实施紧急救助行为造成受助人损害的，救助人不",
+      "expected_labels": [
+        "第一百八十四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 183
+    },
+    {
+      "query": "侵害英雄烈士等的姓名、肖像、名誉、荣誉，损害社会",
+      "expected_labels": [
+        "第一百八十五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 184
+    },
+    {
+      "query": "因当事人一方的违约行为，损害对方人身权益、财产权",
+      "expected_labels": [
+        "第一百八十六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 185
+    },
+    {
+      "query": "民事主体因同一行为应当承担民事责任、行政责任和刑",
+      "expected_labels": [
+        "第一百八十七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 186
+    },
+    {
+      "query": "向人民法院请求保护民事权利的诉讼时效期间为三年。",
+      "expected_labels": [
+        "第一百八十八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 187
+    },
+    {
+      "query": "当事人约定同一债务分期履行的，诉讼时效期间自最后",
+      "expected_labels": [
+        "第一百八十九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 188
+    },
+    {
+      "query": "无民事行为能力人或者限制民事行为能力人对其法定代",
+      "expected_labels": [
+        "第一百九十条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 189
+    },
+    {
+      "query": "未成年人遭受性侵害的损害赔偿请求权的诉讼时效期间",
+      "expected_labels": [
+        "第一百九十一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 190
+    },
+    {
+      "query": "诉讼时效期间届满的，义务人可以提出不履行义务的抗",
+      "expected_labels": [
+        "第一百九十二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 191
+    },
+    {
+      "query": "人民法院不得主动适用诉讼时效的规定。",
+      "expected_labels": [
+        "第一百九十三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 192
+    },
+    {
+      "query": "在诉讼时效期间的最后六个月内，因下列障碍，不能行",
+      "expected_labels": [
+        "第一百九十四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 193
+    },
+    {
+      "query": "有下列情形之一的，诉讼时效中断，从中断、有关程序",
+      "expected_labels": [
+        "第一百九十五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 194
+    },
+    {
+      "query": "下列请求权不适用诉讼时效的规定：（一）请求停止侵",
+      "expected_labels": [
+        "第一百九十六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 195
+    },
+    {
+      "query": "诉讼时效的期间、计算方法以及中止、中断的事由由法",
+      "expected_labels": [
+        "第一百九十七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 196
+    },
+    {
+      "query": "法律对仲裁时效有规定的，依照其规定；没有规定的，",
+      "expected_labels": [
+        "第一百九十八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 197
+    },
+    {
+      "query": "法律规定或者当事人约定的撤销权、解除权等权利的存",
+      "expected_labels": [
+        "第一百九十九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 198
+    },
+    {
+      "query": "民法所称的期间按照公历年、月、日、小时计算。",
+      "expected_labels": [
+        "第二百条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 199
+    },
+    {
+      "query": "按照年、月、日计算期间的，开始的当日不计入，自下",
+      "expected_labels": [
+        "第二百零一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 200
+    },
+    {
+      "query": "按照年、月计算期间的，到期月的对应日为期间的最后",
+      "expected_labels": [
+        "第二百零二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 201
+    },
+    {
+      "query": "期间的最后一日是法定休假日的，以法定休假日结束的",
+      "expected_labels": [
+        "第二百零三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 202
+    },
+    {
+      "query": "期间的计算方法依照本法的规定，但是法律另有规定或",
+      "expected_labels": [
+        "第二百零四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 203
+    },
+    {
+      "query": "本编调整因物的归属和利用产生的民事关系。",
+      "expected_labels": [
+        "第二百零五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 204
+    },
+    {
+      "query": "国家坚持和完善公有制为主体、多种所有制经济共同发",
+      "expected_labels": [
+        "第二百零六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 205
+    },
+    {
+      "query": "国家、集体、私人的物权和其他权利人的物权受法律平",
+      "expected_labels": [
+        "第二百零七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 206
+    },
+    {
+      "query": "不动产物权的设立、变更、转让和消灭，应当依照法律",
+      "expected_labels": [
+        "第二百零八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 207
+    },
+    {
+      "query": "不动产物权的设立、变更、转让和消灭，经依法登记，",
+      "expected_labels": [
+        "第二百零九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 208
+    },
+    {
+      "query": "不动产登记，由不动产所在地的登记机构办理。国家对",
+      "expected_labels": [
+        "第二百一十条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 209
+    },
+    {
+      "query": "当事人申请登记，应当根据不同登记事项提供权属证明",
+      "expected_labels": [
+        "第二百一十一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 210
+    },
+    {
+      "query": "登记机构应当履行下列职责：（一）查验申请人提供的",
+      "expected_labels": [
+        "第二百一十二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 211
+    },
+    {
+      "query": "登记机构不得有下列行为：（一）要求对不动产进行评",
+      "expected_labels": [
+        "第二百一十三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 212
+    },
+    {
+      "query": "不动产物权的设立、变更、转让和消灭，依照法律规定",
+      "expected_labels": [
+        "第二百一十四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 213
+    },
+    {
+      "query": "当事人之间订立有关设立、变更、转让和消灭不动产物",
+      "expected_labels": [
+        "第二百一十五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 214
+    },
+    {
+      "query": "不动产登记簿是物权归属和内容的根据。不动产登记簿",
+      "expected_labels": [
+        "第二百一十六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 215
+    },
+    {
+      "query": "不动产权属证书是权利人享有该不动产物权的证明。不",
+      "expected_labels": [
+        "第二百一十七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 216
+    },
+    {
+      "query": "权利人、利害关系人可以申请查询、复制不动产登记资",
+      "expected_labels": [
+        "第二百一十八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 217
+    },
+    {
+      "query": "利害关系人不得公开、非法使用权利人的不动产登记资",
+      "expected_labels": [
+        "第二百一十九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 218
+    },
+    {
+      "query": "权利人、利害关系人认为不动产登记簿记载的事项错误",
+      "expected_labels": [
+        "第二百二十条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 219
+    },
+    {
+      "query": "当事人签订买卖房屋的协议或者签订其他不动产物权的",
+      "expected_labels": [
+        "第二百二十一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 220
+    },
+    {
+      "query": "当事人提供虚假材料申请登记，造成他人损害的，应当",
+      "expected_labels": [
+        "第二百二十二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 221
+    },
+    {
+      "query": "不动产登记费按件收取，不得按照不动产的面积、体积",
+      "expected_labels": [
+        "第二百二十三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 222
+    },
+    {
+      "query": "动产物权的设立和转让，自交付时发生效力，但是法律",
+      "expected_labels": [
+        "第二百二十四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 223
+    },
+    {
+      "query": "船舶、航空器和机动车等的物权的设立、变更、转让和",
+      "expected_labels": [
+        "第二百二十五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 224
+    },
+    {
+      "query": "动产物权设立和转让前，权利人已经占有该动产的，物",
+      "expected_labels": [
+        "第二百二十六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 225
+    },
+    {
+      "query": "动产物权设立和转让前，第三人占有该动产的，负有交",
+      "expected_labels": [
+        "第二百二十七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 226
+    },
+    {
+      "query": "动产物权转让时，当事人又约定由出让人继续占有该动",
+      "expected_labels": [
+        "第二百二十八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 227
+    },
+    {
+      "query": "因人民法院、仲裁机构的法律文书或者人民政府的征收",
+      "expected_labels": [
+        "第二百二十九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 228
+    },
+    {
+      "query": "因继承取得物权的，自继承开始时发生效力。",
+      "expected_labels": [
+        "第二百三十条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 229
+    },
+    {
+      "query": "因合法建造、拆除房屋等事实行为设立或者消灭物权的",
+      "expected_labels": [
+        "第二百三十一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 230
+    },
+    {
+      "query": "处分依照本节规定享有的不动产物权，依照法律规定需",
+      "expected_labels": [
+        "第二百三十二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 231
+    },
+    {
+      "query": "物权受到侵害的，权利人可以通过和解、调解、仲裁、",
+      "expected_labels": [
+        "第二百三十三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 232
+    },
+    {
+      "query": "因物权的归属、内容发生争议的，利害关系人可以请求",
+      "expected_labels": [
+        "第二百三十四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 233
+    },
+    {
+      "query": "无权占有不动产或者动产的，权利人可以请求返还原物",
+      "expected_labels": [
+        "第二百三十五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 234
+    },
+    {
+      "query": "妨害物权或者可能妨害物权的，权利人可以请求排除妨",
+      "expected_labels": [
+        "第二百三十六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 235
+    },
+    {
+      "query": "造成不动产或者动产毁损的，权利人可以依法请求修理",
+      "expected_labels": [
+        "第二百三十七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 236
+    },
+    {
+      "query": "侵害物权，造成权利人损害的，权利人可以依法请求损",
+      "expected_labels": [
+        "第二百三十八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 237
+    },
+    {
+      "query": "本章规定的物权保护方式，可以单独适用，也可以根据",
+      "expected_labels": [
+        "第二百三十九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 238
+    },
+    {
+      "query": "所有权人对自己的不动产或者动产，依法享有占有、使",
+      "expected_labels": [
+        "第二百四十条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 239
+    },
+    {
+      "query": "所有权人有权在自己的不动产或者动产上设立用益物权",
+      "expected_labels": [
+        "第二百四十一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 240
+    },
+    {
+      "query": "法律规定专属于国家所有的不动产和动产，任何组织或",
+      "expected_labels": [
+        "第二百四十二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 241
+    },
+    {
+      "query": "为了公共利益的需要，依照法律规定的权限和程序可以",
+      "expected_labels": [
+        "第二百四十三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 242
+    },
+    {
+      "query": "国家对耕地实行特殊保护，严格限制农用地转为建设用",
+      "expected_labels": [
+        "第二百四十四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 243
+    },
+    {
+      "query": "因抢险救灾、疫情防控等紧急需要，依照法律规定的权",
+      "expected_labels": [
+        "第二百四十五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 244
+    },
+    {
+      "query": "法律规定属于国家所有的财产，属于国家所有即全民所",
+      "expected_labels": [
+        "第二百四十六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 245
+    },
+    {
+      "query": "矿藏、水流、海域属于国家所有。",
+      "expected_labels": [
+        "第二百四十七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 246
+    },
+    {
+      "query": "无居民海岛属于国家所有，国务院代表国家行使无居民",
+      "expected_labels": [
+        "第二百四十八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 247
+    },
+    {
+      "query": "城市的土地，属于国家所有。法律规定属于国家所有的",
+      "expected_labels": [
+        "第二百四十九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 248
+    },
+    {
+      "query": "森林、山岭、草原、荒地、滩涂等自然资源，属于国家",
+      "expected_labels": [
+        "第二百五十条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 249
+    },
+    {
+      "query": "法律规定属于国家所有的野生动植物资源，属于国家所",
+      "expected_labels": [
+        "第二百五十一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 250
+    },
+    {
+      "query": "无线电频谱资源属于国家所有。",
+      "expected_labels": [
+        "第二百五十二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 251
+    },
+    {
+      "query": "法律规定属于国家所有的文物，属于国家所有。",
+      "expected_labels": [
+        "第二百五十三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 252
+    },
+    {
+      "query": "国防资产属于国家所有。铁路、公路、电力设施、电信",
+      "expected_labels": [
+        "第二百五十四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 253
+    },
+    {
+      "query": "国家机关对其直接支配的不动产和动产，享有占有、使",
+      "expected_labels": [
+        "第二百五十五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 254
+    },
+    {
+      "query": "国家举办的事业单位对其直接支配的不动产和动产，享",
+      "expected_labels": [
+        "第二百五十六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 255
+    },
+    {
+      "query": "国家出资的企业，由国务院、地方人民政府依照法律、",
+      "expected_labels": [
+        "第二百五十七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 256
+    },
+    {
+      "query": "国家所有的财产受法律保护，禁止任何组织或者个人侵",
+      "expected_labels": [
+        "第二百五十八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 257
+    },
+    {
+      "query": "履行国有财产管理、监督职责的机构及其工作人员，应",
+      "expected_labels": [
+        "第二百五十九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 258
+    },
+    {
+      "query": "集体所有的不动产和动产包括：（一）法律规定属于集",
+      "expected_labels": [
+        "第二百六十条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 259
+    },
+    {
+      "query": "农民集体所有的不动产和动产，属于本集体成员集体所",
+      "expected_labels": [
+        "第二百六十一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 260
+    },
+    {
+      "query": "对于集体所有的土地和森林、山岭、草原、荒地、滩涂",
+      "expected_labels": [
+        "第二百六十二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 261
+    },
+    {
+      "query": "城镇集体所有的不动产和动产，依照法律、行政法规的",
+      "expected_labels": [
+        "第二百六十三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 262
+    },
+    {
+      "query": "农村集体经济组织或者村民委员会、村民小组应当依照",
+      "expected_labels": [
+        "第二百六十四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 263
+    },
+    {
+      "query": "集体所有的财产受法律保护，禁止任何组织或者个人侵",
+      "expected_labels": [
+        "第二百六十五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 264
+    },
+    {
+      "query": "私人对其合法的收入、房屋、生活用品、生产工具、原",
+      "expected_labels": [
+        "第二百六十六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 265
+    },
+    {
+      "query": "私人的合法财产受法律保护，禁止任何组织或者个人侵",
+      "expected_labels": [
+        "第二百六十七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 266
+    },
+    {
+      "query": "国家、集体和私人依法可以出资设立有限责任公司、股",
+      "expected_labels": [
+        "第二百六十八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 267
+    },
+    {
+      "query": "营利法人对其不动产和动产依照法律、行政法规以及章",
+      "expected_labels": [
+        "第二百六十九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 268
+    },
+    {
+      "query": "社会团体法人、捐助法人依法所有的不动产和动产，受",
+      "expected_labels": [
+        "第二百七十条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 269
+    },
+    {
+      "query": "业主对建筑物内的住宅、经营性用房等专有部分享有所",
+      "expected_labels": [
+        "第二百七十一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 270
+    },
+    {
+      "query": "业主对其建筑物专有部分享有占有、使用、收益和处分",
+      "expected_labels": [
+        "第二百七十二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 271
+    },
+    {
+      "query": "业主对建筑物专有部分以外的共有部分，享有权利，承",
+      "expected_labels": [
+        "第二百七十三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 272
+    },
+    {
+      "query": "建筑区划内的道路，属于业主共有，但是属于城镇公共",
+      "expected_labels": [
+        "第二百七十四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 273
+    },
+    {
+      "query": "建筑区划内，规划用于停放汽车的车位、车库的归属，",
+      "expected_labels": [
+        "第二百七十五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 274
+    },
+    {
+      "query": "建筑区划内，规划用于停放汽车的车位、车库应当首先",
+      "expected_labels": [
+        "第二百七十六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 275
+    },
+    {
+      "query": "业主可以设立业主大会，选举业主委员会。业主大会、",
+      "expected_labels": [
+        "第二百七十七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 276
+    },
+    {
+      "query": "下列事项由业主共同决定：（一）制定和修改业主大会",
+      "expected_labels": [
+        "第二百七十八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 277
+    },
+    {
+      "query": "业主不得违反法律、法规以及管理规约，将住宅改变为",
+      "expected_labels": [
+        "第二百七十九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 278
+    },
+    {
+      "query": "业主大会或者业主委员会的决定，对业主具有法律约束",
+      "expected_labels": [
+        "第二百八十条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 279
+    },
+    {
+      "query": "建筑物及其附属设施的维修资金，属于业主共有。经业",
+      "expected_labels": [
+        "第二百八十一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 280
+    },
+    {
+      "query": "建设单位、物业服务企业或者其他管理人等利用业主的",
+      "expected_labels": [
+        "第二百八十二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 281
+    },
+    {
+      "query": "建筑物及其附属设施的费用分摊、收益分配等事项，有",
+      "expected_labels": [
+        "第二百八十三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 282
+    },
+    {
+      "query": "业主可以自行管理建筑物及其附属设施，也可以委托物",
+      "expected_labels": [
+        "第二百八十四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 283
+    },
+    {
+      "query": "物业服务企业或者其他管理人根据业主的委托，依照本",
+      "expected_labels": [
+        "第二百八十五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 284
+    },
+    {
+      "query": "业主应当遵守法律、法规以及管理规约，相关行为应当",
+      "expected_labels": [
+        "第二百八十六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 285
+    },
+    {
+      "query": "业主对建设单位、物业服务企业或者其他管理人以及其",
+      "expected_labels": [
+        "第二百八十七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 286
+    },
+    {
+      "query": "不动产的相邻权利人应当按照有利生产、方便生活、团",
+      "expected_labels": [
+        "第二百八十八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 287
+    },
+    {
+      "query": "法律、法规对处理相邻关系有规定的，依照其规定；法",
+      "expected_labels": [
+        "第二百八十九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 288
+    },
+    {
+      "query": "不动产权利人应当为相邻权利人用水、排水提供必要的",
+      "expected_labels": [
+        "第二百九十条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 289
+    },
+    {
+      "query": "不动产权利人对相邻权利人因通行等必须利用其土地的",
+      "expected_labels": [
+        "第二百九十一条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 290
+    },
+    {
+      "query": "不动产权利人因建造、修缮建筑物以及铺设电线、电缆",
+      "expected_labels": [
+        "第二百九十二条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 291
+    },
+    {
+      "query": "建造建筑物，不得违反国家有关工程建设标准，不得妨",
+      "expected_labels": [
+        "第二百九十三条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 292
+    },
+    {
+      "query": "不动产权利人不得违反国家规定弃置固体废物，排放大",
+      "expected_labels": [
+        "第二百九十四条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 293
+    },
+    {
+      "query": "不动产权利人挖掘土地、建造建筑物、铺设管线以及安",
+      "expected_labels": [
+        "第二百九十五条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 294
+    },
+    {
+      "query": "不动产权利人因用水、排水、通行、铺设管线等利用相",
+      "expected_labels": [
+        "第二百九十六条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 295
+    },
+    {
+      "query": "不动产或者动产可以由两个以上组织、个人共有。共有",
+      "expected_labels": [
+        "第二百九十七条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 296
+    },
+    {
+      "query": "按份共有人对共有的不动产或者动产按照其份额享有所",
+      "expected_labels": [
+        "第二百九十八条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 297
+    },
+    {
+      "query": "共同共有人对共有的不动产或者动产共同享有所有权。",
+      "expected_labels": [
+        "第二百九十九条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 298
+    },
+    {
+      "query": "共有人按照约定管理共有的不动产或者动产；没有约定",
+      "expected_labels": [
+        "第三百条"
+      ],
+      "generation": "source-excerpt",
+      "source_index": 299
+    }
+  ]
+}

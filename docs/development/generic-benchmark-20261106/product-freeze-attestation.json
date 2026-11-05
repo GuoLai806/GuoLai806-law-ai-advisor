@@ -1,0 +1,10 @@
+{
+  "freeze_sha256": "12ebd86d58ea9791f9fe150d38b5860fe405a546610accf24b11f46d122605e8",
+  "freeze_filesystem_birth_utc": "2026-11-05T17:10:26.986758+00:00",
+  "freeze_filesystem_mtime_utc": "2026-11-05T17:10:26.986845+00:00",
+  "first_product_lexical_report_created_utc": "2026-11-05T17:10:32Z",
+  "product_lexical_report_sha256": "9bd4577a114a41a8a1bb6938b0534e15850210483a931eeeb4ed4bcca09566e0",
+  "validation_qids_frozen_before_model_run": true,
+  "official_test_run_by_author": false,
+  "limitation": "Filesystem timestamps and local run metadata are observational evidence, not a trusted timestamp authority."
+}

@@ -1,0 +1,9 @@
+{
+  "timestamp_utc": "2026-11-05T16:37:52Z",
+  "distribution": "openviking",
+  "version": "0.5.3",
+  "native_binding": "ragfs_python.abi3.so",
+  "native_sha256": "22a1d79f72bc1c28073b3e5d2b43ea74005a09bfc61cc76cb4103fcdcb8f880e",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "note": "Installed distribution/binding identity; not an equivalence proof to source commit."
+}

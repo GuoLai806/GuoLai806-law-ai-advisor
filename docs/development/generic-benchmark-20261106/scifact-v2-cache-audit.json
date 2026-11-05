@@ -1,0 +1,90 @@
+{
+  "kind": "read-only validation of frozen-v2 vector caches; no migration",
+  "caches": {
+    "BAAI/bge-m3": {
+      "cache_key": "04398782a8962eb93b177564a4746ae7e331c6a3b40bc1ca28d6fcf6611fd012",
+      "metadata": {
+        "batch_size": 2,
+        "corpus_ids_sha256": "07590b0c35c31a15fda4883f8e9ebbcacf55ae74bd97d0bd95c743ee4191a2d7",
+        "corpus_sha256": "dec31c8182f3d744c7d2c09423756fd1d17cbef75808db13ba01cc0aab4d1ac6",
+        "device": "mps",
+        "dimension": 1024,
+        "dtype": "float16",
+        "input_format": "evidence_rag.retrieval.document_embedding_text: title + newline + body; no ID or qrel",
+        "input_serialization_sha256": "c87a7f5dfcf18517d8a503b2adf6f59ada780d072888ac8de9abb5ce8c108837",
+        "model": "BAAI/bge-m3",
+        "normalized": true,
+        "query_hash": "7fc12893f3d674766501d49bcc9f920bf8741aea60e08ffcbabf5abd6da221ca",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181"
+      },
+      "files": {
+        "corpus.npy": {
+          "sha256": "0852c63e1307075d84ee17e8898d70c70b9f2fd9d2777d64fc8bce77fe8cc142",
+          "shape": [
+            5183,
+            1024
+          ],
+          "dtype": "float32",
+          "norm_min": 0.9997557997703552,
+          "norm_max": 1.0004961490631104,
+          "valid": true
+        },
+        "queries.npy": {
+          "sha256": "7035a4d2e1a533b60cde7323238eae88d177cd9f81a75f98c0ae57e511d3e273",
+          "shape": [
+            32,
+            1024
+          ],
+          "dtype": "float32",
+          "norm_min": 0.9997586011886597,
+          "norm_max": 1.0004494190216064,
+          "valid": true
+        }
+      },
+      "valid": true
+    },
+    "Qwen/Qwen3-Embedding-4B": {
+      "cache_key": "8d1f6dc83f812ab15abd3ad896f7e59213286d0ad98b4243cb105272536fdda4",
+      "metadata": {
+        "batch_size": 2,
+        "corpus_ids_sha256": "07590b0c35c31a15fda4883f8e9ebbcacf55ae74bd97d0bd95c743ee4191a2d7",
+        "corpus_sha256": "dec31c8182f3d744c7d2c09423756fd1d17cbef75808db13ba01cc0aab4d1ac6",
+        "device": "mps",
+        "dimension": 2560,
+        "dtype": "float16",
+        "input_format": "evidence_rag.retrieval.document_embedding_text: title + newline + body; no ID or qrel",
+        "input_serialization_sha256": "c87a7f5dfcf18517d8a503b2adf6f59ada780d072888ac8de9abb5ce8c108837",
+        "model": "Qwen/Qwen3-Embedding-4B",
+        "normalized": true,
+        "query_hash": "3cf9819190e6aade0ba4950ab407c3a35e82a3ade789d923da14c182d786abe5",
+        "revision": "5cf2132abc99cad020ac570b19d031efec650f2b"
+      },
+      "files": {
+        "corpus.npy": {
+          "sha256": "90ba1ed62113a5cfc2b124874829881a72e8fceb7f086cf2da7d082611943889",
+          "shape": [
+            5183,
+            2560
+          ],
+          "dtype": "float32",
+          "norm_min": 0.9995477795600891,
+          "norm_max": 1.0004878044128418,
+          "valid": true
+        },
+        "queries.npy": {
+          "sha256": "f1c13d0de46da7f03332d4124043c3db5642a09993856bcd887aea7cc54ba774",
+          "shape": [
+            32,
+            2560
+          ],
+          "dtype": "float32",
+          "norm_min": 0.9997666478157043,
+          "norm_max": 1.0004349946975708,
+          "valid": true
+        }
+      },
+      "valid": true
+    }
+  },
+  "all_valid": true
+}

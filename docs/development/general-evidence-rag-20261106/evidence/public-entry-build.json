@@ -1,0 +1,29 @@
+{
+  "timestamp_utc": "2026-11-05T17:34:02Z",
+  "wheel_name": "evidence_rag-0.2.0-py3-none-any.whl",
+  "wheel_sha256": "6aa4277530dd201ed8a55376a14ef47c278946d452d0f54504a930ca80109343",
+  "build": "pip wheel --no-deps --no-build-isolation",
+  "install_performed": false,
+  "docker_started": false,
+  "wheel_zipimport_from_tmp": {
+    "core_loaded": true,
+    "legal_loaded": true,
+    "same_legal_app": true,
+    "old_agent_loaded": false,
+    "torch_loaded": false
+  },
+  "source_hashes": {
+    "pyproject.toml": "26f1e8a085a8efc1a6e24aeb476fc8ba8e1154f4448560f11c95f358f96f0b48",
+    "main-system/server_text01.py": "fdcbc63c8f43ff2282c9b9eba864eab5433ca59a61b19ae7885db2ca4cc18073",
+    "main-system/Dockerfile": "4fcb84b8c209ddd5d1c2970a194391d176bb6e7fbfe1e5b4033abf825ff2b8bd",
+    "main-system/docker-compose.yml": "1638156102cea299f468353b3f8d088b75a889392fa9b4b47b038a2872b93718",
+    "legal_rag/cli.py": "1ac87ff453a9719f48bfbba9ab0b21cf042a78a0a09d1c9c123e1a7f2c8bc4b5"
+  },
+  "limitations": "Wheel build and zipimport only; not a clean install, Docker build, deployment, or user acceptance.",
+  "compose_config_validation": {
+    "command": "docker compose -f main-system/docker-compose.yml config --quiet",
+    "exit_code": 0,
+    "credentials_unset": true,
+    "docker_daemon_started": false
+  }
+}

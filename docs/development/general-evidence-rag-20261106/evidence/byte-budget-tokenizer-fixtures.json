@@ -1,0 +1,50 @@
+{
+  "timestamp_utc": "2026-11-05T17:33:54Z",
+  "tokenizer": "BAAI/bge-m3",
+  "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+  "rows": [
+    {
+      "text": "English: the ocean carries heat across the planet.",
+      "utf8_bytes": 50,
+      "bge_tokens_without_special": 11
+    },
+    {
+      "text": "中文：证据应保留完整段落和来源。",
+      "utf8_bytes": 48,
+      "bge_tokens_without_special": 12
+    },
+    {
+      "text": "Mixed English 中文, 2026-11-06, αβγ.",
+      "utf8_bytes": 41,
+      "bge_tokens_without_special": 15
+    },
+    {
+      "text": "Code: x = {\"key\": [1, 2, 3]}\nreturn x",
+      "utf8_bytes": 37,
+      "bge_tokens_without_special": 18
+    },
+    {
+      "text": "Emoji: 🌊🔬✅ and punctuation?!",
+      "utf8_bytes": 36,
+      "bge_tokens_without_special": 12
+    }
+  ],
+  "all_sample_content_tokens_lte_bytes": true,
+  "message_content_tokens_without_special": 55,
+  "budget": {
+    "state": "conservative_bytes",
+    "mode": "conservative_bytes",
+    "used_tokens": null,
+    "content_bytes": 228,
+    "max_content_bytes": 6000,
+    "framing_reserve": 1024,
+    "output_reserve": 2048,
+    "model_context_window": 16000,
+    "omitted": [],
+    "fits": true,
+    "exact_tokens": false,
+    "guarantee": "heuristic; unknown tokenizer and provider chat template are not formally bounded"
+  },
+  "message_content_tokens_lte_bytes": true,
+  "limitation": "These fixtures test one local tokenizer without chat-template tokens; no general bound for any provider or model."
+}

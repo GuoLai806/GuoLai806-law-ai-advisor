@@ -1,0 +1,2025 @@
+{
+  "kind": "synthetic-fixture-not-human-verified",
+  "embedding": "BAAI/bge-m3",
+  "embedding_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+  "embedding_runtime": {
+    "device": "mps:0",
+    "parameter_dtypes": [
+      "torch.float16"
+    ],
+    "max_seq_length": 8192,
+    "dimension": 1024,
+    "normalized": true,
+    "corpus_embedding_ms": 7726.928,
+    "query_instruction": null
+  },
+  "reranker": "bge",
+  "reranker_revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+  "reranker_runtime": {
+    "device": "mps:0",
+    "parameter_dtypes": [
+      "torch.float16"
+    ],
+    "max_length": 4096
+  },
+  "requested_device": "mps",
+  "requested_dtype": "float16",
+  "batch_size": 2,
+  "models_loaded_sequentially": true,
+  "corpus_revision": "repository-unverified",
+  "corpus_manifest": {
+    "doc_id": "cn-civil-code",
+    "effective_from": null,
+    "effective_to": null,
+    "extracted_text_sha256": "37cd6b887c9c5bf89293d4433fbf3b4231714643b8773884a0285c117b9f35d4",
+    "issuer": "全国人民代表大会",
+    "note": "仓库内 PDF 仅供离线解析，来源、文本完整性及版本尚未完成核验，不能作为权威资料激活。",
+    "parser_version": "article-v4-section-crosscheck",
+    "source_kind": "repository-source-unverified",
+    "source_sha256": "4cef5e4a1e5f82c5a52e949093ba0cfec4f7290e78d04d837c292e2a62c4065e",
+    "source_url": null,
+    "title": "中华人民共和国民法典",
+    "verification_state": "pending",
+    "version_id": "2020-repository-pdf"
+  },
+  "dataset_sha256": "f09e6e289838fe097954d585baf72f827957f47518fcb50790817c01e880aa3b",
+  "code_sha256": {
+    "legal_rag/__init__.py": "530de0972cc52557a06e77fc645c5f72c6db0e46d33ab48f5e857f369b0d12e6",
+    "legal_rag/answer.py": "5b334c78b00ba06bc958b5d4166487c4f0a42bd403b23cabc89894729e243564",
+    "legal_rag/api.py": "194dbda764c19f413f59c2cc57c7f94e4f0d0b456dbb15da8a9d1737e44efafe",
+    "legal_rag/budget.py": "72670d033e4d8ce6363c7504b84f0e14b121e61e312eb8eb243c488482ce70fb",
+    "legal_rag/catalog.py": "067c9adc724807bb11859d0cba80d84ef4237f6637cf0d99ee5e5e0463681f76",
+    "legal_rag/cli.py": "63743591eaadda29649d2e6964d445e3af149a477630e5ad6d817a166f942861",
+    "legal_rag/generate_benchmark.py": "16d0beafab70dbf9afab9d0ba551aafcf61c0220e2f8303919597d38a18e5ac2",
+    "legal_rag/model_experiment.py": "afb20658de0be8c1a246c2c9c327761abddaca2acc85ec60a8e15414b02af140",
+    "legal_rag/retrieval.py": "a94ca15ecd3266dfc91923debde9ee2c7f94756d605b7a1884a44cf20535d917",
+    "legal_rag/viking_index.py": "34fef1298b8468f35d3d16595286eaed732cc42b1e7010b6dc4a9ecb044c9fb7"
+  },
+  "created_utc": "2026-11-05T16:38:34Z",
+  "platform": "macOS (device details retained separately)",
+  "python": "3.12.13",
+  "sentence_transformers_version": "6.2.0",
+  "torch_version": "2.15.0",
+  "transformers_version": "5.22.1",
+  "mean_recall_at_20": 1.0,
+  "mean_ndcg_at_10": 1.0,
+  "scored_queries": 3,
+  "failed_queries": 0,
+  "latency_note": "query embedding time plus later ranking time, excludes model loading and corpus indexing; not contiguous end-to-end timing",
+  "results": [
+    {
+      "query": "第一条",
+      "expected": [
+        "第一条"
+      ],
+      "ranking": [
+        {
+          "label": "第一条",
+          "score": 0.9333093762397766,
+          "retrieval_sources": [
+            {
+              "source": "exact",
+              "rank": 1
+            },
+            {
+              "source": "bm25",
+              "rank": 1
+            },
+            {
+              "source": "dense",
+              "rank": 1
+            }
+          ]
+        },
+        {
+          "label": "第一百零一条",
+          "score": 0.43908581137657166,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 17
+            }
+          ]
+        },
+        {
+          "label": "第十一条",
+          "score": 0.4303268790245056,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 27
+            },
+            {
+              "source": "dense",
+              "rank": 5
+            }
+          ]
+        },
+        {
+          "label": "第一千一百二十七条",
+          "score": 0.3947840929031372,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 10
+            }
+          ]
+        },
+        {
+          "label": "第一千零六十一条",
+          "score": 0.3549918830394745,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 24
+            }
+          ]
+        },
+        {
+          "label": "第一千零四十一条",
+          "score": 0.3410336375236511,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 12
+            },
+            {
+              "source": "dense",
+              "rank": 16
+            }
+          ]
+        },
+        {
+          "label": "第一千零一十一条",
+          "score": 0.2727019190788269,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 6
+            },
+            {
+              "source": "dense",
+              "rank": 4
+            }
+          ]
+        },
+        {
+          "label": "第一千零一条",
+          "score": 0.26473838090896606,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 7
+            },
+            {
+              "source": "dense",
+              "rank": 3
+            }
+          ]
+        },
+        {
+          "label": "第一千零一十四条",
+          "score": 0.242923304438591,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 25
+            }
+          ]
+        },
+        {
+          "label": "第一千一百零一条",
+          "score": 0.2324843406677246,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 29
+            }
+          ]
+        },
+        {
+          "label": "第十四条",
+          "score": 0.22490549087524414,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 31
+            }
+          ]
+        },
+        {
+          "label": "第一千零九十一条",
+          "score": 0.20946966111660004,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 13
+            }
+          ]
+        },
+        {
+          "label": "第一千零五条",
+          "score": 0.20434190332889557,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 2
+            }
+          ]
+        },
+        {
+          "label": "第一千一百三十一条",
+          "score": 0.1883239895105362,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 11
+            }
+          ]
+        },
+        {
+          "label": "第一千一百五十一条",
+          "score": 0.18668745458126068,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 4
+            }
+          ]
+        },
+        {
+          "label": "第一千一百四十一条",
+          "score": 0.18624301254749298,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 3
+            },
+            {
+              "source": "dense",
+              "rank": 33
+            }
+          ]
+        },
+        {
+          "label": "第一百六十一条",
+          "score": 0.1790994107723236,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 15
+            }
+          ]
+        },
+        {
+          "label": "第一千零五十六条",
+          "score": 0.17695587873458862,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 26
+            }
+          ]
+        },
+        {
+          "label": "第一百零五条",
+          "score": 0.17342814803123474,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 11
+            }
+          ]
+        },
+        {
+          "label": "第一千零三条",
+          "score": 0.17147700488567352,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 7
+            }
+          ]
+        },
+        {
+          "label": "第一千一百二十九条",
+          "score": 0.16424818336963654,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 6
+            }
+          ]
+        },
+        {
+          "label": "第一千零三十一条",
+          "score": 0.15546272695064545,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 20
+            },
+            {
+              "source": "dense",
+              "rank": 12
+            }
+          ]
+        },
+        {
+          "label": "第一千零一十三条",
+          "score": 0.1490352898836136,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 15
+            }
+          ]
+        },
+        {
+          "label": "第一千零一十条",
+          "score": 0.14829370379447937,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 27
+            }
+          ]
+        },
+        {
+          "label": "第一千二百一十一条",
+          "score": 0.14792406558990479,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 16
+            }
+          ]
+        },
+        {
+          "label": "第一百一十九条",
+          "score": 0.14681969583034515,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 21
+            }
+          ]
+        },
+        {
+          "label": "第八百一十一条",
+          "score": 0.1424703449010849,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 30
+            }
+          ]
+        },
+        {
+          "label": "第一千零二条",
+          "score": 0.14080816507339478,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 20
+            }
+          ]
+        },
+        {
+          "label": "第一千一百一十一条",
+          "score": 0.13386747241020203,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 21
+            }
+          ]
+        },
+        {
+          "label": "第一千一百零八条",
+          "score": 0.13083969056606293,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 34
+            }
+          ]
+        },
+        {
+          "label": "第一千一百六十一条",
+          "score": 0.12721826136112213,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 19
+            }
+          ]
+        },
+        {
+          "label": "第一百一十三条",
+          "score": 0.12442561984062195,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 22
+            }
+          ]
+        },
+        {
+          "label": "第一百二十八条",
+          "score": 0.11456650495529175,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 17
+            }
+          ]
+        },
+        {
+          "label": "第一千零一十七条",
+          "score": 0.11436853557825089,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 13
+            }
+          ]
+        },
+        {
+          "label": "第十三条",
+          "score": 0.11377637088298798,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 29
+            }
+          ]
+        },
+        {
+          "label": "第一百三十一条",
+          "score": 0.10017221421003342,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 32
+            },
+            {
+              "source": "dense",
+              "rank": 8
+            }
+          ]
+        },
+        {
+          "label": "第一百五十一条",
+          "score": 0.0972188338637352,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 14
+            }
+          ]
+        },
+        {
+          "label": "第一百一十五条",
+          "score": 0.0972188338637352,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 32
+            }
+          ]
+        },
+        {
+          "label": "第一千一百六十四条",
+          "score": 0.09653531014919281,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 30
+            }
+          ]
+        },
+        {
+          "label": "第一百一十二条",
+          "score": 0.09518112242221832,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 18
+            }
+          ]
+        },
+        {
+          "label": "第一千一百六十九条",
+          "score": 0.0928521603345871,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 28
+            }
+          ]
+        },
+        {
+          "label": "第四百七十一条",
+          "score": 0.08509904891252518,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 25
+            }
+          ]
+        },
+        {
+          "label": "第一千一百七十一条",
+          "score": 0.08494709432125092,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 9
+            },
+            {
+              "source": "dense",
+              "rank": 23
+            }
+          ]
+        },
+        {
+          "label": "第一千一百九十一条",
+          "score": 0.060086652636528015,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 22
+            }
+          ]
+        },
+        {
+          "label": "第五百二十六条",
+          "score": 0.059319138526916504,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 14
+            }
+          ]
+        },
+        {
+          "label": "第一千一百七十三条",
+          "score": 0.058560822159051895,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 9
+            }
+          ]
+        },
+        {
+          "label": "第一千二百四十一条",
+          "score": 0.05561760812997818,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 18
+            }
+          ]
+        },
+        {
+          "label": "第二百五十一条",
+          "score": 0.05098814144730568,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 35
+            }
+          ]
+        },
+        {
+          "label": "第九百九十一条",
+          "score": 0.05042406544089317,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 28
+            }
+          ]
+        },
+        {
+          "label": "第九百一十一条",
+          "score": 0.04724971204996109,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 34
+            }
+          ]
+        },
+        {
+          "label": "第五百二十五条",
+          "score": 0.04493164271116257,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 24
+            }
+          ]
+        },
+        {
+          "label": "第一百二十一条",
+          "score": 0.04193052276968956,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 8
+            }
+          ]
+        },
+        {
+          "label": "第一百九十一条",
+          "score": 0.041773878037929535,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 10
+            }
+          ]
+        },
+        {
+          "label": "第六百六十一条",
+          "score": 0.04008735716342926,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 33
+            }
+          ]
+        },
+        {
+          "label": "第一千一百七十五条",
+          "score": 0.04001227021217346,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 19
+            }
+          ]
+        },
+        {
+          "label": "第一千零八十一条",
+          "score": 0.0350126251578331,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 2
+            }
+          ]
+        },
+        {
+          "label": "第三百七十一条",
+          "score": 0.03448852524161339,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 26
+            }
+          ]
+        },
+        {
+          "label": "第六百一十六条",
+          "score": 0.03155902028083801,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 23
+            }
+          ]
+        },
+        {
+          "label": "第九百七十一条",
+          "score": 0.026105914264917374,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 31
+            }
+          ]
+        },
+        {
+          "label": "第一千二百五十一条",
+          "score": 0.017442483454942703,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 5
+            }
+          ]
+        }
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "query_embedding_ms": 11.372,
+      "ranking_ms": 686.924,
+      "latency_ms": 698.299,
+      "failure": null
+    },
+    {
+      "query": "第二条",
+      "expected": [
+        "第二条"
+      ],
+      "ranking": [
+        {
+          "label": "第二条",
+          "score": 0.9649873375892639,
+          "retrieval_sources": [
+            {
+              "source": "exact",
+              "rank": 1
+            },
+            {
+              "source": "bm25",
+              "rank": 1
+            },
+            {
+              "source": "dense",
+              "rank": 6
+            }
+          ]
+        },
+        {
+          "label": "第二十条",
+          "score": 0.9043130874633789,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 29
+            }
+          ]
+        },
+        {
+          "label": "第二百零七条",
+          "score": 0.6656279563903809,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 13
+            },
+            {
+              "source": "dense",
+              "rank": 10
+            }
+          ]
+        },
+        {
+          "label": "第二百零二条",
+          "score": 0.6074303388595581,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 2
+            }
+          ]
+        },
+        {
+          "label": "第二百五十八条",
+          "score": 0.6049825549125671,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 24
+            },
+            {
+              "source": "dense",
+              "rank": 9
+            }
+          ]
+        },
+        {
+          "label": "第二百四十七条",
+          "score": 0.5477060079574585,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 20
+            }
+          ]
+        },
+        {
+          "label": "第二百四十二条",
+          "score": 0.5377089977264404,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 3
+            },
+            {
+              "source": "dense",
+              "rank": 4
+            }
+          ]
+        },
+        {
+          "label": "第二十二条",
+          "score": 0.5276511907577515,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 8
+            }
+          ]
+        },
+        {
+          "label": "第二十六条",
+          "score": 0.4720141589641571,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 30
+            }
+          ]
+        },
+        {
+          "label": "第二百零五条",
+          "score": 0.45495641231536865,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 11
+            },
+            {
+              "source": "dense",
+              "rank": 15
+            }
+          ]
+        },
+        {
+          "label": "第二十五条",
+          "score": 0.43764322996139526,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 34
+            }
+          ]
+        },
+        {
+          "label": "第二百条",
+          "score": 0.43194353580474854,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 10
+            }
+          ]
+        },
+        {
+          "label": "第二百二十六条",
+          "score": 0.42417341470718384,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 32
+            }
+          ]
+        },
+        {
+          "label": "第二百九十五条",
+          "score": 0.42244505882263184,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 33
+            }
+          ]
+        },
+        {
+          "label": "第二百二十八条",
+          "score": 0.4130627512931824,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 26
+            }
+          ]
+        },
+        {
+          "label": "第二百五十五条",
+          "score": 0.408571720123291,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 16
+            }
+          ]
+        },
+        {
+          "label": "第二百九十二条",
+          "score": 0.40827676653862,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 6
+            }
+          ]
+        },
+        {
+          "label": "第二百七十二条",
+          "score": 0.4063906967639923,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 5
+            },
+            {
+              "source": "dense",
+              "rank": 29
+            }
+          ]
+        },
+        {
+          "label": "第二百一十四条",
+          "score": 0.4037431478500366,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 31
+            }
+          ]
+        },
+        {
+          "label": "第二百九十八条",
+          "score": 0.3995773196220398,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 17
+            }
+          ]
+        },
+        {
+          "label": "第二百二十五条",
+          "score": 0.39460912346839905,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 33
+            }
+          ]
+        },
+        {
+          "label": "第二百六十七条",
+          "score": 0.36840569972991943,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 18
+            }
+          ]
+        },
+        {
+          "label": "第二百五十一条",
+          "score": 0.36500388383865356,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 8
+            }
+          ]
+        },
+        {
+          "label": "第二百二十四条",
+          "score": 0.3554392158985138,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 21
+            }
+          ]
+        },
+        {
+          "label": "第二百五十六条",
+          "score": 0.3394990861415863,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 23
+            }
+          ]
+        },
+        {
+          "label": "第二百零八条",
+          "score": 0.3251990079879761,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 20
+            }
+          ]
+        },
+        {
+          "label": "第二百九十一条",
+          "score": 0.3129996359348297,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 16
+            }
+          ]
+        },
+        {
+          "label": "第二十三条",
+          "score": 0.302494078874588,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 25
+            },
+            {
+              "source": "dense",
+              "rank": 35
+            }
+          ]
+        },
+        {
+          "label": "第二百九十七条",
+          "score": 0.3021851181983948,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 18
+            },
+            {
+              "source": "dense",
+              "rank": 24
+            }
+          ]
+        },
+        {
+          "label": "第二百四十八条",
+          "score": 0.28636878728866577,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 23
+            }
+          ]
+        },
+        {
+          "label": "第二百一十二条",
+          "score": 0.26454830169677734,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 9
+            }
+          ]
+        },
+        {
+          "label": "第二百三十二条",
+          "score": 0.26189684867858887,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 4
+            }
+          ]
+        },
+        {
+          "label": "第二百零一条",
+          "score": 0.2577650845050812,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 35
+            }
+          ]
+        },
+        {
+          "label": "第二百一十六条",
+          "score": 0.24382245540618896,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 19
+            }
+          ]
+        },
+        {
+          "label": "第二百五十二条",
+          "score": 0.24256427586078644,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 21
+            }
+          ]
+        },
+        {
+          "label": "第二百二十二条",
+          "score": 0.22371606528759003,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 7
+            }
+          ]
+        },
+        {
+          "label": "第二百七十条",
+          "score": 0.21983955800533295,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 12
+            }
+          ]
+        },
+        {
+          "label": "第二十九条",
+          "score": 0.2133771777153015,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 14
+            }
+          ]
+        },
+        {
+          "label": "第二百三十九条",
+          "score": 0.20705434679985046,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 25
+            }
+          ]
+        },
+        {
+          "label": "第二百三十六条",
+          "score": 0.20008835196495056,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 22
+            }
+          ]
+        },
+        {
+          "label": "第二百二十三条",
+          "score": 0.18227991461753845,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 28
+            }
+          ]
+        },
+        {
+          "label": "第二百九十三条",
+          "score": 0.17809657752513885,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 14
+            }
+          ]
+        },
+        {
+          "label": "第二百五十三条",
+          "score": 0.14475227892398834,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 19
+            }
+          ]
+        },
+        {
+          "label": "第二百零四条",
+          "score": 0.1173696517944336,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 15
+            },
+            {
+              "source": "dense",
+              "rank": 13
+            }
+          ]
+        },
+        {
+          "label": "第十二条",
+          "score": 0.09894657880067825,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 3
+            }
+          ]
+        },
+        {
+          "label": "第一千零二十六条",
+          "score": 0.07450025528669357,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 28
+            }
+          ]
+        },
+        {
+          "label": "第一百二十六条",
+          "score": 0.07290027290582657,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 22
+            }
+          ]
+        },
+        {
+          "label": "第十一条",
+          "score": 0.07017629593610764,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 1
+            }
+          ]
+        },
+        {
+          "label": "第一百二十八条",
+          "score": 0.060863446444272995,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 2
+            }
+          ]
+        },
+        {
+          "label": "第一千二百三十一条",
+          "score": 0.04903962090611458,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 30
+            }
+          ]
+        },
+        {
+          "label": "第三百二十九条",
+          "score": 0.042009055614471436,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 12
+            }
+          ]
+        },
+        {
+          "label": "第一百二十五条",
+          "score": 0.040616776794195175,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 34
+            }
+          ]
+        },
+        {
+          "label": "第一千零五十七条",
+          "score": 0.03397199884057045,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 17
+            }
+          ]
+        },
+        {
+          "label": "第一千一百五十七条",
+          "score": 0.024053551256656647,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 11
+            }
+          ]
+        },
+        {
+          "label": "第二百八十九条",
+          "score": 0.022977368906140327,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 27
+            },
+            {
+              "source": "dense",
+              "rank": 5
+            }
+          ]
+        },
+        {
+          "label": "第三百一十条",
+          "score": 0.016466174274683,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 27
+            }
+          ]
+        },
+        {
+          "label": "第六百四十六条",
+          "score": 0.013689477927982807,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 7
+            }
+          ]
+        },
+        {
+          "label": "第九百一十八条",
+          "score": 0.013070784509181976,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 26
+            }
+          ]
+        },
+        {
+          "label": "第三百一十九条",
+          "score": 0.012576347216963768,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 31
+            }
+          ]
+        },
+        {
+          "label": "第三百二十八条",
+          "score": 0.012576347216963768,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 32
+            }
+          ]
+        }
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "query_embedding_ms": 9.277,
+      "ranking_ms": 412.034,
+      "latency_ms": 421.314,
+      "failure": null
+    },
+    {
+      "query": "第三条",
+      "expected": [
+        "第三条"
+      ],
+      "ranking": [
+        {
+          "label": "第三条",
+          "score": 0.9793540239334106,
+          "retrieval_sources": [
+            {
+              "source": "exact",
+              "rank": 1
+            },
+            {
+              "source": "bm25",
+              "rank": 1
+            },
+            {
+              "source": "dense",
+              "rank": 1
+            }
+          ]
+        },
+        {
+          "label": "第三十三条",
+          "score": 0.6230328679084778,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 14
+            },
+            {
+              "source": "dense",
+              "rank": 17
+            }
+          ]
+        },
+        {
+          "label": "第三百条",
+          "score": 0.3993430435657501,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 9
+            }
+          ]
+        },
+        {
+          "label": "第三百零三条",
+          "score": 0.3947257995605469,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 16
+            }
+          ]
+        },
+        {
+          "label": "第三百三十三条",
+          "score": 0.3199707567691803,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 9
+            }
+          ]
+        },
+        {
+          "label": "第三百七十三条",
+          "score": 0.3156304955482483,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 13
+            }
+          ]
+        },
+        {
+          "label": "第三百二十三条",
+          "score": 0.2933032512664795,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 23
+            }
+          ]
+        },
+        {
+          "label": "第三百零一条",
+          "score": 0.2914848029613495,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 29
+            }
+          ]
+        },
+        {
+          "label": "第三百零五条",
+          "score": 0.28427788615226746,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 22
+            }
+          ]
+        },
+        {
+          "label": "第七百二十三条",
+          "score": 0.2799268662929535,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 10
+            }
+          ]
+        },
+        {
+          "label": "第十三条",
+          "score": 0.27231472730636597,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 34
+            },
+            {
+              "source": "dense",
+              "rank": 40
+            }
+          ]
+        },
+        {
+          "label": "第三百二十九条",
+          "score": 0.25720494985580444,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 2
+            }
+          ]
+        },
+        {
+          "label": "第一百四十九条",
+          "score": 0.23353148996829987,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 7
+            }
+          ]
+        },
+        {
+          "label": "第三百二十四条",
+          "score": 0.22832851111888885,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 4
+            }
+          ]
+        },
+        {
+          "label": "第三百五十七条",
+          "score": 0.22575782239437103,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 30
+            }
+          ]
+        },
+        {
+          "label": "第三百一十条",
+          "score": 0.21502088010311127,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 15
+            }
+          ]
+        },
+        {
+          "label": "第三百八十三条",
+          "score": 0.20593424141407013,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 5
+            }
+          ]
+        },
+        {
+          "label": "第三百六十三条",
+          "score": 0.19790908694267273,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 33
+            },
+            {
+              "source": "dense",
+              "rank": 20
+            }
+          ]
+        },
+        {
+          "label": "第三百九十三条",
+          "score": 0.19759924709796906,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 3
+            }
+          ]
+        },
+        {
+          "label": "第五百五十二条",
+          "score": 0.19329962134361267,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 25
+            }
+          ]
+        },
+        {
+          "label": "第三百零九条",
+          "score": 0.18817473948001862,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 28
+            }
+          ]
+        },
+        {
+          "label": "第三百六十一条",
+          "score": 0.1792430430650711,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 13
+            }
+          ]
+        },
+        {
+          "label": "第三百四十六条",
+          "score": 0.1710611879825592,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 8
+            }
+          ]
+        },
+        {
+          "label": "第三百五十一条",
+          "score": 0.1672186702489853,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 18
+            }
+          ]
+        },
+        {
+          "label": "第三十七条",
+          "score": 0.16158466041088104,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 19
+            }
+          ]
+        },
+        {
+          "label": "第一千一百零三条",
+          "score": 0.1559762954711914,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 18
+            }
+          ]
+        },
+        {
+          "label": "第三百九十一条",
+          "score": 0.15140382945537567,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 3
+            }
+          ]
+        },
+        {
+          "label": "第三百一十三条",
+          "score": 0.15065254271030426,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 4
+            }
+          ]
+        },
+        {
+          "label": "第八百九十六条",
+          "score": 0.13500383496284485,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 21
+            }
+          ]
+        },
+        {
+          "label": "第三百三十八条",
+          "score": 0.11221036314964294,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 11
+            }
+          ]
+        },
+        {
+          "label": "第一千零九十九条",
+          "score": 0.09467769414186478,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 19
+            }
+          ]
+        },
+        {
+          "label": "第五百二十三条",
+          "score": 0.09367800503969193,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 8
+            }
+          ]
+        },
+        {
+          "label": "第三百一十九条",
+          "score": 0.09351231157779694,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 14
+            }
+          ]
+        },
+        {
+          "label": "第三百二十七条",
+          "score": 0.08419108390808105,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 17
+            }
+          ]
+        },
+        {
+          "label": "第一百三十三条",
+          "score": 0.08359066396951675,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 29
+            }
+          ]
+        },
+        {
+          "label": "第三百二十六条",
+          "score": 0.08137363940477371,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 11
+            }
+          ]
+        },
+        {
+          "label": "第三百二十二条",
+          "score": 0.08064661175012589,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 16
+            }
+          ]
+        },
+        {
+          "label": "第三百二十五条",
+          "score": 0.08050192147493362,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 5
+            }
+          ]
+        },
+        {
+          "label": "第三百六十五条",
+          "score": 0.0772387832403183,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 27
+            }
+          ]
+        },
+        {
+          "label": "第七百七十三条",
+          "score": 0.07133200019598007,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 2
+            },
+            {
+              "source": "dense",
+              "rank": 36
+            }
+          ]
+        },
+        {
+          "label": "第三百二十八条",
+          "score": 0.06221698224544525,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 10
+            }
+          ]
+        },
+        {
+          "label": "第二百三十三条",
+          "score": 0.060086652636528015,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 25
+            }
+          ]
+        },
+        {
+          "label": "第九百二十三条",
+          "score": 0.04913078621029854,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 15
+            }
+          ]
+        },
+        {
+          "label": "第一千二百零四条",
+          "score": 0.04620574414730072,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 24
+            }
+          ]
+        },
+        {
+          "label": "第一千一百七十五条",
+          "score": 0.042962465435266495,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 12
+            }
+          ]
+        },
+        {
+          "label": "第五百九十三条",
+          "score": 0.034358687698841095,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 6
+            }
+          ]
+        },
+        {
+          "label": "第一千二百三十三条",
+          "score": 0.03155902028083801,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 6
+            }
+          ]
+        },
+        {
+          "label": "第四百零三条",
+          "score": 0.03021458350121975,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 7
+            }
+          ]
+        },
+        {
+          "label": "第六百一十三条",
+          "score": 0.028925716876983643,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 12
+            },
+            {
+              "source": "dense",
+              "rank": 26
+            }
+          ]
+        },
+        {
+          "label": "第八百七十三条",
+          "score": 0.028490042313933372,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 24
+            }
+          ]
+        },
+        {
+          "label": "第一百一十三条",
+          "score": 0.02630527876317501,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 23
+            }
+          ]
+        },
+        {
+          "label": "第九百九十三条",
+          "score": 0.023464657366275787,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 31
+            }
+          ]
+        },
+        {
+          "label": "第四百六十三条",
+          "score": 0.021287353709340096,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 21
+            }
+          ]
+        },
+        {
+          "label": "第七百零三条",
+          "score": 0.018369639292359352,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 26
+            }
+          ]
+        },
+        {
+          "label": "第二百五十三条",
+          "score": 0.01634012721478939,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 27
+            }
+          ]
+        },
+        {
+          "label": "第四百八十三条",
+          "score": 0.01353214867413044,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 28
+            }
+          ]
+        },
+        {
+          "label": "第九百五十三条",
+          "score": 0.012431650422513485,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 22
+            }
+          ]
+        },
+        {
+          "label": "第五百四十三条",
+          "score": 0.012007351033389568,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 20
+            }
+          ]
+        },
+        {
+          "label": "第六百二十四条",
+          "score": 0.008348053321242332,
+          "retrieval_sources": [
+            {
+              "source": "dense",
+              "rank": 31
+            }
+          ]
+        },
+        {
+          "label": "第六百七十三条",
+          "score": 0.007968815043568611,
+          "retrieval_sources": [
+            {
+              "source": "bm25",
+              "rank": 30
+            }
+          ]
+        }
+      ],
+      "recall_at_20": 1.0,
+      "ndcg_at_10": 1.0,
+      "query_embedding_ms": 9.074,
+      "ranking_ms": 418.222,
+      "latency_ms": 427.298,
+      "failure": null
+    }
+  ]
+}

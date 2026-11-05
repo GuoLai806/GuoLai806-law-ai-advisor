@@ -1,0 +1,7 @@
+{
+  "comparison": "full per-query product rankings and source candidates, before vs after empty-title fix",
+  "identical": true,
+  "old_report_sha256": "1da17ee38e1675cb23611f2670a6a0054ae183b5b508b065169ef842bcc3477d",
+  "new_report_sha256": "9bd4577a114a41a8a1bb6938b0534e15850210483a931eeeb4ed4bcca09566e0",
+  "source_note": "The official SciFact corpus has zero empty titles; earlier product rankings were independently cross-checked against trec_eval -c."
+}

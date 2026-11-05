@@ -1,0 +1,29 @@
+{
+  "source_trace_sha256": "9492ca7ab1476908b92dba3a6d7f89d207dd56a53ddbc55d7e2c490bdb5de60f",
+  "data": {
+    "timestamp_utc": "2026-11-05T16:59:37Z",
+    "profile": "general",
+    "source_kind": "synthetic",
+    "revision": "revision_4a906c039a82",
+    "engine": "OpenViking 0.5.3",
+    "embedding": "BAAI/bge-m3@5617a9f61b028005a4858fdac845db406aefb181",
+    "steps": [],
+    "passed": false,
+    "error": "ValueError: unknown revision",
+    "events": [],
+    "code_sha256": {
+      "evidence_rag/__init__.py": "530de0972cc52557a06e77fc645c5f72c6db0e46d33ab48f5e857f369b0d12e6",
+      "evidence_rag/answer.py": "a5747cd5a9e61acd3c2eb51ad6b11fd065cc9b1442c51d31d0122deb1091035f",
+      "evidence_rag/api.py": "b3ad29c70b3f4746a93975b1501f485a2c631d6f8760c654f7d6a25da682752c",
+      "evidence_rag/budget.py": "72670d033e4d8ce6363c7504b84f0e14b121e61e312eb8eb243c488482ce70fb",
+      "evidence_rag/catalog.py": "97249bd15a65c041e437823acb5515fbd47f0055ace1659326fa908c1254ef1a",
+      "evidence_rag/cli.py": "721ec25334fec0c5fe989141aa05324a7dded15ec5526d3209d9686fe28a1f27",
+      "evidence_rag/generate_benchmark.py": "16d0beafab70dbf9afab9d0ba551aafcf61c0220e2f8303919597d38a18e5ac2",
+      "evidence_rag/ingest.py": "247c3bddebc869295be4cd30c54f59dfd22de796d3fdffd48f7f30856a517e23",
+      "evidence_rag/model_experiment.py": "b23f90710b7498588761e649ea4064b21728fd7c192f51837fb6be3755ad850b",
+      "evidence_rag/retrieval.py": "2eaf9c0ba3101e127647971bebf395d081556f7ae4ca45f9dd950d0b894f851a",
+      "evidence_rag/viking_index.py": "5b898c3a7fa484d3f4bdde019838ab237c6072c44a5bf08262a9d6512ceedc76"
+    }
+  },
+  "limitation": "Synthetic integration; not public benchmark or human quality validation."
+}

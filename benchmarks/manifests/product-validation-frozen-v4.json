@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "jieba_dictionary_sha256": "7197c3211ddd98962b036cdf40324d1ea2bfaa12bd028e68faa70111a88e12a8",
+  "platform": {
+    "system": "Darwin",
+    "machine": "arm64"
+  },
+  "library_versions": {
+    "torch": "2.15.0",
+    "transformers": "5.22.1",
+    "sentence-transformers": "6.2.0",
+    "numpy": "2.5.4",
+    "jieba": "0.42.1"
+  },
+  "purpose": "frozen before model runs; selection only from validation",
+  "datasets": {
+    "scifact": "d09a41513c30092312905e568c73c9e1e914b04881345e9350125f9701f812cb",
+    "nfcorpus": "8eff3d069b22e7f49da260e06662757c3e5bb4b10971531a3ab6be45d9dd36c1"
+  },
+  "source_sha256": {
+    "benchmarks/run_product.py": "b405576f7247f4b462b4509382fc5fa7826ac6d9becb3d6333b2565dab804805",
+    "benchmarks/product.py": "c438becd7f230ef18e02cedf28d48520b636dbaa06a27cd9dc31a0e525b493ae",
+    "benchmarks/run.py": "b1bde1b02d00c4268f75bab65c371887f4b0b37a1e63a36c44d767180dead092",
+    "benchmarks/core.py": "c7c9b2bf7bd6b1b46a995f858dd8743dda4918542bb8be88cdcda96a65f7fcf6",
+    "benchmarks/metrics.py": "93cf6a4a5477dcbbd15329f0645211ead1d22736d8654f6283a3d2f33660bb3a",
+    "benchmarks/prepare.py": "5dd3ea880fbaa29bc101b1245dbdee95995bfb9f335be9ab32869f5d122e7066",
+    "benchmarks/select.py": "df007d42436493123d6f14fdf932e190f6fe160f49f5e290b7bba2c295bd9a45",
+    "benchmarks/freeze_product.py": "a6c1f21814a3fd3e95c85a2a208e81878af04db81dc3a8a1df8a2a8f8a17c62a",
+    "evidence_rag/catalog.py": "d52166e499a47bf0749ecbb11fdf4d090b118b957c9fb9c9389a2814cc50cc84",
+    "evidence_rag/retrieval.py": "058fbe365e83e2e30c7a4458ec38efeaaa8eeb26677bffb716b3a90489b3c12c",
+    "evidence_rag/viking_index.py": "e55e582e815f8a9bd95411a814b06af28610ab2e9fd684909fed2f0a95f0d36d"
+  },
+  "embedding_models": {
+    "bge": [
+      "BAAI/bge-m3",
+      "5617a9f61b028005a4858fdac845db406aefb181"
+    ],
+    "qwen": [
+      "Qwen/Qwen3-Embedding-4B",
+      "5cf2132abc99cad020ac570b19d031efec650f2b"
+    ]
+  },
+  "rerank_models": {
+    "bge": [
+      "BAAI/bge-reranker-v2-m3",
+      "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e"
+    ],
+    "qwen": [
+      "Qwen/Qwen3-Reranker-4B",
+      "22e683669bc0f0bd69640a1354a6d0aebcfeede5"
+    ]
+  },
+  "device": "mps",
+  "dtype": "float16",
+  "batch_size": 2,
+  "candidate_top_per_source": 40,
+  "candidate_cap": 60,
+  "rrf_k": 60,
+  "embedding_input": "product document_embedding_text",
+  "query_instruction_qwen": "Instruct: Given a question, retrieve relevant documents that best answer the question\nQuery: ",
+  "dense_backend": "exact cosine reference; not OpenViking",
+  "ranking_stage": "product shared rank_candidates before evidence budget"
+}

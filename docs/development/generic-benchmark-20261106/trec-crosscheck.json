@@ -1,0 +1,53 @@
+{
+  "source": "https://github.com/usnistgov/trec_eval/tree/v9.0.8",
+  "archive_sha256": "c3994a73103ec842e12df693749584a45814c35c36dcc15f38984bd463566ba1",
+  "binary_sha256": "9d067ebc8fef416384624f6f6f597cda02b07a688e710567e7fe41a42bf18a94",
+  "method": "trec_eval -c ndcg_cut.10, recall.20, recip_rank on top-10 run; BEIR identical-ID filter; -c retains empty-ranking topics",
+  "earlier_attempt": "trec-crosscheck-incomplete-query-denominator.json excluded empty run topics; retained as failure evidence",
+  "results": {
+    "scifact": {
+      "trec_eval": {
+        "ndcg_at_10": 0.7461,
+        "recall_at_20": 0.8359,
+        "mrr_at_10": 0.7409
+      },
+      "local": {
+        "ndcg_at_10": 0.7460923311103387,
+        "recall_at_20": 0.8359375,
+        "mrr_at_10": 0.7408854166666666
+      },
+      "absolute_difference": {
+        "ndcg_at_10": 7.6688896613053e-06,
+        "recall_at_20": 3.7500000000023626e-05,
+        "mrr_at_10": 1.458333333337336e-05
+      },
+      "rounding_tolerance": 5.1e-05,
+      "within_tolerance": true,
+      "query_count": 32,
+      "empty_ranked_queries": 0,
+      "report_sha256": "4242ef79621bbf138104bc8e577794a13e700e0a66b4bc1ec4731b95b8ff4ff6"
+    },
+    "nfcorpus": {
+      "trec_eval": {
+        "ndcg_at_10": 0.1921,
+        "recall_at_20": 0.1245,
+        "mrr_at_10": 0.3638
+      },
+      "local": {
+        "ndcg_at_10": 0.19207362599869246,
+        "recall_at_20": 0.12447052904448665,
+        "mrr_at_10": 0.3638392857142857
+      },
+      "absolute_difference": {
+        "ndcg_at_10": 2.637400130753309e-05,
+        "recall_at_20": 2.947095551335266e-05,
+        "mrr_at_10": 3.928571428568617e-05
+      },
+      "rounding_tolerance": 5.1e-05,
+      "within_tolerance": true,
+      "query_count": 32,
+      "empty_ranked_queries": 4,
+      "report_sha256": "1f228f91f12563c58f371c20fdaec022b610a1e33e85ec06096943a3c53db5ea"
+    }
+  }
+}

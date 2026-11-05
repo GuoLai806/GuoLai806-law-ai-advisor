@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "dataset": "scifact",
+  "url": "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/scifact.zip",
+  "expected_md5": "5f7d1de60b170fc8027bb7898e2efca1",
+  "archive_sha256": "536e14446a0ba56ed1398ab1055f39fe852686ecad24a6306c80c490fa8e0165",
+  "corpus_sha256": "dec31c8182f3d744c7d2c09423756fd1d17cbef75808db13ba01cc0aab4d1ac6",
+  "queries_sha256": "8ff84a7c903f722981cd8d595c022660140c51867b27608a6d4910db86080313",
+  "corpus_count": 5183,
+  "query_count_total": 1109,
+  "qrels": {
+    "train": {
+      "qids": 809,
+      "qrels": 919,
+      "sha256": "a53f2114831916c096b6c37d9e54da68cef4efdcdbd5ed46533601af972acf1d"
+    },
+    "test": {
+      "qids": 300,
+      "qrels": 339,
+      "sha256": "0864bb985e0ca2367ba217977e72004d549054b2b06666ed9d4825ac7c21284c"
+    }
+  },
+  "validation": {
+    "source_split": "train",
+    "selection": "first N SHA-256(query_id UTF-8), lexical tie break",
+    "query_ids": [
+      "886",
+      "286",
+      "671",
+      "245",
+      "1392",
+      "610",
+      "178",
+      "1391",
+      "342",
+      "1181",
+      "1047",
+      "1055",
+      "55",
+      "860",
+      "356",
+      "1234",
+      "1328",
+      "766",
+      "152",
+      "351",
+      "1353",
+      "394",
+      "1330",
+      "334",
+      "149",
+      "500",
+      "871",
+      "463",
+      "367",
+      "683",
+      "229",
+      "962"
+    ],
+    "count": 32
+  },
+  "official_test_count": 300,
+  "official_test_policy": "no model run before explicit config selection",
+  "license": "CC-BY-SA-4.0",
+  "license_source": "https://huggingface.co/datasets/BeIR/scifact",
+  "beir_readme": "https://github.com/beir-cellar/beir/blob/ef83d29307061c65d04b035b4f4e7c18bd8374af/README.md"
+}

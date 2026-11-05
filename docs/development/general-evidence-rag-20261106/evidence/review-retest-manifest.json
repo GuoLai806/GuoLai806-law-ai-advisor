@@ -1,0 +1,41 @@
+{
+  "timestamp_utc": "2026-11-05T18:04:49.157624+00:00",
+  "scope": "fake providers and temporary SQLite; no GPU or benchmark",
+  "original_source_hashes_recorded": {
+    "evidence_rag/api.py": "a7925dabf355121148b1a536534749b6adaadb1965152e735a9574e5a3899082",
+    "evidence_rag/answer.py": "02581702ad1aafd593d737f4177b5f7aa3a54056612b0b5cd059d15d1ab818e1",
+    "evidence_rag/budget.py": "72218b133506c03cca0c54568b46d612efa0f70e8c8a2dfc670ed70016db47d3",
+    "evidence_rag/catalog.py": "6f34a1e09d3bb604f57c11e8c951ffa5980d8ba71d771eeafe0a97f821bbca47",
+    "evidence_rag/retrieval.py": "c87a7f5dfcf18517d8a503b2adf6f59ada780d072888ac8de9abb5ce8c108837"
+  },
+  "original_source_hash_limitation": "api/answer were captured after initial API fixes; hashes at first reproduction unavailable",
+  "current_source_sha256": {
+    "evidence_rag/catalog.py": "d52166e499a47bf0749ecbb11fdf4d090b118b957c9fb9c9389a2814cc50cc84",
+    "evidence_rag/ingest.py": "8d70053a47f0ecd38989163b333dde4c3ffaa54df79d9039d6ece760fcd0581c",
+    "evidence_rag/answer.py": "02581702ad1aafd593d737f4177b5f7aa3a54056612b0b5cd059d15d1ab818e1",
+    "evidence_rag/budget.py": "72218b133506c03cca0c54568b46d612efa0f70e8c8a2dfc670ed70016db47d3",
+    "evidence_rag/__init__.py": "1944c8ecacab2bea3d8ff1eb5bb77ccd9f2510a0449f94345a08593cbb2acf22",
+    "evidence_rag/viking_index.py": "e55e582e815f8a9bd95411a814b06af28610ab2e9fd684909fed2f0a95f0d36d",
+    "evidence_rag/api.py": "c241a346e28dbdea6c83fb6f6b0762d657bcf65fa140f3f2070f718e2bbd1c69",
+    "evidence_rag/cli.py": "4180f2b1d4051f15e416c6eba8efb81ea78ebcfbacec88692a897f8e0f16c71f",
+    "evidence_rag/retrieval.py": "058fbe365e83e2e30c7a4458ec38efeaaa8eeb26677bffb716b3a90489b3c12c",
+    "evidence_rag/model_experiment.py": "d671e0de227ae4ed5913a94b6ecde78240c94520b39eba2f4ef427594d027da4",
+    "evidence_rag/__main__.py": "d80d69e4e9774964f1a463eeef35cf8251b20d050626280748e90fdaeead6376",
+    "evidence_rag/generate_benchmark.py": "16d0beafab70dbf9afab9d0ba551aafcf61c0220e2f8303919597d38a18e5ac2"
+  },
+  "evidence_sha256": {
+    "fake-api-probe-before-fix.json": "999148db21339e364af062230cb224cd18004b0dfd132909af2e3171e5e85a43",
+    "fake-api-probe-final.json": "b5bc9e8fbccb5280550d06b414bbf6eff838f34d630c22c99143a535a7fc8c02",
+    "rerank-part-probe-before-fix.json": "9672ab0236d88a6324591881032222273c99aa6095daaec37272a23e60595884",
+    "rerank_after_probe.json": "36dccd57a1bfb41568011e6dafea6aad27fbeebdb86e750044d88d4fb0fc1d37",
+    "resource-probe-before-fix.json": "43d391c4d7a546fe072e1f90eb915fa46772021320db0226009537a55798ab28",
+    "resource_after_probe.json": "908ac3654d68f65b7d10c0bdcba38c7728a4a74a7c62b433649a0b216a763cc8",
+    "catalog-integrity-probe-before-fix.json": "56c4d015d613fa530f0a22d51830b46da1f24fd48d3ed8b39f45ff0ee4c830dc",
+    "catalog_after_probe.json": "6f4803203443c3145ad2127323ef15cd86a4750fa2bd3d1708e980d366a3abb1",
+    "final-integrity.log": "ad3f8959da17ce2d7944bd795bf44e1ab3a197944ae7082b696cd781ae2558d6",
+    "final-integrity-junit.xml": "cc0e4c026e53b3be81fc905c09afbe70de87c9e28381db16afe4a54926c595cf",
+    "REPORT-before-retest.md": "f5e611088bb4e99510d7e044b78fd72e0af9c7334cac54c832c864860618b002",
+    "REPORT.md": "e960d372529dc9b5722425d5d6c4c2589be96e1017b92c519cd72be8f6b964c5"
+  },
+  "test": "tests/v2/test_final_integrity.py: 14 passed"
+}
