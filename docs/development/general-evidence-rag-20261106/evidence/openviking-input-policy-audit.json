@@ -1,0 +1,25 @@
+{
+  "package": "openviking",
+  "version": "0.5.3",
+  "files_sha256": {
+    "openviking/utils/embedding_input.py": "aa9855a496912e59eaa3edec1532a66d031b286b36ddae83705c81aacd4409cf",
+    "openviking/utils/embedding_utils.py": "8fbafe7423825cbc5fc73dec9b79c18a8de3242967c1a25f644afd2d7d2aee2e",
+    "openviking/models/embedder/base.py": "f70eae954bedc078d58d3631469398eb0dad31ebb3e30a6f99aa38cc2d26aaba",
+    "openviking_cli/utils/config/embedding_config.py": "746c3f21e8b3835c9cf2028f0f87ecd561dfab0c51cc6531b62783d8b84d31f7"
+  },
+  "default_estimated_input_limit": 4096,
+  "synthetic_ascii_case": {
+    "original_chars": 17000,
+    "prepared_chars": 16413,
+    "was_changed": true,
+    "marker_present": true
+  },
+  "scifact": {
+    "corpus_sha256": "dec31c8182f3d744c7d2c09423756fd1d17cbef75808db13ba01cc0aab4d1ac6",
+    "documents": 5183,
+    "maximum_serialized_chars": 10127,
+    "changed_ids_at_default_estimate": []
+  },
+  "scope": "CPU input-policy audit, no vectors, models, OpenViking ingestion or test rankings; does not prove full index equivalence",
+  "example_policy": "raise the estimate guard for bounded development inputs, require actual BGE tokenizer limit at endpoint, and prepare long documents into bounded source units upstream"
+}

@@ -1,0 +1,13 @@
+{
+  "status": "complete",
+  "split": "test",
+  "dataset": "scifact",
+  "query_count": 300,
+  "failures": 0,
+  "run_id": "8ce8218f2e484782a9420382822343b7",
+  "journal_sha256": "7f3e13194d6b1a2a0847a4afaf65cdc48c577b4fed6039fe78ace5e9086a941d",
+  "report_sha256": "60674acb25d52e2f5196d27291c4c9da1aaaa0bd05a1ce705f34e9ad7b84ae00",
+  "freeze_sha256": "1c92761be46dc6fac96aad7d3c4fdb9c9d5585d73a5d113dd18c680c5f76a278",
+  "manifest_sha256": "d09a41513c30092312905e568c73c9e1e914b04881345e9350125f9701f812cb",
+  "no_model_call": true
+}

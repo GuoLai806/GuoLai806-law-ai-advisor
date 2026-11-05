@@ -1,0 +1,17 @@
+{
+  "kind": "record of selection before v3 validation and before official test; not final test result",
+  "recorded_utc": "2026-11-05T18:06:30.687548+00:00",
+  "selected_by": "task operator",
+  "selection": {
+    "embedding": "bge",
+    "reranker": "qwen",
+    "device": "mps",
+    "dtype": "float16",
+    "batch_size": 2
+  },
+  "policy": "quality prioritized; BGE+BGE remains lower-latency alternative",
+  "bootstrap_evidence_sha256": "dfc666b4fb6f5f6fadfac122a5bc6dbb4e2a28acff92ac169a071ee6ff916ed9",
+  "basis": "Highest observed v2 validation nDCG and MRR at tied R@20; small 32-query paired interval crosses zero; ~10x reranking latency tradeoff. No test data used for selection.",
+  "v3_validation_required": true,
+  "official_test_run_at_recording": false
+}

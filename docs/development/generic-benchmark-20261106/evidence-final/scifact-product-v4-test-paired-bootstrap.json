@@ -1,0 +1,69 @@
+{
+  "kind": "post-selection descriptive analysis of official 300-query test; not used for tuning",
+  "seed": 20261106,
+  "resamples": 20000,
+  "query_count": 300,
+  "paired_by_query_id": true,
+  "report_sha256": {
+    "selected": "f501abe2d0777672e3edb970c90b63474675aa45b12e9d4427376be2b403e5da",
+    "lexical": "60674acb25d52e2f5196d27291c4c9da1aaaa0bd05a1ce705f34e9ad7b84ae00"
+  },
+  "freeze_sha256": "1c92761be46dc6fac96aad7d3c4fdb9c9d5585d73a5d113dd18c680c5f76a278",
+  "metrics": {
+    "selected": {
+      "metrics": {
+        "ndcg_at_10": 0.7941746041152701,
+        "recall_at_20": 0.9358888888888889,
+        "mrr_at_10": 0.7625013227513228
+      },
+      "ranking_p50_ms": 16050.224999999999,
+      "ranking_p95_ms": 21822.663,
+      "total_wall_ms": 5079870.0,
+      "failures": 0
+    },
+    "lexical": {
+      "metrics": {
+        "ndcg_at_10": 0.668854011195786,
+        "recall_at_20": 0.8365555555555556,
+        "mrr_at_10": 0.6350992063492064
+      },
+      "ranking_p50_ms": 9.725000000000001,
+      "ranking_p95_ms": 13.3245,
+      "total_wall_ms": 12902.02,
+      "failures": 0
+    }
+  },
+  "selected_minus_lexical": {
+    "ndcg_at_10": {
+      "mean_delta": 0.12532059291948405,
+      "bootstrap_95_percentile_ci": [
+        0.09184928261924476,
+        0.15916539289005593
+      ],
+      "improved": 105,
+      "worse": 25,
+      "tied": 170
+    },
+    "recall_at_20": {
+      "mean_delta": 0.09933333333333333,
+      "bootstrap_95_percentile_ci": [
+        0.066,
+        0.13466666666666666
+      ],
+      "improved": 35,
+      "worse": 1,
+      "tied": 264
+    },
+    "mrr_at_10": {
+      "mean_delta": 0.1274021164021164,
+      "bootstrap_95_percentile_ci": [
+        0.0893292328042328,
+        0.16572245370370367
+      ],
+      "improved": 97,
+      "worse": 25,
+      "tied": 178
+    }
+  },
+  "limitation": "Percentile bootstrap reflects these 300 benchmark queries, no multiplicity correction; model selection happened on validation before test. Ranking latency excludes model load, corpus indexing, query encoding and answer generation."
+}

@@ -1,0 +1,7 @@
+{
+  "kind": "initial config-check fixture error",
+  "error": "literal placeholder workspace validation attempted directory creation and hit read-only /absolute",
+  "server_started": false,
+  "raw_trace": "available in Codex tool transcript; not separately saved as original log",
+  "correction": "replace every placeholder with an owned temporary private path before invoking model validators"
+}

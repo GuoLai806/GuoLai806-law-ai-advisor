@@ -1,0 +1,109 @@
+{
+  "method": "byte-for-byte SHA-256 against task output",
+  "files": {
+    "scifact-product-v4-bge-qwen-test.json": {
+      "sha256": "f501abe2d0777672e3edb970c90b63474675aa45b12e9d4427376be2b403e5da",
+      "bytes": 10663821
+    },
+    "scifact-product-v4-bge-qwen-test.json.journal.jsonl": {
+      "sha256": "654369da0129840f461bf327de905e532bd083586e0ca630639e311aaeaabebe",
+      "bytes": 5897437
+    },
+    "scifact-product-v4-lexical-test.json": {
+      "sha256": "60674acb25d52e2f5196d27291c4c9da1aaaa0bd05a1ce705f34e9ad7b84ae00",
+      "bytes": 6320356
+    },
+    "scifact-product-v4-lexical-test.json.journal.jsonl": {
+      "sha256": "7f3e13194d6b1a2a0847a4afaf65cdc48c577b4fed6039fe78ace5e9086a941d",
+      "bytes": 3537661
+    },
+    "scifact-product-v4-bge-qwen-test-journal-verification.json": {
+      "sha256": "e0f846ef53d1b645da4d0d74c49c03a96af53dfb73798e7a74497906ca2e1735",
+      "bytes": 533
+    },
+    "scifact-product-v4-lexical-test-journal-verification.json": {
+      "sha256": "0afcedc22ad339d645435de8d0ffc3eaedade2260c549bcef141572f3df82a73",
+      "bytes": 533
+    },
+    "scifact-product-v4-bge-qwen-selection.json": {
+      "sha256": "acbaa83cb9fea6574a7c5fef19697d8ed8d01e0f17757d13ba4e723bcb3d987b",
+      "bytes": 1723
+    },
+    "scifact-product-v4-lexical-selection.json": {
+      "sha256": "a075ee00bf84c87a96d0f884552e9139445664d5262ede72230e0b99fc605311",
+      "bytes": 1715
+    },
+    "scifact-product-v4-test-trec-crosscheck.json": {
+      "sha256": "8f0cfb9542e4e7140e5ed9cd710037630222446242171b4794eb592133f1b537",
+      "bytes": 59649
+    },
+    "scifact-product-v4-test-paired-bootstrap.json": {
+      "sha256": "ed848cf76b860bc11c68a71766ae260131f9c7430a59371002b22f9a394c7856",
+      "bytes": 2072
+    },
+    "scifact-test-source-before.json": {
+      "sha256": "d83f2a0c384db0ca6f4800da66a749578fe34391ec15a1b919b362a80b9bd189",
+      "bytes": 1545
+    },
+    "scifact-test-source-after.json": {
+      "sha256": "b02e8c9523b76561d7728e4ac454422489c6ec4263767afbcd1c9f58ccc70b7b",
+      "bytes": 1385
+    },
+    "scifact-v2-v3-input-equivalence-v2.json": {
+      "sha256": "8071b74ff94bcce7b5d0ab5af2634d0f7300857983d41418f2db29618f416c0e",
+      "bytes": 4007594
+    },
+    "scifact-v2-v3-cache-migration.json": {
+      "sha256": "c2297e4616aaa5c824724e84e14e06c7b77a788f47c199f53aefe5c30abae36a",
+      "bytes": 2003
+    },
+    "scifact-product-v4-bge-qwen-validation.json": {
+      "sha256": "f4d24f55470a2adfc8e6eb20e0345befc7c66df91a6e271dcf14ee0943fb1c30",
+      "bytes": 1148037
+    },
+    "scifact-product-v4-bge-qwen-validation.json.journal.jsonl": {
+      "sha256": "088defe347af861caa7b998c1e06a4d8220ee8d34ceee5538abdb0ae522e1cca",
+      "bytes": 636072
+    },
+    "scifact-product-v4-lexical-validation.json": {
+      "sha256": "9e68e5953cc06c054924ae2115e0284acf4bea76d9a7dcf328a88b7fcf7ca7ae",
+      "bytes": 676466
+    },
+    "scifact-product-v4-lexical-validation.json.journal.jsonl": {
+      "sha256": "a0a945f43ec5946a4366904e797ffb38bcb28735314f524650aa71d8bda22bff",
+      "bytes": 379190
+    },
+    "scifact-product-v4-bge-qwen-validation-journal-verification.json": {
+      "sha256": "a9f068105555b4776163daed18fb99b69f1b12005239c9b096893c170685c762",
+      "bytes": 538
+    },
+    "scifact-product-v4-lexical-validation-journal-verification.json": {
+      "sha256": "87c37e79d518aa5616328969b1221587c75bcfa161a6ec7e1dad3032ba65b58f",
+      "bytes": 538
+    },
+    "scifact-product-v2-paired-bootstrap.json": {
+      "sha256": "dfc666b4fb6f5f6fadfac122a5bc6dbb4e2a28acff92ac169a071ee6ff916ed9",
+      "bytes": 7744
+    },
+    "scifact-product-bge-bge-validation.json": {
+      "sha256": "877dc7e1cf887425ca82338794321c75f25b3feb157650c9d5a9c058b8fcfc88",
+      "bytes": 1172905
+    },
+    "scifact-product-qwen-bge-validation.json": {
+      "sha256": "7a525992f41a859ec0a62809e8b095e273f6d9c405e4c494290df4cbda8fd31e",
+      "bytes": 1180422
+    },
+    "scifact-product-bge-qwen-validation.json": {
+      "sha256": "fd03294d3fa089215e5adc5e2506b45b1df04e59e07774d76107eec15285b53b",
+      "bytes": 1147987
+    },
+    "scifact-product-qwen-qwen-validation.json": {
+      "sha256": "3eb8ac447502319d676e90b659fe471b072d51428dcd185eb70650787f800327",
+      "bytes": 1155668
+    },
+    "scifact-v3-choice-before-test.json": {
+      "sha256": "d26287d80dcba539d650712e8043e30c7c476f22842b4e9122ec407e2a755286",
+      "bytes": 765
+    }
+  }
+}

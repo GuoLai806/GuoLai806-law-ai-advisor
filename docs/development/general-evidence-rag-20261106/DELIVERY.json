@@ -1,0 +1,51 @@
+{
+  "baseline": "689f2a5bf4b853dfe93ac26802970f8996f993c8",
+  "automated_tests": {
+    "passed": 105,
+    "failed": 0,
+    "source_unchanged": true,
+    "junit": "evidence/tests-delivery.xml",
+    "source": "evidence/candidate-source.json"
+  },
+  "formal_retrieval": {
+    "queries": 300,
+    "corpus": 5183,
+    "selection": "BGE-M3 + Qwen3-Reranker-4B",
+    "metrics": {
+      "ndcg_at_10": 0.7941746041152701,
+      "recall_at_20": 0.9358888888888889,
+      "mrr_at_10": 0.7625013227513228
+    },
+    "lexical_metrics": {
+      "ndcg_at_10": 0.668854011195786,
+      "recall_at_20": 0.8365555555555556,
+      "mrr_at_10": 0.6350992063492064
+    },
+    "source_unchanged": true,
+    "nist_crosscheck": true,
+    "results": "../generic-benchmark-20261106/RESULTS.md",
+    "freeze_sha256": "1c92761be46dc6fac96aad7d3c4fdb9c9d5585d73a5d113dd18c680c5f76a278"
+  },
+  "real_selected_synthetic_http": {
+    "passed": true,
+    "actual_reranker": {
+      "id": "Qwen/Qwen3-Reranker-4B",
+      "revision": "22e683669bc0f0bd69640a1354a6d0aebcfeede5",
+      "device": "mps:0",
+      "dtypes": [
+        "torch.float16"
+      ]
+    },
+    "evidence": "evidence/rag-real-cloud-selected-probe.json"
+  },
+  "public_embedding_example": "evidence/public-embedding-example-smoke.json",
+  "config_schema": "evidence/openviking-public-config-check.json",
+  "wheel_sha256": "d6b534664d219aa0f5e40a208cf2c25158022f7f0462d6d73783cb12e34e0c5c",
+  "limits": [
+    "candidate ranking/exact cosine reference is not full OV or final-answer accuracy",
+    "citation structure does not verify claim support",
+    "static auth and local runtime are not production deployment",
+    "long documents require bounded source units; arbitrary PDF/OCR vector coverage not verified"
+  ],
+  "privacy": "no credentials/private Pi implementation/raw GUI/model weights or raw corpora published"
+}

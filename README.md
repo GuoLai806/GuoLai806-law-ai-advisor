@@ -36,3 +36,11 @@ EVIDENCE_RAG_DB=/tmp/evidence.sqlite3 uvicorn evidence_rag.api:app --host 127.0.
 本轮模型对照、交付边界和执行步骤见 [用户版](docs/development/general-evidence-rag-20261106/PLAN-FOR-YOU.md) 与 [执行版](docs/development/general-evidence-rag-20261106/PLAN-FOR-AI.md)。高质量候选配置使用 `EVIDENCE_RAG_RERANKER=qwen`；BGE重排是较低延迟备选，一般生成的阈值仍须按目标语料另行校准。
 
 本轮实测平台为macOS Apple Silicon/Python 3.12；受限文件读取和基准缓存锁使用POSIX接口，Windows需要额外适配。Linux容器只完成配置校验，尚无容器端到端验收。
+
+可复现的本地BGE嵌入端点与OpenViking0.5.3配置见 [examples](examples/README.md)。模型环境版本快照为 `constraints-models-tested.txt`，仍需固定公开模型revision并在仓库外下载权重。
+
+## 固定公开检索测试结果
+
+BEIR SciFact完整5,183文档、官方300查询：预选BGE-M3+Qwen3-Reranker-4B的候选排序nDCG@10 **0.794175**、Recall@20 **0.935889**、MRR@10 **0.762501**；产品词法基线为0.668854/0.836556/0.635099，两组均300/300、零执行故障。模型选择来自独立32题验证，test没有用于调参；NIST -c -q逐题和总体复核通过。
+
+这些是预算前候选排序和精确余弦参考dense的指标；实际OpenViking/HTTP小样本独立验证，不等同5,183条OV索引、最终证据或答案质量。本机选定模型排名段p50/p95约16.05/21.82秒，交互延迟仍需按目标硬件优化。完整原始排名、journal、置信区间、身份与失败记录见 [结果与证据](docs/development/generic-benchmark-20261106/RESULTS.md)。

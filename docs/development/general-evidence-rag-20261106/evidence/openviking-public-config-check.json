@@ -1,0 +1,11 @@
+{
+  "kind": "public OpenViking 0.5.3 config validation in owned temporary directories",
+  "validated": true,
+  "max_input_tokens": 2147483647,
+  "model": "BAAI/bge-m3",
+  "dimension": 1024,
+  "server_started": false,
+  "template_sha256": "910420ecbca86ca672b72a1edfedfd5f4da6bf816a930ca5520b8ad33f697e4d",
+  "placeholders_replaced": true,
+  "scope": "config construction/schema; validators create owned temporary directories, no model or server startup"
+}

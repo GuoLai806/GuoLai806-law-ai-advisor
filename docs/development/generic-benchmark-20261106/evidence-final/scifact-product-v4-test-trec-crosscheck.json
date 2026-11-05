@@ -1,0 +1,2454 @@
+{
+  "source": "https://github.com/usnistgov/trec_eval/tree/v9.0.8",
+  "trec_binary_sha256": "9d067ebc8fef416384624f6f6f597cda02b07a688e710567e7fe41a42bf18a94",
+  "manifest_sha256": "d09a41513c30092312905e568c73c9e1e914b04881345e9350125f9701f812cb",
+  "method": "trec_eval -c -q; ndcg_cut.10 and recall.20; recip_rank on first 10 after BEIR same-ID filter; negative rank preserves product order; four-decimal tolerance 0.000051",
+  "results": {
+    "selected": {
+      "report_sha256": "f501abe2d0777672e3edb970c90b63474675aa45b12e9d4427376be2b403e5da",
+      "local": {
+        "ndcg_at_10": 0.7941746041152701,
+        "recall_at_20": 0.9358888888888889,
+        "mrr_at_10": 0.7625013227513228
+      },
+      "nist": {
+        "ndcg_at_10": 0.7942,
+        "recall_at_20": 0.9359,
+        "mrr_at_10": 0.7625
+      },
+      "aggregate_absolute_difference": {
+        "ndcg_at_10": 2.539588472993959e-05,
+        "recall_at_20": 1.111111111107288e-05,
+        "mrr_at_10": 1.3227513228075694e-06
+      },
+      "max_per_query_absolute_difference": 4.719276545839257e-05,
+      "within_rounding": true,
+      "query_count": 300,
+      "per_query": [
+        {
+          "query_id": "1",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "100",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1012",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1014",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1019",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1020",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1021",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1024",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1029",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1041",
+          "max_absolute_difference": 4.6723602211862225e-05
+        },
+        {
+          "query_id": "1049",
+          "max_absolute_difference": 4.719276545839257e-05
+        },
+        {
+          "query_id": "1062",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1086",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1088",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1089",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1099",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1100",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1104",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1107",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1110",
+          "max_absolute_difference": 2.999566398120823e-05
+        },
+        {
+          "query_id": "1121",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "113",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1130",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1132",
+          "max_absolute_difference": 2.6403617270825963e-05
+        },
+        {
+          "query_id": "1137",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1140",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1144",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1146",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "115",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1150",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1163",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1175",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1179",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "118",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1180",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1185",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1187",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "1191",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1194",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1196",
+          "max_absolute_difference": 2.3441926606970753e-05
+        },
+        {
+          "query_id": "1197",
+          "max_absolute_difference": 4.719276545839257e-05
+        },
+        {
+          "query_id": "1199",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1200",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1202",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1204",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1207",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1213",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1216",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1221",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "1225",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1226",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1232",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "124",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1241",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1245",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1259",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1262",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1266",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "127",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1270",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1271",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1272",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1273",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1274",
+          "max_absolute_difference": 2.429525974512181e-06
+        },
+        {
+          "query_id": "1278",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1279",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "128",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "1280",
+          "max_absolute_difference": 4.285714285715003e-05
+        },
+        {
+          "query_id": "1281",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1282",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "129",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1290",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1292",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1298",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "13",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "130",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1303",
+          "max_absolute_difference": 4.719276545839257e-05
+        },
+        {
+          "query_id": "1316",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1319",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "132",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1320",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "133",
+          "max_absolute_difference": 1.9897363191967443e-05
+        },
+        {
+          "query_id": "1332",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1335",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1336",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1337",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1339",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1344",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "1352",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1359",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1362",
+          "max_absolute_difference": 2.3441926606970753e-05
+        },
+        {
+          "query_id": "1363",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "1368",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "137",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1370",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1379",
+          "max_absolute_difference": 7.91804331212731e-06
+        },
+        {
+          "query_id": "1382",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1385",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1389",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1395",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "141",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "142",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "143",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "146",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "148",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "163",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "171",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "179",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "180",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "183",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "185",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "198",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "208",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "212",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "213",
+          "max_absolute_difference": 4.719276545839257e-05
+        },
+        {
+          "query_id": "216",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "217",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "218",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "219",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "230",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "232",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "233",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "236",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "237",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "238",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "239",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "248",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "249",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "261",
+          "max_absolute_difference": 2.444060924494673e-05
+        },
+        {
+          "query_id": "268",
+          "max_absolute_difference": 4.285714285715003e-05
+        },
+        {
+          "query_id": "269",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "274",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "275",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "279",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "294",
+          "max_absolute_difference": 3.5173682112144e-05
+        },
+        {
+          "query_id": "295",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "298",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "3",
+          "max_absolute_difference": 2.3441926606970753e-05
+        },
+        {
+          "query_id": "300",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "303",
+          "max_absolute_difference": 4.719276545839257e-05
+        },
+        {
+          "query_id": "312",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "314",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "324",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "327",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "338",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "343",
+          "max_absolute_difference": 4.1718955320124707e-05
+        },
+        {
+          "query_id": "350",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "354",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "36",
+          "max_absolute_difference": 2.6403617270825963e-05
+        },
+        {
+          "query_id": "362",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "380",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "384",
+          "max_absolute_difference": 4.719276545839257e-05
+        },
+        {
+          "query_id": "385",
+          "max_absolute_difference": 2.6403617270798208e-05
+        },
+        {
+          "query_id": "386",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "388",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "399",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "410",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "411",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "415",
+          "max_absolute_difference": 2.3441926606970753e-05
+        },
+        {
+          "query_id": "42",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "421",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "431",
+          "max_absolute_difference": 2.3441926606970753e-05
+        },
+        {
+          "query_id": "436",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "437",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "439",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "440",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "443",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "452",
+          "max_absolute_difference": 2.6403617270798208e-05
+        },
+        {
+          "query_id": "475",
+          "max_absolute_difference": 3.512321427123766e-05
+        },
+        {
+          "query_id": "478",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "48",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "49",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "491",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "5",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "50",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "501",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "502",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "507",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "508",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "51",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "513",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "514",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "516",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "517",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "521",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "525",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "527",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "528",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "53",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "532",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "533",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "535",
+          "max_absolute_difference": 2.3441926606970753e-05
+        },
+        {
+          "query_id": "536",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "539",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "54",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "540",
+          "max_absolute_difference": 4.719276545839257e-05
+        },
+        {
+          "query_id": "544",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "549",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "551",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "552",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "554",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "56",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "560",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "569",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "57",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "575",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "577",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "578",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "587",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "589",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "593",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "597",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "598",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "613",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "619",
+          "max_absolute_difference": 4.719276545839257e-05
+        },
+        {
+          "query_id": "623",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "628",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "636",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "637",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "641",
+          "max_absolute_difference": 4.5370416377532585e-05
+        },
+        {
+          "query_id": "644",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "649",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "659",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "660",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "674",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "684",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "690",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "691",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "692",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "693",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "70",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "700",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "702",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "715",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "716",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "718",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "72",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "721",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "723",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "727",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "728",
+          "max_absolute_difference": 2.0789148187594364e-05
+        },
+        {
+          "query_id": "729",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "742",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "743",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "744",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "75",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "756",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "759",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "768",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "770",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "775",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "781",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "783",
+          "max_absolute_difference": 4.285714285715003e-05
+        },
+        {
+          "query_id": "784",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "785",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "793",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "800",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "805",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "808",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "811",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "814",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "820",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "821",
+          "max_absolute_difference": 4.285714285715003e-05
+        },
+        {
+          "query_id": "823",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "830",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "831",
+          "max_absolute_difference": 4.285714285715003e-05
+        },
+        {
+          "query_id": "832",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "834",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "837",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "839",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "845",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "847",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "852",
+          "max_absolute_difference": 2.3441926606970753e-05
+        },
+        {
+          "query_id": "859",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "870",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "873",
+          "max_absolute_difference": 5.0775123418000945e-06
+        },
+        {
+          "query_id": "879",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "880",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "882",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "887",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "903",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "904",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "907",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "911",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "913",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "914",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "921",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "922",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "936",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "94",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "956",
+          "max_absolute_difference": 2.3441926606970753e-05
+        },
+        {
+          "query_id": "957",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "960",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "967",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "971",
+          "max_absolute_difference": 1.6615998200020243e-05
+        },
+        {
+          "query_id": "975",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "982",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "985",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "99",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "993",
+          "max_absolute_difference": 0.0
+        }
+      ]
+    },
+    "lexical": {
+      "report_sha256": "60674acb25d52e2f5196d27291c4c9da1aaaa0bd05a1ce705f34e9ad7b84ae00",
+      "local": {
+        "ndcg_at_10": 0.668854011195786,
+        "recall_at_20": 0.8365555555555556,
+        "mrr_at_10": 0.6350992063492064
+      },
+      "nist": {
+        "ndcg_at_10": 0.6689,
+        "recall_at_20": 0.8366,
+        "mrr_at_10": 0.6351
+      },
+      "aggregate_absolute_difference": {
+        "ndcg_at_10": 4.5988804214025514e-05,
+        "recall_at_20": 4.444444444440254e-05,
+        "mrr_at_10": 7.936507936401327e-07
+      },
+      "max_per_query_absolute_difference": 4.971243261508995e-05,
+      "within_rounding": true,
+      "query_count": 300,
+      "per_query": [
+        {
+          "query_id": "1",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "100",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1012",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1014",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1019",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "1020",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "1021",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "1024",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1029",
+          "max_absolute_difference": 1.59247155429032e-06
+        },
+        {
+          "query_id": "1041",
+          "max_absolute_difference": 7.4093566386213006e-06
+        },
+        {
+          "query_id": "1049",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1062",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1086",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1088",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1089",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1099",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "1100",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "1104",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1107",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1110",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1121",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "113",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1130",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1132",
+          "max_absolute_difference": 2.2872307037791195e-06
+        },
+        {
+          "query_id": "1137",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1140",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1144",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1146",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "115",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1150",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1163",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1175",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1179",
+          "max_absolute_difference": 3.5173682112144e-05
+        },
+        {
+          "query_id": "118",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1180",
+          "max_absolute_difference": 4.719276545839257e-05
+        },
+        {
+          "query_id": "1185",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1187",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1191",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1194",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1196",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1197",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1199",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1200",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1202",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1204",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1207",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1213",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1216",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1221",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1225",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1226",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1232",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "124",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1241",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1245",
+          "max_absolute_difference": 3.5173682112144e-05
+        },
+        {
+          "query_id": "1259",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "1262",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1266",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "127",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "1270",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1271",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1272",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "1273",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1274",
+          "max_absolute_difference": 4.971243261508995e-05
+        },
+        {
+          "query_id": "1278",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1279",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "128",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "1280",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1281",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1282",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "129",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1290",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1292",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1298",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "13",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "130",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1303",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1316",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1319",
+          "max_absolute_difference": 4.719276545839257e-05
+        },
+        {
+          "query_id": "132",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1320",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "133",
+          "max_absolute_difference": 5.088950267850834e-07
+        },
+        {
+          "query_id": "1332",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1335",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1336",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1337",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1339",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1344",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1352",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1359",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1362",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "1363",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1368",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "137",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1370",
+          "max_absolute_difference": 2.3441926606970753e-05
+        },
+        {
+          "query_id": "1379",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "1382",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1385",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1389",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "1395",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "141",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "142",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "143",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "146",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "148",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "163",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "171",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "179",
+          "max_absolute_difference": 1.3820255420293748e-05
+        },
+        {
+          "query_id": "180",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "183",
+          "max_absolute_difference": 3.512321427123766e-05
+        },
+        {
+          "query_id": "185",
+          "max_absolute_difference": 2.3441926606970753e-05
+        },
+        {
+          "query_id": "198",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "208",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "212",
+          "max_absolute_difference": 4.719276545839257e-05
+        },
+        {
+          "query_id": "213",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "216",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "217",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "218",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "219",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "230",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "232",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "233",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "236",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "237",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "238",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "239",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "248",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "249",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "261",
+          "max_absolute_difference": 2.2872307037791195e-06
+        },
+        {
+          "query_id": "268",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "269",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "274",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "275",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "279",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "294",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "295",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "298",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "3",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "300",
+          "max_absolute_difference": 3.512321427123766e-05
+        },
+        {
+          "query_id": "303",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "312",
+          "max_absolute_difference": 4.285714285715003e-05
+        },
+        {
+          "query_id": "314",
+          "max_absolute_difference": 2.3441926606970753e-05
+        },
+        {
+          "query_id": "324",
+          "max_absolute_difference": 4.719276545839257e-05
+        },
+        {
+          "query_id": "327",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "338",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "343",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "350",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "354",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "36",
+          "max_absolute_difference": 2.6403617270825963e-05
+        },
+        {
+          "query_id": "362",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "380",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "384",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "385",
+          "max_absolute_difference": 4.929316229740355e-05
+        },
+        {
+          "query_id": "386",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "388",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "399",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "410",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "411",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "415",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "42",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "421",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "431",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "436",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "437",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "439",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "440",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "443",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "452",
+          "max_absolute_difference": 2.2872307037791195e-06
+        },
+        {
+          "query_id": "475",
+          "max_absolute_difference": 2.999566398120823e-05
+        },
+        {
+          "query_id": "478",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "48",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "49",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "491",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "5",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "50",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "501",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "502",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "507",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "508",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "51",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "513",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "514",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "516",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "517",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "521",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "525",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "527",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "528",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "53",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "532",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "533",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "535",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "536",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "539",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "54",
+          "max_absolute_difference": 2.999566398120823e-05
+        },
+        {
+          "query_id": "540",
+          "max_absolute_difference": 4.285714285715003e-05
+        },
+        {
+          "query_id": "544",
+          "max_absolute_difference": 3.5173682112144e-05
+        },
+        {
+          "query_id": "549",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "551",
+          "max_absolute_difference": 4.285714285715003e-05
+        },
+        {
+          "query_id": "552",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "554",
+          "max_absolute_difference": 4.285714285715003e-05
+        },
+        {
+          "query_id": "56",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "560",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "569",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "57",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "575",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "577",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "578",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "587",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "589",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "593",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "597",
+          "max_absolute_difference": 1.3121003792804231e-05
+        },
+        {
+          "query_id": "598",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "613",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "619",
+          "max_absolute_difference": 3.1877427409121584e-05
+        },
+        {
+          "query_id": "623",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "628",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "636",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "637",
+          "max_absolute_difference": 3.512321427123766e-05
+        },
+        {
+          "query_id": "641",
+          "max_absolute_difference": 4.719276545839257e-05
+        },
+        {
+          "query_id": "644",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "649",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "659",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "660",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "674",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "684",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "690",
+          "max_absolute_difference": 2.3441926606970753e-05
+        },
+        {
+          "query_id": "691",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "692",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "693",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "70",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "700",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "702",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "715",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "716",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "718",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "72",
+          "max_absolute_difference": 3.512321427123766e-05
+        },
+        {
+          "query_id": "721",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "723",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "727",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "728",
+          "max_absolute_difference": 5.473810138378887e-06
+        },
+        {
+          "query_id": "729",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "742",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "743",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "744",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "75",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "756",
+          "max_absolute_difference": 3.5173682112144e-05
+        },
+        {
+          "query_id": "759",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "768",
+          "max_absolute_difference": 2.3441926606970753e-05
+        },
+        {
+          "query_id": "770",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "775",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "781",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "783",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "784",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "785",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "793",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "800",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "805",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "808",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "811",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "814",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "820",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "821",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "823",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "830",
+          "max_absolute_difference": 4.719276545839257e-05
+        },
+        {
+          "query_id": "831",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "832",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "834",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "837",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "839",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "845",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "847",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "852",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "859",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "870",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "873",
+          "max_absolute_difference": 1.1111111111100636e-05
+        },
+        {
+          "query_id": "879",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "880",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "882",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "887",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "903",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "904",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "907",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "911",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "913",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "914",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "921",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "922",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "936",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "94",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "956",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "957",
+          "max_absolute_difference": 2.9753571457513672e-05
+        },
+        {
+          "query_id": "960",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "967",
+          "max_absolute_difference": 2.0789148187594364e-05
+        },
+        {
+          "query_id": "971",
+          "max_absolute_difference": 3.333333333332966e-05
+        },
+        {
+          "query_id": "975",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "982",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "985",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "99",
+          "max_absolute_difference": 0.0
+        },
+        {
+          "query_id": "993",
+          "max_absolute_difference": 0.0
+        }
+      ]
+    }
+  }
+}

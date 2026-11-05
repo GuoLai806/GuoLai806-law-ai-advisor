@@ -1,0 +1,5 @@
+{
+  "rejected": true,
+  "error_type": "ValueError",
+  "error": "catalog unit hash mismatch"
+}

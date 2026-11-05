@@ -1,0 +1,9 @@
+{
+  "status": "ready",
+  "degraded": true,
+  "returned_text": "Altered after activation.",
+  "reported_hash": "27d465afaa32b38e2add575134b0b6dd3366b0f5603810fbce775a3e855ea956",
+  "actual_hash": "d2ac57f287a95f8cb63ef1e244057decaec5c1a01771e2d4d522f1ba758ed56a",
+  "hash_matches": false,
+  "method": "isolated post-activation DB corruption simulation"
+}

@@ -1,7 +1,6 @@
 # 通用检索公开基准：冻结方案与已验证边界
 
-2026-11-06 更新：下文v2是保留的候选选择过程，四组模型已完成。为修复产品证据段对应与回读哈希，已有 [v3冻结](../../../benchmarks/manifests/product-validation-frozen-v3.json)；逐篇输入等价与缓存复制审计单独保存，旧成绩不重标为v3。v3选定配置验证后，还将为完整300题补逐题fsync日志及加载前输出碰撞检查，重冻v4、重跑选定配置验证，再固定选择和运行正式test。正式结果以最终结果文件为准。
-
+最终状态（2026-11-06）：v4选定配置和产品词法基线均已完成官方SciFact 300/300 test、零执行故障，并通过NIST逐题/总体核对、journal完整性和源码前后hash检查。正式结果见 [RESULTS.md](RESULTS.md)，以下v2/v3说明保留候选选择和修复过程，不是当前未完成状态。
 
 这套实验以通用检索为主，使用官方 BEIR 的 SciFact 和可选 NFCorpus；不是民法题集，也不评估生成答案、法律咨询、问答 EM/F1 或完整产品使用体验。SciFact 是英语科学文献检索，NFCorpus 是英语营养与医学检索，两个领域不能代表其他语言、一般网页或企业私有材料。
 
@@ -10,11 +9,11 @@
 - [BEIR 固定版本 README](https://github.com/beir-cellar/beir/blob/ef83d29307061c65d04b035b4f4e7c18bd8374af/README.md)提供下载地址和 MD5。SciFact 官方包 MD5 `5f7d1de60b170fc8027bb7898e2efca1`，下载后的 SHA-256 `536e14446a0ba56ed1398ab1055f39fe852686ecad24a6306c80c490fa8e0165`；全库 5,183 条，官方 train 809 个查询、test 300 个查询。BEIR 数据卡标明 [CC-BY-SA-4.0](https://huggingface.co/datasets/BeIR/scifact)，仍应保留署名和适用许可信息。
 - NFCorpus 官方包 MD5 `a89dba18a62ef92f7d323ec890a0d38d`，SHA-256 `efe5be03f8c5b86a5870102d0599d227c8c6e2484328e68c6522560385671b0b`；BEIR 子集 3,633 条，dev 324、test 323 个查询。BEIR [数据卡](https://huggingface.co/datasets/BeIR/nfcorpus)写 CC-BY-SA-4.0；原始 [Heidelberg 数据发布方](https://www.cl.uni-heidelberg.de/statnlpgroup/nfcorpus/)同时说明学术使用，以及其他 NutritionFacts 数据用途须查看原网站条款并联系作者。此处保留两种来源陈述，不推断商业使用或再分发授权。
 - 下载器校验压缩包 MD5、记录 SHA-256，拒绝路径穿越、符号链接和过大的归档；检查文档/查询 ID 唯一、qrels 引用完整及固定数量。原始语料、压缩包、模型权重和向量缓存放在仓库外，不进入提交。
-- SciFact 从官方 train 的 809 个有标签查询中按 SHA-256(query ID) 排序选 32；NFCorpus 从官方 dev 中按同法选 32。查询 ID、语料及 qrels 哈希保存在 `benchmarks/manifests/`，在模型运行前已冻结。小验证集用于选择配置，不是正式测试集。正式 SciFact test 必须完整运行 300 题；此处没有运行官方测试集。
+- SciFact 从官方 train 的 809 个有标签查询中按 SHA-256(query ID) 排序选 32；NFCorpus 从官方 dev 中按同法选 32。查询 ID、语料及 qrels 哈希保存在 `benchmarks/manifests/`，在模型运行前已冻结。小验证集用于选择配置，不是正式测试集。正式 SciFact test 必须完整运行 300 题；正式结果已完成，见RESULTS.md；本节记录此前冻结方法。
 
 ## 产品共享路径与范围
 
-最终验证配置是 [product-validation-frozen-v2.json](../../../benchmarks/manifests/product-validation-frozen-v2.json)，SHA-256 `12ebd86d58ea9791f9fe150d38b5860fe405a546610accf24b11f46d122605e8`。它锁定验证清单、通用产品源文件及脚本哈希、模型 revision、平台、库与 jieba 词典版本、MPS float16、batch 2、各路 top 40、RRF k=60、候选上限 60。冻结时刻和第一条产品词法验证的时间关系见 [本机记录](product-freeze-attestation.json)；这是本机文件和日志证据，不是可信时间戳服务。
+候选比较时的验证配置是 [product-validation-frozen-v2.json](../../../benchmarks/manifests/product-validation-frozen-v2.json)，SHA-256 `12ebd86d58ea9791f9fe150d38b5860fe405a546610accf24b11f46d122605e8`。它锁定验证清单、通用产品源文件及脚本哈希、模型 revision、平台、库与 jieba 词典版本、MPS float16、batch 2、各路 top 40、RRF k=60、候选上限 60。冻结时刻和第一条产品词法验证的时间关系见 [本机记录](product-freeze-attestation.json)；这是本机文件和日志证据，不是可信时间戳服务。
 
 实验把完整语料交给产品 `evidence_rag.catalog.Catalog.stage_documents`，用同一个 `lexical_scored`、`rank_candidates`、RRF 和 `CrossEncoderReranker`，按 catalog 中文档 ID 映射到官方 qrels。通用标题精确匹配来自查询和文档标题，未使用 qrels 或黄金 ID。嵌入文本通过与产品 OV L2 写入相同的 `document_embedding_text` 构造：标题、换行、正文；不附加 doc ID、答案或相关性。空标题产品回退到 ID 的词法污染已修复为正文，并用测试检查。修复前的冻结配置和结果保留为历史，当前结果使用新配置；SciFact 无空标题，前后全部排序及来源候选完全一致，见 [等价检查](scifact-product-v2-equivalence.json)。
 

@@ -1,0 +1,56 @@
+{
+  "finish_reason": [
+    {
+      "reason": "length",
+      "accepted_without_exception": false,
+      "error": "model stream incomplete: length"
+    },
+    {
+      "reason": "content_filter",
+      "accepted_without_exception": false,
+      "error": "model stream incomplete: content_filter"
+    },
+    {
+      "reason": "tool_calls",
+      "accepted_without_exception": false,
+      "error": "model stream incomplete: tool_calls"
+    }
+  ],
+  "invalid_citation": {
+    "normal": {
+      "trace_id": "fake",
+      "status": "insufficient_evidence",
+      "answer": "生成结果的引用未通过检查，请查看原文并进一步核验。",
+      "claims": [],
+      "citations": [
+        {
+          "citation_id": "E1",
+          "title": "Source",
+          "text": "valid evidence"
+        }
+      ],
+      "verification": {
+        "status": "invalid",
+        "unknown_citations": [
+          "E999"
+        ],
+        "cited": [
+          "E999"
+        ],
+        "claim_support": "not_verified"
+      },
+      "usage": null,
+      "usage_source": "unavailable",
+      "budget": {
+        "state": "measured",
+        "omitted": []
+      },
+      "degraded": true
+    },
+    "sse": "event: retrieval_started\ndata: {\"trace_id\": \"tr_bedcab79a4ff434480a64856e0fb46f5\", \"seq\": 1}\n\nevent: evidence_ready\ndata: {\"trace_id\": \"tr_bedcab79a4ff434480a64856e0fb46f5\", \"seq\": 2, \"bundle\": {\"trace_id\": \"tr_bedcab79a4ff434480a64856e0fb46f5\", \"status\": \"ready\", \"query_plan\": {\"profile\": \"general\", \"mode\": \"source_lookup\", \"applicability_review\": false}, \"evidence\": [{\"citation_id\": \"E1\", \"title\": \"Source\", \"text\": \"valid evidence\"}], \"degraded\": false, \"budget\": {\"state\": \"measured\", \"omitted\": []}, \"corpus_revision\": \"r1\"}}\n\nevent: answer_delta\ndata: {\"trace_id\": \"tr_bedcab79a4ff434480a64856e0fb46f5\", \"seq\": 3, \"delta\": \"Unverified factual claim [E999]\", \"verification\": \"pending\"}\n\nevent: verification\ndata: {\"trace_id\": \"tr_bedcab79a4ff434480a64856e0fb46f5\", \"seq\": 4, \"status\": \"invalid\", \"unknown_citations\": [\"E999\"], \"cited\": [\"E999\"], \"claim_support\": \"not_verified\"}\n\nevent: answer_rejected\ndata: {\"trace_id\": \"tr_bedcab79a4ff434480a64856e0fb46f5\", \"seq\": 5, \"discard_pending_answer\": true, \"reason\": \"invalid_citations\"}\n\nevent: completed\ndata: {\"trace_id\": \"tr_bedcab79a4ff434480a64856e0fb46f5\", \"seq\": 6, \"status\": \"insufficient_evidence\", \"first_answer_ms\": 0.39, \"total_ms\": 0.59, \"usage\": null, \"usage_source\": \"unavailable\"}\n\n",
+    "turns": {
+      "session_id": "test-session",
+      "turns": []
+    }
+  }
+}

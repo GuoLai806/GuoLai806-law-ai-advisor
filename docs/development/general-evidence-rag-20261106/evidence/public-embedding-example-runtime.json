@@ -1,0 +1,18 @@
+{
+  "kind": "public embedding example observed runtime identity",
+  "pid": 86899,
+  "owned_command_checked": true,
+  "entrypoint": "uvicorn --app-dir examples bge_embedding_server:app --host 127.0.0.1 --port 19344",
+  "source_sha256": "e8a05f535661ddfee34a2ec9204d0852f59f1f0dc2dbe033c1ff1b046d19e2ea",
+  "identity": {
+    "ready": true,
+    "model": "BAAI/bge-m3",
+    "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+    "dimension": 1024,
+    "device": "mps:0",
+    "dtype": "torch.float16",
+    "load_seconds": 1.9001086250063963,
+    "torch": "2.15.0"
+  },
+  "scope": "owner-observed module launch and HTTP identity, not a signed attestation"
+}

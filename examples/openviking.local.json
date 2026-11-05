@@ -1,0 +1,57 @@
+{
+  "storage": {
+    "workspace": "/absolute/private/openviking/workspace",
+    "parse_output": {
+      "mode": "local",
+      "local_root": "/absolute/private/openviking/parse"
+    }
+  },
+  "parser": {
+    "download_temp_dir": "/absolute/private/openviking/tmp"
+  },
+  "embedding": {
+    "dense": {
+      "provider": "openai",
+      "model": "BAAI/bge-m3",
+      "api_base": "http://127.0.0.1:19344/v1",
+      "dimension": 1024,
+      "input": "text",
+      "encoding_format": "float"
+    },
+    "text_source": "content_only",
+    "max_retries": 0,
+    "max_input_tokens": 2147483647
+  },
+  "vlm": {},
+  "telemetry": {
+    "enabled": false,
+    "tracer": {
+      "enabled": false
+    }
+  },
+  "ingest": {
+    "enabled": false,
+    "state_dir": "/absolute/private/openviking/ingest"
+  },
+  "server": {
+    "host": "127.0.0.1",
+    "port": 19343,
+    "workers": 1,
+    "with_bot": false,
+    "encryption_enabled": false,
+    "observability": {
+      "metrics": {
+        "enabled": false
+      },
+      "usage_audit": {
+        "enabled": false
+      },
+      "traces": {
+        "enabled": false
+      },
+      "logs": {
+        "enabled": false
+      }
+    }
+  }
+}

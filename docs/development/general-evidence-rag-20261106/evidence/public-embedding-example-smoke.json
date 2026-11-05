@@ -1,0 +1,23 @@
+{
+  "kind": "public BGE development endpoint synthetic HTTP smoke",
+  "checks": {
+    "pinned_identity": true,
+    "two_finite_unit_vectors": true,
+    "wrong_model_422": true,
+    "empty_batch_422": true,
+    "oversized_input_422": true
+  },
+  "script_sha256": "acdc9e45c2edade23c4b6232eac9f3b9f90067c4f713d911d25173b0f5efa446",
+  "identity": {
+    "ready": true,
+    "model": "BAAI/bge-m3",
+    "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+    "dimension": 1024,
+    "device": "mps:0",
+    "dtype": "torch.float16",
+    "load_seconds": 1.9001086250063963,
+    "torch": "2.15.0"
+  },
+  "passed": true,
+  "scope": "synthetic contract/identity/bounds, not retrieval quality or a production capacity test"
+}

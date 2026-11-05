@@ -6,12 +6,12 @@
 | SQLite WAL + FTS5 + jieba 搜索分词 | 单机无需集群；中英混合入库和查询一致。英文经 FTS5 unicode61 索引 | 合成英文与中文回归通过；不是所有语种的最优分词或生产性能证明 |
 | 文档全文 unit + 段落 parts | 保持公开数据集文档 ID 与 qrels 映射；段落另建 FTS 索引以返回完整相关段落，重排同样使用段落 | PDF 两页与文本定位测试；超长单个段落或全文预算不足会拒绝/省略，尚无复杂版面 OCR |
 | OpenViking 0.5.3 HTTP + `vectors_only` | 独立后端，dense 使用真实 BGE；不依赖伪造 VLM 摘要，scope 含 corpus 与 revision | 两个合成文档 real engine 写入/回读/查找通过，保存请求响应；不是完整公开数据集对照 |
-| RRF + 独立 CrossEncoder | 名次融合避免混用异源数值；BGE/Qwen 可换且权重 revision 固定 | BGE/MPS f16 三条法律合成 smoke；Qwen 以及真实通用 benchmark 尚待独立测试 |
+| RRF + 独立 CrossEncoder | 名次融合避免混用异源数值；BGE/Qwen 可换且权重 revision 固定 | BGE/MPS f16 三条法律合成 smoke；BGE/Qwen四组候选、选定配置v3/v4真实32题均已完成，正式300题独立运行 |
 | 认证从服务端 token 映射 | 客户端不能自报身份，会话 ID 首次绑定用户 | 测试跨主体拒绝；共享公共语料不构成私有索引、静态 token 不构成生产身份系统 |
 | 通用 source `provided` | 用户提供文本可在本机建立可检索 revision，而不虚称官方验证；法律 profile 保持额外核验门槛 | 仅使用明确标记的合成文件；外部来源的许可、真实性和时效需另行审核 |
-| API readiness 与证据预算 | 组件缺失或索引不一致不报完整 ready；tokenizer 不可用时仅展示检索证据 | 真实 HTTP 合成 smoke 检查 503，未使用真实生成模型或验证 prompt template 对齐 |
+| API readiness 与证据预算 | 组件缺失或索引不一致不报完整 ready；tokenizer 不可用时仅展示检索证据 | 真实 HTTP 合成 smoke 检查 503，真实生成模型synthetic SSE互操作已完成，但未验证目标云tokenizer/template精确对齐 |
 
-变更是通用基础设施方向，不代表已经完成 BEIR 或其他公开基准；最终数据、各算法消融、原始逐题结果和许可来源以独立 benchmark 记录为准。
+变更是通用基础设施方向；32题验证不代表正式300题已经完成，最终数据、各算法消融、原始逐题结果和许可来源以独立 benchmark 记录为准。
 
 公开基准和产品使用同一 `rank_candidates`、`document_embedding_text` 和 `reranker_document_text`，避免独立算法冒充产品结果；公开基准的 exact cosine 是向量后端对照，真实 OV 性能与质量仍要单独测量。
 

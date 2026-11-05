@@ -1,0 +1,78 @@
+{
+  "part_identity": {
+    "evidence": [
+      {
+        "citation_id": "E1",
+        "unit_id": "a48841cd7792c0fc80f056daab52eb00",
+        "document_id": "d1",
+        "title": "manual",
+        "text": "SECOND_PARAGRAPH_RELEVANT contains the actual evidence.",
+        "source_url": null,
+        "source_kind": "user-provided",
+        "source_locator": {
+          "kind": "text",
+          "pages": [],
+          "char_start": 35,
+          "char_end": 90
+        },
+        "content_sha256": "d1a736b313f5aff11c50012e8c73490b7a52901a0968ff2725979c61f6080653",
+        "retrieval_sources": [
+          {
+            "source": "bm25",
+            "rank": 1,
+            "raw_score": -1e-06,
+            "score_kind": "sqlite_bm25_lower_is_better"
+          }
+        ],
+        "reranker_score": 10.0,
+        "verification_state": "provided",
+        "profile": "general",
+        "part_no": 2,
+        "document_sha256": "5dcf3b833f526f7ca38a3d7daa9f895da145914bf3406c30710580a9c927e65c",
+        "has_more": true
+      }
+    ],
+    "status": "ready",
+    "degraded": false,
+    "degraded_reasons": []
+  },
+  "no_identity": {
+    "evidence": [
+      {
+        "citation_id": "E1",
+        "unit_id": "a48841cd7792c0fc80f056daab52eb00",
+        "document_id": "d1",
+        "title": "manual",
+        "text": "alpha first paragraph irrelevant.\n\n",
+        "source_url": null,
+        "source_kind": "user-provided",
+        "source_locator": {
+          "kind": "text",
+          "pages": [],
+          "char_start": 0,
+          "char_end": 35
+        },
+        "content_sha256": "f84b5c068354bd58c1424808a11788ac5bab63c4744b7611ca081738fc1cfdee",
+        "retrieval_sources": [
+          {
+            "source": "bm25",
+            "rank": 1,
+            "raw_score": -1e-06,
+            "score_kind": "sqlite_bm25_lower_is_better"
+          }
+        ],
+        "reranker_score": null,
+        "verification_state": "provided",
+        "profile": "general",
+        "part_no": 1,
+        "document_sha256": "5dcf3b833f526f7ca38a3d7daa9f895da145914bf3406c30710580a9c927e65c",
+        "has_more": true
+      }
+    ],
+    "status": "ready",
+    "degraded": true,
+    "degraded_reasons": [
+      "reranker_part_unavailable"
+    ]
+  }
+}

@@ -1,0 +1,363 @@
+{
+  "timestamp_utc": "2026-11-05T19:56:07Z",
+  "source_kind": "synthetic",
+  "revision": "revision_4f00bca1e710",
+  "model": "deepseek-flash",
+  "provider_url_recorded": false,
+  "secret_recorded": false,
+  "events": [
+    {
+      "event": "retrieval_started",
+      "data": {
+        "trace_id": "tr_c05a6dae845d4934b19f19a2f505e9f4",
+        "seq": 1
+      }
+    },
+    {
+      "event": "evidence_ready",
+      "data": {
+        "trace_id": "tr_c05a6dae845d4934b19f19a2f505e9f4",
+        "seq": 2,
+        "bundle": {
+          "query_plan": {
+            "mode": "source_lookup",
+            "profile": "general",
+            "event_date": null,
+            "applicability_review": false
+          },
+          "budget": {
+            "state": "conservative_bytes",
+            "mode": "conservative_bytes",
+            "used_tokens": null,
+            "content_bytes": 302,
+            "max_content_bytes": 6000,
+            "framing_reserve": 1024,
+            "output_reserve": 2048,
+            "model_context_window": 1000000,
+            "omitted": [],
+            "fits": true,
+            "exact_tokens": false,
+            "guarantee": "heuristic; unknown tokenizer and provider chat template are not formally bounded"
+          },
+          "status": "ready",
+          "corpus_revision": "revision_4f00bca1e710",
+          "degraded": false,
+          "degraded_reasons": [],
+          "missing_facts": [],
+          "token_budget_status": "conservative_bytes",
+          "evidence": [
+            {
+              "citation_id": "E1",
+              "unit_id": "323f5f6af31d4cbaf156b8e2f7eb09a1",
+              "document_id": "ocean-1",
+              "title": "Ocean currents",
+              "text": "Ocean currents transport heat across the sea. Wind drives surface water.",
+              "source_url": null,
+              "source_kind": "synthetic",
+              "source_locator": {
+                "kind": "text",
+                "pages": [],
+                "char_start": 0,
+                "char_end": 72
+              },
+              "content_sha256": "432022fa67be0973af0b64136f875ef994642fad378c484d493a081ca025de1c",
+              "retrieval_sources": [
+                {
+                  "source": "exact",
+                  "rank": 1
+                },
+                {
+                  "source": "dense",
+                  "rank": 2,
+                  "raw_score": 0.6179952621459961,
+                  "score_kind": "dense_backend_score"
+                }
+              ],
+              "reranker_score": -11.65625,
+              "verification_state": "provided",
+              "profile": "general"
+            }
+          ],
+          "retrieval_ms": 873.97,
+          "trace_id": "tr_c05a6dae845d4934b19f19a2f505e9f4"
+        }
+      }
+    },
+    {
+      "event": "answer_delta",
+      "data": {
+        "trace_id": "tr_c05a6dae845d4934b19f19a2f505e9f4",
+        "seq": 3,
+        "delta": "The",
+        "verification": "pending"
+      }
+    },
+    {
+      "event": "answer_delta",
+      "data": {
+        "trace_id": "tr_c05a6dae845d4934b19f19a2f505e9f4",
+        "seq": 4,
+        "delta": " source",
+        "verification": "pending"
+      }
+    },
+    {
+      "event": "answer_delta",
+      "data": {
+        "trace_id": "tr_c05a6dae845d4934b19f19a2f505e9f4",
+        "seq": 5,
+        "delta": " states",
+        "verification": "pending"
+      }
+    },
+    {
+      "event": "answer_delta",
+      "data": {
+        "trace_id": "tr_c05a6dae845d4934b19f19a2f505e9f4",
+        "seq": 6,
+        "delta": " that",
+        "verification": "pending"
+      }
+    },
+    {
+      "event": "answer_delta",
+      "data": {
+        "trace_id": "tr_c05a6dae845d4934b19f19a2f505e9f4",
+        "seq": 7,
+        "delta": " ocean",
+        "verification": "pending"
+      }
+    },
+    {
+      "event": "answer_delta",
+      "data": {
+        "trace_id": "tr_c05a6dae845d4934b19f19a2f505e9f4",
+        "seq": 8,
+        "delta": " currents",
+        "verification": "pending"
+      }
+    },
+    {
+      "event": "answer_delta",
+      "data": {
+        "trace_id": "tr_c05a6dae845d4934b19f19a2f505e9f4",
+        "seq": 9,
+        "delta": " transport",
+        "verification": "pending"
+      }
+    },
+    {
+      "event": "answer_delta",
+      "data": {
+        "trace_id": "tr_c05a6dae845d4934b19f19a2f505e9f4",
+        "seq": 10,
+        "delta": " heat",
+        "verification": "pending"
+      }
+    },
+    {
+      "event": "answer_delta",
+      "data": {
+        "trace_id": "tr_c05a6dae845d4934b19f19a2f505e9f4",
+        "seq": 11,
+        "delta": " across",
+        "verification": "pending"
+      }
+    },
+    {
+      "event": "answer_delta",
+      "data": {
+        "trace_id": "tr_c05a6dae845d4934b19f19a2f505e9f4",
+        "seq": 12,
+        "delta": " the",
+        "verification": "pending"
+      }
+    },
+    {
+      "event": "answer_delta",
+      "data": {
+        "trace_id": "tr_c05a6dae845d4934b19f19a2f505e9f4",
+        "seq": 13,
+        "delta": " sea",
+        "verification": "pending"
+      }
+    },
+    {
+      "event": "answer_delta",
+      "data": {
+        "trace_id": "tr_c05a6dae845d4934b19f19a2f505e9f4",
+        "seq": 14,
+        "delta": " and",
+        "verification": "pending"
+      }
+    },
+    {
+      "event": "answer_delta",
+      "data": {
+        "trace_id": "tr_c05a6dae845d4934b19f19a2f505e9f4",
+        "seq": 15,
+        "delta": " that",
+        "verification": "pending"
+      }
+    },
+    {
+      "event": "answer_delta",
+      "data": {
+        "trace_id": "tr_c05a6dae845d4934b19f19a2f505e9f4",
+        "seq": 16,
+        "delta": " wind",
+        "verification": "pending"
+      }
+    },
+    {
+      "event": "answer_delta",
+      "data": {
+        "trace_id": "tr_c05a6dae845d4934b19f19a2f505e9f4",
+        "seq": 17,
+        "delta": " drives",
+        "verification": "pending"
+      }
+    },
+    {
+      "event": "answer_delta",
+      "data": {
+        "trace_id": "tr_c05a6dae845d4934b19f19a2f505e9f4",
+        "seq": 18,
+        "delta": " surface",
+        "verification": "pending"
+      }
+    },
+    {
+      "event": "answer_delta",
+      "data": {
+        "trace_id": "tr_c05a6dae845d4934b19f19a2f505e9f4",
+        "seq": 19,
+        "delta": " water",
+        "verification": "pending"
+      }
+    },
+    {
+      "event": "answer_delta",
+      "data": {
+        "trace_id": "tr_c05a6dae845d4934b19f19a2f505e9f4",
+        "seq": 20,
+        "delta": " [",
+        "verification": "pending"
+      }
+    },
+    {
+      "event": "answer_delta",
+      "data": {
+        "trace_id": "tr_c05a6dae845d4934b19f19a2f505e9f4",
+        "seq": 21,
+        "delta": "E",
+        "verification": "pending"
+      }
+    },
+    {
+      "event": "answer_delta",
+      "data": {
+        "trace_id": "tr_c05a6dae845d4934b19f19a2f505e9f4",
+        "seq": 22,
+        "delta": "1",
+        "verification": "pending"
+      }
+    },
+    {
+      "event": "answer_delta",
+      "data": {
+        "trace_id": "tr_c05a6dae845d4934b19f19a2f505e9f4",
+        "seq": 23,
+        "delta": "].",
+        "verification": "pending"
+      }
+    },
+    {
+      "event": "usage",
+      "data": {
+        "trace_id": "tr_c05a6dae845d4934b19f19a2f505e9f4",
+        "seq": 24,
+        "usage": {
+          "prompt_tokens": 89,
+          "completion_tokens": 75,
+          "total_tokens": 164,
+          "prompt_cache_hit_tokens": 0,
+          "prompt_cache_miss_tokens": 89
+        },
+        "usage_source": "provider"
+      }
+    },
+    {
+      "event": "verification",
+      "data": {
+        "trace_id": "tr_c05a6dae845d4934b19f19a2f505e9f4",
+        "seq": 25,
+        "status": "structurally_valid",
+        "unknown_citations": [],
+        "cited": [
+          "E1"
+        ],
+        "claim_support": "not_verified"
+      }
+    },
+    {
+      "event": "completed",
+      "data": {
+        "trace_id": "tr_c05a6dae845d4934b19f19a2f505e9f4",
+        "seq": 26,
+        "status": "ready",
+        "first_answer_ms": 1987.14,
+        "total_ms": 2067.65,
+        "usage": {
+          "prompt_tokens": 89,
+          "completion_tokens": 75,
+          "total_tokens": 164,
+          "prompt_cache_hit_tokens": 0,
+          "prompt_cache_miss_tokens": 89
+        },
+        "usage_source": "provider"
+      }
+    }
+  ],
+  "actual_reranker": {
+    "id": "Qwen/Qwen3-Reranker-4B",
+    "revision": "22e683669bc0f0bd69640a1354a6d0aebcfeede5",
+    "device": "mps:0",
+    "dtypes": [
+      "torch.float16"
+    ]
+  },
+  "http_status": 200,
+  "budget": {
+    "state": "conservative_bytes",
+    "mode": "conservative_bytes",
+    "used_tokens": null,
+    "content_bytes": 302,
+    "max_content_bytes": 6000,
+    "framing_reserve": 1024,
+    "output_reserve": 2048,
+    "model_context_window": 1000000,
+    "omitted": [],
+    "fits": true,
+    "exact_tokens": false,
+    "guarantee": "heuristic; unknown tokenizer and provider chat template are not formally bounded"
+  },
+  "verification": {
+    "trace_id": "tr_c05a6dae845d4934b19f19a2f505e9f4",
+    "seq": 25,
+    "status": "structurally_valid",
+    "unknown_citations": [],
+    "cited": [
+      "E1"
+    ],
+    "claim_support": "not_verified"
+  },
+  "provider_usage": {
+    "prompt_tokens": 89,
+    "completion_tokens": 75,
+    "total_tokens": 164,
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 89
+  },
+  "passed": true
+}

@@ -33,3 +33,11 @@ API设置EVIDENCE_RAG_DB、AUTH（token到主体的JSON映射）、OV_URL、OV_S
 最终manifest应锁源码、报告、selection、语料与qrels、模型revision、wheel和远程commit；完整test未出前不得填最终指标。失败保留原文件和解释，输出唯一文件；不同版本的结果明确分开。回退使用旧活动revision和兼容代码，保留新revision/journal/原始证据；未知OV写入只核对不重放，数据库备份遵循SQLite一致性/WAL规则。
 
 活动revision与OV_SCOPE必须一起切换：停止新请求并drain旧实例，activate --expected后以新scope启动应用并验证；回退使用旧指针与旧scope，不承诺零停机。
+
+发布顺序：先保留已推开发分支，完整验收及证据提交后重新核对origin/main；可安全快进时更新主线，保留开发分支，不force覆盖他人工作。实际远程状态以最终交付记录为准。
+
+长文范围：当前通用dense单元为完整输入文档，超过模型窗口须上游准备有来源的短单元，不能把OpenViking估算截断当分块。SciFact全部序列化文本通过默认4096估算不变检查，但任意长PDF/复杂版面/OCR未完成质量验收。参考examples输入策略说明。
+
+导入语义：每次ingest形成完整revision快照，新增文件不自动合并活动语料；应准备合并后的完整输入再创建新版本。完整命令见examples/README。
+
+最终验收更新：完整官方300题、零执行故障；nDCG@10 0.794175（产品词法0.668854）、Recall@20 0.935889（0.836556）、MRR@10 0.762501（0.635099），NIST -c -q逐题与总体核对通过，冻结source前后相同。真实选定Qwen重排、公共BGE端点、既有OV合成索引和云模型SSE通过小样本互操作；预算为显式近似字节模式，claim_support仍not_verified。正式全文排名及journal见generic-benchmark-20261106/RESULTS.md。

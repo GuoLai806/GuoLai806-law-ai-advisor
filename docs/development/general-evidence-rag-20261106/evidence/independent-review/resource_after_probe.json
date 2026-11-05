@@ -1,0 +1,21 @@
+{
+  "gate": {
+    "window": 4096,
+    "framing_reserve": 256,
+    "output_reserve": 1024,
+    "generator_max": 512,
+    "prompt5000_allowed": false,
+    "prompt2000_allowed": true,
+    "unbounded_output_allowed": false
+  },
+  "http": {
+    "status": 413,
+    "source_open_attempts": 0
+  },
+  "cli": {
+    "rejected": true,
+    "type": "ValueError",
+    "error": "input exceeds 100 MB",
+    "source_open_attempts": 0
+  }
+}

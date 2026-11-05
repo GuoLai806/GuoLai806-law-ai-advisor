@@ -1,0 +1,132 @@
+{
+  "kind": "SciFact official 300 test, validation-selected product shared pre-budget ranking with exact cosine reference dense backend",
+  "created_utc": "2026-11-05T19:56:18.079340+00:00",
+  "dataset": "scifact",
+  "corpus_count": 5183,
+  "query_count": 300,
+  "profile": "general",
+  "corpus_sha256": "dec31c8182f3d744c7d2c09423756fd1d17cbef75808db13ba01cc0aab4d1ac6",
+  "freeze_sha256": "1c92761be46dc6fac96aad7d3c4fdb9c9d5585d73a5d113dd18c680c5f76a278",
+  "manifest_sha256": "d09a41513c30092312905e568c73c9e1e914b04881345e9350125f9701f812cb",
+  "source_unchanged_before_after": true,
+  "selection_locked_before_test": true,
+  "model": {
+    "embedding_id": "BAAI/bge-m3",
+    "embedding_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+    "reranker_id": "Qwen/Qwen3-Reranker-4B",
+    "reranker_revision": "22e683669bc0f0bd69640a1354a6d0aebcfeede5",
+    "device": "mps:0",
+    "dtype": [
+      "torch.float16"
+    ],
+    "batch_size": 2,
+    "corpus_embedded_count": 5183,
+    "query_embedded_count": 300,
+    "corpus_embedding_ms": 109740.23,
+    "query_embedding_ms": 2133.77,
+    "embedding_cache_hit": false,
+    "models_loaded_sequentially": true,
+    "warmups": [
+      {
+        "stage": "embedding",
+        "ms": 128.55,
+        "count": 1
+      },
+      {
+        "stage": "reranker",
+        "ms": 316.88,
+        "count": 1
+      }
+    ]
+  },
+  "systems": {
+    "selected": {
+      "metrics": {
+        "ndcg_at_10": 0.7941746041152701,
+        "recall_at_20": 0.9358888888888889,
+        "mrr_at_10": 0.7625013227513228
+      },
+      "query_count": 300,
+      "failures": 0,
+      "relevant_total": 339,
+      "relevant_hits_at_20": 316,
+      "queries_with_any_relevant_miss_at_20": 23,
+      "ranking_p50_ms": 16050.224999999999,
+      "ranking_p95_ms": 21822.663,
+      "total_wall_ms": 5079870.0,
+      "report_sha256": "f501abe2d0777672e3edb970c90b63474675aa45b12e9d4427376be2b403e5da",
+      "journal_sha256": "654369da0129840f461bf327de905e532bd083586e0ca630639e311aaeaabebe",
+      "journal_complete": true,
+      "nist_max_per_query_difference": 4.719276545839257e-05,
+      "nist_within_rounding": true,
+      "exact_title_match_queries": 0
+    },
+    "lexical": {
+      "metrics": {
+        "ndcg_at_10": 0.668854011195786,
+        "recall_at_20": 0.8365555555555556,
+        "mrr_at_10": 0.6350992063492064
+      },
+      "query_count": 300,
+      "failures": 0,
+      "relevant_total": 339,
+      "relevant_hits_at_20": 280,
+      "queries_with_any_relevant_miss_at_20": 55,
+      "ranking_p50_ms": 9.725000000000001,
+      "ranking_p95_ms": 13.3245,
+      "total_wall_ms": 12902.02,
+      "report_sha256": "60674acb25d52e2f5196d27291c4c9da1aaaa0bd05a1ce705f34e9ad7b84ae00",
+      "journal_sha256": "7f3e13194d6b1a2a0847a4afaf65cdc48c577b4fed6039fe78ace5e9086a941d",
+      "journal_complete": true,
+      "nist_max_per_query_difference": 4.971243261508995e-05,
+      "nist_within_rounding": true,
+      "exact_title_match_queries": 0
+    }
+  },
+  "paired_bootstrap": {
+    "seed": 20261106,
+    "resamples": 20000,
+    "comparisons": {
+      "ndcg_at_10": {
+        "mean_delta": 0.12532059291948405,
+        "bootstrap_95_percentile_ci": [
+          0.09184928261924476,
+          0.15916539289005593
+        ],
+        "improved": 105,
+        "worse": 25,
+        "tied": 170
+      },
+      "recall_at_20": {
+        "mean_delta": 0.09933333333333333,
+        "bootstrap_95_percentile_ci": [
+          0.066,
+          0.13466666666666666
+        ],
+        "improved": 35,
+        "worse": 1,
+        "tied": 264
+      },
+      "mrr_at_10": {
+        "mean_delta": 0.1274021164021164,
+        "bootstrap_95_percentile_ci": [
+          0.0893292328042328,
+          0.16572245370370367
+        ],
+        "improved": 97,
+        "worse": 25,
+        "tied": 178
+      }
+    },
+    "report_sha256": "ed848cf76b860bc11c68a71766ae260131f9c7430a59371002b22f9a394c7856"
+  },
+  "nist_crosscheck_sha256": "8f0cfb9542e4e7140e5ed9cd710037630222446242171b4794eb592133f1b537",
+  "limitations": [
+    "English scientific retrieval only",
+    "pre-evidence-assembly ranking, not final evidence or QA",
+    "exact cosine reference, not full OpenViking index",
+    "baseline is product lexical, not BGE+BGE",
+    "paired bootstrap is descriptive and has no multiplicity correction",
+    "ranking latency excludes model loading, indexing, query encoding and generation"
+  ]
+}

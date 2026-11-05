@@ -1,0 +1,19 @@
+{
+  "root_independent_data_audit": {
+    "lexical": {
+      "official_qids_covered": 300,
+      "rows_equal_journal": true,
+      "mean_metrics_match": true,
+      "report_sha256": "60674acb25d52e2f5196d27291c4c9da1aaaa0bd05a1ce705f34e9ad7b84ae00"
+    },
+    "bge-qwen": {
+      "official_qids_covered": 300,
+      "rows_equal_journal": true,
+      "mean_metrics_match": true,
+      "report_sha256": "f501abe2d0777672e3edb970c90b63474675aa45b12e9d4427376be2b403e5da"
+    }
+  },
+  "source_matches_freeze": true,
+  "official_qrels_sha256": "0864bb985e0ca2367ba217977e72004d549054b2b06666ed9d4825ac7c21284c",
+  "scope": "raw data/identity/aggregation consistency; NIST independent metric implementation audited separately"
+}
