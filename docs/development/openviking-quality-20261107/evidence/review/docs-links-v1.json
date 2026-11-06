@@ -1,0 +1,351 @@
+{
+  "checks": {
+    "all_canonical_docs_present": true,
+    "links_resolve": true,
+    "subset_original_input_exists": true
+  },
+  "passed": true,
+  "bad_links": [],
+  "links": [
+    {
+      "file": "PLAN-FOR-YOU.md",
+      "target": "PLAN-FOR-AI.md",
+      "exists": true
+    },
+    {
+      "file": "PLAN-FOR-YOU.md",
+      "target": "RESULTS.md",
+      "exists": true
+    },
+    {
+      "file": "PLAN-FOR-YOU.md",
+      "target": "TECHNOLOGY-DECISIONS.md",
+      "exists": true
+    },
+    {
+      "file": "PLAN-FOR-YOU.md",
+      "target": "RESUME-REWRITE.md",
+      "exists": true
+    },
+    {
+      "file": "PLAN-FOR-AI.md",
+      "target": "PLAN-FOR-YOU.md",
+      "exists": true
+    },
+    {
+      "file": "PLAN-FOR-AI.md",
+      "target": "evidence/tested-source-v1.json",
+      "exists": true
+    },
+    {
+      "file": "PLAN-FOR-AI.md",
+      "target": "REPRODUCTION.md",
+      "exists": true
+    },
+    {
+      "file": "RESULTS.md",
+      "target": "PLAN-FOR-YOU.md",
+      "exists": true
+    },
+    {
+      "file": "RESULTS.md",
+      "target": "PLAN-FOR-AI.md",
+      "exists": true
+    },
+    {
+      "file": "RESULTS.md",
+      "target": "TECHNOLOGY-DECISIONS.md",
+      "exists": true
+    },
+    {
+      "file": "RESULTS.md",
+      "target": "REPRODUCTION.md",
+      "exists": true
+    },
+    {
+      "file": "RESULTS.md",
+      "target": "VALIDATION-HISTORY.md",
+      "exists": true
+    },
+    {
+      "file": "RESULTS.md",
+      "target": "evidence/paired30-v1.json",
+      "exists": true
+    },
+    {
+      "file": "RESULTS.md",
+      "target": "evidence/paired-additional-v1.json",
+      "exists": true
+    },
+    {
+      "file": "RESULTS.md",
+      "target": "evidence/recompute-paired-additional.py",
+      "exists": true
+    },
+    {
+      "file": "RESULTS.md",
+      "target": "evidence/installed-user-flow-v1.json",
+      "exists": true
+    },
+    {
+      "file": "RESULTS.md",
+      "target": "evidence/installed-identity-v3.json",
+      "exists": true
+    },
+    {
+      "file": "RESULTS.md",
+      "target": "evidence/ui-validation-v1.json",
+      "exists": true
+    },
+    {
+      "file": "RESULTS.md",
+      "target": "evidence/PUBLIC-REDACTION-AUDIT.json",
+      "exists": true
+    },
+    {
+      "file": "RESULTS.md",
+      "target": "../openviking-user-flow-20261106/RESULTS.md",
+      "exists": true
+    },
+    {
+      "file": "TECHNOLOGY-DECISIONS.md",
+      "target": "PLAN-FOR-YOU.md",
+      "exists": true
+    },
+    {
+      "file": "TECHNOLOGY-DECISIONS.md",
+      "target": "PLAN-FOR-AI.md",
+      "exists": true
+    },
+    {
+      "file": "TECHNOLOGY-DECISIONS.md",
+      "target": "RESULTS.md",
+      "exists": true
+    },
+    {
+      "file": "TECHNOLOGY-DECISIONS.md",
+      "target": "evidence/baseline30-v1.json",
+      "exists": true
+    },
+    {
+      "file": "TECHNOLOGY-DECISIONS.md",
+      "target": "evidence/baseline30-v1.analysis.json",
+      "exists": true
+    },
+    {
+      "file": "TECHNOLOGY-DECISIONS.md",
+      "target": "evidence/baseline30-v1.audit.json",
+      "exists": true
+    },
+    {
+      "file": "TECHNOLOGY-DECISIONS.md",
+      "target": "evidence/baseline30-v1.analysis.json",
+      "exists": true
+    },
+    {
+      "file": "TECHNOLOGY-DECISIONS.md",
+      "target": "evidence/baseline30-v1.analysis.json",
+      "exists": true
+    },
+    {
+      "file": "TECHNOLOGY-DECISIONS.md",
+      "target": "evidence/baseline30-v1.json",
+      "exists": true
+    },
+    {
+      "file": "TECHNOLOGY-DECISIONS.md",
+      "target": "evidence/baseline30-v1.audit.json",
+      "exists": true
+    },
+    {
+      "file": "TECHNOLOGY-DECISIONS.md",
+      "target": "evidence/installed-identity-v3.json",
+      "exists": true
+    },
+    {
+      "file": "TECHNOLOGY-DECISIONS.md",
+      "target": "evidence/wheel-install-reused-deps-v3.log",
+      "exists": true
+    },
+    {
+      "file": "TECHNOLOGY-DECISIONS.md",
+      "target": "evidence/installed-cli-v3.log",
+      "exists": true
+    },
+    {
+      "file": "TECHNOLOGY-DECISIONS.md",
+      "target": "evidence/ui-validation-v1.json",
+      "exists": true
+    },
+    {
+      "file": "TECHNOLOGY-DECISIONS.md",
+      "target": "evidence/installed-user-flow-v1.json",
+      "exists": true
+    },
+    {
+      "file": "TECHNOLOGY-DECISIONS.md",
+      "target": "evidence/README.md",
+      "exists": true
+    },
+    {
+      "file": "TECHNOLOGY-DECISIONS.md",
+      "target": "REPRODUCTION.md",
+      "exists": true
+    },
+    {
+      "file": "TECHNOLOGY-DECISIONS.md",
+      "target": "VALIDATION-HISTORY.md",
+      "exists": true
+    },
+    {
+      "file": "RESUME-REWRITE.md",
+      "target": "TECHNOLOGY-DECISIONS.md",
+      "exists": true
+    },
+    {
+      "file": "RESUME-REWRITE.md",
+      "target": "../general-evidence-rag-20261106/PLAN-FOR-YOU.md",
+      "exists": true
+    },
+    {
+      "file": "RESUME-REWRITE.md",
+      "target": "PLAN-FOR-YOU.md",
+      "exists": true
+    },
+    {
+      "file": "RESUME-REWRITE.md",
+      "target": "RESULTS.md",
+      "exists": true
+    },
+    {
+      "file": "RESUME-REWRITE.md",
+      "target": "evidence/README.md",
+      "exists": true
+    },
+    {
+      "file": "VALIDATION-HISTORY.md",
+      "target": "PLAN-FOR-YOU.md",
+      "exists": true
+    },
+    {
+      "file": "VALIDATION-HISTORY.md",
+      "target": "PLAN-FOR-AI.md",
+      "exists": true
+    },
+    {
+      "file": "REPRODUCTION.md",
+      "target": "PLAN-FOR-YOU.md",
+      "exists": true
+    },
+    {
+      "file": "REPRODUCTION.md",
+      "target": "PLAN-FOR-AI.md",
+      "exists": true
+    },
+    {
+      "file": "REPRODUCTION.md",
+      "target": "../openviking-user-flow-20261106/REPRODUCTION.md",
+      "exists": true
+    },
+    {
+      "file": "evidence/README.md",
+      "target": "../RESULTS.md",
+      "exists": true
+    },
+    {
+      "file": "evidence/README.md",
+      "target": "../PLAN-FOR-YOU.md",
+      "exists": true
+    },
+    {
+      "file": "evidence/README.md",
+      "target": "../PLAN-FOR-AI.md",
+      "exists": true
+    },
+    {
+      "file": "evidence/README.md",
+      "target": "baseline30-v1.json",
+      "exists": true
+    },
+    {
+      "file": "evidence/README.md",
+      "target": "candidate30-v1.json",
+      "exists": true
+    },
+    {
+      "file": "evidence/README.md",
+      "target": "candidate-dev6-v1.json",
+      "exists": true
+    },
+    {
+      "file": "evidence/README.md",
+      "target": "candidate-dev6-v2.json",
+      "exists": true
+    },
+    {
+      "file": "evidence/README.md",
+      "target": "candidate-dev6-v3.json",
+      "exists": true
+    },
+    {
+      "file": "evidence/README.md",
+      "target": "paired30-v1.json",
+      "exists": true
+    },
+    {
+      "file": "evidence/README.md",
+      "target": "paired-additional-v1.json",
+      "exists": true
+    },
+    {
+      "file": "evidence/README.md",
+      "target": "recompute-paired-additional.py",
+      "exists": true
+    },
+    {
+      "file": "evidence/README.md",
+      "target": "baseline30-v1.analysis.json",
+      "exists": true
+    },
+    {
+      "file": "evidence/README.md",
+      "target": "candidate30-v1.analysis.json",
+      "exists": true
+    },
+    {
+      "file": "evidence/README.md",
+      "target": "installed-identity-v3.json",
+      "exists": true
+    },
+    {
+      "file": "evidence/README.md",
+      "target": "installed-user-flow-v1.json",
+      "exists": true
+    },
+    {
+      "file": "evidence/README.md",
+      "target": "ui-validation-v1.json",
+      "exists": true
+    },
+    {
+      "file": "evidence/README.md",
+      "target": "PUBLIC-REDACTION-AUDIT.json",
+      "exists": true
+    },
+    {
+      "file": "evidence/README.md",
+      "target": "../REPRODUCTION.md",
+      "exists": true
+    }
+  ],
+  "doc_sha256": {
+    "PLAN-FOR-YOU.md": "49f4dac8adca67cb5d6a8e2d981d5f591d1fe7b7b111cbb83ce81dee58ccfe11",
+    "PLAN-FOR-AI.md": "8501eb429c12b0c7c2bc64cabe82f44d218008bca3f37915807466a245b38dfb",
+    "RESULTS.md": "43c90e9466d2c6679a2660b0c39913eac69cdd54e6de97575f15ffd0307842bb",
+    "TECHNOLOGY-DECISIONS.md": "ce7a6e31461fde8ef00dcf8cd12984c7522b43519a0872ebc0b68b2b5a0b3599",
+    "RESUME-REWRITE.md": "e0e762b5c53338669485b327c5fdeef5b42a96ad209eeefb30c844a8908ea98e",
+    "VALIDATION-HISTORY.md": "073f73de1b8964a4b78150e3e2b0af0e0a1afc9ce6046ac6b8278ac1fe292a4f",
+    "REPRODUCTION.md": "b4f7f0bea16fd3d2eccba938deff200aaf850084a93d3a403b4e9828376d2da4",
+    "evidence/README.md": "0d468254e5dfb8ecb7305d8301fea5be7ff7ed4a81c38a8e6c6d4585aafcd47a"
+  }
+}

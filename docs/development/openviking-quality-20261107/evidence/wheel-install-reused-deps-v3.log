@@ -1,0 +1,6 @@
+Processing ./work/dev/openviking-quality-20261107/wheels/evidence_rag-0.2.1-py3-none-any.whl
+Installing collected packages: evidence-rag
+Successfully installed evidence-rag-0.2.1
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: <local-path> -m pip install --upgrade pip

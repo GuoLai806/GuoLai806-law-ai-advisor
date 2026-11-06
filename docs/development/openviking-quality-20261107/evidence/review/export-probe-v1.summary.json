@@ -1,0 +1,32 @@
+{
+  "reports": 5,
+  "rows": 78,
+  "bad_fields": [],
+  "private_strings": [],
+  "files": [
+    "baseline30-v1.audit.json",
+    "baseline30-v1.selection.json",
+    "candidate-dev6-v2.config.json",
+    "candidate30-v1.selection.json",
+    "candidate-dev6-v3.json",
+    "candidate-dev6-v2.json",
+    "baseline30-v1.config.json",
+    "baseline30-v1.json",
+    "candidate30-v1.audit.json",
+    "backend-before-v1.json",
+    "PUBLIC-REDACTION-AUDIT.json",
+    "candidate-dev6-v1.config.json",
+    "candidate-dev6-v3.audit.json",
+    "installed-identity-v3.json",
+    "model-artifacts-after-v1.json",
+    "candidate-dev6-v3.config.json",
+    "candidate-dev6-v1.json",
+    "backend-after-v1.json",
+    "model-artifacts-before-v1.json",
+    "paired30-v1.json",
+    "candidate30-v1.json",
+    "candidate30-v1.config.json"
+  ],
+  "recursive_probe_passed": true,
+  "passed": true
+}

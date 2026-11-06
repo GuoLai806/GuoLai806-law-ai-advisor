@@ -1,0 +1,81 @@
+{
+  "identity_claims": {
+    "checks": [
+      {
+        "module": "evidence_rag.api",
+        "installed_path": "<local-path>",
+        "matches_source": true,
+        "inside_install_venv": true,
+        "sha256": "a453300d61f4691e7f98d0deab30d8de61fce15bb1f95a34e0a2b3b96bfd988a"
+      },
+      {
+        "module": "evidence_rag.answer",
+        "installed_path": "<local-path>",
+        "matches_source": true,
+        "inside_install_venv": true,
+        "sha256": "06bd724ef9c6b2849f5bcbfb212590b59d69554a1d05cee1c755f2fb2033dcad"
+      },
+      {
+        "module": "evidence_rag.grounding",
+        "installed_path": "<local-path>",
+        "matches_source": true,
+        "inside_install_venv": true,
+        "sha256": "76d53baa97cf7edb9270ad2af793ad1eea606522b77a3268f4ef78fbfb9cd17f"
+      },
+      {
+        "module": "webpage",
+        "inside_install_venv": true,
+        "matches_source": true
+      }
+    ],
+    "passed": true,
+    "scope": "wheel installed in a new environment; existing model-venv supplies runtime/model dependencies via explicit .pth; not a from-zero dependency download acceptance"
+  },
+  "module_checks": [
+    {
+      "module": "evidence_rag.api",
+      "actual_installed_hash_matches": true,
+      "inside_install_venv": true
+    },
+    {
+      "module": "evidence_rag.answer",
+      "actual_installed_hash_matches": true,
+      "inside_install_venv": true
+    },
+    {
+      "module": "evidence_rag.grounding",
+      "actual_installed_hash_matches": true,
+      "inside_install_venv": true
+    }
+  ],
+  "html_bytes_equal": true,
+  "wheel_sha256": "cbdcff20aca3c70300fa2207fbe3fbd4dc9d2579e0c688edfb597ae93c532376",
+  "wheel_source_checks": {
+    "evidence_rag/__init__.py": true,
+    "evidence_rag/__main__.py": true,
+    "evidence_rag/answer.py": true,
+    "evidence_rag/api.py": true,
+    "evidence_rag/budget.py": true,
+    "evidence_rag/catalog.py": true,
+    "evidence_rag/cli.py": true,
+    "evidence_rag/generate_benchmark.py": true,
+    "evidence_rag/grounding.py": true,
+    "evidence_rag/ingest.py": true,
+    "evidence_rag/model_experiment.py": true,
+    "evidence_rag/retrieval.py": true,
+    "evidence_rag/viking_index.py": true,
+    "evidence_rag/static/index.html": true
+  },
+  "model_artifact_models_unchanged": true,
+  "backend_unchanged": false,
+  "freeze": {
+    "pair_hash": true,
+    "shared_source": true,
+    "dev6_v3": true,
+    "journal_binding": true,
+    "all_configs_match": true,
+    "reciprocal_paths": true,
+    "configs_equal_except_declared_joint_strategy": true
+  },
+  "scope": "read-only on-disk identity; no import/model load; .pth dependency reuse is not clean dependency download"
+}

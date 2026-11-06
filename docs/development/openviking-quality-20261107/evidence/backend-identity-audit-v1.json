@@ -1,0 +1,9 @@
+{
+  "identity_fields_unchanged": true,
+  "raw_after_extra_fields": [
+    "load_seconds"
+  ],
+  "normalization": "before snapshot contains declared embedding identity fields only; raw after additionally records load_seconds. Compared explicit before field set; full raw after retained.",
+  "before_sha256": "3672e72acbf990f32aae9cb2c4de2d163de84f9fe33da6e9eb848895732ffe51",
+  "raw_after_sha256": "83407eb1d2673b966b8f54bd03f522e5be4a99a017ae82a4de8de01880b5cadd"
+}

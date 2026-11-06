@@ -1,0 +1,239 @@
+{
+  "quotes": 29,
+  "passed": true,
+  "checks": [
+    {
+      "query_id": "1292",
+      "id": "E1",
+      "present": true,
+      "hash_matches": true,
+      "length_matches": true,
+      "in_title_text": true
+    },
+    {
+      "query_id": "1041",
+      "id": "E4",
+      "present": true,
+      "hash_matches": true,
+      "length_matches": true,
+      "in_title_text": true
+    },
+    {
+      "query_id": "702",
+      "id": "E1",
+      "present": true,
+      "hash_matches": true,
+      "length_matches": true,
+      "in_title_text": true
+    },
+    {
+      "query_id": "830",
+      "id": "E4",
+      "present": true,
+      "hash_matches": true,
+      "length_matches": true,
+      "in_title_text": true
+    },
+    {
+      "query_id": "834",
+      "id": "E1",
+      "present": true,
+      "hash_matches": true,
+      "length_matches": true,
+      "in_title_text": true
+    },
+    {
+      "query_id": "1290",
+      "id": "E1",
+      "present": true,
+      "hash_matches": true,
+      "length_matches": true,
+      "in_title_text": true
+    },
+    {
+      "query_id": "1110",
+      "id": "E1",
+      "present": true,
+      "hash_matches": true,
+      "length_matches": true,
+      "in_title_text": true
+    },
+    {
+      "query_id": "502",
+      "id": "E4",
+      "present": true,
+      "hash_matches": true,
+      "length_matches": true,
+      "in_title_text": true
+    },
+    {
+      "query_id": "298",
+      "id": "E1",
+      "present": true,
+      "hash_matches": true,
+      "length_matches": true,
+      "in_title_text": true
+    },
+    {
+      "query_id": "298",
+      "id": "E4",
+      "present": true,
+      "hash_matches": true,
+      "length_matches": true,
+      "in_title_text": true
+    },
+    {
+      "query_id": "649",
+      "id": "E1",
+      "present": true,
+      "hash_matches": true,
+      "length_matches": true,
+      "in_title_text": true
+    },
+    {
+      "query_id": "1319",
+      "id": "E1",
+      "present": true,
+      "hash_matches": true,
+      "length_matches": true,
+      "in_title_text": true
+    },
+    {
+      "query_id": "1225",
+      "id": "E1",
+      "present": true,
+      "hash_matches": true,
+      "length_matches": true,
+      "in_title_text": true
+    },
+    {
+      "query_id": "384",
+      "id": "E1",
+      "present": true,
+      "hash_matches": true,
+      "length_matches": true,
+      "in_title_text": true
+    },
+    {
+      "query_id": "338",
+      "id": "E1",
+      "present": true,
+      "hash_matches": true,
+      "length_matches": true,
+      "in_title_text": true
+    },
+    {
+      "query_id": "1245",
+      "id": "E1",
+      "present": true,
+      "hash_matches": true,
+      "length_matches": true,
+      "in_title_text": true
+    },
+    {
+      "query_id": "354",
+      "id": "E1",
+      "present": true,
+      "hash_matches": true,
+      "length_matches": true,
+      "in_title_text": true
+    },
+    {
+      "query_id": "613",
+      "id": "E1",
+      "present": true,
+      "hash_matches": true,
+      "length_matches": true,
+      "in_title_text": true
+    },
+    {
+      "query_id": "1185",
+      "id": "E1",
+      "present": true,
+      "hash_matches": true,
+      "length_matches": true,
+      "in_title_text": true
+    },
+    {
+      "query_id": "217",
+      "id": "E1",
+      "present": true,
+      "hash_matches": true,
+      "length_matches": true,
+      "in_title_text": true
+    },
+    {
+      "query_id": "50",
+      "id": "E1",
+      "present": true,
+      "hash_matches": true,
+      "length_matches": true,
+      "in_title_text": true
+    },
+    {
+      "query_id": "845",
+      "id": "E1",
+      "present": true,
+      "hash_matches": true,
+      "length_matches": true,
+      "in_title_text": true
+    },
+    {
+      "query_id": "759",
+      "id": "E1",
+      "present": true,
+      "hash_matches": true,
+      "length_matches": true,
+      "in_title_text": true
+    },
+    {
+      "query_id": "1270",
+      "id": "E1",
+      "present": true,
+      "hash_matches": true,
+      "length_matches": true,
+      "in_title_text": true
+    },
+    {
+      "query_id": "589",
+      "id": "E1",
+      "present": true,
+      "hash_matches": true,
+      "length_matches": true,
+      "in_title_text": true
+    },
+    {
+      "query_id": "903",
+      "id": "E1",
+      "present": true,
+      "hash_matches": true,
+      "length_matches": true,
+      "in_title_text": true
+    },
+    {
+      "query_id": "516",
+      "id": "E1",
+      "present": true,
+      "hash_matches": true,
+      "length_matches": true,
+      "in_title_text": true
+    },
+    {
+      "query_id": "847",
+      "id": "E1",
+      "present": true,
+      "hash_matches": true,
+      "length_matches": true,
+      "in_title_text": true
+    },
+    {
+      "query_id": "1088",
+      "id": "E1",
+      "present": true,
+      "hash_matches": true,
+      "length_matches": true,
+      "in_title_text": true
+    }
+  ],
+  "scope": "verbatim occurrence/hash/length only; no semantic judgement"
+}

@@ -1,0 +1,158 @@
+{
+  "checks": {
+    "paired_gold": true,
+    "paired_exact": true,
+    "identity_shared": true,
+    "baseline_wilson": true,
+    "baseline_first_answer_wall_ms": true,
+    "baseline_stream_total_wall_ms": true,
+    "baseline_user_total_wall_ms": true,
+    "baseline_frozen_before_calls": true,
+    "baseline_header_pair_matches": true,
+    "candidate_wilson": true,
+    "candidate_first_answer_wall_ms": true,
+    "candidate_stream_total_wall_ms": true,
+    "candidate_user_total_wall_ms": true,
+    "candidate_frozen_before_calls": true,
+    "candidate_header_pair_matches": true,
+    "backend_identity_unchanged": true
+  },
+  "passed": true,
+  "paired": {
+    "accuracy_difference": 0.03333333333333333,
+    "difference_bootstrap_95": [
+      -0.1,
+      0.16666666666666666
+    ],
+    "improved": 3,
+    "regressed": 2,
+    "both_correct": 19,
+    "both_incorrect": 6,
+    "mcnemar_exact_two_sided_p": 1
+  },
+  "summary": {
+    "baseline": {
+      "correct": 21,
+      "accuracy": 0.7,
+      "accuracy_wilson_95": [
+        0.5212421254128504,
+        0.8333525173175619
+      ],
+      "latency_wall_ms": {
+        "first_answer_wall_ms": {
+          "all": {
+            "n": 27,
+            "p50": 25287.046,
+            "p95": 37612.780099999996
+          },
+          "completed": {
+            "n": 27,
+            "p50": 25287.046,
+            "p95": 37612.780099999996
+          },
+          "incomplete": {
+            "n": 0,
+            "p50": null,
+            "p95": null
+          }
+        },
+        "stream_total_wall_ms": {
+          "all": {
+            "n": 30,
+            "p50": 25893.6215,
+            "p95": 37983.42009999999
+          },
+          "completed": {
+            "n": 27,
+            "p50": 26155.775,
+            "p95": 38735.217399999994
+          },
+          "incomplete": {
+            "n": 3,
+            "p50": 17151.737,
+            "p95": 19557.9428
+          }
+        },
+        "user_total_wall_ms": {
+          "all": {
+            "n": 30,
+            "p50": 25910.801,
+            "p95": 38002.35289999999
+          },
+          "completed": {
+            "n": 27,
+            "p50": 26173.104,
+            "p95": 38754.8276
+          },
+          "incomplete": {
+            "n": 3,
+            "p50": 17160.903,
+            "p95": 19566.0252
+          }
+        }
+      }
+    },
+    "candidate": {
+      "correct": 22,
+      "accuracy": 0.7333333333333333,
+      "accuracy_wilson_95": [
+        0.555520383048111,
+        0.8581733668040368
+      ],
+      "latency_wall_ms": {
+        "first_answer_wall_ms": {
+          "all": {
+            "n": 29,
+            "p50": 28759.512,
+            "p95": 53034.13299999999
+          },
+          "completed": {
+            "n": 29,
+            "p50": 28759.512,
+            "p95": 53034.13299999999
+          },
+          "incomplete": {
+            "n": 0,
+            "p50": null,
+            "p95": null
+          }
+        },
+        "stream_total_wall_ms": {
+          "all": {
+            "n": 30,
+            "p50": 29383.0295,
+            "p95": 52695.96374999998
+          },
+          "completed": {
+            "n": 29,
+            "p50": 28761.133,
+            "p95": 53035.57599999999
+          },
+          "incomplete": {
+            "n": 1,
+            "p50": 33991.7,
+            "p95": 33991.7
+          }
+        },
+        "user_total_wall_ms": {
+          "all": {
+            "n": 30,
+            "p50": 29395.997499999998,
+            "p95": 52711.80744999998
+          },
+          "completed": {
+            "n": 29,
+            "p50": 28772.123,
+            "p95": 53051.49239999999
+          },
+          "incomplete": {
+            "n": 1,
+            "p50": 34000.879,
+            "p95": 34000.879
+          }
+        }
+      }
+    }
+  },
+  "interpretation": "complete fixed public30; 1 extra correct; small paired uncertainty and joint strategy, no frontier or generalized improvement claim"
+}

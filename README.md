@@ -6,7 +6,7 @@
 
 本轮真实OpenViking全流程已完成：SciFact 5,183篇、300题，检索nDCG@10=0.7942、Recall@20=93.59%；标签一致212/300、引用文档标签F1=.5358、完整流程269/300。与同题BM25实际排名相比nDCG相对提升18.73%，仅指检索阶段。全部失败保留，正式运行跨主机睡眠，逐题秒表不代表真实日历等待或生产延迟，详见[结果及限制](docs/development/openviking-user-flow-20261106/RESULTS.md)。
 
-当前30题质量优化与双时钟计时开发见[新一轮用户版](docs/development/openviking-quality-20261107/PLAN-FOR-YOU.md)与[执行版](docs/development/openviking-quality-20261107/PLAN-FOR-AI.md)。旧300题结果保留，新效果以实际报告为准。
+30题质量优化已完成真实OpenViking同题对照：旧21/30、新22/30，引用文档标签F1 .5614→.7143，流程27→29/30；小样本总体差区间跨0、等待增加，默认仍text。见[大白话说明](docs/development/openviking-quality-20261107/PLAN-FOR-YOU.md)、[执行依据](docs/development/openviking-quality-20261107/PLAN-FOR-AI.md)、[完整结果](docs/development/openviking-quality-20261107/RESULTS.md)、[选型](docs/development/openviking-quality-20261107/TECHNOLOGY-DECISIONS.md)与[简历建议](docs/development/openviking-quality-20261107/RESUME-REWRITE.md)。
 
 ## 本机运行
 

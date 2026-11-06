@@ -1,0 +1,32 @@
+{
+  "checks": [
+    {
+      "module": "evidence_rag.api",
+      "installed_path": "<local-path>",
+      "matches_source": true,
+      "inside_install_venv": true,
+      "sha256": "a453300d61f4691e7f98d0deab30d8de61fce15bb1f95a34e0a2b3b96bfd988a"
+    },
+    {
+      "module": "evidence_rag.answer",
+      "installed_path": "<local-path>",
+      "matches_source": true,
+      "inside_install_venv": true,
+      "sha256": "06bd724ef9c6b2849f5bcbfb212590b59d69554a1d05cee1c755f2fb2033dcad"
+    },
+    {
+      "module": "evidence_rag.grounding",
+      "installed_path": "<local-path>",
+      "matches_source": true,
+      "inside_install_venv": true,
+      "sha256": "76d53baa97cf7edb9270ad2af793ad1eea606522b77a3268f4ef78fbfb9cd17f"
+    },
+    {
+      "module": "webpage",
+      "inside_install_venv": true,
+      "matches_source": true
+    }
+  ],
+  "passed": true,
+  "scope": "wheel installed in a new environment; existing model-venv supplies runtime/model dependencies via explicit .pth; not a from-zero dependency download acceptance"
+}

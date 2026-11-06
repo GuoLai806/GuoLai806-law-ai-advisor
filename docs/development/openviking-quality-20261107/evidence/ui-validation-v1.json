@@ -1,0 +1,61 @@
+{
+  "url": "http://127.0.0.1:19447/",
+  "installed_product": true,
+  "functional_acceptance_only": true,
+  "excluded_from_quality30": true,
+  "checks": {
+    "question_answer": true,
+    "source_open": true,
+    "cancel": true,
+    "candidate_runtime_matches": true,
+    "served_html_matches_wheel_and_repo": true
+  },
+  "artifacts": [
+    {
+      "name": "ui-answer-v1.txt",
+      "sha256": "04274847e1e01c978d28678f8bed94f2b662bfbe15f11e707b555931c7635352",
+      "stored_locally": true,
+      "public_copy": false
+    },
+    {
+      "name": "ui-source-v1.txt",
+      "sha256": "9a0bfeab9240044098095162ba08f0cd4b3d877a418f9212900b01264cb3c18e",
+      "stored_locally": true,
+      "public_copy": false
+    },
+    {
+      "name": "ui-cancel-v1.txt",
+      "sha256": "5005a9a0e940736b7a03388c4e92b23af19e372b109aab4650a3376ea0a9042d",
+      "stored_locally": true,
+      "public_copy": false
+    },
+    {
+      "name": "ui-answer-v1.png",
+      "sha256": "27d92a19827b71e6cc236e65fd772bb80d2fb96d5adf00009f2ba64de10c2179",
+      "stored_locally": true,
+      "public_copy": false
+    },
+    {
+      "name": "ui-source-v1.png",
+      "sha256": "44065a200049370f42a6ad64179027fe9a3f1b74bb4ce1ae116c4c694d837bd0",
+      "stored_locally": true,
+      "public_copy": false
+    },
+    {
+      "name": "ui-cancel-v1.png",
+      "sha256": "067ae1404368fd6bdb3fa2852c9c79692e23231e5bfffe435d7af1313c615d84",
+      "stored_locally": true,
+      "public_copy": false
+    }
+  ],
+  "ready": {
+    "ready": true,
+    "active_revision": "scifact_full_v3",
+    "missing": [],
+    "conservative_bytes_available": false,
+    "budget_guarantee": null
+  },
+  "served_html_sha256": "2e334a9bc6a2929af85dd10faaebd85e1a2a995df0fe6e8869f0f9aded7b3314",
+  "passed": true,
+  "limits": "one fixed development question plus pre-completion cancellation; not a broad GUI reliability benchmark or proof that all questions are semantically correct"
+}

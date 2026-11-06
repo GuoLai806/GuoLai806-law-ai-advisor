@@ -1,0 +1,417 @@
+{
+  "input_sha256": "dd97cd6d86cb39009e07a5b3fc0a505934e8a93c76d119654755c42f2b31fecd",
+  "queries": 6,
+  "source_unchanged": true,
+  "failure_counts": {
+    "none": 6
+  },
+  "source_reread_verified": 6,
+  "session_reread_verified": 6,
+  "structurally_valid_citations": 6,
+  "observed_model_identities": [
+    {
+      "attempt": 1,
+      "model": "deepseek-v4-pro",
+      "system_fingerprint": "a307abda487cd1b463329ccb945ce396"
+    }
+  ],
+  "interpretation": "structural citation validity and original-text hashes do not establish semantic support",
+  "bootstrap": {
+    "method": "query-level percentile bootstrap; 10,000 samples; seed 20261106; 95% interval",
+    "limits": "within-dataset uncertainty; queries sharing evidence may be dependent; no external paired significance claim",
+    "metrics": {
+      "ndcg_at_10": {
+        "mean": 0.765865473412708,
+        "low": 0.543643251190486,
+        "high": 0.9384882922619097
+      },
+      "recall_at_20": {
+        "mean": 1.0,
+        "low": 1.0,
+        "high": 1.0
+      },
+      "mrr_at_10": {
+        "mean": 0.6904761904761906,
+        "low": 0.4047619047619047,
+        "high": 0.9166666666666666
+      },
+      "claim_label_accuracy": {
+        "mean": 0.6666666666666666,
+        "low": 0.3333333333333333,
+        "high": 1.0
+      },
+      "claim_label_macro_f1": {
+        "mean": 0.6555555555555556,
+        "low": 0.19047619047619047,
+        "high": 1.0
+      },
+      "cited_document_label_f1": {
+        "mean": 0.5,
+        "low": 0.0,
+        "high": 0.888888888888889
+      }
+    }
+  },
+  "flow_audit": {
+    "queries_without_evaluation_failure": 6,
+    "actual_user_flow_completed": 6,
+    "user_flow_measurement_available": true,
+    "failed_queries": 0,
+    "usage_available": 6,
+    "usage_complete": 6,
+    "retried_queries": 0,
+    "generation_attempts": 6,
+    "queries_with_generation_attempts": 6,
+    "queries_without_generation_attempts": 0,
+    "usage_scope": "sum of reported usage only; unknown attempts remain unknown",
+    "actual_openviking_queries": 6,
+    "failed_predictions_are_empty": true,
+    "all_raw_hashes_available": true
+  },
+  "failure_provenance_counts": {
+    "none:": 6
+  },
+  "known_usage_price_reference_usd": {
+    "off_peak": 0.007432348,
+    "peak": 0.014864696,
+    "source": "https://api-docs.deepseek.com/quick_start/pricing/",
+    "snapshot_html_sha256": "af6679690eb9a7838c47727bfc5ffdc4ac91c4445a0c1219741ffe00c076ece5",
+    "scope": "reported attempts only; reasoning is already in completion tokens; excludes unreported attempts, local hardware, tax and billing adjustments; not a bill or total cost bound"
+  },
+  "answer_latency_ms": {
+    "stream_total_ms": {
+      "n": 6,
+      "p50": 23862.08652050118,
+      "p95": 39129.26912549301
+    },
+    "user_total_ms": {
+      "n": 6,
+      "p50": 23879.842374502914,
+      "p95": 39143.496333490475
+    },
+    "first_answer_ms": {
+      "n": 6,
+      "p50": 23860.833790997276,
+      "p95": 39127.722229473875
+    },
+    "service_total_ms": {
+      "n": 6,
+      "p50": 23859.59,
+      "p95": 39126.99
+    }
+  },
+  "percentile_policy": "analysis uses linearly interpolated NumPy quantiles; original runner order-statistic quantiles also retained",
+  "user_wait_by_flow_status_ms": {
+    "completed": {
+      "n": 6,
+      "p50": 23879.842374502914,
+      "p95": 39143.496333490475
+    },
+    "failed": {
+      "n": 0
+    }
+  },
+  "stage_latency_ms": {
+    "lexical_ms": {
+      "n": 6,
+      "p50": 364.21000000000004,
+      "p95": 371.13250000000005
+    },
+    "dense_ms": {
+      "n": 6,
+      "p50": 279.485,
+      "p95": 465.16249999999997
+    },
+    "rank_and_rerank_ms": {
+      "n": 6,
+      "p50": 16132.189999999999,
+      "p95": 22289.8
+    }
+  },
+  "latency_definition": {
+    "stream_total_ms": "POST start through SSE end; includes retrieval and answer",
+    "user_total_ms": "POST start through all evidence source and session rereads",
+    "first_answer_ms": "first user-visible answer content; reasoning is not visible",
+    "service_total_ms": "server completion latency, available only on completed streams"
+  },
+  "retrieval_stage_ablations": {
+    "method": "reconstruct original source rank and pre-reranking RRF from actual trace; require every source rank 1..20; no additional model answer runs",
+    "coverage_gaps": [],
+    "scope": "retrieval-stage comparison on the same actual user queries; not full-answer A/B or independent system benchmarks",
+    "results": {
+      "bm25": {
+        "queries_recorded": 6,
+        "complete": true,
+        "metrics": {
+          "ndcg_at_10": 0.7478561567799132,
+          "recall_at_20": 1.0,
+          "mrr_at_10": 0.6666666666666666
+        },
+        "per_query": [
+          {
+            "query_id": "1134",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "798",
+            "metrics": {
+              "ndcg_at_10": 0.6309297535714575,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 0.5,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 2
+            }
+          },
+          {
+            "query_id": "175",
+            "metrics": {
+              "ndcg_at_10": 0.3562071871080222,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 0.16666666666666666,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 6
+            }
+          },
+          {
+            "query_id": "78",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "429",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "169",
+            "metrics": {
+              "ndcg_at_10": 0.5,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 0.3333333333333333,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 3
+            }
+          }
+        ]
+      },
+      "openviking_dense": {
+        "queries_recorded": 6,
+        "complete": true,
+        "metrics": {
+          "ndcg_at_10": 0.8436010519408085,
+          "recall_at_20": 1.0,
+          "mrr_at_10": 0.7916666666666666
+        },
+        "per_query": [
+          {
+            "query_id": "1134",
+            "metrics": {
+              "ndcg_at_10": 0.6309297535714575,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 0.5,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 2
+            }
+          },
+          {
+            "query_id": "798",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "175",
+            "metrics": {
+              "ndcg_at_10": 0.43067655807339306,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 0.25,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 4
+            }
+          },
+          {
+            "query_id": "78",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "429",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "169",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          }
+        ]
+      },
+      "rrf_before_reranking": {
+        "queries_recorded": 6,
+        "complete": true,
+        "metrics": {
+          "ndcg_at_10": 0.9166666666666666,
+          "recall_at_20": 1.0,
+          "mrr_at_10": 0.888888888888889
+        },
+        "per_query": [
+          {
+            "query_id": "1134",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "798",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "175",
+            "metrics": {
+              "ndcg_at_10": 0.5,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 0.3333333333333333,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 3
+            }
+          },
+          {
+            "query_id": "78",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "429",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "169",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          }
+        ]
+      }
+    }
+  },
+  "trec_eval": {
+    "source": "https://github.com/usnistgov/trec_eval/tree/v9.0.8",
+    "binary_sha256": "9d067ebc8fef416384624f6f6f597cda02b07a688e710567e7fe41a42bf18a94",
+    "method": "-c -q, linear-gain nDCG@10, Recall@20; reciprocal rank on top10; BEIR same-ID filtering",
+    "reported": {
+      "ndcg_at_10": 0.7659,
+      "recall_at_20": 1.0,
+      "mrr_at_10": 0.6905
+    },
+    "aggregate_absolute_difference": {
+      "ndcg_at_10": 3.4526587291972e-05,
+      "recall_at_20": 0.0,
+      "mrr_at_10": 2.3809523809426025e-05
+    },
+    "per_query": [
+      {
+        "query_id": "1134",
+        "max_absolute_difference": 0.0
+      },
+      {
+        "query_id": "798",
+        "max_absolute_difference": 2.9753571457513672e-05
+      },
+      {
+        "query_id": "175",
+        "max_absolute_difference": 2.9753571457513672e-05
+      },
+      {
+        "query_id": "78",
+        "max_absolute_difference": 0.0
+      },
+      {
+        "query_id": "429",
+        "max_absolute_difference": 0.0
+      },
+      {
+        "query_id": "169",
+        "max_absolute_difference": 4.285714285715003e-05
+      }
+    ],
+    "within_rounding": true
+  }
+}

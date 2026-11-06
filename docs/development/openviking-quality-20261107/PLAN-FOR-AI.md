@@ -1,55 +1,61 @@
-# OpenViking回答质量与30题对照：执行依据
+# OpenViking 回答质量与 30 题对照：最终执行及交接依据
 
-与[用户版](PLAN-FOR-YOU.md)使用同一决定。关联仓库GuoLai806/GuoLai806-law-ai-advisor，分支feat/versioned-legal-rag-20261105，基线b62887d686894f50811ba54d0c4ed08f4b6e8fc9。用户已确认继续开发，正式benchmark由300缩至30；既有开发、必要验证、普通commit/push授权沿用。当前terra不在宿主可用模型列表，子任务沿用父模型，不强设Astra。
+[用户版](PLAN-FOR-YOU.md)与本文同一组决定。仓库 `GuoLai806/GuoLai806-law-ai-advisor`，既有分支 `feat/versioned-legal-rag-20261105`；本轮实现固定提交 `561ec65292218541b380ff3963d21fb6115e6778`，基线 `b62887d686894f50811ba54d0c4ed08f4b6e8fc9`。正式源文件摘要由两份 config 和 [tested-source](evidence/tested-source-v1.json)绑定；最终文档提交不同于被测实现提交，不改变测试源字节。
 
-## 需求、范围和边界
+## 目标、结果和不可改变的边界
 
-| ID | 明确要求 | 实现与验收证据 |
+用户明确要求保留实际 OpenViking、面向通用 RAG、详细原始测试、选型有理由或数据、改善资料不足判别和引用、补准全流程计时；正式题量从历史 300 缩至 30。已授权普通开发、测试、commit/push；gcode 和本 RAG 保持公开，只推可公开独立实现。该轮仅 RAG，GCode/MyAgent/Pi/企业实现/原 Word/生产配置未改。
+
+| 要求 | 本轮实现与验收 | 结果证据 |
 | --- | --- | --- |
-| R1 | 真实OpenViking继续使用 | 复用已验5183资料/scifact_full_v3 scope，实际find；每题trace、原文/会话回读 |
-| R2 | 测试约为原来十分之一 | 新manifest validation6(train每类2)、short_evaluation30(test每类10)，模型调用前锁样本；旧manifest仍完整300 |
-| R3 | 改善NEI与引用质量 | 可选单调用grounded_json响应契约，摘录substring检查、最少充分来源、NEI条件提示，失败不改判NEI；与text旧配置同30对照 |
-| R4 | 全流程真实等待 | UTC start/end、wall和monotonic双时钟、原始事件wall时间、时钟差；抑制本轮闲置睡眠 |
-| R5 | 原始证据/选型理由 | 保存每题、全部失败、usage、数据/source/config/model身份；实测与预期分开 |
-| R6 | 交付可用结果和长期材料 | 代码/测试/构建/安装/真实API/UI/复审分别验收；两版文档与脱敏资料同步同GitHub分支，核对远端SHA及文件 |
+| R1 真实 OpenViking | 60 次正式用户 SSE 请求实际 dense find，锁定 scope；每题版本原文和会话回读 | 两报告/两 audit；安装 API 检查 |
+| R2 约十分之一 | train 每类 2 的开发 6；test 每类 10 的正式 30；baseline/candidate 各一次 | manifest、双 selection、全部 journal |
+| R3 提高 NEI 与引用 | 可选 grounded_json + grounded_evidence；一次正常生成、摘录字面核验、失败硬拒绝 | NEI4→6/10，citation F1 .5614→.7143，整体21→22/30；反驳7→6/10，统计不支持稳定优胜 |
+| R4 真实等待 | UTC/ns、wall/monotonic、逐事件快照、独立审计重建；caffeinate | 60 题时钟全部有效、0 flag；同算法全流程 p50/p95 |
+| R5 保存证据与理由 | 5 份完整报告 78 行、全部失败/usage/版本；12 项选型说明 | evidence、RESULTS、TECHNOLOGY-DECISIONS |
+| R6 正常使用与长期归档 | 310 回归、两角度复审、wheel/CLI/安装 API/网页原文与停止；双版同提交普通推送 | VALIDATION-HISTORY、安装 identity、UI 摘要、GitHub 交付核对 |
 
-不修改历史300报告、gold、索引、模型权重或原Word。仅RAG；GCode/MyAgent/Pi/企业实现/生产配置不改，不合并PR、不force、不改可见性。不创建独立聊天。所有共享Git、服务、GUI、DB与主PLAN写入由主agent统一操作。
+本轮已经达到实现和约定小样本验收范围。高精度长期目标仍有缺口，不能把小样本验收成功写成“稳定业界前沿”。不改历史题目、gold、索引、模型权重和报告；不合并 PR、不 force、不改仓库可见性、不发布生产服务。
 
-## 接口与模块决定
+## 代码、接口和决定
 
-- benchmarks/run_user_flow.py：旧字段保留。新manifest的short_evaluation明确绑定30 IDs、labels、seed、claims与qrels；test selection新增manifest_sha256。记录每题UTC与wall总/首字/stream，raw事件received_wall_ms；保存monotonic旧字段与clock_info，不从差距筛题。旧manifest不含short_evaluation时仍test300。
-- tools/prepare_user_flow_subset.py：CLI接受原manifest、claims train/dev、输出；不覆盖。每label按SHA256(seed20261107+query_id)选前N，validation每类2、正式每类10，保存确定性规则与来源hash。三类均衡，标注public small paired experiment，非隐藏未见集。
-- evidence_rag/grounding.py：解析严格JSON {decision:SUPPORT|CONTRADICT|NOT_ENOUGH_INFO|ANSWER,answer:string,evidence:[{id,quote}]}。拒重复key/非法字段/未知ID/引用不一致/伪造quote。只做空白规范化的title+text substring，quote12..1200字符、最多4个证据项。SUPPORT/CONTRADICT/ANSWER至少1quote；NEI可0quote，渲染参考资料明确不构成支持证据。无效响应硬失败，不能转NEI或再叫模型修JSON。
-- answer.py：OpenAIStream新增answer_format=text|grounded_json，默认text。messages_for支持同格式提示，预算和实际消息一致，legal保持text规则。grounded模式在同一次上游SSE缓冲最多64KiB，及时转发模型/usage/attempt；stop/done后核对，yield grounding_validation摘要再单个正常正文delta。不伪造逐字。沿用旧空回答最多1retry，格式错误且已有raw content不retry。
-- api.py/serve_user_flow.py：operator ANSWER_FORMAT、GENERATION_GATE。默认text+reranker_threshold完全兼容；grounded_evidence仅general+grounded_json，仍要求ready、budget、完整证据和无degraded，允许负相关性logit进入模型判断。引用摘录校验代替裸相关性阈值作交付条件，但semantic_support=model_assessed_not_independently_verified，不能称独立语义核验。legal不放宽。JSON与SSE都保留grounding_validation、安全失败类型与attempt usage；runtime_identity记录格式、gate及prompt hash。
-- static/index.html：正常文字显示，grounding事件仅展示自然状态，不显示内部JSON；停止撤回、原文/完成会话维持。
-- tools/freeze_short_run.py及审计/分析：只在正式30 journal不存在时写配置选择，绑定source/config/manifest，保存development6身份；正式两模式配置在发题前冻结。新audit支持明确subset，不能取消source/gold检查。统计同30配对，失败留分母，CI及小样本/历史已见限制明确。
+- `evidence_rag/grounding.py`：严格解析 `{decision,answer,evidence:[{id,quote}]}`；decision 支持 SUPPORT/CONTRADICT/NOT_ENOUGH_INFO/ANSWER。拒绝重复 JSON key、未知或重复 ID、额外字段、非法字段类型、正文引用不一致、虚构摘录。仅空白规范化 title+text 的连续 substring；12–1200 字符、至多4条；SUPPORT/CONTRADICT/ANSWER 至少一条。NEI 可零摘录，参考来源不冒充支持证据。该检查不独立证明语义支持。
+- `answer.py`：`OpenAIStream.answer_format=text|grounded_json`，默认 text；`messages_for`与实际预算同契约。grounded 缓冲上游 SSE 正文至多64KiB，先转发身份/attempt/usage，正常终止后输出 grounding_validation，再单个可读 answer_delta；不伪造逐字动画。非空格式错误不修 JSON、不重问模型。仅旧规则符合条件的完全空输出最多重试一次，记录所有尝试。
+- `api.py`及`benchmarks/serve_user_flow.py`：operator `ANSWER_FORMAT`、`GENERATION_GATE`。默认 `text + reranker_threshold(0)`；可选 `grounded_json + grounded_evidence`仅 general 生效，允许低 rerank logit 输入判断，仍要求 ready、非降级、完整证据和可验证预算。legal 原限制不放宽。JSON/SSE 保留校验、失败阶段与用量；runtime identity 含格式、gate、prompt hash。
+- `static/index.html`：用户只看正常正文、引用和原文，不看内部JSON；停止撤回尚未完成正文；完成引用提示明确只做原文摘录核对。
+- `benchmarks/run_user_flow.py`：新 manifest 的 short_evaluation 绑定固定30；没有该字段的历史manifest仍保持300。每题保存 UTC/ns、双时钟、原始事件 wall；source/session 回读失败仍保留 grounding 和已知usage。科学评分 grounded 要 exactly1 validation、三科学标签且正文首行一致；ANSWER 可在产品完成，但科学评分记 INVALID。
+- `tools/prepare_user_flow_subset.py`：以 seed20261107 和 query_id SHA256 每类固定抽样，不覆盖。`tools/freeze_short_run.py`、`benchmarks/short_protocol.py`：正式发题前绑定完整 development6 report/journal、双selection互指和共同摘要、manifest/source/config/runtime/输出路径；禁止只有两hash绕过，正式输出或journal存在禁止重新冻结和重放。
+- `tools/audit_user_flow.py`与`audit_flow_timing.py`：原始SSE、gold、源码身份、标签/引用/attempt usage、UTC/ns、缺失/回退逐事件重建；不复用runner计时公式掩盖错误；异常保留质量分母。`analyze_user_flow.py --trec`独立TREC复核排序；`compare_short_user_flow.py`失败包含的同30配对、Wilson、paired bootstrap、exact McNemar及统一NumPy wall分位数。额外引用与NEI区间在evidence中有独立复算脚本。
 
-## 依赖、数据与部署
+## 依赖、数据和正式配置
 
-沿用Python3.12/macOS arm64、现有model-venv及已固定Qwen/BGE/DeepSeek tokenizer，不升级依赖。OpenViking0.5.3、BGE-M3 revision5617a9f61b028005a4858fdac845db406aefb181、Qwen reranker22e683669bc0f0bd69640a1354a6d0aebcfeede5。DeepSeek Pro thinking enabled/low、8192输出、60秒；仅空输出disabled重试45秒/2048。证据4/6000、窗口32768/framing512/output8192。云alias保存model/fingerprint，不称固定云权重。
+Python3.12/macOS arm64，Apple M5 Pro、48GiB共享内存、MPS float16、Qwen batch8。OpenViking0.5.3、5,183篇已逐篇核验的 L2、scope `viking://resources/rag/scifact/scifact_full_v3/`。复用已有真实索引，未本轮重新导入；产品原文从 Catalog/SQLite 同版本读，OpenViking 内容回读发生在入库验收。L0/L1、OCR、多模态、层级长文未验收。
 
-本机新任务目录outputs/openviking-quality-20261107、work/dev/openviking-quality-20261107。Catalog由旧一致备份复制到新DB；复用旧已验OV scope和磁盘索引，不重新导入。OV/embedding沿用19443/19444，RAG新19446；先检查端口/PID归属。密钥经既有provider凭据读取接口传stdin，绝不打印或推送，不修改Pi配置。服务命名/token/output独占不覆盖。新wheel在独立环境装验；如复用已验依赖，注明范围，不能称从零联网安装。
+BGE-M3 revision `5617a9f61b028005a4858fdac845db406aefb181`；Qwen3-Reranker-4B `22e683669bc0f0bd69640a1354a6d0aebcfeede5`。`deepseek-v4-pro`云别名，thinking enabled/low、temperature0、8192输出、60秒；符合规则的空输出一次 disabled/45秒/2048补救。上下文32768、framing512、output reserve8192、最多4完整单元/6000证据token。云alias/fingerprint不是固定云权重，不承诺逐字重现。
 
-## 顺序、冻结与验收
+`benchmarks/manifests/scifact-short30-20261107.json` SHA256 `8ee8fd71d89777b93ef27e062fffd81ddb8f419b7c476eddc16bf2a08c6d4690`。开发来源 train；正式使用 claims_dev 与 BEIR test。三类均衡、公开历史已见，不是隐藏未见集。baseline config SHA256 `a577eb68436a64762e26f567334a8922ac810fc6950e883b7768768a77f83ea7`；candidate `577bc60feaee1a89da84dbda987f788f11aab2edc2d8b843464cff788d928664`。两者除已声明的联合格式/提示/gate之外相同；全部检索排名和预算后证据覆盖也一致。不能把收益归因单因素。
 
-1. 主agent先同步两PLAN/README入口到GitHub。子任务timing30和grounded_answer可在互斥文件并行；子任务只写指定实现及独立drafts双版，不写主PLAN/Git/服务。
-2. 定向失败测试→实现→受影响回归，主agent集成API、budget和UI；完整tests回归及两角度独立review，修确定缺陷。
-3. 锁subset manifest；复用服务/索引，必要健康和身份核对。开发6仅一组grounded candidate；不得使用正式30结果调参。仅已确认代码bug修复允许另run_id复核开发，不反复挑最好一次。
-4. 在同一最终源码下预冻结baseline(text+threshold0)与candidate(grounded_json+grounded_evidence)所有配置、prompt、scope、model、manifest。两者相同检索/预算/生成主参数，差异是联合grounding策略，不能把变化全归因某个单因素。串行实际HTTP/SSE各跑固定30一次，全失败保留。
-5. 分别核对raw/journal/report、gold、source/runtime、model/backend身份，按同query配对质量/引用/完成/等待/已知用量。TREC复核排名。摘录结构真实性和标签质量分开，不用语义支持率冒充人工评分。小样本不证明稳定前沿。
-6. UI在正式之后做提问→可交付答案→原文→停止撤回；构建/独立安装/入口hash、实际服务身份分别留证。公开全部30×2及development6数字，raw/答案/论文/凭据/权重/私人路径留本机；秘密模式和内部文件不推。
-7. 更新主双版、RESULTS/选型/简历安全措辞，独立review确认；扫描脱敏→普通commit/push→读取远端SHA与文件确认；一致DB备份、仅停核对属于本轮PID服务，不碰原Pi。
+## 已执行顺序与验收
 
-软件默认text保兼容。是否推荐新operator配置以小样本表现解释，质量没有改善不称改善、不保证达到预定分数。对照本身不能作为所有领域通用事实准确率或稳定泛化证明。
+1. 记录双版、按互斥范围实现、回归与两角度独立review；修科学ANSWER计分、失败丢metadata、冻结绕过、计时审计问题。
+2. 保存固定6/30 manifest。开发v1/v2是修评分与元数据bug之前；v3是最终源码复核，6/6流程完成、4/6正确，audit通过。模型/提示/参数未按正式题调整；全部早期记录保留，只v3绑定正式冻结。
+3. 同一固定最终源码下发题前冻结baseline与candidate，串行各跑30一次。runner因保留失败返回1并保存完整report；这不是重跑理由。两审计和TREC均通过，所有失败保留。
+4. 对全部30做同题比较、计时与usage审计、模型文件和后端身份前后核验。raw after比before多load_seconds诊断字段，完整快照保留；身份字段比较一致，不能称快照原样字节一样。
+5. 停止核实属于本轮的正式19446服务，再启动独立安装wheel的19447入口，不让额外模型实例影响正式延迟。安装API完整SSE/真实OV/4条原文hash/会话回读通过；浏览器固定开发题正常答案、查看原文、pre-completion停止撤回通过，原始截图与AX留本机。功能smoke排除30题质量统计。
+6. 导出5报告78行，数值、排序、失败、usage、hash不变，原题正文/答案/论文/SSE/密钥/私有helper/权重不推。双版、结果/选型/简历/复现/验收历史与README入口同提交；最终独立review、扫描、普通push，并读取远端commit及文件内容确认。
 
-## 回退与待确认
+## 当前结论、统计和使用入口
 
-保留b62887d及旧300所有材料。新模式operator可切回text+reranker_threshold；schema不改旧索引/DB，必要时用旧源码与保存Catalog备份。冻结报告不覆盖、不盲重放未知外部写入。生产目标、专家语义标签和跨领域规模属于后续，不是本轮必需输入。无待用户再次授权项。当前完整回归regression-v4为310 passed、5 warnings；两角度独立代码复审已修确定缺陷，正式30尚未开始。真实OpenViking/BGE/Qwen/产品服务已ready；开发6-v1/v2为评测修复前检查并完整保留，v3仅在评分/失败元数据bug修复后同策略复核。模型/索引/提示参数未调优。打包完成，安装检查进行中，网页/正式数据/最终资料同步待收尾。
+21→22/30；NEI4→6/10；citation F1 .561404→.714286（precision .432432→.681818、recall .8→.75）；流程27→29/30。配对3改善2退步，accuracy+3.333pp，bootstrap95%[-10,+16.667]pp，McNemar p1。引用F1差区间[0,.275546]，NEI差区间[-.2,.6]，不宣称稳定改善。candidate1次invalid_quote硬拒绝；baseline3次gate evidence_only。29合法grounded交付中28有摘录、1无摘录，29摘录span只保证字面存在。
 
-## 实现补充与独立复审修复
+wall完整等待全30、同NumPy线性插值：baseline p50/p95=25.911/38.002秒，candidate29.396/52.712；首个正文27/29样本p50=25.287/28.760秒。全部60wall有效，0倒退/大于1秒双时钟差flag。串行缓存/网络/共享桌面未随机化，不宣称速度因果或生产SLA。已知tokens59727→89321，baseline26/27生成题attempt用量完整、candidate30/30；缺报未知，成本无完整账单。
 
-- benchmarks/short_protocol.py在正式runner和audit前置核验完整development6报告/journal、两个selection互指与共同摘要、正式输出路径、source/config/manifest、运行模式和联合策略外配置一致性，不能只提供两个hash绕过；禁止重放已有正式输出。
-- 科学benchmark的grounded模式要求exactly1验证事件，decision为三科学标签且与正文首行一致。一般问答ANSWER仍可交付，但在科学评分中记INVALID；流程完成与评分正确分开。每题不论原文/会话回读成功与否均保留验证元数据和已知usage。
-- tools/audit_flow_timing.py独立从UTC/ns原始快照重建wall反跳/缺失与逐事件有效性，再复算stream/user/first与分位数和异常计数。时钟异常不删除质量样本；无时间时为未知而非零。
-- tools/compare_short_user_flow.py同30配对，失败留分母，报告Wilson区间、paired bootstrap与exact McNemar；区分有摘录/无摘录的grounded响应及摘录数量。联合格式/门槛策略的收益不能归因单因素，串行缓存/网络条件不能支持速度因果结论。
+wheel版本0.2.1、SHA256 `cbdcff20aca3c70300fa2207fbe3fbd4dc9d2579e0c688edfb597ae93c532376`，独立安装环境明确`.pth`复用已有运行/模型依赖，CLI及模块/HTML字节通过。两次全依赖联网下载因速度终止、早期检查失败保留，未把它们算安装成功。未验从零新机器依赖下载。
+
+本机19443/19444为实际OV/embedding；19447为安装后的候选问答，只绑定loopback，演示token `loopback-demo`，本轮保留网页入口；正式19446已停止。私有DB/模型key/auth通过本机安全输入，部署不能把它们写入公开config或shell参数；不读取或修改用户Pi设置。后续机器按[复现说明](REPRODUCTION.md)重建私有状态，不依赖本机绝对路径。
+
+## 回退、后续与授权边界
+
+默认text仍保留，operator切回`text + reranker_threshold`即可回退，不重建索引或schema。历史b62887d与300原始材料、当前Catalog一致备份保留。新机器复现必须重新冻结新路径的pair，脱敏selection保留原pair摘要，不可拿公开副本直接绕过正式检查。
+
+无待用户重新授权项；源码和普通文档推送已授权。生产目标、全新机依赖安装、多领域/中文/长文、人工语义支持和并发压测属于后续。下一轮先在开发集改善反驳/NEI和预算后证据覆盖、比较较轻重排，再冻结新协议；不得覆写本轮成绩或用正式错题调参后声称未见测试。完整复现与验收边界见RESULTS/VALIDATION-HISTORY；该轮结束后不要再次运行相同名称的正式runner。

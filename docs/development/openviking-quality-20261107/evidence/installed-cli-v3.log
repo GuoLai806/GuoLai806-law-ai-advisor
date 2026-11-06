@@ -1,0 +1,9 @@
+usage: evidence-rag [-h]
+                    {ingest,approve-source,activate,generate-synthetic,evaluate}
+                    ...
+
+positional arguments:
+  {ingest,approve-source,activate,generate-synthetic,evaluate}
+
+options:
+  -h, --help            show this help message and exit

@@ -1,0 +1,1309 @@
+{
+  "input_sha256": "80dd67a802f0acf1477dd476b30f95db93512a635bd55ad98d3a032e569c1911",
+  "queries": 30,
+  "source_unchanged": true,
+  "failure_counts": {
+    "none": 29,
+    "error": 1
+  },
+  "source_reread_verified": 30,
+  "session_reread_verified": 29,
+  "structurally_valid_citations": 29,
+  "observed_model_identities": [
+    {
+      "attempt": 1,
+      "model": "deepseek-v4-pro",
+      "system_fingerprint": "a307abda487cd1b463329ccb945ce396"
+    }
+  ],
+  "interpretation": "structural citation validity and original-text hashes do not establish semantic support",
+  "bootstrap": {
+    "method": "query-level percentile bootstrap; 10,000 samples; seed 20261106; 95% interval",
+    "limits": "within-dataset uncertainty; queries sharing evidence may be dependent; no external paired significance claim",
+    "metrics": {
+      "ndcg_at_10": {
+        "mean": 0.8646578904536252,
+        "low": 0.7571579437431353,
+        "high": 0.9581019998114187
+      },
+      "recall_at_20": {
+        "mean": 0.9666666666666667,
+        "low": 0.9,
+        "high": 1.0
+      },
+      "mrr_at_10": {
+        "mean": 0.8325925925925926,
+        "low": 0.7044444444444444,
+        "high": 0.9444444444444445
+      },
+      "claim_label_accuracy": {
+        "mean": 0.7333333333333333,
+        "low": 0.5666666666666667,
+        "high": 0.9
+      },
+      "claim_label_macro_f1": {
+        "mean": 0.7357788410419989,
+        "low": 0.5571599605898804,
+        "high": 0.8807017543859649
+      },
+      "cited_document_label_f1": {
+        "mean": 0.7142857142857143,
+        "low": 0.5365853658536585,
+        "high": 0.8636363636363636
+      }
+    }
+  },
+  "flow_audit": {
+    "queries_without_evaluation_failure": 29,
+    "actual_user_flow_completed": 29,
+    "user_flow_measurement_available": true,
+    "failed_queries": 1,
+    "usage_available": 30,
+    "usage_complete": 30,
+    "retried_queries": 0,
+    "generation_attempts": 30,
+    "queries_with_generation_attempts": 30,
+    "queries_without_generation_attempts": 0,
+    "usage_scope": "sum of reported usage only; unknown attempts remain unknown",
+    "actual_openviking_queries": 30,
+    "failed_predictions_are_empty": true,
+    "all_raw_hashes_available": true
+  },
+  "failure_provenance_counts": {
+    "none:": 29,
+    "GroundingRejected:": 1
+  },
+  "known_usage_price_reference_usd": {
+    "off_peak": 0.08194230000000001,
+    "peak": 0.16388460000000002,
+    "source": "https://api-docs.deepseek.com/quick_start/pricing/",
+    "snapshot_html_sha256": "af6679690eb9a7838c47727bfc5ffdc4ac91c4445a0c1219741ffe00c076ece5",
+    "scope": "reported attempts only; reasoning is already in completion tokens; excludes unreported attempts, local hardware, tax and billing adjustments; not a bill or total cost bound"
+  },
+  "answer_latency_ms": {
+    "stream_total_ms": {
+      "n": 30,
+      "p50": 29383.13685398316,
+      "p95": 52695.82292269622
+    },
+    "user_total_ms": {
+      "n": 30,
+      "p50": 29396.104749990627,
+      "p95": 52711.666097698595
+    },
+    "first_answer_ms": {
+      "n": 29,
+      "p50": 28759.617000003345,
+      "p95": 53033.99072501341
+    },
+    "service_total_ms": {
+      "n": 29,
+      "p50": 28759.34,
+      "p95": 53033.43799999999
+    }
+  },
+  "percentile_policy": "analysis uses linearly interpolated NumPy quantiles; original runner order-statistic quantiles also retained",
+  "user_wait_by_flow_status_ms": {
+    "completed": {
+      "n": 29,
+      "p50": 28772.227958019357,
+      "p95": 53051.35009139775
+    },
+    "failed": {
+      "n": 1,
+      "p50": 34000.78833295265,
+      "p95": 34000.78833295265
+    }
+  },
+  "stage_latency_ms": {
+    "lexical_ms": {
+      "n": 30,
+      "p50": 293.82,
+      "p95": 367.57849999999996
+    },
+    "dense_ms": {
+      "n": 30,
+      "p50": 305.28,
+      "p95": 531.034
+    },
+    "rank_and_rerank_ms": {
+      "n": 30,
+      "p50": 17300.275,
+      "p95": 24685.390499999994
+    }
+  },
+  "latency_definition": {
+    "stream_total_ms": "POST start through SSE end; includes retrieval and answer",
+    "user_total_ms": "POST start through all evidence source and session rereads",
+    "first_answer_ms": "first user-visible answer content; reasoning is not visible",
+    "service_total_ms": "server completion latency, available only on completed streams"
+  },
+  "retrieval_stage_ablations": {
+    "method": "reconstruct original source rank and pre-reranking RRF from actual trace; require every source rank 1..20; no additional model answer runs",
+    "coverage_gaps": [],
+    "scope": "retrieval-stage comparison on the same actual user queries; not full-answer A/B or independent system benchmarks",
+    "results": {
+      "bm25": {
+        "queries_recorded": 30,
+        "complete": true,
+        "metrics": {
+          "ndcg_at_10": 0.7168025950047869,
+          "recall_at_20": 0.8666666666666667,
+          "mrr_at_10": 0.6805555555555555
+        },
+        "per_query": [
+          {
+            "query_id": "1292",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "1041",
+            "metrics": {
+              "ndcg_at_10": 0.44130740935663865,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 0.25,
+              "relevant_count": 2,
+              "relevant_hit_at_20": 2,
+              "first_relevant_rank": 4
+            }
+          },
+          {
+            "query_id": "702",
+            "metrics": {
+              "ndcg_at_10": 0.5,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 0.3333333333333333,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 3
+            }
+          },
+          {
+            "query_id": "830",
+            "metrics": {
+              "ndcg_at_10": 0.38685280723454163,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 0.2,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 5
+            }
+          },
+          {
+            "query_id": "834",
+            "metrics": {
+              "ndcg_at_10": 0.0,
+              "recall_at_20": 0.0,
+              "mrr_at_10": 0.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 0,
+              "first_relevant_rank": null
+            }
+          },
+          {
+            "query_id": "1290",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "1110",
+            "metrics": {
+              "ndcg_at_10": 0.0,
+              "recall_at_20": 0.0,
+              "mrr_at_10": 0.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 0,
+              "first_relevant_rank": null
+            }
+          },
+          {
+            "query_id": "502",
+            "metrics": {
+              "ndcg_at_10": 0.0,
+              "recall_at_20": 0.0,
+              "mrr_at_10": 0.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 0,
+              "first_relevant_rank": null
+            }
+          },
+          {
+            "query_id": "298",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "649",
+            "metrics": {
+              "ndcg_at_10": 0.5,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 0.3333333333333333,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 3
+            }
+          },
+          {
+            "query_id": "1319",
+            "metrics": {
+              "ndcg_at_10": 0.38685280723454163,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 0.2,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 5
+            }
+          },
+          {
+            "query_id": "1225",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "384",
+            "metrics": {
+              "ndcg_at_10": 0.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 0.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": null
+            }
+          },
+          {
+            "query_id": "338",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "1245",
+            "metrics": {
+              "ndcg_at_10": 0.2890648263178879,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 0.1,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 10
+            }
+          },
+          {
+            "query_id": "684",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "354",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "613",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "1185",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "217",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "50",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "879",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "845",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "759",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "1270",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "589",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "903",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "516",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "847",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "1088",
+            "metrics": {
+              "ndcg_at_10": 0.0,
+              "recall_at_20": 0.0,
+              "mrr_at_10": 0.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 0,
+              "first_relevant_rank": null
+            }
+          }
+        ]
+      },
+      "openviking_dense": {
+        "queries_recorded": 30,
+        "complete": true,
+        "metrics": {
+          "ndcg_at_10": 0.7019222662260702,
+          "recall_at_20": 0.8333333333333334,
+          "mrr_at_10": 0.666984126984127
+        },
+        "per_query": [
+          {
+            "query_id": "1292",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "1041",
+            "metrics": {
+              "ndcg_at_10": 0.23719771276929622,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 0.2,
+              "relevant_count": 2,
+              "relevant_hit_at_20": 2,
+              "first_relevant_rank": 5
+            }
+          },
+          {
+            "query_id": "702",
+            "metrics": {
+              "ndcg_at_10": 0.5,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 0.3333333333333333,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 3
+            }
+          },
+          {
+            "query_id": "830",
+            "metrics": {
+              "ndcg_at_10": 0.0,
+              "recall_at_20": 0.0,
+              "mrr_at_10": 0.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 0,
+              "first_relevant_rank": null
+            }
+          },
+          {
+            "query_id": "834",
+            "metrics": {
+              "ndcg_at_10": 0.0,
+              "recall_at_20": 0.0,
+              "mrr_at_10": 0.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 0,
+              "first_relevant_rank": null
+            }
+          },
+          {
+            "query_id": "1290",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "1110",
+            "metrics": {
+              "ndcg_at_10": 0.0,
+              "recall_at_20": 0.0,
+              "mrr_at_10": 0.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 0,
+              "first_relevant_rank": null
+            }
+          },
+          {
+            "query_id": "502",
+            "metrics": {
+              "ndcg_at_10": 0.0,
+              "recall_at_20": 0.0,
+              "mrr_at_10": 0.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 0,
+              "first_relevant_rank": null
+            }
+          },
+          {
+            "query_id": "298",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "649",
+            "metrics": {
+              "ndcg_at_10": 0.5,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 0.3333333333333333,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 3
+            }
+          },
+          {
+            "query_id": "1319",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "1225",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "384",
+            "metrics": {
+              "ndcg_at_10": 0.0,
+              "recall_at_20": 0.0,
+              "mrr_at_10": 0.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 0,
+              "first_relevant_rank": null
+            }
+          },
+          {
+            "query_id": "338",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "1245",
+            "metrics": {
+              "ndcg_at_10": 0.3562071871080222,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 0.16666666666666666,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 6
+            }
+          },
+          {
+            "query_id": "684",
+            "metrics": {
+              "ndcg_at_10": 0.5,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 0.3333333333333333,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 3
+            }
+          },
+          {
+            "query_id": "354",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "613",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "1185",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "217",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "50",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "879",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "845",
+            "metrics": {
+              "ndcg_at_10": 0.3333333333333333,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 0.14285714285714285,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 7
+            }
+          },
+          {
+            "query_id": "759",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "1270",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "589",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "903",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "516",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "847",
+            "metrics": {
+              "ndcg_at_10": 0.6309297535714575,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 0.5,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 2
+            }
+          },
+          {
+            "query_id": "1088",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          }
+        ]
+      },
+      "rrf_before_reranking": {
+        "queries_recorded": 30,
+        "complete": true,
+        "metrics": {
+          "ndcg_at_10": 0.7520491701392856,
+          "recall_at_20": 0.9,
+          "mrr_at_10": 0.7038359788359788
+        },
+        "per_query": [
+          {
+            "query_id": "1292",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "1041",
+            "metrics": {
+              "ndcg_at_10": 0.39780880120575696,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 0.14285714285714285,
+              "relevant_count": 2,
+              "relevant_hit_at_20": 2,
+              "first_relevant_rank": 7
+            }
+          },
+          {
+            "query_id": "702",
+            "metrics": {
+              "ndcg_at_10": 0.5,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 0.3333333333333333,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 3
+            }
+          },
+          {
+            "query_id": "830",
+            "metrics": {
+              "ndcg_at_10": 0.3010299956639812,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 0.1111111111111111,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 9
+            }
+          },
+          {
+            "query_id": "834",
+            "metrics": {
+              "ndcg_at_10": 0.0,
+              "recall_at_20": 0.0,
+              "mrr_at_10": 0.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 0,
+              "first_relevant_rank": null
+            }
+          },
+          {
+            "query_id": "1290",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "1110",
+            "metrics": {
+              "ndcg_at_10": 0.0,
+              "recall_at_20": 0.0,
+              "mrr_at_10": 0.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 0,
+              "first_relevant_rank": null
+            }
+          },
+          {
+            "query_id": "502",
+            "metrics": {
+              "ndcg_at_10": 0.0,
+              "recall_at_20": 0.0,
+              "mrr_at_10": 0.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 0,
+              "first_relevant_rank": null
+            }
+          },
+          {
+            "query_id": "298",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "649",
+            "metrics": {
+              "ndcg_at_10": 0.6309297535714575,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 0.5,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 2
+            }
+          },
+          {
+            "query_id": "1319",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "1225",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "384",
+            "metrics": {
+              "ndcg_at_10": 0.3010299956639812,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 0.1111111111111111,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 9
+            }
+          },
+          {
+            "query_id": "338",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "1245",
+            "metrics": {
+              "ndcg_at_10": 0.5,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 0.3333333333333333,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 3
+            }
+          },
+          {
+            "query_id": "684",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "354",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "613",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "1185",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "217",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "50",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "879",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "845",
+            "metrics": {
+              "ndcg_at_10": 0.5,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 0.3333333333333333,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 3
+            }
+          },
+          {
+            "query_id": "759",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "1270",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "589",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "903",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "516",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "847",
+            "metrics": {
+              "ndcg_at_10": 1.0,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 1.0,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 1
+            }
+          },
+          {
+            "query_id": "1088",
+            "metrics": {
+              "ndcg_at_10": 0.43067655807339306,
+              "recall_at_20": 1.0,
+              "mrr_at_10": 0.25,
+              "relevant_count": 1,
+              "relevant_hit_at_20": 1,
+              "first_relevant_rank": 4
+            }
+          }
+        ]
+      }
+    }
+  },
+  "trec_eval": {
+    "source": "https://github.com/usnistgov/trec_eval/tree/v9.0.8",
+    "binary_sha256": "9d067ebc8fef416384624f6f6f597cda02b07a688e710567e7fe41a42bf18a94",
+    "method": "-c -q, linear-gain nDCG@10, Recall@20; reciprocal rank on top10; BEIR same-ID filtering",
+    "reported": {
+      "ndcg_at_10": 0.8647,
+      "recall_at_20": 0.9667,
+      "mrr_at_10": 0.8326
+    },
+    "aggregate_absolute_difference": {
+      "ndcg_at_10": 4.210954637484665e-05,
+      "recall_at_20": 3.333333333332966e-05,
+      "mrr_at_10": 7.407407407455935e-06
+    },
+    "per_query": [
+      {
+        "query_id": "1292",
+        "max_absolute_difference": 0.0
+      },
+      {
+        "query_id": "1041",
+        "max_absolute_difference": 4.6723602211862225e-05
+      },
+      {
+        "query_id": "702",
+        "max_absolute_difference": 0.0
+      },
+      {
+        "query_id": "830",
+        "max_absolute_difference": 3.333333333332966e-05
+      },
+      {
+        "query_id": "834",
+        "max_absolute_difference": 3.333333333332966e-05
+      },
+      {
+        "query_id": "1290",
+        "max_absolute_difference": 0.0
+      },
+      {
+        "query_id": "1110",
+        "max_absolute_difference": 2.999566398120823e-05
+      },
+      {
+        "query_id": "502",
+        "max_absolute_difference": 0.0
+      },
+      {
+        "query_id": "298",
+        "max_absolute_difference": 0.0
+      },
+      {
+        "query_id": "649",
+        "max_absolute_difference": 0.0
+      },
+      {
+        "query_id": "1319",
+        "max_absolute_difference": 0.0
+      },
+      {
+        "query_id": "1225",
+        "max_absolute_difference": 0.0
+      },
+      {
+        "query_id": "384",
+        "max_absolute_difference": 4.719276545839257e-05
+      },
+      {
+        "query_id": "338",
+        "max_absolute_difference": 0.0
+      },
+      {
+        "query_id": "1245",
+        "max_absolute_difference": 0.0
+      },
+      {
+        "query_id": "684",
+        "max_absolute_difference": 0.0
+      },
+      {
+        "query_id": "354",
+        "max_absolute_difference": 0.0
+      },
+      {
+        "query_id": "613",
+        "max_absolute_difference": 0.0
+      },
+      {
+        "query_id": "1185",
+        "max_absolute_difference": 0.0
+      },
+      {
+        "query_id": "217",
+        "max_absolute_difference": 0.0
+      },
+      {
+        "query_id": "50",
+        "max_absolute_difference": 0.0
+      },
+      {
+        "query_id": "879",
+        "max_absolute_difference": 0.0
+      },
+      {
+        "query_id": "845",
+        "max_absolute_difference": 0.0
+      },
+      {
+        "query_id": "759",
+        "max_absolute_difference": 0.0
+      },
+      {
+        "query_id": "1270",
+        "max_absolute_difference": 0.0
+      },
+      {
+        "query_id": "589",
+        "max_absolute_difference": 0.0
+      },
+      {
+        "query_id": "903",
+        "max_absolute_difference": 0.0
+      },
+      {
+        "query_id": "516",
+        "max_absolute_difference": 0.0
+      },
+      {
+        "query_id": "847",
+        "max_absolute_difference": 0.0
+      },
+      {
+        "query_id": "1088",
+        "max_absolute_difference": 0.0
+      }
+    ],
+    "within_rounding": true
+  }
+}

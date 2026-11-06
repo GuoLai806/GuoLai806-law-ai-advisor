@@ -1,0 +1,12 @@
+Processing <local-path>
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: evidence-rag
+  Building wheel for evidence-rag (pyproject.toml): started
+  Building wheel for evidence-rag (pyproject.toml): finished with status 'done'
+  Created wheel for evidence-rag: filename=evidence_rag-0.2.1-py3-none-any.whl size=50173 sha256=cbdcff20aca3c70300fa2207fbe3fbd4dc9d2579e0c688edfb597ae93c532376
+  Stored in directory: <local-path>
+Successfully built evidence-rag
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: <local-path> -m pip install --upgrade pip

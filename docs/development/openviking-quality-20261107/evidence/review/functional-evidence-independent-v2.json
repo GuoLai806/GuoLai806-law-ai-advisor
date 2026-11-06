@@ -1,0 +1,18 @@
+{
+  "checks": {
+    "raw_hash": true,
+    "answer_delivered": true,
+    "grounding_matches": true,
+    "source_checks": true,
+    "real_openviking": true,
+    "ui_artifact_hashes": true,
+    "cancel_text": true,
+    "source_text": true,
+    "answer_text": true,
+    "html_hash": true,
+    "functional_excluded_from_quality": true
+  },
+  "passed": true,
+  "scope": "read original installed SSE and saved UI accessibility snapshots/hashes; no replay and no new model calls; no independent browser observation or semantic correctness judgement",
+  "probe_correction": "v1 incorrectly assumed the open source panel repeats citation ID E1; the actual contract is a source panel with the cited title and original text. v2 verifies those bytes against original installed evidence."
+}

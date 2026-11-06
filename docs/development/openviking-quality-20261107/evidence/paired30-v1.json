@@ -1,0 +1,1372 @@
+{
+  "baseline_sha256": "92698b53175bfe51724fa29652439e3a77dad4b7379d95803970a201aaefb8d2",
+  "candidate_sha256": "80dd67a802f0acf1477dd476b30f95db93512a635bd55ad98d3a032e569c1911",
+  "manifest_sha256": "8ee8fd71d89777b93ef27e062fffd81ddb8f419b7c476eddc16bf2a08c6d4690",
+  "scope": "public, previously seen, class-balanced 30-query paired experiment; joint answer-format and generation-gate change; not independent hidden test, whole-RAG factual accuracy, or frontier proof",
+  "baseline": {
+    "queries": 30,
+    "correct": 21,
+    "accuracy": 0.7,
+    "accuracy_wilson_95": [
+      0.5212421254128504,
+      0.8333525173175619
+    ],
+    "verification_metrics": {
+      "claim_label_accuracy": 0.7,
+      "claim_label_macro_f1": 0.7132468853292652,
+      "label_f1": {
+        "SUPPORT": 0.8695652173913043,
+        "CONTRADICT": 0.7368421052631579,
+        "NOT_ENOUGH_INFO": 0.5333333333333333
+      },
+      "confusion": {
+        "SUPPORT": {
+          "SUPPORT": 10,
+          "CONTRADICT": 0,
+          "NOT_ENOUGH_INFO": 0,
+          "INVALID": 0
+        },
+        "CONTRADICT": {
+          "SUPPORT": 2,
+          "CONTRADICT": 7,
+          "NOT_ENOUGH_INFO": 1,
+          "INVALID": 0
+        },
+        "NOT_ENOUGH_INFO": {
+          "SUPPORT": 1,
+          "CONTRADICT": 2,
+          "NOT_ENOUGH_INFO": 4,
+          "INVALID": 3
+        }
+      },
+      "cited_document_label_precision": 0.43243243243243246,
+      "cited_document_label_recall": 0.8,
+      "cited_document_label_f1": 0.5614035087719298,
+      "cited_document_label_counts": {
+        "correct": 16,
+        "predicted": 37,
+        "gold": 20
+      },
+      "scope": "custom claim-label and cited-document+label metrics; not official sentence-rationale leaderboard scoring"
+    },
+    "retrieval_metrics": {
+      "ndcg_at_10": 0.8646578904536252,
+      "recall_at_20": 0.9666666666666667,
+      "mrr_at_10": 0.8325925925925926
+    },
+    "by_label": {
+      "SUPPORT": {
+        "n": 10,
+        "correct": 10
+      },
+      "CONTRADICT": {
+        "n": 10,
+        "correct": 7
+      },
+      "NOT_ENOUGH_INFO": {
+        "n": 10,
+        "correct": 4
+      }
+    },
+    "flow_completed": 27,
+    "failure_counts": {
+      "none": 27,
+      "answer_not_completed": 3
+    },
+    "failure_provenance": {
+      "none": 30
+    },
+    "latency_wall_ms": {
+      "first_answer_wall_ms": {
+        "all": {
+          "n": 27,
+          "p50": 25287.046,
+          "p95": 37612.780099999996
+        },
+        "completed": {
+          "n": 27,
+          "p50": 25287.046,
+          "p95": 37612.780099999996
+        },
+        "incomplete": {
+          "n": 0,
+          "p50": null,
+          "p95": null
+        }
+      },
+      "stream_total_wall_ms": {
+        "all": {
+          "n": 30,
+          "p50": 25893.6215,
+          "p95": 37983.42009999999
+        },
+        "completed": {
+          "n": 27,
+          "p50": 26155.775,
+          "p95": 38735.217399999994
+        },
+        "incomplete": {
+          "n": 3,
+          "p50": 17151.737,
+          "p95": 19557.9428
+        }
+      },
+      "user_total_wall_ms": {
+        "all": {
+          "n": 30,
+          "p50": 25910.801,
+          "p95": 38002.35289999999
+        },
+        "completed": {
+          "n": 27,
+          "p50": 26173.104,
+          "p95": 38754.8276
+        },
+        "incomplete": {
+          "n": 3,
+          "p50": 17160.903,
+          "p95": 19566.0252
+        }
+      }
+    },
+    "timing_health": {
+      "wall_monotonic_divergence_rows": 0,
+      "clock_anomaly_rows": 0,
+      "all_wall_clocks_valid": true,
+      "scope": "Wall quantiles include valid observed clocks only; all questions remain in quality and flow metrics."
+    },
+    "run_wall_ms": 849187.105,
+    "usage_totals": {
+      "prompt_tokens": 45490,
+      "completion_tokens": 14237,
+      "total_tokens": 59727,
+      "reasoning_tokens": 11506,
+      "prompt_cache_hit_tokens": 41344,
+      "prompt_cache_miss_tokens": 4146
+    },
+    "usage_complete_queries": 26,
+    "retried_queries": 1,
+    "generation_attempt_count": 28,
+    "grounded_validation_responses": 0,
+    "responses_with_quotes": 0,
+    "responses_without_quotes": 0,
+    "quotes_checked_spans": 0,
+    "quote_check_scope": "verbatim occurrence and source identifiers only; semantic support is model assessed, not independently verified",
+    "raw_grounding_metadata": [
+      {
+        "query_id": "1292",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "1041",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "702",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "830",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "834",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "1290",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "1110",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "502",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "298",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "649",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "1319",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "1225",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "384",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "338",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "1245",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "684",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "354",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "613",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "1185",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "217",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "50",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "879",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "845",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "759",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "1270",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "589",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "903",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "516",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "847",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "1088",
+        "grounding_validation": []
+      }
+    ]
+  },
+  "candidate": {
+    "queries": 30,
+    "correct": 22,
+    "accuracy": 0.7333333333333333,
+    "accuracy_wilson_95": [
+      0.555520383048111,
+      0.8581733668040368
+    ],
+    "verification_metrics": {
+      "claim_label_accuracy": 0.7333333333333333,
+      "claim_label_macro_f1": 0.7357788410419989,
+      "label_f1": {
+        "SUPPORT": 0.9090909090909091,
+        "CONTRADICT": 0.631578947368421,
+        "NOT_ENOUGH_INFO": 0.6666666666666666
+      },
+      "confusion": {
+        "SUPPORT": {
+          "SUPPORT": 10,
+          "CONTRADICT": 0,
+          "NOT_ENOUGH_INFO": 0,
+          "INVALID": 0
+        },
+        "CONTRADICT": {
+          "SUPPORT": 1,
+          "CONTRADICT": 6,
+          "NOT_ENOUGH_INFO": 2,
+          "INVALID": 1
+        },
+        "NOT_ENOUGH_INFO": {
+          "SUPPORT": 1,
+          "CONTRADICT": 3,
+          "NOT_ENOUGH_INFO": 6,
+          "INVALID": 0
+        }
+      },
+      "cited_document_label_precision": 0.6818181818181818,
+      "cited_document_label_recall": 0.75,
+      "cited_document_label_f1": 0.7142857142857143,
+      "cited_document_label_counts": {
+        "correct": 15,
+        "predicted": 22,
+        "gold": 20
+      },
+      "scope": "custom claim-label and cited-document+label metrics; not official sentence-rationale leaderboard scoring"
+    },
+    "retrieval_metrics": {
+      "ndcg_at_10": 0.8646578904536252,
+      "recall_at_20": 0.9666666666666667,
+      "mrr_at_10": 0.8325925925925926
+    },
+    "by_label": {
+      "SUPPORT": {
+        "n": 10,
+        "correct": 10
+      },
+      "CONTRADICT": {
+        "n": 10,
+        "correct": 6
+      },
+      "NOT_ENOUGH_INFO": {
+        "n": 10,
+        "correct": 6
+      }
+    },
+    "flow_completed": 29,
+    "failure_counts": {
+      "none": 29,
+      "error": 1
+    },
+    "failure_provenance": {
+      "none": 29,
+      "GroundingRejected": 1
+    },
+    "latency_wall_ms": {
+      "first_answer_wall_ms": {
+        "all": {
+          "n": 29,
+          "p50": 28759.512,
+          "p95": 53034.13299999999
+        },
+        "completed": {
+          "n": 29,
+          "p50": 28759.512,
+          "p95": 53034.13299999999
+        },
+        "incomplete": {
+          "n": 0,
+          "p50": null,
+          "p95": null
+        }
+      },
+      "stream_total_wall_ms": {
+        "all": {
+          "n": 30,
+          "p50": 29383.0295,
+          "p95": 52695.96374999998
+        },
+        "completed": {
+          "n": 29,
+          "p50": 28761.133,
+          "p95": 53035.57599999999
+        },
+        "incomplete": {
+          "n": 1,
+          "p50": 33991.7,
+          "p95": 33991.7
+        }
+      },
+      "user_total_wall_ms": {
+        "all": {
+          "n": 30,
+          "p50": 29395.997499999998,
+          "p95": 52711.80744999998
+        },
+        "completed": {
+          "n": 29,
+          "p50": 28772.123,
+          "p95": 53051.49239999999
+        },
+        "incomplete": {
+          "n": 1,
+          "p50": 34000.879,
+          "p95": 34000.879
+        }
+      }
+    },
+    "timing_health": {
+      "wall_monotonic_divergence_rows": 0,
+      "clock_anomaly_rows": 0,
+      "all_wall_clocks_valid": true,
+      "scope": "Wall quantiles include valid observed clocks only; all questions remain in quality and flow metrics."
+    },
+    "run_wall_ms": 923889.433,
+    "usage_totals": {
+      "prompt_tokens": 62624,
+      "completion_tokens": 26697,
+      "total_tokens": 89321,
+      "reasoning_tokens": 22873,
+      "prompt_cache_hit_tokens": 19200,
+      "prompt_cache_miss_tokens": 43424
+    },
+    "usage_complete_queries": 30,
+    "retried_queries": 0,
+    "generation_attempt_count": 30,
+    "grounded_validation_responses": 29,
+    "responses_with_quotes": 28,
+    "responses_without_quotes": 1,
+    "quotes_checked_spans": 29,
+    "quote_check_scope": "verbatim occurrence and source identifiers only; semantic support is model assessed, not independently verified",
+    "raw_grounding_metadata": [
+      {
+        "query_id": "1292",
+        "grounding_validation": [
+          {
+            "trace_id": "tr_094efe34f5064048a14d1f0faafaee3b",
+            "seq": 6,
+            "decision": "CONTRADICT",
+            "status": "verbatim_quotes_checked",
+            "semantic_support": "model_assessed_not_independently_verified",
+            "evidence_ids": [
+              "E1"
+            ],
+            "quotes": [
+              {
+                "id": "E1",
+                "quote_sha256": "1169817378c52c07029bcc1a67ec47d3e28044979b89eaeba0ee04d284eeacf6",
+                "quote_chars": 73
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "query_id": "1041",
+        "grounding_validation": [
+          {
+            "trace_id": "tr_08a55b550c2342c7a8d62cc11d848ecf",
+            "seq": 6,
+            "decision": "NOT_ENOUGH_INFO",
+            "status": "verbatim_quotes_checked",
+            "semantic_support": "model_assessed_not_independently_verified",
+            "evidence_ids": [
+              "E4"
+            ],
+            "quotes": [
+              {
+                "id": "E4",
+                "quote_sha256": "122b3e5439e24afbdbca51542fc6b700df136bb2510d5970809ea7894903836e",
+                "quote_chars": 116
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "query_id": "702",
+        "grounding_validation": [
+          {
+            "trace_id": "tr_560f4d5c18ff460fb4e6109ce125997d",
+            "seq": 6,
+            "decision": "NOT_ENOUGH_INFO",
+            "status": "verbatim_quotes_checked",
+            "semantic_support": "model_assessed_not_independently_verified",
+            "evidence_ids": [
+              "E1"
+            ],
+            "quotes": [
+              {
+                "id": "E1",
+                "quote_sha256": "a5308c4cff18115c12e58d58d737ba7358e227cf3746cc57435fd61bea313731",
+                "quote_chars": 134
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "query_id": "830",
+        "grounding_validation": [
+          {
+            "trace_id": "tr_2a4baf216bee474fbf1bd6d6b7de1e95",
+            "seq": 6,
+            "decision": "NOT_ENOUGH_INFO",
+            "status": "verbatim_quotes_checked",
+            "semantic_support": "model_assessed_not_independently_verified",
+            "evidence_ids": [
+              "E4"
+            ],
+            "quotes": [
+              {
+                "id": "E4",
+                "quote_sha256": "2dd92bc76a100908d2b51b50478ff82a97219c8c16144d8f71c6ab72047fc1dc",
+                "quote_chars": 328
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "query_id": "834",
+        "grounding_validation": [
+          {
+            "trace_id": "tr_3eb48853571944a4a3c60bcb9e0034cf",
+            "seq": 6,
+            "decision": "SUPPORT",
+            "status": "verbatim_quotes_checked",
+            "semantic_support": "model_assessed_not_independently_verified",
+            "evidence_ids": [
+              "E1"
+            ],
+            "quotes": [
+              {
+                "id": "E1",
+                "quote_sha256": "5f120fc26a5bdd89da0c0df6bf946851ad2625548e7cf459abe48b89fcc27ab0",
+                "quote_chars": 144
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "query_id": "1290",
+        "grounding_validation": [
+          {
+            "trace_id": "tr_f805a37eb53e43dabbfda37e87c0e4ce",
+            "seq": 6,
+            "decision": "SUPPORT",
+            "status": "verbatim_quotes_checked",
+            "semantic_support": "model_assessed_not_independently_verified",
+            "evidence_ids": [
+              "E1"
+            ],
+            "quotes": [
+              {
+                "id": "E1",
+                "quote_sha256": "1946191ff31eafd70cbbb6f350af1346d8c1034569bc4058e586bb3593929e7b",
+                "quote_chars": 232
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "query_id": "1110",
+        "grounding_validation": [
+          {
+            "trace_id": "tr_623f709c5097497f93183610fb914d43",
+            "seq": 6,
+            "decision": "CONTRADICT",
+            "status": "verbatim_quotes_checked",
+            "semantic_support": "model_assessed_not_independently_verified",
+            "evidence_ids": [
+              "E1"
+            ],
+            "quotes": [
+              {
+                "id": "E1",
+                "quote_sha256": "e961bd0ba33a9e65391b522b8bb4d9a94caf7ed1e48ab898eecb1ec981637613",
+                "quote_chars": 345
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "query_id": "502",
+        "grounding_validation": [
+          {
+            "trace_id": "tr_8e76ac5d02c448da85f0248947800305",
+            "seq": 6,
+            "decision": "NOT_ENOUGH_INFO",
+            "status": "verbatim_quotes_checked",
+            "semantic_support": "model_assessed_not_independently_verified",
+            "evidence_ids": [
+              "E4"
+            ],
+            "quotes": [
+              {
+                "id": "E4",
+                "quote_sha256": "5183daa22fb0c2c79b96e9b6fde1d4d081350541c26fcdc785c6f9f4df625f40",
+                "quote_chars": 322
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "query_id": "298",
+        "grounding_validation": [
+          {
+            "trace_id": "tr_8e05acfe2b18420e816d9458af58c748",
+            "seq": 6,
+            "decision": "SUPPORT",
+            "status": "verbatim_quotes_checked",
+            "semantic_support": "model_assessed_not_independently_verified",
+            "evidence_ids": [
+              "E1",
+              "E4"
+            ],
+            "quotes": [
+              {
+                "id": "E1",
+                "quote_sha256": "d75b4f2510bed408ba8ad5e74e603184fa37c3b9802f31219db96b26e8ef0ddb",
+                "quote_chars": 221
+              },
+              {
+                "id": "E4",
+                "quote_sha256": "3efac42a258bccadf76a2adb95e80f704570929458b2ceaccf801401e7059301",
+                "quote_chars": 187
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "query_id": "649",
+        "grounding_validation": [
+          {
+            "trace_id": "tr_b8ec297253dd412fbecf80b9a3bcf5fe",
+            "seq": 6,
+            "decision": "NOT_ENOUGH_INFO",
+            "status": "verbatim_quotes_checked",
+            "semantic_support": "model_assessed_not_independently_verified",
+            "evidence_ids": [
+              "E1"
+            ],
+            "quotes": [
+              {
+                "id": "E1",
+                "quote_sha256": "bb4209f4d9b6fa54c52edd44e76161a04ed3a73521cd637a0c97ce0305443adb",
+                "quote_chars": 66
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "query_id": "1319",
+        "grounding_validation": [
+          {
+            "trace_id": "tr_984ac0ba9bac4770a7cddec31d7d9f1d",
+            "seq": 6,
+            "decision": "SUPPORT",
+            "status": "verbatim_quotes_checked",
+            "semantic_support": "model_assessed_not_independently_verified",
+            "evidence_ids": [
+              "E1"
+            ],
+            "quotes": [
+              {
+                "id": "E1",
+                "quote_sha256": "4dff759d9df9ea305cd872bf2a1c1cc63d371dd7924e97070c5d7285cddb45f2",
+                "quote_chars": 215
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "query_id": "1225",
+        "grounding_validation": [
+          {
+            "trace_id": "tr_ba379b557d7d41d987db20029437def5",
+            "seq": 6,
+            "decision": "SUPPORT",
+            "status": "verbatim_quotes_checked",
+            "semantic_support": "model_assessed_not_independently_verified",
+            "evidence_ids": [
+              "E1"
+            ],
+            "quotes": [
+              {
+                "id": "E1",
+                "quote_sha256": "e88d1c4af61f6b4a149330799b20a4087454b3b1d961672e5dd450352e7e85e1",
+                "quote_chars": 355
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "query_id": "384",
+        "grounding_validation": [
+          {
+            "trace_id": "tr_a15bd8b39ea441a5b8f9fbd89dca6016",
+            "seq": 6,
+            "decision": "CONTRADICT",
+            "status": "verbatim_quotes_checked",
+            "semantic_support": "model_assessed_not_independently_verified",
+            "evidence_ids": [
+              "E1"
+            ],
+            "quotes": [
+              {
+                "id": "E1",
+                "quote_sha256": "d1d6f19e2f16014152d6e6f2e02a2693ab3f81293edbfa61de1bde46e0264885",
+                "quote_chars": 440
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "query_id": "338",
+        "grounding_validation": [
+          {
+            "trace_id": "tr_cc770e24f4384bd3a4f16dcbece2a4ab",
+            "seq": 6,
+            "decision": "CONTRADICT",
+            "status": "verbatim_quotes_checked",
+            "semantic_support": "model_assessed_not_independently_verified",
+            "evidence_ids": [
+              "E1"
+            ],
+            "quotes": [
+              {
+                "id": "E1",
+                "quote_sha256": "3967708bbe5c14a998e4da5ddeedab1f5d6ba962611b5cca2dc0b1a5fa8a7635",
+                "quote_chars": 283
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "query_id": "1245",
+        "grounding_validation": [
+          {
+            "trace_id": "tr_c09ed4633dfc4c07ab8f53e42954de15",
+            "seq": 6,
+            "decision": "NOT_ENOUGH_INFO",
+            "status": "verbatim_quotes_checked",
+            "semantic_support": "model_assessed_not_independently_verified",
+            "evidence_ids": [
+              "E1"
+            ],
+            "quotes": [
+              {
+                "id": "E1",
+                "quote_sha256": "d8523d96a9dd973ae9919a2aa48faba91a5fb0b1da3d373eaf39b258b502ec98",
+                "quote_chars": 98
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "query_id": "684",
+        "grounding_validation": [
+          {
+            "trace_id": "tr_7a55091885f84d1095738aeabaefbbb5",
+            "seq": 6,
+            "decision": "NOT_ENOUGH_INFO",
+            "status": "verbatim_quotes_checked",
+            "semantic_support": "model_assessed_not_independently_verified",
+            "evidence_ids": [],
+            "quotes": []
+          }
+        ]
+      },
+      {
+        "query_id": "354",
+        "grounding_validation": [
+          {
+            "trace_id": "tr_a421c11f01f54500bf979724b0f6fd8e",
+            "seq": 6,
+            "decision": "CONTRADICT",
+            "status": "verbatim_quotes_checked",
+            "semantic_support": "model_assessed_not_independently_verified",
+            "evidence_ids": [
+              "E1"
+            ],
+            "quotes": [
+              {
+                "id": "E1",
+                "quote_sha256": "388fa880c8bc2ec9f814cdd34ce5dd0df985ffaa130d21adb21c4411046ed07d",
+                "quote_chars": 229
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "query_id": "613",
+        "grounding_validation": [
+          {
+            "trace_id": "tr_cb0592df8abb4c65b96de4cfb3067536",
+            "seq": 6,
+            "decision": "SUPPORT",
+            "status": "verbatim_quotes_checked",
+            "semantic_support": "model_assessed_not_independently_verified",
+            "evidence_ids": [
+              "E1"
+            ],
+            "quotes": [
+              {
+                "id": "E1",
+                "quote_sha256": "fbec248dabb710a6243d1bb2c78f7c0ad2d34089e9ca4bed00d2c6461186fa06",
+                "quote_chars": 123
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "query_id": "1185",
+        "grounding_validation": [
+          {
+            "trace_id": "tr_4b843e29acc84740b6d947c85121550d",
+            "seq": 6,
+            "decision": "SUPPORT",
+            "status": "verbatim_quotes_checked",
+            "semantic_support": "model_assessed_not_independently_verified",
+            "evidence_ids": [
+              "E1"
+            ],
+            "quotes": [
+              {
+                "id": "E1",
+                "quote_sha256": "0f5ba488f46e2e7cf5aa0d97c5e5780eb693b64f2ae9c348a24a33af5fc025f2",
+                "quote_chars": 169
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "query_id": "217",
+        "grounding_validation": [
+          {
+            "trace_id": "tr_0e7b471aa49b4304a16dfbe34906abb0",
+            "seq": 6,
+            "decision": "SUPPORT",
+            "status": "verbatim_quotes_checked",
+            "semantic_support": "model_assessed_not_independently_verified",
+            "evidence_ids": [
+              "E1"
+            ],
+            "quotes": [
+              {
+                "id": "E1",
+                "quote_sha256": "bc9c121ebf8a9fd0056b5c60d509afeaa60de09e5f694584a4432f7c446087db",
+                "quote_chars": 76
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "query_id": "50",
+        "grounding_validation": [
+          {
+            "trace_id": "tr_1ba6a161a3de45ad8aeb2a1e2fce1d0c",
+            "seq": 6,
+            "decision": "SUPPORT",
+            "status": "verbatim_quotes_checked",
+            "semantic_support": "model_assessed_not_independently_verified",
+            "evidence_ids": [
+              "E1"
+            ],
+            "quotes": [
+              {
+                "id": "E1",
+                "quote_sha256": "80226a777ebe50b8c7289ceaff8b31b34abd920b64984adeb37c54cbcadcf97c",
+                "quote_chars": 237
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "query_id": "879",
+        "grounding_validation": []
+      },
+      {
+        "query_id": "845",
+        "grounding_validation": [
+          {
+            "trace_id": "tr_2a18a8249a2747bfa1862629915ce185",
+            "seq": 6,
+            "decision": "SUPPORT",
+            "status": "verbatim_quotes_checked",
+            "semantic_support": "model_assessed_not_independently_verified",
+            "evidence_ids": [
+              "E1"
+            ],
+            "quotes": [
+              {
+                "id": "E1",
+                "quote_sha256": "7ada46af92cb9593ebc2fa59249fac62157a6aaa23741f7926e5715608fbb8ce",
+                "quote_chars": 212
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "query_id": "759",
+        "grounding_validation": [
+          {
+            "trace_id": "tr_d7e61073c20d4d418ffdefa364999bca",
+            "seq": 6,
+            "decision": "SUPPORT",
+            "status": "verbatim_quotes_checked",
+            "semantic_support": "model_assessed_not_independently_verified",
+            "evidence_ids": [
+              "E1"
+            ],
+            "quotes": [
+              {
+                "id": "E1",
+                "quote_sha256": "b2987b62aaf22b0329f0a452dbcbc9371b5ea337638c49ef4c78f50b8ed582a5",
+                "quote_chars": 448
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "query_id": "1270",
+        "grounding_validation": [
+          {
+            "trace_id": "tr_9869cf36ed894560897a91023c672dc8",
+            "seq": 6,
+            "decision": "CONTRADICT",
+            "status": "verbatim_quotes_checked",
+            "semantic_support": "model_assessed_not_independently_verified",
+            "evidence_ids": [
+              "E1"
+            ],
+            "quotes": [
+              {
+                "id": "E1",
+                "quote_sha256": "902fd56cb4c228f27f863248fd07c80106773d1f534d8d1cd5096bcd273f0499",
+                "quote_chars": 89
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "query_id": "589",
+        "grounding_validation": [
+          {
+            "trace_id": "tr_4843956364724663817ca41fcf877958",
+            "seq": 6,
+            "decision": "SUPPORT",
+            "status": "verbatim_quotes_checked",
+            "semantic_support": "model_assessed_not_independently_verified",
+            "evidence_ids": [
+              "E1"
+            ],
+            "quotes": [
+              {
+                "id": "E1",
+                "quote_sha256": "69c7fb23ae0f9464e4e4e89ec983ffe10dd1bcc94cc2e11444fe4f617d5e212c",
+                "quote_chars": 187
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "query_id": "903",
+        "grounding_validation": [
+          {
+            "trace_id": "tr_56e7d8598f77497883b53bdfe638d313",
+            "seq": 6,
+            "decision": "CONTRADICT",
+            "status": "verbatim_quotes_checked",
+            "semantic_support": "model_assessed_not_independently_verified",
+            "evidence_ids": [
+              "E1"
+            ],
+            "quotes": [
+              {
+                "id": "E1",
+                "quote_sha256": "1a9796499295df88aedf79a4755ffeaa5391e3d62014377bd9cd4533d0b8e17c",
+                "quote_chars": 154
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "query_id": "516",
+        "grounding_validation": [
+          {
+            "trace_id": "tr_107829f2e09849b7b76ae9ce85253cb9",
+            "seq": 6,
+            "decision": "CONTRADICT",
+            "status": "verbatim_quotes_checked",
+            "semantic_support": "model_assessed_not_independently_verified",
+            "evidence_ids": [
+              "E1"
+            ],
+            "quotes": [
+              {
+                "id": "E1",
+                "quote_sha256": "56291db2850d098696b8d7ad8a0e9c45d67415155538e18035a50da1149209b6",
+                "quote_chars": 234
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "query_id": "847",
+        "grounding_validation": [
+          {
+            "trace_id": "tr_17f6183e54234c9bb7d98b104f0d06c0",
+            "seq": 6,
+            "decision": "NOT_ENOUGH_INFO",
+            "status": "verbatim_quotes_checked",
+            "semantic_support": "model_assessed_not_independently_verified",
+            "evidence_ids": [
+              "E1"
+            ],
+            "quotes": [
+              {
+                "id": "E1",
+                "quote_sha256": "2c3a489fe6bac3faf7c22ac7a754c3838f50161a59adde761f3e230837cf924e",
+                "quote_chars": 312
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "query_id": "1088",
+        "grounding_validation": [
+          {
+            "trace_id": "tr_5427dc19896a46649fb8abb4c77f367b",
+            "seq": 6,
+            "decision": "CONTRADICT",
+            "status": "verbatim_quotes_checked",
+            "semantic_support": "model_assessed_not_independently_verified",
+            "evidence_ids": [
+              "E1"
+            ],
+            "quotes": [
+              {
+                "id": "E1",
+                "quote_sha256": "48e2cc80b9358bd28537042ab02f7aad5955f7b07dd11c385e501cf3a7a7f552",
+                "quote_chars": 159
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "paired": {
+    "accuracy_difference": 0.03333333333333333,
+    "difference_bootstrap_95": [
+      -0.1,
+      0.16666666666666666
+    ],
+    "bootstrap": "paired query percentile; 10000 resamples; seed20261107; shared documents may induce dependence",
+    "improved": 3,
+    "regressed": 2,
+    "both_correct": 19,
+    "both_incorrect": 6,
+    "mcnemar_exact_two_sided_p": 1.0
+  },
+  "per_query": [
+    {
+      "query_id": "1292",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "baseline_correct": false,
+      "candidate_correct": false,
+      "baseline_failure": null,
+      "candidate_failure": null,
+      "retrieval_metrics_unchanged": true
+    },
+    {
+      "query_id": "1041",
+      "gold_label": "CONTRADICT",
+      "baseline_correct": false,
+      "candidate_correct": false,
+      "baseline_failure": null,
+      "candidate_failure": null,
+      "retrieval_metrics_unchanged": true
+    },
+    {
+      "query_id": "702",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "baseline_correct": true,
+      "candidate_correct": true,
+      "baseline_failure": null,
+      "candidate_failure": null,
+      "retrieval_metrics_unchanged": true
+    },
+    {
+      "query_id": "830",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "baseline_correct": true,
+      "candidate_correct": true,
+      "baseline_failure": null,
+      "candidate_failure": null,
+      "retrieval_metrics_unchanged": true
+    },
+    {
+      "query_id": "834",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "baseline_correct": false,
+      "candidate_correct": false,
+      "baseline_failure": null,
+      "candidate_failure": null,
+      "retrieval_metrics_unchanged": true
+    },
+    {
+      "query_id": "1290",
+      "gold_label": "SUPPORT",
+      "baseline_correct": true,
+      "candidate_correct": true,
+      "baseline_failure": null,
+      "candidate_failure": null,
+      "retrieval_metrics_unchanged": true
+    },
+    {
+      "query_id": "1110",
+      "gold_label": "CONTRADICT",
+      "baseline_correct": true,
+      "candidate_correct": true,
+      "baseline_failure": null,
+      "candidate_failure": null,
+      "retrieval_metrics_unchanged": true
+    },
+    {
+      "query_id": "502",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "baseline_correct": false,
+      "candidate_correct": true,
+      "baseline_failure": {
+        "type": "answer_not_completed",
+        "detail": "evidence_only"
+      },
+      "candidate_failure": null,
+      "retrieval_metrics_unchanged": true
+    },
+    {
+      "query_id": "298",
+      "gold_label": "SUPPORT",
+      "baseline_correct": true,
+      "candidate_correct": true,
+      "baseline_failure": null,
+      "candidate_failure": null,
+      "retrieval_metrics_unchanged": true
+    },
+    {
+      "query_id": "649",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "baseline_correct": false,
+      "candidate_correct": true,
+      "baseline_failure": {
+        "type": "answer_not_completed",
+        "detail": "evidence_only"
+      },
+      "candidate_failure": null,
+      "retrieval_metrics_unchanged": true
+    },
+    {
+      "query_id": "1319",
+      "gold_label": "SUPPORT",
+      "baseline_correct": true,
+      "candidate_correct": true,
+      "baseline_failure": null,
+      "candidate_failure": null,
+      "retrieval_metrics_unchanged": true
+    },
+    {
+      "query_id": "1225",
+      "gold_label": "SUPPORT",
+      "baseline_correct": true,
+      "candidate_correct": true,
+      "baseline_failure": null,
+      "candidate_failure": null,
+      "retrieval_metrics_unchanged": true
+    },
+    {
+      "query_id": "384",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "baseline_correct": true,
+      "candidate_correct": false,
+      "baseline_failure": null,
+      "candidate_failure": null,
+      "retrieval_metrics_unchanged": true
+    },
+    {
+      "query_id": "338",
+      "gold_label": "CONTRADICT",
+      "baseline_correct": true,
+      "candidate_correct": true,
+      "baseline_failure": null,
+      "candidate_failure": null,
+      "retrieval_metrics_unchanged": true
+    },
+    {
+      "query_id": "1245",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "baseline_correct": false,
+      "candidate_correct": true,
+      "baseline_failure": {
+        "type": "answer_not_completed",
+        "detail": "evidence_only"
+      },
+      "candidate_failure": null,
+      "retrieval_metrics_unchanged": true
+    },
+    {
+      "query_id": "684",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "baseline_correct": true,
+      "candidate_correct": true,
+      "baseline_failure": null,
+      "candidate_failure": null,
+      "retrieval_metrics_unchanged": true
+    },
+    {
+      "query_id": "354",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "baseline_correct": false,
+      "candidate_correct": false,
+      "baseline_failure": null,
+      "candidate_failure": null,
+      "retrieval_metrics_unchanged": true
+    },
+    {
+      "query_id": "613",
+      "gold_label": "SUPPORT",
+      "baseline_correct": true,
+      "candidate_correct": true,
+      "baseline_failure": null,
+      "candidate_failure": null,
+      "retrieval_metrics_unchanged": true
+    },
+    {
+      "query_id": "1185",
+      "gold_label": "SUPPORT",
+      "baseline_correct": true,
+      "candidate_correct": true,
+      "baseline_failure": null,
+      "candidate_failure": null,
+      "retrieval_metrics_unchanged": true
+    },
+    {
+      "query_id": "217",
+      "gold_label": "SUPPORT",
+      "baseline_correct": true,
+      "candidate_correct": true,
+      "baseline_failure": null,
+      "candidate_failure": null,
+      "retrieval_metrics_unchanged": true
+    },
+    {
+      "query_id": "50",
+      "gold_label": "SUPPORT",
+      "baseline_correct": true,
+      "candidate_correct": true,
+      "baseline_failure": null,
+      "candidate_failure": null,
+      "retrieval_metrics_unchanged": true
+    },
+    {
+      "query_id": "879",
+      "gold_label": "CONTRADICT",
+      "baseline_correct": false,
+      "candidate_correct": false,
+      "baseline_failure": null,
+      "candidate_failure": {
+        "type": "error",
+        "detail": "invalid_quote",
+        "error_type": "GroundingRejected",
+        "failure_phase": "generation"
+      },
+      "retrieval_metrics_unchanged": true
+    },
+    {
+      "query_id": "845",
+      "gold_label": "SUPPORT",
+      "baseline_correct": true,
+      "candidate_correct": true,
+      "baseline_failure": null,
+      "candidate_failure": null,
+      "retrieval_metrics_unchanged": true
+    },
+    {
+      "query_id": "759",
+      "gold_label": "CONTRADICT",
+      "baseline_correct": true,
+      "candidate_correct": false,
+      "baseline_failure": null,
+      "candidate_failure": null,
+      "retrieval_metrics_unchanged": true
+    },
+    {
+      "query_id": "1270",
+      "gold_label": "CONTRADICT",
+      "baseline_correct": true,
+      "candidate_correct": true,
+      "baseline_failure": null,
+      "candidate_failure": null,
+      "retrieval_metrics_unchanged": true
+    },
+    {
+      "query_id": "589",
+      "gold_label": "SUPPORT",
+      "baseline_correct": true,
+      "candidate_correct": true,
+      "baseline_failure": null,
+      "candidate_failure": null,
+      "retrieval_metrics_unchanged": true
+    },
+    {
+      "query_id": "903",
+      "gold_label": "CONTRADICT",
+      "baseline_correct": true,
+      "candidate_correct": true,
+      "baseline_failure": null,
+      "candidate_failure": null,
+      "retrieval_metrics_unchanged": true
+    },
+    {
+      "query_id": "516",
+      "gold_label": "CONTRADICT",
+      "baseline_correct": true,
+      "candidate_correct": true,
+      "baseline_failure": null,
+      "candidate_failure": null,
+      "retrieval_metrics_unchanged": true
+    },
+    {
+      "query_id": "847",
+      "gold_label": "CONTRADICT",
+      "baseline_correct": false,
+      "candidate_correct": false,
+      "baseline_failure": null,
+      "candidate_failure": null,
+      "retrieval_metrics_unchanged": true
+    },
+    {
+      "query_id": "1088",
+      "gold_label": "CONTRADICT",
+      "baseline_correct": true,
+      "candidate_correct": true,
+      "baseline_failure": null,
+      "candidate_failure": null,
+      "retrieval_metrics_unchanged": true
+    }
+  ],
+  "latency_limits": "serial local MPS, warm reused index, network and cache may differ; valid observed wall clocks, failures retained and separately summarized; not production SLA or randomized order speed causation",
+  "usage_scope": "reported provider token counts including failed attempts; unavailable usage is unknown, not zero"
+}
