@@ -1,0 +1,15 @@
+{
+  "files_scanned": 94,
+  "findings": [],
+  "passed": true,
+  "reports": 11,
+  "rows": 620,
+  "all_cleaned_rows_match_originals": true,
+  "rules": [
+    "private_path",
+    "cloud_key",
+    "github_token",
+    "private_key"
+  ],
+  "scope": "Current changed/untracked candidate files; simple explicit pattern and structured-body checks, not proof of absence of every possible secret"
+}

@@ -1,0 +1,47 @@
+{
+  "observed_utc": "2026-11-06T15:22:58.734384+00:00",
+  "target": "http://127.0.0.1:19445/",
+  "source_commit": "7231a1fc00a20f5b311e083e7fcd2d5ed266dddb",
+  "formal_metrics_unchanged": true,
+  "scope": "post-formal browser acceptance; these three requests are outside formal300 and development320; no dataset-scored quality or latency benchmark",
+  "observations": [
+    {
+      "scenario": "evidence_only",
+      "result": "completed with references, explicit no deliverable generated answer",
+      "passed": true
+    },
+    {
+      "scenario": "answer_and_source",
+      "result": "real completed answer; citation ID check shown; clicked original-source view and read original text",
+      "passed": true,
+      "displayed_first_answer_seconds": 18.5,
+      "displayed_completed_seconds": 19.6
+    },
+    {
+      "scenario": "user_stop",
+      "result": "Stopped; unfinished draft withdrawn; ask enabled and stop disabled",
+      "passed": true,
+      "limit": "observed UI cancellation; screenshot alone does not prove immediate backend worker termination"
+    }
+  ],
+  "screenshots": [
+    {
+      "name": "ui-answer-completed.png",
+      "sha256": "312442281dbff4463ab3c60d628dcf2f0f0a5f76232998f5e9f41854342af101",
+      "bytes": 43193,
+      "public": false
+    },
+    {
+      "name": "ui-source-opened.png",
+      "sha256": "67677ce6d79a6e9478237d5b59192a7f7940a6a7af8b35905cc1d80b98a92971",
+      "bytes": 136618,
+      "public": false
+    },
+    {
+      "name": "ui-stopped.png",
+      "sha256": "9dd9444ce2c5fd7bd527297aed4907a9dce517d3105ccb8736c95dce3587bb09",
+      "bytes": 39981,
+      "public": false
+    }
+  ]
+}

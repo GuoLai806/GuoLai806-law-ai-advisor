@@ -1,0 +1,28 @@
+{
+  "architecture": "arm64",
+  "python": "3.12.13",
+  "os": "Darwin 25.6.0",
+  "hardware": {
+    "chip": "Apple M5 Pro",
+    "memory_bytes": 51539607552
+  },
+  "packages": {
+    "torch": "2.15.0",
+    "transformers": "5.22.1",
+    "sentence-transformers": "6.2.0",
+    "numpy": "2.5.4",
+    "httpx": "0.28.1",
+    "fastapi": "0.162.0",
+    "starlette": "1.10.0",
+    "uvicorn": "0.54.0",
+    "pydantic": "2.14.3",
+    "jieba": "0.42.1",
+    "PyMuPDF": "2.1",
+    "openviking": null
+  },
+  "openviking_service": {
+    "version": "0.5.3",
+    "environment": "work/dev/ov-venv",
+    "port": 19443
+  }
+}

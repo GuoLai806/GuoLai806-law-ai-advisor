@@ -1,0 +1,60 @@
+{
+  "records": [
+    {
+      "name": "wheel-clean-entry-v11.json",
+      "original_sha256": "3da55c3f686f7397d847c82cf46323635bbf52fca652ec387048adb37f786d33",
+      "public_sha256": "3da55c3f686f7397d847c82cf46323635bbf52fca652ec387048adb37f786d33"
+    },
+    {
+      "name": "installed-dependency-provenance-v11.json",
+      "original_sha256": "d23f279f2a23d0ad4de4c096f2ea1595ec64020b6cfba562aa34bed63b323170",
+      "public_sha256": "d23f279f2a23d0ad4de4c096f2ea1595ec64020b6cfba562aa34bed63b323170"
+    },
+    {
+      "name": "wheel-install-network-limit-v1.json",
+      "original_sha256": "cab80b11ca83723c14149f6effeb709faf985ad0fa49ffaa9e900683f5ef70d4",
+      "public_sha256": "cab80b11ca83723c14149f6effeb709faf985ad0fa49ffaa9e900683f5ef70d4"
+    },
+    {
+      "name": "wheel-v10-environment-failure.json",
+      "original_sha256": "b5aa07e8249c696519020041ce3f609f0a590ac123f93f19c2c7f63119ee1c9a",
+      "public_sha256": "b5aa07e8249c696519020041ce3f609f0a590ac123f93f19c2c7f63119ee1c9a"
+    },
+    {
+      "name": "public-candidate-scan-v1.json",
+      "original_sha256": "ea484890159adf2a8d89fc42bcd45f2e57f99e7a73c0ba265b5218883c4cd520",
+      "public_sha256": "ea484890159adf2a8d89fc42bcd45f2e57f99e7a73c0ba265b5218883c4cd520"
+    },
+    {
+      "name": "wheel-clean-install-v9.log",
+      "original_sha256": "b9d988ef44f6d3c081e773dbc78da202f89f7a61a60af381715c32f1802f1a65",
+      "public_sha256": "b9d988ef44f6d3c081e773dbc78da202f89f7a61a60af381715c32f1802f1a65"
+    },
+    {
+      "name": "wheel-clean-install-v9-retry1.log",
+      "original_sha256": "3ad786c6ae099e738bd43817db0a4a65051d0d49548606eb4fa552a78dc781d6",
+      "public_sha256": "3ad786c6ae099e738bd43817db0a4a65051d0d49548606eb4fa552a78dc781d6"
+    },
+    {
+      "name": "wheel-install-v11.log",
+      "original_sha256": "e88da3492a9b592b5717ef724f6074083faeedf2d17c9ba80d9a812d1fd65e03",
+      "public_sha256": "e88da3492a9b592b5717ef724f6074083faeedf2d17c9ba80d9a812d1fd65e03"
+    },
+    {
+      "name": "wheel-dependency-check-v11.log",
+      "original_sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+      "public_sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+    },
+    {
+      "name": "wheel-clean-entry-v11.log",
+      "original_sha256": "13d802d5f05eec8cebba297d22c2330a246825e16a8bc19df12ef4e1f3c89316",
+      "public_sha256": "b56d4726770a850a229b7802a7fe2f75b447ea1f3caf120c26d81381664917d0"
+    },
+    {
+      "name": "FINAL-DELIVERY-REVIEW.md",
+      "original_sha256": "288fd38af595c4877a0f8224e2352eae74551c143d1179272a7a8f7003b1041d",
+      "public_sha256": "288fd38af595c4877a0f8224e2352eae74551c143d1179272a7a8f7003b1041d"
+    }
+  ],
+  "scope": "final wheel isolated install using byte-verified previous dependency files; no new model evaluation; original failed setup/download attempts retained"
+}

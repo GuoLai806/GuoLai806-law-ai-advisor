@@ -1,0 +1,8 @@
+Processing ./work/dev/openviking-e2e-20261106/wheel-v9/evidence_rag-0.2.1-py3-none-any.whl
+Collecting fastapi<1,>=0.110 (from evidence-rag==0.2.1)
+  Downloading fastapi-0.162.0-py3-none-any.whl.metadata (26 kB)
+Collecting httpx<1,>=0.27 (from evidence-rag==0.2.1)
+  Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting jieba==0.42.1 (from evidence-rag==0.2.1)
+  Downloading jieba-0.42.1.tar.gz (19.2 MB)
+     ━━━                                      1.6/19.2 MB 10.8 kB/s eta 0:27:20

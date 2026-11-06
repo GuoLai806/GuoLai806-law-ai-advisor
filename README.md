@@ -2,6 +2,10 @@
 
 本项目提供通用、带版本和来源的证据检索服务，并保留可选法律资料 profile。默认入口是 `evidence_rag`；原仓库名称与历史代码保留，`legal_rag` 是调用同一核心的兼容层。
 
+真实 OpenViking 全库用户流程评测见 [大白话说明](docs/development/openviking-user-flow-20261106/PLAN-FOR-YOU.md)、[执行依据](docs/development/openviking-user-flow-20261106/PLAN-FOR-AI.md) 和 [复现步骤](docs/development/openviking-user-flow-20261106/REPRODUCTION.md)。服务根路径 `/` 已有新问答网页，使用真实 SSE、引用原文展开和停止撤回。下方历史参考检索分数没有经过真实 OpenViking，不能替代这一轮结果。
+
+本轮真实OpenViking全流程已完成：SciFact 5,183篇、300题，检索nDCG@10=0.7942、Recall@20=93.59%；标签一致212/300、引用文档标签F1=.5358、完整流程269/300。与同题BM25实际排名相比nDCG相对提升18.73%，仅指检索阶段。全部失败保留，正式运行跨主机睡眠，逐题秒表不代表真实日历等待或生产延迟，详见[结果及限制](docs/development/openviking-user-flow-20261106/RESULTS.md)。
+
 ## 本机运行
 
 使用 Python 3.12，在独立虚拟环境安装本项目：
@@ -39,7 +43,7 @@ EVIDENCE_RAG_DB=/tmp/evidence.sqlite3 uvicorn evidence_rag.api:app --host 127.0.
 
 可复现的本地BGE嵌入端点与OpenViking0.5.3配置见 [examples](examples/README.md)。模型环境版本快照为 `constraints-models-tested.txt`，仍需固定公开模型revision并在仓库外下载权重。
 
-## 固定公开检索测试结果
+## 历史参考检索测试：没有经过真实 OpenViking
 
 BEIR SciFact完整5,183文档、官方300查询：预选BGE-M3+Qwen3-Reranker-4B的候选排序nDCG@10 **0.794175**、Recall@20 **0.935889**、MRR@10 **0.762501**；产品词法基线为0.668854/0.836556/0.635099，两组均300/300、零执行故障。模型选择来自独立32题验证，test没有用于调参；NIST -c -q逐题和总体复核通过。
 

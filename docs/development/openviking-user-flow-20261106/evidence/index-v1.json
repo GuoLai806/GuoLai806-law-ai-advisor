@@ -1,0 +1,70 @@
+{
+  "started_utc": "2026-11-06T04:40:52Z",
+  "operation": "index",
+  "corpus_count": 5183,
+  "corpus_sha256": "dec31c8182f3d744c7d2c09423756fd1d17cbef75808db13ba01cc0aab4d1ac6",
+  "revision": "scifact_full_v1",
+  "scope": "viking://resources/rag/scifact/scifact_full_v1/",
+  "source_sha256": {
+    "evidence_rag/catalog.py": "d52166e499a47bf0749ecbb11fdf4d090b118b957c9fb9c9389a2814cc50cc84",
+    "evidence_rag/retrieval.py": "86af9c87a846e20bb7912482b1ef1cc13d06233056c1ae4377b16a86f6d646cd",
+    "evidence_rag/viking_index.py": "e55e582e815f8a9bd95411a814b06af28610ab2e9fd684909fed2f0a95f0d36d",
+    "benchmarks/e2e.py": "7b374fd61fc71d58db3881d5604637582db92a1b02bc965fedc579d29b8d84da",
+    "benchmarks/index_openviking.py": "cd1a12c4b3cbbb8722ebf7bf61eb21b1a7ff55e59a881412e0b01e2c8ebfa824",
+    "benchmarks/prepare.py": "5dd3ea880fbaa29bc101b1245dbdee95995bfb9f335be9ab32869f5d122e7066"
+  },
+  "concurrency": 4,
+  "openviking_health": {
+    "status": "ok",
+    "healthy": true,
+    "version": "0.5.3",
+    "auth_mode": "dev"
+  },
+  "finished_utc": "2026-11-06T04:40:54Z",
+  "complete": false,
+  "units": [
+    {
+      "document_id": "10015292",
+      "unit_id": "f686b67fb20f9b74ba692578dca87954",
+      "state": "content_verified",
+      "uri": "viking://resources/rag/scifact/scifact_full_v1/f686b67fb20f9b74ba692578dca87954/f686b67fb20f9b74ba692578dca87954.md",
+      "note": "vector visibility still requires separate validation",
+      "elapsed_ms": 845.5
+    },
+    {
+      "document_id": "10009203",
+      "unit_id": "1c6430d4210fb0764e42bce5cc1ff4f8",
+      "failure": {
+        "type": "HTTPStatusError",
+        "message": "Client error '404 Not Found' for url 'http://127.0.0.1:19443/api/v1/content/read?uri=viking%3A%2F%2Fresources%2Frag%2Fscifact%2Fscifact_full_v1%2F1c6430d4210fb0764e42bce5cc1ff4f8%2F1c6430d4210fb0764e42bce5cc1ff4f8.md&raw=true'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+      },
+      "elapsed_ms": 1646.65
+    },
+    {
+      "document_id": "10012166",
+      "unit_id": "7f05ea3f4faa3eb7ef61237be6ceee0a",
+      "state": "content_verified",
+      "uri": "viking://resources/rag/scifact/scifact_full_v1/7f05ea3f4faa3eb7ef61237be6ceee0a/7f05ea3f4faa3eb7ef61237be6ceee0a.md",
+      "note": "vector visibility still requires separate validation",
+      "elapsed_ms": 1643.13
+    },
+    {
+      "document_id": "10017612",
+      "unit_id": "a03b95b5e299af3204a85bb2c0c42c37",
+      "state": "content_verified",
+      "uri": "viking://resources/rag/scifact/scifact_full_v1/a03b95b5e299af3204a85bb2c0c42c37/a03b95b5e299af3204a85bb2c0c42c37.md",
+      "note": "vector visibility still requires separate validation",
+      "elapsed_ms": 795.35
+    },
+    {
+      "document_id": "10010651",
+      "unit_id": "c9a04c0a1aeda328a496ba1ee926851a",
+      "state": "content_verified",
+      "uri": "viking://resources/rag/scifact/scifact_full_v1/c9a04c0a1aeda328a496ba1ee926851a/c9a04c0a1aeda328a496ba1ee926851a.md",
+      "note": "vector visibility still requires separate validation",
+      "elapsed_ms": 1645.78
+    }
+  ],
+  "elapsed_seconds": 1.7060366250225343,
+  "source_unchanged": true
+}

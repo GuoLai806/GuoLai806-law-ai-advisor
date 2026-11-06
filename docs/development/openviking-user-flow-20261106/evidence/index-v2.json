@@ -1,0 +1,197 @@
+{
+  "started_utc": "2026-11-06T04:43:41Z",
+  "operation": "index",
+  "corpus_count": 5183,
+  "corpus_sha256": "dec31c8182f3d744c7d2c09423756fd1d17cbef75808db13ba01cc0aab4d1ac6",
+  "revision": "scifact_full_v2",
+  "scope": "viking://resources/rag/scifact/scifact_full_v2/",
+  "source_sha256": {
+    "evidence_rag/catalog.py": "d52166e499a47bf0749ecbb11fdf4d090b118b957c9fb9c9389a2814cc50cc84",
+    "evidence_rag/retrieval.py": "50c4e7c440baa153fc6d5dde0db4bc7da3f7c59a8bcf0b52e54ee0ffa4dbf8dd",
+    "evidence_rag/viking_index.py": "44009bce6a88b637fb412df96668f612340ae76ee7abd8e70087bc9138ec3a88",
+    "benchmarks/e2e.py": "7b374fd61fc71d58db3881d5604637582db92a1b02bc965fedc579d29b8d84da",
+    "benchmarks/index_openviking.py": "3cf6d16655b55da84457413f2a63feae9bfa334dddb089c2be7c7b7da40ee5cb",
+    "benchmarks/prepare.py": "5dd3ea880fbaa29bc101b1245dbdee95995bfb9f335be9ab32869f5d122e7066"
+  },
+  "concurrency": 4,
+  "openviking_health": {
+    "status": "ok",
+    "healthy": true,
+    "version": "0.5.3",
+    "auth_mode": "dev"
+  },
+  "finished_utc": "2026-11-06T04:43:42Z",
+  "complete": false,
+  "units": [
+    {
+      "document_id": "10015292",
+      "unit_id": "f686b67fb20f9b74ba692578dca87954",
+      "dispatch_receipt": {
+        "root_uri": "viking://resources/rag/scifact/scifact_full_v2/f686b67fb20f9b74ba692578dca87954/f686b67fb20f9b74ba692578dca87954.md",
+        "context_count": 1,
+        "queue_status": {
+          "Semantic": {
+            "processed": 0,
+            "requeue_count": 0,
+            "error_count": 0,
+            "errors": []
+          },
+          "Embedding": {
+            "processed": 1,
+            "requeue_count": 0,
+            "error_count": 0,
+            "errors": []
+          }
+        },
+        "usage": {
+          "tokens": {
+            "total": 333,
+            "embedding": {
+              "total": 333
+            },
+            "stages": {
+              "embed_resource": {
+                "embedding": {
+                  "total": 333
+                }
+              }
+            }
+          }
+        }
+      },
+      "failure": {
+        "type": "HTTPStatusError",
+        "message": "Client error '400 Bad Request' for url 'http://127.0.0.1:19443/api/v1/content/read?uri=viking%3A%2F%2Fresources%2Frag%2Fscifact%2Fscifact_full_v2%2Ff686b67fb20f9b74ba692578dca87954%2Ff686b67fb20f9b74ba692578dca87954.md&raw=true'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400"
+      },
+      "elapsed_ms": 804.06
+    },
+    {
+      "document_id": "10012166",
+      "unit_id": "7f05ea3f4faa3eb7ef61237be6ceee0a",
+      "dispatch_receipt": {
+        "root_uri": "viking://resources/rag/scifact/scifact_full_v2/7f05ea3f4faa3eb7ef61237be6ceee0a/7f05ea3f4faa3eb7ef61237be6ceee0a.md",
+        "context_count": 1,
+        "queue_status": {
+          "Semantic": {
+            "processed": 0,
+            "requeue_count": 0,
+            "error_count": 0,
+            "errors": []
+          },
+          "Embedding": {
+            "processed": 1,
+            "requeue_count": 0,
+            "error_count": 0,
+            "errors": []
+          }
+        },
+        "usage": {
+          "tokens": {
+            "total": 201,
+            "embedding": {
+              "total": 201
+            },
+            "stages": {
+              "embed_resource": {
+                "embedding": {
+                  "total": 201
+                }
+              }
+            }
+          }
+        }
+      },
+      "failure": {
+        "type": "HTTPStatusError",
+        "message": "Client error '400 Bad Request' for url 'http://127.0.0.1:19443/api/v1/content/read?uri=viking%3A%2F%2Fresources%2Frag%2Fscifact%2Fscifact_full_v2%2F7f05ea3f4faa3eb7ef61237be6ceee0a%2F7f05ea3f4faa3eb7ef61237be6ceee0a.md&raw=true'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400"
+      },
+      "elapsed_ms": 807.16
+    },
+    {
+      "document_id": "10009203",
+      "unit_id": "1c6430d4210fb0764e42bce5cc1ff4f8",
+      "dispatch_receipt": {
+        "root_uri": "viking://resources/rag/scifact/scifact_full_v2/1c6430d4210fb0764e42bce5cc1ff4f8/1c6430d4210fb0764e42bce5cc1ff4f8.md",
+        "context_count": 1,
+        "queue_status": {
+          "Semantic": {
+            "processed": 0,
+            "requeue_count": 0,
+            "error_count": 0,
+            "errors": []
+          },
+          "Embedding": {
+            "processed": 1,
+            "requeue_count": 0,
+            "error_count": 0,
+            "errors": []
+          }
+        },
+        "usage": {
+          "tokens": {
+            "total": 461,
+            "embedding": {
+              "total": 461
+            },
+            "stages": {
+              "embed_resource": {
+                "embedding": {
+                  "total": 461
+                }
+              }
+            }
+          }
+        }
+      },
+      "failure": {
+        "type": "HTTPStatusError",
+        "message": "Client error '400 Bad Request' for url 'http://127.0.0.1:19443/api/v1/content/read?uri=viking%3A%2F%2Fresources%2Frag%2Fscifact%2Fscifact_full_v2%2F1c6430d4210fb0764e42bce5cc1ff4f8%2F1c6430d4210fb0764e42bce5cc1ff4f8.md&raw=true'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400"
+      },
+      "elapsed_ms": 812.49
+    },
+    {
+      "document_id": "10010651",
+      "unit_id": "c9a04c0a1aeda328a496ba1ee926851a",
+      "dispatch_receipt": {
+        "root_uri": "viking://resources/rag/scifact/scifact_full_v2/c9a04c0a1aeda328a496ba1ee926851a/c9a04c0a1aeda328a496ba1ee926851a.md",
+        "context_count": 1,
+        "queue_status": {
+          "Semantic": {
+            "processed": 0,
+            "requeue_count": 0,
+            "error_count": 0,
+            "errors": []
+          },
+          "Embedding": {
+            "processed": 1,
+            "requeue_count": 0,
+            "error_count": 0,
+            "errors": []
+          }
+        },
+        "usage": {
+          "tokens": {
+            "total": 272,
+            "embedding": {
+              "total": 272
+            },
+            "stages": {
+              "embed_resource": {
+                "embedding": {
+                  "total": 272
+                }
+              }
+            }
+          }
+        }
+      },
+      "failure": {
+        "type": "HTTPStatusError",
+        "message": "Client error '400 Bad Request' for url 'http://127.0.0.1:19443/api/v1/content/read?uri=viking%3A%2F%2Fresources%2Frag%2Fscifact%2Fscifact_full_v2%2Fc9a04c0a1aeda328a496ba1ee926851a%2Fc9a04c0a1aeda328a496ba1ee926851a.md&raw=true'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400"
+      },
+      "elapsed_ms": 809.88
+    }
+  ],
+  "elapsed_seconds": 0.8659069589921273,
+  "source_unchanged": true
+}

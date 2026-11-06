@@ -1,0 +1,193 @@
+<local-path> PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the "fixture" caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+FFFFFFFFFF                                                               [100%]
+=================================== FAILURES ===================================
+________________ test_chat_counts_both_reported_retry_attempts _________________
+
+call_chat = <function call_chat.<locals>.invoke at 0x10a5e9120>
+
+    @pytest.mark.asyncio
+    async def test_chat_counts_both_reported_retry_attempts(call_chat):
+        events = retry_events()
+        response, provider = await call_chat(events)
+        assert provider.calls == 1
+        assert response['status'] == 'ready'
+>       assert response['usage'] == TOTAL_USAGE
+E       AssertionError: assert {'prompt_toke..._tokens': 120} == {'prompt_toke..._tokens': 270}
+E         
+E         Differing items:
+E         {'prompt_tokens': 100} != {'prompt_tokens': 200}
+E         {'total_tokens': 120} != {'total_tokens': 270}
+E         {'completion_tokens': 20} != {'completion_tokens': 70}
+E         Use -v to get more diff
+
+tests/v2/test_chat_usage_accounting.py:103: AssertionError
+_______ test_chat_counts_only_last_cumulative_usage_within_each_attempt ________
+
+call_chat = <function call_chat.<locals>.invoke at 0x10a5e93a0>
+
+    @pytest.mark.asyncio
+    async def test_chat_counts_only_last_cumulative_usage_within_each_attempt(call_chat):
+        events = retry_events()
+        usage_index = next(index for index, item in enumerate(events) if item['type'] == 'usage')
+        events.insert(usage_index, provider_event('usage', attempt=1,
+                                                 usage={'prompt_tokens': 100, 'completion_tokens': 10, 'total_tokens': 110}))
+        response, _ = await call_chat(events)
+>       assert response['usage'] == TOTAL_USAGE
+E       AssertionError: assert {'prompt_toke..._tokens': 120} == {'prompt_toke..._tokens': 270}
+E         
+E         Differing items:
+E         {'prompt_tokens': 100} != {'prompt_tokens': 200}
+E         {'total_tokens': 120} != {'total_tokens': 270}
+E         {'completion_tokens': 20} != {'completion_tokens': 70}
+E         Use -v to get more diff
+
+tests/v2/test_chat_usage_accounting.py:117: AssertionError
+_____________ test_chat_marks_missing_attempt_usage_as_unknown[1] ______________
+
+call_chat = <function call_chat.<locals>.invoke at 0x10a611e40>
+missing_attempt = 1
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize('missing_attempt', [1, 2])
+    async def test_chat_marks_missing_attempt_usage_as_unknown(call_chat, missing_attempt):
+        events = retry_events(missing_usage=missing_attempt)
+        response, _ = await call_chat(events)
+        known_attempt = 2 if missing_attempt == 1 else 1
+        known_usage = RETRY_USAGE if known_attempt == 2 else PRIMARY_USAGE
+        assert response['usage'] == known_usage
+>       assert response['usage_attempts'] == [{'attempt': known_attempt, 'usage': known_usage}]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'usage_attempts'
+
+tests/v2/test_chat_usage_accounting.py:130: KeyError
+_____________ test_chat_marks_missing_attempt_usage_as_unknown[2] ______________
+
+call_chat = <function call_chat.<locals>.invoke at 0x10a6127a0>
+missing_attempt = 2
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize('missing_attempt', [1, 2])
+    async def test_chat_marks_missing_attempt_usage_as_unknown(call_chat, missing_attempt):
+        events = retry_events(missing_usage=missing_attempt)
+        response, _ = await call_chat(events)
+        known_attempt = 2 if missing_attempt == 1 else 1
+        known_usage = RETRY_USAGE if known_attempt == 2 else PRIMARY_USAGE
+        assert response['usage'] == known_usage
+>       assert response['usage_attempts'] == [{'attempt': known_attempt, 'usage': known_usage}]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'usage_attempts'
+
+tests/v2/test_chat_usage_accounting.py:130: KeyError
+____________ test_chat_never_substitutes_zero_for_unreported_usage _____________
+
+call_chat = <function call_chat.<locals>.invoke at 0x10a611d00>
+
+    @pytest.mark.asyncio
+    async def test_chat_never_substitutes_zero_for_unreported_usage(call_chat):
+        events = retry_events(missing_usage='both')
+        response, _ = await call_chat(events)
+        assert response['usage'] is None
+>       assert response['usage_attempts'] == []
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'usage_attempts'
+
+tests/v2/test_chat_usage_accounting.py:141: KeyError
+_______ test_chat_retains_primary_usage_and_metadata_after_retry_failure _______
+
+call_chat = <function call_chat.<locals>.invoke at 0x10a612ca0>
+
+    @pytest.mark.asyncio
+    async def test_chat_retains_primary_usage_and_metadata_after_retry_failure(call_chat):
+        events = retry_events(fail_retry=True)
+        response, _ = await call_chat(events, fail_after_events=True)
+        assert response['status'] == 'evidence_only'
+>       assert response['usage'] == PRIMARY_USAGE
+E       AssertionError: assert None == {'prompt_tokens': 100, 'completion_tokens': 50, 'total_tokens': 150}
+
+tests/v2/test_chat_usage_accounting.py:152: AssertionError
+___________ test_chat_retains_accounting_when_citations_are_rejected ___________
+
+call_chat = <function call_chat.<locals>.invoke at 0x10a6123e0>
+
+    @pytest.mark.asyncio
+    async def test_chat_retains_accounting_when_citations_are_rejected(call_chat):
+        events = retry_events(invalid_citation=True)
+        response, _ = await call_chat(events)
+        assert response['status'] == 'insufficient_evidence'
+        assert response['verification']['status'] == 'invalid'
+>       assert response['usage'] == TOTAL_USAGE
+E       AssertionError: assert {'prompt_toke..._tokens': 120} == {'prompt_toke..._tokens': 270}
+E         
+E         Differing items:
+E         {'prompt_tokens': 100} != {'prompt_tokens': 200}
+E         {'total_tokens': 120} != {'total_tokens': 270}
+E         {'completion_tokens': 20} != {'completion_tokens': 70}
+E         Use -v to get more diff
+
+tests/v2/test_chat_usage_accounting.py:165: AssertionError
+____________ test_chat_explicitly_reports_no_generation_accounting _____________
+
+call_chat = <function call_chat.<locals>.invoke at 0x10a613240>
+
+    @pytest.mark.asyncio
+    async def test_chat_explicitly_reports_no_generation_accounting(call_chat):
+        response, provider = await call_chat([], generation=False)
+        assert provider.calls == 0
+        assert response['status'] == 'evidence_only'
+        assert response['usage'] is None
+>       assert response['usage_attempts'] == []
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'usage_attempts'
+
+tests/v2/test_chat_usage_accounting.py:178: KeyError
+___ test_chat_legacy_events_without_attempt_numbers_use_default_attempt_one ____
+
+call_chat = <function call_chat.<locals>.invoke at 0x10a660a40>
+
+    @pytest.mark.asyncio
+    async def test_chat_legacy_events_without_attempt_numbers_use_default_attempt_one(call_chat):
+        events = [
+            provider_event('usage', usage={'prompt_tokens': 100, 'completion_tokens': 10, 'total_tokens': 110}),
+            provider_event('delta', delta='SUPPORT [E1]'),
+            provider_event('usage', usage=PRIMARY_USAGE),
+        ]
+        response, provider = await call_chat(events)
+        assert provider.calls == 1
+        assert response['status'] == 'ready'
+        assert response['usage'] == PRIMARY_USAGE
+>       assert response['usage_attempts'] == [{'attempt': 1, 'usage': PRIMARY_USAGE}]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'usage_attempts'
+
+tests/v2/test_chat_usage_accounting.py:197: KeyError
+_____ test_chat_legacy_text_stream_still_completes_with_unavailable_usage ______
+
+call_chat = <function call_chat.<locals>.invoke at 0x10a660900>
+
+    @pytest.mark.asyncio
+    async def test_chat_legacy_text_stream_still_completes_with_unavailable_usage(call_chat):
+        response, provider = await call_chat([], legacy_text_only=True)
+        assert provider.calls == 1
+        assert response['status'] == 'ready'
+        assert response['answer'] == 'SUPPORT [E1]'
+        assert response['usage'] is None
+>       assert response['usage_attempts'] == []
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'usage_attempts'
+
+tests/v2/test_chat_usage_accounting.py:210: KeyError
+=========================== short test summary info ============================
+FAILED tests/v2/test_chat_usage_accounting.py::test_chat_counts_both_reported_retry_attempts
+FAILED tests/v2/test_chat_usage_accounting.py::test_chat_counts_only_last_cumulative_usage_within_each_attempt
+FAILED tests/v2/test_chat_usage_accounting.py::test_chat_marks_missing_attempt_usage_as_unknown[1]
+FAILED tests/v2/test_chat_usage_accounting.py::test_chat_marks_missing_attempt_usage_as_unknown[2]
+FAILED tests/v2/test_chat_usage_accounting.py::test_chat_never_substitutes_zero_for_unreported_usage
+FAILED tests/v2/test_chat_usage_accounting.py::test_chat_retains_primary_usage_and_metadata_after_retry_failure
+FAILED tests/v2/test_chat_usage_accounting.py::test_chat_retains_accounting_when_citations_are_rejected
+FAILED tests/v2/test_chat_usage_accounting.py::test_chat_explicitly_reports_no_generation_accounting
+FAILED tests/v2/test_chat_usage_accounting.py::test_chat_legacy_events_without_attempt_numbers_use_default_attempt_one
+FAILED tests/v2/test_chat_usage_accounting.py::test_chat_legacy_text_stream_still_completes_with_unavailable_usage
+10 failed in 0.21s

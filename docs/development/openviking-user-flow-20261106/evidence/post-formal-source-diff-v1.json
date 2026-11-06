@@ -1,0 +1,10 @@
+{
+  "formal_source_commit": "7231a1fc00a20f5b311e083e7fcd2d5ed266dddb",
+  "formal_config_sha256": "68ec5ae8cf77893d5506f807ec201d7adf425e8f2ef8334780503cb8f4a9cfc2",
+  "changed_source_files": [
+    "evidence_rag/api.py"
+  ],
+  "formal_api_sha256": "0fef17666050218cff814565fa44717cb57e4d89659235f542bd4fb12d0463f0",
+  "delivery_api_sha256": "0a85423686feebff6d6cc9a9a47cf319a9f774f76fe051fefd4658451b23d4c4",
+  "scope": "All other frozen source_hashes unchanged; only non-streaming chat handler modified; final delivery source not benchmarked300"
+}

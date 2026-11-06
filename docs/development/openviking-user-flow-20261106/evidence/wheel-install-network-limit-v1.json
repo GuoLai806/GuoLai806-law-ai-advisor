@@ -1,0 +1,10 @@
+{
+  "observed_utc": "2026-11-06T15:34:36.216090+00:00",
+  "first_attempt": "dependency archive read timeout; package not installed",
+  "retry": "stalled official PyPI jieba dependency download; explicitly terminated this known installer",
+  "logs": [
+    "wheel-clean-install-v9.log",
+    "wheel-clean-install-v9-retry1.log"
+  ],
+  "alternative": "new isolated v10 environment; reuse prior v8 independently installed dependency files, install final wheel offline; not a fresh dependency resolver or cross-platform test"
+}

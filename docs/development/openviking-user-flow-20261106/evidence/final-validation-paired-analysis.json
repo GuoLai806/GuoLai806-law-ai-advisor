@@ -1,0 +1,41 @@
+{
+  "left": "qwen-final-validation-v2.json",
+  "right": "bge-final-validation-v2.json",
+  "left_sha256": "ee1fb5bb37d1aedd3ba1181d2e6f289011a0ef6632e368e22f9814b5673b83dc",
+  "right_sha256": "ef1da66a8dbe79739d8b72e7dea9ca665fd04906c10c42d5bfe2fe1317ad08f3",
+  "queries": 32,
+  "method": "paired query bootstrap 10000 samples, seed20261106, percentile95%; differences left minus right",
+  "limits": "conditional on these two observed runs; does not measure stochastic generation or service variance; not an external-system significance claim; selection was already frozen before this analysis",
+  "differences": {
+    "ndcg_at_10": {
+      "difference": 0.03147904444079601,
+      "low": -0.001965296962715508,
+      "high": 0.07920183099682984
+    },
+    "recall_at_20": {
+      "difference": 0.0,
+      "low": 0.0,
+      "high": 0.0
+    },
+    "mrr_at_10": {
+      "difference": 0.042361111111111106,
+      "low": -0.005208333333333334,
+      "high": 0.10798611111111112
+    },
+    "claim_label_accuracy": {
+      "difference": 0.0,
+      "low": -0.15625,
+      "high": 0.15625
+    },
+    "claim_label_macro_f1": {
+      "difference": 0.00556438791732905,
+      "low": -0.11987199776673457,
+      "high": 0.12950110864745004
+    },
+    "cited_document_label_f1": {
+      "difference": 0.03459480122324171,
+      "low": -0.07919874780515546,
+      "high": 0.14278040862396463
+    }
+  }
+}

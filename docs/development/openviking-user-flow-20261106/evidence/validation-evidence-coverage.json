@@ -1,0 +1,757 @@
+{
+  "source_report_sha256": "2965df35f2a2d114a7eead7ab1b74b02efd64d6156916a66f872934af8d25057",
+  "split": "validation",
+  "method": "official SUPPORT/CONTRADICT evidence document IDs, top-k of actual reranked candidates; NEI claims excluded because they have no gold evidence documents",
+  "results": [
+    {
+      "top_k": 1,
+      "positive_claims": 25,
+      "mean_gold_document_recall": 0.8333333333333333,
+      "per_query": [
+        {
+          "query_id": "886",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "286",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "671",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "245",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1392",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "178",
+          "gold_document_recall": 0.25
+        },
+        {
+          "query_id": "1391",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "342",
+          "gold_document_recall": 0.0
+        },
+        {
+          "query_id": "1181",
+          "gold_document_recall": 0.25
+        },
+        {
+          "query_id": "1055",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "55",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "860",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "356",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1234",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1328",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "766",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "152",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "394",
+          "gold_document_recall": 0.0
+        },
+        {
+          "query_id": "334",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "149",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "500",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "463",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "367",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "683",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "962",
+          "gold_document_recall": 0.3333333333333333
+        }
+      ]
+    },
+    {
+      "top_k": 2,
+      "positive_claims": 25,
+      "mean_gold_document_recall": 0.8533333333333333,
+      "per_query": [
+        {
+          "query_id": "886",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "286",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "671",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "245",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1392",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "178",
+          "gold_document_recall": 0.5
+        },
+        {
+          "query_id": "1391",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "342",
+          "gold_document_recall": 0.0
+        },
+        {
+          "query_id": "1181",
+          "gold_document_recall": 0.5
+        },
+        {
+          "query_id": "1055",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "55",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "860",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "356",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1234",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1328",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "766",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "152",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "394",
+          "gold_document_recall": 0.0
+        },
+        {
+          "query_id": "334",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "149",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "500",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "463",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "367",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "683",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "962",
+          "gold_document_recall": 0.3333333333333333
+        }
+      ]
+    },
+    {
+      "top_k": 3,
+      "positive_claims": 25,
+      "mean_gold_document_recall": 0.9266666666666667,
+      "per_query": [
+        {
+          "query_id": "886",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "286",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "671",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "245",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1392",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "178",
+          "gold_document_recall": 0.75
+        },
+        {
+          "query_id": "1391",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "342",
+          "gold_document_recall": 0.0
+        },
+        {
+          "query_id": "1181",
+          "gold_document_recall": 0.75
+        },
+        {
+          "query_id": "1055",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "55",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "860",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "356",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1234",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1328",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "766",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "152",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "394",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "334",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "149",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "500",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "463",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "367",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "683",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "962",
+          "gold_document_recall": 0.6666666666666666
+        }
+      ]
+    },
+    {
+      "top_k": 4,
+      "positive_claims": 25,
+      "mean_gold_document_recall": 1.0,
+      "per_query": [
+        {
+          "query_id": "886",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "286",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "671",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "245",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1392",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "178",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1391",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "342",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1181",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1055",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "55",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "860",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "356",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1234",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1328",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "766",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "152",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "394",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "334",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "149",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "500",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "463",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "367",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "683",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "962",
+          "gold_document_recall": 1.0
+        }
+      ]
+    },
+    {
+      "top_k": 8,
+      "positive_claims": 25,
+      "mean_gold_document_recall": 1.0,
+      "per_query": [
+        {
+          "query_id": "886",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "286",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "671",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "245",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1392",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "178",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1391",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "342",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1181",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1055",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "55",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "860",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "356",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1234",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1328",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "766",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "152",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "394",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "334",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "149",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "500",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "463",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "367",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "683",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "962",
+          "gold_document_recall": 1.0
+        }
+      ]
+    },
+    {
+      "top_k": 12,
+      "positive_claims": 25,
+      "mean_gold_document_recall": 1.0,
+      "per_query": [
+        {
+          "query_id": "886",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "286",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "671",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "245",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1392",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "178",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1391",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "342",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1181",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1055",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "55",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "860",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "356",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1234",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1328",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "766",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "152",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "394",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "334",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "149",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "500",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "463",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "367",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "683",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "962",
+          "gold_document_recall": 1.0
+        }
+      ]
+    },
+    {
+      "top_k": 20,
+      "positive_claims": 25,
+      "mean_gold_document_recall": 1.0,
+      "per_query": [
+        {
+          "query_id": "886",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "286",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "671",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "245",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1392",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "178",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1391",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "342",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1181",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1055",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "55",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "860",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "356",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1234",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "1328",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "766",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "152",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "394",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "334",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "149",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "500",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "463",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "367",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "683",
+          "gold_document_recall": 1.0
+        },
+        {
+          "query_id": "962",
+          "gold_document_recall": 1.0
+        }
+      ]
+    }
+  ],
+  "limits": "32-query training validation only; same query texts and source hashes; not test accuracy or guaranteed future recall"
+}

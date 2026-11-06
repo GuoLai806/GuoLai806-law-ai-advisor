@@ -1,0 +1,14 @@
+Processing <local-path>
+  Installing build dependencies: started
+  Installing build dependencies: still running...
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: evidence-rag
+  Building wheel for evidence-rag (pyproject.toml): started
+  Building wheel for evidence-rag (pyproject.toml): finished with status 'done'
+  Created wheel for evidence-rag: filename=evidence_rag-0.2.1-py3-none-any.whl size=46018 sha256=04d7652444716a4a4ce4f7c4a44f193a9894b970e454b0813c276965b0b3f758
+  Stored in directory: <local-path>
+Successfully built evidence-rag

@@ -1,0 +1,11 @@
+{
+  "documentation_url": "https://api-docs.deepseek.com/quick_start/token_usage/",
+  "documentation_html_sha256": "3a0017a86cc6773337ae14d47d46fc713ae189365d9b048f73bd08a641183916",
+  "download_url": "https://cdn.deepseek.com/api-docs/deepseek_v4_tokenizer.zip",
+  "download_final_url": "https://cdn.deepseek.com/api-docs/deepseek_v4_tokenizer.zip",
+  "download_sha256": "e7310d1dafe0a86d8a5629fe78a7c763760f651db9b8682718a1781dcd6fe495",
+  "local_archive_sha256": "e7310d1dafe0a86d8a5629fe78a7c763760f651db9b8682718a1781dcd6fe495",
+  "bytes": 1911504,
+  "matches_local": true,
+  "scope": "Official link rechecked during formal run; downloaded bytes compared in memory; existing tokenizer artifacts were not changed"
+}

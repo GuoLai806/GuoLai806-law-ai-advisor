@@ -1,0 +1,132 @@
+{
+  "report_sha256": "6458c0f67455f94fd740c4eed1e02e7348448fb866383ebc6f29e3c87628b249",
+  "analysis_sha256": "eedb7926f563005575f9be41b00d41650df4579fbac8dd01d41c67e2b7bef5aa",
+  "queries": 300,
+  "comparisons_final_minus_stage": {
+    "bm25": {
+      "ndcg_at_10": {
+        "stage_mean": 0.6688975973924575,
+        "final_mean": 0.7942005100031095,
+        "absolute_difference": 0.12530291261065196,
+        "relative_difference": 0.18732749691300488,
+        "difference_95_interval": [
+          0.09215025245573144,
+          0.15910681181344147
+        ],
+        "queries_improved": 106,
+        "queries_equal": 169,
+        "queries_worsened": 25
+      },
+      "recall_at_20": {
+        "stage_mean": 0.8365555555555556,
+        "final_mean": 0.9358888888888889,
+        "absolute_difference": 0.09933333333333333,
+        "relative_difference": 0.1187408686412538,
+        "difference_95_interval": [
+          0.06583333333333333,
+          0.13483333333333333
+        ],
+        "queries_improved": 35,
+        "queries_equal": 264,
+        "queries_worsened": 1
+      },
+      "mrr_at_10": {
+        "stage_mean": 0.6351124338624339,
+        "final_mean": 0.7625330687830689,
+        "absolute_difference": 0.12742063492063493,
+        "relative_difference": 0.20062689395911654,
+        "difference_95_interval": [
+          0.08923234126984127,
+          0.1657268849206349
+        ],
+        "queries_improved": 98,
+        "queries_equal": 177,
+        "queries_worsened": 25
+      }
+    },
+    "openviking_dense": {
+      "ndcg_at_10": {
+        "stage_mean": 0.6445664324824734,
+        "final_mean": 0.7942005100031095,
+        "absolute_difference": 0.1496340775206362,
+        "relative_difference": 0.2321468664515119,
+        "difference_95_interval": [
+          0.11678826624018908,
+          0.18361187230076784
+        ],
+        "queries_improved": 114,
+        "queries_equal": 163,
+        "queries_worsened": 23
+      },
+      "recall_at_20": {
+        "stage_mean": 0.8235555555555556,
+        "final_mean": 0.9358888888888889,
+        "absolute_difference": 0.11233333333333334,
+        "relative_difference": 0.13640043173232597,
+        "difference_95_interval": [
+          0.079,
+          0.14966666666666667
+        ],
+        "queries_improved": 37,
+        "queries_equal": 262,
+        "queries_worsened": 1
+      },
+      "mrr_at_10": {
+        "stage_mean": 0.6096177248677248,
+        "final_mean": 0.7625330687830689,
+        "absolute_difference": 0.15291534391534392,
+        "relative_difference": 0.25083808701350274,
+        "difference_95_interval": [
+          0.11544255952380951,
+          0.19118277116402113
+        ],
+        "queries_improved": 104,
+        "queries_equal": 173,
+        "queries_worsened": 23
+      }
+    },
+    "rrf_before_reranking": {
+      "ndcg_at_10": {
+        "stage_mean": 0.7042731827093504,
+        "final_mean": 0.7942005100031095,
+        "absolute_difference": 0.08992732729375909,
+        "relative_difference": 0.1276881322497716,
+        "difference_95_interval": [
+          0.06172395398359547,
+          0.1202353206490458
+        ],
+        "queries_improved": 92,
+        "queries_equal": 182,
+        "queries_worsened": 26
+      },
+      "recall_at_20": {
+        "stage_mean": 0.8685555555555555,
+        "final_mean": 0.9358888888888889,
+        "absolute_difference": 0.06733333333333333,
+        "relative_difference": 0.07752334655238582,
+        "difference_95_interval": [
+          0.04,
+          0.09666666666666666
+        ],
+        "queries_improved": 22,
+        "queries_equal": 277,
+        "queries_worsened": 1
+      },
+      "mrr_at_10": {
+        "stage_mean": 0.6695886243386243,
+        "final_mean": 0.7625330687830689,
+        "absolute_difference": 0.09294444444444444,
+        "relative_difference": 0.1388082787939369,
+        "difference_95_interval": [
+          0.05977248677248677,
+          0.1277413029100529
+        ],
+        "queries_improved": 85,
+        "queries_equal": 191,
+        "queries_worsened": 24
+      }
+    }
+  },
+  "method": "Retrospective paired query bootstrap, 10000 samples, seed20261106, 95% percentile intervals; original rankings and failures unchanged.",
+  "limits": "Ranking-stage comparison from one observed user-flow run, not separate end-to-end answer A/B or an external-system significance test. Query dependence and shared-corpus effects remain; formal results did not tune the selected configuration."
+}

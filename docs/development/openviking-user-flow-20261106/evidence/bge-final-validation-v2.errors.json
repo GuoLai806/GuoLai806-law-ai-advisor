@@ -1,0 +1,328 @@
+{
+  "input_sha256": "ef1da66a8dbe79739d8b72e7dea9ca665fd04906c10c42d5bfe2fe1317ad08f3",
+  "queries": 32,
+  "label_slices": {
+    "SUPPORT": {
+      "queries": 18,
+      "correct": 15,
+      "accuracy": 0.8333333333333334,
+      "evaluation_failures": 0,
+      "predictions": {
+        "SUPPORT": 15,
+        "CONTRADICT": 2,
+        "NOT_ENOUGH_INFO": 1
+      }
+    },
+    "CONTRADICT": {
+      "queries": 7,
+      "correct": 6,
+      "accuracy": 0.8571428571428571,
+      "evaluation_failures": 1,
+      "predictions": {
+        "CONTRADICT": 6,
+        "INVALID": 1
+      }
+    },
+    "NOT_ENOUGH_INFO": {
+      "queries": 7,
+      "correct": 1,
+      "accuracy": 0.14285714285714285,
+      "evaluation_failures": 0,
+      "predictions": {
+        "SUPPORT": 3,
+        "NOT_ENOUGH_INFO": 1,
+        "CONTRADICT": 3
+      }
+    }
+  },
+  "disagreements": [
+    {
+      "query_id": "610",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "14644164",
+        "15435343",
+        "10648422",
+        "29023309"
+      ],
+      "cited_documents": [
+        "10648422",
+        "14644164",
+        "15435343"
+      ],
+      "selected_reranker_scores": [
+        0.7219392657279968,
+        0.1598721295595169,
+        0.08021324872970581,
+        0.07864237576723099
+      ],
+      "user_total_ms": 28373.99104097858
+    },
+    {
+      "query_id": "342",
+      "gold_label": "CONTRADICT",
+      "predicted_label": null,
+      "failure": {
+        "type": "answer_rejected",
+        "detail": "invalid_citations"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 0.5,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [
+        "5884524"
+      ],
+      "selected_documents": [
+        "6158879",
+        "23783727",
+        "7873737",
+        "19308127"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        0.9791557192802429,
+        0.9528381824493408,
+        0.8467044830322266,
+        0.5190795063972473
+      ],
+      "user_total_ms": 44631.996917014476
+    },
+    {
+      "query_id": "860",
+      "gold_label": "SUPPORT",
+      "predicted_label": "CONTRADICT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "16066726"
+      ],
+      "selected_documents": [
+        "16066726",
+        "9629682",
+        "5395426",
+        "38023457"
+      ],
+      "cited_documents": [
+        "16066726"
+      ],
+      "selected_reranker_scores": [
+        0.9596865773200989,
+        0.04138471558690071,
+        0.035745810717344284,
+        0.03541072830557823
+      ],
+      "user_total_ms": 23840.414833975956
+    },
+    {
+      "query_id": "152",
+      "gold_label": "SUPPORT",
+      "predicted_label": "CONTRADICT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "15488881"
+      ],
+      "selected_documents": [
+        "15488881",
+        "38587347",
+        "28644298",
+        "15058155"
+      ],
+      "cited_documents": [
+        "15488881",
+        "38587347"
+      ],
+      "selected_reranker_scores": [
+        0.9617499113082886,
+        0.6938879489898682,
+        0.44595178961753845,
+        0.3898368775844574
+      ],
+      "user_total_ms": 38009.9820420146
+    },
+    {
+      "query_id": "351",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "21622715",
+        "25821556",
+        "18276599",
+        "9669099"
+      ],
+      "cited_documents": [
+        "18276599",
+        "25821556",
+        "9669099"
+      ],
+      "selected_reranker_scores": [
+        0.39805537462234497,
+        0.20705434679985046,
+        0.15393033623695374,
+        0.14199377596378326
+      ],
+      "user_total_ms": 68812.01120803598
+    },
+    {
+      "query_id": "1353",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "CONTRADICT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "2097256",
+        "18816720",
+        "17454301",
+        "3716075"
+      ],
+      "cited_documents": [
+        "17454301",
+        "18816720",
+        "2097256",
+        "3716075"
+      ],
+      "selected_reranker_scores": [
+        0.8606036305427551,
+        0.5449527502059937,
+        0.10706344991922379,
+        0.10212546586990356
+      ],
+      "user_total_ms": 10799.839542014524
+    },
+    {
+      "query_id": "394",
+      "gold_label": "SUPPORT",
+      "predicted_label": "NOT_ENOUGH_INFO",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "11360768"
+      ],
+      "selected_documents": [
+        "8842332",
+        "11360768",
+        "70455704",
+        "439670"
+      ],
+      "cited_documents": [
+        "11360768",
+        "439670",
+        "8842332"
+      ],
+      "selected_reranker_scores": [
+        0.9274948239326477,
+        0.8848377466201782,
+        0.6055658459663391,
+        0.44863760471343994
+      ],
+      "user_total_ms": 22418.096833047457
+    },
+    {
+      "query_id": "1330",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "CONTRADICT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "27093166",
+        "21382907",
+        "25726838",
+        "8702697"
+      ],
+      "cited_documents": [
+        "21382907",
+        "25726838",
+        "27093166",
+        "8702697"
+      ],
+      "selected_reranker_scores": [
+        0.8517062067985535,
+        0.739234209060669,
+        0.6163586974143982,
+        0.47627517580986023
+      ],
+      "user_total_ms": 26580.685166001786
+    },
+    {
+      "query_id": "871",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "43220289",
+        "24347647",
+        "6313547",
+        "4345757"
+      ],
+      "cited_documents": [
+        "43220289",
+        "4345757"
+      ],
+      "selected_reranker_scores": [
+        0.37376153469085693,
+        0.3720487952232361,
+        0.3656831681728363,
+        0.333720326423645
+      ],
+      "user_total_ms": 18615.624291007407
+    },
+    {
+      "query_id": "229",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "CONTRADICT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "56893404",
+        "27428509",
+        "13619127",
+        "17656445"
+      ],
+      "cited_documents": [
+        "56893404"
+      ],
+      "selected_reranker_scores": [
+        0.5346125364303589,
+        0.052134256809949875,
+        0.04336579889059067,
+        0.03949040174484253
+      ],
+      "user_total_ms": 9603.323041985277
+    }
+  ],
+  "positive_claims": 25,
+  "all_gold_documents_in_selected_evidence": 20,
+  "positive_wrong_label_despite_complete_gold_document_coverage": 3,
+  "positive_evaluation_failure_despite_complete_gold_document_coverage": 0,
+  "scope": "Descriptive analysis against existing, unchanged claim/document annotations; document coverage is not semantic answer support; no expert adjudication or gold repair; the observed formal disagreements must not be used to tune this run."
+}

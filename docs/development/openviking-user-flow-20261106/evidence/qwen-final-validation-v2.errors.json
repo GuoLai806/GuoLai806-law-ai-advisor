@@ -1,0 +1,332 @@
+{
+  "input_sha256": "ee1fb5bb37d1aedd3ba1181d2e6f289011a0ef6632e368e22f9814b5673b83dc",
+  "queries": 32,
+  "label_slices": {
+    "SUPPORT": {
+      "queries": 18,
+      "correct": 15,
+      "accuracy": 0.8333333333333334,
+      "evaluation_failures": 1,
+      "predictions": {
+        "SUPPORT": 15,
+        "NOT_ENOUGH_INFO": 1,
+        "INVALID": 1,
+        "CONTRADICT": 1
+      }
+    },
+    "CONTRADICT": {
+      "queries": 7,
+      "correct": 6,
+      "accuracy": 0.8571428571428571,
+      "evaluation_failures": 0,
+      "predictions": {
+        "CONTRADICT": 6,
+        "SUPPORT": 1
+      }
+    },
+    "NOT_ENOUGH_INFO": {
+      "queries": 7,
+      "correct": 1,
+      "accuracy": 0.14285714285714285,
+      "evaluation_failures": 0,
+      "predictions": {
+        "SUPPORT": 3,
+        "NOT_ENOUGH_INFO": 1,
+        "CONTRADICT": 3
+      }
+    }
+  },
+  "disagreements": [
+    {
+      "query_id": "671",
+      "gold_label": "SUPPORT",
+      "predicted_label": "NOT_ENOUGH_INFO",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "5573975"
+      ],
+      "selected_documents": [
+        "5573975",
+        "25928548",
+        "8446259",
+        "2973910"
+      ],
+      "cited_documents": [
+        "5573975"
+      ],
+      "selected_reranker_scores": [
+        6.8828125,
+        2.2265625,
+        0.5625,
+        0.453125
+      ],
+      "user_total_ms": 54714.557875005994
+    },
+    {
+      "query_id": "245",
+      "gold_label": "CONTRADICT",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 0.5,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [
+        "3430789"
+      ],
+      "selected_documents": [
+        "3430789",
+        "24525112",
+        "33203108",
+        "25104843"
+      ],
+      "cited_documents": [
+        "25104843",
+        "33203108",
+        "3430789"
+      ],
+      "selected_reranker_scores": [
+        4.125,
+        4.0234375,
+        3.7578125,
+        2.625
+      ],
+      "user_total_ms": 99760.39337500697
+    },
+    {
+      "query_id": "610",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "10648422",
+        "14644164",
+        "26702468",
+        "32454714"
+      ],
+      "cited_documents": [
+        "10648422",
+        "14644164",
+        "32454714"
+      ],
+      "selected_reranker_scores": [
+        2.3671875,
+        1.359375,
+        1.25,
+        1.09375
+      ],
+      "user_total_ms": 73250.69645803887
+    },
+    {
+      "query_id": "152",
+      "gold_label": "SUPPORT",
+      "predicted_label": null,
+      "failure": {
+        "type": "error",
+        "detail": "provider or retrieval unavailable",
+        "error_type": "ConnectError",
+        "failure_phase": "generation"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "15488881"
+      ],
+      "selected_documents": [
+        "15488881",
+        "38587347",
+        "15058155",
+        "16550075"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        7.125,
+        2.3203125,
+        1.546875,
+        -1.703125
+      ],
+      "user_total_ms": 47278.615749964956
+    },
+    {
+      "query_id": "351",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "25821556",
+        "9669099",
+        "21622715",
+        "18276599"
+      ],
+      "cited_documents": [
+        "18276599",
+        "25821556",
+        "9669099"
+      ],
+      "selected_reranker_scores": [
+        2.5625,
+        2.4140625,
+        1.171875,
+        0.96875
+      ],
+      "user_total_ms": 50149.29320802912
+    },
+    {
+      "query_id": "1353",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "CONTRADICT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "2097256",
+        "18816720",
+        "3716075",
+        "25069745"
+      ],
+      "cited_documents": [
+        "18816720",
+        "2097256",
+        "25069745",
+        "3716075"
+      ],
+      "selected_reranker_scores": [
+        4.1875,
+        1.7265625,
+        1.5859375,
+        -0.765625
+      ],
+      "user_total_ms": 34256.309667020105
+    },
+    {
+      "query_id": "1330",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "CONTRADICT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "25726838",
+        "17223891",
+        "7975937",
+        "13011249"
+      ],
+      "cited_documents": [
+        "17223891",
+        "25726838",
+        "7975937"
+      ],
+      "selected_reranker_scores": [
+        3.21875,
+        2.9609375,
+        1.140625,
+        1.015625
+      ],
+      "user_total_ms": 32534.309500013478
+    },
+    {
+      "query_id": "871",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "4345757",
+        "43220289",
+        "195689316",
+        "11630388"
+      ],
+      "cited_documents": [
+        "43220289",
+        "4345757"
+      ],
+      "selected_reranker_scores": [
+        1.8359375,
+        0.546875,
+        0.359375,
+        0.171875
+      ],
+      "user_total_ms": 42469.98341701692
+    },
+    {
+      "query_id": "463",
+      "gold_label": "SUPPORT",
+      "predicted_label": "CONTRADICT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "19736671"
+      ],
+      "selected_documents": [
+        "19736671",
+        "25504006",
+        "13256155",
+        "14717213"
+      ],
+      "cited_documents": [
+        "13256155",
+        "25504006"
+      ],
+      "selected_reranker_scores": [
+        2.1015625,
+        2.0390625,
+        1.5546875,
+        0.84375
+      ],
+      "user_total_ms": 49598.5565839801
+    },
+    {
+      "query_id": "229",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "CONTRADICT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "56893404",
+        "30805636",
+        "5567005",
+        "17324544"
+      ],
+      "cited_documents": [
+        "17324544",
+        "30805636",
+        "56893404"
+      ],
+      "selected_reranker_scores": [
+        2.328125,
+        -0.40625,
+        -0.9375,
+        -0.9765625
+      ],
+      "user_total_ms": 40556.86666700058
+    }
+  ],
+  "positive_claims": 25,
+  "all_gold_documents_in_selected_evidence": 24,
+  "positive_wrong_label_despite_complete_gold_document_coverage": 2,
+  "positive_evaluation_failure_despite_complete_gold_document_coverage": 1,
+  "scope": "Descriptive analysis against existing, unchanged claim/document annotations; document coverage is not semantic answer support; no expert adjudication or gold repair; the observed formal disagreements must not be used to tune this run."
+}

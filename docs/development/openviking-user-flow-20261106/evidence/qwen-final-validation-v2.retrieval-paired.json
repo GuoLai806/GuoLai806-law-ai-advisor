@@ -1,0 +1,132 @@
+{
+  "report_sha256": "ee1fb5bb37d1aedd3ba1181d2e6f289011a0ef6632e368e22f9814b5673b83dc",
+  "analysis_sha256": "69679b29d0c1218d3e293f8ce5441e7968ea2d9dfd44b395454229c78643b35c",
+  "queries": 32,
+  "comparisons_final_minus_stage": {
+    "bm25": {
+      "ndcg_at_10": {
+        "stage_mean": 0.7456412410752841,
+        "final_mean": 0.8350232531508412,
+        "absolute_difference": 0.08938201207555713,
+        "relative_difference": 0.11987267757166965,
+        "difference_95_interval": [
+          0.003124237431802686,
+          0.1893278519394182
+        ],
+        "queries_improved": 6,
+        "queries_equal": 24,
+        "queries_worsened": 2
+      },
+      "recall_at_20": {
+        "stage_mean": 0.8359375,
+        "final_mean": 0.9375,
+        "absolute_difference": 0.1015625,
+        "relative_difference": 0.12149532710280374,
+        "difference_95_interval": [
+          0.0078125,
+          0.21875
+        ],
+        "queries_improved": 4,
+        "queries_equal": 28,
+        "queries_worsened": 0
+      },
+      "mrr_at_10": {
+        "stage_mean": 0.7404513888888888,
+        "final_mean": 0.828125,
+        "absolute_difference": 0.0876736111111111,
+        "relative_difference": 0.11840562719812427,
+        "difference_95_interval": [
+          -0.010416666666666671,
+          0.1996527777777778
+        ],
+        "queries_improved": 5,
+        "queries_equal": 26,
+        "queries_worsened": 1
+      }
+    },
+    "openviking_dense": {
+      "ndcg_at_10": {
+        "stage_mean": 0.7253492620987805,
+        "final_mean": 0.8350232531508412,
+        "absolute_difference": 0.10967399105206074,
+        "relative_difference": 0.15120163041831974,
+        "difference_95_interval": [
+          0.011136208029404595,
+          0.21894288644003881
+        ],
+        "queries_improved": 10,
+        "queries_equal": 18,
+        "queries_worsened": 4
+      },
+      "recall_at_20": {
+        "stage_mean": 0.9375,
+        "final_mean": 0.9375,
+        "absolute_difference": 0.0,
+        "relative_difference": 0.0,
+        "difference_95_interval": [
+          -0.09375,
+          0.09375
+        ],
+        "queries_improved": 1,
+        "queries_equal": 30,
+        "queries_worsened": 1
+      },
+      "mrr_at_10": {
+        "stage_mean": 0.690451388888889,
+        "final_mean": 0.828125,
+        "absolute_difference": 0.13767361111111112,
+        "relative_difference": 0.1993965300477747,
+        "difference_95_interval": [
+          0.015277777777777779,
+          0.26719184027777776
+        ],
+        "queries_improved": 8,
+        "queries_equal": 20,
+        "queries_worsened": 4
+      }
+    },
+    "rrf_before_reranking": {
+      "ndcg_at_10": {
+        "stage_mean": 0.747859792908268,
+        "final_mean": 0.8350232531508412,
+        "absolute_difference": 0.08716346024257327,
+        "relative_difference": 0.11655053670369558,
+        "difference_95_interval": [
+          0.0134659500279503,
+          0.17049841681886946
+        ],
+        "queries_improved": 7,
+        "queries_equal": 22,
+        "queries_worsened": 3
+      },
+      "recall_at_20": {
+        "stage_mean": 0.90625,
+        "final_mean": 0.9375,
+        "absolute_difference": 0.03125,
+        "relative_difference": 0.034482758620689655,
+        "difference_95_interval": [
+          -0.0625,
+          0.15625
+        ],
+        "queries_improved": 2,
+        "queries_equal": 29,
+        "queries_worsened": 1
+      },
+      "mrr_at_10": {
+        "stage_mean": 0.7380952380952381,
+        "final_mean": 0.828125,
+        "absolute_difference": 0.0900297619047619,
+        "relative_difference": 0.12197580645161289,
+        "difference_95_interval": [
+          -0.009672619047619053,
+          0.19717261904761907
+        ],
+        "queries_improved": 6,
+        "queries_equal": 24,
+        "queries_worsened": 2
+      }
+    }
+  },
+  "method": "Retrospective paired query bootstrap, 10000 samples, seed20261106, 95% percentile intervals; original rankings and failures unchanged.",
+  "limits": "Ranking-stage comparison from one observed user-flow run, not separate end-to-end answer A/B or an external-system significance test. Query dependence and shared-corpus effects remain; formal results did not tune the selected configuration."
+}

@@ -1,0 +1,9 @@
+# 公开证据说明
+
+这些文件是原始材料的脱敏副本，保留全部逐题数值、排名、标签、失败、耗时、已报告用量及内容/配置/源码hash。11份完整运行共620条请求记录：10次使用同32题的开发记录320条，正式300题一次；不是620独立题，也不是620次模型调用。每份原report、journal和public副本hash见PUBLIC-REDACTION-AUDIT.json；配置按原字节复制。
+
+回答、请求、问题正文、论文正文、SSE events、密钥和私人路径不公开。原始SSE与同版本正文仍在本机，因此公开数字可以复算，但没有这些原始材料时不能独立重做原始事件和原文一致性审计。脱敏不会删除失败或改gold。journal的complete所指report hash仍指原字节，公开文件自身hash另登记，不能混用。
+
+selection-final-v1.json的路径改成相对公开目录，原选择SHA保留；其validation_report_sha256是原report的hash，应匹配对应公开report的original_report_sha256。配置SHA未改。行业调查原路径industry-sources/broad-survey/survey.json还提供industry-survey.json别名，两者公开字节一致。
+
+正式结果与27项原始审计属于冻结7231a1f，API用量修复属于c46cd3b。最终安装使用v9构建的同字节wheel，在v11独立环境通过入口/文件hash和pip check；v11复用原v8独立安装的依赖，不称全新联网解析。完整180项回归、修复前失败和所有安装失败单独留档。方法与结果见上级目录两版PLAN与RESULTS。

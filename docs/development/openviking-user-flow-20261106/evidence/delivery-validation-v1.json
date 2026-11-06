@@ -1,0 +1,62 @@
+{
+  "formal_source_commit": "7231a1fc00a20f5b311e083e7fcd2d5ed266dddb",
+  "post_formal_change": "non-streaming /api/v2/chat per-attempt known usage and generation metadata; SSE unchanged",
+  "api_sha256": "0a85423686feebff6d6cc9a9a47cf319a9f774f76fe051fefd4658451b23d4c4",
+  "test_runs": [
+    {
+      "tests": 10.0,
+      "errors": 0.0,
+      "failures": 10.0,
+      "skipped": 0.0,
+      "time": 0.209,
+      "name": "chat-accounting-before-fix-v2",
+      "scope": "new accounting expectations before production fix",
+      "xml_sha256": "93789970041dd0951f0d319b6abe96c58ca507fbfe13df9941d34b477a5bd14e",
+      "log_sha256": "5bcb0393df33a6f4c661ba8df64c6828ec95e41dc750d5531f889cb7d1b76bbf"
+    },
+    {
+      "tests": 10.0,
+      "errors": 0.0,
+      "failures": 0.0,
+      "skipped": 0.0,
+      "time": 0.165,
+      "name": "chat-accounting-after-fix-v1",
+      "scope": "accounting tests after production fix",
+      "xml_sha256": "fed57972db0a2e5a487364912cc8a82a1a175be61306d3bd5ddc4eca17d085d8",
+      "log_sha256": "c77b20d64289b86c995a30c3e8723255b1692bc9b8945d778bfc895876ebff6d"
+    },
+    {
+      "tests": 14.0,
+      "errors": 0.0,
+      "failures": 0.0,
+      "skipped": 0.0,
+      "time": 0.018,
+      "name": "review-independent-raw-audit-v1",
+      "scope": "raw audit parsing tests",
+      "xml_sha256": "6db23eed9455879819f29e052d32cf81a03882c876fa070a51275e0b73d59456",
+      "log_sha256": "272c36f4eb9795dd2eb2e0071703a97f7618a79f0e5e4574b8b9625d75f737b3"
+    },
+    {
+      "tests": 162.0,
+      "errors": 0.0,
+      "failures": 0.0,
+      "skipped": 0.0,
+      "time": 3.246,
+      "name": "regression-v15-all",
+      "scope": "tests/v2",
+      "xml_sha256": "61b9a337b5d2f0c9d35db85a63afc8d0161896c62e9cb148c42657307b255670",
+      "log_sha256": "ff90b38921651337dcca8eba8095587c696eef9963846eeab5566ea71dea4321"
+    },
+    {
+      "tests": 180.0,
+      "errors": 0.0,
+      "failures": 0.0,
+      "skipped": 0.0,
+      "time": 3.33,
+      "name": "regression-v16-full",
+      "scope": "tests",
+      "xml_sha256": "cc9c36ecfdece740f9e1fe6c0ca6552e51a8f9d89684139ec56e819dfcbaec90",
+      "log_sha256": "34dc38157931596fb9a90f607dc81efc22ab45cc248d59fe5ad10b540cd34c72"
+    }
+  ]
+}

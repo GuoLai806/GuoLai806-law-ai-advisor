@@ -1,0 +1,724 @@
+{
+  "audit_version": 1,
+  "collected_utc": "2026-11-06T15:17:24Z",
+  "scope": "Read-only retrospective host timing audit; no benchmark rerun, no model/service calls; not per-query wall-clock reconstruction or failure-cause attribution",
+  "report": {
+    "name": "openviking-formal-test-v1.json",
+    "sha256": "6458c0f67455f94fd740c4eed1e02e7348448fb866383ebc6f29e3c87628b249",
+    "started_utc": "2026-11-06T08:09:36Z",
+    "finished_utc": "2026-11-06T15:07:29Z",
+    "started_local": "2026-11-06T16:09:36+08:00",
+    "finished_local": "2026-11-06T23:07:29+08:00",
+    "queries_recorded": 300
+  },
+  "accounting": {
+    "utc_timestamp_elapsed_seconds": 25073.0,
+    "sum_query_user_total_monotonic_seconds": 10378.62339170987,
+    "utc_minus_query_sum_seconds": 14694.37660829013,
+    "log_derived_sleep_overlap_seconds": 14756.0,
+    "utc_minus_log_sleep_seconds": 10317.0,
+    "gap_minus_log_sleep_seconds": -61.6233917098707,
+    "query_sum_minus_utc_less_log_sleep_seconds": 61.6233917098707,
+    "first_sleep_to_full_wake_seconds": 14844.0,
+    "non_sleep_gaps_between_darkwake_and_next_sleep_seconds": 88.0,
+    "units": "seconds; report UTC and pmset event timestamps have second-level granularity",
+    "independent_math_fsum_query_seconds": 10378.62339170987
+  },
+  "power_log": {
+    "command": [
+      "/usr/bin/pmset",
+      "-g",
+      "log"
+    ],
+    "selection": "only actual Sleep Entering Sleep state, DarkWake from, Wake from lines overlapping report window; Wake Requests are not wake events",
+    "actual_event_counts": {
+      "Sleep": 24,
+      "DarkWake": 23,
+      "Wake": 1
+    },
+    "wake_request_rows_excluded": 24,
+    "selected_original_lines_sha256": "e82bb3c2c689fedae3fa74ec2eef7ed5b49a7e1c620a6e27e3bad3310a2ee35e",
+    "selected_sanitized_lines_sha256": "b2e03b716163006cfd425453d9b67f7b4c6e021f72b345b03b629c8dea12ea71",
+    "original_line_hash_policy": "individual raw SHA256 excludes trailing newline; aggregate hashes include one newline after every selected line",
+    "redaction": "original lines not saved; retain time/type and allowlisted sleep reason only; omit device, driver, network, unrelated process, battery and identifier fields",
+    "selected_events": [
+      {
+        "at_local": "2026-11-06T18:52:19+08:00",
+        "event": "Sleep",
+        "allowlisted_sleep_reason": "Clamshell Sleep",
+        "sanitized_line": "2026-11-06 18:52:19 +0800 Sleep Entering Sleep state due to 'Clamshell Sleep'; extra fields removed",
+        "original_line_sha256": "07821962f2afa86edc85e8f2ca164ad080c6e963442f554f176ebc08b0f0ddad",
+        "sanitized_line_sha256": "3160ce16a0128dfe4c16de0fa7452ed4aa6bd2a8105d5c1f039552449ece0cef"
+      },
+      {
+        "at_local": "2026-11-06T18:57:04+08:00",
+        "event": "DarkWake",
+        "allowlisted_sleep_reason": null,
+        "sanitized_line": "2026-11-06 18:57:04 +0800 DarkWake DarkWake state transition; reason/device/network/process/battery fields removed",
+        "original_line_sha256": "9a43d4b1991b379edc1604bf951584fecaa9a2158c3352b308f3dbf0212d48c9",
+        "sanitized_line_sha256": "34ce879533b14d155519749fe14225b173559d687429a74430ce587b60eff9a6"
+      },
+      {
+        "at_local": "2026-11-06T18:57:15+08:00",
+        "event": "Sleep",
+        "allowlisted_sleep_reason": "Maintenance Sleep",
+        "sanitized_line": "2026-11-06 18:57:15 +0800 Sleep Entering Sleep state due to 'Maintenance Sleep'; extra fields removed",
+        "original_line_sha256": "54e0a8c91d00f60a825dcab18dacb95b6b27d1892a9a45a073086df522872058",
+        "sanitized_line_sha256": "9bd665a330880fe2e38c8e8e322012d1da9d2cec0c54fdaf32b7d675f7f1ffdd"
+      },
+      {
+        "at_local": "2026-11-06T19:12:20+08:00",
+        "event": "DarkWake",
+        "allowlisted_sleep_reason": null,
+        "sanitized_line": "2026-11-06 19:12:20 +0800 DarkWake DarkWake state transition; reason/device/network/process/battery fields removed",
+        "original_line_sha256": "c82038525e88fec56163212d7e2642f6e129729883cdd9a66536563cd4a6e1b7",
+        "sanitized_line_sha256": "6f628ac3533b327891ac468f7e94f70982971b7274ef3e4f90feab00e7f0060f"
+      },
+      {
+        "at_local": "2026-11-06T19:12:22+08:00",
+        "event": "Sleep",
+        "allowlisted_sleep_reason": "Sleep Service Back to Sleep",
+        "sanitized_line": "2026-11-06 19:12:22 +0800 Sleep Entering Sleep state due to 'Sleep Service Back to Sleep'; extra fields removed",
+        "original_line_sha256": "a5f21d6fad5868c1af9a04a04629e809bbf193002c57518066e7bdae935c93c0",
+        "sanitized_line_sha256": "fdc6a3b80ebccddd5e4350b324b108d2735ac482bff44dbf49c7bc97af457b97"
+      },
+      {
+        "at_local": "2026-11-06T19:27:40+08:00",
+        "event": "DarkWake",
+        "allowlisted_sleep_reason": null,
+        "sanitized_line": "2026-11-06 19:27:40 +0800 DarkWake DarkWake state transition; reason/device/network/process/battery fields removed",
+        "original_line_sha256": "cfd9728bd9ca25c659bc85fe10b14aa0d59ddf2b6b6c78dbd547b49b19e5fac5",
+        "sanitized_line_sha256": "80e8e69b7075efffb421988fd5e22d1449a5fbc846f26cac3a7456506652938d"
+      },
+      {
+        "at_local": "2026-11-06T19:27:42+08:00",
+        "event": "Sleep",
+        "allowlisted_sleep_reason": "Sleep Service Back to Sleep",
+        "sanitized_line": "2026-11-06 19:27:42 +0800 Sleep Entering Sleep state due to 'Sleep Service Back to Sleep'; extra fields removed",
+        "original_line_sha256": "0fcf933ed87366f26132ea95470288a671aa2b79db4c16b0690905664d309fe1",
+        "sanitized_line_sha256": "7f967f1ecc76cf9654724e5151d9b6b66f28f0f5692ce6840e0cc63e907ebe06"
+      },
+      {
+        "at_local": "2026-11-06T19:44:41+08:00",
+        "event": "DarkWake",
+        "allowlisted_sleep_reason": null,
+        "sanitized_line": "2026-11-06 19:44:41 +0800 DarkWake DarkWake state transition; reason/device/network/process/battery fields removed",
+        "original_line_sha256": "a7c0e3193fa55956f7e03cf427c1470d9c8e5d948930d0ad1a5a2a4de8ef851f",
+        "sanitized_line_sha256": "59a0295f05a03c1863c7153c6da955b8e924d35950add9137af4fca8b74ff6cf"
+      },
+      {
+        "at_local": "2026-11-06T19:44:43+08:00",
+        "event": "Sleep",
+        "allowlisted_sleep_reason": "Sleep Service Back to Sleep",
+        "sanitized_line": "2026-11-06 19:44:43 +0800 Sleep Entering Sleep state due to 'Sleep Service Back to Sleep'; extra fields removed",
+        "original_line_sha256": "5abe7cad31607d242ca7b0978c7992582919edebbb0e6fc0342afa4a62435972",
+        "sanitized_line_sha256": "2c61a92ab9ee94c04d5022fa71d7d6b9cf8fd06d0be1fa591d65ea32053703fb"
+      },
+      {
+        "at_local": "2026-11-06T20:02:21+08:00",
+        "event": "DarkWake",
+        "allowlisted_sleep_reason": null,
+        "sanitized_line": "2026-11-06 20:02:21 +0800 DarkWake DarkWake state transition; reason/device/network/process/battery fields removed",
+        "original_line_sha256": "1c3f63d124944928613be521572eec4e3c66367ab2dde97a8b445765ebaef1ca",
+        "sanitized_line_sha256": "5bd22350046871d926e8f095064405ac81e5e0b9d5e105eff2ff49e7e773b51b"
+      },
+      {
+        "at_local": "2026-11-06T20:02:23+08:00",
+        "event": "Sleep",
+        "allowlisted_sleep_reason": "Sleep Service Back to Sleep",
+        "sanitized_line": "2026-11-06 20:02:23 +0800 Sleep Entering Sleep state due to 'Sleep Service Back to Sleep'; extra fields removed",
+        "original_line_sha256": "670c6a2120f4449cae7c2d4ef11147a292d47ac0892c821176fc9f7014d7e25c",
+        "sanitized_line_sha256": "8db6afadcbd44b10ffed727e61b0eb5bf06d1c6ad3f7969bab255f4ca299f202"
+      },
+      {
+        "at_local": "2026-11-06T20:18:48+08:00",
+        "event": "DarkWake",
+        "allowlisted_sleep_reason": null,
+        "sanitized_line": "2026-11-06 20:18:48 +0800 DarkWake DarkWake state transition; reason/device/network/process/battery fields removed",
+        "original_line_sha256": "e535fa05573b0a4fa01ef4103dc1972451ad609019e2abe42a12057a2b4c5003",
+        "sanitized_line_sha256": "5892a13e359237e43d4300ae866677d6ec3d24a6d0aa378b261b84446f84e93e"
+      },
+      {
+        "at_local": "2026-11-06T20:18:50+08:00",
+        "event": "Sleep",
+        "allowlisted_sleep_reason": "Sleep Service Back to Sleep",
+        "sanitized_line": "2026-11-06 20:18:50 +0800 Sleep Entering Sleep state due to 'Sleep Service Back to Sleep'; extra fields removed",
+        "original_line_sha256": "d78be7cc62469c31fe3ac6b12ceba8f5fb3924fbe73394a610db806727026899",
+        "sanitized_line_sha256": "f7d36577a4e835eeeb588f8c1699145c49ece9a11390d14e18f05f5d9d3e60fb"
+      },
+      {
+        "at_local": "2026-11-06T20:35:38+08:00",
+        "event": "DarkWake",
+        "allowlisted_sleep_reason": null,
+        "sanitized_line": "2026-11-06 20:35:38 +0800 DarkWake DarkWake state transition; reason/device/network/process/battery fields removed",
+        "original_line_sha256": "5da9daad0621dce787019deae26c4d8ad17f88a6f7bf9ec367ecad381ff737b9",
+        "sanitized_line_sha256": "ad1c24ffe32ffb9ec6bce5271913e810d1bc17c0d4d1731139da486d2e946ec0"
+      },
+      {
+        "at_local": "2026-11-06T20:35:40+08:00",
+        "event": "Sleep",
+        "allowlisted_sleep_reason": "Sleep Service Back to Sleep",
+        "sanitized_line": "2026-11-06 20:35:40 +0800 Sleep Entering Sleep state due to 'Sleep Service Back to Sleep'; extra fields removed",
+        "original_line_sha256": "98170f040b12f0b6d509b47e53e929ef27e5f98e2c58b3adfc51a88e75fe6ae0",
+        "sanitized_line_sha256": "704499cd49ede693c5be0bde620ec3bba1bbdc6fc49f6868c34b4e7c586c9170"
+      },
+      {
+        "at_local": "2026-11-06T20:51:02+08:00",
+        "event": "DarkWake",
+        "allowlisted_sleep_reason": null,
+        "sanitized_line": "2026-11-06 20:51:02 +0800 DarkWake DarkWake state transition; reason/device/network/process/battery fields removed",
+        "original_line_sha256": "4740b15a5fb758b0bb47ec6991209d0ed8e03a8573a1d4194cf6e5b7d17d00d6",
+        "sanitized_line_sha256": "d09ba2823f4d64659e4d038f1b5ecb21695c0e5dd521c94cf045da37f8a3cad1"
+      },
+      {
+        "at_local": "2026-11-06T20:51:04+08:00",
+        "event": "Sleep",
+        "allowlisted_sleep_reason": "Sleep Service Back to Sleep",
+        "sanitized_line": "2026-11-06 20:51:04 +0800 Sleep Entering Sleep state due to 'Sleep Service Back to Sleep'; extra fields removed",
+        "original_line_sha256": "8d4f326fdec3dc27697c3c8b3431616b2a12341c22d9d6c5bd5bb87de409a0e1",
+        "sanitized_line_sha256": "17aa10cc9568d6d0abd6e224d003c1a13e716930e059f028f1076889bfa11844"
+      },
+      {
+        "at_local": "2026-11-06T20:53:15+08:00",
+        "event": "DarkWake",
+        "allowlisted_sleep_reason": null,
+        "sanitized_line": "2026-11-06 20:53:15 +0800 DarkWake DarkWake state transition; reason/device/network/process/battery fields removed",
+        "original_line_sha256": "d9396deba522a69811187a4fb58c9d5d88c0d07b1c94cc097be8cff66d57aeee",
+        "sanitized_line_sha256": "01cf9dffbb97a2f7144844d3913b31821a4b46e70ef7c8cd9a416d79b78bdaf5"
+      },
+      {
+        "at_local": "2026-11-06T20:53:20+08:00",
+        "event": "Sleep",
+        "allowlisted_sleep_reason": "Maintenance Sleep",
+        "sanitized_line": "2026-11-06 20:53:20 +0800 Sleep Entering Sleep state due to 'Maintenance Sleep'; extra fields removed",
+        "original_line_sha256": "f2cbfc2ebbf22b3ea95bfcb26dfeac2cacc82d3fbb8a3bd2d98671e6e1578fb1",
+        "sanitized_line_sha256": "1d5fbfb6052bc522c4e6221c1edeffca2d1c52337742a8e685371a6d9c32f36e"
+      },
+      {
+        "at_local": "2026-11-06T21:09:09+08:00",
+        "event": "DarkWake",
+        "allowlisted_sleep_reason": null,
+        "sanitized_line": "2026-11-06 21:09:09 +0800 DarkWake DarkWake state transition; reason/device/network/process/battery fields removed",
+        "original_line_sha256": "936403db97cabeeddcb30e2781f89e86a4f4604e20b89132a142c3a1800bb909",
+        "sanitized_line_sha256": "bb50310785f30eae74d80d5b583260eaf504b0f3f243d0d8e2971e30cc3ebf5d"
+      },
+      {
+        "at_local": "2026-11-06T21:09:11+08:00",
+        "event": "Sleep",
+        "allowlisted_sleep_reason": "Sleep Service Back to Sleep",
+        "sanitized_line": "2026-11-06 21:09:11 +0800 Sleep Entering Sleep state due to 'Sleep Service Back to Sleep'; extra fields removed",
+        "original_line_sha256": "4ad8512ea3171fdfc5330c17b81322e809fa979959706004eb2b7551cb2acd78",
+        "sanitized_line_sha256": "a4773d6aa7fd42b3032eabee62ffe4694e976706d9ec263419ba8d479e661cff"
+      },
+      {
+        "at_local": "2026-11-06T21:25:10+08:00",
+        "event": "DarkWake",
+        "allowlisted_sleep_reason": null,
+        "sanitized_line": "2026-11-06 21:25:10 +0800 DarkWake DarkWake state transition; reason/device/network/process/battery fields removed",
+        "original_line_sha256": "972dd42bce458df350402654454e7aab8d9bdbe28634365e00f13a2096f0c0fb",
+        "sanitized_line_sha256": "69944344feaf30e3d9672860e6506646aba0d6b29711e757d67406dfbedad80a"
+      },
+      {
+        "at_local": "2026-11-06T21:25:12+08:00",
+        "event": "Sleep",
+        "allowlisted_sleep_reason": "Sleep Service Back to Sleep",
+        "sanitized_line": "2026-11-06 21:25:12 +0800 Sleep Entering Sleep state due to 'Sleep Service Back to Sleep'; extra fields removed",
+        "original_line_sha256": "74fe9f4cca153aa3836d59ab1f008e9774cbda9b1ad2c932c9d93fcc91dd83d7",
+        "sanitized_line_sha256": "ab8b1df7f2e635117c6ce007e8378333dfd357a5e5a1db880705fecfdfdb4c0c"
+      },
+      {
+        "at_local": "2026-11-06T21:42:40+08:00",
+        "event": "DarkWake",
+        "allowlisted_sleep_reason": null,
+        "sanitized_line": "2026-11-06 21:42:40 +0800 DarkWake DarkWake state transition; reason/device/network/process/battery fields removed",
+        "original_line_sha256": "87f53771e49cb3ea8f1ee72498b4f9fad87bfe0ff7dc093669d35501ecaf9c1f",
+        "sanitized_line_sha256": "bd16389d1bd62215ca56507b6f979de65aa8c94c3b97751ec5b401e675158acd"
+      },
+      {
+        "at_local": "2026-11-06T21:42:42+08:00",
+        "event": "Sleep",
+        "allowlisted_sleep_reason": "Sleep Service Back to Sleep",
+        "sanitized_line": "2026-11-06 21:42:42 +0800 Sleep Entering Sleep state due to 'Sleep Service Back to Sleep'; extra fields removed",
+        "original_line_sha256": "0485b54d5de71acd0e00720d969539d649e3fecfeffb51365648cd8f5e371cd9",
+        "sanitized_line_sha256": "5cd529cb594fa1261f775d5d098492c81218cdfd226bc82528cd2242954c6a7d"
+      },
+      {
+        "at_local": "2026-11-06T21:54:16+08:00",
+        "event": "DarkWake",
+        "allowlisted_sleep_reason": null,
+        "sanitized_line": "2026-11-06 21:54:16 +0800 DarkWake DarkWake state transition; reason/device/network/process/battery fields removed",
+        "original_line_sha256": "bfb696bb2df1ae26c61f97203d0dbc839cc81fd9977520467c96d49ae52b3c9c",
+        "sanitized_line_sha256": "21a1dd226f7a02596ed37d7ebad553e9a4883aa67dda91247ee4439d1361c622"
+      },
+      {
+        "at_local": "2026-11-06T21:54:23+08:00",
+        "event": "Sleep",
+        "allowlisted_sleep_reason": "Maintenance Sleep",
+        "sanitized_line": "2026-11-06 21:54:23 +0800 Sleep Entering Sleep state due to 'Maintenance Sleep'; extra fields removed",
+        "original_line_sha256": "07bbe1cfc595b025d846ed2e4b872e890d1b64f11c102e6c643829a1492560d6",
+        "sanitized_line_sha256": "81be924076adaff609bebf80a94654c20cee6c2aeaee077b4632b6ba10957333"
+      },
+      {
+        "at_local": "2026-11-06T22:10:19+08:00",
+        "event": "DarkWake",
+        "allowlisted_sleep_reason": null,
+        "sanitized_line": "2026-11-06 22:10:19 +0800 DarkWake DarkWake state transition; reason/device/network/process/battery fields removed",
+        "original_line_sha256": "862994aa53b28c431df3c9a2c462ddc408b71794170d6e0925c4393a8fbb783d",
+        "sanitized_line_sha256": "5a8866fd9d94d0329f8104c917cf104f27671ca9b09571069acd490f73cd3f1a"
+      },
+      {
+        "at_local": "2026-11-06T22:10:21+08:00",
+        "event": "Sleep",
+        "allowlisted_sleep_reason": "Sleep Service Back to Sleep",
+        "sanitized_line": "2026-11-06 22:10:21 +0800 Sleep Entering Sleep state due to 'Sleep Service Back to Sleep'; extra fields removed",
+        "original_line_sha256": "0d7f734c38de61413cae441ebb750716e2122979e59ecc688a9775a083e1a72e",
+        "sanitized_line_sha256": "26c1ba0761f3444c9a506bb8c420cfa5450a80c3176de801be36fc359b39e90b"
+      },
+      {
+        "at_local": "2026-11-06T22:26:43+08:00",
+        "event": "DarkWake",
+        "allowlisted_sleep_reason": null,
+        "sanitized_line": "2026-11-06 22:26:43 +0800 DarkWake DarkWake state transition; reason/device/network/process/battery fields removed",
+        "original_line_sha256": "427734d99915bb86ef04f941616e3872f23e9e8d440e32c73062a1e4cd3e4283",
+        "sanitized_line_sha256": "4f40787dce427fcd2e5909ae2df0e320cdb23b442f265943d6f0b6aa81358176"
+      },
+      {
+        "at_local": "2026-11-06T22:26:45+08:00",
+        "event": "Sleep",
+        "allowlisted_sleep_reason": "Sleep Service Back to Sleep",
+        "sanitized_line": "2026-11-06 22:26:45 +0800 Sleep Entering Sleep state due to 'Sleep Service Back to Sleep'; extra fields removed",
+        "original_line_sha256": "4b61ad0b884b6e66c9c025556db41787f77c1fc7f023f6b4608b0d854ec3e567",
+        "sanitized_line_sha256": "d83faabeb1d628db71515ba9138a624ced5d6c47d943ac6e3399bfc708166073"
+      },
+      {
+        "at_local": "2026-11-06T22:43:37+08:00",
+        "event": "DarkWake",
+        "allowlisted_sleep_reason": null,
+        "sanitized_line": "2026-11-06 22:43:37 +0800 DarkWake DarkWake state transition; reason/device/network/process/battery fields removed",
+        "original_line_sha256": "284582c8f985a3d31b3a6e8f9f941f99013bb1d451568d96748763452e8bab05",
+        "sanitized_line_sha256": "e03fb4e983e3e8966f7f4c5f2d4c72d1026a76e9d054d6009aac45f5e6f0b003"
+      },
+      {
+        "at_local": "2026-11-06T22:43:39+08:00",
+        "event": "Sleep",
+        "allowlisted_sleep_reason": "Sleep Service Back to Sleep",
+        "sanitized_line": "2026-11-06 22:43:39 +0800 Sleep Entering Sleep state due to 'Sleep Service Back to Sleep'; extra fields removed",
+        "original_line_sha256": "7375265f0cf1587b641e97a5ea2626d9b4c80842b5660bf179521f0f6af6ac7c",
+        "sanitized_line_sha256": "8dbbfa7dff53bc66dcde3f3ba449fadca53366e7983b9e02b7e02c643691bb93"
+      },
+      {
+        "at_local": "2026-11-06T22:49:36+08:00",
+        "event": "DarkWake",
+        "allowlisted_sleep_reason": null,
+        "sanitized_line": "2026-11-06 22:49:36 +0800 DarkWake DarkWake state transition; reason/device/network/process/battery fields removed",
+        "original_line_sha256": "0560842f883fcbde06a0a9cbff7f7abcd27ecaa09c5314d7bbe03090a70cc7d8",
+        "sanitized_line_sha256": "6f448d65d8412d452bd5c381763bae5519c00dcb7eebb10a16758c2afae0b82b"
+      },
+      {
+        "at_local": "2026-11-06T22:49:41+08:00",
+        "event": "Sleep",
+        "allowlisted_sleep_reason": "Maintenance Sleep",
+        "sanitized_line": "2026-11-06 22:49:41 +0800 Sleep Entering Sleep state due to 'Maintenance Sleep'; extra fields removed",
+        "original_line_sha256": "8a29f067430fb26701728bab472781fffd1cdbb54e4f6c348e4438669798af44",
+        "sanitized_line_sha256": "756484a201c46da4b67a62cef76ef62efc9b32f3867561967cbc7ef47f4e10a9"
+      },
+      {
+        "at_local": "2026-11-06T22:50:30+08:00",
+        "event": "DarkWake",
+        "allowlisted_sleep_reason": null,
+        "sanitized_line": "2026-11-06 22:50:30 +0800 DarkWake DarkWake state transition; reason/device/network/process/battery fields removed",
+        "original_line_sha256": "e128ffb78c583226d6a28cf63fc3334dff15453a53cd5c7993faf8d5c473a545",
+        "sanitized_line_sha256": "5870881ec328f55d29ed32e6ee7a76e144faa3e781a538dfd2154c89778c281a"
+      },
+      {
+        "at_local": "2026-11-06T22:50:35+08:00",
+        "event": "Sleep",
+        "allowlisted_sleep_reason": "Maintenance Sleep",
+        "sanitized_line": "2026-11-06 22:50:35 +0800 Sleep Entering Sleep state due to 'Maintenance Sleep'; extra fields removed",
+        "original_line_sha256": "84f39994deaf810a2b53e12060b2c37fd382a9becf10624587614c6e11d32bbc",
+        "sanitized_line_sha256": "6cedc7bf3b93be21ade714236649bf0cb5d44ad40b5cd8c5bff6b555b27fde57"
+      },
+      {
+        "at_local": "2026-11-06T22:51:23+08:00",
+        "event": "DarkWake",
+        "allowlisted_sleep_reason": null,
+        "sanitized_line": "2026-11-06 22:51:23 +0800 DarkWake DarkWake state transition; reason/device/network/process/battery fields removed",
+        "original_line_sha256": "f179a95798ab7922d20fac16f0a341a93531c14eacfb9248aac676e05661572f",
+        "sanitized_line_sha256": "4594180a3f9730d4a7e7bdecaac475e1429f9b3597100411f3190eea29a53085"
+      },
+      {
+        "at_local": "2026-11-06T22:51:31+08:00",
+        "event": "Sleep",
+        "allowlisted_sleep_reason": "Maintenance Sleep",
+        "sanitized_line": "2026-11-06 22:51:31 +0800 Sleep Entering Sleep state due to 'Maintenance Sleep'; extra fields removed",
+        "original_line_sha256": "c95383085ebd64752afcf6c5374701b2cf3bffcfa0535e7cfe40f5de8b0364bf",
+        "sanitized_line_sha256": "24919f82e3a94f49c15928c645ca315649c7843e912ad5979a3e93ee6224ed37"
+      },
+      {
+        "at_local": "2026-11-06T22:52:19+08:00",
+        "event": "DarkWake",
+        "allowlisted_sleep_reason": null,
+        "sanitized_line": "2026-11-06 22:52:19 +0800 DarkWake DarkWake state transition; reason/device/network/process/battery fields removed",
+        "original_line_sha256": "ad9e7c48658d11d2738a87c5101451211e2a207a6d843e0fc58077a0a8307c9c",
+        "sanitized_line_sha256": "6cbd2ef1a4f4fc7f13f88b8089030625df70e6478a8603344985df76c8345be4"
+      },
+      {
+        "at_local": "2026-11-06T22:52:24+08:00",
+        "event": "Sleep",
+        "allowlisted_sleep_reason": "Maintenance Sleep",
+        "sanitized_line": "2026-11-06 22:52:24 +0800 Sleep Entering Sleep state due to 'Maintenance Sleep'; extra fields removed",
+        "original_line_sha256": "edd5d24d1664a4b97c7326e63175aa75c8aa22eda54564265c3e87d276fad1c9",
+        "sanitized_line_sha256": "f695fb0e02f892869db1566895676bddb2973b802c2afa1cfadfd9d364e15ac9"
+      },
+      {
+        "at_local": "2026-11-06T22:53:13+08:00",
+        "event": "DarkWake",
+        "allowlisted_sleep_reason": null,
+        "sanitized_line": "2026-11-06 22:53:13 +0800 DarkWake DarkWake state transition; reason/device/network/process/battery fields removed",
+        "original_line_sha256": "e5bac6404d7d831bfe79d8d54f1796a52c141f61d1e95e8583a8b2875984e9af",
+        "sanitized_line_sha256": "784163f33a71346c04b9fb344b35ade934dcf752c57be046fab19bc18fc08657"
+      },
+      {
+        "at_local": "2026-11-06T22:53:18+08:00",
+        "event": "Sleep",
+        "allowlisted_sleep_reason": "Maintenance Sleep",
+        "sanitized_line": "2026-11-06 22:53:18 +0800 Sleep Entering Sleep state due to 'Maintenance Sleep'; extra fields removed",
+        "original_line_sha256": "3bad82875e289cd490cb19e62dc6a1141e937acafc8fcecd7b6d3aa6a40bd40a",
+        "sanitized_line_sha256": "883b813c1a9d67ffe8a8318fd285607d16280e67505e81b61dd95fb4199782bb"
+      },
+      {
+        "at_local": "2026-11-06T22:54:06+08:00",
+        "event": "DarkWake",
+        "allowlisted_sleep_reason": null,
+        "sanitized_line": "2026-11-06 22:54:06 +0800 DarkWake DarkWake state transition; reason/device/network/process/battery fields removed",
+        "original_line_sha256": "8068cc1f2cd8866b3f26381320c44e6559791a15d50f4c6858338d0c1315bea8",
+        "sanitized_line_sha256": "b17d46efbd32c0171ce1e9c0cefb6fdbc6a8a769b575c9c40811f4f7a2a85434"
+      },
+      {
+        "at_local": "2026-11-06T22:54:12+08:00",
+        "event": "Sleep",
+        "allowlisted_sleep_reason": "Maintenance Sleep",
+        "sanitized_line": "2026-11-06 22:54:12 +0800 Sleep Entering Sleep state due to 'Maintenance Sleep'; extra fields removed",
+        "original_line_sha256": "accc5e996a923c5b501397aa6c6fea2884433002d110d2ee4ddf524df53fdcff",
+        "sanitized_line_sha256": "7c1028d10b235f94b84f33b435c8e35c02f221816ab27ad623d21ac5a4e035b8"
+      },
+      {
+        "at_local": "2026-11-06T22:55:16+08:00",
+        "event": "DarkWake",
+        "allowlisted_sleep_reason": null,
+        "sanitized_line": "2026-11-06 22:55:16 +0800 DarkWake DarkWake state transition; reason/device/network/process/battery fields removed",
+        "original_line_sha256": "7bc037d2a3a9ad992995d8dcff204eff07798b6c311477dc188fdb8b22b29991",
+        "sanitized_line_sha256": "4653031f3b04914e2a10ca9c8bcfcbcbd8b3f6448dca89b76a9ec40b7d35dd74"
+      },
+      {
+        "at_local": "2026-11-06T22:55:21+08:00",
+        "event": "Sleep",
+        "allowlisted_sleep_reason": "Maintenance Sleep",
+        "sanitized_line": "2026-11-06 22:55:21 +0800 Sleep Entering Sleep state due to 'Maintenance Sleep'; extra fields removed",
+        "original_line_sha256": "004bc4ee7ccc4baf94b4e0fb09b4714132a08d045e03e775cbc237528aa6391a",
+        "sanitized_line_sha256": "8b761fa86b5c56020694c849ad6240c4fd25d276a60c7df47911a69a92f2c9d9"
+      },
+      {
+        "at_local": "2026-11-06T22:59:43+08:00",
+        "event": "Wake",
+        "allowlisted_sleep_reason": null,
+        "sanitized_line": "2026-11-06 22:59:43 +0800 Wake Wake state transition; reason/device/network/process/battery fields removed",
+        "original_line_sha256": "8949be10ec2941d3a45858cea9157cc64f8b26ca773fdd88701b0d8365339d68",
+        "sanitized_line_sha256": "b8e453980c1f5c942e9f4284d2fb410daea15995a33996403d5f115d07ec0a4f"
+      }
+    ],
+    "sleep_intervals": [
+      {
+        "start_local": "2026-11-06T18:52:19+08:00",
+        "end_local": "2026-11-06T18:57:04+08:00",
+        "intersect_start_utc": "2026-11-06T10:52:19+00:00",
+        "intersect_end_utc": "2026-11-06T10:57:04+00:00",
+        "end_state": "DarkWake",
+        "seconds": 285.0,
+        "sleep_event_sha256": "07821962f2afa86edc85e8f2ca164ad080c6e963442f554f176ebc08b0f0ddad",
+        "end_event_sha256": "9a43d4b1991b379edc1604bf951584fecaa9a2158c3352b308f3dbf0212d48c9"
+      },
+      {
+        "start_local": "2026-11-06T18:57:15+08:00",
+        "end_local": "2026-11-06T19:12:20+08:00",
+        "intersect_start_utc": "2026-11-06T10:57:15+00:00",
+        "intersect_end_utc": "2026-11-06T11:12:20+00:00",
+        "end_state": "DarkWake",
+        "seconds": 905.0,
+        "sleep_event_sha256": "54e0a8c91d00f60a825dcab18dacb95b6b27d1892a9a45a073086df522872058",
+        "end_event_sha256": "c82038525e88fec56163212d7e2642f6e129729883cdd9a66536563cd4a6e1b7"
+      },
+      {
+        "start_local": "2026-11-06T19:12:22+08:00",
+        "end_local": "2026-11-06T19:27:40+08:00",
+        "intersect_start_utc": "2026-11-06T11:12:22+00:00",
+        "intersect_end_utc": "2026-11-06T11:27:40+00:00",
+        "end_state": "DarkWake",
+        "seconds": 918.0,
+        "sleep_event_sha256": "a5f21d6fad5868c1af9a04a04629e809bbf193002c57518066e7bdae935c93c0",
+        "end_event_sha256": "cfd9728bd9ca25c659bc85fe10b14aa0d59ddf2b6b6c78dbd547b49b19e5fac5"
+      },
+      {
+        "start_local": "2026-11-06T19:27:42+08:00",
+        "end_local": "2026-11-06T19:44:41+08:00",
+        "intersect_start_utc": "2026-11-06T11:27:42+00:00",
+        "intersect_end_utc": "2026-11-06T11:44:41+00:00",
+        "end_state": "DarkWake",
+        "seconds": 1019.0,
+        "sleep_event_sha256": "0fcf933ed87366f26132ea95470288a671aa2b79db4c16b0690905664d309fe1",
+        "end_event_sha256": "a7c0e3193fa55956f7e03cf427c1470d9c8e5d948930d0ad1a5a2a4de8ef851f"
+      },
+      {
+        "start_local": "2026-11-06T19:44:43+08:00",
+        "end_local": "2026-11-06T20:02:21+08:00",
+        "intersect_start_utc": "2026-11-06T11:44:43+00:00",
+        "intersect_end_utc": "2026-11-06T12:02:21+00:00",
+        "end_state": "DarkWake",
+        "seconds": 1058.0,
+        "sleep_event_sha256": "5abe7cad31607d242ca7b0978c7992582919edebbb0e6fc0342afa4a62435972",
+        "end_event_sha256": "1c3f63d124944928613be521572eec4e3c66367ab2dde97a8b445765ebaef1ca"
+      },
+      {
+        "start_local": "2026-11-06T20:02:23+08:00",
+        "end_local": "2026-11-06T20:18:48+08:00",
+        "intersect_start_utc": "2026-11-06T12:02:23+00:00",
+        "intersect_end_utc": "2026-11-06T12:18:48+00:00",
+        "end_state": "DarkWake",
+        "seconds": 985.0,
+        "sleep_event_sha256": "670c6a2120f4449cae7c2d4ef11147a292d47ac0892c821176fc9f7014d7e25c",
+        "end_event_sha256": "e535fa05573b0a4fa01ef4103dc1972451ad609019e2abe42a12057a2b4c5003"
+      },
+      {
+        "start_local": "2026-11-06T20:18:50+08:00",
+        "end_local": "2026-11-06T20:35:38+08:00",
+        "intersect_start_utc": "2026-11-06T12:18:50+00:00",
+        "intersect_end_utc": "2026-11-06T12:35:38+00:00",
+        "end_state": "DarkWake",
+        "seconds": 1008.0,
+        "sleep_event_sha256": "d78be7cc62469c31fe3ac6b12ceba8f5fb3924fbe73394a610db806727026899",
+        "end_event_sha256": "5da9daad0621dce787019deae26c4d8ad17f88a6f7bf9ec367ecad381ff737b9"
+      },
+      {
+        "start_local": "2026-11-06T20:35:40+08:00",
+        "end_local": "2026-11-06T20:51:02+08:00",
+        "intersect_start_utc": "2026-11-06T12:35:40+00:00",
+        "intersect_end_utc": "2026-11-06T12:51:02+00:00",
+        "end_state": "DarkWake",
+        "seconds": 922.0,
+        "sleep_event_sha256": "98170f040b12f0b6d509b47e53e929ef27e5f98e2c58b3adfc51a88e75fe6ae0",
+        "end_event_sha256": "4740b15a5fb758b0bb47ec6991209d0ed8e03a8573a1d4194cf6e5b7d17d00d6"
+      },
+      {
+        "start_local": "2026-11-06T20:51:04+08:00",
+        "end_local": "2026-11-06T20:53:15+08:00",
+        "intersect_start_utc": "2026-11-06T12:51:04+00:00",
+        "intersect_end_utc": "2026-11-06T12:53:15+00:00",
+        "end_state": "DarkWake",
+        "seconds": 131.0,
+        "sleep_event_sha256": "8d4f326fdec3dc27697c3c8b3431616b2a12341c22d9d6c5bd5bb87de409a0e1",
+        "end_event_sha256": "d9396deba522a69811187a4fb58c9d5d88c0d07b1c94cc097be8cff66d57aeee"
+      },
+      {
+        "start_local": "2026-11-06T20:53:20+08:00",
+        "end_local": "2026-11-06T21:09:09+08:00",
+        "intersect_start_utc": "2026-11-06T12:53:20+00:00",
+        "intersect_end_utc": "2026-11-06T13:09:09+00:00",
+        "end_state": "DarkWake",
+        "seconds": 949.0,
+        "sleep_event_sha256": "f2cbfc2ebbf22b3ea95bfcb26dfeac2cacc82d3fbb8a3bd2d98671e6e1578fb1",
+        "end_event_sha256": "936403db97cabeeddcb30e2781f89e86a4f4604e20b89132a142c3a1800bb909"
+      },
+      {
+        "start_local": "2026-11-06T21:09:11+08:00",
+        "end_local": "2026-11-06T21:25:10+08:00",
+        "intersect_start_utc": "2026-11-06T13:09:11+00:00",
+        "intersect_end_utc": "2026-11-06T13:25:10+00:00",
+        "end_state": "DarkWake",
+        "seconds": 959.0,
+        "sleep_event_sha256": "4ad8512ea3171fdfc5330c17b81322e809fa979959706004eb2b7551cb2acd78",
+        "end_event_sha256": "972dd42bce458df350402654454e7aab8d9bdbe28634365e00f13a2096f0c0fb"
+      },
+      {
+        "start_local": "2026-11-06T21:25:12+08:00",
+        "end_local": "2026-11-06T21:42:40+08:00",
+        "intersect_start_utc": "2026-11-06T13:25:12+00:00",
+        "intersect_end_utc": "2026-11-06T13:42:40+00:00",
+        "end_state": "DarkWake",
+        "seconds": 1048.0,
+        "sleep_event_sha256": "74fe9f4cca153aa3836d59ab1f008e9774cbda9b1ad2c932c9d93fcc91dd83d7",
+        "end_event_sha256": "87f53771e49cb3ea8f1ee72498b4f9fad87bfe0ff7dc093669d35501ecaf9c1f"
+      },
+      {
+        "start_local": "2026-11-06T21:42:42+08:00",
+        "end_local": "2026-11-06T21:54:16+08:00",
+        "intersect_start_utc": "2026-11-06T13:42:42+00:00",
+        "intersect_end_utc": "2026-11-06T13:54:16+00:00",
+        "end_state": "DarkWake",
+        "seconds": 694.0,
+        "sleep_event_sha256": "0485b54d5de71acd0e00720d969539d649e3fecfeffb51365648cd8f5e371cd9",
+        "end_event_sha256": "bfb696bb2df1ae26c61f97203d0dbc839cc81fd9977520467c96d49ae52b3c9c"
+      },
+      {
+        "start_local": "2026-11-06T21:54:23+08:00",
+        "end_local": "2026-11-06T22:10:19+08:00",
+        "intersect_start_utc": "2026-11-06T13:54:23+00:00",
+        "intersect_end_utc": "2026-11-06T14:10:19+00:00",
+        "end_state": "DarkWake",
+        "seconds": 956.0,
+        "sleep_event_sha256": "07bbe1cfc595b025d846ed2e4b872e890d1b64f11c102e6c643829a1492560d6",
+        "end_event_sha256": "862994aa53b28c431df3c9a2c462ddc408b71794170d6e0925c4393a8fbb783d"
+      },
+      {
+        "start_local": "2026-11-06T22:10:21+08:00",
+        "end_local": "2026-11-06T22:26:43+08:00",
+        "intersect_start_utc": "2026-11-06T14:10:21+00:00",
+        "intersect_end_utc": "2026-11-06T14:26:43+00:00",
+        "end_state": "DarkWake",
+        "seconds": 982.0,
+        "sleep_event_sha256": "0d7f734c38de61413cae441ebb750716e2122979e59ecc688a9775a083e1a72e",
+        "end_event_sha256": "427734d99915bb86ef04f941616e3872f23e9e8d440e32c73062a1e4cd3e4283"
+      },
+      {
+        "start_local": "2026-11-06T22:26:45+08:00",
+        "end_local": "2026-11-06T22:43:37+08:00",
+        "intersect_start_utc": "2026-11-06T14:26:45+00:00",
+        "intersect_end_utc": "2026-11-06T14:43:37+00:00",
+        "end_state": "DarkWake",
+        "seconds": 1012.0,
+        "sleep_event_sha256": "4b61ad0b884b6e66c9c025556db41787f77c1fc7f023f6b4608b0d854ec3e567",
+        "end_event_sha256": "284582c8f985a3d31b3a6e8f9f941f99013bb1d451568d96748763452e8bab05"
+      },
+      {
+        "start_local": "2026-11-06T22:43:39+08:00",
+        "end_local": "2026-11-06T22:49:36+08:00",
+        "intersect_start_utc": "2026-11-06T14:43:39+00:00",
+        "intersect_end_utc": "2026-11-06T14:49:36+00:00",
+        "end_state": "DarkWake",
+        "seconds": 357.0,
+        "sleep_event_sha256": "7375265f0cf1587b641e97a5ea2626d9b4c80842b5660bf179521f0f6af6ac7c",
+        "end_event_sha256": "0560842f883fcbde06a0a9cbff7f7abcd27ecaa09c5314d7bbe03090a70cc7d8"
+      },
+      {
+        "start_local": "2026-11-06T22:49:41+08:00",
+        "end_local": "2026-11-06T22:50:30+08:00",
+        "intersect_start_utc": "2026-11-06T14:49:41+00:00",
+        "intersect_end_utc": "2026-11-06T14:50:30+00:00",
+        "end_state": "DarkWake",
+        "seconds": 49.0,
+        "sleep_event_sha256": "8a29f067430fb26701728bab472781fffd1cdbb54e4f6c348e4438669798af44",
+        "end_event_sha256": "e128ffb78c583226d6a28cf63fc3334dff15453a53cd5c7993faf8d5c473a545"
+      },
+      {
+        "start_local": "2026-11-06T22:50:35+08:00",
+        "end_local": "2026-11-06T22:51:23+08:00",
+        "intersect_start_utc": "2026-11-06T14:50:35+00:00",
+        "intersect_end_utc": "2026-11-06T14:51:23+00:00",
+        "end_state": "DarkWake",
+        "seconds": 48.0,
+        "sleep_event_sha256": "84f39994deaf810a2b53e12060b2c37fd382a9becf10624587614c6e11d32bbc",
+        "end_event_sha256": "f179a95798ab7922d20fac16f0a341a93531c14eacfb9248aac676e05661572f"
+      },
+      {
+        "start_local": "2026-11-06T22:51:31+08:00",
+        "end_local": "2026-11-06T22:52:19+08:00",
+        "intersect_start_utc": "2026-11-06T14:51:31+00:00",
+        "intersect_end_utc": "2026-11-06T14:52:19+00:00",
+        "end_state": "DarkWake",
+        "seconds": 48.0,
+        "sleep_event_sha256": "c95383085ebd64752afcf6c5374701b2cf3bffcfa0535e7cfe40f5de8b0364bf",
+        "end_event_sha256": "ad9e7c48658d11d2738a87c5101451211e2a207a6d843e0fc58077a0a8307c9c"
+      },
+      {
+        "start_local": "2026-11-06T22:52:24+08:00",
+        "end_local": "2026-11-06T22:53:13+08:00",
+        "intersect_start_utc": "2026-11-06T14:52:24+00:00",
+        "intersect_end_utc": "2026-11-06T14:53:13+00:00",
+        "end_state": "DarkWake",
+        "seconds": 49.0,
+        "sleep_event_sha256": "edd5d24d1664a4b97c7326e63175aa75c8aa22eda54564265c3e87d276fad1c9",
+        "end_event_sha256": "e5bac6404d7d831bfe79d8d54f1796a52c141f61d1e95e8583a8b2875984e9af"
+      },
+      {
+        "start_local": "2026-11-06T22:53:18+08:00",
+        "end_local": "2026-11-06T22:54:06+08:00",
+        "intersect_start_utc": "2026-11-06T14:53:18+00:00",
+        "intersect_end_utc": "2026-11-06T14:54:06+00:00",
+        "end_state": "DarkWake",
+        "seconds": 48.0,
+        "sleep_event_sha256": "3bad82875e289cd490cb19e62dc6a1141e937acafc8fcecd7b6d3aa6a40bd40a",
+        "end_event_sha256": "8068cc1f2cd8866b3f26381320c44e6559791a15d50f4c6858338d0c1315bea8"
+      },
+      {
+        "start_local": "2026-11-06T22:54:12+08:00",
+        "end_local": "2026-11-06T22:55:16+08:00",
+        "intersect_start_utc": "2026-11-06T14:54:12+00:00",
+        "intersect_end_utc": "2026-11-06T14:55:16+00:00",
+        "end_state": "DarkWake",
+        "seconds": 64.0,
+        "sleep_event_sha256": "accc5e996a923c5b501397aa6c6fea2884433002d110d2ee4ddf524df53fdcff",
+        "end_event_sha256": "7bc037d2a3a9ad992995d8dcff204eff07798b6c311477dc188fdb8b22b29991"
+      },
+      {
+        "start_local": "2026-11-06T22:55:21+08:00",
+        "end_local": "2026-11-06T22:59:43+08:00",
+        "intersect_start_utc": "2026-11-06T14:55:21+00:00",
+        "intersect_end_utc": "2026-11-06T14:59:43+00:00",
+        "end_state": "Wake",
+        "seconds": 262.0,
+        "sleep_event_sha256": "004bc4ee7ccc4baf94b4e0fb09b4714132a08d045e03e775cbc237528aa6391a",
+        "end_event_sha256": "8949be10ec2941d3a45858cea9157cc64f8b26ca773fdd88701b0d8365339d68"
+      }
+    ],
+    "sequence_anomalies": [],
+    "method": "pair each logged actual Sleep with the next actual DarkWake or Wake, intersect with [report start, report end], sum non-overlapping intervals; exclude all intervening DarkWake-to-Sleep gaps"
+  },
+  "clock_semantics": {
+    "actual_benchmark_python": {
+      "version": "3.12.13",
+      "system": "Darwin",
+      "machine": "arm64",
+      "monotonic": {
+        "implementation": "mach_absolute_time()",
+        "monotonic": true,
+        "adjustable": false,
+        "resolution": 4.166666666666667e-08
+      },
+      "interpreter_binary_sha256": "e2605291e058fdbe3102e8185d0ac5fe0e063398de617010a6af3a42a78f05e3"
+    },
+    "cpython_official_source": {
+      "url": "https://raw.githubusercontent.com/python/cpython/v3.12.13/Python/pytime.c",
+      "sha256": "033751b3c90dd12cd40b86af11388a0a201bc44deca0e96b52b4a13da8be82c9",
+      "checked_excerpt_lines": [
+        1105,
+        1111
+      ],
+      "facts": [
+        "macOS implementation reports mach_absolute_time()",
+        "macOS monotonic clock calls mach_absolute_time()"
+      ]
+    },
+    "installed_macos_sdk": {
+      "logical_source": "<installed-macOS-SDK>/usr/include/mach/mach_time.h",
+      "sha256": "d690e304ea595ca216ed51e20aa9747e0b3bcb07446d996abe0080a231c7065f",
+      "excerpt_start_line": 53,
+      "excerpt": "uint64_t                        mach_absolute_time(void);\n\n__OSX_AVAILABLE_STARTING(__MAC_10_10, __IPHONE_8_0)\nuint64_t                        mach_approximate_time(void);\n\n/*\n * like mach_absolute_time, but advances during sleep\n */\n__OSX_AVAILABLE(10.12) __IOS_AVAILABLE(10.0) __TVOS_AVAILABLE(10.0) __WATCHOS_AVAILABLE(3.0)\nuint64_t                        mach_continuous_time(void);",
+      "fact": "mach_continuous_time is documented as like mach_absolute_time, but advances during sleep"
+    },
+    "interpretation": "The runner uses time.monotonic on this macOS runtime, which uses mach_absolute_time rather than the sleep-inclusive mach_continuous_time. Query measurements are monotonic elapsed time and are not the full calendar waiting time through host suspension."
+  },
+  "conclusions": [
+    "A substantial host sleep episode is evidenced in the formal-run interval: 24 logged sleep segments totaling 14756 seconds of log-derived overlap.",
+    "The measured UTC/query difference is 14694.376608290 seconds. Sleep and the clock distinction explain why calendar elapsed and query stopwatch totals are materially different, but the retrospective logs do not establish an exact additive attribution.",
+    "Log-derived sleep overlap exceeds the UTC/query difference by 61.623391710 seconds; report bookkeeping and second-resolution power transition logs are different measurement boundaries, and the residual is not independently decomposed.",
+    "Per-query wall-clock start/end timestamps were not preserved, so this audit cannot assign each sleep interval to specific queries or correct p50/p95 into uninterrupted user wall-clock latency.",
+    "No transport, model or answer failure is assigned a sleep/network root cause by this audit. All original failures remain in the formal denominator."
+  ],
+  "not_established": [
+    "uninterrupted production latency",
+    "per-query calendar wait through suspension",
+    "complete attribution of wall-minus-monotonic difference",
+    "cause of ConnectError or other failed questions",
+    "network outage duration",
+    "service capacity or throughput"
+  ]
+}

@@ -1,0 +1,2539 @@
+{
+  "input_sha256": "6458c0f67455f94fd740c4eed1e02e7348448fb866383ebc6f29e3c87628b249",
+  "queries": 300,
+  "label_slices": {
+    "SUPPORT": {
+      "queries": 124,
+      "correct": 101,
+      "accuracy": 0.8145161290322581,
+      "evaluation_failures": 6,
+      "predictions": {
+        "SUPPORT": 101,
+        "CONTRADICT": 6,
+        "NOT_ENOUGH_INFO": 11,
+        "INVALID": 6
+      }
+    },
+    "CONTRADICT": {
+      "queries": 64,
+      "correct": 53,
+      "accuracy": 0.828125,
+      "evaluation_failures": 6,
+      "predictions": {
+        "CONTRADICT": 53,
+        "NOT_ENOUGH_INFO": 3,
+        "INVALID": 6,
+        "SUPPORT": 2
+      }
+    },
+    "NOT_ENOUGH_INFO": {
+      "queries": 112,
+      "correct": 58,
+      "accuracy": 0.5178571428571429,
+      "evaluation_failures": 19,
+      "predictions": {
+        "INVALID": 19,
+        "NOT_ENOUGH_INFO": 58,
+        "SUPPORT": 21,
+        "CONTRADICT": 14
+      }
+    }
+  },
+  "disagreements": [
+    {
+      "query_id": "1",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": null,
+      "failure": {
+        "type": "answer_not_completed",
+        "detail": "evidence_only"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "825728",
+        "21456232",
+        "35008773",
+        "1156322"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        -1.2890625,
+        -1.4296875,
+        -2.1328125,
+        -2.234375
+      ],
+      "user_total_ms": 13810.653250024188
+    },
+    {
+      "query_id": "1019",
+      "gold_label": "SUPPORT",
+      "predicted_label": "CONTRADICT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "11603066"
+      ],
+      "selected_documents": [
+        "11603066",
+        "1225513",
+        "31844040",
+        "12370190"
+      ],
+      "cited_documents": [
+        "11603066",
+        "1225513"
+      ],
+      "selected_reranker_scores": [
+        5.671875,
+        4.671875,
+        2.640625,
+        2.1640625
+      ],
+      "user_total_ms": 30923.903083021287
+    },
+    {
+      "query_id": "1020",
+      "gold_label": "SUPPORT",
+      "predicted_label": "NOT_ENOUGH_INFO",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "9433958"
+      ],
+      "selected_documents": [
+        "9433958",
+        "10559501",
+        "26731863",
+        "34287602"
+      ],
+      "cited_documents": [
+        "10559501",
+        "9433958"
+      ],
+      "selected_reranker_scores": [
+        5.3515625,
+        4.578125,
+        1.953125,
+        0.875
+      ],
+      "user_total_ms": 58075.32299996819
+    },
+    {
+      "query_id": "1024",
+      "gold_label": "SUPPORT",
+      "predicted_label": "NOT_ENOUGH_INFO",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "5373138"
+      ],
+      "selected_documents": [
+        "5373138",
+        "24995939",
+        "37249641",
+        "8494570"
+      ],
+      "cited_documents": [
+        "5373138"
+      ],
+      "selected_reranker_scores": [
+        3.2109375,
+        1.6875,
+        1.265625,
+        1.234375
+      ],
+      "user_total_ms": 33141.21966599487
+    },
+    {
+      "query_id": "1041",
+      "gold_label": "CONTRADICT",
+      "predicted_label": "NOT_ENOUGH_INFO",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [
+        "25254425"
+      ],
+      "selected_documents": [
+        "9881829",
+        "15778034",
+        "18038955",
+        "18694784"
+      ],
+      "cited_documents": [
+        "15778034",
+        "18694784"
+      ],
+      "selected_reranker_scores": [
+        6.4296875,
+        5.6796875,
+        5.53125,
+        5.5078125
+      ],
+      "user_total_ms": 66874.80129097821
+    },
+    {
+      "query_id": "1099",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "43629704",
+        "21557614",
+        "22420524",
+        "5698494"
+      ],
+      "cited_documents": [
+        "43629704"
+      ],
+      "selected_reranker_scores": [
+        2.5390625,
+        2.234375,
+        1.65625,
+        -0.34375
+      ],
+      "user_total_ms": 33566.71587500023
+    },
+    {
+      "query_id": "1100",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "CONTRADICT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "21557614",
+        "43629704",
+        "22420524",
+        "5698494"
+      ],
+      "cited_documents": [
+        "21557614",
+        "43629704"
+      ],
+      "selected_reranker_scores": [
+        1.90625,
+        1.09375,
+        0.328125,
+        -0.890625
+      ],
+      "user_total_ms": 24680.32562499866
+    },
+    {
+      "query_id": "1132",
+      "gold_label": "SUPPORT",
+      "predicted_label": "NOT_ENOUGH_INFO",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [
+        "33499189"
+      ],
+      "selected_documents": [
+        "2714623",
+        "15972906",
+        "34905328",
+        "6936141"
+      ],
+      "cited_documents": [
+        "2714623",
+        "6936141"
+      ],
+      "selected_reranker_scores": [
+        3.46875,
+        3.1328125,
+        2.921875,
+        2.8515625
+      ],
+      "user_total_ms": 54254.837375017814
+    },
+    {
+      "query_id": "1179",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "10627801",
+        "31272411",
+        "6144337",
+        "44366096"
+      ],
+      "cited_documents": [
+        "10627801",
+        "44366096"
+      ],
+      "selected_reranker_scores": [
+        2.40625,
+        -1.4140625,
+        -1.8203125,
+        -1.9296875
+      ],
+      "user_total_ms": 50431.57308298396
+    },
+    {
+      "query_id": "1191",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": null,
+      "failure": {
+        "type": "answer_not_completed",
+        "detail": "evidence_only"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "3716075",
+        "10944947",
+        "52850476",
+        "20375264"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        -2.734375,
+        -2.984375,
+        -3.5703125,
+        -3.8515625
+      ],
+      "user_total_ms": 19493.130249960814
+    },
+    {
+      "query_id": "1207",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "18909530",
+        "13116880",
+        "38380061",
+        "27061085"
+      ],
+      "cited_documents": [
+        "18909530"
+      ],
+      "selected_reranker_scores": [
+        6.890625,
+        1.5625,
+        1.390625,
+        1.15625
+      ],
+      "user_total_ms": 26555.227542005014
+    },
+    {
+      "query_id": "1213",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "7948486",
+        "14492339",
+        "36444198",
+        "7521113"
+      ],
+      "cited_documents": [
+        "7948486"
+      ],
+      "selected_reranker_scores": [
+        3.03125,
+        2.6484375,
+        2.6015625,
+        2.5859375
+      ],
+      "user_total_ms": 47602.17254201416
+    },
+    {
+      "query_id": "1216",
+      "gold_label": "SUPPORT",
+      "predicted_label": "NOT_ENOUGH_INFO",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "24142891"
+      ],
+      "selected_documents": [
+        "24142891",
+        "31107919",
+        "19756935",
+        "27588420"
+      ],
+      "cited_documents": [
+        "19756935",
+        "24142891",
+        "27588420",
+        "31107919"
+      ],
+      "selected_reranker_scores": [
+        7.4140625,
+        0.640625,
+        -1.21875,
+        -2.53125
+      ],
+      "user_total_ms": 25378.699459019117
+    },
+    {
+      "query_id": "1226",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "11951999",
+        "33677323",
+        "36950726",
+        "2086909"
+      ],
+      "cited_documents": [
+        "11951999",
+        "33677323"
+      ],
+      "selected_reranker_scores": [
+        8.390625,
+        3.6640625,
+        3.3359375,
+        2.9609375
+      ],
+      "user_total_ms": 28206.007667002268
+    },
+    {
+      "query_id": "1245",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": null,
+      "failure": {
+        "type": "answer_not_completed",
+        "detail": "evidence_only"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "7662395",
+        "581832",
+        "1606628",
+        "4791384"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        -2.484375,
+        -4.921875,
+        -5.53125,
+        -5.640625
+      ],
+      "user_total_ms": 17222.986207983922
+    },
+    {
+      "query_id": "1266",
+      "gold_label": "SUPPORT",
+      "predicted_label": "NOT_ENOUGH_INFO",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "37480103"
+      ],
+      "selected_documents": [
+        "37480103",
+        "27123743",
+        "13831842",
+        "22007333"
+      ],
+      "cited_documents": [
+        "13831842",
+        "22007333",
+        "27123743",
+        "37480103"
+      ],
+      "selected_reranker_scores": [
+        8.46875,
+        2.84375,
+        2.046875,
+        1.3125
+      ],
+      "user_total_ms": 64188.285291951615
+    },
+    {
+      "query_id": "1274",
+      "gold_label": "SUPPORT",
+      "predicted_label": "NOT_ENOUGH_INFO",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 0.6666666666666666,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [
+        "4406819"
+      ],
+      "selected_documents": [
+        "27731651",
+        "4406819",
+        "22632303",
+        "7481159"
+      ],
+      "cited_documents": [
+        "27731651",
+        "4406819"
+      ],
+      "selected_reranker_scores": [
+        5.984375,
+        5.3125,
+        4.7109375,
+        4.671875
+      ],
+      "user_total_ms": 44882.61508301366
+    },
+    {
+      "query_id": "1278",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "CONTRADICT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "1454773",
+        "49432306",
+        "1900152",
+        "52180874"
+      ],
+      "cited_documents": [
+        "1454773",
+        "1900152",
+        "49432306",
+        "52180874"
+      ],
+      "selected_reranker_scores": [
+        2.171875,
+        0.640625,
+        -0.71875,
+        -0.765625
+      ],
+      "user_total_ms": 33736.710875004064
+    },
+    {
+      "query_id": "1279",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "1454773",
+        "11335781",
+        "49432306",
+        "1900152"
+      ],
+      "cited_documents": [
+        "11335781",
+        "1454773",
+        "49432306"
+      ],
+      "selected_reranker_scores": [
+        2.515625,
+        1.734375,
+        0.203125,
+        0.203125
+      ],
+      "user_total_ms": 29030.690208019223
+    },
+    {
+      "query_id": "128",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": null,
+      "failure": {
+        "type": "answer_not_completed",
+        "detail": "evidence_only"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "1122279",
+        "25175997",
+        "8290953",
+        "23513718"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        -1.6640625,
+        -1.703125,
+        -2.0,
+        -2.5859375
+      ],
+      "user_total_ms": 15536.877000005916
+    },
+    {
+      "query_id": "1280",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "29214508",
+        "37768883",
+        "38805486",
+        "36233757"
+      ],
+      "cited_documents": [
+        "29214508",
+        "36233757",
+        "37768883"
+      ],
+      "selected_reranker_scores": [
+        5.7890625,
+        4.109375,
+        3.359375,
+        3.0234375
+      ],
+      "user_total_ms": 68421.79533402668
+    },
+    {
+      "query_id": "1282",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "23649163",
+        "16705338",
+        "10548391",
+        "24916604"
+      ],
+      "cited_documents": [
+        "23649163"
+      ],
+      "selected_reranker_scores": [
+        1.765625,
+        -4.71875,
+        -5.8515625,
+        -6.1171875
+      ],
+      "user_total_ms": 48199.50537499972
+    },
+    {
+      "query_id": "1292",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "CONTRADICT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "56893404",
+        "25571386",
+        "5567005",
+        "17656445"
+      ],
+      "cited_documents": [
+        "56893404"
+      ],
+      "selected_reranker_scores": [
+        1.78125,
+        -0.765625,
+        -1.140625,
+        -1.28125
+      ],
+      "user_total_ms": 50878.07879195316
+    },
+    {
+      "query_id": "1303",
+      "gold_label": "CONTRADICT",
+      "predicted_label": null,
+      "failure": {
+        "type": "answer_not_completed",
+        "detail": "evidence_only"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [
+        "12631697"
+      ],
+      "selected_documents": [
+        "25970224",
+        "37673301",
+        "52175065",
+        "40631095"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        -0.96875,
+        -3.890625,
+        -4.546875,
+        -4.703125
+      ],
+      "user_total_ms": 19457.23858301062
+    },
+    {
+      "query_id": "132",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": null,
+      "failure": {
+        "type": "answer_not_completed",
+        "detail": "evidence_only"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "27615329",
+        "2443495",
+        "3866315",
+        "9159125"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        -0.296875,
+        -0.34375,
+        -0.375,
+        -0.921875
+      ],
+      "user_total_ms": 19849.001540977042
+    },
+    {
+      "query_id": "1332",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "CONTRADICT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "39264456",
+        "35766603",
+        "12705056",
+        "24998637"
+      ],
+      "cited_documents": [
+        "39264456"
+      ],
+      "selected_reranker_scores": [
+        2.234375,
+        1.1875,
+        1.15625,
+        0.828125
+      ],
+      "user_total_ms": 41206.027666979935
+    },
+    {
+      "query_id": "1337",
+      "gold_label": "SUPPORT",
+      "predicted_label": "NOT_ENOUGH_INFO",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "20231138"
+      ],
+      "selected_documents": [
+        "20231138",
+        "1635872",
+        "7820043",
+        "15248287"
+      ],
+      "cited_documents": [
+        "20231138"
+      ],
+      "selected_reranker_scores": [
+        4.640625,
+        2.046875,
+        0.4375,
+        0.21875
+      ],
+      "user_total_ms": 56787.94845798984
+    },
+    {
+      "query_id": "1344",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "6896063",
+        "9559146",
+        "17717391",
+        "3230557"
+      ],
+      "cited_documents": [
+        "6896063",
+        "9559146"
+      ],
+      "selected_reranker_scores": [
+        7.3359375,
+        4.171875,
+        1.875,
+        1.4375
+      ],
+      "user_total_ms": 52749.33233298361
+    },
+    {
+      "query_id": "1362",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": null,
+      "failure": {
+        "type": "answer_not_completed",
+        "detail": "evidence_only"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "1122279",
+        "23513718",
+        "79447",
+        "8290953"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        -2.2421875,
+        -2.65625,
+        -2.8671875,
+        -2.890625
+      ],
+      "user_total_ms": 16189.462375012226
+    },
+    {
+      "query_id": "1363",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": null,
+      "failure": {
+        "type": "answer_not_completed",
+        "detail": "evidence_only"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "1122279",
+        "79447",
+        "8290953",
+        "3896759"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        -2.3203125,
+        -2.8515625,
+        -3.3671875,
+        -3.609375
+      ],
+      "user_total_ms": 15475.616083014756
+    },
+    {
+      "query_id": "1368",
+      "gold_label": "SUPPORT",
+      "predicted_label": "NOT_ENOUGH_INFO",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "2425364"
+      ],
+      "selected_documents": [
+        "2425364",
+        "23267371",
+        "30720103",
+        "8856690"
+      ],
+      "cited_documents": [
+        "23267371",
+        "2425364",
+        "30720103",
+        "8856690"
+      ],
+      "selected_reranker_scores": [
+        6.234375,
+        -0.359375,
+        -0.65625,
+        -1.3828125
+      ],
+      "user_total_ms": 28726.540833013132
+    },
+    {
+      "query_id": "1385",
+      "gold_label": "SUPPORT",
+      "predicted_label": "CONTRADICT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "306006"
+      ],
+      "selected_documents": [
+        "306006",
+        "9283422",
+        "12265561",
+        "994800"
+      ],
+      "cited_documents": [
+        "306006",
+        "9283422"
+      ],
+      "selected_reranker_scores": [
+        6.2109375,
+        2.859375,
+        -1.03125,
+        -1.625
+      ],
+      "user_total_ms": 22164.32233399246
+    },
+    {
+      "query_id": "183",
+      "gold_label": "CONTRADICT",
+      "predicted_label": "NOT_ENOUGH_INFO",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "12827098"
+      ],
+      "selected_documents": [
+        "12827098",
+        "7521113",
+        "22973574",
+        "22406695"
+      ],
+      "cited_documents": [
+        "12827098",
+        "22406695",
+        "22973574",
+        "7521113"
+      ],
+      "selected_reranker_scores": [
+        3.75,
+        2.90625,
+        2.2421875,
+        2.1015625
+      ],
+      "user_total_ms": 79331.872166018
+    },
+    {
+      "query_id": "208",
+      "gold_label": "SUPPORT",
+      "predicted_label": "CONTRADICT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "13519661"
+      ],
+      "selected_documents": [
+        "13519661",
+        "17088791",
+        "9394119",
+        "20886584"
+      ],
+      "cited_documents": [
+        "13519661"
+      ],
+      "selected_reranker_scores": [
+        6.2890625,
+        -0.671875,
+        -1.015625,
+        -1.53125
+      ],
+      "user_total_ms": 37938.005750009324
+    },
+    {
+      "query_id": "213",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "CONTRADICT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "27054878",
+        "20887554",
+        "21048969",
+        "25028913"
+      ],
+      "cited_documents": [
+        "20887554",
+        "21048969",
+        "25028913",
+        "27054878"
+      ],
+      "selected_reranker_scores": [
+        5.6015625,
+        3.8984375,
+        3.875,
+        1.078125
+      ],
+      "user_total_ms": 31469.082084018737
+    },
+    {
+      "query_id": "268",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "14865329",
+        "1568684",
+        "36838958",
+        "25687558"
+      ],
+      "cited_documents": [
+        "14865329",
+        "36838958"
+      ],
+      "selected_reranker_scores": [
+        0.78125,
+        0.65625,
+        0.609375,
+        0.5
+      ],
+      "user_total_ms": 45289.539791992866
+    },
+    {
+      "query_id": "269",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "CONTRADICT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "14865329",
+        "25687558",
+        "36838958",
+        "29381091"
+      ],
+      "cited_documents": [
+        "14865329",
+        "29381091",
+        "36838958"
+      ],
+      "selected_reranker_scores": [
+        0.46875,
+        0.109375,
+        0.0,
+        -0.625
+      ],
+      "user_total_ms": 41173.75441698823
+    },
+    {
+      "query_id": "3",
+      "gold_label": "SUPPORT",
+      "predicted_label": "NOT_ENOUGH_INFO",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "14717500"
+      ],
+      "selected_documents": [
+        "2739854",
+        "23389795",
+        "1388704",
+        "14717500"
+      ],
+      "cited_documents": [
+        "1388704",
+        "14717500",
+        "23389795",
+        "2739854"
+      ],
+      "selected_reranker_scores": [
+        2.21875,
+        -0.28125,
+        -0.28125,
+        -0.40625
+      ],
+      "user_total_ms": 42247.79016699176
+    },
+    {
+      "query_id": "324",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": null,
+      "failure": {
+        "type": "answer_not_completed",
+        "detail": "evidence_only"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "2014909",
+        "19510470",
+        "24612804",
+        "22174015"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        -0.5625,
+        -1.1328125,
+        -1.453125,
+        -1.484375
+      ],
+      "user_total_ms": 20499.231041991152
+    },
+    {
+      "query_id": "343",
+      "gold_label": "SUPPORT",
+      "predicted_label": "NOT_ENOUGH_INFO",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "5884524"
+      ],
+      "selected_documents": [
+        "23783727",
+        "6158879",
+        "7873737",
+        "5884524"
+      ],
+      "cited_documents": [
+        "23783727",
+        "5884524",
+        "6158879",
+        "7873737"
+      ],
+      "selected_reranker_scores": [
+        5.5,
+        3.03125,
+        2.28125,
+        1.9921875
+      ],
+      "user_total_ms": 91630.0027500256
+    },
+    {
+      "query_id": "350",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "16927286",
+        "23342686",
+        "13552682",
+        "9505448"
+      ],
+      "cited_documents": [
+        "13552682",
+        "16927286",
+        "23342686",
+        "9505448"
+      ],
+      "selected_reranker_scores": [
+        3.84375,
+        3.7578125,
+        -1.6171875,
+        -2.0234375
+      ],
+      "user_total_ms": 33037.645582982805
+    },
+    {
+      "query_id": "354",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "CONTRADICT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "8774475",
+        "1241113",
+        "1897324",
+        "16086778"
+      ],
+      "cited_documents": [
+        "8774475"
+      ],
+      "selected_reranker_scores": [
+        8.296875,
+        4.1015625,
+        2.4921875,
+        0.921875
+      ],
+      "user_total_ms": 32901.10324998386
+    },
+    {
+      "query_id": "384",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "CONTRADICT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "581832",
+        "25451374",
+        "51972698",
+        "8582337"
+      ],
+      "cited_documents": [
+        "25451374",
+        "581832"
+      ],
+      "selected_reranker_scores": [
+        4.6953125,
+        3.3671875,
+        2.9765625,
+        1.828125
+      ],
+      "user_total_ms": 62883.54166701902
+    },
+    {
+      "query_id": "436",
+      "gold_label": "SUPPORT",
+      "predicted_label": null,
+      "failure": {
+        "type": "error",
+        "detail": "provider or retrieval unavailable",
+        "error_type": "TimeoutError",
+        "failure_phase": "generation"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "14637235"
+      ],
+      "selected_documents": [
+        "14637235",
+        "38131471",
+        "20630805",
+        "14332945"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        8.4609375,
+        0.1875,
+        -0.1875,
+        -0.328125
+      ],
+      "user_total_ms": 75493.02595795598
+    },
+    {
+      "query_id": "437",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "CONTRADICT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "5765455",
+        "3391547",
+        "2359152",
+        "39851630"
+      ],
+      "cited_documents": [
+        "3391547",
+        "5765455"
+      ],
+      "selected_reranker_scores": [
+        3.96875,
+        2.7578125,
+        2.6640625,
+        2.3515625
+      ],
+      "user_total_ms": 33468.78379199188
+    },
+    {
+      "query_id": "475",
+      "gold_label": "SUPPORT",
+      "predicted_label": null,
+      "failure": {
+        "type": "answer_not_completed",
+        "detail": "evidence_only"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [
+        "18678095"
+      ],
+      "selected_documents": [
+        "23576165",
+        "195689757",
+        "8724666",
+        "20672596"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        -0.453125,
+        -0.6875,
+        -1.125,
+        -1.265625
+      ],
+      "user_total_ms": 15196.295417030342
+    },
+    {
+      "query_id": "478",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "CONTRADICT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "14767844",
+        "34854444",
+        "10562341",
+        "19238"
+      ],
+      "cited_documents": [
+        "14767844"
+      ],
+      "selected_reranker_scores": [
+        5.2734375,
+        3.359375,
+        2.7734375,
+        0.828125
+      ],
+      "user_total_ms": 43785.63787502935
+    },
+    {
+      "query_id": "502",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": null,
+      "failure": {
+        "type": "answer_not_completed",
+        "detail": "evidence_only"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "36211049",
+        "26611094",
+        "10509344",
+        "17626822"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        -0.9453125,
+        -1.9140625,
+        -2.34375,
+        -2.3828125
+      ],
+      "user_total_ms": 16865.833958028816
+    },
+    {
+      "query_id": "507",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "7433668",
+        "30774694",
+        "1386103",
+        "22908536"
+      ],
+      "cited_documents": [
+        "30774694",
+        "7433668"
+      ],
+      "selected_reranker_scores": [
+        7.578125,
+        3.84375,
+        1.84375,
+        1.1875
+      ],
+      "user_total_ms": 43115.52908399608
+    },
+    {
+      "query_id": "514",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "16256507",
+        "4462079",
+        "30720103",
+        "36960449"
+      ],
+      "cited_documents": [
+        "16256507"
+      ],
+      "selected_reranker_scores": [
+        7.21875,
+        4.015625,
+        3.7265625,
+        3.1796875
+      ],
+      "user_total_ms": 60522.23645802587
+    },
+    {
+      "query_id": "551",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "CONTRADICT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "8903143",
+        "34905328",
+        "33499189",
+        "18758057"
+      ],
+      "cited_documents": [
+        "33499189",
+        "8903143"
+      ],
+      "selected_reranker_scores": [
+        4.171875,
+        1.9375,
+        1.53125,
+        0.625
+      ],
+      "user_total_ms": 63219.82170798583
+    },
+    {
+      "query_id": "554",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "9225850",
+        "28015516",
+        "27093166",
+        "4911006"
+      ],
+      "cited_documents": [
+        "27093166",
+        "28015516",
+        "4911006",
+        "9225850"
+      ],
+      "selected_reranker_scores": [
+        3.78125,
+        2.6875,
+        2.5390625,
+        2.1015625
+      ],
+      "user_total_ms": 29550.42424995918
+    },
+    {
+      "query_id": "560",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "13798951",
+        "18546584",
+        "29347970",
+        "22517564"
+      ],
+      "cited_documents": [
+        "13798951",
+        "18546584",
+        "22517564"
+      ],
+      "selected_reranker_scores": [
+        4.8046875,
+        2.671875,
+        2.4921875,
+        2.34375
+      ],
+      "user_total_ms": 27690.40074996883
+    },
+    {
+      "query_id": "575",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": null,
+      "failure": {
+        "type": "error",
+        "detail": "provider or retrieval unavailable",
+        "error_type": "RemoteProtocolError",
+        "failure_phase": "generation"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "10300888",
+        "1631583",
+        "9548440",
+        "39758684"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        1.5625,
+        0.5,
+        0.0,
+        -0.0625
+      ],
+      "user_total_ms": 46130.99658401916
+    },
+    {
+      "query_id": "577",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "CONTRADICT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "5289038",
+        "8133050",
+        "40900567",
+        "21392703"
+      ],
+      "cited_documents": [
+        "5289038"
+      ],
+      "selected_reranker_scores": [
+        2.9765625,
+        1.5625,
+        0.171875,
+        -0.03125
+      ],
+      "user_total_ms": 41060.8912089956
+    },
+    {
+      "query_id": "593",
+      "gold_label": "SUPPORT",
+      "predicted_label": "CONTRADICT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "19675911"
+      ],
+      "selected_documents": [
+        "19675911",
+        "20945963",
+        "31889025",
+        "13481731"
+      ],
+      "cited_documents": [
+        "19675911"
+      ],
+      "selected_reranker_scores": [
+        8.234375,
+        0.4375,
+        0.09375,
+        -0.421875
+      ],
+      "user_total_ms": 33026.51804202469
+    },
+    {
+      "query_id": "649",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": null,
+      "failure": {
+        "type": "answer_not_completed",
+        "detail": "evidence_only"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "12789595",
+        "15041758",
+        "24159217",
+        "2424794"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        -2.390625,
+        -3.875,
+        -4.546875,
+        -5.1796875
+      ],
+      "user_total_ms": 16791.510291979648
+    },
+    {
+      "query_id": "659",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": null,
+      "failure": {
+        "type": "answer_not_completed",
+        "detail": "evidence_only"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "1215116",
+        "3896759",
+        "46926352",
+        "6503185"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        -3.125,
+        -5.7890625,
+        -7.9609375,
+        -8.1015625
+      ],
+      "user_total_ms": 19722.615000035148
+    },
+    {
+      "query_id": "660",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": null,
+      "failure": {
+        "type": "answer_not_completed",
+        "detail": "evidence_only"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "1215116",
+        "5492542",
+        "22613657",
+        "29634262"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        -3.890625,
+        -8.59375,
+        -9.1875,
+        -9.484375
+      ],
+      "user_total_ms": 21740.091792016756
+    },
+    {
+      "query_id": "693",
+      "gold_label": "SUPPORT",
+      "predicted_label": "CONTRADICT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "24088502"
+      ],
+      "selected_documents": [
+        "24088502",
+        "3698758",
+        "23203102",
+        "26474812"
+      ],
+      "cited_documents": [
+        "23203102",
+        "24088502",
+        "26474812",
+        "3698758"
+      ],
+      "selected_reranker_scores": [
+        5.4921875,
+        -1.265625,
+        -1.2734375,
+        -1.4609375
+      ],
+      "user_total_ms": 23067.414374963846
+    },
+    {
+      "query_id": "72",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "6076903",
+        "10937190",
+        "14296612",
+        "11535539"
+      ],
+      "cited_documents": [
+        "6076903"
+      ],
+      "selected_reranker_scores": [
+        3.984375,
+        -4.046875,
+        -5.0625,
+        -5.1640625
+      ],
+      "user_total_ms": 31470.1343330089
+    },
+    {
+      "query_id": "721",
+      "gold_label": "SUPPORT",
+      "predicted_label": null,
+      "failure": {
+        "type": "error",
+        "detail": "provider or retrieval unavailable",
+        "error_type": "ConnectError",
+        "failure_phase": "generation"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "1834762"
+      ],
+      "selected_documents": [
+        "1834762",
+        "15578265",
+        "32454714",
+        "12670680"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        8.921875,
+        1.234375,
+        -0.125,
+        -0.9296875
+      ],
+      "user_total_ms": 44980.561166012194
+    },
+    {
+      "query_id": "727",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "CONTRADICT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "36444198",
+        "22406695",
+        "7521113",
+        "22621251"
+      ],
+      "cited_documents": [
+        "22621251",
+        "36444198"
+      ],
+      "selected_reranker_scores": [
+        5.6796875,
+        1.96875,
+        1.3125,
+        0.328125
+      ],
+      "user_total_ms": 34728.09095797129
+    },
+    {
+      "query_id": "728",
+      "gold_label": "CONTRADICT",
+      "predicted_label": null,
+      "failure": {
+        "type": "error",
+        "detail": "provider or retrieval unavailable",
+        "error_type": "ConnectError",
+        "failure_phase": "generation"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "36444198"
+      ],
+      "selected_documents": [
+        "36444198",
+        "22406695",
+        "7521113",
+        "22621251"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        6.03125,
+        1.65625,
+        0.953125,
+        -0.078125
+      ],
+      "user_total_ms": 44705.8365419507
+    },
+    {
+      "query_id": "759",
+      "gold_label": "CONTRADICT",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "1805641"
+      ],
+      "selected_documents": [
+        "1805641",
+        "12409683",
+        "10617916",
+        "18074797"
+      ],
+      "cited_documents": [
+        "1805641"
+      ],
+      "selected_reranker_scores": [
+        8.9921875,
+        6.25,
+        3.703125,
+        3.1796875
+      ],
+      "user_total_ms": 43055.218083027285
+    },
+    {
+      "query_id": "770",
+      "gold_label": "SUPPORT",
+      "predicted_label": "NOT_ENOUGH_INFO",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "15476777"
+      ],
+      "selected_documents": [
+        "15476777",
+        "2492146",
+        "7165938",
+        "20606520"
+      ],
+      "cited_documents": [
+        "15476777"
+      ],
+      "selected_reranker_scores": [
+        7.1171875,
+        3.1953125,
+        1.140625,
+        0.875
+      ],
+      "user_total_ms": 83703.23241601
+    },
+    {
+      "query_id": "783",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "CONTRADICT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "8246922",
+        "39084565",
+        "24338780",
+        "1386103"
+      ],
+      "cited_documents": [
+        "24338780",
+        "39084565",
+        "8246922"
+      ],
+      "selected_reranker_scores": [
+        6.9453125,
+        5.2109375,
+        4.09375,
+        3.0234375
+      ],
+      "user_total_ms": 20880.851624999195
+    },
+    {
+      "query_id": "800",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "22543403",
+        "4679264",
+        "9291668",
+        "22264117"
+      ],
+      "cited_documents": [
+        "22543403",
+        "4679264"
+      ],
+      "selected_reranker_scores": [
+        4.6171875,
+        4.203125,
+        3.3046875,
+        3.1640625
+      ],
+      "user_total_ms": 28500.55291701574
+    },
+    {
+      "query_id": "808",
+      "gold_label": "SUPPORT",
+      "predicted_label": "CONTRADICT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "36606083"
+      ],
+      "selected_documents": [
+        "36606083",
+        "23664875",
+        "25787749",
+        "18144189"
+      ],
+      "cited_documents": [
+        "23664875"
+      ],
+      "selected_reranker_scores": [
+        3.390625,
+        0.546875,
+        -2.1328125,
+        -3.34375
+      ],
+      "user_total_ms": 29309.37787500443
+    },
+    {
+      "query_id": "820",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": null,
+      "failure": {
+        "type": "answer_not_completed",
+        "detail": "evidence_only"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "8712839",
+        "35448676",
+        "4465762",
+        "13384318"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        -1.7109375,
+        -2.046875,
+        -2.0703125,
+        -2.359375
+      ],
+      "user_total_ms": 16852.037459029816
+    },
+    {
+      "query_id": "821",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": null,
+      "failure": {
+        "type": "answer_not_completed",
+        "detail": "evidence_only"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "8712839",
+        "4465762",
+        "35448676",
+        "26108767"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        -1.4765625,
+        -1.8984375,
+        -1.9921875,
+        -2.0234375
+      ],
+      "user_total_ms": 17071.011916035786
+    },
+    {
+      "query_id": "834",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "23100962",
+        "1386103",
+        "6580081",
+        "23122306"
+      ],
+      "cited_documents": [
+        "1386103",
+        "23100962",
+        "23122306"
+      ],
+      "selected_reranker_scores": [
+        3.015625,
+        0.65625,
+        0.21875,
+        0.15625
+      ],
+      "user_total_ms": 22573.603500030003
+    },
+    {
+      "query_id": "847",
+      "gold_label": "CONTRADICT",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "16787954"
+      ],
+      "selected_documents": [
+        "16787954",
+        "4424888",
+        "22908536",
+        "34615397"
+      ],
+      "cited_documents": [
+        "16787954"
+      ],
+      "selected_reranker_scores": [
+        7.71875,
+        0.375,
+        0.234375,
+        0.1875
+      ],
+      "user_total_ms": 29834.465124993585
+    },
+    {
+      "query_id": "852",
+      "gold_label": "CONTRADICT",
+      "predicted_label": "NOT_ENOUGH_INFO",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "13843341"
+      ],
+      "selected_documents": [
+        "8190282",
+        "40867854",
+        "34208005",
+        "13843341"
+      ],
+      "cited_documents": [
+        "13843341",
+        "34208005",
+        "40867854",
+        "8190282"
+      ],
+      "selected_reranker_scores": [
+        2.2890625,
+        1.609375,
+        -0.234375,
+        -0.546875
+      ],
+      "user_total_ms": 29106.47491697455
+    },
+    {
+      "query_id": "870",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "4345757",
+        "43220289",
+        "195689316",
+        "11630388"
+      ],
+      "cited_documents": [
+        "11630388",
+        "195689316",
+        "43220289",
+        "4345757"
+      ],
+      "selected_reranker_scores": [
+        1.8359375,
+        0.546875,
+        0.359375,
+        0.171875
+      ],
+      "user_total_ms": 30008.455624978524
+    },
+    {
+      "query_id": "873",
+      "gold_label": "CONTRADICT",
+      "predicted_label": null,
+      "failure": {
+        "type": "error",
+        "detail": "provider or retrieval unavailable",
+        "error_type": "ConnectError",
+        "failure_phase": "generation"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 0.8,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [
+        "1180972",
+        "19307912",
+        "27393799",
+        "29025270",
+        "3315558"
+      ],
+      "selected_documents": [
+        "29025270",
+        "27393799",
+        "1180972",
+        "3315558"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        3.7265625,
+        2.8984375,
+        2.59375,
+        1.765625
+      ],
+      "user_total_ms": 22595.935749995988
+    },
+    {
+      "query_id": "879",
+      "gold_label": "CONTRADICT",
+      "predicted_label": null,
+      "failure": {
+        "type": "error",
+        "detail": "provider or retrieval unavailable",
+        "error_type": "ConnectError",
+        "failure_phase": "generation"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "8426046"
+      ],
+      "selected_documents": [
+        "8426046",
+        "8512633",
+        "22896970",
+        "27438378"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        4.6328125,
+        -1.3046875,
+        -1.4765625,
+        -2.28125
+      ],
+      "user_total_ms": 12762.227375002112
+    },
+    {
+      "query_id": "880",
+      "gold_label": "SUPPORT",
+      "predicted_label": null,
+      "failure": {
+        "type": "error",
+        "detail": "provider or retrieval unavailable",
+        "error_type": "ConnectError",
+        "failure_phase": "generation"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "8426046"
+      ],
+      "selected_documents": [
+        "8426046",
+        "13552682",
+        "8247469",
+        "8126244"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        4.5234375,
+        -3.09375,
+        -3.8125,
+        -3.9921875
+      ],
+      "user_total_ms": 14075.383874995168
+    },
+    {
+      "query_id": "882",
+      "gold_label": "CONTRADICT",
+      "predicted_label": null,
+      "failure": {
+        "type": "error",
+        "detail": "provider or retrieval unavailable",
+        "error_type": "ConnectError",
+        "failure_phase": "generation"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "14803797"
+      ],
+      "selected_documents": [
+        "14803797",
+        "6793674",
+        "33684572",
+        "44624045"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        5.4375,
+        2.1953125,
+        0.453125,
+        -0.109375
+      ],
+      "user_total_ms": 18815.44329196913
+    },
+    {
+      "query_id": "887",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": null,
+      "failure": {
+        "type": "error",
+        "detail": "provider or retrieval unavailable",
+        "error_type": "ConnectError",
+        "failure_phase": "generation"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "4942718",
+        "680949",
+        "2140513",
+        "33872649"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        1.71875,
+        0.171875,
+        -1.234375,
+        -2.234375
+      ],
+      "user_total_ms": 12147.631625004578
+    },
+    {
+      "query_id": "903",
+      "gold_label": "CONTRADICT",
+      "predicted_label": null,
+      "failure": {
+        "type": "error",
+        "detail": "provider or retrieval unavailable",
+        "error_type": "ConnectError",
+        "failure_phase": "generation"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "10648422"
+      ],
+      "selected_documents": [
+        "10648422",
+        "9334631",
+        "5752492",
+        "8639034"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        7.03125,
+        3.0703125,
+        2.2578125,
+        1.8828125
+      ],
+      "user_total_ms": 17935.936167021282
+    },
+    {
+      "query_id": "904",
+      "gold_label": "SUPPORT",
+      "predicted_label": null,
+      "failure": {
+        "type": "error",
+        "detail": "provider or retrieval unavailable",
+        "error_type": "ConnectError",
+        "failure_phase": "generation"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "7370282"
+      ],
+      "selected_documents": [
+        "7370282",
+        "2177022",
+        "24315156",
+        "8596357"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        9.8125,
+        1.234375,
+        0.71875,
+        0.265625
+      ],
+      "user_total_ms": 11828.701833030209
+    },
+    {
+      "query_id": "907",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": null,
+      "failure": {
+        "type": "error",
+        "detail": "provider or retrieval unavailable",
+        "error_type": "ConnectError",
+        "failure_phase": "generation"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "6923961",
+        "21181273",
+        "6945691",
+        "39758684"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        7.4609375,
+        3.546875,
+        1.171875,
+        -0.6875
+      ],
+      "user_total_ms": 14717.12733298773
+    },
+    {
+      "query_id": "911",
+      "gold_label": "SUPPORT",
+      "predicted_label": null,
+      "failure": {
+        "type": "error",
+        "detail": "provider or retrieval unavailable",
+        "error_type": "ConnectError",
+        "failure_phase": "generation"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": true,
+      "gold_documents": [
+        "11254556"
+      ],
+      "selected_documents": [
+        "11254556",
+        "10017612",
+        "10666475",
+        "14188138"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        6.21875,
+        -2.09375,
+        -2.6015625,
+        -2.6484375
+      ],
+      "user_total_ms": 19254.615083045792
+    },
+    {
+      "query_id": "913",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": null,
+      "failure": {
+        "type": "error",
+        "detail": "provider or retrieval unavailable",
+        "error_type": "ConnectError",
+        "failure_phase": "generation"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "23938319",
+        "11774598",
+        "25328476",
+        "40760684"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        0.8125,
+        0.703125,
+        -0.7734375,
+        -1.203125
+      ],
+      "user_total_ms": 16730.69666698575
+    },
+    {
+      "query_id": "914",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 0.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "23938319",
+        "8458567",
+        "1044552",
+        "40760684"
+      ],
+      "cited_documents": [
+        "8458567"
+      ],
+      "selected_reranker_scores": [
+        1.65625,
+        -0.078125,
+        -0.734375,
+        -1.6015625
+      ],
+      "user_total_ms": 22874.125125003047
+    },
+    {
+      "query_id": "94",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": null,
+      "failure": {
+        "type": "answer_not_completed",
+        "detail": "evidence_only"
+      },
+      "user_flow_completed": false,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "1215116",
+        "3896759",
+        "46926352",
+        "6503185"
+      ],
+      "cited_documents": [],
+      "selected_reranker_scores": [
+        -4.34375,
+        -5.296875,
+        -7.41015625,
+        -8.375
+      ],
+      "user_total_ms": 14145.96962503856
+    },
+    {
+      "query_id": "956",
+      "gold_label": "NOT_ENOUGH_INFO",
+      "predicted_label": "SUPPORT",
+      "failure": null,
+      "user_flow_completed": true,
+      "final_evidence_recall": 1.0,
+      "all_annotated_evidence_documents_available": false,
+      "gold_documents": [],
+      "selected_documents": [
+        "3127341",
+        "3610282",
+        "21754541",
+        "12956194"
+      ],
+      "cited_documents": [
+        "12956194",
+        "21754541",
+        "3127341",
+        "3610282"
+      ],
+      "selected_reranker_scores": [
+        5.4296875,
+        5.0703125,
+        5.0,
+        4.2578125
+      ],
+      "user_total_ms": 21500.98650000291
+    }
+  ],
+  "positive_claims": 188,
+  "all_gold_documents_in_selected_evidence": 172,
+  "positive_wrong_label_despite_complete_gold_document_coverage": 19,
+  "positive_evaluation_failure_despite_complete_gold_document_coverage": 9,
+  "scope": "Descriptive analysis against existing, unchanged claim/document annotations; document coverage is not semantic answer support; no expert adjudication or gold repair; the observed formal disagreements must not be used to tune this run."
+}

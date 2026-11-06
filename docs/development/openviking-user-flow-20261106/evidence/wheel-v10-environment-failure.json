@@ -1,0 +1,6 @@
+{
+  "failure": "venv creation with copied macOS runtime binary caused ensurepip subprocess SIGABRT",
+  "exit_code": 134,
+  "scope": "local environment setup, not RAG runtime or model-quality failure",
+  "resolution": "new v11 venv with normal --symlinks creation; v10 preserved, not overwritten"
+}

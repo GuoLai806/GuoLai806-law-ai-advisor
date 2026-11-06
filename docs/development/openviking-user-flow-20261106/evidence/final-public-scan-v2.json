@@ -1,0 +1,8 @@
+{
+  "changed_or_added_files_scanned": 124,
+  "pattern_findings": [],
+  "local_markdown_links_missing": [],
+  "passed": true,
+  "source_commit": "c46cd3b5c2d8695c04b4c22ee4e8eaf8f096b151",
+  "scope": "branch difference from fixed baseline plus all new public docs; explicit credential/private-path patterns and internal link checks, not universal secret detection"
+}

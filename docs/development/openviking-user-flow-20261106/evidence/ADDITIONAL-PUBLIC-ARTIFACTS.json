@@ -1,0 +1,54 @@
+{
+  "records": [
+    {
+      "name": "host-timing-audit-v1.md",
+      "original_sha256": "dca84afac820d4e03e12503d113d1d495bc3d95333944bc560659176a8ce0ec9",
+      "public_sha256": "dca84afac820d4e03e12503d113d1d495bc3d95333944bc560659176a8ce0ec9"
+    },
+    {
+      "name": "FINAL-CODE-REVIEW.md",
+      "original_sha256": "30e9828a1920d5290b503ca37989cd7a00dc4cb7d94101cd8a8d356ea40afb4c",
+      "public_sha256": "30e9828a1920d5290b503ca37989cd7a00dc4cb7d94101cd8a8d356ea40afb4c"
+    },
+    {
+      "name": "chat-accounting-before-fix-v2.log",
+      "original_sha256": "5bcb0393df33a6f4c661ba8df64c6828ec95e41dc750d5531f889cb7d1b76bbf",
+      "public_sha256": "f1e813a0bdf5315f94bcc359e67105efa584760dd34baad0a9092570c9281bc5"
+    },
+    {
+      "name": "chat-accounting-after-fix-v1.log",
+      "original_sha256": "c77b20d64289b86c995a30c3e8723255b1692bc9b8945d778bfc895876ebff6d",
+      "public_sha256": "c77b20d64289b86c995a30c3e8723255b1692bc9b8945d778bfc895876ebff6d"
+    },
+    {
+      "name": "review-independent-raw-audit-v1.log",
+      "original_sha256": "272c36f4eb9795dd2eb2e0071703a97f7618a79f0e5e4574b8b9625d75f737b3",
+      "public_sha256": "84c0158b30937d617cf1378d69c071240b8b7b2fe36e39d1ca41539f375d84ec"
+    },
+    {
+      "name": "regression-v15-all.log",
+      "original_sha256": "ff90b38921651337dcca8eba8095587c696eef9963846eeab5566ea71dea4321",
+      "public_sha256": "ff90b38921651337dcca8eba8095587c696eef9963846eeab5566ea71dea4321"
+    },
+    {
+      "name": "regression-v16-full.log",
+      "original_sha256": "34dc38157931596fb9a90f607dc81efc22ab45cc248d59fe5ad10b540cd34c72",
+      "public_sha256": "34dc38157931596fb9a90f607dc81efc22ab45cc248d59fe5ad10b540cd34c72"
+    },
+    {
+      "name": "wheel-build-v9.log",
+      "original_sha256": "645696ce4b3bb44f3054503af73275e4ff853846f94b11561a5189d76317bc74",
+      "public_sha256": "fabc6fba69eaf18582a026b809f38d1cddc2a83b71db6f050c2d2e6d0fc13757"
+    }
+  ],
+  "industry_survey": {
+    "original_relative_path": "industry-sources/broad-survey/survey.json",
+    "public_alias": "industry-survey.json",
+    "original_sha256": "a1c8706bca27cc64c03acfac875a95535dcb641530ccd84b7a1a9e72918be652",
+    "public_sha256": "a1c8706bca27cc64c03acfac875a95535dcb641530ccd84b7a1a9e72918be652"
+  },
+  "selection": {
+    "original_sha256": "1db88912a0b618352eacaadbf497fff6188ef485b7f1ee507abdf8cc93bec9ef",
+    "public_sha256": "d80bd123d21091ec0289414133b592ab6dbe6d14067b83f58647dea0b721c9f7"
+  }
+}
