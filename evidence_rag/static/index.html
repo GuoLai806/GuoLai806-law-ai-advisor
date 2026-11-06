@@ -78,6 +78,7 @@ let controller = null;
 let currentBundle = null;
 let pendingAnswer = '';
 let completed = false;
+let quotesChecked = false;
 const sessionId = 'web-' + crypto.randomUUID();
 
 function showNotice(message) {
@@ -132,7 +133,11 @@ function receive(kind, data) {
   if (kind === 'answer_delta') {
     pendingAnswer += data.delta;
     answer.textContent = pendingAnswer;
-    showNotice('回答正在生成，尚未完成引用检查。');
+    showNotice(quotesChecked ? '原文摘录已核对，正在完成回答。' : '回答正在生成，尚未完成引用检查。');
+  }
+  if (kind === 'grounding_validation' && data.status === 'verbatim_quotes_checked') {
+    quotesChecked = true;
+    status.textContent = '原文摘录已核对，正在整理回答…';
   }
   if (kind === 'answer_rejected' || kind === 'error') {
     pendingAnswer = '';
@@ -143,7 +148,7 @@ function receive(kind, data) {
     completed = true;
     if (data.status === 'ready') {
       status.textContent = '回答已完成';
-      showNotice('引用编号已检查；关键结论仍请结合原文核对。');
+      showNotice(quotesChecked ? '引用摘录已与资料原文核对；结论是否充分仍请结合原文判断。' : '引用编号已检查；关键结论仍请结合原文核对。');
     } else {
       pendingAnswer = '';
       answer.textContent = '目前只能提供检索资料，未生成可交付的回答。';
@@ -162,6 +167,7 @@ form.addEventListener('submit', async event => {
   }
   controller = new AbortController();
   completed = false;
+  quotesChecked = false;
   pendingAnswer = '';
   answer.textContent = '';
   timing.textContent = '';

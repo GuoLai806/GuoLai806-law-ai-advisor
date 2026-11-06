@@ -11,6 +11,7 @@ from .catalog import Catalog
 from .retrieval import RetrievalService, CrossEncoderReranker, OpenViking
 from .budget import HuggingFaceTokenizer, ConservativeByteBudget
 from .answer import OpenAIStream, ModelStreamIncomplete, validate_citations, provider_events, messages_for
+from .grounding import GroundingRejected
 
 def setting(name, default=None):
     return os.environ.get('EVIDENCE_RAG_'+name,os.environ.get('LEGAL_RAG_'+name,default))
@@ -36,6 +37,14 @@ class Query(BaseModel):
 @asynccontextmanager
 async def lifespan(app):
     default_evidence_items()  # Reject invalid operator configuration at startup.
+    answer_format=setting('ANSWER_FORMAT','text')
+    generation_gate=setting('GENERATION_GATE','reranker_threshold')
+    if answer_format not in ('text','grounded_json') or generation_gate not in ('reranker_threshold','grounded_evidence'):
+        raise ValueError('invalid answer format or generation gate')
+    if generation_gate=='grounded_evidence' and answer_format!='grounded_json':
+        raise ValueError('grounded evidence gate requires grounded JSON answers')
+    # Budget measurement and the provider must see the same optional prompt format.
+    os.environ['EVIDENCE_RAG_ANSWER_FORMAT']=answer_format
     db=Catalog(setting('DB','evidence-rag.sqlite3'))
     db.db.execute('CREATE TABLE IF NOT EXISTS sessions(session_id TEXT PRIMARY KEY, owner TEXT NOT NULL)')
     db.db.execute('CREATE TABLE IF NOT EXISTS turns(turn_id TEXT PRIMARY KEY, session_id TEXT NOT NULL, query TEXT NOT NULL, answer TEXT NOT NULL, revision TEXT NOT NULL, created REAL NOT NULL, FOREIGN KEY(session_id) REFERENCES sessions(session_id))')
@@ -47,6 +56,8 @@ async def lifespan(app):
     dense=OpenViking(setting('OV_URL'),setting('OV_SCOPE'),headers=ov_headers,timeout=float(setting('OV_TIMEOUT','30'))) if setting('OV_URL') and setting('OV_SCOPE') else None
     app.state.service=RetrievalService(db,dense,reranker,tokenizer,rerank_timeout=float(setting('RERANK_TIMEOUT','120')))
     app.state.generator=OpenAIStream(setting('MODEL_URL'),setting('MODEL_NAME'),setting('MODEL_KEY',''),timeout=float(setting('MODEL_TIMEOUT','90')),include_usage=setting('STREAM_INCLUDE_USAGE')=='1',max_output_tokens=int(setting('MAX_OUTPUT_TOKENS')) if setting('MAX_OUTPUT_TOKENS') else None,temperature=float(setting('MODEL_TEMPERATURE')) if setting('MODEL_TEMPERATURE') is not None else None,thinking=setting('MODEL_THINKING'),reasoning_effort=setting('MODEL_REASONING_EFFORT'),empty_retry_thinking=setting('MODEL_EMPTY_RETRY_THINKING'),retry_timeout=float(setting('MODEL_RETRY_TIMEOUT')) if setting('MODEL_RETRY_TIMEOUT') else None,retry_max_output_tokens=int(setting('MODEL_RETRY_MAX_OUTPUT_TOKENS')) if setting('MODEL_RETRY_MAX_OUTPUT_TOKENS') else None) if setting('MODEL_URL') and setting('MODEL_NAME') else None
+    if app.state.generator:
+        app.state.generator.answer_format=answer_format
     yield
     db.db.close()
 
@@ -172,7 +183,7 @@ def generation_identity(request):
     """Public operational identity: hashes/configuration, never credentials or prompts."""
     import hashlib
     profile=getattr(request.app.state,'default_profile','general')
-    system=messages_for('',[{'citation_id':'E1','title':'','text':'','profile':profile}])[0]['content']
+    system=messages_for('',[{'citation_id':'E1','title':'','text':'','profile':profile}],answer_format=getattr(request.app.state.generator,'answer_format','text'))[0]['content']
     try: window,framing,output=generation_limits()
     except ValueError: window=framing=output=None
     generator=request.app.state.generator
@@ -185,7 +196,9 @@ def generation_identity(request):
             'rerank_threshold':setting('RERANK_THRESHOLD'),
             'empty_retry_thinking':getattr(generator,'empty_retry_thinking',None),
             'retry_timeout_seconds':getattr(generator,'retry_timeout',None),
-            'retry_max_output_tokens':getattr(generator,'retry_max_output_tokens',None)}
+            'retry_max_output_tokens':getattr(generator,'retry_max_output_tokens',None),
+            'answer_format':getattr(generator,'answer_format','text'),
+            'generation_gate':setting('GENERATION_GATE','reranker_threshold')}
 
 def generation_allowed(bundle,body,app):
     budget_state=bundle['budget']['state']
@@ -202,6 +215,10 @@ def generation_allowed(bundle,body,app):
         except ValueError: allowed_budget=False
     if not (app.state.generator and bundle['status']=='ready' and not bundle['query_plan']['applicability_review'] and bundle['evidence'] and not bundle['degraded'] and allowed_budget and not bundle['budget']['omitted']): return False
     if bundle['query_plan']['mode']=='source_lookup': return True
+    if bundle['query_plan'].get('profile')=='general' and setting('GENERATION_GATE','reranker_threshold')=='grounded_evidence':
+        # Relevance logits do not establish entailment. The opt-in provider must
+        # check its quoted evidence before yielding any deliverable answer text.
+        return getattr(app.state.generator,'answer_format','text')=='grounded_json'
     # General legal explanation requires a separately calibrated reranker threshold.
     threshold=setting('RERANK_THRESHOLD')
     try:
@@ -233,7 +250,7 @@ def session_turns(session_id: str,request: Request,user=Depends(identity)):
 @app.post('/api/v2/chat')
 async def chat(body: Query,request: Request,user=Depends(identity)):
     b=await get_bundle(body,request,user)
-    usage_by_attempt={}; attempts=[]; retries=[]; models=[]; generated=False
+    usage_by_attempt={}; attempts=[]; retries=[]; models=[]; generated=False; grounding=None; phase='generation'
     def accounting():
         reported=[{'attempt':number,'usage':value} for number,value in sorted(usage_by_attempt.items())]
         usage=({key:sum(item['usage'].get(key,0) for item in reported)
@@ -244,7 +261,7 @@ async def chat(body: Query,request: Request,user=Depends(identity)):
                 'provider_known_attempts' if usage else 'unavailable')
         return {'usage':usage,'usage_attempts':reported,'usage_complete':complete,'usage_source':source,
                 'generation_attempts':attempts,'generation_retries':retries,
-                'observed_answer_models':models}
+                'observed_answer_models':models,'grounding_validation':grounding}
     if generation_allowed(b,body,request.app):
         generated=True
         try:
@@ -255,12 +272,19 @@ async def chat(body: Query,request: Request,user=Depends(identity)):
                 elif event.get('type')=='generation_attempt': attempts.append({key:value for key,value in event.items() if key!='type'})
                 elif event.get('type')=='generation_retry': retries.append({key:value for key,value in event.items() if key!='type'})
                 elif event.get('type')=='model_identity': models.append({key:value for key,value in event.items() if key!='type'})
+                elif event.get('type')=='grounding_validation': grounding={key:value for key,value in event.items() if key!='type'}
             answer=''.join(parts); verification=validate_citations(answer,b['evidence'])
             if verification['status']=='invalid':
                 return {'trace_id':b['trace_id'],'status':'insufficient_evidence','answer':'生成结果的引用未通过检查，请查看原文并进一步核验。','claims':[],'citations':b['evidence'],'verification':verification,**accounting(),'budget':b['budget'],'degraded':True}
+            phase='session_save'
             save_turn(request,user,body.session_id,body.query,answer,b['corpus_revision'])
             return {'trace_id':b['trace_id'],'status':b['status'],'answer':answer,'claims':[],'citations':b['evidence'],'verification':verification,**accounting(),'budget':b['budget'],'degraded':False}
-        except Exception: pass
+        except asyncio.CancelledError: raise
+        except Exception as exc:
+            fallback='本次未取得经过引用检查的完整回答，请查看资料或重新提问。'
+            return {'trace_id':b['trace_id'],'status':'evidence_only','answer':fallback,'claims':[],
+                    'citations':b['evidence'],'verification':{'status':'not_generated'},**accounting(),
+                    'budget':b['budget'],'degraded':True,'failure':safe_pipeline_error(exc,phase)}
     fallback=('目前只能展示检索到的资料，不能据此生成法律结论；请补充事实并由专业人士核验。' if b['query_plan'].get('profile','legal')=='legal' else '目前只能展示检索到的资料，尚不能生成经过核验的回答。')
     save_turn(request,user,body.session_id,body.query,fallback,b['corpus_revision'])
     return {'trace_id':b['trace_id'],'status':'evidence_only','answer':fallback,'claims':[],'citations':b['evidence'],'verification':{'status':'not_generated'},**accounting(),'budget':b['budget'],'degraded':True}
@@ -313,6 +337,8 @@ async def stream(body: Query,request: Request,user=Depends(identity)):
                         yield event(incoming['type'],{**{key:value for key,value in incoming.items() if key!='type'},'elapsed_ms':round((time.monotonic()-started)*1000,2)});continue
                     if incoming.get('type')=='model_identity':
                         yield event('model_identity',{'model':incoming['model'],'system_fingerprint':incoming.get('system_fingerprint'),'attempt':incoming.get('attempt',1)});continue
+                    if incoming.get('type')=='grounding_validation':
+                        yield event('grounding_validation',{key:value for key,value in incoming.items() if key!='type'});continue
                     if incoming.get('type')=='usage':
                         usage_by_attempt[incoming.get('attempt',1)]=incoming['usage']
                         usage_attempts=[{'attempt':number,'usage':value} for number,value in sorted(usage_by_attempt.items())]
@@ -346,6 +372,7 @@ def safe_pipeline_error(exc,phase):
     """Preserve failure provenance without upstream text, URLs or credentials."""
     result={'error_type':type(exc).__name__,'failure_phase':phase}
     if isinstance(exc,httpx.HTTPStatusError): result['http_status']=exc.response.status_code
+    if isinstance(exc,(GroundingRejected,ModelStreamIncomplete)): result['reason']=exc.reason
     return result
 
 class IngestRequest(BaseModel):

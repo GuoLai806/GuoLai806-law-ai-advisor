@@ -1,23 +1,58 @@
 """Streaming model protocol; citations are checked structurally, never treated as claim verification."""
 import asyncio, json, re, os
 import httpx
+from evidence_rag.grounding import GroundingRejected, MAX_BUFFER_BYTES, parse_grounded_answer
 
 SYSTEM = 'Only answer from the provided evidence; cite evidence IDs, preserve conditions and note uncertainty. Do not invent sources or unsupported claims.'
 LEGAL_SYSTEM = '仅根据给定证据解释原文；说明条件与例外，不得编造法条。每项法律主张标注证据编号。法律版本、事实及过渡规则未经核验时，不得断言具体案件的法律适用或给出确定结论。'
+GROUNDED_OUTPUT = '''
+Output override: The JSON format below overrides any previous first-line,
+prose-format, or inline-citation instructions. All factual restrictions remain.
+Return only a JSON object, without markdown fences, with exactly these keys:
+{"decision":"SUPPORT","answer":"brief explanation","evidence":[{"id":"E1","quote":"exact source passage"}]}
+The decision must be exactly SUPPORT, CONTRADICT, NOT_ENOUGH_INFO or ANSWER.
+For a scientific claim, use SUPPORT only when the evidence establishes every
+material part; CONTRADICT only when evidence establishes the opposite; otherwise
+NOT_ENOUGH_INFO. Use ANSWER for an ordinary information question supported by the
+given evidence. Check the exact intervention, population, outcome, direction,
+negation, causal relation, conditions and material restrictions. Merely related
+evidence or a missing material relation means NOT_ENOUGH_INFO. Do not use external
+knowledge to fill gaps. Preserve what the original study says, including limits.
+Select only the minimum sufficient source set, at most four sources, each ID
+once. Copy an exact 12-1200 character passage from that source's title or text;
+do not invent, paraphrase, change case, punctuation or negation in the quote.
+SUPPORT, CONTRADICT and ANSWER require at least one such quote.
+NOT_ENOUGH_INFO may use an empty evidence list. Quotes must be relevant to the
+reasoning; occurrence of a passage alone does not establish semantic support.
+Keep the answer brief and naturally readable. Its inline citations, if any,
+must use only selected evidence IDs; an empty evidence list means no inline
+citations. Do not place the decision token at the start of the answer text.
+'''
 
 class ModelStreamIncomplete(RuntimeError):
     def __init__(self, reason):
         self.reason = reason if reason in ('length','content_filter','tool_calls','missing_stop','missing_done') else 'invalid_completion'
         super().__init__('model stream ended without successful completion marker: '+self.reason)
 
-def messages_for(query, evidence):
+def _answer_format(answer_format):
+    if answer_format not in ('text','grounded_json'):
+        raise ValueError('answer_format must be text or grounded_json')
+    return answer_format
+
+def messages_for(query, evidence, answer_format=None):
+    if answer_format is None:
+        answer_format=os.environ.get('EVIDENCE_RAG_ANSWER_FORMAT',os.environ.get('LEGAL_RAG_ANSWER_FORMAT','text'))
+    _answer_format(answer_format)
     facts='\n\n'.join(f"[{e['citation_id']}] {e['title']} {e.get('article_label','')}\n{e['text']}" for e in evidence)
-    system=LEGAL_SYSTEM if evidence and evidence[0].get('profile')=='legal' else os.environ.get('EVIDENCE_RAG_GENERAL_SYSTEM_PROMPT',SYSTEM)
+    legal=bool(evidence and evidence[0].get('profile')=='legal')
+    system=LEGAL_SYSTEM if legal else os.environ.get('EVIDENCE_RAG_GENERAL_SYSTEM_PROMPT',SYSTEM)
+    if not legal and answer_format=='grounded_json': system+='\n'+GROUNDED_OUTPUT
     return [{'role':'system','content':system},{'role':'user','content':f'问题：{query}\n证据：\n{facts}'}]
 
 class OpenAIStream:
-    def __init__(self, base_url, model, api_key, timeout=30, transport=None, include_usage=False, max_output_tokens=None, temperature=None, thinking=None, reasoning_effort=None, empty_retry_thinking=None, retry_timeout=None, retry_max_output_tokens=None):
+    def __init__(self, base_url, model, api_key, timeout=30, transport=None, include_usage=False, max_output_tokens=None, temperature=None, thinking=None, reasoning_effort=None, empty_retry_thinking=None, retry_timeout=None, retry_max_output_tokens=None, answer_format='text'):
         self.base_url, self.model, self.api_key, self.timeout, self.transport = base_url.rstrip('/'), model, api_key, timeout, transport
+        self.answer_format=_answer_format(answer_format)
         self.include_usage=include_usage
         if max_output_tokens is not None and (not isinstance(max_output_tokens,int) or isinstance(max_output_tokens,bool) or max_output_tokens<1): raise ValueError('max_output_tokens must be a positive integer')
         self.max_output_tokens=max_output_tokens
@@ -35,6 +70,41 @@ class OpenAIStream:
         self.empty_retry_thinking=empty_retry_thinking
         self.retry_timeout,self.retry_max_output_tokens=retry_timeout,retry_max_output_tokens
     async def stream_events(self, query, evidence):
+        if self.answer_format=='text' or (evidence and evidence[0].get('profile')=='legal'):
+            async for event in self._raw_stream_events(query,evidence): yield event
+            return
+        chunks=[]; buffered_bytes=0; rejection=None; attempt=None
+        async for event in self._raw_stream_events(query,evidence):
+            if event['type']!='delta':
+                yield event
+                continue
+            attempt=event.get('attempt')
+            if rejection is not None: continue
+            delta=event.get('delta')
+            if not isinstance(delta,str):
+                rejection='invalid_schema'
+                continue
+            try:
+                encoded=delta.encode('utf-8')
+            except UnicodeError:
+                rejection='invalid_encoding'
+                continue
+            buffered_bytes+=len(encoded)
+            if buffered_bytes>MAX_BUFFER_BYTES:
+                rejection='buffer_limit'
+                chunks.clear()
+                continue
+            chunks.append(delta)
+        # Keep consuming after a rejection so terminal usage is preserved. Never
+        # retry or reinterpret a nonempty malformed answer as insufficient evidence.
+        if rejection is not None: raise GroundingRejected(rejection)
+        rendered,metadata=parse_grounded_answer(''.join(chunks),evidence)
+        yield {'type':'grounding_validation',**metadata}
+        event={'type':'delta','delta':rendered}
+        if attempt is not None: event['attempt']=attempt
+        yield event
+
+    async def _raw_stream_events(self, query, evidence):
         if self.empty_retry_thinking is None:
             async for event in self._stream_once(query,evidence): yield event
             return
@@ -53,13 +123,13 @@ class OpenAIStream:
         fallback=OpenAIStream(self.base_url,self.model,self.api_key,timeout=self.retry_timeout,
                               transport=self.transport,include_usage=self.include_usage,
                               max_output_tokens=self.retry_max_output_tokens,temperature=self.temperature,
-                              thinking=self.empty_retry_thinking)
+                              thinking=self.empty_retry_thinking,answer_format=self.answer_format)
         yield {'type':'generation_attempt','attempt':2,'thinking':fallback.thinking,'timeout_seconds':fallback.timeout,'max_output_tokens':fallback.max_output_tokens}
         async for event in fallback._stream_once(query,evidence): yield {**event,'attempt':2}
 
     async def _stream_once(self, query, evidence):
         if not evidence: raise ValueError('evidence required')
-        messages=messages_for(query,evidence)
+        messages=messages_for(query,evidence,answer_format=self.answer_format)
         completed=False; finish_reason=None;observed_model=None;incomplete_reason=None
         async with asyncio.timeout(self.timeout):
             async with httpx.AsyncClient(timeout=self.timeout,transport=self.transport,trust_env=False) as client:

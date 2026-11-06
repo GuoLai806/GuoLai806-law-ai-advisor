@@ -9,6 +9,10 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from benchmarks.e2e import file_hash, source_hashes
 from benchmarks.verification_metrics import aggregate, gold_label
+from benchmarks.run_user_flow import evaluation_ids, read_claims
+from benchmarks.prepare import qrels
+from benchmarks.short_protocol import validate_selection
+from tools.audit_flow_timing import row_clock_checks,report_clock_checks
 
 
 def verdict_from_raw_text(text):
@@ -65,11 +69,19 @@ def generation_from_raw(events):
     }
 
 
-def scoring_and_usage_checks(row, raw):
+def scoring_and_usage_checks(row, raw, answer_format='text'):
     events = raw['events']
     text = ''.join(event['data']['delta'] for event in events if event['event'] == 'answer_delta')
     bundle = next((event['data']['bundle'] for event in events if event['event'] == 'evidence_ready'), {})
     raw_label = verdict_from_raw_text(text)
+    validations=[e['data'] for e in events if e['event']=='grounding_validation']
+    grounding=validations[0] if len(validations)==1 else None
+    format_valid=raw_label is not None
+    if answer_format=='grounded_json':
+        format_valid=bool(grounding and grounding.get('status')=='verbatim_quotes_checked'
+                          and grounding.get('decision') in ('SUPPORT','CONTRADICT','NOT_ENOUGH_INFO')
+                          and grounding['decision']==raw_label)
+        if not format_valid: raw_label=None
     if row.get('failure'):
         expected_label, expected_documents = None, []
     else:
@@ -83,7 +95,8 @@ def scoring_and_usage_checks(row, raw):
             and (bool(row.get('failure')) or raw_label is not None),
         'cited_documents_match_raw': row.get('cited_documents', []) == expected_documents,
         'format_failure_consistent': (row.get('failure') or {}).get('type') != 'invalid_answer_format'
-            or raw_label is None,
+            or not format_valid,
+        'grounding_metadata_matches_raw': answer_format!='grounded_json' or row.get('grounding_validation')==grounding,
         'generation_metadata_matches_raw': all(row.get(key) == value for key, value in metadata.items()),
         'generation_field_mismatches': [key for key, value in metadata.items() if row.get(key) != value],
     }
@@ -94,7 +107,7 @@ def audit(args):
     report = json.loads(path.read_text())
     config = json.loads(Path(args.config).read_text())
     manifest = json.loads(Path(args.manifest).read_text())
-    claims = {str(row['id']): row for row in map(json.loads, Path(args.claims).read_text().splitlines())}
+    claims = read_claims(args.claims)
     qrel_ids = {line.split('\t')[0] for line in Path(args.qrels).read_text().splitlines()[1:]}
     lines = [json.loads(line) for line in Path(str(path)+'.journal.jsonl').read_text().splitlines()]
     rows = report['rows']
@@ -118,11 +131,26 @@ def audit(args):
         checks['query_set'] = [row['query_id'] for row in rows] == manifest['validation']['query_ids']
         checks['qrels_hash'] = file_hash(args.qrels) == manifest['qrels'][manifest['validation']['source_split']]['sha256']
     else:
-        checks['query_set'] = {row['query_id'] for row in rows} == qrel_ids and len(rows) == manifest['qrels']['test']['qids']
+        if 'short_evaluation' in manifest:
+            identifiers, _ = evaluation_ids(manifest,'test',qrels(Path(args.qrels)),claims,file_hash(args.claims))
+            checks['query_set'] = [row['query_id'] for row in rows] == identifiers and len(rows)==30
+        else:
+            checks['query_set'] = {row['query_id'] for row in rows} == qrel_ids and len(rows) == manifest['qrels']['test']['qids']
         checks['qrels_hash'] = file_hash(args.qrels) == manifest['qrels']['test']['sha256']
         if args.selection:
             selected = json.loads(Path(args.selection).read_text())
             checks['frozen_selection'] = selected['config_sha256'] == file_hash(args.config)
+            if 'short_evaluation' in manifest:
+                checks['selection_manifest_hash'] = selected.get('manifest_sha256') == file_hash(args.manifest)
+    if 'short_evaluation' in manifest and report['split']=='validation':
+        identifiers, _ = evaluation_ids(manifest,'validation',qrels(Path(args.qrels)),claims,file_hash(args.claims))
+        checks['query_set'] = [row['query_id'] for row in rows] == identifiers and len(rows)==6
+    if 'short_evaluation' in manifest and report['split']=='test':
+        if not args.selection: raise ValueError('Short formal audit requires frozen selection')
+        identity=validate_selection(args.selection,args.config,args.manifest,args.report,audit=True)
+        checks['complete_frozen_protocol']=all(report.get(k)==v for k,v in identity.items())
+    if 'clock_identity' in report:
+        checks.update(report_clock_checks(report))
     raw_rows = []
     for row in rows:
         raw_path = Path(args.raw_dir) / (path.stem+'-'+row['query_id']+'.json')
@@ -139,13 +167,19 @@ def audit(args):
                          'answer_matches_raw': row.get('answer', deltas) == deltas,
                          'trace_matches_raw': bool(bundle) and bundle.get('retrieval_trace')==row.get('retrieval_trace'),
                          'flow_flag_consistent':flow_consistent,
-                         **scoring_and_usage_checks(row, raw)})
+                         **scoring_and_usage_checks(row, raw,config['runtime_identity'].get('answer_format','text'))})
+        if 'clock_identity' in report:
+            timing=row_clock_checks(row,raw)
+            raw_rows[-1]['clock_checks']=timing
+            raw_rows[-1]['clock_records_consistent']=all(timing.values())
     checks['all_raw_hashes_match'] = all(row['hash_matches'] for row in raw_rows)
     checks['all_answers_match_raw'] = all(row['answer_matches_raw'] for row in raw_rows)
     checks['all_traces_match_raw'] = all(row['trace_matches_raw'] for row in raw_rows)
     checks['all_flow_flags_consistent'] = all(row['flow_flag_consistent'] for row in raw_rows)
-    for field in ('prediction_matches_raw', 'cited_documents_match_raw', 'format_failure_consistent', 'generation_metadata_matches_raw'):
+    for field in ('prediction_matches_raw', 'cited_documents_match_raw', 'format_failure_consistent', 'generation_metadata_matches_raw','grounding_metadata_matches_raw'):
         checks['all_'+field] = all(row[field] for row in raw_rows)
+    if 'clock_identity' in report:
+        checks['all_clock_records_consistent']=all(row['clock_records_consistent'] for row in raw_rows)
     if args.model_before and args.model_after:
         before = json.loads(Path(args.model_before).read_text())['models']
         after = json.loads(Path(args.model_after).read_text())['models']

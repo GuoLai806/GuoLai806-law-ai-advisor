@@ -45,4 +45,11 @@
 
 ## 回退与待确认
 
-保留b62887d及旧300所有材料。新模式operator可切回text+reranker_threshold；schema不改旧索引/DB，必要时用旧源码与保存Catalog备份。冻结报告不覆盖、不盲重放未知外部写入。生产目标、专家语义标签和跨领域规模属于后续，不是本轮必需输入。无待用户再次授权项。当前仅完成方案记录，代码/服务/模型/安装/用户验收均待真实证据。
+保留b62887d及旧300所有材料。新模式operator可切回text+reranker_threshold；schema不改旧索引/DB，必要时用旧源码与保存Catalog备份。冻结报告不覆盖、不盲重放未知外部写入。生产目标、专家语义标签和跨领域规模属于后续，不是本轮必需输入。无待用户再次授权项。当前完整回归regression-v4为310 passed、5 warnings；两角度独立代码复审已修确定缺陷，正式30尚未开始。真实OpenViking/BGE/Qwen/产品服务已ready；开发6-v1/v2为评测修复前检查并完整保留，v3仅在评分/失败元数据bug修复后同策略复核。模型/索引/提示参数未调优。打包完成，安装检查进行中，网页/正式数据/最终资料同步待收尾。
+
+## 实现补充与独立复审修复
+
+- benchmarks/short_protocol.py在正式runner和audit前置核验完整development6报告/journal、两个selection互指与共同摘要、正式输出路径、source/config/manifest、运行模式和联合策略外配置一致性，不能只提供两个hash绕过；禁止重放已有正式输出。
+- 科学benchmark的grounded模式要求exactly1验证事件，decision为三科学标签且与正文首行一致。一般问答ANSWER仍可交付，但在科学评分中记INVALID；流程完成与评分正确分开。每题不论原文/会话回读成功与否均保留验证元数据和已知usage。
+- tools/audit_flow_timing.py独立从UTC/ns原始快照重建wall反跳/缺失与逐事件有效性，再复算stream/user/first与分位数和异常计数。时钟异常不删除质量样本；无时间时为未知而非零。
+- tools/compare_short_user_flow.py同30配对，失败留分母，报告Wilson区间、paired bootstrap与exact McNemar；区分有摘录/无摘录的grounded响应及摘录数量。联合格式/门槛策略的收益不能归因单因素，串行缓存/网络条件不能支持速度因果结论。
