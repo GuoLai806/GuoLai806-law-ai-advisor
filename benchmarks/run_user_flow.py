@@ -18,6 +18,18 @@ def percentile(values, quantile):
     ordered=sorted(values)
     return ordered[min(len(ordered)-1,max(0,int((len(ordered)-1)*quantile)))] if ordered else None
 
+def generation_metadata(events):
+    attempts=[{**event['data'],'received_ms':event.get('received_ms')} for event in events if event['event']=='generation_attempt']
+    retries=[{**event['data'],'received_ms':event.get('received_ms')} for event in events if event['event']=='generation_retry']
+    identities=[event['data'] for event in events if event['event']=='model_identity']
+    by_attempt={event['data'].get('attempt',1):event['data']['usage'] for event in events if event['event']=='usage'}
+    usage={key:sum(value.get(key,0) for value in by_attempt.values()) for key in set().union(*by_attempt.values())} if by_attempt else None
+    expected={attempt['attempt'] for attempt in attempts} if attempts else {1}
+    return {'generation_attempts':attempts,'generation_retries':retries,'observed_answer_models':identities,
+            'observed_answer_model':identities[0] if identities else None,'usage':usage,
+            'usage_attempts':[{'attempt':number,'usage':value} for number,value in sorted(by_attempt.items())],
+            'usage_complete':bool(usage) and set(by_attempt)==expected}
+
 async def execute(args):
     output=Path(args.output)
     if output.exists() or Path(str(output)+'.journal.jsonl').exists():
@@ -141,7 +153,6 @@ async def execute(args):
                             row['failure']={'type':'invalid_answer_format'}
                         cited=set(re.findall(r'\[(E\d+)\]',text))
                         row['cited_documents']=sorted({item['document_id'] for item in evidence if item['citation_id'] in cited})
-                    row['usage']=final.get('usage') if final else next((event['data']['usage'] for event in reversed(events) if event['event']=='usage'),None)
                     row['first_answer_ms']=first_answer
                     row['service_total_ms']=final.get('total_ms') if final else None
                     if not row['failure'] and config['service_configuration'].get('store_conversations')=='1':
@@ -154,6 +165,9 @@ async def execute(args):
                     row['failure']=row['failure'] or {'type':type(exc).__name__,'detail':str(exc).replace(token,'<redacted>')}
                     row.setdefault('retrieval_metrics',evaluate(query_id,references[query_id],[]))
                     row.setdefault('final_evidence_recall',0.0)
+                row.update(generation_metadata(events))
+                row['first_answer_ms']=first_answer
+                row['service_total_ms']=final.get('total_ms') if final else None
                 if row['failure']:
                     row['predicted_label']=None
                     row['cited_documents']=[]
@@ -177,6 +191,10 @@ async def execute(args):
         report['latency_ms']={key:{'p50':percentile([row[key] for row in rows if row.get(key) is not None],.5),'p95':percentile([row[key] for row in rows if row.get(key) is not None],.95)} for key in ('stream_total_ms','user_total_ms','first_answer_ms','service_total_ms')}
         report['usage_totals']={key:sum((row.get('usage') or {}).get(key,0) for row in rows) for key in ('prompt_tokens','completion_tokens','total_tokens','reasoning_tokens','prompt_cache_hit_tokens','prompt_cache_miss_tokens')}
         report['usage_available_queries']=sum(bool(row.get('usage')) for row in rows)
+        report['usage_complete_queries']=sum(bool(row.get('usage_complete')) for row in rows)
+        report['retried_queries']=sum(bool(row.get('generation_retries')) for row in rows)
+        report['generation_attempt_count']=sum(len(row.get('generation_attempts',[])) or int(bool(row.get('observed_answer_model') or row.get('usage'))) for row in rows)
+        report['usage_totals_scope']='known provider usage only; incomplete attempts are not assumed to cost zero'
         report['source_unchanged']=config['source_sha256']==source_hashes()
         report['queries_recorded']=len(rows)
         save_json(output,report)

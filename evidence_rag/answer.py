@@ -16,7 +16,7 @@ def messages_for(query, evidence):
     return [{'role':'system','content':system},{'role':'user','content':f'问题：{query}\n证据：\n{facts}'}]
 
 class OpenAIStream:
-    def __init__(self, base_url, model, api_key, timeout=30, transport=None, include_usage=False, max_output_tokens=None, temperature=None, thinking=None, reasoning_effort=None):
+    def __init__(self, base_url, model, api_key, timeout=30, transport=None, include_usage=False, max_output_tokens=None, temperature=None, thinking=None, reasoning_effort=None, empty_retry_thinking=None, retry_timeout=None, retry_max_output_tokens=None):
         self.base_url, self.model, self.api_key, self.timeout, self.transport = base_url.rstrip('/'), model, api_key, timeout, transport
         self.include_usage=include_usage
         if max_output_tokens is not None and (not isinstance(max_output_tokens,int) or isinstance(max_output_tokens,bool) or max_output_tokens<1): raise ValueError('max_output_tokens must be a positive integer')
@@ -26,7 +26,38 @@ class OpenAIStream:
         if thinking not in (None,'enabled','disabled'): raise ValueError('thinking must be enabled or disabled')
         if reasoning_effort not in (None,'low','high','max'): raise ValueError('invalid reasoning effort')
         self.thinking,self.reasoning_effort=thinking,reasoning_effort
+        if empty_retry_thinking not in (None,'disabled'): raise ValueError('empty retry must explicitly disable thinking')
+        if empty_retry_thinking is not None:
+            if thinking!='enabled': raise ValueError('empty retry requires enabled primary thinking')
+            if max_output_tokens is None: raise ValueError('empty retry requires bounded primary output')
+            if not isinstance(retry_timeout,(int,float)) or isinstance(retry_timeout,bool) or not 0<retry_timeout<=120: raise ValueError('retry timeout must be in (0,120]')
+            if not isinstance(retry_max_output_tokens,int) or isinstance(retry_max_output_tokens,bool) or not 0<retry_max_output_tokens<=max_output_tokens: raise ValueError('retry output must fit primary output reserve')
+        self.empty_retry_thinking=empty_retry_thinking
+        self.retry_timeout,self.retry_max_output_tokens=retry_timeout,retry_max_output_tokens
     async def stream_events(self, query, evidence):
+        if self.empty_retry_thinking is None:
+            async for event in self._stream_once(query,evidence): yield event
+            return
+        yield {'type':'generation_attempt','attempt':1,'thinking':self.thinking,'timeout_seconds':self.timeout,'max_output_tokens':self.max_output_tokens}
+        seen_content=False
+        retry_reason='empty_answer'
+        try:
+            async for event in self._stream_once(query,evidence):
+                if event['type']=='delta': seen_content=True
+                yield {**event,'attempt':1}
+            if seen_content:return
+        except (TimeoutError,httpx.TimeoutException,ModelStreamIncomplete) as exc:
+            retry_reason='timeout' if isinstance(exc,(TimeoutError,httpx.TimeoutException)) else exc.reason
+            if seen_content or retry_reason not in ('timeout','length','missing_done','missing_stop'):raise
+        yield {'type':'generation_retry','reason':retry_reason,'discard_pending_answer':True,'attempt':1,'next_attempt':2}
+        fallback=OpenAIStream(self.base_url,self.model,self.api_key,timeout=self.retry_timeout,
+                              transport=self.transport,include_usage=self.include_usage,
+                              max_output_tokens=self.retry_max_output_tokens,temperature=self.temperature,
+                              thinking=self.empty_retry_thinking)
+        yield {'type':'generation_attempt','attempt':2,'thinking':fallback.thinking,'timeout_seconds':fallback.timeout,'max_output_tokens':fallback.max_output_tokens}
+        async for event in fallback._stream_once(query,evidence): yield {**event,'attempt':2}
+
+    async def _stream_once(self, query, evidence):
         if not evidence: raise ValueError('evidence required')
         messages=messages_for(query,evidence)
         completed=False; finish_reason=None;observed_model=None;incomplete_reason=None

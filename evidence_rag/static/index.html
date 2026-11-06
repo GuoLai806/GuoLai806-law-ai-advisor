@@ -118,6 +118,12 @@ function displayEvidence(bundle) {
 }
 
 function receive(kind, data) {
+  if (kind === 'generation_retry') {
+    pendingAnswer = '';
+    answer.textContent = '';
+    status.textContent = '正在重新取得完整回答…';
+    showNotice('暂未取得完整回答，正在重新尝试。');
+  }
   if (kind === 'retrieval_started') status.textContent = '正在查找资料…';
   if (kind === 'evidence_ready') {
     displayEvidence(data.bundle);

@@ -45,7 +45,7 @@ async def lifespan(app):
     ov_headers={'X-API-Key':ov_key} if ov_key else {}
     dense=OpenViking(setting('OV_URL'),setting('OV_SCOPE'),headers=ov_headers,timeout=float(setting('OV_TIMEOUT','30'))) if setting('OV_URL') and setting('OV_SCOPE') else None
     app.state.service=RetrievalService(db,dense,reranker,tokenizer,rerank_timeout=float(setting('RERANK_TIMEOUT','120')))
-    app.state.generator=OpenAIStream(setting('MODEL_URL'),setting('MODEL_NAME'),setting('MODEL_KEY',''),timeout=float(setting('MODEL_TIMEOUT','90')),include_usage=setting('STREAM_INCLUDE_USAGE')=='1',max_output_tokens=int(setting('MAX_OUTPUT_TOKENS')) if setting('MAX_OUTPUT_TOKENS') else None,temperature=float(setting('MODEL_TEMPERATURE')) if setting('MODEL_TEMPERATURE') is not None else None,thinking=setting('MODEL_THINKING'),reasoning_effort=setting('MODEL_REASONING_EFFORT')) if setting('MODEL_URL') and setting('MODEL_NAME') else None
+    app.state.generator=OpenAIStream(setting('MODEL_URL'),setting('MODEL_NAME'),setting('MODEL_KEY',''),timeout=float(setting('MODEL_TIMEOUT','90')),include_usage=setting('STREAM_INCLUDE_USAGE')=='1',max_output_tokens=int(setting('MAX_OUTPUT_TOKENS')) if setting('MAX_OUTPUT_TOKENS') else None,temperature=float(setting('MODEL_TEMPERATURE')) if setting('MODEL_TEMPERATURE') is not None else None,thinking=setting('MODEL_THINKING'),reasoning_effort=setting('MODEL_REASONING_EFFORT'),empty_retry_thinking=setting('MODEL_EMPTY_RETRY_THINKING'),retry_timeout=float(setting('MODEL_RETRY_TIMEOUT')) if setting('MODEL_RETRY_TIMEOUT') else None,retry_max_output_tokens=int(setting('MODEL_RETRY_MAX_OUTPUT_TOKENS')) if setting('MODEL_RETRY_MAX_OUTPUT_TOKENS') else None) if setting('MODEL_URL') and setting('MODEL_NAME') else None
     yield
     db.db.close()
 
@@ -181,7 +181,10 @@ def generation_identity(request):
             'temperature':getattr(generator,'temperature',None),
             'stream_include_usage':bool(getattr(generator,'include_usage',False)),
             'store_conversations':setting('STORE_CONVERSATIONS')=='1',
-            'rerank_threshold':setting('RERANK_THRESHOLD')}
+            'rerank_threshold':setting('RERANK_THRESHOLD'),
+            'empty_retry_thinking':getattr(generator,'empty_retry_thinking',None),
+            'retry_timeout_seconds':getattr(generator,'retry_timeout',None),
+            'retry_max_output_tokens':getattr(generator,'retry_max_output_tokens',None)}
 
 def generation_allowed(bundle,body,app):
     budget_state=bundle['budget']['state']
@@ -283,13 +286,19 @@ async def stream(body: Query,request: Request,user=Depends(identity)):
             bundle=await get_bundle(body,request,user,pinned_revision=pinned); bundle['trace_id']=trace
             yield event('evidence_ready',{'bundle':bundle})
             if generation_allowed(bundle,body,request.app):
-                parts=[]; first_token_ms=None;usage=None
+                parts=[]; first_token_ms=None;usage=None;usage_attempts=[];usage_by_attempt={};attempts=[]
                 async for incoming in provider_events(request.app.state.generator,body.query,bundle['evidence']):
                     if await request.is_disconnected(): return
+                    if incoming.get('type') in ('generation_attempt','generation_retry'):
+                        if incoming['type']=='generation_attempt':attempts.append({key:value for key,value in incoming.items() if key!='type'})
+                        yield event(incoming['type'],{**{key:value for key,value in incoming.items() if key!='type'},'elapsed_ms':round((time.monotonic()-started)*1000,2)});continue
                     if incoming.get('type')=='model_identity':
-                        yield event('model_identity',{'model':incoming['model'],'system_fingerprint':incoming.get('system_fingerprint')});continue
+                        yield event('model_identity',{'model':incoming['model'],'system_fingerprint':incoming.get('system_fingerprint'),'attempt':incoming.get('attempt',1)});continue
                     if incoming.get('type')=='usage':
-                        usage=incoming['usage'];yield event('usage',{'usage':usage,'usage_source':'provider'});continue
+                        usage_by_attempt[incoming.get('attempt',1)]=incoming['usage']
+                        usage_attempts=[{'attempt':number,'usage':value} for number,value in sorted(usage_by_attempt.items())]
+                        usage={key:sum(item['usage'].get(key,0) for item in usage_attempts) for key in set().union(*(item['usage'] for item in usage_attempts))}
+                        yield event('usage',{'usage':incoming['usage'],'attempt':incoming.get('attempt',1),'usage_source':'provider'});continue
                     if incoming.get('type')!='delta': continue
                     delta=incoming['delta']
                     if first_token_ms is None: first_token_ms=round((time.monotonic()-started)*1000,2)
@@ -302,7 +311,8 @@ async def stream(body: Query,request: Request,user=Depends(identity)):
                 else:
                     save_turn(request,user,body.session_id,body.query,answer,bundle['corpus_revision'])
                     status=bundle['status']
-                yield event('completed',{'status':status,'first_answer_ms':first_token_ms,'total_ms':round((time.monotonic()-started)*1000,2),'usage':usage,'usage_source':'provider' if usage else 'unavailable'})
+                usage_complete=bool(usage) and {item['attempt'] for item in usage_attempts}==({item['attempt'] for item in attempts} if attempts else {1})
+                yield event('completed',{'status':status,'first_answer_ms':first_token_ms,'total_ms':round((time.monotonic()-started)*1000,2),'usage':usage,'usage_source':'provider' if usage_complete else 'provider_known_attempts' if usage else 'unavailable','usage_complete':usage_complete,'usage_attempts':usage_attempts,'generation_attempts':attempts})
             else:
                 yield event('verification',{'status':'not_generated'})
                 yield event('completed',{'status':'evidence_only'})
