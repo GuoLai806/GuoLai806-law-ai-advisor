@@ -9,7 +9,7 @@ from pydantic import BaseModel, Field
 from .catalog import Catalog
 from .retrieval import RetrievalService, CrossEncoderReranker, OpenViking
 from .budget import HuggingFaceTokenizer, ConservativeByteBudget
-from .answer import OpenAIStream, validate_citations, provider_events
+from .answer import OpenAIStream, ModelStreamIncomplete, validate_citations, provider_events
 
 def setting(name, default=None):
     return os.environ.get('EVIDENCE_RAG_'+name,os.environ.get('LEGAL_RAG_'+name,default))
@@ -24,6 +24,7 @@ class Query(BaseModel):
     corpus_revision: str | None = None
     max_evidence_tokens: int = Field(default=6000,ge=1,le=6000)
     max_evidence_items: int = Field(default=8,ge=1,le=60)
+    include_retrieval_trace: bool = False
 
 @asynccontextmanager
 async def lifespan(app):
@@ -31,18 +32,24 @@ async def lifespan(app):
     db.db.execute('CREATE TABLE IF NOT EXISTS sessions(session_id TEXT PRIMARY KEY, owner TEXT NOT NULL)')
     db.db.execute('CREATE TABLE IF NOT EXISTS turns(turn_id TEXT PRIMARY KEY, session_id TEXT NOT NULL, query TEXT NOT NULL, answer TEXT NOT NULL, revision TEXT NOT NULL, created REAL NOT NULL, FOREIGN KEY(session_id) REFERENCES sessions(session_id))')
     app.state.catalog=db
-    reranker=CrossEncoderReranker(setting('RERANKER'),device=setting('RERANK_DEVICE'),dtype=setting('RERANK_DTYPE')) if setting('RERANKER') else None
+    reranker=CrossEncoderReranker(setting('RERANKER'),device=setting('RERANK_DEVICE'),dtype=setting('RERANK_DTYPE'),batch_size=int(setting('RERANK_BATCH_SIZE','2'))) if setting('RERANKER') else None
     tokenizer=HuggingFaceTokenizer(setting('TOKENIZER'),setting('TOKENIZER_REVISION')) if setting('TOKENIZER') and setting('TOKENIZER_REVISION') else None
     ov_key=os.environ.get('OPENVIKING_API_KEY')
     ov_headers={'X-API-Key':ov_key} if ov_key else {}
-    dense=OpenViking(setting('OV_URL'),setting('OV_SCOPE'),headers=ov_headers) if setting('OV_URL') and setting('OV_SCOPE') else None
-    app.state.service=RetrievalService(db,dense,reranker,tokenizer)
-    app.state.generator=OpenAIStream(setting('MODEL_URL'),setting('MODEL_NAME'),setting('MODEL_KEY',''),include_usage=setting('STREAM_INCLUDE_USAGE')=='1',max_output_tokens=int(setting('MAX_OUTPUT_TOKENS')) if setting('MAX_OUTPUT_TOKENS') else None) if setting('MODEL_URL') and setting('MODEL_NAME') else None
+    dense=OpenViking(setting('OV_URL'),setting('OV_SCOPE'),headers=ov_headers,timeout=float(setting('OV_TIMEOUT','30'))) if setting('OV_URL') and setting('OV_SCOPE') else None
+    app.state.service=RetrievalService(db,dense,reranker,tokenizer,rerank_timeout=float(setting('RERANK_TIMEOUT','120')))
+    app.state.generator=OpenAIStream(setting('MODEL_URL'),setting('MODEL_NAME'),setting('MODEL_KEY',''),timeout=float(setting('MODEL_TIMEOUT','90')),include_usage=setting('STREAM_INCLUDE_USAGE')=='1',max_output_tokens=int(setting('MAX_OUTPUT_TOKENS')) if setting('MAX_OUTPUT_TOKENS') else None,temperature=float(setting('MODEL_TEMPERATURE')) if setting('MODEL_TEMPERATURE') is not None else None,thinking=setting('MODEL_THINKING'),reasoning_effort=setting('MODEL_REASONING_EFFORT')) if setting('MODEL_URL') and setting('MODEL_NAME') else None
     yield
     db.db.close()
 
 app=FastAPI(title='Evidence RAG v2',lifespan=lifespan)
 app.state.default_profile='general'
+
+@app.get('/',include_in_schema=False)
+def workspace():
+    from pathlib import Path
+    from fastapi.responses import FileResponse
+    return FileResponse(Path(__file__).parent/'static'/'index.html')
 
 def identity(authorization: str | None=Header(default=None)):
     # Map opaque credentials to principals, populated from local environment by operator.
@@ -90,13 +97,13 @@ async def get_bundle(body, request, user, pinned_revision=None):
                 tokenizer=byte_budget_config()
                 tokenizer.paragraph_loader=lambda uid:cat.get(active,uid)
             except ValueError as exc: raise HTTPException(503,str(exc)) from exc
-        service=RetrievalService(cat,configured.dense,configured.reranker,tokenizer,profile=profile)
+        service=RetrievalService(cat,configured.dense,configured.reranker,tokenizer,profile=profile,rerank_timeout=configured.rerank_timeout,ranking_executor=configured.ranking_executor)
         maximum=body.max_evidence_tokens
         try:
             window,framing,output=generation_limits()
             maximum=min(maximum,window-framing-output)
         except ValueError: pass
-        try: result=await service.retrieve(body.query,active,body.event_date,max_evidence_tokens=maximum,max_units=body.max_evidence_items,document_id=body.document_id)
+        try: result=await service.retrieve(body.query,active,body.event_date,max_evidence_tokens=maximum,max_units=body.max_evidence_items,document_id=body.document_id,return_retrieval_trace=body.include_retrieval_trace)
         except LookupError as exc: raise HTTPException(404,str(exc)) from exc
         except ValueError as exc: raise HTTPException(503,'catalog or retrieval integrity unavailable') from exc
         result['trace_id']='tr_'+uuid.uuid4().hex
@@ -149,7 +156,9 @@ async def retrieve(body: Query,request: Request,user=Depends(identity)): return 
 @app.get('/api/v2/models')
 def model_capabilities(request: Request,user=Depends(identity)):
     service=request.app.state.service
-    return {'dense_configured':bool(service.dense),'reranker_loaded':bool(service.reranker),'tokenizer_loaded':bool(service.tokenizer),'generator_configured':bool(request.app.state.generator),'provider_health_verified':False}
+    generator=request.app.state.generator
+    return {'dense_configured':bool(service.dense),'reranker_loaded':bool(service.reranker),'tokenizer_loaded':bool(service.tokenizer),'generator_configured':bool(generator),'provider_health_verified':False,
+            'runtime_identity':{'dense_scope':getattr(service.dense,'scope',None),'reranker_revision':getattr(service.reranker,'revision',None),'reranker_batch_size':getattr(service.reranker,'batch_size',None),'rerank_timeout_seconds':service.rerank_timeout,'tokenizer_revision':getattr(service.tokenizer,'revision',None),'answer_model':getattr(generator,'model',None),'max_output_tokens':getattr(generator,'max_output_tokens',None),'thinking':getattr(generator,'thinking',None),'reasoning_effort':getattr(generator,'reasoning_effort',None)}}
 
 def generation_allowed(bundle,body,app):
     budget_state=bundle['budget']['state']
@@ -254,6 +263,8 @@ async def stream(body: Query,request: Request,user=Depends(identity)):
                 parts=[]; first_token_ms=None;usage=None
                 async for incoming in provider_events(request.app.state.generator,body.query,bundle['evidence']):
                     if await request.is_disconnected(): return
+                    if incoming.get('type')=='model_identity':
+                        yield event('model_identity',{'model':incoming['model'],'system_fingerprint':incoming.get('system_fingerprint')});continue
                     if incoming.get('type')=='usage':
                         usage=incoming['usage'];yield event('usage',{'usage':usage,'usage_source':'provider'});continue
                     if incoming.get('type')!='delta': continue
@@ -273,6 +284,7 @@ async def stream(body: Query,request: Request,user=Depends(identity)):
                 yield event('verification',{'status':'not_generated'})
                 yield event('completed',{'status':'evidence_only'})
         except HTTPException as e: yield event('error',{'status':e.status_code,'message':e.detail})
+        except ModelStreamIncomplete as e: yield event('error',{'code':'model_incomplete','reason':e.reason,'discard_pending_answer':True})
         except asyncio.CancelledError: raise
         except Exception: yield event('error',{'message':'provider or retrieval unavailable','discard_pending_answer':True})
     return StreamingResponse(events(),media_type='text/event-stream')

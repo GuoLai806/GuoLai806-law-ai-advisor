@@ -23,7 +23,7 @@ class OpenViking:
             upload=await client.post(self.base+'/api/v1/resources/temp_upload',files={'file':(uid+'.md',content.encode('utf-8'),'text/markdown')})
             upload.raise_for_status(); envelope=upload.json()
             if envelope.get('status')!='ok' or not isinstance(envelope.get('result'),dict) or not envelope['result'].get('temp_file_id'): raise ValueError('invalid upload envelope')
-            response=await client.post(self.base+'/api/v1/resources',json={'temp_file_id':envelope['result']['temp_file_id'],'to':target,'wait':True,'strict':True,'create_parent':True,'processing_mode':'vectors_only'})
+            response=await client.post(self.base+'/api/v1/resources',json={'temp_file_id':envelope['result']['temp_file_id'],'to':target,'wait':True,'strict':True,'create_parent':True,'processing_mode':'vectors_only','args':{'parse_mode':'no_split'}})
             response.raise_for_status(); result=response.json()
             if result.get('status')!='ok' or not isinstance(result.get('result'),dict): raise ValueError('invalid ingest envelope')
             root=result['result'].get('root_uri')
@@ -106,28 +106,58 @@ def rank_candidates(catalog, revision, query, lexical, dense, exact=(), reranker
     order=list(dict.fromkeys(streams['exact']+order))[:limit]
     candidates=[catalog.get(revision,uid) for uid in order]
     if any(item is None for item in candidates): raise ValueError('candidate not in pinned revision')
-    scores={}
+    result={'candidates':candidates,'sources':dict(sources),'rrf_scores':rrf_scores,'reranker_scores':{}}
+    return rerank_candidates(result,query,streams['exact'],reranker) if reranker else result
+
+def rerank_candidates(ranking,query,exact,reranker):
+    """Model work uses materialized evidence, never a request-scoped database."""
+    candidates=ranking['candidates'];limit=len(candidates);scores={}
     if reranker:
         ranked=reranker.rank(query,candidates)
         expected={x['unit_id'] for x in candidates};returned=[x['unit_id'] for x,score in ranked]
         if len(returned)!=len(expected) or set(returned)!=expected or any(not math.isfinite(float(score)) for _,score in ranked): raise ValueError('invalid reranker response')
         scores={x['unit_id']:float(score) for x,score in ranked};byid={x['unit_id']:x for x,score in ranked}
-        order=list(dict.fromkeys(streams['exact']+[x['unit_id'] for x,score in ranked]))[:limit]
+        order=list(dict.fromkeys(list(exact)+[x['unit_id'] for x,score in ranked]))[:limit]
         candidates=[byid[uid] for uid in order]
-    return {'candidates':candidates,'sources':dict(sources),'rrf_scores':rrf_scores,'reranker_scores':scores}
+    return {**ranking,'candidates':candidates,'reranker_scores':scores}
+
+class RankingExecutor:
+    def __init__(self):
+        self.gate = asyncio.Semaphore(1)
+        self.pending = set()
+
+    async def run(self, operation, timeout):
+        started = time.monotonic()
+        await asyncio.wait_for(self.gate.acquire(), timeout=timeout)
+        task = asyncio.create_task(asyncio.to_thread(operation))
+        self.pending.add(task)
+        def finished(completed):
+            self.pending.discard(completed)
+            self.gate.release()
+            if not completed.cancelled():
+                completed.exception()
+        task.add_done_callback(finished)
+        remaining = max(0.001, timeout - (time.monotonic() - started))
+        return await asyncio.wait_for(asyncio.shield(task), timeout=remaining)
 
 class RetrievalService:
-    def __init__(self,catalog, dense=None, reranker=None, tokenizer=None, profile='general'): 
+    def __init__(self,catalog, dense=None, reranker=None, tokenizer=None, profile='general', rerank_timeout=120, ranking_executor=None):
         if profile not in ('general','legal'): raise ValueError('invalid profile')
+        if not isinstance(rerank_timeout,(int,float)) or isinstance(rerank_timeout,bool) or not math.isfinite(rerank_timeout) or not 0<rerank_timeout<=600: raise ValueError('rerank timeout must be in (0,600] seconds')
         self.catalog,self.dense,self.reranker,self.tokenizer,self.profile=catalog,dense,reranker,tokenizer,profile
-    async def retrieve(self, query, revision=None, event_date=None, max_units=8, max_evidence_tokens=6000, document_id=None):
+        self.rerank_timeout=rerank_timeout
+        self.ranking_executor=ranking_executor or RankingExecutor()
+    async def retrieve(self, query, revision=None, event_date=None, max_units=8, max_evidence_tokens=6000, document_id=None, return_retrieval_trace=False):
         start=time.monotonic(); rev=revision or self.catalog.active()
+        timings={};dense_rows=[]
         if not rev or not self.catalog.revision(rev): raise LookupError('revision unavailable')
         manifest=__import__('json').loads(self.catalog.revision(rev)['manifest'])
         corpus_profile=manifest.get('profile','legal')
         if corpus_profile!=self.profile: raise LookupError('revision profile mismatch')
         if self.profile=='general' and manifest.get('parser_version')!='generic-documents-v2': raise LookupError('generic revision requires reindex')
+        lexical_started=time.monotonic()
         lexical=self.catalog.lexical_scored(rev,query); raw_scores={'bm25':dict(lexical),'dense':{}}
+        timings['lexical_ms']=round((time.monotonic()-lexical_started)*1000,2)
         lists={'exact':[], 'bm25':[uid for uid,score in lexical]}; degraded=[]
         wants_source=False
         if self.profile=='legal':
@@ -155,6 +185,7 @@ class RetrievalService:
             if wants_source and not lists['exact']:
                 return {'status':'insufficient_evidence','query_plan':{'mode':'source_lookup','profile':'general','applicability_review':False},'corpus_revision':rev,'degraded':True,'degraded_reasons':['document_not_found'],'missing_facts':[],'evidence':[],'budget':{'state':'not_applicable','used_tokens':0,'omitted':[]},'token_budget_status':'not_applicable','retrieval_ms':round((time.monotonic()-start)*1000,2)}
         if self.dense:
+            dense_started=time.monotonic()
             try:
                 if self.profile=='general' and manifest.get('embedding_serialization')!='title-newline-text-v1': raise ValueError('generic embedding serialization mismatch')
                 expected_scope=('viking://resources/rag/'+manifest['corpus_id']+'/'+rev) if self.profile=='general' else ('viking://resources/law-cn/'+rev)
@@ -162,6 +193,7 @@ class RetrievalService:
                 if not self.catalog.db.execute('SELECT 1 FROM units WHERE revision=? AND uri IS NOT NULL LIMIT 1',(rev,)).fetchone(): raise ValueError('dense index not mapped')
                 if not self.catalog.db.execute('SELECT 1 FROM settings WHERE key=? AND value=?',('dense_validated:'+rev,'yes')).fetchone(): raise ValueError('dense index not validated')
                 rows=await self.dense.find(query); ids=[]
+                dense_rows=[{'uri':x['uri'],'score':x.get('score') if isinstance(x.get('score'),numbers.Real) and math.isfinite(x['score']) else None} for x in rows]
                 for x in rows:
                     r=self.catalog.db.execute('SELECT unit_id FROM units WHERE revision=? AND uri=?',(rev,x['uri'])).fetchone()
                     if r:
@@ -170,14 +202,19 @@ class RetrievalService:
                         if isinstance(score,numbers.Real) and math.isfinite(score): raw_scores['dense'].setdefault(r[0],score)
                 lists['dense']=ids
             except Exception: degraded.append('dense_unavailable')
+            timings['dense_ms']=round((time.monotonic()-dense_started)*1000,2)
         else: degraded.append('dense_not_configured')
         dense_pairs=[(uid,raw_scores['dense'].get(uid)) for uid in lists.get('dense',[])]
+        ranking_started=time.monotonic()
+        prepared=rank_candidates(self.catalog,rev,query,lexical,dense_pairs,lists['exact'])
         try:
-            ranking=await asyncio.wait_for(asyncio.to_thread(rank_candidates,self.catalog,rev,query,lexical,dense_pairs,lists['exact'],self.reranker),timeout=10)
+            operation=lambda:rerank_candidates(prepared,query,lists['exact'],self.reranker)
+            ranking=await self.ranking_executor.run(operation,self.rerank_timeout)
             if not self.reranker:degraded.append('reranker_not_configured')
         except Exception:
             degraded.append('reranker_failed')
-            ranking=rank_candidates(self.catalog,rev,query,lexical,dense_pairs,lists['exact'])
+            ranking=prepared
+        timings['rank_and_rerank_ms']=round((time.monotonic()-ranking_started)*1000,2)
         candidates=ranking['candidates'];sources=ranking['sources'];rerank_scores=ranking['reranker_scores']
         byid={c['unit_id']:c for c in candidates};selected=[c['unit_id'] for c in candidates[:max_units]]
         evidence=[]
@@ -212,4 +249,7 @@ class RetrievalService:
         budgeted,budget=assemble(evidence,self.tokenizer,max_evidence_tokens,query)
         # Retrieval results can be inspected without tokenizer, but are not generation-ready.
         if self.tokenizer: evidence=budgeted
-        return {'query_plan':{'mode':mode,'profile':self.profile,'event_date':str(event_date) if event_date and self.profile=='legal' else None,'applicability_review':applicability_review},'budget':budget, 'status':('insufficient_evidence' if not evidence else ('needs_clarification' if mode=='case_question' and not event_date else 'ready')),'corpus_revision':rev,'degraded':bool(degraded),'degraded_reasons':degraded,'missing_facts':missing_facts,'token_budget_status':budget['state'],'evidence':evidence,'retrieval_ms':round((time.monotonic()-start)*1000,2)}
+        result={'query_plan':{'mode':mode,'profile':self.profile,'event_date':str(event_date) if event_date and self.profile=='legal' else None,'applicability_review':applicability_review},'budget':budget, 'status':('insufficient_evidence' if not evidence else ('needs_clarification' if mode=='case_question' and not event_date else 'ready')),'corpus_revision':rev,'degraded':bool(degraded),'degraded_reasons':degraded,'missing_facts':missing_facts,'token_budget_status':budget['state'],'evidence':evidence,'retrieval_ms':round((time.monotonic()-start)*1000,2)}
+        if return_retrieval_trace:
+            result['retrieval_trace']={'dense_backend':'openviking' if isinstance(self.dense,OpenViking) else type(self.dense).__name__,'dense_scope':getattr(self.dense,'scope',None),'dense_hits':dense_rows,'timings_ms':timings,'rerank_timeout_seconds':self.rerank_timeout,'candidates':[{'unit_id':item['unit_id'],'document_id':(item.get('document') or {}).get('doc_id'),'rrf_score':ranking['rrf_scores'].get(item['unit_id']),'reranker_score':rerank_scores.get(item['unit_id']),'sources':sources[item['unit_id']]} for item in candidates]}
+        return result

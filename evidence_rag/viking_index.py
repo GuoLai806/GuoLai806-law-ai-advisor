@@ -23,8 +23,9 @@ async def index_one(cat, adapter, revision, uid):
     # Save before dispatch, so a timeout or process crash is an unknown outcome, not retry permission.
     content=document_embedding_text(unit)
     cat.db.execute('INSERT INTO viking_journal VALUES(?,?,?,?,?)',(revision,uid,uri,digest(content),'delivery_unknown'))
-    await adapter.ingest(uid,content)
-    return {'state':'delivery_unknown','uri':uri}
+    receipt=await adapter.ingest(uid,content)
+    response=receipt['response']
+    return {'state':'delivery_unknown','uri':uri,'receipt':{key:response[key] for key in ('root_uri','context_count','queue_status','usage') if key in response}}
 
 async def reconcile_one(cat,adapter,revision,uid):
     validate_scope(cat,adapter,revision)
@@ -41,26 +42,34 @@ async def reconcile_one(cat,adapter,revision,uid):
     except Exception: cat.db.execute('ROLLBACK'); raise
     return {'state':'content_verified','uri':row['uri'],'note':'vector visibility still requires separate validation'}
 
-async def validate_index(cat,adapter,revision):
+async def validate_index(cat,adapter,revision,concurrency=4,on_result=None):
     validate_scope(cat,adapter,revision)
+    if not isinstance(concurrency,int) or isinstance(concurrency,bool) or not 1<=concurrency<=16: raise ValueError('validation concurrency must be 1..16')
     rows=cat.db.execute('SELECT unit_id,uri,text FROM units WHERE revision=? ORDER BY unit_id',(revision,)).fetchall()
     if not rows: raise ValueError('empty revision')
-    outcomes=[]
-    for row in rows:
-        if not row['uri'] or not row['uri'].startswith(adapter.scope):
-            outcomes.append({'unit_id':row['unit_id'],'result':'missing_mapping'}); continue
-        try:
-            hits=await adapter.find(''.join(row['text'].split())[:80])
-            outcomes.append({'unit_id':row['unit_id'],'result':'visible' if any(x['uri']==row['uri'] for x in hits) else 'not_visible'})
-        except Exception:
-            outcomes.append({'unit_id':row['unit_id'],'result':'backend_error'})
+    gate=asyncio.Semaphore(concurrency)
+    async def inspect(row):
+        async with gate:
+            if not row['uri'] or not row['uri'].startswith(adapter.scope):
+                outcome={'unit_id':row['unit_id'],'result':'missing_mapping'}
+            else:
+                try:
+                    content=document_embedding_text(cat.get(revision,row['unit_id']))
+                    hits=await adapter.find(content)
+                    matched=next((rank for rank,hit in enumerate(hits,1) if hit['uri']==row['uri']),None)
+                    outcome={'unit_id':row['unit_id'],'result':'visible' if matched else 'not_visible','matching_rank':matched,'query_sha256':digest(content)}
+                except Exception:
+                    outcome={'unit_id':row['unit_id'],'result':'backend_error'}
+            if on_result:on_result(outcome)
+            return outcome
+    outcomes=await asyncio.gather(*(inspect(row) for row in rows))
     passed=all(x['result']=='visible' for x in outcomes)
     if passed:
         cat.db.execute("INSERT INTO settings(key,value) VALUES(?,?) ON CONFLICT(key) DO UPDATE SET value=excluded.value",('dense_validated:'+revision,'yes'))
         cat.db.execute("UPDATE jobs SET state='validated' WHERE revision=?",(revision,))
     else:
         cat.db.execute('DELETE FROM settings WHERE key=?',('dense_validated:'+revision,))
-    return {'revision':revision,'index_visibility_validated':passed,'units':outcomes}
+    return {'revision':revision,'index_visibility_validated':passed,'validation_query':'exact indexed text serialization; integrity check, not query-quality benchmark','units':outcomes}
 
 def main():
     p=argparse.ArgumentParser(); p.add_argument('operation',choices=['send','reconcile','validate']);p.add_argument('--db',required=True);p.add_argument('--revision',required=True);p.add_argument('--unit-id');p.add_argument('--url',required=True);p.add_argument('--scope',required=True);a=p.parse_args()

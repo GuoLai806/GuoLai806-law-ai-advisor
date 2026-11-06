@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "evidence-rag"
-version = "0.2.0"
+version = "0.2.1"
 description = "Versioned evidence retrieval with an optional legal profile"
 requires-python = ">=3.12"
 dependencies = [
@@ -26,3 +26,6 @@ legal-rag = "legal_rag.cli:main"
 
 [tool.setuptools.packages.find]
 include = ["evidence_rag*", "legal_rag*"]
+
+[tool.setuptools.package-data]
+evidence_rag = ["static/*.html"]

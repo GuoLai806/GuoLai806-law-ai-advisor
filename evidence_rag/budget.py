@@ -6,7 +6,7 @@ class HuggingFaceTokenizer:
         self.model,self.revision=model,revision
         self.tokenizer=AutoTokenizer.from_pretrained(model,revision=revision,local_files_only=True)
     def count(self, text): return len(self.tokenizer.encode(text,add_special_tokens=False))
-    def count_chat(self, messages): return len(self.tokenizer.apply_chat_template(messages,tokenize=True,add_generation_prompt=True))
+    def count_chat(self, messages): return len(self.tokenizer.apply_chat_template(messages,tokenize=True,add_generation_prompt=True,return_dict=False))
 
 class ConservativeByteBudget:
     """Opt-in byte envelope; conservative heuristic, not a tokenizer guarantee."""
