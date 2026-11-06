@@ -7,6 +7,37 @@ from evidence_rag.catalog import Catalog
 from evidence_rag.retrieval import OpenViking, RetrievalService
 
 
+def test_service_default_evidence_limit_is_reported_and_used(monkeypatch):
+    from types import SimpleNamespace
+    from evidence_rag.api import Query, model_capabilities
+    monkeypatch.setenv('EVIDENCE_RAG_DEFAULT_EVIDENCE_ITEMS', '4')
+    body = Query(query='Synthetic question', session_id='fixture')
+    service = SimpleNamespace(dense=None, reranker=None, tokenizer=None, rerank_timeout=120)
+    request = SimpleNamespace(app=SimpleNamespace(state=SimpleNamespace(service=service, generator=None)))
+    assert body.max_evidence_items == 4
+    assert model_capabilities(request, 'fixture')['runtime_identity']['default_evidence_items'] == 4
+    assert Query(query='Synthetic', session_id='fixture', max_evidence_items=2).max_evidence_items == 2
+
+
+@pytest.mark.parametrize('value', ['0', '61', 'invalid'])
+def test_invalid_operator_evidence_limit_is_rejected(monkeypatch, value):
+    from evidence_rag.api import Query
+    monkeypatch.setenv('EVIDENCE_RAG_DEFAULT_EVIDENCE_ITEMS', value)
+    with pytest.raises(ValueError):
+        Query(query='Synthetic', session_id='fixture')
+
+
+def test_session_failure_cannot_be_scored_as_a_successful_answer():
+    from benchmarks.verification_metrics import aggregate
+    failed = {'gold_label': 'SUPPORT', 'predicted_label': 'SUPPORT',
+              'gold_documents': ['d1'], 'cited_documents': ['d1'],
+              'failure': {'type': 'session_read_failure'}}
+    result = aggregate([failed])
+    assert result['claim_label_accuracy'] == 0
+    assert result['cited_document_label_counts']['correct'] == 0
+    assert result['confusion']['SUPPORT']['INVALID'] == 1
+
+
 @pytest.mark.asyncio
 @pytest.mark.parametrize('thinking', ['disabled', 'enabled'])
 async def test_provider_receives_explicit_thinking_configuration(thinking):

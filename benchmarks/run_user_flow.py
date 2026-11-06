@@ -154,6 +154,9 @@ async def execute(args):
                     row['failure']=row['failure'] or {'type':type(exc).__name__,'detail':str(exc).replace(token,'<redacted>')}
                     row.setdefault('retrieval_metrics',evaluate(query_id,references[query_id],[]))
                     row.setdefault('final_evidence_recall',0.0)
+                if row['failure']:
+                    row['predicted_label']=None
+                    row['cited_documents']=[]
                 if not row.get('raw_sha256'):
                     raw_path=raw_root/(output.stem+'-'+query_id+'.json')
                     save_json(raw_path,{'query_id':query_id,'events':events,'failure':row['failure']})

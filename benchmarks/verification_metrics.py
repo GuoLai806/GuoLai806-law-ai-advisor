@@ -21,7 +21,7 @@ def aggregate(rows):
     pair_gold=pair_predicted=pair_correct=0
     for row in rows:
         gold=row['gold_label']
-        predicted=row.get('predicted_label')
+        predicted=None if row.get('failure') else row.get('predicted_label')
         confusion[gold][predicted if predicted in LABELS else 'INVALID']+=1
         expected=set(row.get('gold_documents',[]))
         actual=set(row.get('cited_documents',[])) if predicted in LABELS[:2] else set()

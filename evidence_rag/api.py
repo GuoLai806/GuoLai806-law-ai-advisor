@@ -14,6 +14,12 @@ from .answer import OpenAIStream, ModelStreamIncomplete, validate_citations, pro
 def setting(name, default=None):
     return os.environ.get('EVIDENCE_RAG_'+name,os.environ.get('LEGAL_RAG_'+name,default))
 
+def default_evidence_items():
+    value=int(setting('DEFAULT_EVIDENCE_ITEMS','8'))
+    if not 1<=value<=60:
+        raise ValueError('DEFAULT_EVIDENCE_ITEMS must be between 1 and 60')
+    return value
+
 class Query(BaseModel):
     query: str = Field(min_length=1,max_length=4000)
     session_id: str = Field(min_length=1,max_length=128,pattern=r'^[A-Za-z0-9_-]+$')
@@ -23,11 +29,12 @@ class Query(BaseModel):
     budget_mode: Literal['tokenizer','conservative_bytes'] = 'tokenizer'
     corpus_revision: str | None = None
     max_evidence_tokens: int = Field(default=6000,ge=1,le=6000)
-    max_evidence_items: int = Field(default=8,ge=1,le=60)
+    max_evidence_items: int = Field(default_factory=default_evidence_items,ge=1,le=60)
     include_retrieval_trace: bool = False
 
 @asynccontextmanager
 async def lifespan(app):
+    default_evidence_items()  # Reject invalid operator configuration at startup.
     db=Catalog(setting('DB','evidence-rag.sqlite3'))
     db.db.execute('CREATE TABLE IF NOT EXISTS sessions(session_id TEXT PRIMARY KEY, owner TEXT NOT NULL)')
     db.db.execute('CREATE TABLE IF NOT EXISTS turns(turn_id TEXT PRIMARY KEY, session_id TEXT NOT NULL, query TEXT NOT NULL, answer TEXT NOT NULL, revision TEXT NOT NULL, created REAL NOT NULL, FOREIGN KEY(session_id) REFERENCES sessions(session_id))')
@@ -158,7 +165,7 @@ def model_capabilities(request: Request,user=Depends(identity)):
     service=request.app.state.service
     generator=request.app.state.generator
     return {'dense_configured':bool(service.dense),'reranker_loaded':bool(service.reranker),'tokenizer_loaded':bool(service.tokenizer),'generator_configured':bool(generator),'provider_health_verified':False,
-            'runtime_identity':{'dense_scope':getattr(service.dense,'scope',None),'reranker_revision':getattr(service.reranker,'revision',None),'reranker_batch_size':getattr(service.reranker,'batch_size',None),'rerank_timeout_seconds':service.rerank_timeout,'tokenizer_revision':getattr(service.tokenizer,'revision',None),'answer_model':getattr(generator,'model',None),'max_output_tokens':getattr(generator,'max_output_tokens',None),'thinking':getattr(generator,'thinking',None),'reasoning_effort':getattr(generator,'reasoning_effort',None)}}
+            'runtime_identity':{'dense_scope':getattr(service.dense,'scope',None),'reranker_revision':getattr(service.reranker,'revision',None),'reranker_batch_size':getattr(service.reranker,'batch_size',None),'rerank_timeout_seconds':service.rerank_timeout,'tokenizer_revision':getattr(service.tokenizer,'revision',None),'answer_model':getattr(generator,'model',None),'max_output_tokens':getattr(generator,'max_output_tokens',None),'thinking':getattr(generator,'thinking',None),'reasoning_effort':getattr(generator,'reasoning_effort',None),'default_evidence_items':default_evidence_items()}}
 
 def generation_allowed(bundle,body,app):
     budget_state=bundle['budget']['state']

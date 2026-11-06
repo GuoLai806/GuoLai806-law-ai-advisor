@@ -93,6 +93,7 @@ async function showSource(item) {
   const source = await response.json();
   document.getElementById('source-content').textContent = source.title + '\n\n' + source.text;
   document.getElementById('source-panel').classList.remove('hidden');
+  document.getElementById('source-panel').scrollIntoView({behavior: 'smooth', block: 'start'});
 }
 
 function displayEvidence(bundle) {
