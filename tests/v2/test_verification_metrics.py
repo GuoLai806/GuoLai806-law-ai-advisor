@@ -27,6 +27,9 @@ def test_verdict_parser_requires_an_explicit_first_line():
     ('Verdict: CONTRADICT\nSynthetic [E1]', 'CONTRADICT'),
     ('verdict: CONTRADICT\nSynthetic [E1]', 'CONTRADICT'),
     ('判断：**NOT_ENOUGH_INFO**\nSynthetic [E1]', 'NOT_ENOUGH_INFO'),
+    ('判定：SUPPORT\nSynthetic [E1]', 'SUPPORT'),
+    ('### 最终判定：CONTRADICT\nSynthetic [E1]', 'CONTRADICT'),
+    ('**Final verdict**: **NOT_ENOUGH_INFO**\nSynthetic [E1]', 'NOT_ENOUGH_INFO'),
 ])
 def test_explicit_verdict_prefix_is_equivalent_presentation(answer, expected):
     assert parse_verdict(answer) == expected
@@ -35,6 +38,8 @@ def test_explicit_verdict_prefix_is_equivalent_presentation(answer, expected):
     '结论：尚未确认。文献中出现 SUPPORT 一词。',
     'Explanation: SUPPORT is not justified.',
     'The claim might receive a SUPPORT verdict later.',
+    '结论：\nSUPPORT is mentioned in the explanation.',
+    'Explanation first.\n判定：SUPPORT',
 ])
 def test_parser_never_extracts_a_label_from_explanatory_body(answer):
     assert parse_verdict(answer) is None

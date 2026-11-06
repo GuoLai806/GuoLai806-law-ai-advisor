@@ -13,7 +13,8 @@ def gold_label(claim):
 def parse_verdict(answer):
     # Recognize an explicit leading verdict, including normal localized presentation.
     # Never search explanation text for a label or infer a verdict from prose.
-    match=re.match(r'^\s*(?:\*\*)?(?:(?:(?i:verdict|conclusion|label)|结论|判断|标签)\s*[:：]\s*)?(?:\*\*)?(SUPPORT|CONTRADICT|NOT_ENOUGH_INFO)\b',answer)
+    first=answer.lstrip().splitlines()[0] if answer.strip() else ''
+    match=re.match(r'^(?:#{1,6}\s+)?(?:\*\*)?(?:(?:(?i:(?:final\s+)?(?:verdict|conclusion|label))|(?:最终)?(?:结论|判断|判定|标签))\s*(?:\*\*)?\s*[:：]\s*)?(?:\*\*)?(SUPPORT|CONTRADICT|NOT_ENOUGH_INFO)\b',first)
     return match.group(1) if match else None
 
 def aggregate(rows):

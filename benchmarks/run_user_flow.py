@@ -82,7 +82,7 @@ async def execute(args):
                 started=time.monotonic()
                 row={'query_id':query_id,'gold_label':gold_label(claims[query_id]),
                      'gold_documents':sorted(claims[query_id].get('evidence',{})),
-                     'predicted_label':None,'cited_documents':[],'failure':None}
+                     'predicted_label':None,'cited_documents':[],'failure':None,'user_flow_completed':False}
                 events=[]
                 bundle=None
                 answer=[]
@@ -147,6 +147,7 @@ async def execute(args):
                     row['observed_answer_model']=next((event['data'] for event in events if event['event']=='model_identity'),None)
                     if not final or final.get('status')!='ready' or not text or verification.get('status')!='structurally_valid':
                         row['failure']=row['failure'] or {'type':'answer_not_completed','detail':final.get('status') if final else 'no completion event'}
+                    flow_ready=not row['failure']
                     if not row['failure']:
                         row['predicted_label']=parse_verdict(text)
                         if not row['predicted_label']:
@@ -155,14 +156,17 @@ async def execute(args):
                         row['cited_documents']=sorted({item['document_id'] for item in evidence if item['citation_id'] in cited})
                     row['first_answer_ms']=first_answer
                     row['service_total_ms']=final.get('total_ms') if final else None
-                    if not row['failure'] and config['service_configuration'].get('store_conversations')=='1':
+                    if flow_ready and config['service_configuration'].get('store_conversations')=='1':
                         saved=await client.get(args.url.rstrip('/')+'/api/v2/sessions/'+body['session_id']+'/turns')
                         saved.raise_for_status()
                         if not any(turn['answer']==text and turn['query']==body['query'] for turn in saved.json()['turns']):
                             raise ValueError('Final answer was not persisted for the user session')
                         row['session_reread_verified']=True
+                    row['user_flow_completed']=flow_ready
                 except Exception as exc:
-                    row['failure']=row['failure'] or {'type':type(exc).__name__,'detail':str(exc).replace(token,'<redacted>')}
+                    exception={'type':type(exc).__name__,'detail':str(exc).replace(token,'<redacted>')}
+                    row['flow_failure']=exception
+                    row['failure']=row['failure'] or exception
                     row.setdefault('retrieval_metrics',evaluate(query_id,references[query_id],[]))
                     row.setdefault('final_evidence_recall',0.0)
                 row.update(generation_metadata(events))
@@ -185,6 +189,10 @@ async def execute(args):
         rows=report['rows']
         report['finished_utc']=now()
         report['failures']=sum(bool(row['failure']) for row in rows)
+        report['user_flow_metrics']={'completed':sum(row['user_flow_completed'] for row in rows),'expected':len(rows),
+                                  'source_reread_verified':sum(bool(row.get('source_reread_verified')) for row in rows),
+                                  'session_reread_verified':sum(bool(row.get('session_reread_verified')) for row in rows),
+                                  'scope':'ready answer, structurally valid citations, non-degraded retrieval, source hash reread and configured session reread; separate from classification correctness'}
         report['verification_metrics']=aggregate(rows)
         report['retrieval_metrics']={key:sum(row['retrieval_metrics'][key] for row in rows)/len(rows) for key in ('ndcg_at_10','recall_at_20','mrr_at_10')}
         report['final_evidence_recall']=sum(row['final_evidence_recall'] for row in rows)/len(rows)
