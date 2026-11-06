@@ -22,6 +22,23 @@ def test_verdict_parser_requires_an_explicit_first_line():
     assert parse_verdict('**SUPPORT**\nEvidence [E1]')=='SUPPORT'
     assert parse_verdict('No clear evidence. SUPPORT would be speculative.') is None
 
+@pytest.mark.parametrize('answer,expected', [
+    ('结论：SUPPORT\nSynthetic [E1]', 'SUPPORT'),
+    ('Verdict: CONTRADICT\nSynthetic [E1]', 'CONTRADICT'),
+    ('verdict: CONTRADICT\nSynthetic [E1]', 'CONTRADICT'),
+    ('判断：**NOT_ENOUGH_INFO**\nSynthetic [E1]', 'NOT_ENOUGH_INFO'),
+])
+def test_explicit_verdict_prefix_is_equivalent_presentation(answer, expected):
+    assert parse_verdict(answer) == expected
+
+@pytest.mark.parametrize('answer', [
+    '结论：尚未确认。文献中出现 SUPPORT 一词。',
+    'Explanation: SUPPORT is not justified.',
+    'The claim might receive a SUPPORT verdict later.',
+])
+def test_parser_never_extracts_a_label_from_explanatory_body(answer):
+    assert parse_verdict(answer) is None
+
 def test_chat_budget_counts_tokens_instead_of_mapping_keys():
     class Tokenizer:
         def apply_chat_template(self,messages,**kwargs):

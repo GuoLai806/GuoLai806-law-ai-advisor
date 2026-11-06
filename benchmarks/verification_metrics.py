@@ -11,7 +11,9 @@ def gold_label(claim):
     return next(iter(labels))
 
 def parse_verdict(answer):
-    match=re.match(r'^\s*(?:\*\*)?(SUPPORT|CONTRADICT|NOT_ENOUGH_INFO)\b',answer)
+    # Recognize an explicit leading verdict, including normal localized presentation.
+    # Never search explanation text for a label or infer a verdict from prose.
+    match=re.match(r'^\s*(?:\*\*)?(?:(?:(?i:verdict|conclusion|label)|结论|判断|标签)\s*[:：]\s*)?(?:\*\*)?(SUPPORT|CONTRADICT|NOT_ENOUGH_INFO)\b',answer)
     return match.group(1) if match else None
 
 def aggregate(rows):
