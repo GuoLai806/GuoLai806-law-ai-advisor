@@ -233,21 +233,37 @@ def session_turns(session_id: str,request: Request,user=Depends(identity)):
 @app.post('/api/v2/chat')
 async def chat(body: Query,request: Request,user=Depends(identity)):
     b=await get_bundle(body,request,user)
+    usage_by_attempt={}; attempts=[]; retries=[]; models=[]; generated=False
+    def accounting():
+        reported=[{'attempt':number,'usage':value} for number,value in sorted(usage_by_attempt.items())]
+        usage=({key:sum(item['usage'].get(key,0) for item in reported)
+                for key in set().union(*(item['usage'] for item in reported))} if reported else None)
+        expected={item['attempt'] for item in attempts} if attempts else {1}
+        complete=bool(usage) and set(usage_by_attempt)==expected
+        source=('not_generated' if not generated else 'provider' if complete else
+                'provider_known_attempts' if usage else 'unavailable')
+        return {'usage':usage,'usage_attempts':reported,'usage_complete':complete,'usage_source':source,
+                'generation_attempts':attempts,'generation_retries':retries,
+                'observed_answer_models':models}
     if generation_allowed(b,body,request.app):
+        generated=True
         try:
-            parts=[];usage=None
+            parts=[]
             async for event in provider_events(request.app.state.generator,body.query,b['evidence']):
                 if event.get('type')=='delta': parts.append(event['delta'])
-                elif event.get('type')=='usage': usage=event['usage']
+                elif event.get('type')=='usage': usage_by_attempt[event.get('attempt',1)]=event['usage']
+                elif event.get('type')=='generation_attempt': attempts.append({key:value for key,value in event.items() if key!='type'})
+                elif event.get('type')=='generation_retry': retries.append({key:value for key,value in event.items() if key!='type'})
+                elif event.get('type')=='model_identity': models.append({key:value for key,value in event.items() if key!='type'})
             answer=''.join(parts); verification=validate_citations(answer,b['evidence'])
             if verification['status']=='invalid':
-                return {'trace_id':b['trace_id'],'status':'insufficient_evidence','answer':'生成结果的引用未通过检查，请查看原文并进一步核验。','claims':[],'citations':b['evidence'],'verification':verification,'usage':usage,'usage_source':'provider' if usage else 'unavailable','budget':b['budget'],'degraded':True}
+                return {'trace_id':b['trace_id'],'status':'insufficient_evidence','answer':'生成结果的引用未通过检查，请查看原文并进一步核验。','claims':[],'citations':b['evidence'],'verification':verification,**accounting(),'budget':b['budget'],'degraded':True}
             save_turn(request,user,body.session_id,body.query,answer,b['corpus_revision'])
-            return {'trace_id':b['trace_id'],'status':b['status'],'answer':answer,'claims':[],'citations':b['evidence'],'verification':verification,'usage':usage,'usage_source':'provider' if usage else 'unavailable','budget':b['budget'],'degraded':False}
+            return {'trace_id':b['trace_id'],'status':b['status'],'answer':answer,'claims':[],'citations':b['evidence'],'verification':verification,**accounting(),'budget':b['budget'],'degraded':False}
         except Exception: pass
     fallback=('目前只能展示检索到的资料，不能据此生成法律结论；请补充事实并由专业人士核验。' if b['query_plan'].get('profile','legal')=='legal' else '目前只能展示检索到的资料，尚不能生成经过核验的回答。')
     save_turn(request,user,body.session_id,body.query,fallback,b['corpus_revision'])
-    return {'trace_id':b['trace_id'],'status':'evidence_only','answer':fallback,'claims':[],'citations':b['evidence'],'verification':{'status':'not_generated'},'usage':None,'usage_source':'unavailable','budget':b['budget'],'degraded':True}
+    return {'trace_id':b['trace_id'],'status':'evidence_only','answer':fallback,'claims':[],'citations':b['evidence'],'verification':{'status':'not_generated'},**accounting(),'budget':b['budget'],'degraded':True}
 @app.get('/api/v2/units/{unit_id}')
 def unit(unit_id: str,request: Request,revision: str | None=None,user=Depends(identity)):
     if not re.fullmatch('[0-9a-f]{32}',unit_id): raise HTTPException(404,'unit unavailable')
