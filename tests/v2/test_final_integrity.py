@@ -7,6 +7,21 @@ from evidence_rag.answer import OpenAIStream
 
 EVIDENCE=[{'citation_id':'E1','title':'Synthetic','text':'Synthetic evidence.'}]
 
+@pytest.mark.parametrize('kind',['http','transport','timeout'])
+def test_failure_diagnostic_excludes_upstream_credentials_and_body(kind):
+    from evidence_rag.api import safe_pipeline_error
+    secret='synthetic-private-key'
+    request=httpx.Request('POST','https://fixture/'+secret,headers={'Authorization':'Bearer '+secret})
+    if kind=='http':
+        exc=httpx.HTTPStatusError(secret,request=request,response=httpx.Response(503,text=secret,request=request))
+    elif kind=='transport':exc=httpx.ConnectError(secret,request=request)
+    else:exc=TimeoutError(secret)
+    result=safe_pipeline_error(exc,'generation')
+    assert secret not in json.dumps(result)
+    assert result['error_type']==type(exc).__name__
+    assert result['failure_phase']=='generation'
+    assert result.get('http_status')==(503 if kind=='http' else None)
+
 @pytest.mark.asyncio
 @pytest.mark.parametrize('reason',['length','content_filter','tool_calls',None])
 async def test_done_does_not_override_incomplete_finish(reason):

@@ -109,7 +109,8 @@ async def execute(args):
                                 elif event_kind=='completed':
                                     final=payload
                                 elif event_kind in ('error','answer_rejected'):
-                                    row['failure']={'type':event_kind,'detail':payload.get('reason',payload.get('message','stream rejected'))}
+                                    row['failure']={'type':event_kind,'detail':payload.get('reason',payload.get('message','stream rejected')),
+                                                    **{key:payload[key] for key in ('code','error_type','http_status','failure_phase') if key in payload}}
                     raw={'query_id':query_id,'request':body,'events':events}
                     row['stream_total_ms']=(time.monotonic()-started)*1000
                     raw_path=raw_root/(output.stem+'-'+query_id+'.json')

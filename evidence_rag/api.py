@@ -1,5 +1,6 @@
 """Isolated v2 API; bearer identities are configured by the operator, never request bodies."""
 import asyncio, hmac, json, os, re, time, uuid
+import httpx
 from datetime import date
 from typing import Literal
 from contextlib import asynccontextmanager
@@ -277,6 +278,7 @@ async def stream(body: Query,request: Request,user=Depends(identity)):
     started=time.monotonic()
     async def events():
         seq=0
+        phase='retrieval'
         def event(kind,payload):
             nonlocal seq
             seq+=1
@@ -286,6 +288,7 @@ async def stream(body: Query,request: Request,user=Depends(identity)):
             bundle=await get_bundle(body,request,user,pinned_revision=pinned); bundle['trace_id']=trace
             yield event('evidence_ready',{'bundle':bundle})
             if generation_allowed(bundle,body,request.app):
+                phase='generation'
                 parts=[]; first_token_ms=None;usage=None;usage_attempts=[];usage_by_attempt={};attempts=[]
                 async for incoming in provider_events(request.app.state.generator,body.query,bundle['evidence']):
                     if await request.is_disconnected(): return
@@ -309,6 +312,7 @@ async def stream(body: Query,request: Request,user=Depends(identity)):
                     yield event('answer_rejected',{'discard_pending_answer':True,'reason':'invalid_citations'})
                     status='insufficient_evidence'
                 else:
+                    phase='session_save'
                     save_turn(request,user,body.session_id,body.query,answer,bundle['corpus_revision'])
                     status=bundle['status']
                 usage_complete=bool(usage) and {item['attempt'] for item in usage_attempts}==({item['attempt'] for item in attempts} if attempts else {1})
@@ -319,8 +323,14 @@ async def stream(body: Query,request: Request,user=Depends(identity)):
         except HTTPException as e: yield event('error',{'status':e.status_code,'message':e.detail})
         except ModelStreamIncomplete as e: yield event('error',{'code':'model_incomplete','reason':e.reason,'discard_pending_answer':True})
         except asyncio.CancelledError: raise
-        except Exception: yield event('error',{'message':'provider or retrieval unavailable','discard_pending_answer':True})
+        except Exception as exc: yield event('error',{'message':'provider or retrieval unavailable','discard_pending_answer':True,**safe_pipeline_error(exc,phase)})
     return StreamingResponse(events(),media_type='text/event-stream')
+
+def safe_pipeline_error(exc,phase):
+    """Preserve failure provenance without upstream text, URLs or credentials."""
+    result={'error_type':type(exc).__name__,'failure_phase':phase}
+    if isinstance(exc,httpx.HTTPStatusError): result['http_status']=exc.response.status_code
+    return result
 
 class IngestRequest(BaseModel):
     filename: str = Field(min_length=1,max_length=200)
