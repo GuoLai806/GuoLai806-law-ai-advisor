@@ -165,6 +165,9 @@ async def execute(args):
                 report['rows'].append(row)
                 journal.record({'type':'query','completed':completed,'row':row})
                 print(json.dumps({'completed':completed,'total':len(identifiers),'failures':sum(bool(item['failure']) for item in report['rows']),'label_correct':sum(item.get('predicted_label')==item['gold_label'] for item in report['rows']),'last_ms':row['user_total_ms']}),flush=True)
+            final_capabilities=await client.get(args.url.rstrip('/')+'/api/v2/models')
+            final_capabilities.raise_for_status()
+            report['runtime_identity_unchanged']=final_capabilities.json()['runtime_identity']==identity
         rows=report['rows']
         report['finished_utc']=now()
         report['failures']=sum(bool(row['failure']) for row in rows)
@@ -179,7 +182,7 @@ async def execute(args):
         save_json(output,report)
         journal.record({'type':'complete','queries':len(rows),'failures':report['failures'],'report_sha256':file_hash(output)})
         print(json.dumps({key:report[key] for key in ('queries_recorded','failures','verification_metrics','retrieval_metrics','latency_ms','usage_totals')}),flush=True)
-        return 0 if report['failures']==0 and report['source_unchanged'] else 1
+        return 0 if report['failures']==0 and report['source_unchanged'] and report['runtime_identity_unchanged'] else 1
     finally:
         journal.close()
 

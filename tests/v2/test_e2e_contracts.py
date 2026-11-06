@@ -38,6 +38,32 @@ def test_session_failure_cannot_be_scored_as_a_successful_answer():
     assert result['confusion']['SUPPORT']['INVALID'] == 1
 
 
+def test_runtime_identity_covers_actual_prompt_and_generation_envelope(monkeypatch):
+    import hashlib
+    from types import SimpleNamespace
+    from evidence_rag.api import model_capabilities
+    from evidence_rag.answer import messages_for
+    monkeypatch.setenv('EVIDENCE_RAG_GENERAL_SYSTEM_PROMPT', 'Synthetic task rule A')
+    monkeypatch.setenv('EVIDENCE_RAG_MODEL_CONTEXT_WINDOW', '32768')
+    monkeypatch.setenv('EVIDENCE_RAG_FRAMING_RESERVE', '512')
+    monkeypatch.setenv('EVIDENCE_RAG_OUTPUT_RESERVE', '8192')
+    monkeypatch.setenv('EVIDENCE_RAG_STORE_CONVERSATIONS', '1')
+    service = SimpleNamespace(dense=None, reranker=None, tokenizer=None, rerank_timeout=120)
+    generator = OpenAIStream('http://fixture', 'fixture', 'private-key-fixture', timeout=180,
+                             max_output_tokens=8192, temperature=0, include_usage=True)
+    request = SimpleNamespace(app=SimpleNamespace(state=SimpleNamespace(service=service, generator=generator, default_profile='general')))
+    first = model_capabilities(request, 'fixture')['runtime_identity']
+    expected = hashlib.sha256(messages_for('', [dict(citation_id='E1',title='',text='',profile='general')])[0]['content'].encode()).hexdigest()
+    assert first['system_prompt_sha256'] == expected
+    assert (first['context_window'], first['framing_reserve'], first['output_reserve']) == (32768, 512, 8192)
+    assert first['store_conversations'] is True
+    assert first['provider_timeout_seconds'] == 180
+    assert first['stream_include_usage'] is True
+    assert 'private-key-fixture' not in json.dumps(first)
+    monkeypatch.setenv('EVIDENCE_RAG_GENERAL_SYSTEM_PROMPT', 'Synthetic task rule B')
+    assert model_capabilities(request, 'fixture')['runtime_identity']['system_prompt_sha256'] != first['system_prompt_sha256']
+
+
 @pytest.mark.asyncio
 @pytest.mark.parametrize('thinking', ['disabled', 'enabled'])
 async def test_provider_receives_explicit_thinking_configuration(thinking):

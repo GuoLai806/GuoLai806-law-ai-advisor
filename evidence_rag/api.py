@@ -9,7 +9,7 @@ from pydantic import BaseModel, Field
 from .catalog import Catalog
 from .retrieval import RetrievalService, CrossEncoderReranker, OpenViking
 from .budget import HuggingFaceTokenizer, ConservativeByteBudget
-from .answer import OpenAIStream, ModelStreamIncomplete, validate_citations, provider_events
+from .answer import OpenAIStream, ModelStreamIncomplete, validate_citations, provider_events, messages_for
 
 def setting(name, default=None):
     return os.environ.get('EVIDENCE_RAG_'+name,os.environ.get('LEGAL_RAG_'+name,default))
@@ -165,7 +165,23 @@ def model_capabilities(request: Request,user=Depends(identity)):
     service=request.app.state.service
     generator=request.app.state.generator
     return {'dense_configured':bool(service.dense),'reranker_loaded':bool(service.reranker),'tokenizer_loaded':bool(service.tokenizer),'generator_configured':bool(generator),'provider_health_verified':False,
-            'runtime_identity':{'dense_scope':getattr(service.dense,'scope',None),'reranker_revision':getattr(service.reranker,'revision',None),'reranker_batch_size':getattr(service.reranker,'batch_size',None),'rerank_timeout_seconds':service.rerank_timeout,'tokenizer_revision':getattr(service.tokenizer,'revision',None),'answer_model':getattr(generator,'model',None),'max_output_tokens':getattr(generator,'max_output_tokens',None),'thinking':getattr(generator,'thinking',None),'reasoning_effort':getattr(generator,'reasoning_effort',None),'default_evidence_items':default_evidence_items()}}
+            'runtime_identity':{'dense_scope':getattr(service.dense,'scope',None),'reranker_revision':getattr(service.reranker,'revision',None),'reranker_batch_size':getattr(service.reranker,'batch_size',None),'rerank_timeout_seconds':service.rerank_timeout,'tokenizer_revision':getattr(service.tokenizer,'revision',None),'answer_model':getattr(generator,'model',None),'max_output_tokens':getattr(generator,'max_output_tokens',None),'thinking':getattr(generator,'thinking',None),'reasoning_effort':getattr(generator,'reasoning_effort',None),'default_evidence_items':default_evidence_items(),**generation_identity(request)}}
+
+def generation_identity(request):
+    """Public operational identity: hashes/configuration, never credentials or prompts."""
+    import hashlib
+    profile=getattr(request.app.state,'default_profile','general')
+    system=messages_for('',[{'citation_id':'E1','title':'','text':'','profile':profile}])[0]['content']
+    try: window,framing,output=generation_limits()
+    except ValueError: window=framing=output=None
+    generator=request.app.state.generator
+    return {'default_profile':profile,'system_prompt_sha256':hashlib.sha256(system.encode()).hexdigest(),
+            'context_window':window,'framing_reserve':framing,'output_reserve':output,
+            'provider_timeout_seconds':getattr(generator,'timeout',None),
+            'temperature':getattr(generator,'temperature',None),
+            'stream_include_usage':bool(getattr(generator,'include_usage',False)),
+            'store_conversations':setting('STORE_CONVERSATIONS')=='1',
+            'rerank_threshold':setting('RERANK_THRESHOLD')}
 
 def generation_allowed(bundle,body,app):
     budget_state=bundle['budget']['state']
