@@ -1,5 +1,11 @@
 # Evidence RAG
 
+## bvio OpenViking 与 DeepSeek SuperAgent 调研（2026-11-07）
+
+本轮只读调研，未改业务实现：比较实际 OpenViking 路径并保存 14 个合成边界实验；Agent 参考 DeepSeek SuperAgent 研究原型，建议保留 GCode 执行内核并新增持久任务控制层。企业整体性能胜负尚未验证。
+
+[大白话用户版](docs/development/bvio-superagent-research-20261107/PLAN-FOR-YOU.md) · [开发依据](docs/development/bvio-superagent-research-20261107/PLAN-FOR-AI.md) · [测试协议](docs/development/bvio-superagent-research-20261107/BENCHMARK-PROTOCOL.md)
+
 本项目提供通用、带版本和来源的证据检索服务，并保留可选法律资料 profile。默认入口是 `evidence_rag`；原仓库名称与历史代码保留，`legal_rag` 是调用同一核心的兼容层。
 
 真实 OpenViking 全库用户流程评测见 [大白话说明](docs/development/openviking-user-flow-20261106/PLAN-FOR-YOU.md)、[执行依据](docs/development/openviking-user-flow-20261106/PLAN-FOR-AI.md) 和 [复现步骤](docs/development/openviking-user-flow-20261106/REPRODUCTION.md)。服务根路径 `/` 已有新问答网页，使用真实 SSE、引用原文展开和停止撤回。下方历史参考检索分数没有经过真实 OpenViking，不能替代这一轮结果。
