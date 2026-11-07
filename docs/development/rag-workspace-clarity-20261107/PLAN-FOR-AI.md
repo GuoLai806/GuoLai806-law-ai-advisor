@@ -27,3 +27,5 @@ R3：performance.now 计提交到 evidence_ready/预览响应、evidence_ready �
 本轮实际问答只用开发题1134，不改变或重跑正式30题，不将单题秒表作为质量/前沿/提速证据。中文为UI标签；本轮没有改变模型生成语言。正式语义评测沿用前轮结果。公开证据仅版本/配置摘要、检查日志、原始hash与失败说明，原始网页正文/响应/会话、SQLite和凭据留本机。
 
 共享Git、进程、GUI由主Agent串行完成，评审子任务已接收且停止写入。服务保留19447，OV19443与embedding19444未重启；回退、正常入口和公开复现见[交付](DELIVERY.md)。必需项已通过；用户本人接受待体验，不自动新增优化。GitHub同步记录更新在DELIVERY；不得只凭本地提交宣称同步成功。
+
+代码、双版和公开证据已同步 GitHub，提交 [c191866](https://github.com/GuoLai806/GuoLai806-law-ai-advisor/commit/c191866f4b4f7247fa9a63953bda398bd8f24a78)；32 个改动文件逐一远端回读，与本地内容一致。[回读记录](evidence/github-code-sync-v1.json)。

@@ -1,0 +1,204 @@
+{
+  "repository": "GuoLai806/GuoLai806-law-ai-advisor",
+  "branch": "feat/versioned-legal-rag-20261105",
+  "commit": "c191866f4b4f7247fa9a63953bda398bd8f24a78",
+  "tree": "8ea6a6d907eab958579514e760d82c1fef54ad2b",
+  "previous_commit": "019d2a5f3fc9bb30b5c63369973f00b0bf1f8634",
+  "force": false,
+  "transport": "GitHub Git Data API; exact existing local Git objects",
+  "verified_utc": "2026-11-07T16:12:46.934071+00:00",
+  "files": [
+    {
+      "path": "README.md",
+      "git_blob_sha": "c0e55f80e40305e9c795ffc242a6559b2310a247",
+      "sha256": "4c948fe942bfb8ededd4e00230e7d4c0c6e726a39b3cf9b4eecf70732ed1b4fd",
+      "content_verified": true
+    },
+    {
+      "path": "benchmarks/e2e.py",
+      "git_blob_sha": "4310056c3cbe5c329e437e70aff133faf2bbe392",
+      "sha256": "e49779832b99418e18fa5ba4f5aaf58bc889716f8db8804ca8ec272892188bee",
+      "content_verified": true
+    },
+    {
+      "path": "benchmarks/serve_user_flow.py",
+      "git_blob_sha": "a8f5870738a997ce941a181c79723335db8f1804",
+      "sha256": "6a16660dc5eb02290c06c5ba9594aa2aa7c02e67c193a7e93ba832bbafeec390",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-workspace-clarity-20261107/DELIVERY.md",
+      "git_blob_sha": "e83868a73fce371a8ff3ccbada5ef5f1d5b9a18d",
+      "sha256": "f0047915486c019eedaacd5bf583a2314cbe0864c8732d0ac5dfbc9b2cb576bc",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-workspace-clarity-20261107/PLAN-FOR-AI.md",
+      "git_blob_sha": "407200cc0e3137f9153a9f94609e9e59bf76d05d",
+      "sha256": "c8e62f2dfa52a1e8c791f9f2986cb12b28d616d2c9685a8662fa5001ab827608",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-workspace-clarity-20261107/PLAN-FOR-YOU.md",
+      "git_blob_sha": "d9d9728e43692b5d6acb3fbbbe65400bb44fa682",
+      "sha256": "fce69598510a4d6c67acd72da6b6bf23966e8a688f7964ee4284209d5eb7ff1e",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-workspace-clarity-20261107/RESULTS.md",
+      "git_blob_sha": "04b23eb2ca869ff1087ac823635e09567ea5d230",
+      "sha256": "04a9e3e13d3a36690511cdafc3285d7747b16beb3984577e6646fe0f5e9e1bb1",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-workspace-clarity-20261107/REVIEW.md",
+      "git_blob_sha": "d198473ad6cd1046aa9e932a3e57fea00dd6f6f0",
+      "sha256": "90a0e326ce96dc8b37603a5606733a78ce4ff3635c4c304b35b6b646b43c18c4",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-workspace-clarity-20261107/WORK.md",
+      "git_blob_sha": "33ea30a03afd5e7f419d0444e095b37e934cb918",
+      "sha256": "b7c75979facbc0e4889e573812e87d20c4443e39d7ba956fb3ed6afb0c7aa6e6",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-workspace-clarity-20261107/evidence/actual-api-v1.json",
+      "git_blob_sha": "d3787c5077af52575c8463ac77db7834bd30866e",
+      "sha256": "2d3f7f899f9f49a66d74342c58a95b4a20dee80324429d23c9d2fe42a4b87223",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-workspace-clarity-20261107/evidence/backend-before.json",
+      "git_blob_sha": "ac5d7bcb20c172c3ef4e2daf6665d061196a9b69",
+      "sha256": "669d15549a0d723691857ceac9232b1e44d5c81163ba3c557d0d8f704e935555",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-workspace-clarity-20261107/evidence/backup-before.json",
+      "git_blob_sha": "00128d400f04078b4ad15867a66322e461b9ccea",
+      "sha256": "5e265c9528bcffbb01c90844da676139d122f43adf4e3505dd2dc80b17300ede",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-workspace-clarity-20261107/evidence/build-v1.log",
+      "git_blob_sha": "89e89c674ac8c0594d0cfafe0f21bbfa7c85e4a4",
+      "sha256": "4cab7a3f99982efdbfaea4e8c531e4fcdbe4993ff132360ef27ed35aeff61485",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-workspace-clarity-20261107/evidence/build-v2.log",
+      "git_blob_sha": "1ddbe2b3043b44c84aade020ccc0b3c24708d4f4",
+      "sha256": "9d1e2017095f34c2cc2b60f6cda649515749ee09b1e204996643439b798ed3c4",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-workspace-clarity-20261107/evidence/final-service-readback.json",
+      "git_blob_sha": "d8537423e3b984aa35e60cee8f231d483ddfe1c7",
+      "sha256": "d1fab578ef948732b0b3a217f60fbb0de174ccfa385b17354678543070fadad2",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-workspace-clarity-20261107/evidence/incidental-review-db.json",
+      "git_blob_sha": "c9563afbd93ee8a8e7814b6111871cba74670229",
+      "sha256": "5b04042bc370370e963640877c80779c2d789f563cb211ea6fb5fb1d2e5d6fc5",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-workspace-clarity-20261107/evidence/install-v1.log",
+      "git_blob_sha": "8d0f0df3c83e29b9f69de3dbdd3618a3adf5e22c",
+      "sha256": "a391f4592ea7d57d200a33dc895b2735717e78e286f7c2d86d8d2c916e8f3b96",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-workspace-clarity-20261107/evidence/installed-source-v1.json",
+      "git_blob_sha": "debf848cc94e3484c5a67c0b092f5ec8fedaf1a1",
+      "sha256": "ba462ffc2e981ad7c6f30556c627d5cd173940cd2ed814e99ff2aa1a697930f6",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-workspace-clarity-20261107/evidence/node-v1.log",
+      "git_blob_sha": "8cb1f3c7980f9889364c1b51e5ea32247442e33a",
+      "sha256": "01e9a5e3b0f453d2441c2b4e0fa3ad4995d7be1ad9fda1416d5ed4b4a46448ef",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-workspace-clarity-20261107/evidence/node-v2.log",
+      "git_blob_sha": "e677667b64828003f6e5e4844013dd540a214c4e",
+      "sha256": "85038b24313a91d8d4b18b7b3bffff862f63f9e7aec42fe4148b21e72f196a21",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-workspace-clarity-20261107/evidence/pytest-v1.log",
+      "git_blob_sha": "aa43a3630e0dc2c8e566dbf304ce2ab50efc487e",
+      "sha256": "8832e3e4b3f13d98a7d391c98221daefad8b60fd72805cad5b9c877ddce792f6",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-workspace-clarity-20261107/evidence/pytest-v2.log",
+      "git_blob_sha": "a6537bb73e0c4e4ba6f882343e18986134776845",
+      "sha256": "7b7709f1ee7655b21ff996d7692a10326212392629ac42aac0d25b0637f19e63",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-workspace-clarity-20261107/evidence/pytest-v2.xml",
+      "git_blob_sha": "ae219701d105c0ccd038f96bb6adfcfa0b038736",
+      "sha256": "ead02b3f529cc2f0217553bf99f0b623829ea817a3ac334b1ff05a8a6cb9d319",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-workspace-clarity-20261107/evidence/raw-records-manifest.json",
+      "git_blob_sha": "c7934a51db2eb2de1b1bd33dec5cd9664b560b01",
+      "sha256": "46e3f0d0b1288204ff39c2ef7060d34e6bfddde38a4a498e97b4c8d5f77bc181",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-workspace-clarity-20261107/evidence/source-identity.json",
+      "git_blob_sha": "3499cb53c3f40f044470e0a65ee8c65bc802ac9d",
+      "sha256": "e5f60dd3555c43dd88a811569b70013a1b8cb71d412ab535a55cfa15aa79b9e0",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-workspace-clarity-20261107/evidence/ui-acceptance.json",
+      "git_blob_sha": "dadb71f0fa3ba0d45796e95bd4809b3fd195084c",
+      "sha256": "b8c82dd3c27761029a6d9d5939a8a21cc16ae52f9366f16c936ca5673ab9a3eb",
+      "content_verified": true
+    },
+    {
+      "path": "evidence_rag/api.py",
+      "git_blob_sha": "6b9ab1989ca1ee18963efd09872d0c847e664542",
+      "sha256": "741fa0860ba77cd890b7393dd2588231a56aea0e10db2d4de7786fa077252ecc",
+      "content_verified": true
+    },
+    {
+      "path": "evidence_rag/static/index.html",
+      "git_blob_sha": "34451a0250dd4f9d981ae03a2991986d6742e0ef",
+      "sha256": "a78262f0cb1354b4f1540990884551db499bed158ce138e344b6b2d85d629dd7",
+      "content_verified": true
+    },
+    {
+      "path": "evidence_rag/static/workspace.mjs",
+      "git_blob_sha": "370a0acb57654dd16532a7e2d7bebb188746219a",
+      "sha256": "7c7df957f727bdb22da2ad451621cfb8aedb112285e04e3e98a63184835dc3ce",
+      "content_verified": true
+    },
+    {
+      "path": "pyproject.toml",
+      "git_blob_sha": "26d8f579d80ffaeb8c61b2135b68eaffd5316380",
+      "sha256": "97649eb400387637aa2ced19cd37f4c8f79800862d83450dcd89d752dc70e067",
+      "content_verified": true
+    },
+    {
+      "path": "tests/v2/test_local_workspace.py",
+      "git_blob_sha": "78f317560554ce419de603eeaf54667ddaaea11c",
+      "sha256": "82a5369cf7c3e0c853e7b254a2732438ac35650bbba55e3124ee7ce91c499a67",
+      "content_verified": true
+    },
+    {
+      "path": "tests/v2/workspace.test.mjs",
+      "git_blob_sha": "57df9ae118c8bd150b30e0d59ea24b985d13a70b",
+      "sha256": "cb7b2ac2d696483aa47b644eb40aba1153a367f3c649b8c9ceac258b559ac1f0",
+      "content_verified": true
+    }
+  ]
+}

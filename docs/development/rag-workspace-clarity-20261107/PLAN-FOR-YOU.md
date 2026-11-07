@@ -13,3 +13,5 @@
 真实 OpenViking、当前模型、资料版本和引用检查继续使用原来的配置。这轮主要改善看结果的方式。451 项 Python 检查、10 项前端检查、独立复审、构建安装，以及真实网页问答、预览、原文、停止和改题都已完成。实际一次问答检索 18.81 秒、生成与核验 9.28 秒、总等待 28.09 秒；这只是一题的体验记录，不证明准确率提高或整体提速。
 
 新版本已在这台机器运行，页面保留供你体验。用户本人是否满意还等你实际使用；GCode、SuperAgent、MyAgent 和简历正式改写继续留在[待办](../rag-exploration-20261107/TODO.md)。详细交付与回退见[交付记录](DELIVERY.md)，GitHub 同步状态以其中的远端回读记录为准。
+
+代码、双版和公开证据已同步 GitHub，提交 [c191866](https://github.com/GuoLai806/GuoLai806-law-ai-advisor/commit/c191866f4b4f7247fa9a63953bda398bd8f24a78)；32 个改动文件逐一远端回读，与本地内容一致。[回读记录](evidence/github-code-sync-v1.json)。

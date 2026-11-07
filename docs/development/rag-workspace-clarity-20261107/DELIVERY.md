@@ -1,6 +1,6 @@
 # 可使用结果与回退
 
-代码、451项Python检查、10项Node检查、独立复审、wheel构建、仓库外安装，以及真实OpenViking网页问答/预览/原文/停止/改题均完成。用户本人接受尚待体验。当前GitHub状态：**等待本轮普通提交推送及远端回读**，完成后更新本记录。
+代码、451项Python检查、10项Node检查、独立复审、wheel构建、仓库外安装，以及真实OpenViking网页问答/预览/原文/停止/改题均完成。用户本人接受尚待体验。代码、双版和公开证据已同步 GitHub，提交 [c191866](https://github.com/GuoLai806/GuoLai806-law-ai-advisor/commit/c191866f4b4f7247fa9a63953bda398bd8f24a78)；32 个改动文件逐一远端回读，与本地内容一致。[回读记录](evidence/github-code-sync-v1.json)。
 
 正常入口：[本机RAG资料问答](http://127.0.0.1:19447/)，无需填写令牌。API绑定loopback19447，显式EVIDENCE_RAG_LOCAL_DEMO_USER=public-demo，AUTH已有非管理员普通身份；其他Bearer接口沿用。OV19443和embedding19444继续原服务，未重载、未重建索引。当前体验使用grounded_json+grounded_evidence，产品默认text未改。
 
