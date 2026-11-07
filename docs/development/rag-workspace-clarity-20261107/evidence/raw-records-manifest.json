@@ -1,0 +1,197 @@
+[
+  {
+    "file": "pytest-v1.log",
+    "raw_sha256": "b03f45fd5639ebce9e6ce2fd2b8abd85cf45b979e6f2ea4f8cf367e0af6350b5",
+    "published_sha256": "8832e3e4b3f13d98a7d391c98221daefad8b60fd72805cad5b9c877ddce792f6",
+    "redaction": "local user and task paths replaced; warnings and test results retained"
+  },
+  {
+    "file": "pytest-v2.log",
+    "raw_sha256": "721fc8cb762b183dc102a1ea628b5aa6e4449cee5b1d508657c90361beec3843",
+    "published_sha256": "7b7709f1ee7655b21ff996d7692a10326212392629ac42aac0d25b0637f19e63",
+    "redaction": "local user and task paths replaced; warnings and test results retained"
+  },
+  {
+    "file": "pytest-v2.xml",
+    "raw_sha256": "ead02b3f529cc2f0217553bf99f0b623829ea817a3ac334b1ff05a8a6cb9d319",
+    "published_sha256": "ead02b3f529cc2f0217553bf99f0b623829ea817a3ac334b1ff05a8a6cb9d319",
+    "redaction": "local user and task paths replaced; warnings and test results retained"
+  },
+  {
+    "file": "node-v1.log",
+    "raw_sha256": "01e9a5e3b0f453d2441c2b4e0fa3ad4995d7be1ad9fda1416d5ed4b4a46448ef",
+    "published_sha256": "01e9a5e3b0f453d2441c2b4e0fa3ad4995d7be1ad9fda1416d5ed4b4a46448ef",
+    "redaction": "local user and task paths replaced; warnings and test results retained"
+  },
+  {
+    "file": "node-v2.log",
+    "raw_sha256": "85038b24313a91d8d4b18b7b3bffff862f63f9e7aec42fe4148b21e72f196a21",
+    "published_sha256": "85038b24313a91d8d4b18b7b3bffff862f63f9e7aec42fe4148b21e72f196a21",
+    "redaction": "local user and task paths replaced; warnings and test results retained"
+  },
+  {
+    "file": "build-v1.log",
+    "raw_sha256": "f0b8632de32d38284d73e753d36bf46dd06831864734c129471c7cf5dea8ef1a",
+    "published_sha256": "4cab7a3f99982efdbfaea4e8c531e4fcdbe4993ff132360ef27ed35aeff61485",
+    "redaction": "local user and task paths replaced; warnings and test results retained"
+  },
+  {
+    "file": "build-v2.log",
+    "raw_sha256": "893630e5424b1f47395bbabac7c7320a4ee8caa73f56762f95dd081fcc752149",
+    "published_sha256": "9d1e2017095f34c2cc2b60f6cda649515749ee09b1e204996643439b798ed3c4",
+    "redaction": "local user and task paths replaced; warnings and test results retained"
+  },
+  {
+    "file": "install-v1.log",
+    "raw_sha256": "a391f4592ea7d57d200a33dc895b2735717e78e286f7c2d86d8d2c916e8f3b96",
+    "published_sha256": "a391f4592ea7d57d200a33dc895b2735717e78e286f7c2d86d8d2c916e8f3b96",
+    "redaction": "local user and task paths replaced; warnings and test results retained"
+  },
+  {
+    "local_file": "actual-api-v1.json",
+    "category": "task_state",
+    "sha256": "2d3f7f899f9f49a66d74342c58a95b4a20dee80324429d23c9d2fe42a4b87223",
+    "bytes": 1096,
+    "publication": "hash only; original retained locally"
+  },
+  {
+    "local_file": "backend-before.json",
+    "category": "task_state",
+    "sha256": "669d15549a0d723691857ceac9232b1e44d5c81163ba3c557d0d8f704e935555",
+    "bytes": 1816,
+    "publication": "hash only; original retained locally"
+  },
+  {
+    "local_file": "backup-before.json",
+    "category": "task_state",
+    "sha256": "5e265c9528bcffbb01c90844da676139d122f43adf4e3505dd2dc80b17300ede",
+    "bytes": 177,
+    "publication": "hash only; original retained locally"
+  },
+  {
+    "local_file": "incidental-review-db.json",
+    "category": "task_state",
+    "sha256": "5b04042bc370370e963640877c80779c2d789f563cb211ea6fb5fb1d2e5d6fc5",
+    "bytes": 430,
+    "publication": "hash only; original retained locally"
+  },
+  {
+    "local_file": "installed-api-v1-process.json",
+    "category": "task_state",
+    "sha256": "bbb94069bf0d32c4ac31ec608fa0276c16842f945397b5e4a8a40d0121e9263c",
+    "bytes": 177,
+    "publication": "hash only; original retained locally"
+  },
+  {
+    "local_file": "installed-source-v1.json",
+    "category": "task_state",
+    "sha256": "ba462ffc2e981ad7c6f30556c627d5cd173940cd2ed814e99ff2aa1a697930f6",
+    "bytes": 710,
+    "publication": "hash only; original retained locally"
+  },
+  {
+    "local_file": "old-api-stop.json",
+    "category": "task_state",
+    "sha256": "da2619d30d76086747a81ec0dba3165d33bf80dd2400c8b70fdb8c5182997761",
+    "bytes": 136,
+    "publication": "hash only; original retained locally"
+  },
+  {
+    "local_file": "source-identity.json",
+    "category": "task_state",
+    "sha256": "e5f60dd3555c43dd88a811569b70013a1b8cb71d412ab535a55cfa15aa79b9e0",
+    "bytes": 3710,
+    "publication": "hash only; original retained locally"
+  },
+  {
+    "local_file": "tested-source-v2.tar.gz",
+    "category": "task_state",
+    "sha256": "167bbfe18856aa98aea0342a8c2dbbbde3e20269d17c4ab8f639296614422a9a",
+    "bytes": 80274,
+    "publication": "hash only; original retained locally"
+  },
+  {
+    "local_file": "ui-session-readback.raw.json",
+    "category": "task_state",
+    "sha256": "c70d4a8a8d3dda002065d594187997d48ef09f7e48b86fb23655399700adab06",
+    "bytes": 797,
+    "publication": "hash only; original retained locally"
+  },
+  {
+    "local_file": "answer-ax.txt",
+    "category": "ui",
+    "sha256": "acc3105de0c8e0c628eba053142010025e5c54cc7017b449cb7dd9ed258b47d1",
+    "bytes": 5150,
+    "publication": "hash only; original retained locally"
+  },
+  {
+    "local_file": "answer-dom.json",
+    "category": "ui",
+    "sha256": "22276db7c4ace0497a7920c10077739b56db96ee5fe500a05bb1364b3ad6b41e",
+    "bytes": 694,
+    "publication": "hash only; original retained locally"
+  },
+  {
+    "local_file": "answer.jpg",
+    "category": "ui",
+    "sha256": "5ba80ab08f31997e8ad2e37d9b08a8dcae883ada31eb3d4ca51224ea6ec3c5c7",
+    "bytes": 214711,
+    "publication": "hash only; original retained locally"
+  },
+  {
+    "local_file": "changed-question-ax.txt",
+    "category": "ui",
+    "sha256": "0bde4f6a1165a55f3c32d17bafbb007ed6ff99b5d0567109173e44c4c4b55356",
+    "bytes": 1628,
+    "publication": "hash only; original retained locally"
+  },
+  {
+    "local_file": "final.jpg",
+    "category": "ui",
+    "sha256": "f6dedab517df3fc23f5b4e4d0c91ad0e2b3e6199ae525701b29e120e54466cf7",
+    "bytes": 368112,
+    "publication": "hash only; original retained locally"
+  },
+  {
+    "local_file": "preview-ax.txt",
+    "category": "ui",
+    "sha256": "1cd7284a849a284fe387750652dccc03e1950809083eed440dc8a9579ce34639",
+    "bytes": 4082,
+    "publication": "hash only; original retained locally"
+  },
+  {
+    "local_file": "preview-source-ax.txt",
+    "category": "ui",
+    "sha256": "9d933a10728016462c2af056f037e0adf31237fa58eadafd8c49ad1db5680034",
+    "bytes": 2469,
+    "publication": "hash only; original retained locally"
+  },
+  {
+    "local_file": "quotes-ax.txt",
+    "category": "ui",
+    "sha256": "b6e09b65e35b339c7b7ab653bfbb828cd807c7d4debb4511de03bf266093f93b",
+    "bytes": 7498,
+    "publication": "hash only; original retained locally"
+  },
+  {
+    "local_file": "source-ax.txt",
+    "category": "ui",
+    "sha256": "55a409a55bc34623f3c43143acf7a05e172a53275d2572ccd5f1716d504d366b",
+    "bytes": 7289,
+    "publication": "hash only; original retained locally"
+  },
+  {
+    "local_file": "stop-attempt-after-completion-ax.txt",
+    "category": "ui",
+    "sha256": "72639655220d716cb51ba80a0b04349bf48e790ae1c76e641ab328a2769c5151",
+    "bytes": 5023,
+    "publication": "hash only; original retained locally"
+  },
+  {
+    "local_file": "stop-ax.txt",
+    "category": "ui",
+    "sha256": "28dad1600cde8a80b075511b45ab4805f0a2dec5de11108f7f39edf46e33c6ac",
+    "bytes": 1676,
+    "publication": "hash only; original retained locally"
+  }
+]

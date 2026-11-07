@@ -1,0 +1,31 @@
+{
+  "utc": "2026-11-07T16:03:48.033116+00:00",
+  "actual_api_checks": {
+    "no_bearer_models": 200,
+    "invalid_bearer": 401,
+    "cross_origin": 401,
+    "wrong_host": 401
+  },
+  "served_asset_hashes": {
+    "/": "a78262f0cb1354b4f1540990884551db499bed158ce138e344b6b2d85d629dd7",
+    "/assets/workspace.mjs": "7c7df957f727bdb22da2ad451621cfb8aedb112285e04e3e98a63184835dc3ce"
+  },
+  "generation_identity_equal": true,
+  "openviking_identity_equal": true,
+  "embedding_identity_equal": true,
+  "active_revision": "scifact_full_v3",
+  "documents": 5183,
+  "ui_question": "first development question 1134; not a formal quality sample",
+  "ui_latency_seconds": {
+    "retrieval": 18.81,
+    "generation": 9.28,
+    "total": 28.09
+  },
+  "ui_evidence_items": 4,
+  "password_fields": 0,
+  "completed_current_question_turns_observed": 2,
+  "session_readback_match": true,
+  "session_raw_sha256": "c70d4a8a8d3dda002065d594187997d48ef09f7e48b86fb23655399700adab06",
+  "session_raw_bytes": 797,
+  "scope": "actual installed loopback API and CUA page; no quality or performance benchmark attribution"
+}

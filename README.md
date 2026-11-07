@@ -1,3 +1,5 @@
+本轮页面已去掉令牌输入，按“检索到的内容 → AI最终答案 → 本次耗时”展示；真实OpenViking网页路径、451项Python和10项前端检查、构建安装均完成。见[大白话用户版](docs/development/rag-workspace-clarity-20261107/PLAN-FOR-YOU.md)、[开发依据](docs/development/rag-workspace-clarity-20261107/PLAN-FOR-AI.md)、[实际结果](docs/development/rag-workspace-clarity-20261107/RESULTS.md)与[正常入口/回退](docs/development/rag-workspace-clarity-20261107/DELIVERY.md)。单题页面耗时不代表质量或整体提速。
+
 本轮 RAG 连接复用和可选资料预览已实现并完成安装网页核验，见[用户说明](docs/development/rag-exploration-20261107/PLAN-FOR-YOU.md)、[开发依据](docs/development/rag-exploration-20261107/PLAN-FOR-AI.md)、[实际结果](docs/development/rag-exploration-20261107/RESULTS.md)和[运行交付](docs/development/rag-exploration-20261107/DELIVERY.md)。同30题两组均22正确、29流程，不证明前沿或整体提速。其他项目暂列待办。
 
 # Evidence RAG

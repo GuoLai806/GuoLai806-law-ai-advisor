@@ -18,6 +18,8 @@ def source_hashes():
             for path in sorted((root / folder).glob('*.py'))}
     for path in (root/'pyproject.toml',root/'evidence_rag/static/index.html'):
         result[str(path.relative_to(root))]=file_hash(path)
+    for path in sorted((root/'evidence_rag/static').glob('*.mjs')):
+        result[str(path.relative_to(root))]=file_hash(path)
     return result
 
 def save_json(path, data):

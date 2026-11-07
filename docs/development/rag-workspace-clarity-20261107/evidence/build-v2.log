@@ -1,0 +1,9 @@
+Processing [TASK_ROOT]/work/research/law-ai-advisor
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: evidence-rag
+  Building wheel for evidence-rag (pyproject.toml): started
+  Building wheel for evidence-rag (pyproject.toml): finished with status 'done'
+  Created wheel for evidence-rag: filename=evidence_rag-0.2.3-py3-none-any.whl size=57223 sha256=36f240e5583930b5c4daa478a34ddf6de1b9ed676a55ea8459f67812819dcc45
+  Stored in directory: [PIP_CACHE]/wheels/aa/27/75/3f28c6315cf7b07bd4d68dfb675ee248830db495822707a271
+Successfully built evidence-rag

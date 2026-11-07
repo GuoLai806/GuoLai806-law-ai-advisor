@@ -1,0 +1,24 @@
+{
+  "package_version": "0.2.3",
+  "checks": [
+    {
+      "file": "api.py",
+      "sha256": "741fa0860ba77cd890b7393dd2588231a56aea0e10db2d4de7786fa077252ecc",
+      "matches_source": true,
+      "outside_repo": true
+    },
+    {
+      "file": "static/index.html",
+      "sha256": "a78262f0cb1354b4f1540990884551db499bed158ce138e344b6b2d85d629dd7",
+      "matches_source": true,
+      "outside_repo": true
+    },
+    {
+      "file": "static/workspace.mjs",
+      "sha256": "7c7df957f727bdb22da2ad451621cfb8aedb112285e04e3e98a63184835dc3ce",
+      "matches_source": true,
+      "outside_repo": true
+    }
+  ],
+  "dependency_scope": "wheel installed in new venv; model dependencies explicitly reused via .pth"
+}

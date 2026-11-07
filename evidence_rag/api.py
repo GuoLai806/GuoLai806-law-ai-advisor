@@ -38,6 +38,12 @@ class Query(BaseModel):
 @asynccontextmanager
 async def lifespan(app):
     default_evidence_items()  # Reject invalid operator configuration at startup.
+    demo_user=setting('LOCAL_DEMO_USER')
+    if demo_user:
+        try: accounts=json.loads(setting('AUTH','{}'))
+        except ValueError: accounts={}
+        if not isinstance(accounts,dict) or demo_user not in accounts.values() or demo_user in setting('ADMINS','').split(','):
+            raise ValueError('local demo must use an existing non-administrator identity')
     answer_format=setting('ANSWER_FORMAT','text')
     generation_gate=setting('GENERATION_GATE','reranker_threshold')
     if answer_format not in ('text','grounded_json') or generation_gate not in ('reranker_threshold','grounded_evidence'):
@@ -77,12 +83,34 @@ def workspace():
     from fastapi.responses import FileResponse
     return FileResponse(Path(__file__).parent/'static'/'index.html')
 
-def identity(authorization: str | None=Header(default=None)):
+@app.get('/assets/workspace.mjs',include_in_schema=False)
+def workspace_script():
+    from pathlib import Path
+    from fastapi.responses import FileResponse
+    return FileResponse(Path(__file__).parent/'static'/'workspace.mjs',media_type='text/javascript')
+
+def local_demo_request(request):
+    """Explicit local UI access; never trust forwarded client or origin headers."""
+    if not request.client or request.client.host not in ('127.0.0.1','::1'):
+        return False
+    if request.url.hostname not in ('127.0.0.1','localhost','::1'):
+        return False
+    origin=request.headers.get('origin')
+    if origin and origin != str(request.base_url).rstrip('/'):
+        return False
+    return request.headers.get('sec-fetch-site','same-origin') in ('same-origin','none')
+
+def identity(request: Request,authorization: str | None=Header(default=None)):
     # Map opaque credentials to principals, populated from local environment by operator.
     try: accounts=json.loads(setting('AUTH','{}'))
     except ValueError: accounts={}
+    if not isinstance(accounts,dict): accounts={}
     token=authorization[7:] if authorization and authorization.startswith('Bearer ') else ''
-    if not token: raise HTTPException(401,'authentication required')
+    if not token:
+        demo_user=setting('LOCAL_DEMO_USER')
+        if authorization is None and demo_user and isinstance(accounts,dict) and demo_user in accounts.values() and demo_user not in setting('ADMINS','').split(',') and local_demo_request(request):
+            return demo_user
+        raise HTTPException(401,'authentication required')
     for secret, principal in accounts.items():
         if isinstance(secret,str) and hmac.compare_digest(secret.encode('utf-8'),token.encode('utf-8')) and isinstance(principal,str) and principal: return principal
     raise HTTPException(401,'authentication required')

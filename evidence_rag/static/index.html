@@ -3,305 +3,93 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>资料问答</title>
+  <title>RAG 资料问答</title>
   <style>
-    :root { color-scheme: light; font: 16px/1.65 system-ui, sans-serif; color: #1e293b; background: #f3f5f8; }
+    :root { color-scheme: light; font: 16px/1.65 system-ui, sans-serif; color: #213047; background: #f4f6fa; }
+    * { box-sizing: border-box; }
     body { margin: 0; }
-    main { max-width: 980px; margin: 44px auto; padding: 0 24px; }
-    h1 { font-size: 30px; margin-bottom: 8px; }
-    h2 { font-size: 19px; margin: 0 0 12px; }
-    p { margin-top: 0; }
-    .muted { color: #64748b; }
-    section { background: white; padding: 24px; border: 1px solid #dfe5ed; border-radius: 14px; margin: 20px 0; }
-    label { display: block; margin-bottom: 6px; }
-    input, textarea { box-sizing: border-box; width: 100%; font: inherit; border: 1px solid #b9c5d5; border-radius: 7px; padding: 10px 12px; }
-    textarea { resize: vertical; min-height: 115px; }
-    button { font: inherit; cursor: pointer; border: 0; border-radius: 7px; padding: 9px 18px; background: #245ec9; color: white; }
-    button.secondary { background: #e9eff8; color: #244064; }
-    button:disabled { opacity: .55; cursor: wait; }
-    .row { display: flex; gap: 12px; align-items: center; margin-top: 12px; flex-wrap: wrap; }
-    #answer, #source-content { white-space: pre-wrap; overflow-wrap: anywhere; }
-    #status { margin-left: 4px; }
-    #notice { color: #96591a; }
-    article { border-top: 1px solid #e6eaf0; padding: 16px 0; }
-    article h3 { font-size: 16px; margin: 0 0 6px; }
-    article p { margin-bottom: 10px; }
+    main { max-width: 1200px; margin: 32px auto; padding: 0 24px 40px; }
+    h1 { font-size: 30px; margin: 0 0 6px; }
+    h2 { font-size: 20px; margin: 0 0 6px; }
+    h3 { font-size: 16px; margin: 0 0 8px; }
+    p { margin: 0 0 12px; }
+    .muted { color: #68778d; font-size: 14px; }
+    section { background: white; padding: 22px; border: 1px solid #e0e6ef; border-radius: 14px; margin: 18px 0; }
+    label { display: block; font-weight: 600; margin-bottom: 8px; }
+    textarea { width: 100%; font: inherit; border: 1px solid #bcc9db; border-radius: 9px; padding: 12px; resize: vertical; min-height: 100px; }
+    button { font: inherit; cursor: pointer; border: 0; border-radius: 8px; padding: 9px 16px; background: #245ec9; color: white; }
+    button.secondary { background: #edf2fa; color: #294566; }
+    button:disabled { opacity: .55; cursor: default; }
+    .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 10px; }
+    .results { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+    .results section { min-width: 0; margin: 0; }
+    .section-note { margin-bottom: 18px; }
+    #answer, #answer-quotes, #source-content, .full-text { white-space: pre-wrap; overflow-wrap: anywhere; }
+    #answer { font-size: 16px; line-height: 1.85; }
+    #notice { color: #96591a; font-size: 14px; margin: 12px 0; }
+    .badge { display: inline-block; font-size: 14px; border-radius: 6px; background: #eef4ff; color: #245294; padding: 3px 9px; margin-bottom: 12px; }
+    article { border-top: 1px solid #e7edf5; padding: 16px 0; }
+    article:first-child { border-top: 0; padding-top: 0; }
+    details { margin: 10px 0; }
+    summary { cursor: pointer; color: #31578b; font-size: 14px; }
+    .full-text { font-size: 14px; margin-top: 10px; }
+    .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 14px 0; }
+    .metrics div { border: 1px solid #e1e9f3; border-radius: 10px; padding: 14px; background: #f9fbfe; }
+    dt { color: #68778d; font-size: 14px; }
+    dd { font-size: 22px; font-weight: 650; margin: 6px 0 0; }
     .hidden { display: none; }
-    .error { color: #b42318; }
-    .timing { font-size: 14px; color: #64748b; }
+    @media (max-width: 800px) { .results { grid-template-columns: 1fr; } main { margin-top: 22px; padding: 0 14px 30px; } }
+    @media (max-width: 480px) { section { padding: 18px; } .metrics { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
 <main>
-  <h1>资料问答</h1>
-  <p class="muted">根据知识库中的资料回答，沿着引用查看原文。</p>
+  <h1>RAG 资料问答</h1>
+  <p class="muted">先检索资料，再生成答案；内容和耗时分开看。</p>
   <section>
-    <label for="access">访问令牌</label>
-    <input id="access" type="password" autocomplete="off" placeholder="输入管理员提供的访问令牌">
-    <p class="muted">令牌仅保存在当前页面，关闭页面后需要重新输入。</p>
     <form id="question-form">
-      <label for="question">你的问题或需要核对的论断</label>
-      <textarea id="question" required maxlength="4000" placeholder="例如：研究是否支持这个结论？"></textarea>
+      <label for="question">你想查什么？</label>
+      <textarea id="question" required maxlength="4000" placeholder="输入问题，或需要核对的结论"></textarea>
       <div class="row">
-        <button id="ask" type="submit">根据资料回答</button>
-        <button id="explore" type="button" class="secondary">先看资料</button>
+        <button id="ask" type="submit">检索并生成答案</button>
+        <button id="explore" type="button" class="secondary">只检索资料</button>
         <button id="stop" type="button" class="secondary" disabled>停止</button>
         <span id="status" role="status" aria-live="polite">等待提问</span>
       </div>
     </form>
   </section>
-  <section>
-    <h2>回答</h2>
-    <p id="notice" class="hidden"></p>
-    <div id="answer" aria-live="polite">提问后，回答会显示在这里。</div>
-    <p id="timing" class="timing"></p>
-  </section>
-  <section>
-    <h2>本次参考资料</h2>
-    <div id="evidence"><p class="muted">找到的资料会显示在这里。</p></div>
+  <div class="results">
+    <section aria-labelledby="evidence-title">
+      <h2 id="evidence-title">1. 检索到的内容</h2>
+      <p id="evidence-summary" class="muted section-note">这里展示知识库找到的资料。</p>
+      <div id="evidence"><p class="muted">提问后，检索结果会显示在这里。</p></div>
+    </section>
+    <section aria-labelledby="answer-title">
+      <h2 id="answer-title">2. AI 最终答案</h2>
+      <p class="muted section-note">AI 根据检索资料作答，完成检查后在这里展示。</p>
+      <div id="decision" class="badge hidden"></div>
+      <div id="answer" aria-live="polite">等待生成答案。</div>
+      <p id="notice" class="hidden"></p>
+      <details id="quotes-panel" class="hidden">
+        <summary>查看答案引用的原文摘录</summary>
+        <div id="answer-quotes" class="full-text"></div>
+      </details>
+    </section>
+  </div>
+  <section aria-labelledby="timing-title">
+    <h2 id="timing-title">3. 本次耗时</h2>
+    <dl class="metrics">
+      <div><dt>资料检索等待</dt><dd id="retrieval-time">—</dd></div>
+      <div><dt>AI 生成与核验</dt><dd id="generation-time">—</dd></div>
+      <div><dt>本次总等待</dt><dd id="total-time">—</dd></div>
+    </dl>
+    <p id="timing-note" class="muted">从本次点击开始计时；检索包含重排，生成包含引用检查及网络等待。</p>
   </section>
   <section id="source-panel" class="hidden">
-    <h2>引用原文</h2>
+    <h2>资料完整原文</h2>
     <div id="source-content"></div>
   </section>
 </main>
-<script>
-const form = document.getElementById('question-form');
-const question = document.getElementById('question');
-const access = document.getElementById('access');
-const answer = document.getElementById('answer');
-const notice = document.getElementById('notice');
-const status = document.getElementById('status');
-const timing = document.getElementById('timing');
-const ask = document.getElementById('ask');
-const stop = document.getElementById('stop');
-const explore = document.getElementById('explore');
-let controller = null;
-let sourceController = null;
-let uiEpoch = 0;
-let explorationSnapshot = null;
-let explorationRunning = false;
-let currentBundle = null;
-let pendingAnswer = '';
-let completed = false;
-let quotesChecked = false;
-const sessionId = 'web-' + crypto.randomUUID();
-
-function showNotice(message) {
-  notice.textContent = message;
-  notice.classList.toggle('hidden', !message);
-}
-
-async function sha256(text) {
-  const bytes = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
-  return Array.from(new Uint8Array(bytes), x => x.toString(16).padStart(2, '0')).join('');
-}
-
-async function showSource(item, revision, epoch) {
-  sourceController?.abort();
-  const local = new AbortController();
-  sourceController = local;
-  const response = await fetch('/api/v2/units/' + encodeURIComponent(item.unit_id) + '?revision=' + encodeURIComponent(revision), {
-    headers: { Authorization: 'Bearer ' + access.value.trim() }, signal: local.signal
-  });
-  if (!response.ok) throw new Error('该版本的原文暂时无法读取，请检查访问权限。');
-  const source = await response.json();
-  const part = source.parts?.find(part => part.part_no === item.part_no) || source;
-  if (source.revision !== revision || await sha256(part.text) !== item.content_sha256 ||
-      await sha256(source.text) !== (item.document_sha256 || item.content_sha256)) {
-    throw new Error('原文版本或内容不一致，暂不展示。');
-  }
-  if (epoch !== uiEpoch || local.signal.aborted) return;
-  document.getElementById('source-content').textContent = source.title + '\n\n' + source.text;
-  document.getElementById('source-panel').classList.remove('hidden');
-  document.getElementById('source-panel').scrollIntoView({behavior: 'smooth', block: 'start'});
-}
-
-function displayEvidence(bundle) {
-  currentBundle = bundle;
-  const container = document.getElementById('evidence');
-  container.replaceChildren();
-  const revision = bundle.corpus_revision;
-  const epoch = uiEpoch;
-  const isExploration = bundle.kind === 'exploration';
-  for (const item of isExploration ? bundle.items : bundle.evidence) {
-    const article = document.createElement('article');
-    const heading = document.createElement('h3');
-    heading.textContent = (isExploration ? '' : '[' + item.citation_id + '] ') + item.title;
-    const text = document.createElement('p');
-    text.textContent = isExploration ? item.preview : item.text;
-    const hint = document.createElement('p');
-    hint.className = 'muted';
-    hint.textContent = isExploration ? (item.preview_truncated ? '预览已截短，打开原文查看完整内容。' : '资料预览；正式回答会重新核验完整依据。') : '';
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'secondary';
-    button.textContent = '查看原文';
-    button.addEventListener('click', () => showSource(item, revision, epoch).catch(error => {
-      if (epoch === uiEpoch && error.name !== 'AbortError') showNotice(error.message);
-    }));
-    article.append(heading, text, hint, button);
-    container.append(article);
-  }
-  if (!(isExploration ? bundle.items : bundle.evidence).length) container.textContent = '没有找到可用资料。';
-}
-
-explore.addEventListener('click', async () => {
-  if (!access.value.trim() || !question.value.trim()) {
-    showNotice('请先输入访问令牌和问题。');
-    return;
-  }
-  uiEpoch++;
-  sourceController?.abort();
-  controller = new AbortController();
-  const local = controller;
-  const epoch = uiEpoch;
-  const query = question.value;
-  explorationRunning = true;
-  ask.disabled = explore.disabled = true;
-  stop.disabled = false;
-  explorationSnapshot = null;
-  answer.textContent = '正在查找资料预览…';
-  timing.textContent = '';
-  document.getElementById('source-panel').classList.add('hidden');
-  status.textContent = '正在查找资料…';
-  showNotice('');
-  try {
-    const response = await fetch('/api/v2/explore', {
-      method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + access.value.trim() },
-      body: JSON.stringify({query, session_id: sessionId}), signal: local.signal
-    });
-    if (!response.ok) throw new Error('资料预览暂时不可用，请检查权限或稍后重试。');
-    const bundle = await response.json();
-    if (epoch !== uiEpoch || local.signal.aborted) return;
-    explorationSnapshot = {query, revision: bundle.corpus_revision};
-    displayEvidence(bundle);
-    answer.textContent = '可以先打开原文核对，再点击“根据资料回答”。';
-    status.textContent = '资料预览已就绪';
-    showNotice(bundle.degraded ? '部分检索服务不可用，当前预览可能不完整。' : '预览仅供浏览；正式回答使用同版本完整段落。');
-  } catch (error) {
-    if (epoch !== uiEpoch) return;
-    answer.textContent = error.name === 'AbortError' ? '已停止查找资料。' : '未取得资料预览。';
-    status.textContent = error.name === 'AbortError' ? '已停止' : '本次未完成';
-    showNotice(error.name === 'AbortError' ? '查找已停止，可以重新提问。' : error.message);
-  } finally {
-    if (epoch === uiEpoch) {
-      explorationRunning = false;
-      ask.disabled = explore.disabled = false;
-      stop.disabled = true;
-      controller = null;
-    }
-  }
-});
-question.addEventListener('input', () => {
-  explorationSnapshot = null;
-  if (explorationRunning) controller?.abort();
-  sourceController?.abort();
-  currentBundle = null;
-  document.getElementById('evidence').textContent = '问题已更改，请重新查找资料。';
-  document.getElementById('source-panel').classList.add('hidden');
-});
-
-function receive(kind, data) {
-  if (kind === 'generation_retry') {
-    pendingAnswer = '';
-    answer.textContent = '';
-    status.textContent = '正在重新取得完整回答…';
-    showNotice('暂未取得完整回答，正在重新尝试。');
-  }
-  if (kind === 'retrieval_started') status.textContent = '正在查找资料…';
-  if (kind === 'evidence_ready') {
-    displayEvidence(data.bundle);
-    status.textContent = '正在根据资料作答…';
-  }
-  if (kind === 'answer_delta') {
-    pendingAnswer += data.delta;
-    answer.textContent = pendingAnswer;
-    showNotice(quotesChecked ? '原文摘录已核对，正在完成回答。' : '回答正在生成，尚未完成引用检查。');
-  }
-  if (kind === 'grounding_validation' && data.status === 'verbatim_quotes_checked') {
-    quotesChecked = true;
-    status.textContent = '原文摘录已核对，正在整理回答…';
-  }
-  if (kind === 'answer_rejected' || kind === 'error') {
-    pendingAnswer = '';
-    answer.textContent = '本次未取得完整回答，请查看资料或重新提问。';
-    showNotice(kind === 'answer_rejected' ? '回答的引用未通过检查，已撤回草稿。' : '检索或回答服务暂时不可用，已撤回草稿。');
-  }
-  if (kind === 'completed') {
-    completed = true;
-    if (data.status === 'ready') {
-      status.textContent = '回答已完成';
-      showNotice(quotesChecked ? '引用摘录已与资料原文核对；结论是否充分仍请结合原文判断。' : '引用编号已检查；关键结论仍请结合原文核对。');
-    } else {
-      pendingAnswer = '';
-      answer.textContent = '目前只能提供检索资料，未生成可交付的回答。';
-      status.textContent = '已提供资料';
-    }
-    if (data.total_ms != null) timing.textContent = '首字等待 ' + (data.first_answer_ms / 1000).toFixed(1) + ' 秒 · 完整回答 ' + (data.total_ms / 1000).toFixed(1) + ' 秒';
-  }
-}
-
-form.addEventListener('submit', async event => {
-  event.preventDefault();
-  if (!access.value.trim()) {
-    showNotice('请先输入访问令牌。');
-    access.focus();
-    return;
-  }
-  uiEpoch++;
-  sourceController?.abort();
-  controller = new AbortController();
-  const pinned = explorationSnapshot?.query === question.value ? explorationSnapshot.revision : null;
-  completed = false;
-  quotesChecked = false;
-  pendingAnswer = '';
-  answer.textContent = '';
-  timing.textContent = '';
-  showNotice('');
-  currentBundle = null;
-  document.getElementById('evidence').textContent = '正在查找本次问题的资料…';
-  document.getElementById('source-panel').classList.add('hidden');
-  ask.disabled = explore.disabled = true;
-  stop.disabled = false;
-  status.textContent = '正在提交问题…';
-  try {
-    const response = await fetch('/api/v2/chat/stream', {
-      method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + access.value.trim() },
-      body: JSON.stringify({ query: question.value, session_id: sessionId, corpus_revision: pinned }), signal: controller.signal
-    });
-    if (!response.ok) throw new Error(response.status === 401 || response.status === 403 ? '访问令牌无效或没有权限。' : '服务暂时不可用。');
-    const reader = response.body.getReader();
-    const decoder = new TextDecoder();
-    let buffer = '';
-    for (;;) {
-      const chunk = await reader.read();
-      if (chunk.done) break;
-      buffer += decoder.decode(chunk.value, { stream: true });
-      buffer = buffer.replace(/\r\n/g, '\n');
-      let boundary;
-      while ((boundary = buffer.indexOf('\n\n')) !== -1) {
-        const block = buffer.slice(0, boundary);
-        buffer = buffer.slice(boundary + 2);
-        const lines = block.split('\n');
-        const kind = lines.find(line => line.startsWith('event: '));
-        const data = lines.filter(line => line.startsWith('data: ')).map(line => line.slice(6)).join('\n');
-        if (kind && data) receive(kind.slice(7), JSON.parse(data));
-      }
-    }
-    if (!completed) throw new Error('回答连接提前结束，草稿未保存为完成回答。');
-  } catch (error) {
-    pendingAnswer = '';
-    answer.textContent = error.name === 'AbortError' ? '已停止生成。' : '未取得完整回答。';
-    showNotice(error.name === 'AbortError' ? '未完成的草稿已撤回。' : error.message);
-    status.textContent = error.name === 'AbortError' ? '已停止' : '本次未完成';
-  } finally {
-    ask.disabled = explore.disabled = false;
-    stop.disabled = true;
-    controller = null;
-  }
-});
-stop.addEventListener('click', () => controller?.abort());
-</script>
+<script type="module" src="/assets/workspace.mjs"></script>
 </body>
 </html>

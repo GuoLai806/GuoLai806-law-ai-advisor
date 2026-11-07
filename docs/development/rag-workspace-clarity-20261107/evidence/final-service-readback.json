@@ -1,0 +1,23 @@
+{
+  "/health/ready": {
+    "status": 200,
+    "body": {
+      "ready": true,
+      "active_revision": "scifact_full_v3",
+      "missing": [],
+      "conservative_bytes_available": false,
+      "budget_guarantee": null
+    }
+  },
+  "/api/v2/models": {
+    "status": 200
+  },
+  "/": {
+    "sha256": "a78262f0cb1354b4f1540990884551db499bed158ce138e344b6b2d85d629dd7",
+    "matches_tested_source": true
+  },
+  "/assets/workspace.mjs": {
+    "sha256": "7c7df957f727bdb22da2ad451621cfb8aedb112285e04e3e98a63184835dc3ce",
+    "matches_tested_source": true
+  }
+}

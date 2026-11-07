@@ -1,0 +1,15 @@
+{
+  "utc": "2026-11-07T15:52:47.801802+00:00",
+  "birth_timestamp": 1794066564,
+  "sha256": "1d2d9f6beea254d46ea87d8f01654c565fa71385402f0ee365614eefc542ec58",
+  "bytes": 143360,
+  "tables_checked": {
+    "units": 0,
+    "revisions": 0,
+    "settings": 0,
+    "sessions": 0,
+    "turns": 0
+  },
+  "open_handles_observed": false,
+  "operation": "moved to task state for reversible preservation; actual scifact catalog untouched"
+}

@@ -1,0 +1,44 @@
+{
+  "scope": "actual installed loopback API and browser; one development question, not quality benchmark",
+  "question_id": 1134,
+  "final_answer": {
+    "evidence_items": 4,
+    "password_fields": 0,
+    "session_readback_match": true,
+    "seconds": {
+      "retrieval": 18.81,
+      "generation_and_validation": 9.28,
+      "total": 28.09
+    }
+  },
+  "preview": {
+    "evidence_items": 4,
+    "generation_requested": false,
+    "seconds": {
+      "retrieval": 17.94,
+      "total": 17.94
+    },
+    "full_source_opened": true
+  },
+  "cancel": {
+    "phase": "retrieval",
+    "seconds": 0.37,
+    "final_answer_displayed": false,
+    "backend_immediate_stop_verified": false
+  },
+  "changed_question": {
+    "stale_response_overwrite_observed": false,
+    "elapsed_cleared": true
+  },
+  "unsuccessful_stop_attempt": {
+    "action_after_completion": true,
+    "seconds_total": 24.33,
+    "count_as_stop_pass": false
+  },
+  "deliverable_tab": {
+    "url": "http://127.0.0.1:19447/",
+    "preserved": true,
+    "screenshot_sha256": "f6dedab517df3fc23f5b4e4d0c91ad0e2b3e6199ae525701b29e120e54466cf7"
+  },
+  "language_scope": "Chinese interface labels; generated prose follows existing provider behavior"
+}
