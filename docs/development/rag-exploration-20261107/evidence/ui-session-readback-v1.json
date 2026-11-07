@@ -1,0 +1,15 @@
+{
+  "utc": "2026-11-07T11:22:08.957119+00:00",
+  "scope": "read-only installed API session readback after CUA first development-question answer",
+  "development_query_id": "1134",
+  "selection": "public-demo matching query with created in answer screenshot mtime -60s through +1s; one match; older catalog turn excluded",
+  "matching_completed_turns": 1,
+  "response_turns": 1,
+  "query_answer_revision_match_catalog": true,
+  "revision": "scifact_full_v3",
+  "raw_sha256": "8de507bebc793dd4a70ed6f3a6adcd4c9a157373882d2fee7eb7fb35b752f06d",
+  "raw_bytes": 999,
+  "answer_sha256": "7c63b3fe7699facafcd0ccbdc4df5709d80f7a134e03608d91c44cd62a5d4f0a",
+  "raw_body_public": false,
+  "initial_probe": "unqualified query selection found two turns, assertion failed; discovery record kept; readback qualifies this UI run by screenshot time"
+}

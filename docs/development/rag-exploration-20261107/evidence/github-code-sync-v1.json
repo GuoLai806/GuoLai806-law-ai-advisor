@@ -1,0 +1,384 @@
+{
+  "repository": "GuoLai806/GuoLai806-law-ai-advisor",
+  "branch": "feat/versioned-legal-rag-20261105",
+  "commit": "8da92ed38da772f9d0203fa2e2970da38fb369ed",
+  "tree": "a3ed6e08de8149d2b17c8d22ba9b597314eeb398",
+  "previous_commit": "55139899cea9112908f7eddc27ba015c1d6a39d9",
+  "force": false,
+  "transport": "GitHub Git Data API; exact existing local Git objects",
+  "verified_utc": "2026-11-07T11:25:03.129448+00:00",
+  "files": [
+    {
+      "path": "README.md",
+      "git_blob_sha": "0d560a7e1e8391bc04638cad088fc0edce45cac6",
+      "sha256": "092a550a446fd74732cb8161423518cf8912e096cfeb3c2ad2a3597925d5e71d",
+      "content_verified": true
+    },
+    {
+      "path": "benchmarks/index_openviking.py",
+      "git_blob_sha": "904093e96c295269e9ff3caf805b12befb04d443",
+      "sha256": "b00a3f7f5db08cfbd9abd91ea7ec037d1adf249a5e06fbb9e9f8836d32c502b2",
+      "content_verified": true
+    },
+    {
+      "path": "benchmarks/run_openviking_connections.py",
+      "git_blob_sha": "6d60f7c97cfcec86f9a5d4d53ae8925ae41c9a53",
+      "sha256": "0dba2cb7edab8e0a8563a79ef6cea6f3158eee3a9374752fa3107da59a116006",
+      "content_verified": true
+    },
+    {
+      "path": "benchmarks/run_user_flow.py",
+      "git_blob_sha": "a037f4f739643d0e9f50d1ae238cbc2a8430595b",
+      "sha256": "4b7dd71257570e44d0ecea3fd8b81e3bd2e2fb98cd3781a695277e5860b2fd5b",
+      "content_verified": true
+    },
+    {
+      "path": "benchmarks/serve_user_flow.py",
+      "git_blob_sha": "c093d3216990b5a760cf9611418e618050e6ddb5",
+      "sha256": "e7b5825c7a608df1a2712354ba8627a9481059a1b85663c3155399abeb2f4452",
+      "content_verified": true
+    },
+    {
+      "path": "benchmarks/short_protocol.py",
+      "git_blob_sha": "ebe08a7628142735da30a56fb046e3bf0534d981",
+      "sha256": "39466d09df8d921cefacbaf383dcd18072faab5b22e6cb3f39d625fa09a628f1",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/DELIVERY.md",
+      "git_blob_sha": "9be7ab73e13dd1ad69c451428768b7f749d53d13",
+      "sha256": "b23dd1c7d78cfc6829ab2f44fb102eea3ef935e0ff9ccfb50105de8b63403aed",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/PLAN-FOR-AI.md",
+      "git_blob_sha": "00d467c9698dde0437f403badfecf7341dcb0b30",
+      "sha256": "7686ae91e279f8306bd2b55c66940b42914b8a9aa894b06632f41280df1065a5",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/PLAN-FOR-YOU.md",
+      "git_blob_sha": "c7da27eebbc5946825307977018dc22f33a909e7",
+      "sha256": "2e78de191df5180058588561ff1253c3a85598af8d5b37fd99a881a0e19abfc4",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/REPRODUCTION.md",
+      "git_blob_sha": "7c6cb46cdbde5f9f8fa5d6d177fb212e735b1e9e",
+      "sha256": "f1afd3b6b0df42badfc1623af9575cc4ce6dfd2942c64e04433238fc970bfce2",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/RESULTS.md",
+      "git_blob_sha": "c9e6f7be526ed8ff795c262a264e82a96a02f242",
+      "sha256": "9c154d3399678d0fd76818268a6165ee6905548cdae5e947e8468b0e634a2f9f",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/REVIEW.md",
+      "git_blob_sha": "d2a1d01b9b66956b5486ebd2fc2d19cf86353506",
+      "sha256": "1eba2cee1782680933aada977b730e490fc74714d7dcb9237b2d27b423dfe15d",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/SOURCE-IDENTITY.json",
+      "git_blob_sha": "c699105e8bce6377d684b58aafb08bee3f3a7976",
+      "sha256": "0787de775817a4b800cce960446624824dd63e58b41452fc9b6c537123d99e17",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/TECHNOLOGY-DECISIONS.md",
+      "git_blob_sha": "2637befe22fbbc809bbeebbdb15d50bf81e509ee",
+      "sha256": "9c776ba42ff1b8275b790e2c7d5a70cbb38a4d19da8bbc3524078e2499d54114",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/TODO.md",
+      "git_blob_sha": "19370bce1cbe3472d7b59d0c054b33dbaf8e9f98",
+      "sha256": "90aa6ecb6f5121d96957bdba49a9d0b5ef16c58a4bd5a4a7e2253f01531f99de",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/WORK.md",
+      "git_blob_sha": "3579f06702bad679fd998455b6a41aa4b10345d6",
+      "sha256": "a5aad18d0e5386d94eb5fc9518c72a748ea816c3d9e1eab02ed15caad9b5b318",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/evidence/backend-after.json",
+      "git_blob_sha": "245b475e38c7e781785956402bd2a8df4406b561",
+      "sha256": "03177fa3a99ad449c496fb333581a28b28279c3248f6bd67c10dc1e85a0b220c",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/evidence/backend-before.json",
+      "git_blob_sha": "0f87bce066c746ee89c24d1bd7bc364543030b30",
+      "sha256": "a33fc1c21764670b5285f307a1ceb4b46fd645681e20e98771a20cab6e5e724d",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/evidence/backup-v1.json",
+      "git_blob_sha": "79e6c55c8e839ec0d147d187e877442197e9524e",
+      "sha256": "0915a9cd3a71ba56d4eeed00a464b068a99176587cfed3ee16a1fd7b804ff456",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/evidence/build-v2.log",
+      "git_blob_sha": "080920b24416abd7d9e464fa17106a8bf88433a7",
+      "sha256": "d9257363f52b2bc0653c6b9716b64ecaf1892b3f76d56ef982a842cfa1b3224f",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/evidence/connections-v1.json",
+      "git_blob_sha": "ac207e1bf72a8a449636c439bec90ae2387fe0fa",
+      "sha256": "59ac20a53c78fd9b202c4bb85e7af180eabd33aa4fafe578016b1208b29b4c5f",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/evidence/install-v1.log",
+      "git_blob_sha": "e07c58d6c90e10018f00a39a92781d0240cbb53b",
+      "sha256": "e7aad5bfe6f6864778e78b8de59aa180638d6b9b839c78d89d9ee8baeca1a4b4",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/evidence/installed-source-v1.json",
+      "git_blob_sha": "40d2ec5cbbaf15bbfc863e999105eb6e3e895adb",
+      "sha256": "fcf19fe9b8b7ad3f376aa01fa8b19b8b27a68ba6ad36e78431f13b0cdf893c01",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/evidence/local-original-hashes.json",
+      "git_blob_sha": "20c5e244a3c7343c3b2f63a7a37a04ef7952e44f",
+      "sha256": "e2eac5206bc0b33734c3317c3b1a9b580fc088fbd31ab1001dee54f1c7b17282",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/evidence/mechanism6.log",
+      "git_blob_sha": "fc4f0648aa89748143a56996dea0ca3a0174df23",
+      "sha256": "bd657159d7c4cd5b73c71c47ae3156f42ebd2848ed99445dbcc30bbd7bd71a11",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/evidence/pytest-final.log",
+      "git_blob_sha": "a0fea6eeb68b66f5eee9d06f3b99852a2283bb97",
+      "sha256": "a45c84a857c473fa70a5d2bc3a3303bb2e21a5e2f3001434abcf2bae9998e858",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/evidence/ui-acceptance-v1.json",
+      "git_blob_sha": "c6ca08cb6cdadd3c890f0bf8242607eee1b407de",
+      "sha256": "a4fba65b750806b1fd77a30970ee0ac54f0a2998a4a07725d0716d56324c06fc",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/evidence/user-flow/PUBLIC-REDACTION-AUDIT.json",
+      "git_blob_sha": "2b4722aa6312484d1353b94c857092db3d53032b",
+      "sha256": "c9986dc108df605c2de7b8472a0ae969d18a039ae7113ebb475cdc1636315cea",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/evidence/user-flow/dev6-v1.audit.json",
+      "git_blob_sha": "ea34d83b1d1f38067edf56adeb49f77c9028efc2",
+      "sha256": "d7ffd0348105138fe441830912825a8f1a0a3a74dd2ee85c327498104f4aac8e",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/evidence/user-flow/dev6-v1.config.json",
+      "git_blob_sha": "79766acb599210e973cedccc639264bcd1dc5eb9",
+      "sha256": "245d1d74f9d95f021cd021697c43524c468ddfb8f5f562feb794de36681299d0",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/evidence/user-flow/dev6-v1.json",
+      "git_blob_sha": "1c014783b4dff6b604c7a9352d5b670be3bc98e7",
+      "sha256": "cf3b4715daf42b5f09707df2e1c156a448506f66f09dd1379eac320d80b29159",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/evidence/user-flow/dev6-v1.json.journal.jsonl",
+      "git_blob_sha": "c22befccbcdf74c30d9749bf79c056f10638f01d",
+      "sha256": "f40bbf6e4f54c67104d45cce46c0c59c4c77da33d1066eaeea9828d74e07975a",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/evidence/user-flow/direct30-v1.audit.json",
+      "git_blob_sha": "f58f14d98777e629dd97cdddb4f2cc03510b9e76",
+      "sha256": "ca0dce75c980b8cd12eca22f31ec1a69dc3cc2097fa07ee5a448443d0faf96a5",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/evidence/user-flow/direct30-v1.config.json",
+      "git_blob_sha": "9a120603d69e649fdc2ae125873b3354cd144a6e",
+      "sha256": "63c43dc8168488b250e5e67c20fc3302980a6ee559e9dd53a184515b20fad565",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/evidence/user-flow/direct30-v1.json",
+      "git_blob_sha": "443c281001fbdcba01c9ffa2b1803c2de4f45a5c",
+      "sha256": "ce220d5373fdf9f036a9da36eba932578020c446e18f04a4d6ff085e30a8f1c3",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/evidence/user-flow/direct30-v1.json.journal.jsonl",
+      "git_blob_sha": "2302d53fc4beb5d85027be92497d9c6f9c9df39c",
+      "sha256": "fbe4c2cac3dc5c56d8702db4a3c2fa1d017cee259f79bdfc3c735e7c2ccc8319",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/evidence/user-flow/direct30-v1.selection.json",
+      "git_blob_sha": "f06e1476e1065d1e669aa641e5a4f50bdb2dde3e",
+      "sha256": "9f05694eb1dfaf32ddd8a259ebc961b78b6cc6401228c216531badde053636d2",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/evidence/user-flow/explore30-v1.audit.json",
+      "git_blob_sha": "b86f00c1c0f8b91cd0ceead4cbd3b70a6a8daf05",
+      "sha256": "86d4aec54ef908591c880e3e606d77cda7212cc545b90d23e8ba81be0b426a51",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/evidence/user-flow/explore30-v1.config.json",
+      "git_blob_sha": "79766acb599210e973cedccc639264bcd1dc5eb9",
+      "sha256": "245d1d74f9d95f021cd021697c43524c468ddfb8f5f562feb794de36681299d0",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/evidence/user-flow/explore30-v1.json",
+      "git_blob_sha": "82e153c68cfed2e7a619b5b1ac6aae98ea6670a0",
+      "sha256": "0ca14e7f1352db06c144039e26b392117b355bddcab3dea88d60ed61cfbf25c2",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/evidence/user-flow/explore30-v1.json.journal.jsonl",
+      "git_blob_sha": "78be30c3613ceaa49d6ba7f6b47795e367fa3a19",
+      "sha256": "7ede6de6a6ec6feabd335272d771e85c618e22e2d6f4fa7383a57e64fd31b379",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/evidence/user-flow/explore30-v1.selection.json",
+      "git_blob_sha": "4a4dad964a22bc68e19cade8a1c5c2233ef9c289",
+      "sha256": "3929ffd2847833bb19023e401c1f7e468d1ceaa6920ea8a7f5709204dbbba1b6",
+      "content_verified": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/evidence/user-flow/paired-v1.json",
+      "git_blob_sha": "77aca9fd6484da8ea19b30561f2f5309df4412af",
+      "sha256": "776751c37a520fcb5c8657924f83b30601ae321e62b79339a6802a7eca181765",
+      "content_verified": true
+    },
+    {
+      "path": "evidence_rag/api.py",
+      "git_blob_sha": "cec039e9f33dc6454fccf48fa69510f434d2e7e6",
+      "sha256": "36d38e5bf5826ebe5037ce419d008402bcb22a27613c3dec747d04fe2fe256f6",
+      "content_verified": true
+    },
+    {
+      "path": "evidence_rag/exploration.py",
+      "git_blob_sha": "4e8ee297c69d0ab5283aafb0251fef0fce3b2701",
+      "sha256": "1c786f9619be38ed40cb81f194cb56093a09ce5ae218d2fe8cc1a3a7d699f483",
+      "content_verified": true
+    },
+    {
+      "path": "evidence_rag/retrieval.py",
+      "git_blob_sha": "3dae56d713426e395715b5c4ac5711fe3fc554f0",
+      "sha256": "0854b8280bc7b09bfd10de18ee4e205c2f85fb63ae0ab0ac87e8f756d2a7b0f0",
+      "content_verified": true
+    },
+    {
+      "path": "evidence_rag/static/index.html",
+      "git_blob_sha": "2ea94b101616304d86affc742b88506a036ec8c6",
+      "sha256": "d3cfc87ea7d46134a677d024b7886812758f287eb161b549a666e6690733501c",
+      "content_verified": true
+    },
+    {
+      "path": "evidence_rag/viking_index.py",
+      "git_blob_sha": "bfb941fc491e1371a9dcefaf8c942546b98a1f99",
+      "sha256": "47124276d5fb0de5c00eee52f4c648ffa6b41f40ef15d36979f7e3c8c3e49d38",
+      "content_verified": true
+    },
+    {
+      "path": "pyproject.toml",
+      "git_blob_sha": "13af9e7939b3d0e3476fe8276877454a57a71e82",
+      "sha256": "c3e04bee66ed966c9d3a62651a3f08f4904a4da477be8cbc124ea8b70f7b0f44",
+      "content_verified": true
+    },
+    {
+      "path": "tests/v2/test_connection_benchmark.py",
+      "git_blob_sha": "c5e6a82db4cdc7370c3082fef66afe52cca881b5",
+      "sha256": "413fe58ec6be0cd062ecffcfaaf38159c3e1ea8e8d9c13117fee58af6d4ec713",
+      "content_verified": true
+    },
+    {
+      "path": "tests/v2/test_exploration.py",
+      "git_blob_sha": "600f2413c587c3026ab170a7be1a356519849018",
+      "sha256": "7c43158aab75221f7006f640671307f4d1ce03449e955f2fd54e0320fbed78cb",
+      "content_verified": true
+    },
+    {
+      "path": "tests/v2/test_exploration_api.py",
+      "git_blob_sha": "53fb036a4a781902d87f54237b23563f28caa4ac",
+      "sha256": "791459ff8526887af4844994f3ee116028ec38dc7071b8162c14cd5f87b3adfe",
+      "content_verified": true
+    },
+    {
+      "path": "tests/v2/test_exploration_audit.py",
+      "git_blob_sha": "0bf310821352996c224c9872de3f9486f78aa38f",
+      "sha256": "cd869709c843aac69ef3ff2aaafcde407ec96d83d6284a89833902b95bd89f64",
+      "content_verified": true
+    },
+    {
+      "path": "tests/v2/test_exploration_clock.py",
+      "git_blob_sha": "48a36f857ca577c9a125c2e08b3f9f46abd9c279",
+      "sha256": "13a97c5ad89d3d9581127d115283990696486b4bfa92060cd808cf596dfdfe67",
+      "content_verified": true
+    },
+    {
+      "path": "tests/v2/test_exploration_freeze.py",
+      "git_blob_sha": "d6c40a7f9ea0c0a8f05261c0448d33b79bcc50ae",
+      "sha256": "725a16c6f1f28db8d6128bb3ac995739d35a0a4a4cfd0d87fe04a37ec00ecf9e",
+      "content_verified": true
+    },
+    {
+      "path": "tests/v2/test_exploration_runner.py",
+      "git_blob_sha": "ebec40b59496e489c1d3cda8e3b2e55bb67b598e",
+      "sha256": "35081b638522c89074fc78940dc6a9900db1cbdda9080878ffcd1523b4d99b21",
+      "content_verified": true
+    },
+    {
+      "path": "tests/v2/test_index_lifecycle.py",
+      "git_blob_sha": "785d1c17c2620e3c76364c89438079b910fd509f",
+      "sha256": "aadf54085e9ae682364b63f54a5fc7098088965fee3640f4f7d3aa27e78cd2f3",
+      "content_verified": true
+    },
+    {
+      "path": "tests/v2/test_openviking_lifecycle.py",
+      "git_blob_sha": "a1a069d23e58ac06453236de110a712984a741e4",
+      "sha256": "8f53b58a6fabd35b5d817b9858b741636fe85eb08662360fdf30c4637680c79c",
+      "content_verified": true
+    },
+    {
+      "path": "tools/audit_flow_timing.py",
+      "git_blob_sha": "ca6169704e33b3dbc2b79ccb162cff4ac643d670",
+      "sha256": "99218d5e66053a28bdf694db37f0d6d118664cee7e4151d9f8afa70bed6fc99b",
+      "content_verified": true
+    },
+    {
+      "path": "tools/audit_user_flow.py",
+      "git_blob_sha": "66363517570f693fda0646cba0796b3ed1316fc8",
+      "sha256": "3110acd93b2492adbd32507524f67278f58771e66cc86ef8fec166ad392b93ae",
+      "content_verified": true
+    },
+    {
+      "path": "tools/compare_short_user_flow.py",
+      "git_blob_sha": "e84d48bf81165892c0175a90a4ade8e8aac3afac",
+      "sha256": "ea8e35aab0e9f08ee0b4019208a0198cd2d3f1ff3cf7b6e2622ea83fa7a9d9e6",
+      "content_verified": true
+    },
+    {
+      "path": "tools/freeze_short_run.py",
+      "git_blob_sha": "81d0711f13bc3e7a0f9117a6b3a3c409764ba36e",
+      "sha256": "98ced90fae518b3e3f25da07103484ffa87e343044ccc549854655c61d27f448",
+      "content_verified": true
+    }
+  ]
+}

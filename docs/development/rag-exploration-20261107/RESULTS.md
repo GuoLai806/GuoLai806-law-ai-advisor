@@ -42,6 +42,8 @@
 
 439项tests/v2通过，另预选6机制场景是其中6项，单独6通过，不合成445项，不计作正式质量样本。开发6题流程6/6、判断4/6；原文/取消/退出/未知写回执的组件或API测试只证明机制。独立评审发现4项P2并已关闭；详情见[REVIEW](REVIEW.md)。
 
-本机macOS/Apple M5 Pro/48GiB共享内存，MPS float16；实际后端身份与安装模块hash见[evidence/backend-before.json](evidence/backend-before.json)、[SOURCE-IDENTITY](SOURCE-IDENTITY.json)。源码、构建、安装均核实；安装网页真实预览、同版本原文、答案、停止/改题取消和恢复已核验；[交付状态](DELIVERY.md)记录边界，GitHub同步由最终归档核实。旧安装/索引保留，未改企业/Pi/GCode/MyAgent或原Word。
+本机macOS/Apple M5 Pro/48GiB共享内存，MPS float16；实际后端身份与安装模块hash见[evidence/backend-before.json](evidence/backend-before.json)、[SOURCE-IDENTITY](SOURCE-IDENTITY.json)。源码、构建、安装均核实；安装网页真实预览、同版本原文、答案、停止/改题取消和恢复已核验；[交付状态](DELIVERY.md)记录边界，GitHub代码/文档/证据提交8da92ed已逐文件核对，详见交付记录。旧安装/索引保留，未改企业/Pi/GCode/MyAgent或原Word。
 
 网页检查使用第一开发题1134，未从正式题选高分样本：预览、首原文和正式答案完成；UI首字/完整回答显示22.4秒，仅这一轮回答请求，不计人工浏览，不加入30题统计。停止和改题取消均有AX/截图摘要，见[evidence/ui-acceptance-v1.json](evidence/ui-acceptance-v1.json)。回答在检索期停止后参考区旧查找提示未清理，主状态已停止且草稿撤回，记为非阻塞界面待办。
+
+网页已完成答案另经安装服务会话API只读回读，正文和revision一致；与正式benchmark分开保存。

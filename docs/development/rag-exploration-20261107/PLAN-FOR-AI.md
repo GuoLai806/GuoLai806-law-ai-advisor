@@ -28,10 +28,12 @@ retrieval.py: OpenViking lifecycle/client；exploration.py: 独立预览类型�
 其他项目、C3/C4、公开长文大规模质量评测、中文泛化和简历最终改写待办。云模型alias权重不可固定，网络复用和探索性能收益待实测，不承诺前沿。无需用户再次授权普通实施。最终用户本人体验验收仍待确认。
 
 ## 实施结果与当前收尾状态
-C1/C2及索引生命周期实现完成；tests/v2 439通过，独立评审4个P2修复复审通过。已构建/安装0.2.2，生产模块+HTML同源hash，.pth模型依赖明确复用。C1真实60请求/30pair成功且同结果，网络中位24.7→21.3ms。开发6流程全通过/分类4正确；正式direct与explore各30、分类均22、流程均29、检索指标30/30相同，两份原始audit均通过。引用文档标签F1 .6667→.7143不能归因为探索质量收益；探索全流程P50 53.55s、direct40.59s，因此保留opt-in，不宣称整体提速/前沿。探索1条usage不全，已报tokens不能证明成本更低。详情/证据/统计定义见[RESULTS](RESULTS.md)。安装网页真实交互已通过：首开发题预览/原文/生成，探索停止、回答检索期停止、改题取消旧探索及恢复。最终后端身份及catalog与before一致，SQLite online backup integrity_check=ok；证据见[交付](DELIVERY.md)。GitHub普通推送/远端核对为最后归档步骤；用户本人最终验收未完成。
+C1/C2及索引生命周期实现完成；tests/v2 439通过，独立评审4个P2修复复审通过。已构建/安装0.2.2，生产模块+HTML同源hash，.pth模型依赖明确复用。C1真实60请求/30pair成功且同结果，网络中位24.7→21.3ms。开发6流程全通过/分类4正确；正式direct与explore各30、分类均22、流程均29、检索指标30/30相同，两份原始audit均通过。引用文档标签F1 .6667→.7143不能归因为探索质量收益；探索全流程P50 53.55s、direct40.59s，因此保留opt-in，不宣称整体提速/前沿。探索1条usage不全，已报tokens不能证明成本更低。详情/证据/统计定义见[RESULTS](RESULTS.md)。安装网页真实交互已通过：首开发题预览/原文/生成，探索停止、回答检索期停止、改题取消旧探索及恢复。最终后端身份及catalog与before一致，SQLite online backup integrity_check=ok；证据见[交付](DELIVERY.md)。GitHub 已同步代码及本组文档/证据，提交 [8da92ed](https://github.com/GuoLai806/GuoLai806-law-ai-advisor/commit/8da92ed38da772f9d0203fa2e2970da38fb369ed)；62 个改动文件已从远端逐一回读，内容与本地提交一致。[回读证据](evidence/github-code-sync-v1.json)。用户本人验收仍待体验确认。
 
 计时还有一项重要限制：直接组一题的日历等待约19.3分钟，单调时钟约2分钟，差约17.3分钟；原因未知，记录保留且没有扣除。其他分位数不能遮住这条最大等待，两组速度差不能作为稳定提速证明。
 
 部署入口19447；真实OV19443、embedding19444仅loopback；演示令牌loopback-demo属于本机隔离测试，不用于生产。GUI用grounded模式；没有改产品text默认。UI停止回答只实测了检索期撤回，云生成中途取消另由既有行为测试覆盖，不冒称额外模型实测。GUI stopped时参考区旧提示为非阻塞待办。恢复按DELIVERY及REPRODUCTION，不覆盖旧安装/索引，不推大DB/权重/凭据。
 
 网页停止/改题所说“取消”指浏览器旧请求及界面状态失效；没有另观察服务端OpenViking任务是否立即终止，工程生命周期测试独立报告。
+
+网页该次完成答案已由安装API会话接口回读，query/answer/revision与catalog一致，见[evidence/ui-session-readback-v1.json](evidence/ui-session-readback-v1.json)。首次不限定时间查到了继承库旧turn，选择断言失败记录保留；以截图前60秒到后1秒限定本次UI完成turn后唯一匹配，不删旧记录。只读回读不计新质量题。

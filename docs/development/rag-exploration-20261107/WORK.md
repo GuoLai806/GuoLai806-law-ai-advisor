@@ -6,4 +6,6 @@ C1真实30题AB/BA，60请求成功，30结果pair一致；网络中位24.7279�
 
 源码摘要728010c21e5641363fdcb988627e97b2f309f8bbc33d34345676abeaa1fdced8。wheel0.2.2构建、隔离安装核心模块及HTML同源，.pth模型依赖复用明确。首次构建缺setuptools失败保留。源服务停止；安装19447/OV19443/embedding19444保留。GUI第一开发题预览/原文/答案完成，停止、改题取消及恢复验证；停止参考区旧提示为非阻塞TODO。backend前后身份一致，SQLite backup integrity_check=ok。
 
-实现/测试作者子任务已完成，独立数据审阅已接收；共享服务/Git和归档由主Agent串行收尾。原始证据本机保留，公开数字/失败/hash经过脱敏核对。当前准备好交给用户体验，用户本人未验收；GitHub普通推送与逐文件回读为最后归档步骤，成功后补实际同步记录。详见DELIVERY/RESULTS/REVIEW及双版。
+实现/测试作者子任务已完成，独立数据审阅已接收；共享服务/Git和归档由主Agent串行收尾。原始证据本机保留，公开数字/失败/hash经过脱敏核对。当前准备好交给用户体验，用户本人未验收；GitHub 已同步代码及本组文档/证据，提交 [8da92ed](https://github.com/GuoLai806/GuoLai806-law-ai-advisor/commit/8da92ed38da772f9d0203fa2e2970da38fb369ed)；62 个改动文件已从远端逐一回读，内容与本地提交一致。[回读证据](evidence/github-code-sync-v1.json)。用户本人验收仍待体验确认。详见DELIVERY/RESULTS/REVIEW及双版。
+
+收尾独立文档复核已接收，无阻塞发现；所有本轮子任务完成、停止写入，监控结束。UI会话回读通过；初次选择继承旧turn导致断言失败，时间窗定位后唯一匹配，记录保留。首轮远端内容回读超时后确认ref，以只读blob重试恢复；62文件全部一致，未重放写入。源码无改动，不重复已通过工程/模型测试。
