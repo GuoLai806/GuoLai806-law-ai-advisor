@@ -1,8 +1,10 @@
+本轮 RAG 连接复用和可选资料预览已实现并完成安装网页核验，见[用户说明](docs/development/rag-exploration-20261107/PLAN-FOR-YOU.md)、[开发依据](docs/development/rag-exploration-20261107/PLAN-FOR-AI.md)、[实际结果](docs/development/rag-exploration-20261107/RESULTS.md)和[运行交付](docs/development/rag-exploration-20261107/DELIVERY.md)。同30题两组均22正确、29流程，不证明前沿或整体提速。其他项目暂列待办。
+
 # Evidence RAG
 
 ## bvio OpenViking 与 DeepSeek SuperAgent 调研（2026-11-07）
 
-本轮只读调研，未改业务实现：比较实际 OpenViking 路径并保存 14 个合成边界实验；Agent 参考 DeepSeek SuperAgent 研究原型，建议保留 GCode 执行内核并新增持久任务控制层。企业整体性能胜负尚未验证。
+历史只读调研（后续RAG开发见本页顶部）：比较实际 OpenViking 路径并保存 14 个合成边界实验；Agent 参考 DeepSeek SuperAgent 研究原型，建议保留 GCode 执行内核并新增持久任务控制层。企业整体性能胜负尚未验证。
 
 [大白话用户版](docs/development/bvio-superagent-research-20261107/PLAN-FOR-YOU.md) · [开发依据](docs/development/bvio-superagent-research-20261107/PLAN-FOR-AI.md) · [测试协议](docs/development/bvio-superagent-research-20261107/BENCHMARK-PROTOCOL.md)
 

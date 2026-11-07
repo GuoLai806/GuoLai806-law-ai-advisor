@@ -18,8 +18,12 @@ def require(condition, message):
         raise ValueError(message)
 
 
-def normalized_config(config):
+def normalized_config(config, comparison_strategy='grounding'):
     result = deepcopy(config)
+    if comparison_strategy == 'exploration':
+        result.pop('user_flow_strategy', None)
+        return result
+    require(comparison_strategy == 'grounding', 'Unknown comparison strategy')
     for key in ('answer_format', 'generation_gate', 'general_system_prompt'):
         result['service_configuration'].pop(key, None)
     for key in ('answer_format', 'generation_gate', 'system_prompt_sha256'):
@@ -28,6 +32,8 @@ def normalized_config(config):
 
 
 def freeze(args):
+    comparison_strategy = getattr(args, 'comparison_strategy', 'grounding')
+    require(comparison_strategy in ('grounding', 'exploration'), 'Unknown comparison strategy')
     input_paths = [Path(getattr(args, name)).resolve() for name in
                    ('manifest', 'development_report', 'development_config', 'baseline_config', 'candidate_config')]
     outputs = [Path(getattr(args, name)).resolve() for name in
@@ -83,29 +89,40 @@ def freeze(args):
     require(all(report.get('runtime_identity', {}).get(key) == value for key, value in development['runtime_identity'].items()),
             'Development runtime does not match its configuration')
     require(development == candidate, 'Candidate formal config must exactly match the development6 config')
-    require(normalized_config(baseline) == normalized_config(candidate),
-            'Baseline/candidate differ outside the declared joint grounding strategy')
+    require(normalized_config(baseline, comparison_strategy) == normalized_config(candidate, comparison_strategy),
+            'Baseline/candidate differ outside the declared ' + comparison_strategy + ' strategy')
     for config in (baseline, candidate):
         require(config['claims_sha256'].get('validation') == manifest['validation']['claims_sha256']
                 and config['claims_sha256'].get('test') == manifest['short_evaluation']['claims_sha256'],
                 'Config claim identity does not match manifest')
-    for config, answer_format, gate in [(baseline, 'text', 'reranker_threshold'),
-                                        (candidate, 'grounded_json', 'grounded_evidence')]:
+    modes = [(baseline, 'text', 'reranker_threshold'), (candidate, 'grounded_json', 'grounded_evidence')]
+    if comparison_strategy == 'exploration':
+        modes = [(config, 'grounded_json', 'grounded_evidence') for config in (baseline, candidate)]
+        require(baseline.get('user_flow_strategy') == 'direct'
+                and candidate.get('user_flow_strategy') == 'explore_then_answer',
+                'Exploration comparison requires direct baseline and explore_then_answer candidate')
+        require(report.get('user_flow_strategy') == 'explore_then_answer',
+                'Development report must exercise explore_then_answer')
+    for config, answer_format, gate in modes:
         service = config['service_configuration']
         runtime = config['runtime_identity']
         require(service.get('answer_format', 'text') == answer_format and service.get('generation_gate', 'reranker_threshold') == gate,
                 'Config mode does not match the declared baseline/candidate strategy')
         require(runtime.get('answer_format', 'text') == answer_format and runtime.get('generation_gate', 'reranker_threshold') == gate,
                 'Runtime mode does not match the declared strategy')
-    require(str(baseline['service_configuration'].get('rerank_threshold')) in ('0', '0.0')
-            and str(baseline['runtime_identity'].get('rerank_threshold')) in ('0', '0.0'),
-            'Historical baseline must retain threshold0')
+    if comparison_strategy == 'grounding':
+        require(str(baseline['service_configuration'].get('rerank_threshold')) in ('0', '0.0')
+                and str(baseline['runtime_identity'].get('rerank_threshold')) in ('0', '0.0'),
+                'Historical baseline must retain threshold0')
 
     journal_path = Path(str(input_paths[1]) + '.journal.jsonl')
     journal = [json.loads(line) for line in journal_path.read_text(encoding='utf-8').splitlines()]
     require(len(journal) == 8 and journal[0].get('type') == 'header' and journal[-1].get('type') == 'complete',
             'Development journal is incomplete')
     header = journal[0]
+    if comparison_strategy == 'exploration':
+        require(header.get('user_flow_strategy') == 'explore_then_answer',
+                'Development journal must exercise explore_then_answer')
     require(header.get('query_ids') == manifest['validation']['query_ids']
             and header.get('config_sha256') == report['config_sha256']
             and header.get('manifest_sha256') == manifest_hash and header.get('source_sha256') == source,
@@ -125,10 +142,15 @@ def freeze(args):
                           'policy': 'All development failures are retained; real provider/retrieval/format failures are not automatically rejected or relabeled.'}
     selected_utc = datetime.now(timezone.utc).isoformat()
     shared = {'selected_utc': selected_utc, 'manifest_path': str(input_paths[0]), 'manifest_sha256': manifest_hash,
+              'comparison_strategy': comparison_strategy,
               'source_sha256': source, 'development6': development_record,
               'freeze_tool_sha256': file_hash(__file__),
               'rule': 'Predeclared two-config comparison, frozen before either formal report/journal exists; not a winner selection from development or formal scores.',
               'limits': 'Public stratified small evaluation; not hidden/unseen/full test. Joint format, prompt contract and evidence gate change; effects cannot be attributed to one component.'}
+    if comparison_strategy == 'exploration':
+        shared['limits'] = ('Public stratified small evaluation; not hidden/unseen/full test. '
+                            'Identical grounded answer service/runtime; only direct versus explore_then_answer '
+                            'user paths differ. Exploration still ranks complete source text and may add latency.')
     results = []
     for kind, path, config_path, config, test_output in zip(
             ('baseline', 'candidate'), selection_paths, input_paths[3:], (baseline, candidate), formal_outputs, strict=True):
@@ -138,6 +160,13 @@ def freeze(args):
                         'formal_query_ids': manifest['short_evaluation']['query_ids'],
                         'development_policy': 'Declared reuse of historical text+threshold0 settings; no separate baseline development6 or development tuning; candidate development6 is shared as integrity evidence only.' if kind == 'baseline'
                                               else 'Uses the exact candidate config of the complete development6; no formal30-driven tuning.'})
+        if comparison_strategy == 'exploration':
+            results[-1]['user_flow_strategy'] = config['user_flow_strategy']
+            results[-1]['development_policy'] = (
+                'Declared direct path with the same grounded service as candidate; '
+                'no separate baseline development6 or tuning; candidate development6 is shared as integrity evidence only.'
+                if kind == 'baseline' else
+                'Uses the exact candidate config of the complete explore_then_answer development6; no formal30-driven tuning.')
     pair_hash = hashlib.sha256(json.dumps(results, sort_keys=True).encode('utf-8')).hexdigest()
     # All reads and comparisons complete before either exclusive write; one caller owns this pair.
     before_formal()
@@ -148,6 +177,7 @@ def freeze(args):
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument('--comparison-strategy', choices=['grounding', 'exploration'], default='grounding')
     for name in ('manifest', 'development-report', 'development-config', 'baseline-config', 'candidate-config',
                  'baseline-test-output', 'candidate-test-output', 'baseline-selection', 'candidate-selection'):
         parser.add_argument('--' + name, required=True)

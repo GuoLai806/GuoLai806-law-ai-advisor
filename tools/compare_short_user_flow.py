@@ -1,6 +1,7 @@
 """Paired, failure-inclusive analysis of the two predeclared 30-query runs."""
 import argparse
 from collections import Counter
+from copy import deepcopy
 from math import comb, sqrt
 import json
 from pathlib import Path
@@ -10,6 +11,7 @@ import numpy as np
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from benchmarks.e2e import file_hash, save_json
 from benchmarks.verification_metrics import aggregate
+from tools.audit_user_flow import exploration_checks
 
 
 def wilson(successes,total):
@@ -32,13 +34,62 @@ def latency(rows,field):
     return result
 
 
+def distribution(values):
+    values=[value for value in values if value is not None]
+    return {'n':len(values),'p50':float(np.quantile(values,.5)) if values else None,
+            'p95':float(np.quantile(values,.95)) if values else None,
+            'total':sum(values) if values else None}
+
+
+def comparison_strategy(baseline,candidate):
+    paths=(baseline.get('user_flow_strategy','direct'),candidate.get('user_flow_strategy','direct'))
+    ar,br=baseline['runtime_identity'],candidate['runtime_identity']
+    if paths==('direct','explore_then_answer'):
+        if ar!=br or any(r.get('answer_format')!='grounded_json' or r.get('generation_gate')!='grounded_evidence' for r in (ar,br)):
+            raise ValueError('Exploration comparison requires identical grounded service/runtime')
+        if not baseline.get('freeze_pair_sha256') or baseline['freeze_pair_sha256']!=candidate.get('freeze_pair_sha256'):
+            raise ValueError('Exploration comparison requires the same frozen pair')
+        return 'exploration'
+    if paths!=('direct','direct'):
+        raise ValueError('Unsupported or reversed user path comparison')
+    if (ar.get('answer_format')!='text' or ar.get('generation_gate')!='reranker_threshold'
+            or br.get('answer_format')!='grounded_json' or br.get('generation_gate')!='grounded_evidence'):
+        raise ValueError('Grounding comparison requires historical text and grounded candidate modes')
+    copies=[]
+    for runtime in (ar,br):
+        normalized=deepcopy(runtime)
+        for key in ('answer_format','generation_gate','system_prompt_sha256'):
+            normalized.pop(key,None)
+        copies.append(normalized)
+    if copies[0]!=copies[1] or str(ar.get('rerank_threshold')) not in ('0','0.0'):
+        raise ValueError('Grounding runtimes differ outside the declared joint strategy')
+    return 'grounding'
+
+
 def summary(report,raw_dir,name):
     rows=report['rows']; n=len(rows); quality=aggregate(rows)
-    raw_metadata=[]
+    raw_metadata=[]; observations=[]; evidence_bytes=[]
+    strategy=report.get('user_flow_strategy','direct')
     for row in rows:
         raw_path=Path(raw_dir)/(name+'-'+row['query_id']+'.json')
         if file_hash(raw_path)!=row['raw_sha256']: raise ValueError('Raw event identity changed')
         raw=json.loads(raw_path.read_text())
+        if not all(exploration_checks(row,raw,strategy).values()):
+            raise ValueError('Exploration observation is inconsistent with preserved raw artifacts')
+        record=raw.get('exploration') or {}
+        preview_ms=(record.get('preview_received') or {}).get('monotonic_ms')
+        original_ms=(record.get('original_received') or {}).get('monotonic_ms')
+        encoded_bytes=sum(len(json.dumps(e['data'],ensure_ascii=False,separators=(',',':')).encode('utf-8'))
+                          for e in raw['events'] if e['event']=='evidence_ready')
+        evidence_bytes.append(encoded_bytes if any(e['event']=='evidence_ready' for e in raw['events']) else None)
+        observations.append({'query_id':row['query_id'],'attempted':raw.get('exploration') is not None,
+                             'preview_ms':preview_ms,'original_ms':original_ms,
+                             'original_read_ms':original_ms-preview_ms if original_ms is not None and preview_ms is not None else None,
+                             'response_bytes':record.get('response_bytes'),'original_bytes':record.get('original_bytes'),
+                             'preview_http_status':record.get('preview_http_status'),'original_http_status':record.get('original_http_status'),
+                             'original_verified':bool(record.get('original_verified')),
+                             'answer_evidence_ready_payload_bytes':evidence_bytes[-1],
+                             'failed':bool(row.get('failure'))})
         validations=[e['data'] for e in raw['events'] if e['event']=='grounding_validation']
         raw_metadata.append({'query_id':row['query_id'],'grounding_validation':validations})
     valid=[item for record in raw_metadata for item in record['grounding_validation']
@@ -61,6 +112,17 @@ def summary(report,raw_dir,name):
             'responses_without_quotes':sum(not i.get('quotes') for i in valid),
             'quotes_checked_spans':sum(len(i.get('quotes',[])) for i in valid),
             'quote_check_scope':'verbatim occurrence and source identifiers only; semantic support is model assessed, not independently verified',
+            'user_flow_strategy':strategy,
+            'exploration_observations':{
+                'attempted_queries':sum(item['attempted'] for item in observations),
+                'verified_original_queries':sum(item['original_verified'] for item in observations),
+                'preview_http_status_counts':dict(Counter(str(item['preview_http_status']) for item in observations if item['preview_http_status'] is not None)),
+                'original_http_status_counts':dict(Counter(str(item['original_http_status']) for item in observations if item['original_http_status'] is not None)),
+                'metrics':{field:distribution([item[field] for item in observations]) for field in
+                           ('preview_ms','original_ms','original_read_ms','response_bytes','original_bytes','answer_evidence_ready_payload_bytes')},
+                'byte_scope':'Preview and first-original response bytes are preserved HTTP UTF-8 JSON body bytes; evidence_ready payload size is compact JSON re-encoding of parsed SSE data, excludes SSE framing/other events/HTTP headers and is not observed wire size. Preview adds requests and does not replace answer evidence.',
+                'timing_scope':'preview_ms and original_ms start at the user action; original_read_ms is their difference. Observed failed HTTP responses are included; only preserved and checked observations are summarized.',
+                'per_query':observations},
             'raw_grounding_metadata':raw_metadata}
 
 
@@ -72,6 +134,12 @@ def compare(baseline,candidate,raw_dir,output):
         if r['queries_expected']!=30 or r['queries_recorded']!=30 or len(r['rows'])!=30:
             raise ValueError('All 30 rows, including failures, required')
         if not r['source_unchanged'] or not r['runtime_identity_unchanged']: raise ValueError('Runtime changed')
+    strategy=comparison_strategy(a,b)
+    for path,report in ((bp,a),(cp,b)):
+        header=json.loads(Path(str(path)+'.journal.jsonl').read_text().splitlines()[0])
+        if (header.get('type')!='header' or header.get('user_flow_strategy','direct')!=report.get('user_flow_strategy','direct')
+                or header.get('config_sha256')!=report['config_sha256']):
+            raise ValueError('Report/journal strategy or configuration changed')
     if a['source_sha256']!=b['source_sha256'] or a['manifest_sha256']!=b['manifest_sha256']:
         raise ValueError('Same source and frozen sample required')
     ar,br=a['rows'],b['rows']
@@ -83,7 +151,10 @@ def compare(baseline,candidate,raw_dir,output):
     rng=np.random.default_rng(20261107); indices=rng.integers(0,30,(10000,30))
     deltas=(y-x)[indices].mean(axis=1)
     result={'baseline_sha256':file_hash(bp),'candidate_sha256':file_hash(cp),'manifest_sha256':a['manifest_sha256'],
-            'scope':'public, previously seen, class-balanced 30-query paired experiment; joint answer-format and generation-gate change; not independent hidden test, whole-RAG factual accuracy, or frontier proof',
+            'comparison_strategy':strategy,
+            'scope':('public, previously seen, class-balanced 30-query paired experiment; identical grounded answer service/runtime, only direct versus explore-then-answer user path differs; '
+                     if strategy=='exploration' else 'public, previously seen, class-balanced 30-query paired experiment; joint answer-format and generation-gate change; ')
+                    +'not independent hidden test, whole-RAG factual accuracy, or frontier proof',
             'baseline':summary(a,raw_dir,bp.stem),'candidate':summary(b,raw_dir,cp.stem),
             'paired':{'accuracy_difference':float((y-x).mean()),'difference_bootstrap_95':[float(np.quantile(deltas,.025)),float(np.quantile(deltas,.975))],
                       'bootstrap':'paired query percentile; 10000 resamples; seed20261107; shared documents may induce dependence',

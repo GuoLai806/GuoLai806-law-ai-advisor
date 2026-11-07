@@ -1,34 +1,166 @@
 import asyncio, math, time, re, numbers
 from collections import defaultdict
+from contextlib import asynccontextmanager
 import httpx
 
 class OpenViking:
-    def __init__(self, base_url, scope, headers=None, timeout=5, transport=None):
-        if not re.fullmatch(r'viking://resources/(?:law-cn/[A-Za-z0-9_-]+|rag/[A-Za-z0-9_-]+/[A-Za-z0-9_-]+)/?',scope): raise ValueError('invalid resource scope')
-        self.base, self.scope, self.headers, self.timeout, self.transport = base_url.rstrip('/'), scope.rstrip('/')+'/', headers or {}, timeout, transport
+    """A scoped adapter whose requests share one explicitly owned HTTP client.
+
+    Injected clients are borrowed unless ``owns_client=True`` is supplied. The
+    adapter always drains its own in-flight operations before closing an owned
+    client. A borrowed client must outlive the adapter. ``reuse_client=False``
+    retains the original per-operation lifecycle for rollback and comparison.
+    """
+    def __init__(self, base_url, scope, headers=None, timeout=5, transport=None,
+                 client=None, owns_client=None, reuse_client=True):
+        if not re.fullmatch(r'viking://resources/(?:law-cn/[A-Za-z0-9_-]+|rag/[A-Za-z0-9_-]+/[A-Za-z0-9_-]+)/?', scope):
+            raise ValueError('invalid resource scope')
+        if not isinstance(reuse_client, bool) or (owns_client is not None and not isinstance(owns_client, bool)):
+            raise ValueError('invalid client ownership configuration')
+        if client is not None:
+            if not isinstance(client, httpx.AsyncClient):
+                raise ValueError('client must be an httpx.AsyncClient')
+            if transport is not None or not reuse_client:
+                raise ValueError('injected client conflicts with transport or per-operation mode')
+            if client.is_closed or client._trust_env:
+                raise ValueError('injected client must be open with trust_env=False')
+        elif owns_client is False:
+            raise ValueError('self-created clients must be owned by the adapter')
+        self.base = base_url.rstrip('/')
+        self.scope = scope.rstrip('/') + '/'
+        self.headers = dict(headers or {})
+        self.timeout, self.transport = timeout, transport
+        self.reuse_client = reuse_client
+        self.owns_client = client is None if owns_client is None else owns_client
+        self._client = client
+        self._state = 'open'
+        self._active = 0
+        self._drained = asyncio.Event()
+        self._drained.set()
+        self._close_task = None
+
+    def _make_client(self):
+        return httpx.AsyncClient(timeout=self.timeout, headers=self.headers,
+                                 transport=self.transport, trust_env=False,
+                                 follow_redirects=False)
+
+    def _begin_request(self):
+        # No await between the state check and registration: shutdown cannot
+        # miss a request that has already been accepted on this event loop.
+        if self._state != 'open':
+            raise RuntimeError('OpenViking adapter is closing or closed')
+        self._active += 1
+        self._drained.clear()
+
+    def _end_request(self):
+        self._active -= 1
+        if self._active == 0:
+            self._drained.set()
+
+    @staticmethod
+    def _observe_completion(task):
+        if not task.cancelled():
+            task.exception()  # Observe errors even if every shielded waiter was cancelled.
+
+    async def _close_transient(self, client):
+        try:
+            await client.aclose()
+        finally:
+            self._end_request()
+
+    @asynccontextmanager
+    async def _request_client(self):
+        self._begin_request()
+        transient = None
+        try:
+            if self.reuse_client:
+                if self._client is None:
+                    self._client = self._make_client()
+                client = self._client
+            else:
+                transient = self._make_client()
+                client = transient
+            yield client
+        finally:
+            if transient is None:
+                self._end_request()
+            else:
+                # A second cancellation must not leak a transient connection or
+                # let shutdown finish before that connection has been closed.
+                cleanup = asyncio.create_task(self._close_transient(transient))
+                cleanup.add_done_callback(self._observe_completion)
+                await asyncio.shield(cleanup)
+
+    async def _finish_close(self):
+        try:
+            await self._drained.wait()
+            if self.owns_client and self._client is not None:
+                await self._client.aclose()
+        finally:
+            self._state = 'closed'
+
+    async def aclose(self):
+        if self._close_task is None:
+            self._state = 'closing'
+            self._close_task = asyncio.create_task(self._finish_close())
+            self._close_task.add_done_callback(self._observe_completion)
+        # Cancellation of a shutdown waiter does not cancel the shutdown itself.
+        await asyncio.shield(self._close_task)
+
+    async def __aenter__(self):
+        if self._state != 'open':
+            raise RuntimeError('OpenViking adapter is closing or closed')
+        return self
+
+    async def __aexit__(self, exc_type, exc, traceback):
+        await self.aclose()
+
+    async def _post(self, client, path, **kwargs):
+        # Override injected-client defaults as well: neither redirects nor a
+        # different deadline may silently relax this adapter's request contract.
+        return await client.post(self.base + path, headers=self.headers,
+                                 timeout=self.timeout, follow_redirects=False, **kwargs)
+
     async def find(self, query):
-        async with httpx.AsyncClient(timeout=self.timeout, headers=self.headers, transport=self.transport,trust_env=False) as client:
-            r = await client.post(self.base+'/api/v1/search/find',json={'query':query,'target_uri':self.scope,'context_type':'resource','level':2,'read_content':False,'limit':40})
-            r.raise_for_status(); data=r.json()
-        if data.get('status') != 'ok' or not isinstance(data.get('result'),dict): raise ValueError('invalid OpenViking envelope')
-        rows=data['result'].get('resources',[])
-        if not isinstance(rows,list): raise ValueError('invalid resources')
-        return [x for x in rows if isinstance(x,dict) and isinstance(x.get('uri'),str) and x['uri'].startswith(self.scope)]
+        async with self._request_client() as client:
+            r = await self._post(client, '/api/v1/search/find', json={
+                'query': query, 'target_uri': self.scope, 'context_type': 'resource',
+                'level': 2, 'read_content': False, 'limit': 40})
+            r.raise_for_status()
+            data = r.json()
+            if data.get('status') != 'ok' or not isinstance(data.get('result'), dict):
+                raise ValueError('invalid OpenViking envelope')
+            rows = data['result'].get('resources', [])
+            if not isinstance(rows, list):
+                raise ValueError('invalid resources')
+            return [x for x in rows if isinstance(x, dict) and isinstance(x.get('uri'), str)
+                    and x['uri'].startswith(self.scope)]
 
     async def ingest(self, uid, content):
         # Never retry a write after ambiguous delivery; caller must journal and reconcile.
-        if not __import__('re').fullmatch('[0-9a-f]{32}',uid): raise ValueError('invalid unit ID')
-        target=self.scope+uid
-        async with httpx.AsyncClient(timeout=self.timeout,headers=self.headers,transport=self.transport,trust_env=False) as client:
-            upload=await client.post(self.base+'/api/v1/resources/temp_upload',files={'file':(uid+'.md',content.encode('utf-8'),'text/markdown')})
-            upload.raise_for_status(); envelope=upload.json()
-            if envelope.get('status')!='ok' or not isinstance(envelope.get('result'),dict) or not envelope['result'].get('temp_file_id'): raise ValueError('invalid upload envelope')
-            response=await client.post(self.base+'/api/v1/resources',json={'temp_file_id':envelope['result']['temp_file_id'],'to':target,'wait':True,'strict':True,'create_parent':True,'processing_mode':'vectors_only','args':{'parse_mode':'no_split'}})
-            response.raise_for_status(); result=response.json()
-            if result.get('status')!='ok' or not isinstance(result.get('result'),dict): raise ValueError('invalid ingest envelope')
-            root=result['result'].get('root_uri')
-            if root is not None and root.rstrip('/') != target: raise ValueError('ingest root differs from requested target')
-            return {'requested_uri':target,'expected_l2_uri':target+'/'+uid+'.md','response':result['result'],'state':'needs_reconciliation'}
+        if not re.fullmatch('[0-9a-f]{32}', uid):
+            raise ValueError('invalid unit ID')
+        target = self.scope + uid
+        async with self._request_client() as client:
+            upload = await self._post(client, '/api/v1/resources/temp_upload', files={
+                'file': (uid + '.md', content.encode('utf-8'), 'text/markdown')})
+            upload.raise_for_status()
+            envelope = upload.json()
+            if envelope.get('status') != 'ok' or not isinstance(envelope.get('result'), dict) or not envelope['result'].get('temp_file_id'):
+                raise ValueError('invalid upload envelope')
+            response = await self._post(client, '/api/v1/resources', json={
+                'temp_file_id': envelope['result']['temp_file_id'], 'to': target,
+                'wait': True, 'strict': True, 'create_parent': True,
+                'processing_mode': 'vectors_only', 'args': {'parse_mode': 'no_split'}})
+            response.raise_for_status()
+            result = response.json()
+            if result.get('status') != 'ok' or not isinstance(result.get('result'), dict):
+                raise ValueError('invalid ingest envelope')
+            root = result['result'].get('root_uri')
+            if root is not None and root.rstrip('/') != target:
+                raise ValueError('ingest root differs from requested target')
+            return {'requested_uri': target, 'expected_l2_uri': target + '/' + uid + '.md',
+                    'response': result['result'], 'state': 'needs_reconciliation'}
 
 def document_embedding_text(unit):
     """Exact text sent to the dense backend; no identifiers or relevance labels."""

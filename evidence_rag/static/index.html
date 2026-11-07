@@ -44,6 +44,7 @@
       <textarea id="question" required maxlength="4000" placeholder="例如：研究是否支持这个结论？"></textarea>
       <div class="row">
         <button id="ask" type="submit">根据资料回答</button>
+        <button id="explore" type="button" class="secondary">先看资料</button>
         <button id="stop" type="button" class="secondary" disabled>停止</button>
         <span id="status" role="status" aria-live="polite">等待提问</span>
       </div>
@@ -74,7 +75,12 @@ const status = document.getElementById('status');
 const timing = document.getElementById('timing');
 const ask = document.getElementById('ask');
 const stop = document.getElementById('stop');
+const explore = document.getElementById('explore');
 let controller = null;
+let sourceController = null;
+let uiEpoch = 0;
+let explorationSnapshot = null;
+let explorationRunning = false;
 let currentBundle = null;
 let pendingAnswer = '';
 let completed = false;
@@ -86,12 +92,26 @@ function showNotice(message) {
   notice.classList.toggle('hidden', !message);
 }
 
-async function showSource(item) {
-  const response = await fetch('/api/v2/units/' + encodeURIComponent(item.unit_id) + '?revision=' + encodeURIComponent(currentBundle.corpus_revision), {
-    headers: { Authorization: 'Bearer ' + access.value.trim() }
+async function sha256(text) {
+  const bytes = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return Array.from(new Uint8Array(bytes), x => x.toString(16).padStart(2, '0')).join('');
+}
+
+async function showSource(item, revision, epoch) {
+  sourceController?.abort();
+  const local = new AbortController();
+  sourceController = local;
+  const response = await fetch('/api/v2/units/' + encodeURIComponent(item.unit_id) + '?revision=' + encodeURIComponent(revision), {
+    headers: { Authorization: 'Bearer ' + access.value.trim() }, signal: local.signal
   });
-  if (!response.ok) throw new Error('原文暂时无法读取，请检查访问权限。');
+  if (!response.ok) throw new Error('该版本的原文暂时无法读取，请检查访问权限。');
   const source = await response.json();
+  const part = source.parts?.find(part => part.part_no === item.part_no) || source;
+  if (source.revision !== revision || await sha256(part.text) !== item.content_sha256 ||
+      await sha256(source.text) !== (item.document_sha256 || item.content_sha256)) {
+    throw new Error('原文版本或内容不一致，暂不展示。');
+  }
+  if (epoch !== uiEpoch || local.signal.aborted) return;
   document.getElementById('source-content').textContent = source.title + '\n\n' + source.text;
   document.getElementById('source-panel').classList.remove('hidden');
   document.getElementById('source-panel').scrollIntoView({behavior: 'smooth', block: 'start'});
@@ -101,22 +121,86 @@ function displayEvidence(bundle) {
   currentBundle = bundle;
   const container = document.getElementById('evidence');
   container.replaceChildren();
-  for (const item of bundle.evidence) {
+  const revision = bundle.corpus_revision;
+  const epoch = uiEpoch;
+  const isExploration = bundle.kind === 'exploration';
+  for (const item of isExploration ? bundle.items : bundle.evidence) {
     const article = document.createElement('article');
     const heading = document.createElement('h3');
-    heading.textContent = '[' + item.citation_id + '] ' + item.title;
+    heading.textContent = (isExploration ? '' : '[' + item.citation_id + '] ') + item.title;
     const text = document.createElement('p');
-    text.textContent = item.text;
+    text.textContent = isExploration ? item.preview : item.text;
+    const hint = document.createElement('p');
+    hint.className = 'muted';
+    hint.textContent = isExploration ? (item.preview_truncated ? '预览已截短，打开原文查看完整内容。' : '资料预览；正式回答会重新核验完整依据。') : '';
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'secondary';
     button.textContent = '查看原文';
-    button.addEventListener('click', () => showSource(item).catch(error => showNotice(error.message)));
-    article.append(heading, text, button);
+    button.addEventListener('click', () => showSource(item, revision, epoch).catch(error => {
+      if (epoch === uiEpoch && error.name !== 'AbortError') showNotice(error.message);
+    }));
+    article.append(heading, text, hint, button);
     container.append(article);
   }
-  if (!bundle.evidence.length) container.textContent = '没有找到可用资料。';
+  if (!(isExploration ? bundle.items : bundle.evidence).length) container.textContent = '没有找到可用资料。';
 }
+
+explore.addEventListener('click', async () => {
+  if (!access.value.trim() || !question.value.trim()) {
+    showNotice('请先输入访问令牌和问题。');
+    return;
+  }
+  uiEpoch++;
+  sourceController?.abort();
+  controller = new AbortController();
+  const local = controller;
+  const epoch = uiEpoch;
+  const query = question.value;
+  explorationRunning = true;
+  ask.disabled = explore.disabled = true;
+  stop.disabled = false;
+  explorationSnapshot = null;
+  answer.textContent = '正在查找资料预览…';
+  timing.textContent = '';
+  document.getElementById('source-panel').classList.add('hidden');
+  status.textContent = '正在查找资料…';
+  showNotice('');
+  try {
+    const response = await fetch('/api/v2/explore', {
+      method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + access.value.trim() },
+      body: JSON.stringify({query, session_id: sessionId}), signal: local.signal
+    });
+    if (!response.ok) throw new Error('资料预览暂时不可用，请检查权限或稍后重试。');
+    const bundle = await response.json();
+    if (epoch !== uiEpoch || local.signal.aborted) return;
+    explorationSnapshot = {query, revision: bundle.corpus_revision};
+    displayEvidence(bundle);
+    answer.textContent = '可以先打开原文核对，再点击“根据资料回答”。';
+    status.textContent = '资料预览已就绪';
+    showNotice(bundle.degraded ? '部分检索服务不可用，当前预览可能不完整。' : '预览仅供浏览；正式回答使用同版本完整段落。');
+  } catch (error) {
+    if (epoch !== uiEpoch) return;
+    answer.textContent = error.name === 'AbortError' ? '已停止查找资料。' : '未取得资料预览。';
+    status.textContent = error.name === 'AbortError' ? '已停止' : '本次未完成';
+    showNotice(error.name === 'AbortError' ? '查找已停止，可以重新提问。' : error.message);
+  } finally {
+    if (epoch === uiEpoch) {
+      explorationRunning = false;
+      ask.disabled = explore.disabled = false;
+      stop.disabled = true;
+      controller = null;
+    }
+  }
+});
+question.addEventListener('input', () => {
+  explorationSnapshot = null;
+  if (explorationRunning) controller?.abort();
+  sourceController?.abort();
+  currentBundle = null;
+  document.getElementById('evidence').textContent = '问题已更改，请重新查找资料。';
+  document.getElementById('source-panel').classList.add('hidden');
+});
 
 function receive(kind, data) {
   if (kind === 'generation_retry') {
@@ -165,7 +249,10 @@ form.addEventListener('submit', async event => {
     access.focus();
     return;
   }
+  uiEpoch++;
+  sourceController?.abort();
   controller = new AbortController();
+  const pinned = explorationSnapshot?.query === question.value ? explorationSnapshot.revision : null;
   completed = false;
   quotesChecked = false;
   pendingAnswer = '';
@@ -175,13 +262,13 @@ form.addEventListener('submit', async event => {
   currentBundle = null;
   document.getElementById('evidence').textContent = '正在查找本次问题的资料…';
   document.getElementById('source-panel').classList.add('hidden');
-  ask.disabled = true;
+  ask.disabled = explore.disabled = true;
   stop.disabled = false;
   status.textContent = '正在提交问题…';
   try {
     const response = await fetch('/api/v2/chat/stream', {
       method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + access.value.trim() },
-      body: JSON.stringify({ query: question.value, session_id: sessionId }), signal: controller.signal
+      body: JSON.stringify({ query: question.value, session_id: sessionId, corpus_revision: pinned }), signal: controller.signal
     });
     if (!response.ok) throw new Error(response.status === 401 || response.status === 403 ? '访问令牌无效或没有权限。' : '服务暂时不可用。');
     const reader = response.body.getReader();
@@ -209,7 +296,7 @@ form.addEventListener('submit', async event => {
     showNotice(error.name === 'AbortError' ? '未完成的草稿已撤回。' : error.message);
     status.textContent = error.name === 'AbortError' ? '已停止' : '本次未完成';
   } finally {
-    ask.disabled = false;
+    ask.disabled = explore.disabled = false;
     stop.disabled = true;
     controller = null;
   }

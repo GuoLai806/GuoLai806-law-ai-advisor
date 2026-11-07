@@ -1,0 +1,1689 @@
+{
+  "protocol": "openviking-production-client-lifecycle-paired-v1",
+  "scope": "Real find HTTP stage only; excludes lexical retrieval, reranking, generation and user flow. No industry or answer-latency claim.",
+  "configuration": {
+    "dense_scope": "viking://resources/rag/scifact/scifact_full_v3/",
+    "backend_url_sha256": "39f72572628a843ba84138150672d513d6a4b7b3d4f9a5b79ebbf46f6f50edf5",
+    "timeout_seconds": 30,
+    "trust_env": false,
+    "follow_redirects": false,
+    "find_parameters": {
+      "context_type": "resource",
+      "level": 2,
+      "read_content": false,
+      "limit": 40
+    },
+    "warmup": "one request per variant on first frozen query",
+    "order": "alternating AB/BA per frozen manifest order; serial; no retries"
+  },
+  "dataset": {
+    "name": "scifact",
+    "manifest_sha256": "8ee8fd71d89777b93ef27e062fffd81ddb8f419b7c476eddc16bf2a08c6d4690",
+    "corpus_sha256": "dec31c8182f3d744c7d2c09423756fd1d17cbef75808db13ba01cc0aab4d1ac6",
+    "queries_sha256": "8ff84a7c903f722981cd8d595c022660140c51867b27608a6d4910db86080313",
+    "corpus_count": 5183,
+    "split": "test",
+    "query_ids": [
+      "1292",
+      "1041",
+      "702",
+      "830",
+      "834",
+      "1290",
+      "1110",
+      "502",
+      "298",
+      "649",
+      "1319",
+      "1225",
+      "384",
+      "338",
+      "1245",
+      "684",
+      "354",
+      "613",
+      "1185",
+      "217",
+      "50",
+      "879",
+      "845",
+      "759",
+      "1270",
+      "589",
+      "903",
+      "516",
+      "847",
+      "1088"
+    ]
+  },
+  "runtime": {
+    "python": "3.12.13",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "packages": {
+      "httpx": "0.28.1",
+      "httpcore": "1.0.9"
+    },
+    "backend_health": {
+      "success": true,
+      "http_status": 200,
+      "public_fields": {
+        "status": "ok",
+        "version": "0.5.3"
+      },
+      "body_sha256": "33496db2a2faab5c3c51920746d4c0a1a4612ffc2ba15e0af25fcb7181c65809",
+      "observed_utc": "2026-11-07T09:42:58.236866000Z",
+      "observed_wall_ns": 1794044578236866000
+    }
+  },
+  "source_sha256": {
+    "evidence_rag/__init__.py": "1944c8ecacab2bea3d8ff1eb5bb77ccd9f2510a0449f94345a08593cbb2acf22",
+    "evidence_rag/__main__.py": "d80d69e4e9774964f1a463eeef35cf8251b20d050626280748e90fdaeead6376",
+    "evidence_rag/answer.py": "06bd724ef9c6b2849f5bcbfb212590b59d69554a1d05cee1c755f2fb2033dcad",
+    "evidence_rag/api.py": "36d38e5bf5826ebe5037ce419d008402bcb22a27613c3dec747d04fe2fe256f6",
+    "evidence_rag/budget.py": "a2127a6f4163754341f366e153edd673449dd62e8c9037780b5128eb2a78cf4f",
+    "evidence_rag/catalog.py": "d52166e499a47bf0749ecbb11fdf4d090b118b957c9fb9c9389a2814cc50cc84",
+    "evidence_rag/cli.py": "4180f2b1d4051f15e416c6eba8efb81ea78ebcfbacec88692a897f8e0f16c71f",
+    "evidence_rag/exploration.py": "1c786f9619be38ed40cb81f194cb56093a09ce5ae218d2fe8cc1a3a7d699f483",
+    "evidence_rag/generate_benchmark.py": "16d0beafab70dbf9afab9d0ba551aafcf61c0220e2f8303919597d38a18e5ac2",
+    "evidence_rag/grounding.py": "76d53baa97cf7edb9270ad2af793ad1eea606522b77a3268f4ef78fbfb9cd17f",
+    "evidence_rag/ingest.py": "8d70053a47f0ecd38989163b333dde4c3ffaa54df79d9039d6ece760fcd0581c",
+    "evidence_rag/model_experiment.py": "d671e0de227ae4ed5913a94b6ecde78240c94520b39eba2f4ef427594d027da4",
+    "evidence_rag/retrieval.py": "0854b8280bc7b09bfd10de18ee4e205c2f85fb63ae0ab0ac87e8f756d2a7b0f0",
+    "evidence_rag/viking_index.py": "47124276d5fb0de5c00eee52f4c648ffa6b41f40ef15d36979f7e3c8c3e49d38",
+    "benchmarks/__init__.py": "cde64a6b6662b367dc76d9de62d3f9ca0746211b9e2146159a3a5e77f7ac7896",
+    "benchmarks/core.py": "c7c9b2bf7bd6b1b46a995f858dd8743dda4918542bb8be88cdcda96a65f7fcf6",
+    "benchmarks/e2e.py": "a2f862b57bd5792f74daed47b6614f161ebe24ffe40d658445c7a3485bcb175b",
+    "benchmarks/freeze_product.py": "a6c1f21814a3fd3e95c85a2a208e81878af04db81dc3a8a1df8a2a8f8a17c62a",
+    "benchmarks/index_openviking.py": "b00a3f7f5db08cfbd9abd91ea7ec037d1adf249a5e06fbb9e9f8836d32c502b2",
+    "benchmarks/metrics.py": "93cf6a4a5477dcbbd15329f0645211ead1d22736d8654f6283a3d2f33660bb3a",
+    "benchmarks/prepare.py": "5dd3ea880fbaa29bc101b1245dbdee95995bfb9f335be9ab32869f5d122e7066",
+    "benchmarks/product.py": "c438becd7f230ef18e02cedf28d48520b636dbaa06a27cd9dc31a0e525b493ae",
+    "benchmarks/run.py": "b1bde1b02d00c4268f75bab65c371887f4b0b37a1e63a36c44d767180dead092",
+    "benchmarks/run_openviking_connections.py": "0dba2cb7edab8e0a8563a79ef6cea6f3158eee3a9374752fa3107da59a116006",
+    "benchmarks/run_product.py": "b405576f7247f4b462b4509382fc5fa7826ac6d9becb3d6333b2565dab804805",
+    "benchmarks/run_user_flow.py": "8d5944458ee61202ea85185038878d8ca2718d61ee90543d01cf137c7ca58f24",
+    "benchmarks/select.py": "df007d42436493123d6f14fdf932e190f6fe160f49f5e290b7bba2c295bd9a45",
+    "benchmarks/serve_user_flow.py": "e7b5825c7a608df1a2712354ba8627a9481059a1b85663c3155399abeb2f4452",
+    "benchmarks/short_protocol.py": "39466d09df8d921cefacbaf383dcd18072faab5b22e6cb3f39d625fa09a628f1",
+    "benchmarks/verification_metrics.py": "e6f616989e77ffb2a66ce3460f7c1f5e4d1a5062ae651d650724b38a0812822c",
+    "pyproject.toml": "c3e04bee66ed966c9d3a62651a3f08f4904a4da477be8cbc124ea8b70f7b0f44",
+    "evidence_rag/static/index.html": "d3cfc87ea7d46134a677d024b7886812758f287eb161b549a666e6690733501c"
+  },
+  "source_sha256_at_end": {
+    "evidence_rag/__init__.py": "1944c8ecacab2bea3d8ff1eb5bb77ccd9f2510a0449f94345a08593cbb2acf22",
+    "evidence_rag/__main__.py": "d80d69e4e9774964f1a463eeef35cf8251b20d050626280748e90fdaeead6376",
+    "evidence_rag/answer.py": "06bd724ef9c6b2849f5bcbfb212590b59d69554a1d05cee1c755f2fb2033dcad",
+    "evidence_rag/api.py": "36d38e5bf5826ebe5037ce419d008402bcb22a27613c3dec747d04fe2fe256f6",
+    "evidence_rag/budget.py": "a2127a6f4163754341f366e153edd673449dd62e8c9037780b5128eb2a78cf4f",
+    "evidence_rag/catalog.py": "d52166e499a47bf0749ecbb11fdf4d090b118b957c9fb9c9389a2814cc50cc84",
+    "evidence_rag/cli.py": "4180f2b1d4051f15e416c6eba8efb81ea78ebcfbacec88692a897f8e0f16c71f",
+    "evidence_rag/exploration.py": "1c786f9619be38ed40cb81f194cb56093a09ce5ae218d2fe8cc1a3a7d699f483",
+    "evidence_rag/generate_benchmark.py": "16d0beafab70dbf9afab9d0ba551aafcf61c0220e2f8303919597d38a18e5ac2",
+    "evidence_rag/grounding.py": "76d53baa97cf7edb9270ad2af793ad1eea606522b77a3268f4ef78fbfb9cd17f",
+    "evidence_rag/ingest.py": "8d70053a47f0ecd38989163b333dde4c3ffaa54df79d9039d6ece760fcd0581c",
+    "evidence_rag/model_experiment.py": "d671e0de227ae4ed5913a94b6ecde78240c94520b39eba2f4ef427594d027da4",
+    "evidence_rag/retrieval.py": "0854b8280bc7b09bfd10de18ee4e205c2f85fb63ae0ab0ac87e8f756d2a7b0f0",
+    "evidence_rag/viking_index.py": "47124276d5fb0de5c00eee52f4c648ffa6b41f40ef15d36979f7e3c8c3e49d38",
+    "benchmarks/__init__.py": "cde64a6b6662b367dc76d9de62d3f9ca0746211b9e2146159a3a5e77f7ac7896",
+    "benchmarks/core.py": "c7c9b2bf7bd6b1b46a995f858dd8743dda4918542bb8be88cdcda96a65f7fcf6",
+    "benchmarks/e2e.py": "a2f862b57bd5792f74daed47b6614f161ebe24ffe40d658445c7a3485bcb175b",
+    "benchmarks/freeze_product.py": "a6c1f21814a3fd3e95c85a2a208e81878af04db81dc3a8a1df8a2a8f8a17c62a",
+    "benchmarks/index_openviking.py": "b00a3f7f5db08cfbd9abd91ea7ec037d1adf249a5e06fbb9e9f8836d32c502b2",
+    "benchmarks/metrics.py": "93cf6a4a5477dcbbd15329f0645211ead1d22736d8654f6283a3d2f33660bb3a",
+    "benchmarks/prepare.py": "5dd3ea880fbaa29bc101b1245dbdee95995bfb9f335be9ab32869f5d122e7066",
+    "benchmarks/product.py": "c438becd7f230ef18e02cedf28d48520b636dbaa06a27cd9dc31a0e525b493ae",
+    "benchmarks/run.py": "b1bde1b02d00c4268f75bab65c371887f4b0b37a1e63a36c44d767180dead092",
+    "benchmarks/run_openviking_connections.py": "0dba2cb7edab8e0a8563a79ef6cea6f3158eee3a9374752fa3107da59a116006",
+    "benchmarks/run_product.py": "b405576f7247f4b462b4509382fc5fa7826ac6d9becb3d6333b2565dab804805",
+    "benchmarks/run_user_flow.py": "8d5944458ee61202ea85185038878d8ca2718d61ee90543d01cf137c7ca58f24",
+    "benchmarks/select.py": "df007d42436493123d6f14fdf932e190f6fe160f49f5e290b7bba2c295bd9a45",
+    "benchmarks/serve_user_flow.py": "e7b5825c7a608df1a2712354ba8627a9481059a1b85663c3155399abeb2f4452",
+    "benchmarks/short_protocol.py": "39466d09df8d921cefacbaf383dcd18072faab5b22e6cb3f39d625fa09a628f1",
+    "benchmarks/verification_metrics.py": "e6f616989e77ffb2a66ce3460f7c1f5e4d1a5062ae651d650724b38a0812822c",
+    "pyproject.toml": "c3e04bee66ed966c9d3a62651a3f08f4904a4da477be8cbc124ea8b70f7b0f44",
+    "evidence_rag/static/index.html": "d3cfc87ea7d46134a677d024b7886812758f287eb161b549a666e6690733501c"
+  },
+  "source_unchanged": true,
+  "started_utc": "2026-11-07T09:42:58.234799000Z",
+  "started_wall_ns": 1794044578234799000,
+  "finished_utc": "2026-11-07T09:43:00.450910000Z",
+  "finished_wall_ns": 1794044580450910000,
+  "summary": {
+    "query_count": 30,
+    "requests_expected": 60,
+    "all_successful_pairs": 30,
+    "exact_result_equal_pairs": 30,
+    "result_mismatch_pairs": 0,
+    "failed_pairs": 0,
+    "variants": {
+      "per_operation": {
+        "requests": 30,
+        "successes": 30,
+        "failures": 0,
+        "observed_latency_ms": {
+          "n": 30,
+          "median": 24.7278745,
+          "p95": 40.75359199999997
+        },
+        "successful_latency_ms": {
+          "n": 30,
+          "median": 24.7278745,
+          "p95": 40.75359199999997
+        }
+      },
+      "shared": {
+        "requests": 30,
+        "successes": 30,
+        "failures": 0,
+        "observed_latency_ms": {
+          "n": 30,
+          "median": 21.309458,
+          "p95": 26.324914399999997
+        },
+        "successful_latency_ms": {
+          "n": 30,
+          "median": 21.309458,
+          "p95": 26.324914399999997
+        }
+      }
+    },
+    "paired_shared_minus_per_operation_ms": {
+      "n": 30,
+      "median": -3.2819579999999995,
+      "mean": -6.2562251,
+      "p95": 2.5847725499999976,
+      "shared_faster_pairs": 26,
+      "definition": "B elapsed minus A elapsed; successful pairs only, negative is faster shared; no failed pair imputation"
+    }
+  },
+  "journal_sha256": "948d063637384f1806e15499870b5d454633efc649f510f79c84becbb18230ad",
+  "limitations": [
+    "Local transport only when run on loopback; no connection-count measurement.",
+    "Server/vector/model caches and serial-order effects remain; order counterbalanced, not eliminated.",
+    "Failure latencies retained separately; paired differences only include successful pairs.",
+    "Backend health may omit version; operator must preserve actual backend version/configuration evidence separately.",
+    "Frozen public small sample; not unseen quality evaluation or confidence of industry-leading performance."
+  ],
+  "warmups": [
+    {
+      "query_id": "1292",
+      "query_sha256": "1b42e5ea2d62b88bd5b14b27b6f5ba78ff5636f0679821294539a8718f62b1ba",
+      "variant": "per_operation",
+      "phase": "warmup",
+      "started_utc": "2026-11-07T09:42:58.259531000Z",
+      "started_wall_ns": 1794044578259531000,
+      "success": true,
+      "rows_sha256": "ae7452205dc66482d2550e1f770b83e021c9ed81e240c69a725d757f0df78078",
+      "row_count": 40,
+      "elapsed_ms": 664.293458,
+      "observed_wall_ms": 664.3,
+      "wall_minus_monotonic_ms": 0.006541999999967629,
+      "wall_clock_reversed": false,
+      "wall_monotonic_divergence": false,
+      "finished_utc": "2026-11-07T09:42:58.923831000Z",
+      "finished_wall_ns": 1794044578923831000
+    },
+    {
+      "query_id": "1292",
+      "query_sha256": "1b42e5ea2d62b88bd5b14b27b6f5ba78ff5636f0679821294539a8718f62b1ba",
+      "variant": "shared",
+      "phase": "warmup",
+      "started_utc": "2026-11-07T09:42:58.924142000Z",
+      "started_wall_ns": 1794044578924142000,
+      "success": true,
+      "rows_sha256": "ae7452205dc66482d2550e1f770b83e021c9ed81e240c69a725d757f0df78078",
+      "row_count": 40,
+      "elapsed_ms": 26.270583,
+      "observed_wall_ms": 26.271,
+      "wall_minus_monotonic_ms": 0.00041700000000233217,
+      "wall_clock_reversed": false,
+      "wall_monotonic_divergence": false,
+      "finished_utc": "2026-11-07T09:42:58.950413000Z",
+      "finished_wall_ns": 1794044578950413000
+    }
+  ],
+  "pairs": [
+    {
+      "query_id": "1292",
+      "index": 0,
+      "order": [
+        "per_operation",
+        "shared"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": -5.881791,
+      "requests": {
+        "per_operation": {
+          "query_id": "1292",
+          "query_sha256": "1b42e5ea2d62b88bd5b14b27b6f5ba78ff5636f0679821294539a8718f62b1ba",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:58.950620000Z",
+          "started_wall_ns": 1794044578950620000,
+          "success": true,
+          "rows_sha256": "ae7452205dc66482d2550e1f770b83e021c9ed81e240c69a725d757f0df78078",
+          "row_count": 40,
+          "elapsed_ms": 24.227125,
+          "observed_wall_ms": 24.228,
+          "wall_minus_monotonic_ms": 0.0008750000000006253,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:58.974848000Z",
+          "finished_wall_ns": 1794044578974848000
+        },
+        "shared": {
+          "query_id": "1292",
+          "query_sha256": "1b42e5ea2d62b88bd5b14b27b6f5ba78ff5636f0679821294539a8718f62b1ba",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:58.975034000Z",
+          "started_wall_ns": 1794044578975034000,
+          "success": true,
+          "rows_sha256": "ae7452205dc66482d2550e1f770b83e021c9ed81e240c69a725d757f0df78078",
+          "row_count": 40,
+          "elapsed_ms": 18.345334,
+          "observed_wall_ms": 18.345,
+          "wall_minus_monotonic_ms": -0.0003340000000022769,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:58.993379000Z",
+          "finished_wall_ns": 1794044578993379000
+        }
+      }
+    },
+    {
+      "query_id": "1041",
+      "index": 1,
+      "order": [
+        "shared",
+        "per_operation"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": 5.496541000000001,
+      "requests": {
+        "shared": {
+          "query_id": "1041",
+          "query_sha256": "1ca870b2636f7d14e5a82551c35df4f0b6b05262945599cbed3bd5ecce3fdbfc",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:58.993578000Z",
+          "started_wall_ns": 1794044578993578000,
+          "success": true,
+          "rows_sha256": "8fef66236de3fcd51caebf75045d92a2790eee8f06ff73edc3d1e45444a9ff9a",
+          "row_count": 40,
+          "elapsed_ms": 27.583208,
+          "observed_wall_ms": 27.584,
+          "wall_minus_monotonic_ms": 0.00079200000000057,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.021162000Z",
+          "finished_wall_ns": 1794044579021162000
+        },
+        "per_operation": {
+          "query_id": "1041",
+          "query_sha256": "1ca870b2636f7d14e5a82551c35df4f0b6b05262945599cbed3bd5ecce3fdbfc",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.021310000Z",
+          "started_wall_ns": 1794044579021310000,
+          "success": true,
+          "rows_sha256": "8fef66236de3fcd51caebf75045d92a2790eee8f06ff73edc3d1e45444a9ff9a",
+          "row_count": 40,
+          "elapsed_ms": 22.086667,
+          "observed_wall_ms": 22.087,
+          "wall_minus_monotonic_ms": 0.00033300000000124896,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.043397000Z",
+          "finished_wall_ns": 1794044579043397000
+        }
+      }
+    },
+    {
+      "query_id": "702",
+      "index": 2,
+      "order": [
+        "per_operation",
+        "shared"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": -6.128582999999999,
+      "requests": {
+        "per_operation": {
+          "query_id": "702",
+          "query_sha256": "0ccf632c56d8c5962cc0d545f097a571c1e9330867bd01aeec3e77341547e5e9",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.043568000Z",
+          "started_wall_ns": 1794044579043568000,
+          "success": true,
+          "rows_sha256": "9368cca4e6e7c663032ae93f1db4fcdd2863fe3d1653fc4a635bad4abae28043",
+          "row_count": 40,
+          "elapsed_ms": 27.213416,
+          "observed_wall_ms": 27.214,
+          "wall_minus_monotonic_ms": 0.0005839999999999179,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.070782000Z",
+          "finished_wall_ns": 1794044579070782000
+        },
+        "shared": {
+          "query_id": "702",
+          "query_sha256": "0ccf632c56d8c5962cc0d545f097a571c1e9330867bd01aeec3e77341547e5e9",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.070920000Z",
+          "started_wall_ns": 1794044579070920000,
+          "success": true,
+          "rows_sha256": "9368cca4e6e7c663032ae93f1db4fcdd2863fe3d1653fc4a635bad4abae28043",
+          "row_count": 40,
+          "elapsed_ms": 21.084833,
+          "observed_wall_ms": 21.085,
+          "wall_minus_monotonic_ms": 0.00016700000000113846,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.092005000Z",
+          "finished_wall_ns": 1794044579092005000
+        }
+      }
+    },
+    {
+      "query_id": "830",
+      "index": 3,
+      "order": [
+        "shared",
+        "per_operation"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": 1.6197499999999998,
+      "requests": {
+        "shared": {
+          "query_id": "830",
+          "query_sha256": "df0ae36f19d5a5812423df34c4d7500b1497576b1df08a70a927968d3b5cea49",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.092167000Z",
+          "started_wall_ns": 1794044579092167000,
+          "success": true,
+          "rows_sha256": "d922b3059e8ce4fb5cf1b82d9278d68bf842eafbf5e8952d969267ceab84d69a",
+          "row_count": 40,
+          "elapsed_ms": 25.507542,
+          "observed_wall_ms": 25.508,
+          "wall_minus_monotonic_ms": 0.0004579999999982931,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.117675000Z",
+          "finished_wall_ns": 1794044579117675000
+        },
+        "per_operation": {
+          "query_id": "830",
+          "query_sha256": "df0ae36f19d5a5812423df34c4d7500b1497576b1df08a70a927968d3b5cea49",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.117860000Z",
+          "started_wall_ns": 1794044579117860000,
+          "success": true,
+          "rows_sha256": "d922b3059e8ce4fb5cf1b82d9278d68bf842eafbf5e8952d969267ceab84d69a",
+          "row_count": 40,
+          "elapsed_ms": 23.887792,
+          "observed_wall_ms": 23.889,
+          "wall_minus_monotonic_ms": 0.0012079999999983215,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.141749000Z",
+          "finished_wall_ns": 1794044579141749000
+        }
+      }
+    },
+    {
+      "query_id": "834",
+      "index": 4,
+      "order": [
+        "per_operation",
+        "shared"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": -7.6175,
+      "requests": {
+        "per_operation": {
+          "query_id": "834",
+          "query_sha256": "901d301c71ad256a5c24a2c9d00e4bae9a4d11830e2782aa93356db25b28fcdb",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.141926000Z",
+          "started_wall_ns": 1794044579141926000,
+          "success": true,
+          "rows_sha256": "e879521eeb2ea802dee9e9ed0cae410863ef6e4f6b8579760fac25afb2e5ef14",
+          "row_count": 40,
+          "elapsed_ms": 28.31,
+          "observed_wall_ms": 28.311,
+          "wall_minus_monotonic_ms": 0.0010000000000012221,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.170237000Z",
+          "finished_wall_ns": 1794044579170237000
+        },
+        "shared": {
+          "query_id": "834",
+          "query_sha256": "901d301c71ad256a5c24a2c9d00e4bae9a4d11830e2782aa93356db25b28fcdb",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.170382000Z",
+          "started_wall_ns": 1794044579170382000,
+          "success": true,
+          "rows_sha256": "e879521eeb2ea802dee9e9ed0cae410863ef6e4f6b8579760fac25afb2e5ef14",
+          "row_count": 40,
+          "elapsed_ms": 20.6925,
+          "observed_wall_ms": 20.693,
+          "wall_minus_monotonic_ms": 0.0005000000000023874,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.191075000Z",
+          "finished_wall_ns": 1794044579191075000
+        }
+      }
+    },
+    {
+      "query_id": "1290",
+      "index": 5,
+      "order": [
+        "shared",
+        "per_operation"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": -0.7236249999999984,
+      "requests": {
+        "shared": {
+          "query_id": "1290",
+          "query_sha256": "82bf5ea4c7646524d19f6f993478b12e05cf05905435c56c28c4433ee62954d5",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.191310000Z",
+          "started_wall_ns": 1794044579191310000,
+          "success": true,
+          "rows_sha256": "7b3e0f49137f3dc645af6913ec8e9ff948c89cdf75024fb6c3652e64409eee68",
+          "row_count": 40,
+          "elapsed_ms": 21.553625,
+          "observed_wall_ms": 21.554,
+          "wall_minus_monotonic_ms": 0.00037499999999823785,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.212864000Z",
+          "finished_wall_ns": 1794044579212864000
+        },
+        "per_operation": {
+          "query_id": "1290",
+          "query_sha256": "82bf5ea4c7646524d19f6f993478b12e05cf05905435c56c28c4433ee62954d5",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.213013000Z",
+          "started_wall_ns": 1794044579213013000,
+          "success": true,
+          "rows_sha256": "7b3e0f49137f3dc645af6913ec8e9ff948c89cdf75024fb6c3652e64409eee68",
+          "row_count": 40,
+          "elapsed_ms": 22.27725,
+          "observed_wall_ms": 22.277,
+          "wall_minus_monotonic_ms": -0.000249999999997641,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.235290000Z",
+          "finished_wall_ns": 1794044579235290000
+        }
+      }
+    },
+    {
+      "query_id": "1110",
+      "index": 6,
+      "order": [
+        "per_operation",
+        "shared"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": -75.243083,
+      "requests": {
+        "per_operation": {
+          "query_id": "1110",
+          "query_sha256": "8755ac9a47de564cf754682c3e123fefd2c0a2e916a6224ec72acc6a87b38ea6",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.235446000Z",
+          "started_wall_ns": 1794044579235446000,
+          "success": true,
+          "rows_sha256": "da0476bd53ee7ac3f4b6084f70ba0938efdc5cae5e8d2979c9649ac0f346dd85",
+          "row_count": 40,
+          "elapsed_ms": 94.60275,
+          "observed_wall_ms": 94.603,
+          "wall_minus_monotonic_ms": 0.0002499999999940883,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.330049000Z",
+          "finished_wall_ns": 1794044579330049000
+        },
+        "shared": {
+          "query_id": "1110",
+          "query_sha256": "8755ac9a47de564cf754682c3e123fefd2c0a2e916a6224ec72acc6a87b38ea6",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.330219000Z",
+          "started_wall_ns": 1794044579330219000,
+          "success": true,
+          "rows_sha256": "da0476bd53ee7ac3f4b6084f70ba0938efdc5cae5e8d2979c9649ac0f346dd85",
+          "row_count": 40,
+          "elapsed_ms": 19.359667,
+          "observed_wall_ms": 19.36,
+          "wall_minus_monotonic_ms": 0.00033299999999769625,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.349579000Z",
+          "finished_wall_ns": 1794044579349579000
+        }
+      }
+    },
+    {
+      "query_id": "502",
+      "index": 7,
+      "order": [
+        "shared",
+        "per_operation"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": 2.1804999999999986,
+      "requests": {
+        "shared": {
+          "query_id": "502",
+          "query_sha256": "9da1ff5087009ea4024f5080f197ca84c21e5f6407fcaea3289d20f7943234a1",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.349735000Z",
+          "started_wall_ns": 1794044579349735000,
+          "success": true,
+          "rows_sha256": "921c145058946444f0e62d084478e56fb9a88ee97a97dcecca91b1410c7d31b6",
+          "row_count": 40,
+          "elapsed_ms": 25.52675,
+          "observed_wall_ms": 25.527,
+          "wall_minus_monotonic_ms": 0.0002500000000011937,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.375262000Z",
+          "finished_wall_ns": 1794044579375262000
+        },
+        "per_operation": {
+          "query_id": "502",
+          "query_sha256": "9da1ff5087009ea4024f5080f197ca84c21e5f6407fcaea3289d20f7943234a1",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.375388000Z",
+          "started_wall_ns": 1794044579375388000,
+          "success": true,
+          "rows_sha256": "921c145058946444f0e62d084478e56fb9a88ee97a97dcecca91b1410c7d31b6",
+          "row_count": 40,
+          "elapsed_ms": 23.34625,
+          "observed_wall_ms": 23.346,
+          "wall_minus_monotonic_ms": -0.0002500000000011937,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.398734000Z",
+          "finished_wall_ns": 1794044579398734000
+        }
+      }
+    },
+    {
+      "query_id": "298",
+      "index": 8,
+      "order": [
+        "per_operation",
+        "shared"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": -9.460625,
+      "requests": {
+        "per_operation": {
+          "query_id": "298",
+          "query_sha256": "3099d92f9114ffba86a10edce2eb77bf734ae42332c77aaed1fe08d4ba4dd741",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.398929000Z",
+          "started_wall_ns": 1794044579398929000,
+          "success": true,
+          "rows_sha256": "f31acf51ee54ba6f4d3ca5dc259da60843f26227ab91181663d9eb70aeb2cb21",
+          "row_count": 40,
+          "elapsed_ms": 29.076125,
+          "observed_wall_ms": 29.077,
+          "wall_minus_monotonic_ms": 0.0008750000000006253,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.428006000Z",
+          "finished_wall_ns": 1794044579428006000
+        },
+        "shared": {
+          "query_id": "298",
+          "query_sha256": "3099d92f9114ffba86a10edce2eb77bf734ae42332c77aaed1fe08d4ba4dd741",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.428133000Z",
+          "started_wall_ns": 1794044579428133000,
+          "success": true,
+          "rows_sha256": "f31acf51ee54ba6f4d3ca5dc259da60843f26227ab91181663d9eb70aeb2cb21",
+          "row_count": 40,
+          "elapsed_ms": 19.6155,
+          "observed_wall_ms": 19.616,
+          "wall_minus_monotonic_ms": 0.0004999999999988347,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.447749000Z",
+          "finished_wall_ns": 1794044579447749000
+        }
+      }
+    },
+    {
+      "query_id": "649",
+      "index": 9,
+      "order": [
+        "shared",
+        "per_operation"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": -0.009874999999997414,
+      "requests": {
+        "shared": {
+          "query_id": "649",
+          "query_sha256": "99cc8f4789ffb0c3b704056665ca33ca99731247726ea649affd03e4c2d54a13",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.447880000Z",
+          "started_wall_ns": 1794044579447880000,
+          "success": true,
+          "rows_sha256": "861509bdf2939a7bf04a23d9a1bb2821338ded87d29ae6d4e77ceb2eccb7a644",
+          "row_count": 40,
+          "elapsed_ms": 22.584292,
+          "observed_wall_ms": 22.585,
+          "wall_minus_monotonic_ms": 0.0007079999999994868,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.470465000Z",
+          "finished_wall_ns": 1794044579470465000
+        },
+        "per_operation": {
+          "query_id": "649",
+          "query_sha256": "99cc8f4789ffb0c3b704056665ca33ca99731247726ea649affd03e4c2d54a13",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.470629000Z",
+          "started_wall_ns": 1794044579470629000,
+          "success": true,
+          "rows_sha256": "861509bdf2939a7bf04a23d9a1bb2821338ded87d29ae6d4e77ceb2eccb7a644",
+          "row_count": 40,
+          "elapsed_ms": 22.594167,
+          "observed_wall_ms": 22.595,
+          "wall_minus_monotonic_ms": 0.0008330000000000837,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.493224000Z",
+          "finished_wall_ns": 1794044579493224000
+        }
+      }
+    },
+    {
+      "query_id": "1319",
+      "index": 10,
+      "order": [
+        "per_operation",
+        "shared"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": -4.8459999999999965,
+      "requests": {
+        "per_operation": {
+          "query_id": "1319",
+          "query_sha256": "639b44531b272d77eb1efa8c7d2dda9e691c4bc35af920ac19fe5caf6e61e189",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.493370000Z",
+          "started_wall_ns": 1794044579493370000,
+          "success": true,
+          "rows_sha256": "11ee582c797a8c062ea9bb7af4e74a8c5e06e257988eeea064fc2a580a5938ed",
+          "row_count": 40,
+          "elapsed_ms": 26.109083,
+          "observed_wall_ms": 26.109,
+          "wall_minus_monotonic_ms": -8.299999999650254e-05,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.519479000Z",
+          "finished_wall_ns": 1794044579519479000
+        },
+        "shared": {
+          "query_id": "1319",
+          "query_sha256": "639b44531b272d77eb1efa8c7d2dda9e691c4bc35af920ac19fe5caf6e61e189",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.519597000Z",
+          "started_wall_ns": 1794044579519597000,
+          "success": true,
+          "rows_sha256": "11ee582c797a8c062ea9bb7af4e74a8c5e06e257988eeea064fc2a580a5938ed",
+          "row_count": 40,
+          "elapsed_ms": 21.263083,
+          "observed_wall_ms": 21.263,
+          "wall_minus_monotonic_ms": -8.300000000005525e-05,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.540860000Z",
+          "finished_wall_ns": 1794044579540860000
+        }
+      }
+    },
+    {
+      "query_id": "1225",
+      "index": 11,
+      "order": [
+        "shared",
+        "per_operation"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": -0.9179169999999992,
+      "requests": {
+        "shared": {
+          "query_id": "1225",
+          "query_sha256": "438ccac2b691a3f582b91afa75e5507b55519d334cde695d0acfa3edecfe7f5b",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.541046000Z",
+          "started_wall_ns": 1794044579541046000,
+          "success": true,
+          "rows_sha256": "640d05c42feead421bbec16be350faf47efda7636fbaefbe26e178b37f6b36c6",
+          "row_count": 40,
+          "elapsed_ms": 21.663208,
+          "observed_wall_ms": 21.664,
+          "wall_minus_monotonic_ms": 0.00079200000000057,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.562710000Z",
+          "finished_wall_ns": 1794044579562710000
+        },
+        "per_operation": {
+          "query_id": "1225",
+          "query_sha256": "438ccac2b691a3f582b91afa75e5507b55519d334cde695d0acfa3edecfe7f5b",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.562823000Z",
+          "started_wall_ns": 1794044579562823000,
+          "success": true,
+          "rows_sha256": "640d05c42feead421bbec16be350faf47efda7636fbaefbe26e178b37f6b36c6",
+          "row_count": 40,
+          "elapsed_ms": 22.581125,
+          "observed_wall_ms": 22.581,
+          "wall_minus_monotonic_ms": -0.00012500000000059686,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.585404000Z",
+          "finished_wall_ns": 1794044579585404000
+        }
+      }
+    },
+    {
+      "query_id": "384",
+      "index": 12,
+      "order": [
+        "per_operation",
+        "shared"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": -3.401290999999997,
+      "requests": {
+        "per_operation": {
+          "query_id": "384",
+          "query_sha256": "afc8d4044ef2fb7dcf02d7fced88d3e9800393596c687d3d43f75caf9accafeb",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.585520000Z",
+          "started_wall_ns": 1794044579585520000,
+          "success": true,
+          "rows_sha256": "dce6d76751d901eb58a058812cc0ed56db530847805b380f58acd533403e44cf",
+          "row_count": 40,
+          "elapsed_ms": 25.158958,
+          "observed_wall_ms": 25.159,
+          "wall_minus_monotonic_ms": 4.2000000000541604e-05,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.610679000Z",
+          "finished_wall_ns": 1794044579610679000
+        },
+        "shared": {
+          "query_id": "384",
+          "query_sha256": "afc8d4044ef2fb7dcf02d7fced88d3e9800393596c687d3d43f75caf9accafeb",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.610802000Z",
+          "started_wall_ns": 1794044579610802000,
+          "success": true,
+          "rows_sha256": "dce6d76751d901eb58a058812cc0ed56db530847805b380f58acd533403e44cf",
+          "row_count": 40,
+          "elapsed_ms": 21.757667,
+          "observed_wall_ms": 21.758,
+          "wall_minus_monotonic_ms": 0.00033299999999769625,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.632560000Z",
+          "finished_wall_ns": 1794044579632560000
+        }
+      }
+    },
+    {
+      "query_id": "338",
+      "index": 13,
+      "order": [
+        "shared",
+        "per_operation"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": -1.7028329999999983,
+      "requests": {
+        "shared": {
+          "query_id": "338",
+          "query_sha256": "ee48e1b9991ddc0328af8de708639638924ce6b251b5ae088026fa95e23d9554",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.632759000Z",
+          "started_wall_ns": 1794044579632759000,
+          "success": true,
+          "rows_sha256": "a436b9c3b9ebf1da03c15c377244eb8c9c81d5c47e90875db3526e15ff6ae1e8",
+          "row_count": 40,
+          "elapsed_ms": 20.806667,
+          "observed_wall_ms": 20.806,
+          "wall_minus_monotonic_ms": -0.0006669999999999732,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.653565000Z",
+          "finished_wall_ns": 1794044579653565000
+        },
+        "per_operation": {
+          "query_id": "338",
+          "query_sha256": "ee48e1b9991ddc0328af8de708639638924ce6b251b5ae088026fa95e23d9554",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.653684000Z",
+          "started_wall_ns": 1794044579653684000,
+          "success": true,
+          "rows_sha256": "a436b9c3b9ebf1da03c15c377244eb8c9c81d5c47e90875db3526e15ff6ae1e8",
+          "row_count": 40,
+          "elapsed_ms": 22.5095,
+          "observed_wall_ms": 22.51,
+          "wall_minus_monotonic_ms": 0.0005000000000023874,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.676194000Z",
+          "finished_wall_ns": 1794044579676194000
+        }
+      }
+    },
+    {
+      "query_id": "1245",
+      "index": 14,
+      "order": [
+        "per_operation",
+        "shared"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": -2.4612510000000007,
+      "requests": {
+        "per_operation": {
+          "query_id": "1245",
+          "query_sha256": "91cd83fc01c4b9a5157058ef9ca7a6b8e29cff5d963b74d05df6d5cb96123e18",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.676347000Z",
+          "started_wall_ns": 1794044579676347000,
+          "success": true,
+          "rows_sha256": "ced41d826e329ac55e8c0650336d9913e90f308980e5b598de959126e64501fd",
+          "row_count": 40,
+          "elapsed_ms": 25.458334,
+          "observed_wall_ms": 25.458,
+          "wall_minus_monotonic_ms": -0.0003340000000022769,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.701805000Z",
+          "finished_wall_ns": 1794044579701805000
+        },
+        "shared": {
+          "query_id": "1245",
+          "query_sha256": "91cd83fc01c4b9a5157058ef9ca7a6b8e29cff5d963b74d05df6d5cb96123e18",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.702065000Z",
+          "started_wall_ns": 1794044579702065000,
+          "success": true,
+          "rows_sha256": "ced41d826e329ac55e8c0650336d9913e90f308980e5b598de959126e64501fd",
+          "row_count": 40,
+          "elapsed_ms": 22.997083,
+          "observed_wall_ms": 22.998,
+          "wall_minus_monotonic_ms": 0.0009170000000011669,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.725063000Z",
+          "finished_wall_ns": 1794044579725063000
+        }
+      }
+    },
+    {
+      "query_id": "684",
+      "index": 15,
+      "order": [
+        "shared",
+        "per_operation"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": -1.0641660000000002,
+      "requests": {
+        "shared": {
+          "query_id": "684",
+          "query_sha256": "699e56f2c7270dac6a6de143a1dcb6e0dad5b304b44665f5b233fb45654ec694",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.725214000Z",
+          "started_wall_ns": 1794044579725214000,
+          "success": true,
+          "rows_sha256": "532be790dce3dca7b58b576985afc80505a85bc9cb57a80babc88abcf70dbf2a",
+          "row_count": 40,
+          "elapsed_ms": 21.067959,
+          "observed_wall_ms": 21.069,
+          "wall_minus_monotonic_ms": 0.0010410000000007358,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.746283000Z",
+          "finished_wall_ns": 1794044579746283000
+        },
+        "per_operation": {
+          "query_id": "684",
+          "query_sha256": "699e56f2c7270dac6a6de143a1dcb6e0dad5b304b44665f5b233fb45654ec694",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.746435000Z",
+          "started_wall_ns": 1794044579746435000,
+          "success": true,
+          "rows_sha256": "532be790dce3dca7b58b576985afc80505a85bc9cb57a80babc88abcf70dbf2a",
+          "row_count": 40,
+          "elapsed_ms": 22.132125,
+          "observed_wall_ms": 22.132,
+          "wall_minus_monotonic_ms": -0.00012499999999704414,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.768567000Z",
+          "finished_wall_ns": 1794044579768567000
+        }
+      }
+    },
+    {
+      "query_id": "354",
+      "index": 16,
+      "order": [
+        "per_operation",
+        "shared"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": -5.548126,
+      "requests": {
+        "per_operation": {
+          "query_id": "354",
+          "query_sha256": "9425404954a635ef65d5b0bc2ce4f31ba1cac9d0608a0f7cbfd16f4f1bf57dfa",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.768708000Z",
+          "started_wall_ns": 1794044579768708000,
+          "success": true,
+          "rows_sha256": "725a53eb81b8643031fab9760b748459dc3286eb8c3960dfa14b26f7ae10412a",
+          "row_count": 40,
+          "elapsed_ms": 26.353042,
+          "observed_wall_ms": 26.353,
+          "wall_minus_monotonic_ms": -4.199999999698889e-05,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.795061000Z",
+          "finished_wall_ns": 1794044579795061000
+        },
+        "shared": {
+          "query_id": "354",
+          "query_sha256": "9425404954a635ef65d5b0bc2ce4f31ba1cac9d0608a0f7cbfd16f4f1bf57dfa",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.795219000Z",
+          "started_wall_ns": 1794044579795219000,
+          "success": true,
+          "rows_sha256": "725a53eb81b8643031fab9760b748459dc3286eb8c3960dfa14b26f7ae10412a",
+          "row_count": 40,
+          "elapsed_ms": 20.804916,
+          "observed_wall_ms": 20.806,
+          "wall_minus_monotonic_ms": 0.0010840000000023053,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.816025000Z",
+          "finished_wall_ns": 1794044579816025000
+        }
+      }
+    },
+    {
+      "query_id": "613",
+      "index": 17,
+      "order": [
+        "shared",
+        "per_operation"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": -2.023167000000001,
+      "requests": {
+        "shared": {
+          "query_id": "613",
+          "query_sha256": "9a6e217fb32c2b7cdcfb63a2d32650078a3214bc901921692bf88e6886a42c20",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.816204000Z",
+          "started_wall_ns": 1794044579816204000,
+          "success": true,
+          "rows_sha256": "c2abb4788a79cd0d7742cff158472c76791195e48a4229364be34c9b2b24e13a",
+          "row_count": 40,
+          "elapsed_ms": 20.784875,
+          "observed_wall_ms": 20.786,
+          "wall_minus_monotonic_ms": 0.001125000000001819,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.836990000Z",
+          "finished_wall_ns": 1794044579836990000
+        },
+        "per_operation": {
+          "query_id": "613",
+          "query_sha256": "9a6e217fb32c2b7cdcfb63a2d32650078a3214bc901921692bf88e6886a42c20",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.837111000Z",
+          "started_wall_ns": 1794044579837111000,
+          "success": true,
+          "rows_sha256": "c2abb4788a79cd0d7742cff158472c76791195e48a4229364be34c9b2b24e13a",
+          "row_count": 40,
+          "elapsed_ms": 22.808042,
+          "observed_wall_ms": 22.808,
+          "wall_minus_monotonic_ms": -4.2000000000541604e-05,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.859919000Z",
+          "finished_wall_ns": 1794044579859919000
+        }
+      }
+    },
+    {
+      "query_id": "1185",
+      "index": 18,
+      "order": [
+        "per_operation",
+        "shared"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": -4.507708999999998,
+      "requests": {
+        "per_operation": {
+          "query_id": "1185",
+          "query_sha256": "0a0f04f3f83c2097259631e8e4bc7ab4007f569c6b5c67ae2c5491c07824e9ee",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.860054000Z",
+          "started_wall_ns": 1794044579860054000,
+          "success": true,
+          "rows_sha256": "0dafb5e76416a8d91942ea9ac1070ff6b6751debe1aeffd66ce7a43ec4d5d2a4",
+          "row_count": 40,
+          "elapsed_ms": 25.863542,
+          "observed_wall_ms": 25.864,
+          "wall_minus_monotonic_ms": 0.0004580000000018458,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.885918000Z",
+          "finished_wall_ns": 1794044579885918000
+        },
+        "shared": {
+          "query_id": "1185",
+          "query_sha256": "0a0f04f3f83c2097259631e8e4bc7ab4007f569c6b5c67ae2c5491c07824e9ee",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.886037000Z",
+          "started_wall_ns": 1794044579886037000,
+          "success": true,
+          "rows_sha256": "0dafb5e76416a8d91942ea9ac1070ff6b6751debe1aeffd66ce7a43ec4d5d2a4",
+          "row_count": 40,
+          "elapsed_ms": 21.355833,
+          "observed_wall_ms": 21.357,
+          "wall_minus_monotonic_ms": 0.0011669999999988079,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.907394000Z",
+          "finished_wall_ns": 1794044579907394000
+        }
+      }
+    },
+    {
+      "query_id": "217",
+      "index": 19,
+      "order": [
+        "shared",
+        "per_operation"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": -2.3496249999999996,
+      "requests": {
+        "shared": {
+          "query_id": "217",
+          "query_sha256": "3ec1289c1a15b149cfb6fdd8d6b1b6630f08f191577b5f157c885c96c6f1a3da",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.907622000Z",
+          "started_wall_ns": 1794044579907622000,
+          "success": true,
+          "rows_sha256": "45a46c122554f3d86837935ddd2d1902ec2e48620ec1ed80844c241ed57684d1",
+          "row_count": 40,
+          "elapsed_ms": 20.33875,
+          "observed_wall_ms": 20.339,
+          "wall_minus_monotonic_ms": 0.000249999999997641,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.927961000Z",
+          "finished_wall_ns": 1794044579927961000
+        },
+        "per_operation": {
+          "query_id": "217",
+          "query_sha256": "3ec1289c1a15b149cfb6fdd8d6b1b6630f08f191577b5f157c885c96c6f1a3da",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.928078000Z",
+          "started_wall_ns": 1794044579928078000,
+          "success": true,
+          "rows_sha256": "45a46c122554f3d86837935ddd2d1902ec2e48620ec1ed80844c241ed57684d1",
+          "row_count": 40,
+          "elapsed_ms": 22.688375,
+          "observed_wall_ms": 22.689,
+          "wall_minus_monotonic_ms": 0.0006249999999994316,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.950767000Z",
+          "finished_wall_ns": 1794044579950767000
+        }
+      }
+    },
+    {
+      "query_id": "50",
+      "index": 20,
+      "order": [
+        "per_operation",
+        "shared"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": -26.593251000000002,
+      "requests": {
+        "per_operation": {
+          "query_id": "50",
+          "query_sha256": "a7632925b14f6f71c428cbd1e7634e7cf785fee843a530c0bd74dea578822804",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.950957000Z",
+          "started_wall_ns": 1794044579950957000,
+          "success": true,
+          "rows_sha256": "38f7a3a08ca4b07ef7ac083be2eb5bdf02d59ee964a7705f4c392a6e2b683579",
+          "row_count": 40,
+          "elapsed_ms": 45.510542,
+          "observed_wall_ms": 45.512,
+          "wall_minus_monotonic_ms": 0.0014579999999995152,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:42:59.996469000Z",
+          "finished_wall_ns": 1794044579996469000
+        },
+        "shared": {
+          "query_id": "50",
+          "query_sha256": "a7632925b14f6f71c428cbd1e7634e7cf785fee843a530c0bd74dea578822804",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:42:59.996631000Z",
+          "started_wall_ns": 1794044579996631000,
+          "success": true,
+          "rows_sha256": "38f7a3a08ca4b07ef7ac083be2eb5bdf02d59ee964a7705f4c392a6e2b683579",
+          "row_count": 40,
+          "elapsed_ms": 18.917291,
+          "observed_wall_ms": 18.918,
+          "wall_minus_monotonic_ms": 0.0007090000000005148,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:43:00.015549000Z",
+          "finished_wall_ns": 1794044580015549000
+        }
+      }
+    },
+    {
+      "query_id": "879",
+      "index": 21,
+      "order": [
+        "shared",
+        "per_operation"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": -4.572749999999999,
+      "requests": {
+        "shared": {
+          "query_id": "879",
+          "query_sha256": "8e5577ed06989e2ca0e2782208fac5107b85f0967324d10a28c26cb642362170",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:43:00.015728000Z",
+          "started_wall_ns": 1794044580015728000,
+          "success": true,
+          "rows_sha256": "167df6427c051483da4d07b838e07784fcb371919f8a4b810fb201fb67b13163",
+          "row_count": 40,
+          "elapsed_ms": 19.696542,
+          "observed_wall_ms": 19.696,
+          "wall_minus_monotonic_ms": -0.0005419999999993763,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:43:00.035424000Z",
+          "finished_wall_ns": 1794044580035424000
+        },
+        "per_operation": {
+          "query_id": "879",
+          "query_sha256": "8e5577ed06989e2ca0e2782208fac5107b85f0967324d10a28c26cb642362170",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:43:00.035535000Z",
+          "started_wall_ns": 1794044580035535000,
+          "success": true,
+          "rows_sha256": "167df6427c051483da4d07b838e07784fcb371919f8a4b810fb201fb67b13163",
+          "row_count": 40,
+          "elapsed_ms": 24.269292,
+          "observed_wall_ms": 24.27,
+          "wall_minus_monotonic_ms": 0.0007079999999994868,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:43:00.059805000Z",
+          "finished_wall_ns": 1794044580059805000
+        }
+      }
+    },
+    {
+      "query_id": "845",
+      "index": 22,
+      "order": [
+        "per_operation",
+        "shared"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": -13.092042000000003,
+      "requests": {
+        "per_operation": {
+          "query_id": "845",
+          "query_sha256": "f744e0dd6df457fe03fd05829f539703df9b6ab08438a2b8293df0b7848743b1",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:43:00.059963000Z",
+          "started_wall_ns": 1794044580059963000,
+          "success": true,
+          "rows_sha256": "2825767488cd2b7da2da75054515f19e886486185e943627630e2b86af5bd572",
+          "row_count": 40,
+          "elapsed_ms": 34.939542,
+          "observed_wall_ms": 34.94,
+          "wall_minus_monotonic_ms": 0.0004579999999947404,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:43:00.094903000Z",
+          "finished_wall_ns": 1794044580094903000
+        },
+        "shared": {
+          "query_id": "845",
+          "query_sha256": "f744e0dd6df457fe03fd05829f539703df9b6ab08438a2b8293df0b7848743b1",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:43:00.095017000Z",
+          "started_wall_ns": 1794044580095017000,
+          "success": true,
+          "rows_sha256": "2825767488cd2b7da2da75054515f19e886486185e943627630e2b86af5bd572",
+          "row_count": 40,
+          "elapsed_ms": 21.8475,
+          "observed_wall_ms": 21.848,
+          "wall_minus_monotonic_ms": 0.0004999999999988347,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:43:00.116865000Z",
+          "finished_wall_ns": 1794044580116865000
+        }
+      }
+    },
+    {
+      "query_id": "759",
+      "index": 23,
+      "order": [
+        "shared",
+        "per_operation"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": 2.915541000000001,
+      "requests": {
+        "shared": {
+          "query_id": "759",
+          "query_sha256": "b1c90d8f755c8d7c10c85f3c72b10d221e729739f05689a45e08e913b31b6366",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:43:00.117023000Z",
+          "started_wall_ns": 1794044580117023000,
+          "success": true,
+          "rows_sha256": "840d5c5b1651b5f819a7478a8b13fc5f8c349b14be175b0f61b73a0b632ce59c",
+          "row_count": 40,
+          "elapsed_ms": 26.977958,
+          "observed_wall_ms": 26.979,
+          "wall_minus_monotonic_ms": 0.001041999999998211,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:43:00.144002000Z",
+          "finished_wall_ns": 1794044580144002000
+        },
+        "per_operation": {
+          "query_id": "759",
+          "query_sha256": "b1c90d8f755c8d7c10c85f3c72b10d221e729739f05689a45e08e913b31b6366",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:43:00.144180000Z",
+          "started_wall_ns": 1794044580144180000,
+          "success": true,
+          "rows_sha256": "840d5c5b1651b5f819a7478a8b13fc5f8c349b14be175b0f61b73a0b632ce59c",
+          "row_count": 40,
+          "elapsed_ms": 24.062417,
+          "observed_wall_ms": 24.063,
+          "wall_minus_monotonic_ms": 0.00058299999999889,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:43:00.168243000Z",
+          "finished_wall_ns": 1794044580168243000
+        }
+      }
+    },
+    {
+      "query_id": "1270",
+      "index": 24,
+      "order": [
+        "per_operation",
+        "shared"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": -3.162625000000002,
+      "requests": {
+        "per_operation": {
+          "query_id": "1270",
+          "query_sha256": "3449d724533d32b9c7580393b39bde2b519d4a68fadc2f382ddfaf4a7bb93e14",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:43:00.168387000Z",
+          "started_wall_ns": 1794044580168387000,
+          "success": true,
+          "rows_sha256": "7fb91bbc56e80e7200128ea5099031e86880129a9b0d492088576ba8d6adb731",
+          "row_count": 40,
+          "elapsed_ms": 25.739875,
+          "observed_wall_ms": 25.74,
+          "wall_minus_monotonic_ms": 0.00012499999999704414,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:43:00.194127000Z",
+          "finished_wall_ns": 1794044580194127000
+        },
+        "shared": {
+          "query_id": "1270",
+          "query_sha256": "3449d724533d32b9c7580393b39bde2b519d4a68fadc2f382ddfaf4a7bb93e14",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:43:00.194256000Z",
+          "started_wall_ns": 1794044580194256000,
+          "success": true,
+          "rows_sha256": "7fb91bbc56e80e7200128ea5099031e86880129a9b0d492088576ba8d6adb731",
+          "row_count": 40,
+          "elapsed_ms": 22.57725,
+          "observed_wall_ms": 22.577,
+          "wall_minus_monotonic_ms": -0.000249999999997641,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:43:00.216833000Z",
+          "finished_wall_ns": 1794044580216833000
+        }
+      }
+    },
+    {
+      "query_id": "589",
+      "index": 25,
+      "order": [
+        "shared",
+        "per_operation"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": -4.536624999999997,
+      "requests": {
+        "shared": {
+          "query_id": "589",
+          "query_sha256": "309eafb3b4b8eb2d4d465f350ef787efa05aa995bc87f23f9aea11cedb11409f",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:43:00.216977000Z",
+          "started_wall_ns": 1794044580216977000,
+          "success": true,
+          "rows_sha256": "9f1d67a9da9b3e63b05d5138c27c87fcd1cbcc3aab932994acabec6fcc4b277e",
+          "row_count": 40,
+          "elapsed_ms": 22.341166,
+          "observed_wall_ms": 22.342,
+          "wall_minus_monotonic_ms": 0.0008339999999975589,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:43:00.239319000Z",
+          "finished_wall_ns": 1794044580239319000
+        },
+        "per_operation": {
+          "query_id": "589",
+          "query_sha256": "309eafb3b4b8eb2d4d465f350ef787efa05aa995bc87f23f9aea11cedb11409f",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:43:00.239472000Z",
+          "started_wall_ns": 1794044580239472000,
+          "success": true,
+          "rows_sha256": "9f1d67a9da9b3e63b05d5138c27c87fcd1cbcc3aab932994acabec6fcc4b277e",
+          "row_count": 40,
+          "elapsed_ms": 26.877791,
+          "observed_wall_ms": 26.878,
+          "wall_minus_monotonic_ms": 0.00020900000000168006,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:43:00.266350000Z",
+          "finished_wall_ns": 1794044580266350000
+        }
+      }
+    },
+    {
+      "query_id": "903",
+      "index": 26,
+      "order": [
+        "per_operation",
+        "shared"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": -5.705417000000001,
+      "requests": {
+        "per_operation": {
+          "query_id": "903",
+          "query_sha256": "60507be04aca88f1909a5cfe7fe836f46b8144d0cc7886a38a613c9f925afa04",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:43:00.266503000Z",
+          "started_wall_ns": 1794044580266503000,
+          "success": true,
+          "rows_sha256": "c327ce15c2e45deb79259614d816cd9b060b09af587b86f7b9747b337954e26a",
+          "row_count": 40,
+          "elapsed_ms": 25.655625,
+          "observed_wall_ms": 25.656,
+          "wall_minus_monotonic_ms": 0.00037499999999823785,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:43:00.292159000Z",
+          "finished_wall_ns": 1794044580292159000
+        },
+        "shared": {
+          "query_id": "903",
+          "query_sha256": "60507be04aca88f1909a5cfe7fe836f46b8144d0cc7886a38a613c9f925afa04",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:43:00.292313000Z",
+          "started_wall_ns": 1794044580292313000,
+          "success": true,
+          "rows_sha256": "c327ce15c2e45deb79259614d816cd9b060b09af587b86f7b9747b337954e26a",
+          "row_count": 40,
+          "elapsed_ms": 19.950208,
+          "observed_wall_ms": 19.951,
+          "wall_minus_monotonic_ms": 0.00079200000000057,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:43:00.312264000Z",
+          "finished_wall_ns": 1794044580312264000
+        }
+      }
+    },
+    {
+      "query_id": "516",
+      "index": 27,
+      "order": [
+        "shared",
+        "per_operation"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": -2.464333,
+      "requests": {
+        "shared": {
+          "query_id": "516",
+          "query_sha256": "390fdb4964a2555235270cb733df8b728dadf94607035079e0ebb81cf536fab8",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:43:00.312404000Z",
+          "started_wall_ns": 1794044580312404000,
+          "success": true,
+          "rows_sha256": "1d3af60dff5cabaa8465e3ebc9b852dcd72b2bea4c77cf120bcb23a6a9442b73",
+          "row_count": 40,
+          "elapsed_ms": 21.832458,
+          "observed_wall_ms": 21.833,
+          "wall_minus_monotonic_ms": 0.0005419999999993763,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:43:00.334237000Z",
+          "finished_wall_ns": 1794044580334237000
+        },
+        "per_operation": {
+          "query_id": "516",
+          "query_sha256": "390fdb4964a2555235270cb733df8b728dadf94607035079e0ebb81cf536fab8",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:43:00.334348000Z",
+          "started_wall_ns": 1794044580334348000,
+          "success": true,
+          "rows_sha256": "1d3af60dff5cabaa8465e3ebc9b852dcd72b2bea4c77cf120bcb23a6a9442b73",
+          "row_count": 40,
+          "elapsed_ms": 24.296791,
+          "observed_wall_ms": 24.297,
+          "wall_minus_monotonic_ms": 0.00020900000000168006,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:43:00.358645000Z",
+          "finished_wall_ns": 1794044580358645000
+        }
+      }
+    },
+    {
+      "query_id": "847",
+      "index": 28,
+      "order": [
+        "per_operation",
+        "shared"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": -5.380624999999998,
+      "requests": {
+        "per_operation": {
+          "query_id": "847",
+          "query_sha256": "bb672a4f554f0245d17da2538ab2fcd2e42351db01489d56a63654df3fac4990",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:43:00.358802000Z",
+          "started_wall_ns": 1794044580358802000,
+          "success": true,
+          "rows_sha256": "1631a8012db4a9ce35c104029ad252a70cf5342cc0931c04fd79f1ba0eaa3ca6",
+          "row_count": 40,
+          "elapsed_ms": 25.2775,
+          "observed_wall_ms": 25.278,
+          "wall_minus_monotonic_ms": 0.0004999999999988347,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:43:00.384080000Z",
+          "finished_wall_ns": 1794044580384080000
+        },
+        "shared": {
+          "query_id": "847",
+          "query_sha256": "bb672a4f554f0245d17da2538ab2fcd2e42351db01489d56a63654df3fac4990",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:43:00.384393000Z",
+          "started_wall_ns": 1794044580384393000,
+          "success": true,
+          "rows_sha256": "1631a8012db4a9ce35c104029ad252a70cf5342cc0931c04fd79f1ba0eaa3ca6",
+          "row_count": 40,
+          "elapsed_ms": 19.896875,
+          "observed_wall_ms": 19.897,
+          "wall_minus_monotonic_ms": 0.00012499999999704414,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:43:00.404290000Z",
+          "finished_wall_ns": 1794044580404290000
+        }
+      }
+    },
+    {
+      "query_id": "1088",
+      "index": 29,
+      "order": [
+        "shared",
+        "per_operation"
+      ],
+      "exact_results_equal": true,
+      "shared_minus_per_operation_ms": -0.5042500000000025,
+      "requests": {
+        "shared": {
+          "query_id": "1088",
+          "query_sha256": "3fe686fe7956a53d3ddb2effb35141851fa65f5d17ed344d46e5caff346e8f14",
+          "variant": "shared",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:43:00.404426000Z",
+          "started_wall_ns": 1794044580404426000,
+          "success": true,
+          "rows_sha256": "01ae8871d580ada9be9081dcadcf7e4c5b479d0ee32b59538ee81cbb785ad3b4",
+          "row_count": 40,
+          "elapsed_ms": 22.737875,
+          "observed_wall_ms": 22.738,
+          "wall_minus_monotonic_ms": 0.00012500000000059686,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:43:00.427164000Z",
+          "finished_wall_ns": 1794044580427164000
+        },
+        "per_operation": {
+          "query_id": "1088",
+          "query_sha256": "3fe686fe7956a53d3ddb2effb35141851fa65f5d17ed344d46e5caff346e8f14",
+          "variant": "per_operation",
+          "phase": "measured",
+          "started_utc": "2026-11-07T09:43:00.427280000Z",
+          "started_wall_ns": 1794044580427280000,
+          "success": true,
+          "rows_sha256": "01ae8871d580ada9be9081dcadcf7e4c5b479d0ee32b59538ee81cbb785ad3b4",
+          "row_count": 40,
+          "elapsed_ms": 23.242125,
+          "observed_wall_ms": 23.243,
+          "wall_minus_monotonic_ms": 0.0008749999999970726,
+          "wall_clock_reversed": false,
+          "wall_monotonic_divergence": false,
+          "finished_utc": "2026-11-07T09:43:00.450523000Z",
+          "finished_wall_ns": 1794044580450523000
+        }
+      }
+    }
+  ],
+  "original_report_sha256": "f2c90972e4cc8cee94478f37bb83aa7be8bdfb71d8f260c9f5e971ed65b78d26",
+  "redaction": "Exact find rows remain local; result hashes, counts, all failures, timing, identities and comparisons retained."
+}

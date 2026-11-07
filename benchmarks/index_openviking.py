@@ -22,23 +22,26 @@ async def execute(args):
     if len(corpus) != manifest['corpus_count']:
         raise ValueError('Corpus size mismatch')
     catalog = Catalog(args.db)
-    catalog.stage_documents([{'_id':key,'title':row.get('title') or '', 'text':row['text']}
-                             for key, row in sorted(corpus.items())],
-        {'corpus_id':args.corpus_id,'version_id':manifest['archive_sha256'],
-         'source_kind':'benchmark','verification_state':'provided',
-         'source_url':manifest['url'],'source_sha256':manifest['corpus_sha256'],'openviking_parse_mode':'no_split','openviking_ingest_layout':'unit-directory-no-split-v1'},args.revision)
-    adapter = OpenViking(args.url, 'viking://resources/rag/' + args.corpus_id + '/' + args.revision, timeout=300)
-    rows = catalog.db.execute('SELECT doc_id,unit_id FROM documents WHERE revision=? ORDER BY doc_id', (args.revision,)).fetchall()
-    journal = Journal(str(output) + '.journal.jsonl')
-    index_sources = {'evidence_rag/catalog.py','evidence_rag/retrieval.py','evidence_rag/viking_index.py','benchmarks/index_openviking.py','benchmarks/e2e.py','benchmarks/prepare.py'}
-    before = {key:value for key,value in source_hashes().items() if key in index_sources}
-    header = {'started_utc':now(),'operation':args.operation,'corpus_count':len(rows),
-              'corpus_sha256':manifest['corpus_sha256'],'revision':args.revision,'scope':adapter.scope,
-              'source_sha256':before,'concurrency':args.concurrency}
-    journal.record({'type':'header',**header})
-    outcomes = []
-    started = time.monotonic()
+    adapter = None
+    journal = None
+    workers = []
     try:
+        catalog.stage_documents([{'_id':key,'title':row.get('title') or '', 'text':row['text']}
+                                 for key, row in sorted(corpus.items())],
+            {'corpus_id':args.corpus_id,'version_id':manifest['archive_sha256'],
+             'source_kind':'benchmark','verification_state':'provided',
+             'source_url':manifest['url'],'source_sha256':manifest['corpus_sha256'],'openviking_parse_mode':'no_split','openviking_ingest_layout':'unit-directory-no-split-v1'},args.revision)
+        adapter = OpenViking(args.url, 'viking://resources/rag/' + args.corpus_id + '/' + args.revision, timeout=300)
+        rows = catalog.db.execute('SELECT doc_id,unit_id FROM documents WHERE revision=? ORDER BY doc_id', (args.revision,)).fetchall()
+        journal = Journal(str(output) + '.journal.jsonl')
+        index_sources = {'evidence_rag/catalog.py','evidence_rag/retrieval.py','evidence_rag/viking_index.py','benchmarks/index_openviking.py','benchmarks/e2e.py','benchmarks/prepare.py'}
+        before = {key:value for key,value in source_hashes().items() if key in index_sources}
+        header = {'started_utc':now(),'operation':args.operation,'corpus_count':len(rows),
+                  'corpus_sha256':manifest['corpus_sha256'],'revision':args.revision,'scope':adapter.scope,
+                  'source_sha256':before,'concurrency':args.concurrency}
+        journal.record({'type':'header',**header})
+        outcomes = []
+        started = time.monotonic()
         async with httpx.AsyncClient(timeout=20,trust_env=False) as client:
             health = await client.get(args.url.rstrip('/')+'/health')
             health.raise_for_status()
@@ -66,7 +69,8 @@ async def execute(args):
                     journal.record({'type':'unit','completed':len(outcomes),'row':result})
                     if len(outcomes)%50 == 0 or result.get('failure'):
                         print(json.dumps({'completed':len(outcomes),'total':len(rows),'failures':sum(bool(item.get('failure')) for item in outcomes)}),flush=True)
-            await asyncio.gather(*(process(row) for row in rows))
+            workers = [asyncio.create_task(process(row)) for row in rows]
+            await asyncio.gather(*workers)
             complete = len(outcomes)==len(rows) and not any(row.get('failure') for row in outcomes)
         else:
             checked=[]
@@ -87,8 +91,24 @@ async def execute(args):
         print(json.dumps({'complete':complete,'units':len(outcomes),'elapsed_seconds':result['elapsed_seconds']}),flush=True)
         return 0 if complete else 1
     finally:
-        journal.close()
-        catalog.db.close()
+        try:
+            # Unexpected journal/observer errors must not leave sibling workers
+            # using the catalog after resources have been released.
+            for worker in workers:
+                if not worker.done():
+                    worker.cancel()
+            if workers:
+                await asyncio.gather(*workers, return_exceptions=True)
+        finally:
+            try:
+                if adapter is not None:
+                    await adapter.aclose()
+            finally:
+                try:
+                    if journal is not None:
+                        journal.close()
+                finally:
+                    catalog.db.close()
 
 def main():
     parser=argparse.ArgumentParser()

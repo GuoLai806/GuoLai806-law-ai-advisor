@@ -1,0 +1,14 @@
+{
+  "utc": "2026-11-07T11:15:08.454583+00:00",
+  "filename": "catalog-delivery-v1.sqlite3",
+  "sha256": "46d06a585742a2f86ff9b937b3fea6530ca164660e979eb546f19995677c9006",
+  "bytes": 164909056,
+  "integrity_check": "ok",
+  "catalog": {
+    "active_revision": "scifact_full_v3",
+    "unit_count": 5183,
+    "mapped_count": 5183,
+    "dense_validated": "yes"
+  },
+  "method": "SQLite online backup API; no raw DB in public repository"
+}

@@ -161,12 +161,54 @@ def generation_metadata(events):
             'usage_complete':bool(usage) and set(by_attempt)==expected,
             'grounding_validation':validations[0] if len(validations)==1 else None}
 
+async def explore_before_answer(client, base_url, body, clock, record=None):
+    """Actual optional user path: preview, open the first original, then ask.
+
+    No synthetic evidence cache is supplied to the answer endpoint. The answer
+    pins this version and repeats production retrieval with its full budget.
+    """
+    from evidence_rag.exploration import ExploreBundle
+    from urllib.parse import quote, urlencode
+    record={} if record is None else record
+    record['started']=clock.sample()
+    response=await client.post(base_url+'/api/v2/explore',json=body)
+    record.update(preview_received=clock.sample(),preview_http_status=response.status_code,
+                  response_bytes=len(response.content),preview_response_text=response.text)
+    response.raise_for_status()
+    bundle=ExploreBundle.model_validate(response.json()).model_dump()
+    received=record['preview_received']
+    record['bundle']=bundle
+    if bundle['degraded'] or not bundle['items']:
+        raise ValueError('Exploration did not yield non-degraded sources')
+    item=bundle['items'][0]
+    pointer='/api/v2/units/'+quote(item['unit_id'],safe='')+'?'+urlencode({'revision':bundle['corpus_revision']})
+    if item['revision']!=bundle['corpus_revision'] or item['read_pointer']!=pointer:
+        raise ValueError('Exploration source pointer changed version')
+    read=await client.get(base_url+pointer)
+    record.update(original_received=clock.sample(),original_http_status=read.status_code,
+                  original_bytes=len(read.content),original_response_text=read.text)
+    read.raise_for_status()
+    unit=read.json()
+    record['original']=unit
+    matching=next((part for part in unit.get('parts',[]) if part['part_no']==item.get('part_no')),unit)
+    if (unit['revision']!=bundle['corpus_revision']
+            or hashlib.sha256(unit['text'].encode()).hexdigest()!=item['document_sha256']
+            or hashlib.sha256(matching['text'].encode()).hexdigest()!=item['content_sha256']
+            or not matching['text'].startswith(item['preview'])
+            or item['preview_truncated']!=(len(matching['text'])>len(item['preview']))):
+        raise ValueError('Exploration original/preview integrity mismatch')
+    record['original_verified']=True
+    return record
+
 async def execute(args):
     output=Path(args.output)
     if output.exists() or Path(str(output)+'.journal.jsonl').exists():
         raise FileExistsError('Preserve earlier benchmark outputs')
     manifest=json.loads(Path(args.manifest).read_text())
     config=json.loads(Path(args.config).read_text())
+    flow_strategy=config.get('user_flow_strategy','direct')
+    if flow_strategy not in ('direct','explore_then_answer'):
+        raise ValueError('Unknown user flow strategy')
     if config['source_sha256']!=source_hashes():
         raise ValueError('Frozen source identity changed')
     queries=jsonl(Path(args.data_dir)/'queries.jsonl')
@@ -200,9 +242,10 @@ async def execute(args):
     raw_root=Path(args.raw_dir)
     raw_root.mkdir(parents=True,exist_ok=True)
     run_clock=ClockTracker()
-    report={'started_utc':utc_from_ns(run_clock.started_wall_ns),'split':args.split,'queries_expected':len(identifiers),
+    report={'user_flow_strategy':flow_strategy,'started_utc':utc_from_ns(run_clock.started_wall_ns),'split':args.split,'queries_expected':len(identifiers),
             'config_sha256':file_hash(args.config),'manifest_sha256':file_hash(args.manifest),
             'source_sha256':source_hashes(),'source_identity_checked':True,'evaluation_protocol':protocol,
+            'latency_scope':'All per-query latencies start at the user action, including optional preview and first-original read; service_total_ms covers only the server answer request.',
             'clock_identity':clock_identity(),**frozen_identity,'rows':[]}
     journal.record({'type':'header',**{key:value for key,value in report.items() if key!='rows'},'query_ids':identifiers})
     try:
@@ -221,7 +264,7 @@ async def execute(args):
                 query_clock=ClockTracker(observer=run_clock.observe)
                 row={'query_id':query_id,'gold_label':gold_label(claims[query_id]),
                      'gold_documents':sorted(claims[query_id].get('evidence',{})),
-                     'predicted_label':None,'cited_documents':[],'failure':None,'user_flow_completed':False}
+                     'predicted_label':None,'cited_documents':[],'failure':None,'user_flow_completed':False,'stream_total_ms':None}
                 events=[]
                 bundle=None
                 answer=[]
@@ -231,9 +274,21 @@ async def execute(args):
                 first_answer_wall=None
                 stream_end=None
                 body=None
+                exploration=None
                 try:
                     body={'query':queries[query_id]['text'],'session_id':f"benchmark-{args.split}-{output.stem}-{query_id}",
                           'max_evidence_items':config['max_evidence_items'],'max_evidence_tokens':6000,'include_retrieval_trace':True}
+                    if flow_strategy=='explore_then_answer':
+                        exploration={}
+                        await explore_before_answer(client,args.url.rstrip('/'),body,query_clock,exploration)
+                        body['corpus_revision']=exploration['bundle']['corpus_revision']
+                        row['exploration']={'preview_ms':exploration['preview_received']['monotonic_ms'],
+                                            'original_ms':exploration['original_received']['monotonic_ms'],
+                                            'response_bytes':exploration['response_bytes'],
+                                            'original_bytes':exploration['original_bytes'],
+                                            'items':len(exploration['bundle']['items']),
+                                            'truncated':sum(x['preview_truncated'] for x in exploration['bundle']['items']),
+                                            'original_verified':True}
                     try:
                         async with client.stream('POST',args.url.rstrip('/')+'/api/v2/chat/stream',json=body) as response:
                             response.raise_for_status()
@@ -263,6 +318,8 @@ async def execute(args):
                         row['stream_total_ms']=stream_end['monotonic_ms']
                     if not bundle:
                         raise ValueError('Missing retrieval event')
+                    if exploration and bundle['corpus_revision']!=exploration['bundle']['corpus_revision']:
+                        raise ValueError('Answer differs from explored revision')
                     trace=bundle.get('retrieval_trace') or {}
                     if trace.get('dense_backend')!='openviking' or trace.get('dense_scope')!=config['runtime_identity']['dense_scope']:
                         raise ValueError('Request did not use required OpenViking backend')
@@ -331,7 +388,7 @@ async def execute(args):
                     row['cited_documents']=[]
                 raw_path=raw_root/(output.stem+'-'+query_id+'.json')
                 # Preserve a stream record even if source/session verification fails later.
-                raw={'query_id':query_id,'request':body,'events':events,'failure':row['failure'],
+                raw={'exploration':exploration,'user_flow_strategy':flow_strategy,'query_id':query_id,'request':body,'events':events,'failure':row['failure'],
                      'started_utc':utc_from_ns(query_clock.started_wall_ns),'started_wall_ns':query_clock.started_wall_ns,
                      'stream_finished_utc':stream_end['utc'] if stream_end else None,
                      'stream_finished_wall_ns':stream_end['wall_ns'] if stream_end else None,

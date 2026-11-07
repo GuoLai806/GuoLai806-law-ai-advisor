@@ -62,7 +62,15 @@ async def validate_index(cat,adapter,revision,concurrency=4,on_result=None):
                     outcome={'unit_id':row['unit_id'],'result':'backend_error'}
             if on_result:on_result(outcome)
             return outcome
-    outcomes=await asyncio.gather(*(inspect(row) for row in rows))
+    workers = [asyncio.create_task(inspect(row)) for row in rows]
+    try:
+        outcomes = await asyncio.gather(*workers)
+    finally:
+        # A failing observer must not strand readers that still use this catalog.
+        for worker in workers:
+            if not worker.done():
+                worker.cancel()
+        await asyncio.gather(*workers, return_exceptions=True)
     passed=all(x['result']=='visible' for x in outcomes)
     if passed:
         cat.db.execute("INSERT INTO settings(key,value) VALUES(?,?) ON CONFLICT(key) DO UPDATE SET value=excluded.value",('dense_validated:'+revision,'yes'))
@@ -71,15 +79,31 @@ async def validate_index(cat,adapter,revision,concurrency=4,on_result=None):
         cat.db.execute('DELETE FROM settings WHERE key=?',('dense_validated:'+revision,))
     return {'revision':revision,'index_visibility_validated':passed,'validation_query':'exact indexed text serialization; integrity check, not query-quality benchmark','units':outcomes}
 
+async def execute(args):
+    """Keep the adapter's use and teardown on the same asyncio event loop."""
+    if not args.scope.rstrip('/').endswith('/' + args.revision):
+        raise ValueError('scope must end with revision')
+    if args.operation != 'validate' and not args.unit_id:
+        raise ValueError('--unit-id is required')
+    token = os.environ.get('OPENVIKING_API_KEY')
+    headers = {'X-API-Key': token} if token else {}
+    cat = Catalog(args.db)
+    adapter = None
+    try:
+        adapter = OpenViking(args.url, args.scope, headers=headers, timeout=60)
+        if args.operation == 'validate':
+            return await validate_index(cat, adapter, args.revision)
+        action = index_one if args.operation == 'send' else reconcile_one
+        return await action(cat, adapter, args.revision, args.unit_id)
+    finally:
+        try:
+            if adapter is not None:
+                await adapter.aclose()
+        finally:
+            cat.db.close()
+
+
 def main():
     p=argparse.ArgumentParser(); p.add_argument('operation',choices=['send','reconcile','validate']);p.add_argument('--db',required=True);p.add_argument('--revision',required=True);p.add_argument('--unit-id');p.add_argument('--url',required=True);p.add_argument('--scope',required=True);a=p.parse_args()
-    if not a.scope.rstrip('/').endswith('/'+a.revision): raise ValueError('scope must end with revision')
-    token=os.environ.get('OPENVIKING_API_KEY'); headers={'X-API-Key':token} if token else {}
-    cat=Catalog(a.db); adapter=OpenViking(a.url,a.scope,headers=headers,timeout=60)
-    if a.operation=='validate': result=asyncio.run(validate_index(cat,adapter,a.revision))
-    else:
-        if not a.unit_id: raise ValueError('--unit-id is required')
-        action=index_one if a.operation=='send' else reconcile_one
-        result=asyncio.run(action(cat,adapter,a.revision,a.unit_id))
-    print(json.dumps(result))
+    print(json.dumps(asyncio.run(execute(a))))
 if __name__=='__main__': main()

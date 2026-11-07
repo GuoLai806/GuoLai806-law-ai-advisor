@@ -1,0 +1,36 @@
+{
+  "package_version": "0.2.2",
+  "checks": [
+    {
+      "module": "evidence_rag.api",
+      "sha256": "36d38e5bf5826ebe5037ce419d008402bcb22a27613c3dec747d04fe2fe256f6",
+      "matches_source": true,
+      "outside_repo": true
+    },
+    {
+      "module": "evidence_rag.retrieval",
+      "sha256": "0854b8280bc7b09bfd10de18ee4e205c2f85fb63ae0ab0ac87e8f756d2a7b0f0",
+      "matches_source": true,
+      "outside_repo": true
+    },
+    {
+      "module": "evidence_rag.exploration",
+      "sha256": "1c786f9619be38ed40cb81f194cb56093a09ce5ae218d2fe8cc1a3a7d699f483",
+      "matches_source": true,
+      "outside_repo": true
+    },
+    {
+      "module": "evidence_rag.viking_index",
+      "sha256": "47124276d5fb0de5c00eee52f4c648ffa6b41f40ef15d36979f7e3c8c3e49d38",
+      "matches_source": true,
+      "outside_repo": true
+    },
+    {
+      "module": "HTML",
+      "sha256": "d3cfc87ea7d46134a677d024b7886812758f287eb161b549a666e6690733501c",
+      "matches_source": true,
+      "outside_repo": true
+    }
+  ],
+  "dependency_scope": "isolated installed wheel; model/runtime dependencies reused explicitly through .pth, not an independent fresh dependency resolution"
+}

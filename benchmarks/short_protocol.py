@@ -21,6 +21,8 @@ def validate_selection(selection_path,config_path,manifest_path,formal_output,*,
               'runtime_identity','formal_output','formal_query_ids','development6','paired_selection_path',
               'freeze_pair_sha256','freeze_tool_sha256','selected_utc'}
     require(required<=set(selected),'Short selection requires full development6 and paired freeze evidence')
+    comparison_strategy=selected.get('comparison_strategy','grounding')
+    require(comparison_strategy in ('grounding','exploration'),'Unknown comparison strategy')
     require(selected['kind'] in ('baseline','candidate'),'Unknown frozen mode')
     require(Path(selected['formal_output']).resolve()==Path(formal_output).resolve(),'Selection bound to a different formal output')
     require(Path(selected['config_path']).resolve()==Path(config_path).resolve()
@@ -37,6 +39,7 @@ def validate_selection(selection_path,config_path,manifest_path,formal_output,*,
     require(peer_path.resolve()!=Path(selection_path).resolve(),'Pair must contain two selections')
     peer=read(peer_path)
     require(required<=set(peer),'Incomplete peer selection')
+    require(peer.get('comparison_strategy','grounding')==comparison_strategy,'Paired comparison strategy changed')
     require(peer['kind']!=selected['kind'] and peer['kind'] in ('baseline','candidate'),'Invalid paired modes')
     require(Path(peer['paired_selection_path']).resolve()==Path(selection_path).resolve(),'Non-reciprocal paired selection')
     pair=sorted((selected,peer),key=lambda x:0 if x['kind']=='baseline' else 1)
@@ -53,16 +56,24 @@ def validate_selection(selection_path,config_path,manifest_path,formal_output,*,
         settings=read(item['config_path']);service=settings['service_configuration'];runtime=settings['runtime_identity']
         mode='text' if item['kind']=='baseline' else 'grounded_json'
         gate='reranker_threshold' if item['kind']=='baseline' else 'grounded_evidence'
+        if comparison_strategy=='exploration':
+            mode='grounded_json';gate='grounded_evidence'
+            path_strategy='direct' if item['kind']=='baseline' else 'explore_then_answer'
+            require(settings.get('user_flow_strategy')==item.get('user_flow_strategy')==path_strategy,
+                    'Paired exploration user flow changed')
         require(service.get('answer_format')==runtime.get('answer_format')==mode
                 and service.get('generation_gate')==runtime.get('generation_gate')==gate,'Paired config mode changed')
-        if item['kind']=='baseline':
+        if item['kind']=='baseline' and comparison_strategy=='grounding':
             require(str(service.get('rerank_threshold')) in ('0','0.0') and str(runtime.get('rerank_threshold')) in ('0','0.0'),
                     'Historical baseline threshold changed')
         copy=deepcopy(settings)
-        for key in ('answer_format','generation_gate','general_system_prompt'):copy['service_configuration'].pop(key,None)
-        for key in ('answer_format','generation_gate','system_prompt_sha256'):copy['runtime_identity'].pop(key,None)
+        if comparison_strategy=='exploration':
+            copy.pop('user_flow_strategy',None)
+        else:
+            for key in ('answer_format','generation_gate','general_system_prompt'):copy['service_configuration'].pop(key,None)
+            for key in ('answer_format','generation_gate','system_prompt_sha256'):copy['runtime_identity'].pop(key,None)
         normalized.append(copy)
-    require(normalized[0]==normalized[1],'Paired configs differ outside the declared joint strategy')
+    require(normalized[0]==normalized[1],'Paired configs differ outside the declared '+comparison_strategy+' strategy')
     d=selected['development6']; report=read(d['report_path']); dev_config=read(d['config_path'])
     require(d['report_sha256']==file_hash(d['report_path']) and d['config_sha256']==file_hash(d['config_path'])
             and d['journal_sha256']==file_hash(d['journal_path']),'Development evidence changed')
@@ -76,6 +87,9 @@ def validate_selection(selection_path,config_path,manifest_path,formal_output,*,
             and report['config_sha256']==d['config_sha256'] and report['source_identity_checked']
             and report['source_unchanged'] and report['runtime_identity_unchanged'],'Development identity changed')
     require(all(report['runtime_identity'].get(k)==v for k,v in dev_config['runtime_identity'].items()),'Development runtime changed')
+    if comparison_strategy=='exploration':
+        require(report.get('user_flow_strategy')=='explore_then_answer',
+                'Development report exploration path changed')
     candidate=next(x for x in pair if x['kind']=='candidate')
     require(dev_config==read(candidate['config_path']),'Candidate differs from development6')
     require(report['failures']==d['evaluation_failures']==sum(bool(r['failure']) for r in report['rows']),
@@ -84,6 +98,9 @@ def validate_selection(selection_path,config_path,manifest_path,formal_output,*,
     require(len(journal)==8 and journal[0]['type']=='header' and journal[-1]['type']=='complete','Development journal incomplete')
     require(journal[0]['query_ids']==ids and journal[0]['config_sha256']==d['config_sha256']
             and journal[0]['manifest_sha256']==file_hash(manifest_path) and journal[0]['source_sha256']==source,'Development header changed')
+    if comparison_strategy=='exploration':
+        require(journal[0].get('user_flow_strategy')=='explore_then_answer',
+                'Development journal exploration path changed')
     require(all(e['type']=='query' and e['completed']==i and e['row']==r for i,(e,r) in enumerate(zip(journal[1:-1],report['rows'],strict=True),1))
             and journal[-1]['report_sha256']==d['report_sha256'],'Development journal rows changed')
     frozen_at=datetime.fromisoformat(selected['selected_utc'].replace('Z','+00:00'))
@@ -97,6 +114,9 @@ def validate_selection(selection_path,config_path,manifest_path,formal_output,*,
                     and header['manifest_sha256']==selected['manifest_sha256'] and header['config_sha256']==item['config_sha256']
                     and header['query_ids']==selected['formal_query_ids'] and header.get('freeze_pair_sha256')==digest,
                     'Formal journal is outside the frozen pair')
+            if comparison_strategy=='exploration':
+                require(header.get('user_flow_strategy')==item['user_flow_strategy'],
+                        'Formal journal exploration path changed')
             require(datetime.fromisoformat(header['started_utc'].replace('Z','+00:00'))>=frozen_at,'Pair frozen after formal calls')
         elif path.exists(): require(False,'Formal report missing journal')
     return {'selection_sha256':file_hash(selection_path),'freeze_pair_sha256':digest,

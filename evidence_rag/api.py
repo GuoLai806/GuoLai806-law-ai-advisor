@@ -12,6 +12,7 @@ from .retrieval import RetrievalService, CrossEncoderReranker, OpenViking
 from .budget import HuggingFaceTokenizer, ConservativeByteBudget
 from .answer import OpenAIStream, ModelStreamIncomplete, validate_citations, provider_events, messages_for
 from .grounding import GroundingRejected
+from .exploration import ExploreBundle, explore_bundle
 
 def setting(name, default=None):
     return os.environ.get('EVIDENCE_RAG_'+name,os.environ.get('LEGAL_RAG_'+name,default))
@@ -53,13 +54,19 @@ async def lifespan(app):
     tokenizer=HuggingFaceTokenizer(setting('TOKENIZER'),setting('TOKENIZER_REVISION')) if setting('TOKENIZER') and setting('TOKENIZER_REVISION') else None
     ov_key=os.environ.get('OPENVIKING_API_KEY')
     ov_headers={'X-API-Key':ov_key} if ov_key else {}
-    dense=OpenViking(setting('OV_URL'),setting('OV_SCOPE'),headers=ov_headers,timeout=float(setting('OV_TIMEOUT','30'))) if setting('OV_URL') and setting('OV_SCOPE') else None
+    dense=OpenViking(setting('OV_URL'),setting('OV_SCOPE'),headers=ov_headers,timeout=float(setting('OV_TIMEOUT','30')),reuse_client=setting('OV_REUSE_CLIENT','1')=='1') if setting('OV_URL') and setting('OV_SCOPE') else None
     app.state.service=RetrievalService(db,dense,reranker,tokenizer,rerank_timeout=float(setting('RERANK_TIMEOUT','120')))
     app.state.generator=OpenAIStream(setting('MODEL_URL'),setting('MODEL_NAME'),setting('MODEL_KEY',''),timeout=float(setting('MODEL_TIMEOUT','90')),include_usage=setting('STREAM_INCLUDE_USAGE')=='1',max_output_tokens=int(setting('MAX_OUTPUT_TOKENS')) if setting('MAX_OUTPUT_TOKENS') else None,temperature=float(setting('MODEL_TEMPERATURE')) if setting('MODEL_TEMPERATURE') is not None else None,thinking=setting('MODEL_THINKING'),reasoning_effort=setting('MODEL_REASONING_EFFORT'),empty_retry_thinking=setting('MODEL_EMPTY_RETRY_THINKING'),retry_timeout=float(setting('MODEL_RETRY_TIMEOUT')) if setting('MODEL_RETRY_TIMEOUT') else None,retry_max_output_tokens=int(setting('MODEL_RETRY_MAX_OUTPUT_TOKENS')) if setting('MODEL_RETRY_MAX_OUTPUT_TOKENS') else None) if setting('MODEL_URL') and setting('MODEL_NAME') else None
     if app.state.generator:
         app.state.generator.answer_format=answer_format
-    yield
-    db.db.close()
+    try:
+        yield
+    finally:
+        try:
+            if dense:
+                await dense.aclose()
+        finally:
+            db.db.close()
 
 app=FastAPI(title='Evidence RAG v2',lifespan=lifespan)
 app.state.default_profile='general'
@@ -99,7 +106,7 @@ def generation_limits():
     if min(window,framing,output)<=0 or framing+output>=window: raise ValueError('invalid generation envelope')
     return window,framing,output
 
-async def get_bundle(body, request, user, pinned_revision=None):
+async def get_bundle(body, request, user, pinned_revision=None, *, for_exploration=False):
     cat=Catalog(request.app.state.catalog.path)
     try:
         bind(cat.db,body.session_id,user)
@@ -116,6 +123,10 @@ async def get_bundle(body, request, user, pinned_revision=None):
                 tokenizer=byte_budget_config()
                 tokenizer.paragraph_loader=lambda uid:cat.get(active,uid)
             except ValueError as exc: raise HTTPException(503,str(exc)) from exc
+        if for_exploration:
+            # Exploration never measures or supplies a generation prompt. Keep the
+            # complete selected paragraphs, including those too large to generate.
+            tokenizer=None
         service=RetrievalService(cat,configured.dense,configured.reranker,tokenizer,profile=profile,rerank_timeout=configured.rerank_timeout,ranking_executor=configured.ranking_executor)
         maximum=body.max_evidence_tokens
         try:
@@ -172,12 +183,23 @@ async def ready(request: Request):
     finally: cat.db.close()
 @app.post('/api/v2/retrieve')
 async def retrieve(body: Query,request: Request,user=Depends(identity)): return await get_bundle(body,request,user)
+@app.post('/api/v2/explore',response_model=ExploreBundle)
+async def explore(body: Query,request: Request,user=Depends(identity)):
+    if setting('EXPLORE_ENABLED','1')!='1':
+        raise HTTPException(404,'exploration unavailable')
+    bundle=await get_bundle(body,request,user,for_exploration=True)
+    try:
+        return explore_bundle(bundle)
+    except ValueError as exc:
+        raise HTTPException(503,'catalog or preview integrity unavailable') from exc
+
 @app.get('/api/v2/models')
 def model_capabilities(request: Request,user=Depends(identity)):
     service=request.app.state.service
     generator=request.app.state.generator
     return {'dense_configured':bool(service.dense),'reranker_loaded':bool(service.reranker),'tokenizer_loaded':bool(service.tokenizer),'generator_configured':bool(generator),'provider_health_verified':False,
-            'runtime_identity':{'dense_scope':getattr(service.dense,'scope',None),'reranker_revision':getattr(service.reranker,'revision',None),'reranker_batch_size':getattr(service.reranker,'batch_size',None),'rerank_timeout_seconds':service.rerank_timeout,'tokenizer_revision':getattr(service.tokenizer,'revision',None),'answer_model':getattr(generator,'model',None),'max_output_tokens':getattr(generator,'max_output_tokens',None),'thinking':getattr(generator,'thinking',None),'reasoning_effort':getattr(generator,'reasoning_effort',None),'default_evidence_items':default_evidence_items(),**generation_identity(request)}}
+            'exploration_available':setting('EXPLORE_ENABLED','1')=='1',
+            'runtime_identity':{'ov_reuse_client':getattr(service.dense,'reuse_client',None),'explore_enabled':setting('EXPLORE_ENABLED','1')=='1','dense_scope':getattr(service.dense,'scope',None),'reranker_revision':getattr(service.reranker,'revision',None),'reranker_batch_size':getattr(service.reranker,'batch_size',None),'rerank_timeout_seconds':service.rerank_timeout,'tokenizer_revision':getattr(service.tokenizer,'revision',None),'answer_model':getattr(generator,'model',None),'max_output_tokens':getattr(generator,'max_output_tokens',None),'thinking':getattr(generator,'thinking',None),'reasoning_effort':getattr(generator,'reasoning_effort',None),'default_evidence_items':default_evidence_items(),**generation_identity(request)}}
 
 def generation_identity(request):
     """Public operational identity: hashes/configuration, never credentials or prompts."""

@@ -1,0 +1,93 @@
+{
+  "utc": "2026-11-07T11:15:08.454583+00:00",
+  "openviking_health": {
+    "status": "ok",
+    "healthy": true,
+    "version": "0.5.3",
+    "auth_mode": "dev"
+  },
+  "embedding_health": {
+    "ready": true,
+    "model": "BAAI/bge-m3",
+    "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+    "dimension": 1024,
+    "device": "mps:0",
+    "dtype": "torch.float16",
+    "load_seconds": 5.983505725860596,
+    "torch": "2.15.0"
+  },
+  "ov_config_sha256": "2dce146c60c5014eaa38ae1002f6099670129c399d31aae015d6841d561db5e8",
+  "ov_config_identity": {
+    "scope": "viking://resources/rag/scifact/scifact_full_v3/",
+    "text_source": "content_only",
+    "max_retries": 0,
+    "dimension": 1024
+  },
+  "catalog": {
+    "active_revision": "scifact_full_v3",
+    "unit_count": 5183,
+    "mapped_count": 5183,
+    "dense_validated": "yes"
+  },
+  "platform": {
+    "system": "Darwin",
+    "release": "25.6.0",
+    "machine": "arm64"
+  },
+  "api_live": {
+    "status": "live"
+  },
+  "api_ready": {
+    "ready": true,
+    "active_revision": "scifact_full_v3",
+    "missing": [],
+    "conservative_bytes_available": false,
+    "budget_guarantee": null
+  },
+  "api_models": {
+    "dense_configured": true,
+    "reranker_loaded": true,
+    "tokenizer_loaded": true,
+    "generator_configured": true,
+    "provider_health_verified": false,
+    "exploration_available": true,
+    "runtime_identity": {
+      "ov_reuse_client": true,
+      "explore_enabled": true,
+      "dense_scope": "viking://resources/rag/scifact/scifact_full_v3/",
+      "reranker_revision": "22e683669bc0f0bd69640a1354a6d0aebcfeede5",
+      "reranker_batch_size": 8,
+      "rerank_timeout_seconds": 120.0,
+      "tokenizer_revision": "e7310d1dafe0a86d8a5629fe78a7c763760f651db9b8682718a1781dcd6fe495",
+      "answer_model": "deepseek-v4-pro",
+      "max_output_tokens": 8192,
+      "thinking": "enabled",
+      "reasoning_effort": "low",
+      "default_evidence_items": 4,
+      "default_profile": "general",
+      "system_prompt_sha256": "c32c843995fb4a4cb8bceba9c9e1f803effa8d2a3f2592c6e5a8783d6b5e9cea",
+      "context_window": 32768,
+      "framing_reserve": 512,
+      "output_reserve": 8192,
+      "provider_timeout_seconds": 60.0,
+      "temperature": 0.0,
+      "stream_include_usage": true,
+      "store_conversations": true,
+      "rerank_threshold": "0",
+      "empty_retry_thinking": "disabled",
+      "retry_timeout_seconds": 45.0,
+      "retry_max_output_tokens": 2048,
+      "answer_format": "grounded_json",
+      "generation_gate": "grounded_evidence"
+    }
+  },
+  "comparison": {
+    "openviking_health_equal": true,
+    "embedding_identity_equal": true,
+    "ov_config_sha256_equal": true,
+    "catalog_equal": true,
+    "embedding_comparison_excludes": [
+      "load_seconds"
+    ]
+  }
+}

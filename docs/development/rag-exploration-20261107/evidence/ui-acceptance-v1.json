@@ -1,0 +1,93 @@
+{
+  "utc": "2026-11-07T11:17:41.291661+00:00",
+  "package_version": "0.2.2",
+  "source_map_sha256": "728010c21e5641363fdcb988627e97b2f309f8bbc33d34345676abeaa1fdced8",
+  "target": "installed loopback API 19447; actual OpenViking 19443 and BGE-M3 19444",
+  "method": "CUA IAB visible UI; no mocked backend; performed after formal benchmark",
+  "dataset": "first predeclared development question 1134; plus same question edited for cancellation; not new independent quality samples",
+  "service_mode": "grounded_json + grounded_evidence; default product text unchanged",
+  "checks": [
+    {
+      "name": "explore",
+      "result": "passed",
+      "observation": "preview ready; four results; 320-character truncated preview notice; buttons restored"
+    },
+    {
+      "name": "read_source",
+      "result": "passed",
+      "observation": "first preview source expanded to full text; client integrity checks permit display only after fixed revision/hash verification"
+    },
+    {
+      "name": "answer",
+      "result": "passed",
+      "observation": "answer completed; SUPPORT and quote verified notice; UI displayed 22.4 seconds for answer request (not manual end-to-end duration)"
+    },
+    {
+      "name": "stop_explore",
+      "result": "passed",
+      "observation": "browser exploration request aborted; stopped UI and restored buttons; backend OpenViking work cancellation not independently observed"
+    },
+    {
+      "name": "stop_answer",
+      "result": "passed",
+      "observation": "stopped during retrieval; incomplete draft withdrawn; buttons restored; does not separately prove a midway cloud generation cancellation"
+    },
+    {
+      "name": "edit_during_explore",
+      "result": "passed",
+      "observation": "question edit aborted old browser exploration request and invalidated preview; later observation still showed new question and re-find notice; backend work cancellation not independently observed"
+    },
+    {
+      "name": "resume",
+      "result": "passed",
+      "observation": "restored first development question; new preview completed normally"
+    }
+  ],
+  "nonblocking_ui_observation": "after stopping answer during retrieval, reference section kept previous looking-up message; status clearly stopped; no stale answer shown",
+  "files": [
+    {
+      "filename": "answer-ax.txt",
+      "bytes": 196,
+      "sha256": "e1532fb91685d45f5db2fe91bcffaa2ece1a3ee3e0697f8f391b6bb270eed388",
+      "scope": "local screenshot or AX observation; answer-ax.txt is only unchanged-state notice, not full transcript"
+    },
+    {
+      "filename": "answer.jpg",
+      "bytes": 43093,
+      "sha256": "fcad2ab4037d10c8886f3d113ac4e51d494bf5d615096afbe91d2b73d1b0ec1b",
+      "scope": "local screenshot or AX observation; answer-ax.txt is only unchanged-state notice, not full transcript"
+    },
+    {
+      "filename": "changed-question-ax.txt",
+      "bytes": 1258,
+      "sha256": "d1e7de96b51b31470e274cd5bea68e7b731eafacc02fc9a4a1a84b8d5fcaca6c",
+      "scope": "local screenshot or AX observation; answer-ax.txt is only unchanged-state notice, not full transcript"
+    },
+    {
+      "filename": "preview.jpg",
+      "bytes": 177989,
+      "sha256": "e365039ae2b92fef6846164d3a0df90d48a38ca01bf58f4dcc6292c1e2e76b4e",
+      "scope": "local screenshot or AX observation; answer-ax.txt is only unchanged-state notice, not full transcript"
+    },
+    {
+      "filename": "source.jpg",
+      "bytes": 325118,
+      "sha256": "835e01da1e4a3e94bc4f7486b1322508ed59fed184b4cac8e6c370f921519be0",
+      "scope": "local screenshot or AX observation; answer-ax.txt is only unchanged-state notice, not full transcript"
+    },
+    {
+      "filename": "stop-answer-ax.txt",
+      "bytes": 1084,
+      "sha256": "85e40f3357eea1ec40b70cbc48016dc9c304c8fe0c91d056e5b844f072ea7adc",
+      "scope": "local screenshot or AX observation; answer-ax.txt is only unchanged-state notice, not full transcript"
+    },
+    {
+      "filename": "stop-explore-ax.txt",
+      "bytes": 7659,
+      "sha256": "28f6541b9766933191dff43ed13835719116b2affe4d6dca8ccfe10db49a78e0",
+      "scope": "local screenshot or AX observation; answer-ax.txt is only unchanged-state notice, not full transcript"
+    }
+  ],
+  "user_acceptance": "pending user experience",
+  "quality_scope": "single development-question UI smoke; not added to formal quality denominator"
+}

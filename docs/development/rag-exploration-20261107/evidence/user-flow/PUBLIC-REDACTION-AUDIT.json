@@ -1,0 +1,69 @@
+{
+  "records": [
+    {
+      "name": "dev6-v1",
+      "rows": 6,
+      "original_report_sha256": "6c3eb2115a2b9bb02557d2677dd65bca4982304b7756101a47b319193712fcd6",
+      "public_report_sha256": "cf3b4715daf42b5f09707df2e1c156a448506f66f09dd1379eac320d80b29159",
+      "original_journal_sha256": "ddf528827732fb18e465f74c8ffef4a8a5ac685a234bf9e7b8da6b1189f32b95",
+      "public_journal_sha256": "f40bbf6e4f54c67104d45cce46c0c59c4c77da33d1066eaeea9828d74e07975a",
+      "config_sha256": "245d1d74f9d95f021cd021697c43524c468ddfb8f5f562feb794de36681299d0",
+      "numerical_and_failure_fields_unchanged": true
+    },
+    {
+      "name": "direct30-v1",
+      "rows": 30,
+      "original_report_sha256": "7789cdf3eebd1e4fd076feeacc2ee1b965da7b21cdeff9e43e601466f745f994",
+      "public_report_sha256": "ce220d5373fdf9f036a9da36eba932578020c446e18f04a4d6ff085e30a8f1c3",
+      "original_journal_sha256": "6a7a678ea451d1f94ea2cf69d4d9bb9e73faa51ad08b9fb4a0461975359b820d",
+      "public_journal_sha256": "fbe4c2cac3dc5c56d8702db4a3c2fa1d017cee259f79bdfc3c735e7c2ccc8319",
+      "config_sha256": "63c43dc8168488b250e5e67c20fc3302980a6ee559e9dd53a184515b20fad565",
+      "numerical_and_failure_fields_unchanged": true
+    },
+    {
+      "name": "explore30-v1",
+      "rows": 30,
+      "original_report_sha256": "8c8e19a4e2100e7f29c3ed0b8b5e242c5d594496593e5478d52913db0f6a27fe",
+      "public_report_sha256": "0ca14e7f1352db06c144039e26b392117b355bddcab3dea88d60ed61cfbf25c2",
+      "original_journal_sha256": "1bdded527e9a7f38af206eced3a4a8d4141a6e694a19df6727528947fd70961b",
+      "public_journal_sha256": "7ede6de6a6ec6feabd335272d771e85c618e22e2d6f4fa7383a57e64fd31b379",
+      "config_sha256": "245d1d74f9d95f021cd021697c43524c468ddfb8f5f562feb794de36681299d0",
+      "numerical_and_failure_fields_unchanged": true
+    }
+  ],
+  "auxiliary": [
+    {
+      "name": "dev6-v1.audit.json",
+      "original_sha256": "d7ffd0348105138fe441830912825a8f1a0a3a74dd2ee85c327498104f4aac8e",
+      "public_sha256": "d7ffd0348105138fe441830912825a8f1a0a3a74dd2ee85c327498104f4aac8e"
+    },
+    {
+      "name": "direct30-v1.audit.json",
+      "original_sha256": "ca0dce75c980b8cd12eca22f31ec1a69dc3cc2097fa07ee5a448443d0faf96a5",
+      "public_sha256": "ca0dce75c980b8cd12eca22f31ec1a69dc3cc2097fa07ee5a448443d0faf96a5"
+    },
+    {
+      "name": "explore30-v1.audit.json",
+      "original_sha256": "86d4aec54ef908591c880e3e606d77cda7212cc545b90d23e8ba81be0b426a51",
+      "public_sha256": "86d4aec54ef908591c880e3e606d77cda7212cc545b90d23e8ba81be0b426a51"
+    },
+    {
+      "name": "direct30-v1.selection.json",
+      "original_sha256": "d8862ee877ee959b41ea332da1638146b50be9421a9c4626a058e01abd0a0e0b",
+      "public_sha256": "9f05694eb1dfaf32ddd8a259ebc961b78b6cc6401228c216531badde053636d2"
+    },
+    {
+      "name": "explore30-v1.selection.json",
+      "original_sha256": "2ce9fa95978a8669ec7f60a2c98769cfcf0161c8189eabe22479c58f97b657f7",
+      "public_sha256": "3929ffd2847833bb19023e401c1f7e468d1ceaa6920ea8a7f5709204dbbba1b6"
+    },
+    {
+      "name": "paired-v1.json",
+      "original_sha256": "776751c37a520fcb5c8657924f83b30601ae321e62b79339a6802a7eca181765",
+      "public_sha256": "776751c37a520fcb5c8657924f83b30601ae321e62b79339a6802a7eca181765"
+    }
+  ],
+  "raw_events": "retained locally, not redistributed",
+  "policy": "same failed rows and original gold; no credentials, raw source/answer text, private code, weights or user files",
+  "selection_paths": "public selection paths are redacted; paired hash refers to original local pair, regenerated from new local paths when reproducing"
+}
