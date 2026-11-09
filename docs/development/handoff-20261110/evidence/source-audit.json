@@ -1,0 +1,252 @@
+{
+  "audit_date": "2026-11-10",
+  "utc": "2026-11-09T16:13:20.583669+00:00",
+  "baseline": "1ad62b83e8f2c2a57a4b602bfdc1bc7a5f57c9d1",
+  "remote_ref_matches": true,
+  "remote_tree_truncated": false,
+  "development_files": 491,
+  "all_development_git_blob_paths_match": true,
+  "scope": "read-only Git/source/doc audit; no runtime/model/database/GUI or publish",
+  "files": [
+    {
+      "path": "docs/development/legal-rag-20261105/WORK.md",
+      "sha256": "948712bf7db5377ef89742a21ff46883ffc518189f61a96ea3e3e538baaf4ce7",
+      "bytes": 11823,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": "3aa01ec155d5cae60b54311e8c8462a956331265",
+      "exists": true
+    },
+    {
+      "path": "docs/development/legal-rag-20261105/TECHNOLOGY-DECISIONS.md",
+      "sha256": "2298e58f0c94b3a9b8fab8245eea5a4ec12ef6b9348a47a5aa8daf5d503dc10d",
+      "bytes": 5287,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": "29f923f7675806be7ad50050fe9cf24d213d4543",
+      "exists": true
+    },
+    {
+      "path": "docs/development/general-evidence-rag-20261106/PLAN-FOR-AI.md",
+      "sha256": "d97ed700ab7b48ed1946580251f2ea7b62def4ecf99344118893f616c8a1841a",
+      "bytes": 6836,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": "dffe9d6ab371d01f670137d1df3743c0ce0cb8bb",
+      "exists": true
+    },
+    {
+      "path": "docs/development/general-evidence-rag-20261106/TECHNOLOGY-DECISIONS.md",
+      "sha256": "e4bfb79cd7cb46b42b5f1d8b114e9e8d88045311204265c43dddcfa3087fd822",
+      "bytes": 3599,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": "9de035abb3a70142693bce9160b7fe58a93f6de9",
+      "exists": true
+    },
+    {
+      "path": "docs/development/generic-benchmark-20261106/RESULTS.md",
+      "sha256": "d98f06b8f84d665bd724bd13b8a509a61fc36b0ab330fd6d6b179cf219c45f34",
+      "bytes": 7560,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": "d81559dc910a46d0d9b49e992a66286d5a016a89",
+      "exists": true
+    },
+    {
+      "path": "docs/development/openviking-user-flow-20261106/RESULTS.md",
+      "sha256": "d4694bead253537696ae45d31dbc6f08eceab80feca3611b436d867c338e6ee3",
+      "bytes": 12538,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": "c69cfb8613a81deeef32f545130046d728a56142",
+      "exists": true
+    },
+    {
+      "path": "docs/development/openviking-user-flow-20261106/TECHNOLOGY-DECISIONS.md",
+      "sha256": "675e013130326995d077d9d4affa09145d95627ecbaa473e2525a8db68803a34",
+      "bytes": 9814,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": "c7c7502c94c7b54b2eb59dd3908e8e883560a62b",
+      "exists": true
+    },
+    {
+      "path": "docs/development/openviking-user-flow-20261106/METHODOLOGY.md",
+      "sha256": "91460a37b32bd80e9ddd5ec51cb6c66d16dfea2bc4911b6e3c4c7cd3c6fdcf84",
+      "bytes": 6997,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": "9270564db5d3b2c4fbe06285f7ac510a00ece3c6",
+      "exists": true
+    },
+    {
+      "path": "docs/development/openviking-user-flow-20261106/REPRODUCTION.md",
+      "sha256": "5e8b07942f1cbe7b3f02b8772ce263dc6322c122a284122f8290676b4b0ba81f",
+      "bytes": 29204,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": "19c449f2afa9e74b21386b9d4aedb6fc822bc36b",
+      "exists": true
+    },
+    {
+      "path": "docs/development/openviking-quality-20261107/RESULTS.md",
+      "sha256": "43c90e9466d2c6679a2660b0c39913eac69cdd54e6de97575f15ffd0307842bb",
+      "bytes": 9116,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": "05d7f14eeb79a2812acab7996fb720ae33348030",
+      "exists": true
+    },
+    {
+      "path": "docs/development/openviking-quality-20261107/TECHNOLOGY-DECISIONS.md",
+      "sha256": "ce7a6e31461fde8ef00dcf8cd12984c7522b43519a0872ebc0b68b2b5a0b3599",
+      "bytes": 23916,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": "4a6aa324fde01d5698b6b13164eb4624f3dbcb82",
+      "exists": true
+    },
+    {
+      "path": "docs/development/openviking-quality-20261107/REPRODUCTION.md",
+      "sha256": "b4f7f0bea16fd3d2eccba938deff200aaf850084a93d3a403b4e9828376d2da4",
+      "bytes": 7248,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": "3c865185df3e31988d6b67acdc32858785d3122b",
+      "exists": true
+    },
+    {
+      "path": "docs/development/bvio-superagent-research-20261107/RAG-COMPARISON.md",
+      "sha256": "6c60f41f257d173d4a99829c69981cb444703db3e1241e90bdd6bbb3c168733c",
+      "bytes": 11713,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": "e904d0ebb4a3857aa9ba10fef4ca63d2ebff0455",
+      "exists": true
+    },
+    {
+      "path": "docs/development/bvio-superagent-research-20261107/BENCHMARK-PROTOCOL.md",
+      "sha256": "7471384f08c4d450a56871f74c98c0e9e3e7e8a509b084e7ccbbb3d6e42d1dcc",
+      "bytes": 11711,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": "242e7c6b9f64fb84bc278b5491f010ea6fad35c3",
+      "exists": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/RESULTS.md",
+      "sha256": "b47a95d89aebd388611cff0150e87d4345be56214ab2b837417f59ea38eff246",
+      "bytes": 6275,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": "b5fdaaad5928865e677f6c8778afc5aa0678e16b",
+      "exists": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/TECHNOLOGY-DECISIONS.md",
+      "sha256": "9c776ba42ff1b8275b790e2c7d5a70cbb38a4d19da8bbc3524078e2499d54114",
+      "bytes": 5259,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": "2637befe22fbbc809bbeebbdb15d50bf81e509ee",
+      "exists": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/REPRODUCTION.md",
+      "sha256": "f1afd3b6b0df42badfc1623af9575cc4ce6dfd2942c64e04433238fc970bfce2",
+      "bytes": 6288,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": "7c6cb46cdbde5f9f8fa5d6d177fb212e735b1e9e",
+      "exists": true
+    },
+    {
+      "path": "docs/development/rag-exploration-20261107/TODO.md",
+      "sha256": "90aa6ecb6f5121d96957bdba49a9d0b5ef16c58a4bd5a4a7e2253f01531f99de",
+      "bytes": 976,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": "19370bce1cbe3472d7b59d0c054b33dbaf8e9f98",
+      "exists": true
+    },
+    {
+      "path": "docs/development/rag-workspace-clarity-20261107/PLAN-FOR-AI.md",
+      "sha256": "b76e5560705018e00fddec95dd39939ad5b9e1da14a6a6f1093a8bfe2ede4b54",
+      "bytes": 5130,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": "d93971c1f04bcf4eb39df8935bc23c24edc3e9fa",
+      "exists": true
+    },
+    {
+      "path": "docs/development/rag-workspace-clarity-20261107/DELIVERY.md",
+      "sha256": "176039abfc1e1b4bd79a2dbcd7357a12e1bc101ef2290b0265befc9db2bc0d0f",
+      "bytes": 3151,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": "4aa94a7b9dda82c846dd5cc2a14a214ee495d60a",
+      "exists": true
+    },
+    {
+      "path": "docs/development/rag-workspace-clarity-20261107/RESULTS.md",
+      "sha256": "04a9e3e13d3a36690511cdafc3285d7747b16beb3984577e6646fe0f5e9e1bb1",
+      "bytes": 4371,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": "04b23eb2ca869ff1087ac823635e09567ea5d230",
+      "exists": true
+    },
+    {
+      "path": "docs/development/rag-workspace-clarity-20261107/evidence/source-identity.json",
+      "sha256": "e5f60dd3555c43dd88a811569b70013a1b8cb71d412ab535a55cfa15aa79b9e0",
+      "bytes": 3710,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": "3499cb53c3f40f044470e0a65ee8c65bc802ac9d",
+      "exists": true
+    },
+    {
+      "path": "docs/development/project-progress-20261109/PLAN-FOR-AI.md",
+      "sha256": "54eb2dba6fc9e07309a6fe6d2775dafbe7fcb934f00d9c63b6976dbf16ae2646",
+      "bytes": 1828,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": "341da3114056264fe8a67f628734de0bd81f396a",
+      "exists": true
+    },
+    {
+      "path": "evidence_rag/api.py",
+      "sha256": "741fa0860ba77cd890b7393dd2588231a56aea0e10db2d4de7786fa077252ecc",
+      "bytes": 35828,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": null,
+      "exists": true
+    },
+    {
+      "path": "evidence_rag/exploration.py",
+      "sha256": "1c786f9619be38ed40cb81f194cb56093a09ce5ae218d2fe8cc1a3a7d699f483",
+      "bytes": 4044,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": null,
+      "exists": true
+    },
+    {
+      "path": "evidence_rag/grounding.py",
+      "sha256": "76d53baa97cf7edb9270ad2af793ad1eea606522b77a3268f4ef78fbfb9cd17f",
+      "bytes": 5624,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": null,
+      "exists": true
+    },
+    {
+      "path": "evidence_rag/ingest.py",
+      "sha256": "8d70053a47f0ecd38989163b333dde4c3ffaa54df79d9039d6ece760fcd0581c",
+      "bytes": 2086,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": null,
+      "exists": true
+    },
+    {
+      "path": "evidence_rag/viking_index.py",
+      "sha256": "47124276d5fb0de5c00eee52f4c648ffa6b41f40ef15d36979f7e3c8c3e49d38",
+      "bytes": 6891,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": null,
+      "exists": true
+    },
+    {
+      "path": "benchmarks/serve_user_flow.py",
+      "sha256": "6a16660dc5eb02290c06c5ba9594aa2aa7c02e67c193a7e93ba832bbafeec390",
+      "bytes": 1492,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": null,
+      "exists": true
+    },
+    {
+      "path": "examples/README.md",
+      "sha256": "cc20cc69cd5be5473e51d413180d89a9ecd96ab3bd4b30312e1e8fda79e2e63c",
+      "bytes": 6483,
+      "source": "RAG repo fixed commit",
+      "remote_blob_sha": null,
+      "exists": true
+    }
+  ]
+}

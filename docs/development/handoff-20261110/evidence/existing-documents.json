@@ -1,0 +1,2462 @@
+[
+  {
+    "path": "README.md",
+    "git_blob_sha": "3a1d9a5c6a327a712299d9525eb4636943c7a4e5",
+    "bytes": 8488
+  },
+  {
+    "path": "docs/development/bvio-superagent-research-20261107/BENCHMARK-PROTOCOL.md",
+    "git_blob_sha": "242e7c6b9f64fb84bc278b5491f010ea6fad35c3",
+    "bytes": 11711
+  },
+  {
+    "path": "docs/development/bvio-superagent-research-20261107/PLAN-FOR-AI.md",
+    "git_blob_sha": "9476bb494b51f1f96ff98a0ebdd996e9860eefb1",
+    "bytes": 15841
+  },
+  {
+    "path": "docs/development/bvio-superagent-research-20261107/PLAN-FOR-YOU.md",
+    "git_blob_sha": "a7a897847e0b87164fac0b8f356773dfaa302f4d",
+    "bytes": 8304
+  },
+  {
+    "path": "docs/development/bvio-superagent-research-20261107/RAG-COMPARISON.md",
+    "git_blob_sha": "e904d0ebb4a3857aa9ba10fef4ca63d2ebff0455",
+    "bytes": 11713
+  },
+  {
+    "path": "docs/development/bvio-superagent-research-20261107/RESEARCH-VALIDATION.md",
+    "git_blob_sha": "985588a0e5f681a7016912985b51a0c73ea3f09f",
+    "bytes": 4534
+  },
+  {
+    "path": "docs/development/bvio-superagent-research-20261107/REVIEW.md",
+    "git_blob_sha": "039bf07f67aee5175c6a8a9ecafe375a3cb67617",
+    "bytes": 9981
+  },
+  {
+    "path": "docs/development/bvio-superagent-research-20261107/SOURCES.md",
+    "git_blob_sha": "a1405880ff44511d0e4b06f48c69e6feb26d695e",
+    "bytes": 7508
+  },
+  {
+    "path": "docs/development/bvio-superagent-research-20261107/SUPERAGENT-INTEGRATION.md",
+    "git_blob_sha": "653fd154566e46c4ebd1e273989641cde6f7c30a",
+    "bytes": 8966
+  },
+  {
+    "path": "docs/development/bvio-superagent-research-20261107/SUPERAGENT-SOURCE-INDEX.md",
+    "git_blob_sha": "7d6fe16294d59f112c1e05e33a95c935e4657802",
+    "bytes": 18004
+  },
+  {
+    "path": "docs/development/bvio-superagent-research-20261107/evidence/audit-gcode-skill-contract.py",
+    "git_blob_sha": "9515a89e3d749d77da7ada3cffc4aa16bf430a25",
+    "bytes": 2517
+  },
+  {
+    "path": "docs/development/bvio-superagent-research-20261107/evidence/business-source-after.json",
+    "git_blob_sha": "11e6d341f023d461f970e9129375dc4d14998645",
+    "bytes": 751
+  },
+  {
+    "path": "docs/development/bvio-superagent-research-20261107/evidence/business-source-before.json",
+    "git_blob_sha": "df865e3b2757193122700dffeca3611f2c8e8218",
+    "bytes": 38604
+  },
+  {
+    "path": "docs/development/bvio-superagent-research-20261107/evidence/bvio-pure-probe-v1-results.json",
+    "git_blob_sha": "7b2514f3c658e32ca491272c21a116f516041e51",
+    "bytes": 4537
+  },
+  {
+    "path": "docs/development/bvio-superagent-research-20261107/evidence/bvio-pure-probe-v2-results.json",
+    "git_blob_sha": "7277ff09fbb49136796e563509d240b52fdec838",
+    "bytes": 4965
+  },
+  {
+    "path": "docs/development/bvio-superagent-research-20261107/evidence/bvio-source-integrity-audit.json",
+    "git_blob_sha": "6ff811250865d0d416cc2b5e4dd3366e8463b6dd",
+    "bytes": 812
+  },
+  {
+    "path": "docs/development/bvio-superagent-research-20261107/evidence/gcode-skill-contract-v1.json",
+    "git_blob_sha": "f85b600ce93502ed9bb6cbd110290fab011cb65f",
+    "bytes": 1085
+  },
+  {
+    "path": "docs/development/bvio-superagent-research-20261107/evidence/gcode-skill-contract-v2.json",
+    "git_blob_sha": "cab627f03203ba283ad6762bdaf4f8b566e5eeab",
+    "bytes": 1146
+  },
+  {
+    "path": "docs/development/bvio-superagent-research-20261107/evidence/gcode-source-manifest.json",
+    "git_blob_sha": "6b6204cad9d3dd59792196042ad69ca9e9c95e3d",
+    "bytes": 6082
+  },
+  {
+    "path": "docs/development/bvio-superagent-research-20261107/evidence/reference-readonly-checks.json",
+    "git_blob_sha": "06159979a331892faa597ec8a0ed375307cb346f",
+    "bytes": 46795
+  },
+  {
+    "path": "docs/development/bvio-superagent-research-20261107/evidence/superagent-source-manifest.json",
+    "git_blob_sha": "24ac79f0635c542199d0cdc635ccf40aec0589f5",
+    "bytes": 17838
+  },
+  {
+    "path": "docs/development/bvio-superagent-research-20261107/review/PLAN-FOR-AI.md",
+    "git_blob_sha": "e7422efd1067e111b53ba53cb028d23ce2ee84ba",
+    "bytes": 2897
+  },
+  {
+    "path": "docs/development/bvio-superagent-research-20261107/review/PLAN-FOR-YOU.md",
+    "git_blob_sha": "59c68cfca95f5a0598b981196900173d301f640a",
+    "bytes": 1194
+  },
+  {
+    "path": "docs/development/bvio-superagent-research-20261107/review/REVIEW.md",
+    "git_blob_sha": "039bf07f67aee5175c6a8a9ecafe375a3cb67617",
+    "bytes": 9981
+  },
+  {
+    "path": "docs/development/bvio-superagent-research-20261107/review/STOPPED.json",
+    "git_blob_sha": "b634334943d6fd285d6f6a852f78d71b36283cc7",
+    "bytes": 1551
+  },
+  {
+    "path": "docs/development/bvio-superagent-research-20261107/review/SUBJECT-HASHES.json",
+    "git_blob_sha": "44ea228fe2edd8ae83b164893348ab70e909a10b",
+    "bytes": 3019
+  },
+  {
+    "path": "docs/development/bvio-superagent-research-20261107/review/ast-recomputed.json",
+    "git_blob_sha": "36819d9bd2b29ebc4b7ab4e9c467de95077c8c5c",
+    "bytes": 1145
+  },
+  {
+    "path": "docs/development/bvio-superagent-research-20261107/review/final-document-checks.json",
+    "git_blob_sha": "ea5afdc28b96c84863a0b9bd0e8ef0df1a95c67a",
+    "bytes": 8647
+  },
+  {
+    "path": "docs/development/bvio-superagent-research-20261107/review/source-and-experiment-checks-v1.json",
+    "git_blob_sha": "5236e759c034a162230fdfa2396f5b64bb323ec2",
+    "bytes": 1216
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/DELIVERY.json",
+    "git_blob_sha": "eec012e9029cbcad1e7eaabbbf4dc811f69c1357",
+    "bytes": 1856
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/PLAN-FOR-AI.md",
+    "git_blob_sha": "dffe9d6ab371d01f670137d1df3743c0ce0cb8bb",
+    "bytes": 6836
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/PLAN-FOR-YOU.md",
+    "git_blob_sha": "34a115dc06b54f27687499c0d9b37ca60329d4e6",
+    "bytes": 3890
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/TECHNOLOGY-DECISIONS.md",
+    "git_blob_sha": "9de035abb3a70142693bce9160b7fe58a93f6de9",
+    "bytes": 3599
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/WORK.md",
+    "git_blob_sha": "d56d3192a3d6c3506d96799e8c383972620f0482",
+    "bytes": 7530
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/build-delivery.log",
+    "git_blob_sha": "1a6a66822b1d69ab538061cdf80c01549f7e53de",
+    "bytes": 6537
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/byte-budget-tokenizer-fixtures.json",
+    "git_blob_sha": "1ca755ccd4fa50b22022385a3933205ea73de47a",
+    "bytes": 1533
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/candidate-source.json",
+    "git_blob_sha": "b7cd23672c38ba988349572729cea2a3889bdf07",
+    "bytes": 4669
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/cloud-probe-local-fake.json",
+    "git_blob_sha": "f76bb33572ff1c139911ee092630669b34325765",
+    "bytes": 5135
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/code-sha256.txt",
+    "git_blob_sha": "68ec671c4de5d637a97a583f93b7e2fefc171d4c",
+    "bytes": 2550
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/conservative-code-sha256.txt",
+    "git_blob_sha": "95b9487f460eefa01da3aea72d41a6c5f2f6cf28",
+    "bytes": 473
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/http-smoke.json",
+    "git_blob_sha": "2870dcb9ce95fada942119b318b7bd377f335db0",
+    "bytes": 5736
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/independent-review/REPORT-before-retest.md",
+    "git_blob_sha": "68a09eb8484745796238e383a56ef3d0cdb5550d",
+    "bytes": 6749
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/independent-review/REPORT.md",
+    "git_blob_sha": "887bb7004cdf6ef84332aa9c8ab4b7eb08df8b95",
+    "bytes": 8766
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/independent-review/catalog-integrity-probe-before-fix.json",
+    "git_blob_sha": "8787a58c166469fe031c44a9415b2e4548fbcb45",
+    "bytes": 354
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/independent-review/catalog-integrity-probe.json",
+    "git_blob_sha": "8787a58c166469fe031c44a9415b2e4548fbcb45",
+    "bytes": 354
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/independent-review/catalog_after_probe.json",
+    "git_blob_sha": "1d28252dfdb3cb18e6c21fc9fef8277ade39b2e9",
+    "bytes": 94
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/independent-review/catalog_after_probe.py",
+    "git_blob_sha": "a1c62d8614dbeb99d1b2795464e4d6f8d8d4eb61",
+    "bytes": 953
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/independent-review/catalog_integrity_probe.py",
+    "git_blob_sha": "6cec7dccbedccf31710778a414c2cbe8fb48f616",
+    "bytes": 1221
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/independent-review/fake-api-probe-after-fix.json",
+    "git_blob_sha": "f0bfbf0d0abe493cd8edafa303ba3712c13b04b9",
+    "bytes": 2682
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/independent-review/fake-api-probe-before-fix.json",
+    "git_blob_sha": "e2683a3d20d735de5c66d9da5d62f2a0af5f8898",
+    "bytes": 3464
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/independent-review/fake-api-probe-final.json",
+    "git_blob_sha": "4875597c18a03f0b08594cbd7100e11229dd0c4d",
+    "bytes": 2682
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/independent-review/fake-api-probe.json",
+    "git_blob_sha": "e2683a3d20d735de5c66d9da5d62f2a0af5f8898",
+    "bytes": 3464
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/independent-review/fake_api_probe.py",
+    "git_blob_sha": "2f838a83dd7cd9fc6178c3a00408c377f29ce034",
+    "bytes": 3114
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/independent-review/final-integrity-junit.xml",
+    "git_blob_sha": "d540067163bacdf34be5da3977b693e3cd27119f",
+    "bytes": 2148
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/independent-review/final-integrity.log",
+    "git_blob_sha": "3c96a5f6753e3e2442aecd0eb69c2ec1232fa3fa",
+    "bytes": 1798
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/independent-review/rerank-part-probe-before-fix.json",
+    "git_blob_sha": "ff5584b3f30843351b3651974c32423aadc1f98f",
+    "bytes": 1051
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/independent-review/rerank-part-probe.json",
+    "git_blob_sha": "ff5584b3f30843351b3651974c32423aadc1f98f",
+    "bytes": 1051
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/independent-review/rerank_after_probe.json",
+    "git_blob_sha": "3cf285e78813d3d8fe91c5cf2470434dce2ba92a",
+    "bytes": 2244
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/independent-review/rerank_after_probe.py",
+    "git_blob_sha": "991d9653bed87ed2447202a39a8462f89b7d3cf3",
+    "bytes": 1664
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/independent-review/rerank_part_probe.py",
+    "git_blob_sha": "e29aa93452029b7fcba5c8892b3ac72972d4c4eb",
+    "bytes": 1655
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/independent-review/resource-probe-before-fix.json",
+    "git_blob_sha": "7fa945679ac334db8ce0bf36eba21fffdb056940",
+    "bytes": 390
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/independent-review/resource-probe.json",
+    "git_blob_sha": "7fa945679ac334db8ce0bf36eba21fffdb056940",
+    "bytes": 390
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/independent-review/resource_after_probe.json",
+    "git_blob_sha": "a275aeedc044a8b49701151bf5c3646c53ac3589",
+    "bytes": 422
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/independent-review/resource_after_probe.py",
+    "git_blob_sha": "b334b12e5b7b748e43c0577c8f632b508ed103d9",
+    "bytes": 2094
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/independent-review/resource_probe.py",
+    "git_blob_sha": "5e5877df1bd824b7cd1118bb2ca65c9aab81d38e",
+    "bytes": 2159
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/independent-review/retest-manifest.json",
+    "git_blob_sha": "d74bdc87ab7690d6bfe240300f7d7a62b312e2e7",
+    "bytes": 3334
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/openviking-input-policy-audit.json",
+    "git_blob_sha": "7c78911ff58543c71f0db5d91db5ca440016dfa2",
+    "bytes": 1253
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/openviking-public-config-check.json",
+    "git_blob_sha": "6aadafcb44a7f9e7251678204d768a497a245bc8",
+    "bytes": 456
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/openviking-public-config-first-error.json",
+    "git_blob_sha": "d873c718217d50a28a64d158cf45cca4b36d83fa",
+    "bytes": 396
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/public-embedding-example-runtime.json",
+    "git_blob_sha": "26cbded02c367c22cc4b393b483ed660eb5a83ea",
+    "bytes": 657
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/public-embedding-example-smoke.json",
+    "git_blob_sha": "3dc8f930eb8c32616194b2eefaf6d07fbc2b435f",
+    "bytes": 717
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/public-entry-build.json",
+    "git_blob_sha": "d307d615e39f0e585b9eece01669c1b79a42bfd1",
+    "bytes": 1312
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/rag-real-cloud-selected-probe.json",
+    "git_blob_sha": "a963d4598f2de87ec106e9a6a52ee0fbc3a3432e",
+    "bytes": 9330
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/real-cloud-synthetic.json",
+    "git_blob_sha": "9fa900ab96a4a331384d962433498a9d644f89bc",
+    "bytes": 11621
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/reconcile-smoke.json",
+    "git_blob_sha": "3acabf1f8da734a0612469b7cb52b19a92f4ab4a",
+    "bytes": 3929
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/review-REPORT-before-retest.md",
+    "git_blob_sha": "ec8eb21c23b7af8f2c317e23d80c6d888a6b0d48",
+    "bytes": 113
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/review-REPORT.md",
+    "git_blob_sha": "e0e6732da029ba2ddc3bcaf1b241488559f09934",
+    "bytes": 99
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/review-catalog-integrity-probe.json",
+    "git_blob_sha": "8787a58c166469fe031c44a9415b2e4548fbcb45",
+    "bytes": 354
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/review-fake-api-probe.json",
+    "git_blob_sha": "e2683a3d20d735de5c66d9da5d62f2a0af5f8898",
+    "bytes": 3464
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/review-rerank-part-probe.json",
+    "git_blob_sha": "ff5584b3f30843351b3651974c32423aadc1f98f",
+    "bytes": 1051
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/review-resource-probe.json",
+    "git_blob_sha": "7fa945679ac334db8ce0bf36eba21fffdb056940",
+    "bytes": 390
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/review-retest-manifest.json",
+    "git_blob_sha": "d74bdc87ab7690d6bfe240300f7d7a62b312e2e7",
+    "bytes": 3334
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/root-final-results-audit.json",
+    "git_blob_sha": "fb8751742bae627bedc05bc4142376f141152f4c",
+    "bytes": 722
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/tests-conservative.xml",
+    "git_blob_sha": "cc11e5460b7356254ddc8adc3e3eab70ad0b6101",
+    "bytes": 7857
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/tests-delivery.log",
+    "git_blob_sha": "b7719de1765fb9faf9a45a7fb7b1e0374f2fe446",
+    "bytes": 1654
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/tests-delivery.xml",
+    "git_blob_sha": "9433174dae7c3f3da2ee9efcd7328afe912ff33e",
+    "bytes": 12616
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/tests-public-entry.xml",
+    "git_blob_sha": "d327e837be050747ce7b791dcf535806acdc0dec",
+    "bytes": 8498
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/tests-review-fixes.log",
+    "git_blob_sha": "bfc7e699d23608feec9ccdea22ae9eaafe17da0b",
+    "bytes": 1653
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/tests-review-fixes.xml",
+    "git_blob_sha": "b4767fa20dc76d61a2cb2cd2d777edb4f3c0f03f",
+    "bytes": 9429
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/tests-v3-complete.log",
+    "git_blob_sha": "536c6fa3e7ce0e886fe5b698ac5a870837b9e0dd",
+    "bytes": 1654
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/tests-v3-complete.xml",
+    "git_blob_sha": "c4f56ed3bee7858744a89b5d68c254faa31b0b0c",
+    "bytes": 12208
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/tests-v3-first.log",
+    "git_blob_sha": "20ce824c3576753dcd4acc6d8cb5d22e3639b288",
+    "bytes": 1653
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/tests-v3-first.xml",
+    "git_blob_sha": "dd3a5de95b19aa4b90e611f096808ad27fe559cd",
+    "bytes": 11365
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/tests.xml",
+    "git_blob_sha": "383a996f6d9c6b8367678d1d2043d9e77621c3ff",
+    "bytes": 7087
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/trace-revision_4a906c039a82.json",
+    "git_blob_sha": "6438ba018275445bf1e4499ae9cfae6d933663c4",
+    "bytes": 1711
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/trace-revision_4f00bca1e710.json",
+    "git_blob_sha": "6a9cc197dd265df2a14949136f43a8e2f910dde0",
+    "bytes": 22701
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/trace-revision_d8505d20bb7e.json",
+    "git_blob_sha": "4a01f2d384bb18f1555fcde2a558b66e822d1f88",
+    "bytes": 16431
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/trace-revision_df00d6f6d6ae.json",
+    "git_blob_sha": "848eba298232fa16bd40e31d3864ba0f6100ef26",
+    "bytes": 22677
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/wheel-clean-install.json",
+    "git_blob_sha": "8cb76ef2f7fb486e17f701707d37e56ea722a69d",
+    "bytes": 2588
+  },
+  {
+    "path": "docs/development/general-evidence-rag-20261106/evidence/wheel-clean-install.log",
+    "git_blob_sha": "c9c8ab0d8a8c7d9e6655c7c8d285220fbfe17e7a",
+    "bytes": 7053
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/README.md",
+    "git_blob_sha": "e981b5e4bedbe4fbe89c1a0d0aa72e86d17aabcd",
+    "bytes": 8821
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/RESULTS.md",
+    "git_blob_sha": "d81559dc910a46d0d9b49e992a66286d5a016a89",
+    "bytes": 7560
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/evidence-final/copy-integrity.json",
+    "git_blob_sha": "7c1226ddf24e9338cb07ebeb7e95bcd695327425",
+    "bytes": 4410
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/evidence-final/scifact-product-bge-bge-validation.json",
+    "git_blob_sha": "ba72cbcb828066c87318061cd48e8207456c5e72",
+    "bytes": 1172905
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/evidence-final/scifact-product-bge-qwen-validation.json",
+    "git_blob_sha": "38ea354685866b5bf44321e232e42b2a51a12c6f",
+    "bytes": 1147987
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/evidence-final/scifact-product-qwen-bge-validation.json",
+    "git_blob_sha": "183e1f1a930923ae0aa034b9344983390f454351",
+    "bytes": 1180422
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/evidence-final/scifact-product-qwen-qwen-validation.json",
+    "git_blob_sha": "b4605d74529fea2707b7c9c788e69da2b8bb96d9",
+    "bytes": 1155668
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/evidence-final/scifact-product-v2-paired-bootstrap.json",
+    "git_blob_sha": "9acda9669c91730e875b104b1b5278be4702cc12",
+    "bytes": 7744
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/evidence-final/scifact-product-v4-bge-qwen-selection.json",
+    "git_blob_sha": "effafadf882a5825dfcf69bd48f89c40333475ef",
+    "bytes": 1723
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/evidence-final/scifact-product-v4-bge-qwen-test-journal-verification.json",
+    "git_blob_sha": "c7e526f4acd318900e8c60d4d777bed0aa0f8f8a",
+    "bytes": 533
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/evidence-final/scifact-product-v4-bge-qwen-test.json",
+    "git_blob_sha": "c7ecfacc2ebc8940485778d62c8eebb8182aff1c",
+    "bytes": 10663821
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/evidence-final/scifact-product-v4-bge-qwen-test.json.journal.jsonl",
+    "git_blob_sha": "db73fbe3f4b9a511b71c238b0ee10005ab457036",
+    "bytes": 5897437
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/evidence-final/scifact-product-v4-bge-qwen-validation-journal-verification.json",
+    "git_blob_sha": "960971b69dd62a31e0577872490c7a3efc2865e0",
+    "bytes": 538
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/evidence-final/scifact-product-v4-bge-qwen-validation.json",
+    "git_blob_sha": "428a1afeda465e3323bc3a8d271f47556f529453",
+    "bytes": 1148037
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/evidence-final/scifact-product-v4-bge-qwen-validation.json.journal.jsonl",
+    "git_blob_sha": "ed0a07ccc6b1dd4f143a3fbbe0dcce20f7b9e46a",
+    "bytes": 636072
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/evidence-final/scifact-product-v4-lexical-selection.json",
+    "git_blob_sha": "7f6f6931de6fc48e6619f7991cb00f641600bd4c",
+    "bytes": 1715
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/evidence-final/scifact-product-v4-lexical-test-journal-verification.json",
+    "git_blob_sha": "778ddd0c921b4ed140021f5ea933d1617d418e85",
+    "bytes": 533
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/evidence-final/scifact-product-v4-lexical-test.json",
+    "git_blob_sha": "a928f13833d2a31c751f40909f5e2e4c5644503f",
+    "bytes": 6320356
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/evidence-final/scifact-product-v4-lexical-test.json.journal.jsonl",
+    "git_blob_sha": "f4e729f13f1557941eb2da999317db21dccce0db",
+    "bytes": 3537661
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/evidence-final/scifact-product-v4-lexical-validation-journal-verification.json",
+    "git_blob_sha": "30722637387821eff0290f56987cb4de1dc5131e",
+    "bytes": 538
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/evidence-final/scifact-product-v4-lexical-validation.json",
+    "git_blob_sha": "bc7fca4a916d98cef9a06ace1e8dd46347a8801d",
+    "bytes": 676466
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/evidence-final/scifact-product-v4-lexical-validation.json.journal.jsonl",
+    "git_blob_sha": "ba07922192d5c743e2098378c9764205fd039948",
+    "bytes": 379190
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/evidence-final/scifact-product-v4-test-paired-bootstrap.json",
+    "git_blob_sha": "61e4a8b3fdb454363206e015de7cb192e13fe43e",
+    "bytes": 2072
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/evidence-final/scifact-product-v4-test-trec-crosscheck.json",
+    "git_blob_sha": "e66888a22da827fec4d3de91682c793b12bb5b37",
+    "bytes": 59649
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/evidence-final/scifact-test-source-after.json",
+    "git_blob_sha": "942e1667d01066334a1aeaaf2b2e90cd046025b6",
+    "bytes": 1385
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/evidence-final/scifact-test-source-before.json",
+    "git_blob_sha": "f5704893e9aa07d1cc44855371815635a08acd02",
+    "bytes": 1545
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/evidence-final/scifact-v2-v3-cache-migration.json",
+    "git_blob_sha": "f5f9439c8360aafa0d98e3e8a4ee2fc8bc4560f2",
+    "bytes": 2003
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/evidence-final/scifact-v2-v3-input-equivalence-v2.json",
+    "git_blob_sha": "9fc5ae2011d59142898a67cc6dde4c90e271cf90",
+    "bytes": 4007594
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/evidence-final/scifact-v3-choice-before-test.json",
+    "git_blob_sha": "9b2af1d8b727fc148cf883e44ab57ecd19e1aebb",
+    "bytes": 765
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/nfcorpus-bm25-validation-v2.json",
+    "git_blob_sha": "11cc39195a0fc5ea0888ac0640fbb80b7d0eab34",
+    "bytes": 607904
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/nfcorpus-bm25-validation-v3.json",
+    "git_blob_sha": "1bc64a23ea2111d0b8e3bc5468df4588f0561bf8",
+    "bytes": 607897
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/nfcorpus-bm25-validation.json",
+    "git_blob_sha": "9f53ac22eea77fc67c6aec622f77e9b0b9735804",
+    "bytes": 607900
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/nfcorpus-product-lexical-validation.json",
+    "git_blob_sha": "de71ab6be73bd5f7534d30842395ecbc053aa1de",
+    "bytes": 406764
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/product-freeze-attestation.json",
+    "git_blob_sha": "68d4750c94aae33e013eb7685e6014fb96defde2",
+    "bytes": 619
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/qwen-reranker-diagnostic.json",
+    "git_blob_sha": "9ee1b4a2b966aac26fb5a9f78fe62e0def3d70c7",
+    "bytes": 644
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/qwen-reranker-file-integrity-v2.json",
+    "git_blob_sha": "852df7eb4fd269ad6ff54027ae0bdfc2ca6fb535",
+    "bytes": 2066
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/scifact-bm25-validation-v2.json",
+    "git_blob_sha": "c097881f914386c00682d8d92a3805f24e01514a",
+    "bytes": 1157681
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/scifact-bm25-validation-v3.json",
+    "git_blob_sha": "f271fdf71cb8793c1990ce54b8aa8f450abfd43c",
+    "bytes": 1157680
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/scifact-bm25-validation.json",
+    "git_blob_sha": "c8fbb7b45da568e1f946d3f1e0a24a4c512e2fd5",
+    "bytes": 1157377
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/scifact-official-test-summary.json",
+    "git_blob_sha": "ac766cfbdf422e48c313fb83f4dc7abfb34e6e7b",
+    "bytes": 4401
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/scifact-product-bge-bge-validation.json",
+    "git_blob_sha": "ba72cbcb828066c87318061cd48e8207456c5e72",
+    "bytes": 1172905
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/scifact-product-bge-qwen-validation.json",
+    "git_blob_sha": "38ea354685866b5bf44321e232e42b2a51a12c6f",
+    "bytes": 1147987
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/scifact-product-lexical-validation-v2.json",
+    "git_blob_sha": "10178f8b847aa4b8c3c8c6a77ef379fa15a27619",
+    "bytes": 676427
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/scifact-product-lexical-validation.json",
+    "git_blob_sha": "cae274bd1afee0843dcd6ae22bbcd48992687fa6",
+    "bytes": 676438
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/scifact-product-qwen-bge-validation.json",
+    "git_blob_sha": "183e1f1a930923ae0aa034b9344983390f454351",
+    "bytes": 1180422
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/scifact-product-qwen-qwen-validation.json",
+    "git_blob_sha": "b4605d74529fea2707b7c9c788e69da2b8bb96d9",
+    "bytes": 1155668
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/scifact-product-trec-crosscheck.json",
+    "git_blob_sha": "cd10d4d13dc5e574a451b3bf086a476e30d7f4ee",
+    "bytes": 805
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/scifact-product-v2-equivalence.json",
+    "git_blob_sha": "e6bc17880802489888a4bbb840fee1b63af8e34f",
+    "bytes": 463
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/scifact-product-v2-paired-bootstrap.json",
+    "git_blob_sha": "9acda9669c91730e875b104b1b5278be4702cc12",
+    "bytes": 7744
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/scifact-product-v3-bge-qwen-validation.json",
+    "git_blob_sha": "d42df7247e6253c2ed545898a168a39a82651181",
+    "bytes": 1147996
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/scifact-product-v3-lexical-validation.json",
+    "git_blob_sha": "617198b0edeb33dba282b9f174a87c0beb716cc5",
+    "bytes": 676420
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/scifact-product-v4-bge-qwen-selection.json",
+    "git_blob_sha": "effafadf882a5825dfcf69bd48f89c40333475ef",
+    "bytes": 1723
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/scifact-product-v4-bge-qwen-validation.json",
+    "git_blob_sha": "428a1afeda465e3323bc3a8d271f47556f529453",
+    "bytes": 1148037
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/scifact-product-v4-bge-qwen-validation.json.journal.jsonl",
+    "git_blob_sha": "ed0a07ccc6b1dd4f143a3fbbe0dcce20f7b9e46a",
+    "bytes": 636072
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/scifact-product-v4-lexical-selection.json",
+    "git_blob_sha": "7f6f6931de6fc48e6619f7991cb00f641600bd4c",
+    "bytes": 1715
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/scifact-product-v4-lexical-validation.json",
+    "git_blob_sha": "bc7fca4a916d98cef9a06ace1e8dd46347a8801d",
+    "bytes": 676466
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/scifact-product-v4-lexical-validation.json.journal.jsonl",
+    "git_blob_sha": "ba07922192d5c743e2098378c9764205fd039948",
+    "bytes": 379190
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/scifact-v2-cache-audit.json",
+    "git_blob_sha": "5f31a4f6d3cfcf5a4b03184e62545325dfb8fc27",
+    "bytes": 3291
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/scifact-v2-v3-cache-migration.json",
+    "git_blob_sha": "f5f9439c8360aafa0d98e3e8a4ee2fc8bc4560f2",
+    "bytes": 2003
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/scifact-v2-v3-input-equivalence-v2.json",
+    "git_blob_sha": "9fc5ae2011d59142898a67cc6dde4c90e271cf90",
+    "bytes": 4007594
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/README.md",
+    "git_blob_sha": "7d21c14e6adeed1c556906a0e0cf70d73080f9e0",
+    "bytes": 980
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v2/SOURCE-SHA256.json",
+    "git_blob_sha": "9508a0ea2dc9f855056b6e2f7a460bd20645c333",
+    "bytes": 1064
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v2/benchmarks/core.py",
+    "git_blob_sha": "3961e4f57672ccaab3cfa653f183889a766d4dec",
+    "bytes": 3030
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v2/benchmarks/freeze_product.py",
+    "git_blob_sha": "f2c2c3ce8a794572fced87e704a98fee8f0c2e3e",
+    "bytes": 1922
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v2/benchmarks/metrics.py",
+    "git_blob_sha": "036482d180c6235899c6ee6884ddd8b6f5d2d7bb",
+    "bytes": 964
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v2/benchmarks/prepare.py",
+    "git_blob_sha": "20bb0163da4d164136c1e466b7a498bf69d31cb6",
+    "bytes": 5852
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v2/benchmarks/product.py",
+    "git_blob_sha": "20798194fac4dcb1c220e52be19700fbabd1a373",
+    "bytes": 1490
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v2/benchmarks/run.py",
+    "git_blob_sha": "8196a8c3d5d49729a9d7cb1169556031cd0c3138",
+    "bytes": 15084
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v2/benchmarks/run_product.py",
+    "git_blob_sha": "7c92c5ac7449a148dec66630e6fe54a007b3d237",
+    "bytes": 12254
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v2/benchmarks/select.py",
+    "git_blob_sha": "a1a6b57f5388f66a7eb9a39562657fb82ff79f44",
+    "bytes": 1742
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v2/evidence_rag/catalog.py",
+    "git_blob_sha": "1b9316d6d3adbc6c5579a59ad68cf32ef291d05e",
+    "bytes": 21587
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v2/evidence_rag/retrieval.py",
+    "git_blob_sha": "1896111ebfb4633e7356f99f2e6c3e2451bd75aa",
+    "bytes": 17532
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v2/evidence_rag/viking_index.py",
+    "git_blob_sha": "bbf2dc6952ab0f225db0d23e9336dc227e36f2eb",
+    "bytes": 5329
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v2/freeze.json",
+    "git_blob_sha": "d1dda35e8433f1bed901039f3de47f71c57e975a",
+    "bytes": 2617
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v3/SOURCE-SHA256.json",
+    "git_blob_sha": "501d5fe7d1440c6f6a8c910245e6873246dcea47",
+    "bytes": 1064
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v3/benchmarks/core.py",
+    "git_blob_sha": "3961e4f57672ccaab3cfa653f183889a766d4dec",
+    "bytes": 3030
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v3/benchmarks/freeze_product.py",
+    "git_blob_sha": "f2c2c3ce8a794572fced87e704a98fee8f0c2e3e",
+    "bytes": 1922
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v3/benchmarks/metrics.py",
+    "git_blob_sha": "036482d180c6235899c6ee6884ddd8b6f5d2d7bb",
+    "bytes": 964
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v3/benchmarks/prepare.py",
+    "git_blob_sha": "20bb0163da4d164136c1e466b7a498bf69d31cb6",
+    "bytes": 5852
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v3/benchmarks/product.py",
+    "git_blob_sha": "20798194fac4dcb1c220e52be19700fbabd1a373",
+    "bytes": 1490
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v3/benchmarks/run.py",
+    "git_blob_sha": "8196a8c3d5d49729a9d7cb1169556031cd0c3138",
+    "bytes": 15084
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v3/benchmarks/run_product.py",
+    "git_blob_sha": "7c92c5ac7449a148dec66630e6fe54a007b3d237",
+    "bytes": 12254
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v3/benchmarks/select.py",
+    "git_blob_sha": "a1a6b57f5388f66a7eb9a39562657fb82ff79f44",
+    "bytes": 1742
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v3/evidence_rag/catalog.py",
+    "git_blob_sha": "173997f2a2cbe7be5c51d1ec2cde2c285b3e6c66",
+    "bytes": 22035
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v3/evidence_rag/retrieval.py",
+    "git_blob_sha": "41f5b9d0a0e570b3ab5d9550aaf3f5ea7317b1a7",
+    "bytes": 18338
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v3/evidence_rag/viking_index.py",
+    "git_blob_sha": "bbf2dc6952ab0f225db0d23e9336dc227e36f2eb",
+    "bytes": 5329
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v3/freeze.json",
+    "git_blob_sha": "33c81080e4229853adc122c824394940c3e5c702",
+    "bytes": 2617
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v4/SOURCE-SHA256.json",
+    "git_blob_sha": "69e34e43a4e5f9f05b7a21aa2a72ba0e6b5b0a44",
+    "bytes": 1064
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v4/benchmarks/core.py",
+    "git_blob_sha": "3961e4f57672ccaab3cfa653f183889a766d4dec",
+    "bytes": 3030
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v4/benchmarks/freeze_product.py",
+    "git_blob_sha": "f2c2c3ce8a794572fced87e704a98fee8f0c2e3e",
+    "bytes": 1922
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v4/benchmarks/metrics.py",
+    "git_blob_sha": "036482d180c6235899c6ee6884ddd8b6f5d2d7bb",
+    "bytes": 964
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v4/benchmarks/prepare.py",
+    "git_blob_sha": "20bb0163da4d164136c1e466b7a498bf69d31cb6",
+    "bytes": 5852
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v4/benchmarks/product.py",
+    "git_blob_sha": "20798194fac4dcb1c220e52be19700fbabd1a373",
+    "bytes": 1490
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v4/benchmarks/run.py",
+    "git_blob_sha": "8196a8c3d5d49729a9d7cb1169556031cd0c3138",
+    "bytes": 15084
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v4/benchmarks/run_product.py",
+    "git_blob_sha": "9f064e58525c5fcd93d5f131371514c6c194a61e",
+    "bytes": 14129
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v4/benchmarks/select.py",
+    "git_blob_sha": "a1a6b57f5388f66a7eb9a39562657fb82ff79f44",
+    "bytes": 1742
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v4/evidence_rag/catalog.py",
+    "git_blob_sha": "173997f2a2cbe7be5c51d1ec2cde2c285b3e6c66",
+    "bytes": 22035
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v4/evidence_rag/retrieval.py",
+    "git_blob_sha": "41f5b9d0a0e570b3ab5d9550aaf3f5ea7317b1a7",
+    "bytes": 18338
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v4/evidence_rag/viking_index.py",
+    "git_blob_sha": "bbf2dc6952ab0f225db0d23e9336dc227e36f2eb",
+    "bytes": 5329
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/source-snapshots/v4/freeze.json",
+    "git_blob_sha": "3429f11c7fae29cc6fa49b46d7b78326fc48ab85",
+    "bytes": 2617
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/tests.log",
+    "git_blob_sha": "4bcead768310ea4628c057b9c9cd8822c254ba76",
+    "bytes": 774
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/tests.xml",
+    "git_blob_sha": "bbf1cb9852f1f74e06b0c5589f725d5adbcb6fb8",
+    "bytes": 2060
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/trec-crosscheck-incomplete-query-denominator.json",
+    "git_blob_sha": "8648f111f2f2cf30e6c62e0f9a113d579e6a6162",
+    "bytes": 1672
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/trec-crosscheck.json",
+    "git_blob_sha": "1a83d4f425e576b4f64c8709b69866456b05a24d",
+    "bytes": 1898
+  },
+  {
+    "path": "docs/development/generic-benchmark-20261106/trec-v2-equivalence.json",
+    "git_blob_sha": "31ecf9a8335c1b451987054df27ddacd7a11e0e8",
+    "bytes": 705
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/AI-CURATED-METHODOLOGY.md",
+    "git_blob_sha": "a5f05a05745ff179a57f503a4f657b231672a313",
+    "bytes": 8262
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/REVIEW.md",
+    "git_blob_sha": "5d90536e3292d40d3de28c8255108193ddc46418",
+    "bytes": 1085
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/RUNBOOK.md",
+    "git_blob_sha": "3d4afb026ee6c7da51d68ec441556909ea30493b",
+    "bytes": 7607
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/TECHNOLOGY-DECISIONS.md",
+    "git_blob_sha": "29f923f7675806be7ad50050fe9cf24d213d4543",
+    "bytes": 5287
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/WORK.md",
+    "git_blob_sha": "3aa01ec155d5cae60b54311e8c8462a956331265",
+    "bytes": 11823
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/ai-curated-dev-projection-reviewed.json",
+    "git_blob_sha": "d30ac4edc0d45d9fb32cf0237a113e744c87ee99",
+    "bytes": 3880
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/ai-curated-dev-projection.json",
+    "git_blob_sha": "d30ac4edc0d45d9fb32cf0237a113e744c87ee99",
+    "bytes": 3880
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/ai-curated-eval.json",
+    "git_blob_sha": "23cc9c1dbe38d824f4d5c9268d714f50e7fc3580",
+    "bytes": 150800
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/ai-curated-abstention-corrections.json",
+    "git_blob_sha": "e574ac1d213f7943340ab538c8e155c961876425",
+    "bytes": 1465
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/ai-curated-candidate-b871f5bb.json",
+    "git_blob_sha": "3401319d83507a2959268d7618ec37474f864767",
+    "bytes": 133944
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/ai-curated-candidate-b98b09d2.json",
+    "git_blob_sha": "352df73e6ad64c45ed4e7d33969651251689fe48",
+    "bytes": 133830
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/ai-curated-corrections.json",
+    "git_blob_sha": "7b2926987f6ca31a5a76ff3ed5a8d81f7d360912",
+    "bytes": 1997
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/ai-curated-dev-candidate-6811af56.json",
+    "git_blob_sha": "9592b3310095d04f580027db1587f3d413678c72",
+    "bytes": 3855
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/ai-curated-dev-candidate-8a477445.json",
+    "git_blob_sha": "d11daaeae8e098b32f08d6d835eb6abc43879eec",
+    "bytes": 3855
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/ai-curated-initial-dev-projection.json",
+    "git_blob_sha": "ffa80080d5e618e21f1f43c6e620ad14613a5a57",
+    "bytes": 3828
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/ai-curated-initial-reconstructed.json",
+    "git_blob_sha": "e6b6b756aa20c5ade5d5b354b9484ceb57777584",
+    "bytes": 134023
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/ai-curated-metric-selfcheck.json",
+    "git_blob_sha": "3e7dccab0831cc41ebd973dd29d236196e636156",
+    "bytes": 539
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/ai-curated-review-corrections.json",
+    "git_blob_sha": "d3b4328a4571b287a826167423f7c975c0d552eb",
+    "bytes": 16733
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/ai-curated-reviewed-metric-selfcheck.json",
+    "git_blob_sha": "739207745df897cc404800335e39ff2c0cefdf8c",
+    "bytes": 586
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/ai-curated-reviewed-validation.json",
+    "git_blob_sha": "7e60a0a3005a19d46c6b459704ce0c34f285d38d",
+    "bytes": 485
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/ai-curated-validation.json",
+    "git_blob_sha": "88d4feb329116bcc08bc569c5bae8b4e2ae630a3",
+    "bytes": 547
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/bge-real-smoke.json",
+    "git_blob_sha": "cb8136bac905aba4ca238aa85c0a7cb30b4cb925",
+    "bytes": 48625
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/catalog-consistency.json",
+    "git_blob_sha": "704564969cebf8ddfb52ea32b323a8a02b798ec2",
+    "bytes": 216
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/code-sha256.txt",
+    "git_blob_sha": "078e7581a374b682f27cd1e9cb38f39759961c05",
+    "bytes": 1763
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/cross-page-candidates.json",
+    "git_blob_sha": "f5abd55383010406d1146fa7c78283327bd12dd2",
+    "bytes": 3503
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/eval-300-bm25.json",
+    "git_blob_sha": "6c60dafd3984dac1ae000c8f21aca795cc37f5db",
+    "bytes": 280644
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/eval-300-exact.json",
+    "git_blob_sha": "782979ec1495c216a2a015f873ae0522415819e6",
+    "bytes": 91223
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/eval-300-rrf.json",
+    "git_blob_sha": "b8695e94add2368b0e88cb24224294bb85fad72f",
+    "bytes": 280637
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/eval-bm25.json",
+    "git_blob_sha": "f238d8f6a8a68b5eb87e9460b7a7c1ce7d617277",
+    "bytes": 1447
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/eval-diverse-bm25.json",
+    "git_blob_sha": "4a6204b162323a9aeb699a2f780e33bce81ad9b4",
+    "bytes": 302841
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/eval-diverse-exact.json",
+    "git_blob_sha": "34990f7ea601f17f24514fd1d7e00026d8afbb48",
+    "bytes": 117067
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/eval-diverse-rrf.json",
+    "git_blob_sha": "f7369c29c02b84bd01867151e510fde9ac04b2c1",
+    "bytes": 302758
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/eval-empty-bm25.json",
+    "git_blob_sha": "bae97451834121dc3e16e2b97b88e31318aa7eb7",
+    "bytes": 4139
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/eval-empty-exact.json",
+    "git_blob_sha": "5cd8d9a76ea1674477a7b47b05c0e706d83b6dca",
+    "bytes": 3460
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/eval-empty-rrf.json",
+    "git_blob_sha": "d342ab94139ef9c4cb89999b9a2e160f186e3308",
+    "bytes": 4138
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/eval-exact.json",
+    "git_blob_sha": "71c10dcd7b731ab5cb01761c40c16991517bc444",
+    "bytes": 1448
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/eval-rrf.json",
+    "git_blob_sha": "e1609e377b3c4e9ea0b2ec353f6410b15f531ef1",
+    "bytes": 1446
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/migration-tests.xml",
+    "git_blob_sha": "cfcf9cedf085fd1281e7122838c9802520872be7",
+    "bytes": 5999
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/official-alternates-fetch.json",
+    "git_blob_sha": "f250fe55eff363fc9e3bb887adb6b57b18b350ed",
+    "bytes": 1826
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/official-crosscheck-before-fix.json",
+    "git_blob_sha": "625b104f219dc28fc127dcfd58f0c637581b343e",
+    "bytes": 2349
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/official-crosscheck.json",
+    "git_blob_sha": "986554da95beffd59aaf9a6649e9ed8f6cda3752",
+    "bytes": 1677
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/official-fetch.json",
+    "git_blob_sha": "c5e612acdd63f05125b00bf1253621e7f6dc71db",
+    "bytes": 283
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/ov-engine-identity.json",
+    "git_blob_sha": "64086ac2090c9da48de056c1ea86321108f0b93d",
+    "bytes": 374
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/ov-real-smoke.json",
+    "git_blob_sha": "cbd972784d07227f4867a8225c18f5cb87d350d0",
+    "bytes": 9841
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/pdf-ingest.json",
+    "git_blob_sha": "b29b28cc4dfc5d2648340192217c1658072597cb",
+    "bytes": 1019
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/subprocess-smoke.json",
+    "git_blob_sha": "a0458fb9d95cb2606c7a9ab9d237af51867a2b6c",
+    "bytes": 1864
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/test-environment.txt",
+    "git_blob_sha": "bc52a3549a472a0cd8aa3b03b9942d47fc4f83bd",
+    "bytes": 341
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/tests.xml",
+    "git_blob_sha": "236c3e11d3cbd4b9b2e465b122124113916ad37b",
+    "bytes": 5094
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/evidence/v2-real-http-smoke.json",
+    "git_blob_sha": "a4e7101979039349a2e48c994356c8a87f0068f6",
+    "bytes": 4977
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/repository-source-manifest.json",
+    "git_blob_sha": "b811f71e044c0bbcd0f458ba3f11ca9348d7ea77",
+    "bytes": 448
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/synthetic-300.json",
+    "git_blob_sha": "29d847ff23c0a01bd113741e778fb31b3d420b9b",
+    "bytes": 69548
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/synthetic-diverse-300.json",
+    "git_blob_sha": "2ccb22f1f0588e1cd2b6d3a5973fc8e9f9855d38",
+    "bytes": 70295
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/synthetic-empty.json",
+    "git_blob_sha": "0628fea8766d721acc560763a56e2c2ee0815114",
+    "bytes": 337
+  },
+  {
+    "path": "docs/development/legal-rag-20261105/synthetic.json",
+    "git_blob_sha": "feac87903ad12e8e7718fe132ba91575dafb4f0e",
+    "bytes": 222
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/INDEPENDENT-REVIEW.md",
+    "git_blob_sha": "4348443df5d24a42e1af2ee7296826ce10ead7c9",
+    "bytes": 8817
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/PLAN-FOR-AI.md",
+    "git_blob_sha": "84e3ece774db11f4d1432aafe6b4ee4fb5158388",
+    "bytes": 10702
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/PLAN-FOR-YOU.md",
+    "git_blob_sha": "22a644579b404edc6e5397a018905571170f7eb8",
+    "bytes": 6743
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/REPRODUCTION.md",
+    "git_blob_sha": "3c865185df3e31988d6b67acdc32858785d3122b",
+    "bytes": 7248
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/RESULTS.md",
+    "git_blob_sha": "05d7f14eeb79a2812acab7996fb720ae33348030",
+    "bytes": 9116
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/RESUME-REWRITE.md",
+    "git_blob_sha": "364125c843fe0b0a05cb356d2fd7068a9f0bcb67",
+    "bytes": 5184
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/TECHNOLOGY-DECISIONS.md",
+    "git_blob_sha": "4a6aa324fde01d5698b6b13164eb4624f3dbcb82",
+    "bytes": 23916
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/VALIDATION-HISTORY.md",
+    "git_blob_sha": "219d0ae0a14d43863c3eae8c3d67617590d2ba4c",
+    "bytes": 4722
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/PUBLIC-EVIDENCE-MANIFEST.json",
+    "git_blob_sha": "b47cd4de1dc160a325944f372b406877fe7f2452",
+    "bytes": 11973
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/PUBLIC-REDACTION-AUDIT.json",
+    "git_blob_sha": "8636ca4e621806b32fe5e7bf024fdceac2107cc5",
+    "bytes": 7970
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/README.md",
+    "git_blob_sha": "5cea8d6ab8a7878a5a9efd820b9f1fa7f1547a0b",
+    "bytes": 2081
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/backend-after-identity-v1.json",
+    "git_blob_sha": "09aa5987a977d2b6d8bf7a1462638086929168a0",
+    "bytes": 501
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/backend-after-v1.json",
+    "git_blob_sha": "9effb45b77ec0957ebf4fc151335c549de72b2ee",
+    "bytes": 540
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/backend-before-v1.json",
+    "git_blob_sha": "09aa5987a977d2b6d8bf7a1462638086929168a0",
+    "bytes": 501
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/backend-identity-audit-v1.json",
+    "git_blob_sha": "c02e80e5b7d210413ca2effac08e3ed691c420f6",
+    "bytes": 465
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/baseline30-v1.analysis.json",
+    "git_blob_sha": "b602e416cdda1ebec76339fd065be3613c994f87",
+    "bytes": 36928
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/baseline30-v1.audit.json",
+    "git_blob_sha": "94293f8499dbf3ac01d410b459b52df204c8a492",
+    "bytes": 25892
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/baseline30-v1.config.json",
+    "git_blob_sha": "87b191b7dd0ef4b14dad2cf028ce77fb16640524",
+    "bytes": 7094
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/baseline30-v1.json",
+    "git_blob_sha": "6352fcabccffa0bb7c36dc5e88e3842cbd37f50b",
+    "bytes": 1297529
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/baseline30-v1.json.journal.jsonl",
+    "git_blob_sha": "cad51c76df9a4a5e4e50dc3cd0a8e47e9c6f4d56",
+    "bytes": 820121
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/baseline30-v1.selection.json",
+    "git_blob_sha": "78529ed4414db7a91e5238876f46e5a19dc3f8ae",
+    "bytes": 7352
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/candidate-dev6-v1.config.json",
+    "git_blob_sha": "c1d3db9141fd6d385c0b023bbb3867ec30a58ce7",
+    "bytes": 7006
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/candidate-dev6-v1.json",
+    "git_blob_sha": "8ca8ebbe9e1a53652e5230a975930ee269f817ba",
+    "bytes": 267446
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/candidate-dev6-v1.json.journal.jsonl",
+    "git_blob_sha": "cd651099eea76644a6088096090636f296d156cd",
+    "bytes": 167866
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/candidate-dev6-v2.config.json",
+    "git_blob_sha": "1f14af829f53a24c496a57a1528291aa917fcc40",
+    "bytes": 7110
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/candidate-dev6-v2.json",
+    "git_blob_sha": "26878f9ce786fe146f1aff508dc251f308f99042",
+    "bytes": 269844
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/candidate-dev6-v2.json.journal.jsonl",
+    "git_blob_sha": "bc524352cb1f996f59ce704b0421296af5f7dfd2",
+    "bytes": 169580
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/candidate-dev6-v3-analysis.log",
+    "git_blob_sha": "e36c44eda7c68c14b3571abc60e4109f11d816c7",
+    "bytes": 1107
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/candidate-dev6-v3.analysis.json",
+    "git_blob_sha": "88efe357a537c3b38fd13c47f272366edaa87961",
+    "bytes": 12096
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/candidate-dev6-v3.audit.json",
+    "git_blob_sha": "5fbeb8380c07d22455ecdc43818830075b2aac4c",
+    "bytes": 6408
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/candidate-dev6-v3.config.json",
+    "git_blob_sha": "14b3d4360e9ff7ced7745b5a4601384c5e660199",
+    "bytes": 7110
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/candidate-dev6-v3.json",
+    "git_blob_sha": "e169f9fc088ac921380e95c264a74fda8a1c515b",
+    "bytes": 270703
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/candidate-dev6-v3.json.journal.jsonl",
+    "git_blob_sha": "9b5c25adfda1a2fdaa5e66e302048e411ec25d12",
+    "bytes": 170170
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/candidate30-v1-analysis.log",
+    "git_blob_sha": "4fafe7575719e586e6a8d8e7cb6954c99dbda9c9",
+    "bytes": 1166
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/candidate30-v1-audit.log",
+    "git_blob_sha": "99a1467ab038a7c362ee079361b76c5260872877",
+    "bytes": 1524
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/candidate30-v1.analysis.json",
+    "git_blob_sha": "f3b280ee945f8216efabd5bd198de184b9477922",
+    "bytes": 36916
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/candidate30-v1.audit.json",
+    "git_blob_sha": "6f1b346073b1d229d147119b8311e0358367c2bf",
+    "bytes": 25927
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/candidate30-v1.config.json",
+    "git_blob_sha": "14b3d4360e9ff7ced7745b5a4601384c5e660199",
+    "bytes": 7110
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/candidate30-v1.json",
+    "git_blob_sha": "8c6d1e84f7455676cf5129b80f10486170d4ae44",
+    "bytes": 1314316
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/candidate30-v1.json.journal.jsonl",
+    "git_blob_sha": "4fb04a212609c73726b012d1e52c51ee0d277122",
+    "bytes": 831824
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/candidate30-v1.selection.json",
+    "git_blob_sha": "02acf5f8e356647b25dcfb577b324dfd152a8436",
+    "bytes": 7277
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/host-conditions-v1.json",
+    "git_blob_sha": "76bf643e2a4280f854ffadcf333a1a77299d056b",
+    "bytes": 476
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/installed-cli-v3.log",
+    "git_blob_sha": "c4a866fde17fa1f391bd62f2308974efe71994ce",
+    "bytes": 282
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/installed-identity-v3.json",
+    "git_blob_sha": "c45cddfc18bb82e115416cb77c340d23260dad02",
+    "bytes": 1037
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/installed-user-flow-v1.json",
+    "git_blob_sha": "0822fea8ce3d8769698129d62329a5580771ba18",
+    "bytes": 2781
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/model-artifacts-after-v1.json",
+    "git_blob_sha": "81e1d03c0c07d95b6f043862d9fbc32928b757f9",
+    "bytes": 7324
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/model-artifacts-before-v1.json",
+    "git_blob_sha": "d67c16eaec3752e7f39c116023b1479b323bb976",
+    "bytes": 7325
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/paired-additional-v1.json",
+    "git_blob_sha": "f1d28a51b2e83786174c7b97b08fa13eb9bb0d90",
+    "bytes": 1517
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/paired30-v1.json",
+    "git_blob_sha": "c0d8416a1b7795d34e8844273c0cb6321c6ee39a",
+    "bytes": 38373
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/paired30-v1.log",
+    "git_blob_sha": "9b97e45383ee18e8603d1797232aaaf232367c87",
+    "bytes": 505
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/recompute-paired-additional.py",
+    "git_blob_sha": "3a9d29e0a2290b7bf39b57a051e1f6310149c6a5",
+    "bytes": 2574
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/regression-v4.log",
+    "git_blob_sha": "b53ddba818c592ce15f416537bf7cfc50b4e892f",
+    "bytes": 1822
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/regression-v4.xml",
+    "git_blob_sha": "3a4016fb954643cb10e68c39aac96c9ffe99d1bd",
+    "bytes": 42162
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/review/FINAL-REVIEW-HASHES.json",
+    "git_blob_sha": "89c17c3468d5baf581961fef2ecf219120dadca3",
+    "bytes": 9738
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/review/STOPPED.json",
+    "git_blob_sha": "7cfb139e748ab1a0e68ab8e0e96727e55212f802",
+    "bytes": 248
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/review/additional-paired-independent-v1.json",
+    "git_blob_sha": "af7cc1842b81d1f237d1642796d0b712030334d6",
+    "bytes": 1278
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/review/all-recomputed-v1.json",
+    "git_blob_sha": "8bdafc833f561b5a18ae71ab219aebe64029b996",
+    "bytes": 47200
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/review/development-config-independent-v1.json",
+    "git_blob_sha": "db4f44a52091dbe147d54ff657baadb305bfbccf",
+    "bytes": 13216
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/review/docs-links-v1.json",
+    "git_blob_sha": "3e6f4406cd4bf67ac628a76d635ba6d8412ab975",
+    "bytes": 8439
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/review/export-probe-v1.summary.json",
+    "git_blob_sha": "14d8b32e92091e3ef109318fb79af3b8f1e58cba",
+    "bytes": 869
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/review/functional-evidence-independent-v2.json",
+    "git_blob_sha": "a38f9d10d6ba1ec83a7dd1879d0d4796f564a212",
+    "bytes": 777
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/review/identity-freeze-recomputed-v1.json",
+    "git_blob_sha": "a9b198713809d61783692ae97dbf5755054e37f6",
+    "bytes": 2661
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/review/paired-independent-v1.json",
+    "git_blob_sha": "1b186b3a9a4011277000f397d0955251f7f90b1c",
+    "bytes": 3925
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/review/public-evidence-independent-v1.json",
+    "git_blob_sha": "e1cb33bf1cc509064488d9327b6b141cfcb45113",
+    "bytes": 5554
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/review/published-additional-stdout-v1.json",
+    "git_blob_sha": "f1d28a51b2e83786174c7b97b08fa13eb9bb0d90",
+    "bytes": 1517
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/review/quote-independent-v1.json",
+    "git_blob_sha": "5eac7ed8a6b2d3631d076562be5a653f08d3a44f",
+    "bytes": 4923
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/tested-source-v1.json",
+    "git_blob_sha": "cbf6859f5ad287a37814c3ad3d708388eb11c2dc",
+    "bytes": 1446
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/ui-validation-v1.json",
+    "git_blob_sha": "15197d481e86ad56c2ec545b26e4ab46a7e2ee89",
+    "bytes": 1919
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/wheel-build-v1.log",
+    "git_blob_sha": "ff41223a50df665716ce8fbd438cd6e9823ebf7e",
+    "bytes": 688
+  },
+  {
+    "path": "docs/development/openviking-quality-20261107/evidence/wheel-install-reused-deps-v3.log",
+    "git_blob_sha": "6547490d3abd3d1c04afb72c0c1008cf31bf8551",
+    "bytes": 306
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/INDUSTRY-COMPARISON.md",
+    "git_blob_sha": "fadd82cc376641f70b915db83905a9e5d6f5ea4b",
+    "bytes": 10154
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/METHODOLOGY.md",
+    "git_blob_sha": "9270564db5d3b2c4fbe06285f7ac510a00ece3c6",
+    "bytes": 6997
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/PLAN-FOR-AI.md",
+    "git_blob_sha": "58be314b6ba1740c77b06f2600a8f4afa8606c7b",
+    "bytes": 11356
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/PLAN-FOR-YOU.md",
+    "git_blob_sha": "d2ef375cfb18222c779bcf25ec037258d08b1869",
+    "bytes": 9906
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/REPRODUCTION.md",
+    "git_blob_sha": "19c449f2afa9e74b21386b9d4aedb6fc822bc36b",
+    "bytes": 29204
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/RESULTS.md",
+    "git_blob_sha": "c69cfb8613a81deeef32f545130046d728a56142",
+    "bytes": 12538
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/RESUME-REWRITE.md",
+    "git_blob_sha": "81385f40e240da6ee45bc8df8ad3fa0da55f0409",
+    "bytes": 4376
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/TECHNOLOGY-DECISIONS.md",
+    "git_blob_sha": "c7c7502c94c7b54b2eb59dd3908e8e883560a62b",
+    "bytes": 9814
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/VALIDATION-HISTORY.md",
+    "git_blob_sha": "3b101ea9ad98875a713842eb1998e9ddc125a13a",
+    "bytes": 2628
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/ADDITIONAL-PUBLIC-ARTIFACTS.json",
+    "git_blob_sha": "e37f89f8f471084f3ad7dae38d16148b59d0bc70",
+    "bytes": 2467
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/FINAL-CODE-REVIEW.md",
+    "git_blob_sha": "fc11c9145588edf76a43732e73b7003fb6b6aa7f",
+    "bytes": 5004
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/FINAL-DELIVERY-REVIEW.md",
+    "git_blob_sha": "c7cdc2df74d08b82736e48b861219677563818e4",
+    "bytes": 5231
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/FINAL-INSTALL-PUBLIC-ARTIFACTS.json",
+    "git_blob_sha": "ffd8fc17946d7e798578548107e24d314d3e9e0f",
+    "bytes": 2863
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/PUBLIC-REDACTION-AUDIT.json",
+    "git_blob_sha": "b2c361922c9fdf8442a0806d7a7b0b533993b82f",
+    "bytes": 16540
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/README.md",
+    "git_blob_sha": "3cf925450d044f109a0910ac0eaa0dc273a44ec5",
+    "bytes": 1543
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/backend-identity-after-formal.json",
+    "git_blob_sha": "3b21654a96594c8db1e2e66add9072e4dbcd0229",
+    "bytes": 601
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/backend-identity-before-formal.json",
+    "git_blob_sha": "3b21654a96594c8db1e2e66add9072e4dbcd0229",
+    "bytes": 601
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/bge-final-validation-v1.config.json",
+    "git_blob_sha": "3278ce3167bf25c422168ad040484bbdbe2ee65d",
+    "bytes": 6740
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/bge-final-validation-v1.json",
+    "git_blob_sha": "cf4b5c8e3064fcddf10261cdd68a088104b2ef04",
+    "bytes": 1389329
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/bge-final-validation-v1.json.journal.jsonl",
+    "git_blob_sha": "754d0bb2d4ec9be5880111fbdc5d176f1f8358f8",
+    "bytes": 881169
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/bge-final-validation-v2.analysis.json",
+    "git_blob_sha": "f19d58edb2cdd5aa8b97cb048fc5501c82a8b9d7",
+    "bytes": 39012
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/bge-final-validation-v2.audit-v2.json",
+    "git_blob_sha": "3fc0b8178ea1ff3093705d3758368b67eaac46dd",
+    "bytes": 13288
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/bge-final-validation-v2.config.json",
+    "git_blob_sha": "0ddabbbd70ada446e4518885f1897f604a689a35",
+    "bytes": 6740
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/bge-final-validation-v2.errors.json",
+    "git_blob_sha": "522b8f9febc756665d8643ab5f9602cd352cba4d",
+    "bytes": 8397
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/bge-final-validation-v2.json",
+    "git_blob_sha": "7714bbc6b329f335e13933be6c21b73fd095f883",
+    "bytes": 1400211
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/bge-final-validation-v2.json.journal.jsonl",
+    "git_blob_sha": "4329328d9f07dfce01a9b0e5545412a5c572267c",
+    "bytes": 888528
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/bge8-pro-low-nli4-retry-validation-v1.config.json",
+    "git_blob_sha": "cf196f7bcdc8b9a198430c30ea43819be44acb51",
+    "bytes": 6593
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/bge8-pro-low-nli4-retry-validation-v1.json",
+    "git_blob_sha": "e091e094597136008e25f2fbe7e186550c80c48d",
+    "bytes": 1398317
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/bge8-pro-low-nli4-retry-validation-v1.json.journal.jsonl",
+    "git_blob_sha": "7fc38b474c1c0244f84083f255a7a086d43999a5",
+    "bytes": 887204
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/bge8-pro-low-nli4-validation-v1.config.json",
+    "git_blob_sha": "b7f018a2b4d9626639f6142358febbdf0158fc18",
+    "bytes": 6361
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/bge8-pro-low-nli4-validation-v1.json",
+    "git_blob_sha": "a14a11df61ea864e0f5529a23d8d0cc0c5f29faa",
+    "bytes": 1363474
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/bge8-pro-low-nli4-validation-v1.json.journal.jsonl",
+    "git_blob_sha": "0e5d326769d0417b9df39cfd3b4f8bf3ef195623",
+    "bytes": 864250
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/bge8-pro-low-nli4-validation-v2.config.json",
+    "git_blob_sha": "672b5f39e96a7ddaaab30e414e15d33cbd4e806b",
+    "bytes": 6361
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/bge8-pro-low-nli4-validation-v2.json",
+    "git_blob_sha": "961252f0db0bbac544147a72957018b80a91e41b",
+    "bytes": 1363070
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/bge8-pro-low-nli4-validation-v2.json.journal.jsonl",
+    "git_blob_sha": "48162d543f07065109302199d3cf2b9a81548110",
+    "bytes": 863904
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/chat-accounting-after-fix-v1.log",
+    "git_blob_sha": "ccc81044f57d4a10dae9bbb9699fce44f23fadac",
+    "bytes": 99
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/chat-accounting-before-fix-v2.log",
+    "git_blob_sha": "9b68d54e973644c3966a989707c2740477214fac",
+    "bytes": 9954
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/delivery-validation-v1.json",
+    "git_blob_sha": "5569e9feddbe957af8ff3ddcd90d622d0bf470fd",
+    "bytes": 2209
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/final-public-scan-v2.json",
+    "git_blob_sha": "0ce169c72db01370f6456b5045d8940d23f4b1b5",
+    "bytes": 366
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/final-validation-paired-analysis.json",
+    "git_blob_sha": "94c572eac867bccb932cd0cebd458c4e2e8c7419",
+    "bytes": 1389
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/host-timing-audit-v1.json",
+    "git_blob_sha": "712269d838d8a9d7f4962ee4ec1f06548fd7b63f",
+    "bytes": 40748
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/host-timing-audit-v1.md",
+    "git_blob_sha": "8cca584f0dfd00313ca9e301018ef7dc93741fe7",
+    "bytes": 2559
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/index-v1.json",
+    "git_blob_sha": "d373ae0eb0f9e4bf7491bc4ef1d644cabd30a7dc",
+    "bytes": 3167
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/index-v2.json",
+    "git_blob_sha": "c0970407145a274fc1e2020958f6aa361b2c328b",
+    "bytes": 6786
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/index-v3.json",
+    "git_blob_sha": "37a0de074a5e723b2f5be78d771c016095ff0816",
+    "bytes": 6208896
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/industry-sources/broad-survey/survey.json",
+    "git_blob_sha": "630dbfaa01dd50ab5f2d0e6a0e14e378cef3b5e9",
+    "bytes": 153457
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/industry-survey.json",
+    "git_blob_sha": "630dbfaa01dd50ab5f2d0e6a0e14e378cef3b5e9",
+    "bytes": 153457
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/installed-dependency-provenance-v11.json",
+    "git_blob_sha": "581b267c3ef14ebe186611bff32130c998f42216",
+    "bytes": 492566
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/model-artifacts-after-formal.json",
+    "git_blob_sha": "501c74a40cd29fab75d9d55b795e4c74b0bd0d46",
+    "bytes": 7325
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/model-artifacts-before-formal.json",
+    "git_blob_sha": "09c8e2f23bd1f340bc9cbc337128b7ba3ebd59c0",
+    "bytes": 7325
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/official-label-audit.json",
+    "git_blob_sha": "940f1ce3b024be735a43a62674287a0a5f00d837",
+    "bytes": 496
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/openviking-formal-test-v1.analysis.json",
+    "git_blob_sha": "401da2cbde16ba23e162aca21ba48e859bc780ae",
+    "bytes": 315663
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/openviking-formal-test-v1.audit-v2.json",
+    "git_blob_sha": "35354fe74e5e9bb276e623cbdf3f98665d7fc683",
+    "bytes": 114220
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/openviking-formal-test-v1.config.json",
+    "git_blob_sha": "9d11246a9921700503f9ffead26ca76ea7e4a59a",
+    "bytes": 6741
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/openviking-formal-test-v1.errors.json",
+    "git_blob_sha": "379ba85f0ac2ead06f87b9557525e1f8663cf24c",
+    "bytes": 61230
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/openviking-formal-test-v1.json",
+    "git_blob_sha": "ac9249f48d14e1e380c130c733ab0f57fc3b6aa2",
+    "bytes": 12700724
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/openviking-formal-test-v1.json.journal.jsonl",
+    "git_blob_sha": "e5b0a7c61ae8ce4854873c35987f1ffba2af3c76",
+    "bytes": 8004626
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/openviking-formal-test-v1.retrieval-paired.json",
+    "git_blob_sha": "1cd694a8dd7542773a7dbda56bf1cf5e2bca3127",
+    "bytes": 4478
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/post-formal-source-diff-v1.json",
+    "git_blob_sha": "4a4c9cd58c3554c35e757f2aeb667be37dd738a1",
+    "bytes": 549
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/public-candidate-scan-v1.json",
+    "git_blob_sha": "5b9da8df042d5e19911ae27f6e15e2e83242de60",
+    "bytes": 386
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/qwen-final-validation-v2.analysis.json",
+    "git_blob_sha": "4776a68e5b984b5ee9efbd78d114077e51e85422",
+    "bytes": 38948
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/qwen-final-validation-v2.audit-v2.json",
+    "git_blob_sha": "ae71d62c80b76ddb1de0dec4c88c1502e19bbbb5",
+    "bytes": 13288
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/qwen-final-validation-v2.config.json",
+    "git_blob_sha": "9d11246a9921700503f9ffead26ca76ea7e4a59a",
+    "bytes": 6741
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/qwen-final-validation-v2.errors.json",
+    "git_blob_sha": "9ad2d35acdecaa08d8df923e34ee216485b3ab13",
+    "bytes": 8097
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/qwen-final-validation-v2.json",
+    "git_blob_sha": "ba5c7e3236fd0028057741a05beee1a709ebcd3d",
+    "bytes": 1376528
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/qwen-final-validation-v2.json.journal.jsonl",
+    "git_blob_sha": "e2098802dd26f773cb813bc96b77b6c4fe7ebc8d",
+    "bytes": 865239
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/qwen-final-validation-v2.retrieval-paired.json",
+    "git_blob_sha": "edf9cc25fe2a772562201f1c6a77a0329ef3d198",
+    "bytes": 4267
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/qwen32-flash-off-validation-v1.config.json",
+    "git_blob_sha": "563683a89657ee659fad2581d84697bdc1295fca",
+    "bytes": 5030
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/qwen32-flash-off-validation-v1.json",
+    "git_blob_sha": "049781574ea500a1030eb66ecc6fea69722bf00e",
+    "bytes": 1412717
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/qwen32-flash-off-validation-v1.json.journal.jsonl",
+    "git_blob_sha": "20feb70ad9f56ed1f13790beeb1ffcf0527c6846",
+    "bytes": 892569
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/qwen8-flash-validation-v1.config.json",
+    "git_blob_sha": "d88e6c1ca97147ce9680932b4c2c882f60865018",
+    "bytes": 4895
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/qwen8-flash-validation-v1.json",
+    "git_blob_sha": "93dd9857196357a24df20461446fdafa91783c6f",
+    "bytes": 1401701
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/qwen8-flash-validation-v1.json.journal.jsonl",
+    "git_blob_sha": "3759db48a88529cde8b07a6bad92b8d773c3cf18",
+    "bytes": 886040
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/qwen8-pro-low-nli4-validation-v1.config.json",
+    "git_blob_sha": "dc95a8d27026e36aa28bb26dd37aeb48a1b87b1f",
+    "bytes": 5992
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/qwen8-pro-low-nli4-validation-v1.json",
+    "git_blob_sha": "c3167ea1e2390a77b947e35c51e28b84d3588773",
+    "bytes": 1341089
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/qwen8-pro-low-nli4-validation-v1.json.journal.jsonl",
+    "git_blob_sha": "d4d88bc3b699868b322e375fd69f4a151b56d361",
+    "bytes": 842132
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/qwen8-pro-think-validation-v1.config.json",
+    "git_blob_sha": "d268a642b9ad3ae6531ab427070cb2c2e1732e22",
+    "bytes": 5028
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/qwen8-pro-think-validation-v1.json",
+    "git_blob_sha": "f51873d86c154999f74237fbd663b43c6e71ef7b",
+    "bytes": 1408555
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/qwen8-pro-think-validation-v1.json.journal.jsonl",
+    "git_blob_sha": "6595af5c07e99c077d1d94dc35d825e6c7c7e62f",
+    "bytes": 890769
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/regression-v15-all.log",
+    "git_blob_sha": "4e6f2d980a067bb5734ec745abd87dd0eca781f5",
+    "bytes": 1010
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/regression-v16-full.log",
+    "git_blob_sha": "7f6d4875ca4bf90dc8f6e230a4de28212db6fb87",
+    "bytes": 1010
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/review-independent-raw-audit-v1.log",
+    "git_blob_sha": "25756e422cf438de1d2e5b0b1b012fa7c3421f81",
+    "bytes": 671
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/runtime-environment-v2.json",
+    "git_blob_sha": "cf0618537fb0619fa88d10fc4e0e53b749026389",
+    "bytes": 600
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/selection-final-v1.json",
+    "git_blob_sha": "0c90d6dc5e42ff88184d9ccb511a9b34b513caa9",
+    "bytes": 5135
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/tokenizer-source-recheck.json",
+    "git_blob_sha": "d56910358862cff4befc2c7b3173ead1e6e03fda",
+    "bytes": 719
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/ui-acceptance-v1.json",
+    "git_blob_sha": "88b14db42c84fafd97ffec9516511f2660fa278c",
+    "bytes": 1634
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/validate-v3.json",
+    "git_blob_sha": "9e9cfccb4a17ecc94a92d1b9aae25c1bea60d20a",
+    "bytes": 1079251
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/validation-evidence-coverage.json",
+    "git_blob_sha": "3a06911e222e4a7f6ce6efb06ad2ba7092a916d1",
+    "bytes": 16868
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/wheel-build-v9.log",
+    "git_blob_sha": "e075cb0a007efaaddea8f60d08a59a1810b6fb2b",
+    "bytes": 827
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/wheel-clean-entry-v11.json",
+    "git_blob_sha": "b7c1e80e83f8a6dc19c2152fdecb7044ac631b87",
+    "bytes": 1148
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/wheel-clean-entry-v11.log",
+    "git_blob_sha": "612c6e1829dca0c6620e1a8292408ac9a9f489d6",
+    "bytes": 1229
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/wheel-clean-install-v9-retry1.log",
+    "git_blob_sha": "2069fe027ba0fc2042c78dd7aacc80de7a5b37a4",
+    "bytes": 663
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/wheel-clean-install-v9.log",
+    "git_blob_sha": "375fb620fae5e2d449cce40fe35b10ba6631575c",
+    "bytes": 508
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/wheel-dependency-check-v11.log",
+    "git_blob_sha": "c688d8ccdad82420475fc31cb40020cccfeeef2b",
+    "bytes": 30
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/wheel-install-network-limit-v1.json",
+    "git_blob_sha": "b92d97acbedebf180d84d3aba8f9c805eeb76d23",
+    "bytes": 522
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/wheel-install-v11.log",
+    "git_blob_sha": "427511a0596b8a46986f430a6180a23ce08366ac",
+    "bytes": 178
+  },
+  {
+    "path": "docs/development/openviking-user-flow-20261106/evidence/wheel-v10-environment-failure.json",
+    "git_blob_sha": "e515c09b436e2c4f7c2b0399eb60cdb8d4eed9e0",
+    "bytes": 298
+  },
+  {
+    "path": "docs/development/project-progress-20261109/PLAN-FOR-AI.md",
+    "git_blob_sha": "341da3114056264fe8a67f628734de0bd81f396a",
+    "bytes": 1828
+  },
+  {
+    "path": "docs/development/project-progress-20261109/PLAN-FOR-YOU.md",
+    "git_blob_sha": "22fde71f9a6e777a7a95081ab5fa54b70f15878e",
+    "bytes": 2445
+  },
+  {
+    "path": "docs/development/project-progress-20261109/evidence/status-snapshot.json",
+    "git_blob_sha": "cef3644535e885daa44dd017477b16bc39ef5397",
+    "bytes": 1675
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/DELIVERY.md",
+    "git_blob_sha": "b11bf2f9602f653b63cc7527584984239e2f19b0",
+    "bytes": 4664
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/PLAN-FOR-AI.md",
+    "git_blob_sha": "95c878e42b2df1da1687aa3cc06c59d4742ccf74",
+    "bytes": 6359
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/PLAN-FOR-YOU.md",
+    "git_blob_sha": "c11bd17b7425134f345de969f04c32d7866c26d4",
+    "bytes": 4138
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/REPRODUCTION.md",
+    "git_blob_sha": "7c6cb46cdbde5f9f8fa5d6d177fb212e735b1e9e",
+    "bytes": 6288
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/RESULTS.md",
+    "git_blob_sha": "b5fdaaad5928865e677f6c8778afc5aa0678e16b",
+    "bytes": 6275
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/REVIEW.md",
+    "git_blob_sha": "7a642afd6728a35cc143b561c9acc27e8f0ac72b",
+    "bytes": 2651
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/SOURCE-IDENTITY.json",
+    "git_blob_sha": "c699105e8bce6377d684b58aafb08bee3f3a7976",
+    "bytes": 3926
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/TECHNOLOGY-DECISIONS.md",
+    "git_blob_sha": "2637befe22fbbc809bbeebbdb15d50bf81e509ee",
+    "bytes": 5259
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/TODO.md",
+    "git_blob_sha": "19370bce1cbe3472d7b59d0c054b33dbaf8e9f98",
+    "bytes": 976
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/WORK.md",
+    "git_blob_sha": "49323a9e854cb28545995402d7f2974696e53e6f",
+    "bytes": 2309
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/evidence/backend-after.json",
+    "git_blob_sha": "245b475e38c7e781785956402bd2a8df4406b561",
+    "bytes": 2771
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/evidence/backend-before.json",
+    "git_blob_sha": "0f87bce066c746ee89c24d1bd7bc364543030b30",
+    "bytes": 937
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/evidence/backup-v1.json",
+    "git_blob_sha": "79e6c55c8e839ec0d147d187e877442197e9524e",
+    "bytes": 435
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/evidence/build-v2.log",
+    "git_blob_sha": "080920b24416abd7d9e464fa17106a8bf88433a7",
+    "bytes": 688
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/evidence/connections-v1.json",
+    "git_blob_sha": "ac207e1bf72a8a449636c439bec90ae2387fe0fa",
+    "bytes": 68201
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/evidence/github-code-sync-v1.json",
+    "git_blob_sha": "f7cfd2e0b135d92b810d96c09a0acadd9211e803",
+    "bytes": 16943
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/evidence/install-v1.log",
+    "git_blob_sha": "e07c58d6c90e10018f00a39a92781d0240cbb53b",
+    "bytes": 303
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/evidence/installed-source-v1.json",
+    "git_blob_sha": "40d2ec5cbbaf15bbfc863e999105eb6e3e895adb",
+    "bytes": 1169
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/evidence/local-original-hashes.json",
+    "git_blob_sha": "20c5e244a3c7343c3b2f63a7a37a04ef7952e44f",
+    "bytes": 725
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/evidence/mechanism6.log",
+    "git_blob_sha": "fc4f0648aa89748143a56996dea0ca3a0174df23",
+    "bytes": 670
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/evidence/pytest-final.log",
+    "git_blob_sha": "a0fea6eeb68b66f5eee9d06f3b99852a2283bb97",
+    "bytes": 1982
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/evidence/ui-acceptance-v1.json",
+    "git_blob_sha": "c6ca08cb6cdadd3c890f0bf8242607eee1b407de",
+    "bytes": 4358
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/evidence/ui-session-readback-v1.json",
+    "git_blob_sha": "495c91872bb290d5e7f972fd15fa97b407617e52",
+    "bytes": 836
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/evidence/user-flow/PUBLIC-REDACTION-AUDIT.json",
+    "git_blob_sha": "2b4722aa6312484d1353b94c857092db3d53032b",
+    "bytes": 3595
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/evidence/user-flow/dev6-v1.audit.json",
+    "git_blob_sha": "ea34d83b1d1f38067edf56adeb49f77c9028efc2",
+    "bytes": 12480
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/evidence/user-flow/dev6-v1.config.json",
+    "git_blob_sha": "79766acb599210e973cedccc639264bcd1dc5eb9",
+    "bytes": 7490
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/evidence/user-flow/dev6-v1.json",
+    "git_blob_sha": "1c014783b4dff6b604c7a9352d5b670be3bc98e7",
+    "bytes": 272733
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/evidence/user-flow/dev6-v1.json.journal.jsonl",
+    "git_blob_sha": "c22befccbcdf74c30d9749bf79c056f10638f01d",
+    "bytes": 171714
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/evidence/user-flow/direct30-v1.audit.json",
+    "git_blob_sha": "f58f14d98777e629dd97cdddb4f2cc03510b9e76",
+    "bytes": 36225
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/evidence/user-flow/direct30-v1.config.json",
+    "git_blob_sha": "9a120603d69e649fdc2ae125873b3354cd144a6e",
+    "bytes": 7477
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/evidence/user-flow/direct30-v1.json",
+    "git_blob_sha": "443c281001fbdcba01c9ffa2b1803c2de4f45a5c",
+    "bytes": 1315801
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/evidence/user-flow/direct30-v1.json.journal.jsonl",
+    "git_blob_sha": "2302d53fc4beb5d85027be92497d9c6f9c9df39c",
+    "bytes": 832823
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/evidence/user-flow/direct30-v1.selection.json",
+    "git_blob_sha": "f06e1476e1065d1e669aa641e5a4f50bdb2dde3e",
+    "bytes": 7774
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/evidence/user-flow/explore30-v1.audit.json",
+    "git_blob_sha": "b86f00c1c0f8b91cd0ceead4cbd3b70a6a8daf05",
+    "bytes": 55005
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/evidence/user-flow/explore30-v1.config.json",
+    "git_blob_sha": "79766acb599210e973cedccc639264bcd1dc5eb9",
+    "bytes": 7490
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/evidence/user-flow/explore30-v1.json",
+    "git_blob_sha": "82e153c68cfed2e7a619b5b1ac6aae98ea6670a0",
+    "bytes": 1322801
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/evidence/user-flow/explore30-v1.json.journal.jsonl",
+    "git_blob_sha": "78be30c3613ceaa49d6ba7f6b47795e367fa3a19",
+    "bytes": 838067
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/evidence/user-flow/explore30-v1.selection.json",
+    "git_blob_sha": "4a4dad964a22bc68e19cade8a1c5c2233ef9c289",
+    "bytes": 7725
+  },
+  {
+    "path": "docs/development/rag-exploration-20261107/evidence/user-flow/paired-v1.json",
+    "git_blob_sha": "77aca9fd6484da8ea19b30561f2f5309df4412af",
+    "bytes": 86946
+  },
+  {
+    "path": "docs/development/rag-workspace-clarity-20261107/DELIVERY.md",
+    "git_blob_sha": "4aa94a7b9dda82c846dd5cc2a14a214ee495d60a",
+    "bytes": 3151
+  },
+  {
+    "path": "docs/development/rag-workspace-clarity-20261107/PLAN-FOR-AI.md",
+    "git_blob_sha": "d93971c1f04bcf4eb39df8935bc23c24edc3e9fa",
+    "bytes": 5130
+  },
+  {
+    "path": "docs/development/rag-workspace-clarity-20261107/PLAN-FOR-YOU.md",
+    "git_blob_sha": "7039a43b28528ee016418c0d215ab81dabf79c18",
+    "bytes": 2560
+  },
+  {
+    "path": "docs/development/rag-workspace-clarity-20261107/RESULTS.md",
+    "git_blob_sha": "04b23eb2ca869ff1087ac823635e09567ea5d230",
+    "bytes": 4371
+  },
+  {
+    "path": "docs/development/rag-workspace-clarity-20261107/REVIEW.md",
+    "git_blob_sha": "d198473ad6cd1046aa9e932a3e57fea00dd6f6f0",
+    "bytes": 1344
+  },
+  {
+    "path": "docs/development/rag-workspace-clarity-20261107/WORK.md",
+    "git_blob_sha": "bc402f266aa65280083234413f0602766493f45b",
+    "bytes": 1809
+  },
+  {
+    "path": "docs/development/rag-workspace-clarity-20261107/evidence/actual-api-v1.json",
+    "git_blob_sha": "d3787c5077af52575c8463ac77db7834bd30866e",
+    "bytes": 1096
+  },
+  {
+    "path": "docs/development/rag-workspace-clarity-20261107/evidence/backend-before.json",
+    "git_blob_sha": "ac5d7bcb20c172c3ef4e2daf6665d061196a9b69",
+    "bytes": 1816
+  },
+  {
+    "path": "docs/development/rag-workspace-clarity-20261107/evidence/backup-before.json",
+    "git_blob_sha": "00128d400f04078b4ad15867a66322e461b9ccea",
+    "bytes": 177
+  },
+  {
+    "path": "docs/development/rag-workspace-clarity-20261107/evidence/build-v1.log",
+    "git_blob_sha": "89e89c674ac8c0594d0cfafe0f21bbfa7c85e4a4",
+    "bytes": 655
+  },
+  {
+    "path": "docs/development/rag-workspace-clarity-20261107/evidence/build-v2.log",
+    "git_blob_sha": "1ddbe2b3043b44c84aade020ccc0b3c24708d4f4",
+    "bytes": 655
+  },
+  {
+    "path": "docs/development/rag-workspace-clarity-20261107/evidence/final-service-readback.json",
+    "git_blob_sha": "d8537423e3b984aa35e60cee8f231d483ddfe1c7",
+    "bytes": 555
+  },
+  {
+    "path": "docs/development/rag-workspace-clarity-20261107/evidence/github-code-sync-v1.json",
+    "git_blob_sha": "24eb6189c67dc8ae67ce7742d06e1ce76dcfb053",
+    "bytes": 9052
+  },
+  {
+    "path": "docs/development/rag-workspace-clarity-20261107/evidence/incidental-review-db.json",
+    "git_blob_sha": "c9563afbd93ee8a8e7814b6111871cba74670229",
+    "bytes": 430
+  },
+  {
+    "path": "docs/development/rag-workspace-clarity-20261107/evidence/install-v1.log",
+    "git_blob_sha": "8d0f0df3c83e29b9f69de3dbdd3618a3adf5e22c",
+    "bytes": 145
+  },
+  {
+    "path": "docs/development/rag-workspace-clarity-20261107/evidence/installed-source-v1.json",
+    "git_blob_sha": "debf848cc94e3484c5a67c0b092f5ec8fedaf1a1",
+    "bytes": 710
+  },
+  {
+    "path": "docs/development/rag-workspace-clarity-20261107/evidence/node-v1.log",
+    "git_blob_sha": "8cb1f3c7980f9889364c1b51e5ea32247442e33a",
+    "bytes": 863
+  },
+  {
+    "path": "docs/development/rag-workspace-clarity-20261107/evidence/node-v2.log",
+    "git_blob_sha": "e677667b64828003f6e5e4844013dd540a214c4e",
+    "bytes": 952
+  },
+  {
+    "path": "docs/development/rag-workspace-clarity-20261107/evidence/pytest-v1.log",
+    "git_blob_sha": "aa43a3630e0dc2c8e566dbf304ce2ab50efc487e",
+    "bytes": 2054
+  },
+  {
+    "path": "docs/development/rag-workspace-clarity-20261107/evidence/pytest-v2.log",
+    "git_blob_sha": "a6537bb73e0c4e4ba6f882343e18986134776845",
+    "bytes": 2054
+  },
+  {
+    "path": "docs/development/rag-workspace-clarity-20261107/evidence/pytest-v2.xml",
+    "git_blob_sha": "ae219701d105c0ccd038f96bb6adfcfa0b038736",
+    "bytes": 61888
+  },
+  {
+    "path": "docs/development/rag-workspace-clarity-20261107/evidence/raw-records-manifest.json",
+    "git_blob_sha": "c7934a51db2eb2de1b1bd33dec5cd9664b560b01",
+    "bytes": 7375
+  },
+  {
+    "path": "docs/development/rag-workspace-clarity-20261107/evidence/source-identity.json",
+    "git_blob_sha": "3499cb53c3f40f044470e0a65ee8c65bc802ac9d",
+    "bytes": 3710
+  },
+  {
+    "path": "docs/development/rag-workspace-clarity-20261107/evidence/ui-acceptance.json",
+    "git_blob_sha": "dadb71f0fa3ba0d45796e95bd4809b3fd195084c",
+    "bytes": 1205
+  }
+]

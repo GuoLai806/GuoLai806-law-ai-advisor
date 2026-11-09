@@ -1,0 +1,22 @@
+[
+  {
+    "historical_task_path": "outputs/research-20261105/RESEARCH-LAW.md",
+    "original_sha256": "f0f101165747b357c336228802d2f83ee5df4c6a657965b1848d2aa52b306718",
+    "treatment": "project-only Chinese summary; private/cross-project details excluded; no new benchmark"
+  },
+  {
+    "historical_task_path": "outputs/delivery-20261106/IMPLEMENTATION-MAP.md",
+    "original_sha256": "e5f49c1e7dbda9d9e73a794e4b5aa54f634b59656edd53b37037e60952d73c51",
+    "treatment": "project-only Chinese summary; private/cross-project details excluded; no new benchmark"
+  },
+  {
+    "historical_task_path": "outputs/development-20261105/WORK.md",
+    "original_sha256": "7bd4efc66a0f8238183bb7614ce68be199b13b06206b5aa063e35a9bd95fd80c",
+    "treatment": "project-only Chinese summary; private/cross-project details excluded; no new benchmark"
+  },
+  {
+    "historical_task_path": "outputs/delivery-20261106/TECHNOLOGY-EVIDENCE.md",
+    "original_sha256": "c59680c27414248131f868f6caa19463495f70b90f0b32429e6dff30e3108d1d",
+    "treatment": "project-only Chinese summary; private/cross-project details excluded; no new benchmark"
+  }
+]

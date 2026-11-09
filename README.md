@@ -1,3 +1,5 @@
+当前交接（2026-11-10）：[统一入口](HANDOFF.md) · [大白话用户版](docs/development/handoff-20261110/PLAN-FOR-YOU.md) · [AI执行版](docs/development/handoff-20261110/PLAN-FOR-AI.md)。开发背景、有效决定、版本绑定、失败和后续边界从这里读取。
+
 当前进度（2026-11-09）：[大白话用户版](docs/development/project-progress-20261109/PLAN-FOR-YOU.md) · [Agent交接版](docs/development/project-progress-20261109/PLAN-FOR-AI.md)。区分已完成验证、当前运行与后续待办。
 
 本轮页面已去掉令牌输入，按“检索到的内容 → AI最终答案 → 本次耗时”展示；真实OpenViking网页路径、451项Python和10项前端检查、构建安装均完成。见[大白话用户版](docs/development/rag-workspace-clarity-20261107/PLAN-FOR-YOU.md)、[开发依据](docs/development/rag-workspace-clarity-20261107/PLAN-FOR-AI.md)、[实际结果](docs/development/rag-workspace-clarity-20261107/RESULTS.md)与[正常入口/回退](docs/development/rag-workspace-clarity-20261107/DELIVERY.md)。单题页面耗时不代表质量或整体提速。

@@ -1,0 +1,79 @@
+{
+  "checked_utc": "2026-11-09T16:11:06.310612+00:00",
+  "scope": "handoff audit, no business edits or model benchmark",
+  "repository": {
+    "repository": "GuoLai806/GuoLai806-law-ai-advisor",
+    "visibility": "public",
+    "branch": "feat/versioned-legal-rag-20261105",
+    "head": "1ad62b83e8f2c2a57a4b602bfdc1bc7a5f57c9d1",
+    "main": "8f433fb2e0dd1ac171c7c797de571c2e8840eb3b",
+    "documents": 492,
+    "tracked_document_paths_verified": 492
+  },
+  "services": {
+    "19447": {
+      "http_status": 200,
+      "identity": {
+        "ready": true,
+        "active_revision": "scifact_full_v3"
+      }
+    },
+    "19443": {
+      "http_status": 200,
+      "identity": {
+        "version": "0.5.3",
+        "healthy": true
+      }
+    },
+    "19444": {
+      "http_status": 200,
+      "identity": {
+        "ready": true,
+        "model": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+        "dimension": 1024,
+        "device": "mps:0"
+      }
+    }
+  },
+  "api_runtime": {
+    "runtime_identity": {
+      "ov_reuse_client": true,
+      "explore_enabled": true,
+      "dense_scope": "viking://resources/rag/scifact/scifact_full_v3/",
+      "reranker_revision": "22e683669bc0f0bd69640a1354a6d0aebcfeede5",
+      "reranker_batch_size": 8,
+      "rerank_timeout_seconds": 120.0,
+      "tokenizer_revision": "e7310d1dafe0a86d8a5629fe78a7c763760f651db9b8682718a1781dcd6fe495",
+      "answer_model": "deepseek-v4-pro",
+      "max_output_tokens": 8192,
+      "thinking": "enabled",
+      "reasoning_effort": "low",
+      "default_evidence_items": 4,
+      "default_profile": "general",
+      "system_prompt_sha256": "c32c843995fb4a4cb8bceba9c9e1f803effa8d2a3f2592c6e5a8783d6b5e9cea",
+      "context_window": 32768,
+      "framing_reserve": 512,
+      "output_reserve": 8192,
+      "provider_timeout_seconds": 60.0,
+      "temperature": 0.0,
+      "stream_include_usage": true,
+      "store_conversations": true,
+      "rerank_threshold": "0",
+      "empty_retry_thinking": "disabled",
+      "retry_timeout_seconds": 45.0,
+      "retry_max_output_tokens": 2048,
+      "answer_format": "grounded_json",
+      "generation_gate": "grounded_evidence"
+    },
+    "dense_configured": true,
+    "reranker_loaded": true,
+    "tokenizer_loaded": true,
+    "generator_configured": true,
+    "exploration_available": true
+  },
+  "served_assets": {
+    "/": "a78262f0cb1354b4f1540990884551db499bed158ce138e344b6b2d85d629dd7",
+    "/assets/workspace.mjs": "7c7df957f727bdb22da2ad451621cfb8aedb112285e04e3e98a63184835dc3ce"
+  }
+}
