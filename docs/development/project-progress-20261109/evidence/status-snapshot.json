@@ -1,0 +1,43 @@
+{
+  "checked_utc": "2026-11-09T03:11:17.366274+00:00",
+  "scope": "one public project progress audit; no new business execution",
+  "repository": {
+    "repository": "GuoLai806/GuoLai806-law-ai-advisor",
+    "visibility": "public",
+    "branch": "feat/versioned-legal-rag-20261105",
+    "branch_sha": "7358f5031f00054ece5240ed034b53ad70491042",
+    "default_branch": "main",
+    "default_sha": "8f433fb2e0dd1ac171c7c797de571c2e8840eb3b",
+    "compare": {
+      "status": "ahead",
+      "ahead_by": 17,
+      "behind_by": 0,
+      "only_docs_and_readme": false
+    },
+    "local_sha": "7358f5031f00054ece5240ed034b53ad70491042",
+    "local_clean": true
+  },
+  "evidence_hashes": {
+    "docs/development/rag-workspace-clarity-20261107/RESULTS.md": "04a9e3e13d3a36690511cdafc3285d7747b16beb3984577e6646fe0f5e9e1bb1",
+    "docs/development/openviking-user-flow-20261106/RESULTS.md": "d4694bead253537696ae45d31dbc6f08eceab80feca3611b436d867c338e6ee3",
+    "docs/development/openviking-quality-20261107/RESULTS.md": "43c90e9466d2c6679a2660b0c39913eac69cdd54e6de97575f15ffd0307842bb",
+    "docs/development/rag-exploration-20261107/RESULTS.md": "b47a95d89aebd388611cff0150e87d4345be56214ab2b837417f59ea38eff246"
+  },
+  "local_services": {
+    "19447": {
+      "reachable": false,
+      "error_type": "URLError",
+      "observation": "connection refused; cause not investigated"
+    },
+    "19443": {
+      "reachable": false,
+      "error_type": "URLError",
+      "observation": "connection refused; cause not investigated"
+    },
+    "19444": {
+      "reachable": false,
+      "error_type": "URLError",
+      "observation": "connection refused; cause not investigated"
+    }
+  }
+}
