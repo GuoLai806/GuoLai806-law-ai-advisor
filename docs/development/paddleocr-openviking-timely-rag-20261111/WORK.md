@@ -21,4 +21,4 @@ TECH-1 使用PaddleOCR解析民法典，技术价值写高精度OCR和数据清�
 
 ## 交付物
 
-[用户版](PLAN-FOR-USER.md)、[AI执行版](PLAN-FOR-AI.md)、[调研证据与选型](RESEARCH-AND-DECISIONS.md)。AI版含R1-R10、任务T1-T7、验收、依赖、回滚及授权边界。计划提交本轮文档到现有可写分支并远端回读；不合并main、不改可见性、不发布产品。
+[用户版](PLAN-FOR-YOU.md)、[AI执行版](PLAN-FOR-AI.md)、[调研证据与选型](RESEARCH-AND-DECISIONS.md)。AI版含R1-R10、任务T1-T7、验收、依赖、回滚及授权边界。计划提交本轮文档到现有可写分支并远端回读；不合并main、不改可见性、不发布产品。

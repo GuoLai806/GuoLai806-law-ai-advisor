@@ -1,6 +1,6 @@
 # 调研证据与选型判断
 
-核对日期2026-11-11。本页补[用户版](PLAN-FOR-USER.md)与[AI执行版](PLAN-FOR-AI.md)的技术证据；本轮没有安装PaddleOCR、启动OCR、调用模型、改索引或评测。
+核对日期2026-11-11。本页补[用户版](PLAN-FOR-YOU.md)与[AI执行版](PLAN-FOR-AI.md)的技术证据；本轮没有安装PaddleOCR、启动OCR、调用模型、改索引或评测。
 
 ## 1. 当前PDF并非扫描件
 

@@ -1,6 +1,6 @@
 # 需求规格：民法典 OCR、OpenViking 结构化索引与 Timely RAG
 
-[用户版](PLAN-FOR-USER.md)是本页的同一组决定；本页是开发依据。状态为需求方案阶段，2026-11-11 核实；本轮不实现业务代码，不安装 OCR 依赖，不改活动资料库。目标仓库：`GuoLai806/GuoLai806-law-ai-advisor`，工作分支 `feat/versioned-legal-rag-20261105`，核对 HEAD `0d14a09773c54c9432475a4e357bbe893304d97b`。来源 PDF：`main-system/中华人民共和国民法典 - 中华人民共和国最高人民法院.pdf`，64页，SHA-256 `4cef5e4a1e5f82c5a52e949093ba0cfec4f7290e78d04d837c292e2a62c4065e`。
+[用户版](PLAN-FOR-YOU.md)是本页的同一组决定；本页是开发依据。状态为需求方案阶段，2026-11-11 核实；本轮不实现业务代码，不安装 OCR 依赖，不改活动资料库。目标仓库：`GuoLai806/GuoLai806-law-ai-advisor`，工作分支 `feat/versioned-legal-rag-20261105`，核对 HEAD `0d14a09773c54c9432475a4e357bbe893304d97b`。来源 PDF：`main-system/中华人民共和国民法典 - 中华人民共和国最高人民法院.pdf`，64页，SHA-256 `4cef5e4a1e5f82c5a52e949093ba0cfec4f7290e78d04d837c292e2a62c4065e`。
 
 ## 目标、范围与可验证需求
 
