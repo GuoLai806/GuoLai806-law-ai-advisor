@@ -43,7 +43,7 @@ def messages_for(query, evidence, answer_format=None):
     if answer_format is None:
         answer_format=os.environ.get('EVIDENCE_RAG_ANSWER_FORMAT',os.environ.get('LEGAL_RAG_ANSWER_FORMAT','text'))
     _answer_format(answer_format)
-    facts='\n\n'.join(f"[{e['citation_id']}] {e['title']} {e.get('article_label','')}\n{e['text']}" for e in evidence)
+    facts='\n\n'.join(f"[{e['citation_id']}] {e['title']} {' / '.join(e.get('structure') or [])} {e.get('article_label','')}\n{e['text']}" for e in evidence)
     legal=bool(evidence and evidence[0].get('profile')=='legal')
     system=LEGAL_SYSTEM if legal else os.environ.get('EVIDENCE_RAG_GENERAL_SYSTEM_PROMPT',SYSTEM)
     if not legal and answer_format=='grounded_json': system+='\n'+GROUNDED_OUTPUT

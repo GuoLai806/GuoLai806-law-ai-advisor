@@ -1,0 +1,16 @@
+{
+  "wheel": {
+    "filename": "evidence_rag-0.3.0.dev0-py3-none-any.whl",
+    "bytes": 126583,
+    "sha256": "589ee363e708029395d3a534cdc04ff58ced6aca26dcdda68faa845865ecec08"
+  },
+  "installed_in": "work/dev/civil-time-rag-20261111/install-final-v3",
+  "install_log_sha256": "b2695ec2d03e85d161a722c356a872a89b4bd803f0f1ee68087179a8687fce52",
+  "imports_from_site_packages": {
+    "evidence_rag": true,
+    "benchmarks": true,
+    "legal_rag": true
+  },
+  "cli_help_exit": 0,
+  "scope": "Wheel build and import/CLI check only; model weights, OCR models, OpenViking data and source DB remain external."
+}

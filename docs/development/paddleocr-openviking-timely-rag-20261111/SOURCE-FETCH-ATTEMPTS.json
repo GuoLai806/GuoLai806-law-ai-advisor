@@ -1,0 +1,24 @@
+{
+  "checked_utc": "2026-11-11T03:20:00Z",
+  "source_records": [
+    {
+      "label": "previous-documented-npc-pdf",
+      "url": "https://wb.flk.npc.gov.cn/flfg/PDF/bd53dd912c1048f2aecbaa229238334b.pdf",
+      "result": "DNS resolution failed",
+      "root_cause": "host did not resolve from current environment"
+    },
+    {
+      "label": "npc-database-home",
+      "url": "https://flk.npc.gov.cn/detail2.html?ZmY4MDgxODE3MjlkMWVmZTAxNzI5ZDUwYjVhNTAwNTY=",
+      "result": "HTTP 200 shell; no direct PDF in initial HTML"
+    },
+    {
+      "label": "npc-search-detail-api",
+      "url": "https://flk.npc.gov.cn/api/detail",
+      "result": "HTTP 405 with empty body for POST"
+    }
+  ],
+  "network_scope": "HTTPS public endpoints only; no browser auth or local workaround",
+  "status": "authoritative source retrieval not yet complete",
+  "impact": "do not mark the repository PDF as an approved official source; keep it as an offline baseline while building structured/time/retrieval logic"
+}

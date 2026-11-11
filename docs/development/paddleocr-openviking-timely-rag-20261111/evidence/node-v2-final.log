@@ -1,0 +1,19 @@
+✔ real event stages preserve the whole answer and separate elapsed phases (0.866084ms)
+✔ preview does not report model generation and a new request starts its own clock (0.061667ms)
+✔ early disconnect, failure and cancellation cannot retain a final draft (0.082042ms)
+✔ rejection followed by completion cannot become a success (0.04475ms)
+✔ retry replaces the discarded draft without restarting the user clock (0.047375ms)
+✔ only the bound request epoch may change the current page (0.04ms)
+✔ Chinese verdict and quotes are presentation-only; ungrounded prose is preserved (0.064334ms)
+✔ split SSE frames wait for completion and retain unicode payloads (0.11075ms)
+✔ invalid clocks never fabricate a positive latency (0.049334ms)
+✔ partial or empty previews cannot report a normal complete result (0.103291ms)
+✔ legal date selection context is preserved in preview metadata (0.047875ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 32.555875

@@ -7,6 +7,7 @@ __pycache__/
 
 build/
 dist/
+work/
 *.egg-info/
 .env
 .env.*

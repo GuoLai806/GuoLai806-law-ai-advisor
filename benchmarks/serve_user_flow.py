@@ -19,12 +19,13 @@ def main():
              'FRAMING_RESERVE','OUTPUT_RESERVE','MAX_OUTPUT_TOKENS','RERANK_THRESHOLD',
              'STORE_CONVERSATIONS','STREAM_INCLUDE_USAGE','GENERAL_SYSTEM_PROMPT','DEFAULT_EVIDENCE_ITEMS',
              'MODEL_EMPTY_RETRY_THINKING','MODEL_RETRY_TIMEOUT','MODEL_RETRY_MAX_OUTPUT_TOKENS',
-             'ANSWER_FORMAT','GENERATION_GATE','OV_REUSE_CLIENT','EXPLORE_ENABLED','LOCAL_DEMO_USER'}
+             'ANSWER_FORMAT','GENERATION_GATE','OV_REUSE_CLIENT','EXPLORE_ENABLED','LOCAL_DEMO_USER','TEMPORAL_RETENTION_DAYS','TEMPORAL_DECAY_DAYS','TEMPORAL_DECAY_GAMMA','DEFAULT_PROFILE','PROFILE'}
     for name in allowed:
         value=config.get(name.lower())
         if value is not None:
             os.environ['EVIDENCE_RAG_'+name]=json.dumps(value) if name=='AUTH' else str(value)
-    uvicorn.run('evidence_rag.api:app',host='127.0.0.1',port=args.port,log_level='warning',access_log=False,proxy_headers=False)
+    application='evidence_rag.api:legal_app' if config.get('profile')=='legal' else 'evidence_rag.api:app'
+    uvicorn.run(application,host='127.0.0.1',port=args.port,log_level='warning',access_log=False,proxy_headers=False,app_dir=None)
 
 if __name__=='__main__':
     main()

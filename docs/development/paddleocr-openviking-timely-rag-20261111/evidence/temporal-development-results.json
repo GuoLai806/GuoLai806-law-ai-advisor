@@ -1,0 +1,378 @@
+{
+  "format": "legal-temporal-retrieval-v1",
+  "created_utc": "2026-11-11T04:26:38Z",
+  "split": "development",
+  "dataset": "work/dev/civil-time-rag-20261111/benchmark/development-6.json",
+  "dataset_sha256": "3a55d563e7dc6d232ca9ae78bad5bda8fae658b8b19dbb8388f572e363526d0e",
+  "database": "work/dev/civil-time-rag-20261111/official-metadata.sqlite3",
+  "database_sha256": "7351c1cdd5918cf8ec909a565a2afba6a3150c0b5bf0b8e9db49c0e3a2238cf0",
+  "revision": "civil_npc_tree_approved",
+  "openviking_scope": "viking://resources/law-cn/civil_npc_tree_approved",
+  "openviking_health": {
+    "status": "ok",
+    "healthy": true,
+    "version": "0.5.3",
+    "auth_mode": "dev"
+  },
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "python": "3.12.13",
+  "config": {
+    "format": "legal-temporal-retrieval-v1",
+    "variants": [
+      "bm25",
+      "openviking_bge_m3",
+      "rrf",
+      "rrf_timely"
+    ],
+    "candidate_limit": 60,
+    "per_source_limit": 40,
+    "rrf_k": 60,
+    "temporal_config": {
+      "retention_days": 0,
+      "decay_days": 3650,
+      "decay_gamma": 2.0,
+      "temporal_weight_max": 0.35,
+      "expiry_weight": 0.35,
+      "query_time_weight": 0.1,
+      "event_time_weight": 0.9
+    },
+    "gold_used_for_ranking": false,
+    "qwen_reranker": "unavailable: local weight files absent; historical SciFact excluded",
+    "metrics_scope": "retrieval ranking and temporal abstention only; not answer quality"
+  },
+  "code_sha256": {
+    "benchmarks/run_legal_temporal.py": "ab3424ebad109fed36e5be84b01df1e6c26e8589c58319e2822bc55e2baf9e86",
+    "evidence_rag/catalog.py": "3f4e95185ea544bae35f91ec99d7d29da42cb63d03ab27de3b2978776f73da4b",
+    "evidence_rag/retrieval.py": "ddcb98b38c83591897f5209f83e9823b3d5131ab9b21da98af7fb041db3935e9",
+    "evidence_rag/temporal.py": "56ff0c71a80d2612f63b6f05c1a99c13b9f0e64c30d2fd969ee50230cb99ff91"
+  },
+  "summary": {
+    "bm25": {
+      "query_count": 6,
+      "ndcg_at_10": 0.5,
+      "recall_at_20": 0.6666666666666666,
+      "mrr_at_10": 0.5,
+      "valid_version_hit_at_10": 0.75,
+      "stale_evidence_leakage": 1.0,
+      "latency_ms": {
+        "mean": 37.194833333333335,
+        "p50": 1.236,
+        "p95": 1.437
+      }
+    },
+    "openviking_bge_m3": {
+      "query_count": 6,
+      "ndcg_at_10": 0.5218216255952429,
+      "recall_at_20": 0.6666666666666666,
+      "mrr_at_10": 0.47222222222222227,
+      "valid_version_hit_at_10": 1.0,
+      "stale_evidence_leakage": 1.0,
+      "latency_ms": {
+        "mean": 22.92016666666667,
+        "p50": 17.898,
+        "p95": 19.459
+      }
+    },
+    "rrf": {
+      "query_count": 6,
+      "ndcg_at_10": 0.6666666666666666,
+      "recall_at_20": 0.6666666666666666,
+      "mrr_at_10": 0.6666666666666666,
+      "valid_version_hit_at_10": 1.0,
+      "stale_evidence_leakage": 1.0,
+      "latency_ms": {
+        "mean": 23.245833333333334,
+        "p50": 18.178,
+        "p95": 19.802
+      }
+    },
+    "rrf_timely": {
+      "query_count": 6,
+      "ndcg_at_10": 1.0,
+      "recall_at_20": 1.0,
+      "mrr_at_10": 1.0,
+      "valid_version_hit_at_10": 1.0,
+      "stale_evidence_leakage": 0.0,
+      "latency_ms": {
+        "mean": 23.245833333333334,
+        "p50": 18.178,
+        "p95": 19.802
+      }
+    }
+  },
+  "class_counts": {
+    "before_effective": 2,
+    "valid_after_effective": 4
+  },
+  "finished_utc": "2026-11-11T04:26:38Z",
+  "elapsed_seconds": 0.3976820840034634,
+  "complete": true,
+  "rows": [
+    {
+      "id": "CCD-001",
+      "query": "2020年6月1日签订合同的效力如何判断",
+      "event_date": "2020-06-01",
+      "time_class": "before_effective",
+      "expected_labels": [],
+      "should_return": false,
+      "timings_ms": {
+        "bm25_ms": 217.668,
+        "openviking_bge_m3_ms": 48.469,
+        "rrf_and_timely_ms": 0.438
+      },
+      "variant_metrics": {
+        "bm25": {
+          "ndcg_at_10": 0.0,
+          "recall_at_20": 0.0,
+          "mrr_at_10": 0.0,
+          "first_relevant_rank": null,
+          "returned_count": 20
+        },
+        "openviking_bge_m3": {
+          "ndcg_at_10": 0.0,
+          "recall_at_20": 0.0,
+          "mrr_at_10": 0.0,
+          "first_relevant_rank": null,
+          "returned_count": 20
+        },
+        "rrf": {
+          "ndcg_at_10": 0.0,
+          "recall_at_20": 0.0,
+          "mrr_at_10": 0.0,
+          "first_relevant_rank": null,
+          "returned_count": 20
+        },
+        "rrf_timely": {
+          "ndcg_at_10": 1.0,
+          "recall_at_20": 1.0,
+          "mrr_at_10": 1.0,
+          "first_relevant_rank": null,
+          "returned_count": 0
+        }
+      }
+    },
+    {
+      "id": "CCD-002",
+      "query": "2020年12月31日成立的合同是否适用民法典",
+      "event_date": "2020-12-31",
+      "time_class": "before_effective",
+      "expected_labels": [],
+      "should_return": false,
+      "timings_ms": {
+        "bm25_ms": 1.366,
+        "openviking_bge_m3_ms": 19.459,
+        "rrf_and_timely_ms": 0.343
+      },
+      "variant_metrics": {
+        "bm25": {
+          "ndcg_at_10": 0.0,
+          "recall_at_20": 0.0,
+          "mrr_at_10": 0.0,
+          "first_relevant_rank": null,
+          "returned_count": 20
+        },
+        "openviking_bge_m3": {
+          "ndcg_at_10": 0.0,
+          "recall_at_20": 0.0,
+          "mrr_at_10": 0.0,
+          "first_relevant_rank": null,
+          "returned_count": 20
+        },
+        "rrf": {
+          "ndcg_at_10": 0.0,
+          "recall_at_20": 0.0,
+          "mrr_at_10": 0.0,
+          "first_relevant_rank": null,
+          "returned_count": 20
+        },
+        "rrf_timely": {
+          "ndcg_at_10": 1.0,
+          "recall_at_20": 1.0,
+          "mrr_at_10": 1.0,
+          "first_relevant_rank": null,
+          "returned_count": 0
+        }
+      }
+    },
+    {
+      "id": "CCD-003",
+      "query": "2021年1月1日以后合同成立后如何认定",
+      "event_date": "2021-01-01",
+      "time_class": "valid_after_effective",
+      "expected_labels": [
+        "第四百九十条"
+      ],
+      "should_return": true,
+      "timings_ms": {
+        "bm25_ms": 0.89,
+        "openviking_bge_m3_ms": 18.031,
+        "rrf_and_timely_ms": 0.334
+      },
+      "variant_metrics": {
+        "bm25": {
+          "ndcg_at_10": 0.0,
+          "recall_at_20": 1.0,
+          "mrr_at_10": 0.0,
+          "first_relevant_rank": null,
+          "returned_count": 20
+        },
+        "openviking_bge_m3": {
+          "ndcg_at_10": 0.5,
+          "recall_at_20": 1.0,
+          "mrr_at_10": 0.3333333333333333,
+          "first_relevant_rank": 3,
+          "returned_count": 20
+        },
+        "rrf": {
+          "ndcg_at_10": 1.0,
+          "recall_at_20": 1.0,
+          "mrr_at_10": 1.0,
+          "first_relevant_rank": 1,
+          "returned_count": 20
+        },
+        "rrf_timely": {
+          "ndcg_at_10": 1.0,
+          "recall_at_20": 1.0,
+          "mrr_at_10": 1.0,
+          "first_relevant_rank": 1,
+          "returned_count": 20
+        }
+      }
+    },
+    {
+      "id": "CCD-004",
+      "query": "2024年约定的违约金过分高于损失如何处理",
+      "event_date": "2024-01-01",
+      "time_class": "valid_after_effective",
+      "expected_labels": [
+        "第五百八十五条"
+      ],
+      "should_return": true,
+      "timings_ms": {
+        "bm25_ms": 1.236,
+        "openviking_bge_m3_ms": 17.898,
+        "rrf_and_timely_ms": 0.28
+      },
+      "variant_metrics": {
+        "bm25": {
+          "ndcg_at_10": 1.0,
+          "recall_at_20": 1.0,
+          "mrr_at_10": 1.0,
+          "first_relevant_rank": 1,
+          "returned_count": 20
+        },
+        "openviking_bge_m3": {
+          "ndcg_at_10": 1.0,
+          "recall_at_20": 1.0,
+          "mrr_at_10": 1.0,
+          "first_relevant_rank": 1,
+          "returned_count": 20
+        },
+        "rrf": {
+          "ndcg_at_10": 1.0,
+          "recall_at_20": 1.0,
+          "mrr_at_10": 1.0,
+          "first_relevant_rank": 1,
+          "returned_count": 20
+        },
+        "rrf_timely": {
+          "ndcg_at_10": 1.0,
+          "recall_at_20": 1.0,
+          "mrr_at_10": 1.0,
+          "first_relevant_rank": 1,
+          "returned_count": 20
+        }
+      }
+    },
+    {
+      "id": "CCD-005",
+      "query": "2021年6月1日的租赁期限超过二十年怎么办",
+      "event_date": "2021-06-01",
+      "time_class": "valid_after_effective",
+      "expected_labels": [
+        "第七百零五条"
+      ],
+      "should_return": true,
+      "timings_ms": {
+        "bm25_ms": 1.437,
+        "openviking_bge_m3_ms": 16.809,
+        "rrf_and_timely_ms": 0.291
+      },
+      "variant_metrics": {
+        "bm25": {
+          "ndcg_at_10": 1.0,
+          "recall_at_20": 1.0,
+          "mrr_at_10": 1.0,
+          "first_relevant_rank": 1,
+          "returned_count": 20
+        },
+        "openviking_bge_m3": {
+          "ndcg_at_10": 0.6309297535714575,
+          "recall_at_20": 1.0,
+          "mrr_at_10": 0.5,
+          "first_relevant_rank": 2,
+          "returned_count": 20
+        },
+        "rrf": {
+          "ndcg_at_10": 1.0,
+          "recall_at_20": 1.0,
+          "mrr_at_10": 1.0,
+          "first_relevant_rank": 1,
+          "returned_count": 20
+        },
+        "rrf_timely": {
+          "ndcg_at_10": 1.0,
+          "recall_at_20": 1.0,
+          "mrr_at_10": 1.0,
+          "first_relevant_rank": 1,
+          "returned_count": 20
+        }
+      }
+    },
+    {
+      "id": "CCD-006",
+      "query": "2025年离婚时孩子抚养费由谁负担",
+      "event_date": "2025-01-01",
+      "time_class": "valid_after_effective",
+      "expected_labels": [
+        "第一千零八十五条"
+      ],
+      "should_return": true,
+      "timings_ms": {
+        "bm25_ms": 0.572,
+        "openviking_bge_m3_ms": 16.855,
+        "rrf_and_timely_ms": 0.268
+      },
+      "variant_metrics": {
+        "bm25": {
+          "ndcg_at_10": 1.0,
+          "recall_at_20": 1.0,
+          "mrr_at_10": 1.0,
+          "first_relevant_rank": 1,
+          "returned_count": 20
+        },
+        "openviking_bge_m3": {
+          "ndcg_at_10": 1.0,
+          "recall_at_20": 1.0,
+          "mrr_at_10": 1.0,
+          "first_relevant_rank": 1,
+          "returned_count": 20
+        },
+        "rrf": {
+          "ndcg_at_10": 1.0,
+          "recall_at_20": 1.0,
+          "mrr_at_10": 1.0,
+          "first_relevant_rank": 1,
+          "returned_count": 20
+        },
+        "rrf_timely": {
+          "ndcg_at_10": 1.0,
+          "recall_at_20": 1.0,
+          "mrr_at_10": 1.0,
+          "first_relevant_rank": 1,
+          "returned_count": 20
+        }
+      }
+    }
+  ]
+}

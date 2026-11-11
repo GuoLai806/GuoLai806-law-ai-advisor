@@ -1,6 +1,6 @@
 # 调研证据与选型判断
 
-核对日期2026-11-11。本页补[用户版](PLAN-FOR-YOU.md)与[AI执行版](PLAN-FOR-AI.md)的技术证据；本轮没有安装PaddleOCR、启动OCR、调用模型、改索引或评测。
+核对日期2026-11-11。本页补[用户版](PLAN-FOR-YOU.md)与[AI执行版](PLAN-FOR-AI.md)的技术证据。当前已完成真实 64 页 PaddleOCR、1260 条目录树和正文对账、OpenViking 1260 条全量索引/回读/可见性验证、时间检索、API 与安装检查；独立质量评测、cross-encoder 和生成问答仍未完成。完整最终口径见 [测试结果](TEST-RESULTS.md)。
 
 ## 1. 当前PDF并非扫描件
 

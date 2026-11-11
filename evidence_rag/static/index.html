@@ -16,7 +16,7 @@
     .muted { color: #68778d; font-size: 14px; }
     section { background: white; padding: 22px; border: 1px solid #e0e6ef; border-radius: 14px; margin: 18px 0; }
     label { display: block; font-weight: 600; margin-bottom: 8px; }
-    textarea { width: 100%; font: inherit; border: 1px solid #bcc9db; border-radius: 9px; padding: 12px; resize: vertical; min-height: 100px; }
+    textarea, input[type=date] { width: 100%; font: inherit; border: 1px solid #bcc9db; border-radius: 9px; padding: 12px; resize: vertical; min-height: 100px; }
     button { font: inherit; cursor: pointer; border: 0; border-radius: 8px; padding: 9px 16px; background: #245ec9; color: white; }
     button.secondary { background: #edf2fa; color: #294566; }
     button:disabled { opacity: .55; cursor: default; }
@@ -37,6 +37,7 @@
     .metrics div { border: 1px solid #e1e9f3; border-radius: 10px; padding: 14px; background: #f9fbfe; }
     dt { color: #68778d; font-size: 14px; }
     dd { font-size: 22px; font-weight: 650; margin: 6px 0 0; }
+    .time-row { align-items:flex-start; }
     .hidden { display: none; }
     @media (max-width: 800px) { .results { grid-template-columns: 1fr; } main { margin-top: 22px; padding: 0 14px 30px; } }
     @media (max-width: 480px) { section { padding: 18px; } .metrics { grid-template-columns: 1fr; } }
@@ -50,6 +51,9 @@
     <form id="question-form">
       <label for="question">你想查什么？</label>
       <textarea id="question" required maxlength="4000" placeholder="输入问题，或需要核对的结论"></textarea>
+      <div class="row time-row">
+        <div style="flex:1;min-width:220px"><label for="event-date">事件发生日（可选）</label><input id="event-date" type="date"><p class="muted">有具体案件时，按事件发生日自动选择当时有效的民法典版本；没有日期时询问当前有效版本。</p></div>
+      </div>
       <div class="row">
         <button id="ask" type="submit">检索并生成答案</button>
         <button id="explore" type="button" class="secondary">只检索资料</button>

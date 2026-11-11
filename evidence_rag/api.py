@@ -9,6 +9,7 @@ from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
 from .catalog import Catalog
 from .retrieval import RetrievalService, CrossEncoderReranker, OpenViking
+from .temporal import TemporalConfig
 from .budget import HuggingFaceTokenizer, ConservativeByteBudget
 from .answer import OpenAIStream, ModelStreamIncomplete, validate_citations, provider_events, messages_for
 from .grounding import GroundingRejected
@@ -27,6 +28,7 @@ class Query(BaseModel):
     query: str = Field(min_length=1,max_length=4000)
     session_id: str = Field(min_length=1,max_length=128,pattern=r'^[A-Za-z0-9_-]+$')
     event_date: date | None = None
+    query_time: date | None = None
     profile: Literal['general','legal'] | None = None
     document_id: str | None = Field(default=None,max_length=512)
     budget_mode: Literal['tokenizer','conservative_bytes'] = 'tokenizer'
@@ -37,7 +39,10 @@ class Query(BaseModel):
 
 @asynccontextmanager
 async def lifespan(app):
+    current_app=app
     default_evidence_items()  # Reject invalid operator configuration at startup.
+    profile='legal' if getattr(app.state,'default_profile_explicit',False) else setting('DEFAULT_PROFILE','general')
+    app.state.default_profile=profile
     demo_user=setting('LOCAL_DEMO_USER')
     if demo_user:
         try: accounts=json.loads(setting('AUTH','{}'))
@@ -61,10 +66,12 @@ async def lifespan(app):
     ov_key=os.environ.get('OPENVIKING_API_KEY')
     ov_headers={'X-API-Key':ov_key} if ov_key else {}
     dense=OpenViking(setting('OV_URL'),setting('OV_SCOPE'),headers=ov_headers,timeout=float(setting('OV_TIMEOUT','30')),reuse_client=setting('OV_REUSE_CLIENT','1')=='1') if setting('OV_URL') and setting('OV_SCOPE') else None
-    app.state.service=RetrievalService(db,dense,reranker,tokenizer,rerank_timeout=float(setting('RERANK_TIMEOUT','120')))
+    temporal_config=TemporalConfig(retention_days=int(setting('TEMPORAL_RETENTION_DAYS','0')),decay_days=int(setting('TEMPORAL_DECAY_DAYS','3650')),decay_gamma=float(setting('TEMPORAL_DECAY_GAMMA','2.0')))
+    current_app.state.default_profile=profile
+    current_app.state.service=RetrievalService(db,dense,reranker,tokenizer,profile=profile,rerank_timeout=float(setting('RERANK_TIMEOUT','120')),temporal_config=temporal_config)
     app.state.generator=OpenAIStream(setting('MODEL_URL'),setting('MODEL_NAME'),setting('MODEL_KEY',''),timeout=float(setting('MODEL_TIMEOUT','90')),include_usage=setting('STREAM_INCLUDE_USAGE')=='1',max_output_tokens=int(setting('MAX_OUTPUT_TOKENS')) if setting('MAX_OUTPUT_TOKENS') else None,temperature=float(setting('MODEL_TEMPERATURE')) if setting('MODEL_TEMPERATURE') is not None else None,thinking=setting('MODEL_THINKING'),reasoning_effort=setting('MODEL_REASONING_EFFORT'),empty_retry_thinking=setting('MODEL_EMPTY_RETRY_THINKING'),retry_timeout=float(setting('MODEL_RETRY_TIMEOUT')) if setting('MODEL_RETRY_TIMEOUT') else None,retry_max_output_tokens=int(setting('MODEL_RETRY_MAX_OUTPUT_TOKENS')) if setting('MODEL_RETRY_MAX_OUTPUT_TOKENS') else None) if setting('MODEL_URL') and setting('MODEL_NAME') else None
-    if app.state.generator:
-        app.state.generator.answer_format=answer_format
+    if current_app.state.generator:
+        current_app.state.generator.answer_format=answer_format
     try:
         yield
     finally:
@@ -75,7 +82,11 @@ async def lifespan(app):
             db.db.close()
 
 app=FastAPI(title='Evidence RAG v2',lifespan=lifespan)
-app.state.default_profile='general'
+app.state.default_profile=setting('DEFAULT_PROFILE','general')
+legal_app=FastAPI(title="Legal RAG compatibility",lifespan=lifespan)
+legal_app.state.default_profile='legal'
+legal_app.state.default_profile_explicit=True
+app.state.default_profile_explicit=False
 
 @app.get('/',include_in_schema=False)
 def workspace():
@@ -138,13 +149,59 @@ async def get_bundle(body, request, user, pinned_revision=None, *, for_explorati
     cat=Catalog(request.app.state.catalog.path)
     try:
         bind(cat.db,body.session_id,user)
-        active=pinned_revision or cat.active()
-        if not active: raise HTTPException(503,'no active verified corpus')
+        requested_revision=pinned_revision
+        initial_profile=body.profile or getattr(request.app.state,'default_profile','legal')
+        active=requested_revision or cat.active()
+        # A legal request with verified temporal records may select a retained
+        # revision inside RetrievalService. Do not reject it for not being the
+        # current active revision before selection runs.
+        temporal_versions=[
+            item for item in cat.verified_temporal_versions()
+            if item.get('valid_from') or item.get('valid_to')
+        ]
+        require_temporal_selection=initial_profile=='legal' and not requested_revision and bool(temporal_versions)
+        if not active and not require_temporal_selection: raise HTTPException(503,'no active verified corpus')
         if body.corpus_revision and body.corpus_revision!=active: raise HTTPException(404,'revision unavailable')
-        if not cat.revision(active): raise HTTPException(404,'revision unavailable')
+        if active and not cat.revision(active): raise HTTPException(404,'revision unavailable')
         configured=request.app.state.service
         profile=body.profile or getattr(request.app.state,'default_profile','legal')
         tokenizer=configured.tokenizer
+        # A request without a pin lets RetrievalService select the verified
+        # interval itself and retain its full revision-selection trace. A pin
+        # is the only case where the API supplies a fixed revision.
+        # Verify the requested interval before allocating the service or
+        # touching generation resources. The service repeats this check and
+        # retains the full revision-selection trace for a normal request.
+        if require_temporal_selection:
+            from .legal_versions import select_version
+            selection=select_version(
+                temporal_versions,
+                event_date=body.event_date,
+                query_time=body.query_time,
+            )
+            if not selection.get('selected'):
+                return {
+                    'status':'insufficient_evidence',
+                    'query_plan':{
+                        'mode':'no_temporally_valid_version',
+                        'profile':'legal',
+                        'event_date':str(body.event_date) if body.event_date else None,
+                        'query_time':str(body.query_time or date.today()),
+                        'revision_selection':selection,
+                        'applicability_review':bool(body.event_date),
+                    },
+                    'corpus_revision':None,
+                    'degraded':True,
+                    'degraded_reasons':['no_temporally_valid_version'],
+                    'missing_facts':['有可核验生效日期的法律版本'],
+                    'evidence':[],
+                    'budget':{'state':'not_applicable','used_tokens':0,'omitted':[]},
+                    'token_budget_status':'not_applicable',
+                    'retrieval_ms':0,
+                }
+        selected_revision=requested_revision or (
+            None if require_temporal_selection else active
+        )
         if body.budget_mode=='conservative_bytes':
             if profile!='general': raise HTTPException(422,'conservative byte mode is limited to general profile')
             try:
@@ -155,15 +212,20 @@ async def get_bundle(body, request, user, pinned_revision=None, *, for_explorati
             # Exploration never measures or supplies a generation prompt. Keep the
             # complete selected paragraphs, including those too large to generate.
             tokenizer=None
-        service=RetrievalService(cat,configured.dense,configured.reranker,tokenizer,profile=profile,rerank_timeout=configured.rerank_timeout,ranking_executor=configured.ranking_executor)
+        service=RetrievalService(cat,configured.dense,configured.reranker,tokenizer,profile=profile,rerank_timeout=configured.rerank_timeout,ranking_executor=configured.ranking_executor,temporal_config=getattr(configured,'temporal_config',None))
         maximum=body.max_evidence_tokens
         try:
             window,framing,output=generation_limits()
             maximum=min(maximum,window-framing-output)
         except ValueError: pass
-        try: result=await service.retrieve(body.query,active,body.event_date,max_evidence_tokens=maximum,max_units=body.max_evidence_items,document_id=body.document_id,return_retrieval_trace=body.include_retrieval_trace)
+        try:
+            result=await service.retrieve(body.query,selected_revision,body.event_date,max_evidence_tokens=maximum,max_units=body.max_evidence_items,document_id=body.document_id,return_retrieval_trace=body.include_retrieval_trace,query_time=body.query_time)
         except LookupError as exc: raise HTTPException(404,str(exc)) from exc
         except ValueError as exc: raise HTTPException(503,'catalog or retrieval integrity unavailable') from exc
+        # The service may select another verified legal revision after the
+        # API's initial check; its returned corpus_revision is authoritative.
+        if pinned_revision and result.get('corpus_revision') not in (None,pinned_revision):
+            raise HTTPException(409,'temporal revision changed during a pinned request')
         result['trace_id']='tr_'+uuid.uuid4().hex
         return result
     finally: cat.db.close()
@@ -523,7 +585,4 @@ async def legacy_stream(body: LegacyQuery,request: Request,user=Depends(identity
         except Exception: yield 'data: 服务暂不可用，请稍后重试。\n\n'
     return StreamingResponse(emit(),media_type='text/event-stream')
 
-# Same routes and lifecycle; compatibility app defaults to the legal profile.
-legal_app=FastAPI(title="Legal RAG compatibility",lifespan=lifespan)
-legal_app.state.default_profile="legal"
 legal_app.include_router(app.router)

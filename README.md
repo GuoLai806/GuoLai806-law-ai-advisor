@@ -22,6 +22,14 @@
 
 30题质量优化已完成真实OpenViking同题对照：旧21/30、新22/30，引用文档标签F1 .5614→.7143，流程27→29/30；小样本总体差区间跨0、等待增加，默认仍text。见[大白话说明](docs/development/openviking-quality-20261107/PLAN-FOR-YOU.md)、[执行依据](docs/development/openviking-quality-20261107/PLAN-FOR-AI.md)、[完整结果](docs/development/openviking-quality-20261107/RESULTS.md)、[选型](docs/development/openviking-quality-20261107/TECHNOLOGY-DECISIONS.md)与[简历建议](docs/development/openviking-quality-20261107/RESUME-REWRITE.md)。
 
+## 民法典时间检索
+
+民法典版本链路已完成隔离验收：PaddleOCR 3.7.0 实际解析 64 页并恢复 1260/1260 条号；其中 1259/1260 条与独立原生抽取字面一致，1 条保留复核状态。国家法律法规数据库已核验标题、发布机关、公布日、施行日和 1260 条目录树；正文 PDF 的来源单独标识。OpenViking 0.5.3 实际收进 1260 条，逐条原文回读和向量可见性均为 1260/1260。
+
+检索先按事件日与已核验有效期做硬过滤，再按固定 TimelyRAG 参数做时间重排；事件日早于施行日时返回证据不足。作者构造的 30 题时间定向集中，RRF 过期证据泄漏为 100%，加入时间过滤后为 0%；这不是公开榜单或通用法律准确率。当前后端 503 项、前端 11 项测试通过，wheel 安装和 CLI 入口也已验证。Qwen/BGE cross-encoder 重排、生成问答和多版本历史法仍未完成。
+
+[大白话结果与限制](docs/development/paddleocr-openviking-timely-rag-20261111/PLAN-FOR-YOU.md) · [执行依据](docs/development/paddleocr-openviking-timely-rag-20261111/PLAN-FOR-AI.md) · [测试与证据](docs/development/paddleocr-openviking-timely-rag-20261111/TEST-RESULTS.md)
+
 ## 本机运行
 
 使用 Python 3.12，在独立虚拟环境安装本项目：

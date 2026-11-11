@@ -26,6 +26,8 @@ class ExploreItem(BaseModel):
     preview_truncated: bool
     has_more: bool
     read_pointer: str
+    article_label: str | None = None
+    temporal: dict[str, Any] | None = None
 
 
 class ExploreBundle(BaseModel):
@@ -34,6 +36,7 @@ class ExploreBundle(BaseModel):
     kind: Literal['exploration'] = 'exploration'
     status: Literal['exploration_only'] = 'exploration_only'
     corpus_revision: str = Field(min_length=1)
+    query_plan: dict[str, Any] | None = None
     trace_id: str | None = None
     degraded: bool
     degraded_reasons: list[str]
@@ -82,9 +85,12 @@ def explore_bundle(bundle: dict[str, Any], preview_chars: int = 320) -> dict[str
             preview_truncated=truncated,
             has_more=bool(item.get('has_more', False)) or truncated,
             read_pointer='/api/v2/units/' + quote(unit_id, safe='') + '?' + urlencode({'revision': revision}),
+            article_label=item.get('article_label'),
+            temporal=item.get('temporal'),
         ))
     response = ExploreBundle(
         corpus_revision=revision,
+        query_plan=bundle.get('query_plan'),
         trace_id=bundle.get('trace_id'),
         degraded=bundle['degraded'],
         degraded_reasons=bundle['degraded_reasons'],
@@ -95,4 +101,6 @@ def explore_bundle(bundle: dict[str, Any], preview_chars: int = 320) -> dict[str
     result = response.model_dump()
     if result['retrieval_trace'] is None:
         del result['retrieval_trace']
+    if result['query_plan'] is None:
+        del result['query_plan']
     return result

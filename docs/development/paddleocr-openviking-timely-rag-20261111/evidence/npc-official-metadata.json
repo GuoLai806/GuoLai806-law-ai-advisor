@@ -1,0 +1,25 @@
+{
+  "checked_utc": "2026-11-11T03:21:00Z",
+  "source": "https://flk.npc.gov.cn/law-search/search/flfgDetails?bbbs=ff808081729d1efe01729d50b5c500bf",
+  "article_tree_count": 1260,
+  "notice": "official metadata and structured tree acquired; file download requires further handling and is not represented as a verified acquired body",
+  "file_metadata": {
+    "ossPdfPath": "prod/20200528/bd53dd912c1048f2aecbaa229238334b.pdf",
+    "ossWordPath": "prod/20200528/827f65fcb68f40cb941eed996c5212b0.docx",
+    "ossPdfOfdPath": "prod/20200528/bd53dd912c1048f2aecbaa229238334b.ofd"
+  },
+  "metadata": {
+    "bbbs": "ff808081729d1efe01729d50b5c500bf",
+    "xgwj": [],
+    "lsyg": null,
+    "xgzl": [],
+    "flfg": null,
+    "flxz": "法律",
+    "zdjgName": "全国人民代表大会",
+    "gbrq": "2020-05-28",
+    "sxrq": "2021-01-01",
+    "title": "中华人民共和国民法典",
+    "sxx": 3,
+    "xfFlag": 0
+  }
+}

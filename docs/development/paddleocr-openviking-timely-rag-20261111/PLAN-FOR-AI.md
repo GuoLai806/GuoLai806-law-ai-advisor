@@ -1,6 +1,21 @@
-# 需求规格：民法典 OCR、OpenViking 结构化索引与 Timely RAG
+# AI 执行版：民法典 OCR、OpenViking 结构化索引与 Timely RAG
 
-[用户版](PLAN-FOR-YOU.md)是本页的同一组决定；本页是开发依据。状态为需求方案阶段，2026-11-11 核实；本轮不实现业务代码，不安装 OCR 依赖，不改活动资料库。目标仓库：`GuoLai806/GuoLai806-law-ai-advisor`，工作分支 `feat/versioned-legal-rag-20261105`，核对 HEAD `0d14a09773c54c9432475a4e357bbe893304d97b`。来源 PDF：`main-system/中华人民共和国民法典 - 中华人民共和国最高人民法院.pdf`，64页，SHA-256 `4cef5e4a1e5f82c5a52e949093ba0cfec4f7290e78d04d837c292e2a62c4065e`。
+用户版见 [PLAN-FOR-YOU.md](PLAN-FOR-YOU.md)。开发状态截至 2026-11-11：已完成隔离实现、真实 PaddleOCR 64 页、1260 条官方目录树、真实 OpenViking 0.5.3 全量索引/回读/可见性验证、时间检索、API/原文回读、wheel 构建与安装检查。当前源码后端 503 项、前端 11 项通过。工作分支 `feat/versioned-legal-rag-20261105`，开发前 HEAD `87c64c4c2d5ca10fe95e71e1bec36193a3ba8312`。
+
+本轮真实数据事实：
+
+- PDF SHA-256 `4cef5e4a1e5f82c5a52e949093ba0cfec4f7290e78d04d837c292e2a62c4065e`，64 页。PaddleOCR 3.7.0 / PaddlePaddle 3.3.1，200 dpi，110,753 字符，0 空页，最低单行置信度约 0.875195。
+- 1260/1260 条号边界恢复；1259/1260 与独立原生抽取逐条字面一致；1150 条双向完整包含。唯一复核条“第一千零八十五条”将“判决”识别为“决”，必须保留 `ocr_reconciled_review_required`。
+- 国家法律法规数据库核实的标题、ID、发布机关、公布日、施行日和 1260 条目录树已保存。官方 PDF 下载端点返回 HTML 壳，未取得可信官方正文；正文来源单独标识为仓库 PDF hash，不能合并声称“官方直链封面/正文均已下载”。
+- OpenViking `viking://resources/law-cn/civil_npc_tree_approved`：发送/内容回读 1260/1260，全量向量可见验证 1260/1260，匹配排名均 1，耗时 201.49 秒索引、30.28 秒验证；活动 revision 仅在验证后切换。
+- 正式检索 30 题的标题已冻结：施行前 10、有效期内 10、历史法律问题 5、当前一般问题 5。BM25、OpenViking+BGE-M3、RRF、RRF+Timely 同一语料/candidate pool 对比。测试标签不参与在线排序或调 alpha。
+- 正式结果：RRF 无时间 nDCG@10 0.487698 / Recall@20 0.5 / stale leakage 1.0；RRF+Timely 0.987698 / 1.0 / 0.0，平均检索 19.16 ms。这个数据集是按时间切片构造的小型定向集，不能作为公开通用榜或法律问答准确率。
+- Qwen3-Reranker-4B 与 BGE cross-encoder 权重缺失，执行失败；未用历史 SciFact 成绩替代。生成模型未配置，chat 真实返回 evidence-only fallback。
+- 后端 503 passed；前端 11 passed；wheel SHA-256 `589ee363e708029395d3a534cdc04ff58ced6aca26dcdda68faa845865ecec08`，安装后从 site-packages 导入 `evidence_rag`/`benchmarks`/`legal_rag` 且 CLI 帮助通过。Python/Node 原始日志、OCR 汇总、索引验证、正式结果、API 结果都在 `evidence/`。
+
+保留的安全与法律边界：时间有效期规则不交给 LLM；过期/未来/未知版本不得生成；事件日优先。缺少有效期时返回 insufficient/unknown。结构路径、正文 hash 和 source locator 必须同源。写入 unknown 结果先 reconcile，不自动重放。公开库不提交 DB、模型权重、页图、Ocr 原日志或凭据。
+
+仍未完成：独立人工法律问题集、多个真实历史 revision、后续修订/司法解释与过渡规则、可信官方正文下载、真实 Qwen/BGE cross-encoder 对照、生成问答质量、production 并发/容量。下一阶段需先补这些外部条件和数据，不应继续用同一 30 题调参。
 
 ## 目标、范围与可验证需求
 
@@ -28,9 +43,7 @@ R10评测：固定开发集与正式集，全部包含有效版本gold与困难�
 
 ## 当前实现事实和需要修改的路径
 
-`evidence_rag/catalog.py`已有法律条解析，返回1260条、案例约2126个候选款项（历史计数）；但本次核验发现正文存在跨行断字，例第一条“发展要/求”，第1260条“合同/法”。现有条号是分离unit，目录解析依赖正文最后一次连续`第一条`；已从当前库确认1260条，但仍需重新运行新解析器做逐条结构检查。当前manifest是`repository-unverified`、source_url为空、effective_from/to为空，不能直接作为权威现行法律激活。
-
-`evidence_rag/cli.py`法律导入直接用PyMuPDF `get_text()`；`Catalog.stage`全局解析条号并建relations。需要增加显式parser/cleaning version、页/坐标/置信度、OCR原文与清洗后文本、结构表。`evidence_rag/retrieval.py`使用BM25+OpenViking+RRF+Qwen；`event_date`只影响query_plan与法律profile提示，未参与候选过滤/排序。`effective_from/to`取的是整个revision manifest，不是逐版本/逐条有效性。`evidence_rag/viking_index.py`目前给整个unit目录和正文；需要设计tree与L0/L1/L2层级，确保文档/条/款可追溯到完整正文。OpenViking当前已有`find/search`的`events_time_decay_protection`和`since/until`接口（`work/research/OpenViking/docs/en/api/06-retrieval.md`），但项目目前仍调用`find`；它们可以考虑作为辅助，法律有效期仍由Catalog规则裁决。
+已落地路径：`evidence_rag/catalog.py`支持条号、Structure、原文 hash、locator、temporal_versions 和官方 1260 树；`evidence_rag/ocr.py`负责 OCR 结果解析与逐条对账；`evidence_rag/legal_source.py`负责官方元数据、目录树、文件签名和来源失败记录；`evidence_rag/viking_index.py`保存结构元数据并通过 journal/send/reconcile/validate 闭环；`evidence_rag/retrieval.py`以有效期硬过滤加时间二阶段重排；`api.py` 与前端传递 `event_date/query_time/revision_selection/temporal`。OpenViking 的新时间衰减只可作辅助，法律效力由 Catalog 裁决。
 
 ## 技术选型和依据
 
@@ -70,10 +83,10 @@ T7安装、构建、文档、评审与发布：独立环境安装、wheel/入口
 
 质量与性能：每条回答引用时点有效原文，不能仅凭时间排名声称法律正确；OCR/结构错误率、索引导入/验证耗时、检索/重排延迟、模型用量和缺报都保存。无法达到硬约束就缩小能力/返回待核验，而非隐藏失败。
 
-## 待确认与工程默认
+## 已确认与工程默认
 
-按目前环境建议：版本范围直接做真实中国大陆民法典时间线；默认事件日优先，一般规则可用当前版；正式评测时间有效性优先；公共服务需有来源/内容核验。仍未确认、需用户决定的只有两点：是否公开服务范围内只处理中国大陆民法典；现行/历史版本是否必须经法律专业人员复核后才可标有效。若未回答，开发可先用fixtures、隔离revision与`applicability_unknown`完成技术链路，不把未核验内容发布成权威法律结论。
+当前范围仅中国大陆民法典；用户确认自动抓取和自动检索，不增加发布审批流程。事件日优先；施行前没有已验证旧版本时返回 insufficient，不猜测。一般当前问题只有在版本有核验有效期时才作为当前文本使用；仍缺未来修订和过渡规定。
 
 ## 回退和禁止动作
 
-新OCR/结构化索引必须成为新revision，旧scifact/当前民法典pending revision保留；新索引未validate或时间来源不完整时不得切活动scope。回退确认应用进程停止后切回原有Catalog与revision，不覆盖在写数据库；OpenViking unknown send先reconcile，不换scope绕过。本轮不安装依赖、不运行OCR、不调用模型、不停服务、不改业务数据库，等待你对本方案确认后进入实现。
+新 OCR/结构化索引必须成为新 revision，旧 scifact 和 pending data amendments 保留；新索引未 validate 或时间来源不完整时不得切活动 scope。回退先停止应用写入，再切 Catalog/revision，不覆盖在写 DB。OpenViking unknown send 先 reconcile，不换 scope 绕过。公开提交不含 DB、模型、页图和凭据；业务数据仍留在本机。

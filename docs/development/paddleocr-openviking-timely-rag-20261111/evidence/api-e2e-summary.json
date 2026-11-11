@@ -1,0 +1,73 @@
+{
+  "captured_utc": "2026-11-11",
+  "scope": "Real local API with pinned OpenViking/BGE-M3 and no reranker or generator",
+  "routes": [
+    "POST /api/v2/retrieve",
+    "POST /api/v2/explore",
+    "GET /api/v2/units/{id}",
+    "POST /api/v2/chat",
+    "POST /api/v2/chat/stream"
+  ],
+  "results": [
+    {
+      "id": "before",
+      "http": 200,
+      "status": "insufficient_evidence",
+      "revision": "civil_npc_tree_approved",
+      "selection": {
+        "selected": null,
+        "reason": "no_verified_revision"
+      },
+      "reasons": [
+        "reranker_not_configured",
+        "temporal_validity_unknown"
+      ],
+      "labels": [],
+      "validities": [],
+      "count": 0
+    },
+    {
+      "id": "valid",
+      "http": 200,
+      "status": "ready",
+      "revision": "civil_npc_tree_approved",
+      "selection": {
+        "selected": "civil_npc_tree_approved",
+        "reason": "latest_valid_interval"
+      },
+      "reasons": [
+        "reranker_not_configured"
+      ],
+      "labels": [
+        "第五百八十五条",
+        "第五百八十八条",
+        "第五百八十条",
+        "第五百八十二条",
+        "第五百八十四条"
+      ],
+      "validities": [
+        "valid",
+        "valid",
+        "valid",
+        "valid",
+        "valid"
+      ],
+      "count": 8
+    },
+    {
+      "id": "explore",
+      "http": 200,
+      "status": "exploration_only",
+      "revision": "civil_npc_tree_approved",
+      "items": 8,
+      "first_label": "第五百八十五条",
+      "first_validity": "valid",
+      "original_readback_hash_match": true
+    }
+  ],
+  "limitations": [
+    "Reranker weights were unavailable; Qwen and BGE cross-encoder columns are not claimed.",
+    "No generation model was configured; chat returned evidence-only fallback.",
+    "This is one author-constructed temporal suite, not an independent legal QA benchmark."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "started_utc": "2026-11-11T04:16:20Z",
+  "operation": "index",
+  "revision": "civil_npc_tree_approved",
+  "scope": "viking://resources/law-cn/civil_npc_tree_approved",
+  "source_sha256": "4cef5e4a1e5f82c5a52e949093ba0cfec4f7290e78d04d837c292e2a62c4065e",
+  "article_count": 1260,
+  "openviking_health": {
+    "status": "ok",
+    "healthy": true,
+    "version": "0.5.3",
+    "auth_mode": "dev"
+  },
+  "finished_utc": "2026-11-11T04:19:41Z",
+  "complete": true,
+  "elapsed_seconds": 201.48991479199321,
+  "complete_article_tree": true,
+  "unit_count": 1260,
+  "unit_result_counts": {
+    "content_verified": 1260
+  }
+}

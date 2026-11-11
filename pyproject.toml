@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "evidence-rag"
-version = "0.2.3"
-description = "Versioned evidence retrieval with an optional legal profile"
+version = "0.3.0.dev0"
+description = "Versioned evidence retrieval with legal time selection and optional OCR"
 requires-python = ">=3.12"
 dependencies = [
   "fastapi>=0.110,<1",
@@ -19,13 +19,14 @@ dependencies = [
 [project.optional-dependencies]
 dev = ["pytest>=8,<10", "pytest-asyncio>=0.23,<2", "numpy>=1.26,<3", "pyyaml>=6,<7"]
 models = ["sentence-transformers>=6.2,<7", "transformers>=5.22,<6", "torch>=2.6,<3", "numpy>=1.26,<3"]
+ocr = ["paddlepaddle==3.3.1", "paddleocr==3.7.0", "numpy>=1.26,<3"]
 
 [project.scripts]
 evidence-rag = "evidence_rag.cli:main"
 legal-rag = "legal_rag.cli:main"
 
 [tool.setuptools.packages.find]
-include = ["evidence_rag*", "legal_rag*"]
+include = ["evidence_rag*", "legal_rag*", "benchmarks*"]
 
 [tool.setuptools.package-data]
 evidence_rag = ["static/*.html", "static/*.mjs"]

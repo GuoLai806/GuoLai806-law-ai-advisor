@@ -1,0 +1,19 @@
+{
+  "checked_date": "2026-11-11",
+  "platform": "macOS arm64",
+  "python": "3.12.13",
+  "paddleocr": "3.7.0",
+  "paddlepaddle": "3.3.1",
+  "pymupdf": "1.28.6",
+  "rendered_dpi": 200,
+  "ocr_entrypoint": "evidence_rag.ocr.paddleocr_pages",
+  "source_environment_sha256": "7902de15ebb9ca1e96494fd056fd460e3ae06a78ba5c88e970fbc38afd9b3aaf",
+  "reranker_check": {
+    "qwen": "OSError local weights unavailable",
+    "bge": "OSError local weights unavailable",
+    "notice": "Model metadata absent from current cache; no cross-encoder metrics claimed."
+  },
+  "generation": "Not configured; chat returned evidence-only fallback.",
+  "openviking": "0.5.3",
+  "embedding": "BAAI/bge-m3 revision 5617a9f61b028005a4858fdac845db406aefb181, 1024 dims, MPS float16"
+}

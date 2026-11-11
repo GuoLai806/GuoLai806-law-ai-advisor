@@ -1,7 +1,11 @@
 import asyncio, math, time, re, numbers
+from datetime import date
 from collections import defaultdict
 from contextlib import asynccontextmanager
 import httpx
+from .temporal import TemporalConfig, TimeContext, candidate_time_score, temporal_compatibility
+from .legal_versions import select_version
+from .time_query import extract_event_date
 
 class OpenViking:
     """A scoped adapter whose requests share one explicitly owned HTTP client.
@@ -136,11 +140,12 @@ class OpenViking:
             return [x for x in rows if isinstance(x, dict) and isinstance(x.get('uri'), str)
                     and x['uri'].startswith(self.scope)]
 
-    async def ingest(self, uid, content):
+    async def ingest(self, uid, content, target_uri=None):
         # Never retry a write after ambiguous delivery; caller must journal and reconcile.
         if not re.fullmatch('[0-9a-f]{32}', uid):
             raise ValueError('invalid unit ID')
-        target = self.scope + uid
+        target = target_uri or (self.scope + uid)
+        if target.endswith('.md'):target=target.rsplit('/',1)[0]
         async with self._request_client() as client:
             upload = await self._post(client, '/api/v1/resources/temp_upload', files={
                 'file': (uid + '.md', content.encode('utf-8'), 'text/markdown')})
@@ -159,13 +164,22 @@ class OpenViking:
             root = result['result'].get('root_uri')
             if root is not None and root.rstrip('/') != target:
                 raise ValueError('ingest root differs from requested target')
-            return {'requested_uri': target, 'expected_l2_uri': target + '/' + uid + '.md',
+            # OpenViking assigns a generated leaf name within the requested
+            # directory; reconcile reads the reported root and verifies content.
+            expected_l2 = target + '/' + uid + '.md'
+            return {'requested_uri': target, 'expected_l2_uri': expected_l2,
                     'response': result['result'], 'state': 'needs_reconciliation'}
 
 def document_embedding_text(unit):
     """Exact text sent to the dense backend; no identifiers or relevance labels."""
     if unit.get('document') is not None:
         return (unit.get('title') or '')+'\n'+unit['text']
+    structure=unit.get('structure') or []
+    # Structural context helps recall while the full article remains the
+    # authoritative evidence. This serialization is hashed and validated.
+    prefix=' / '.join(structure)
+    if prefix:
+        return (unit.get('title') or '')+'\n'+prefix+'\n'+unit['label']+'\n'+unit['text']
     return unit['text']
 
 def reranker_document_text(unit, part=None):
@@ -253,6 +267,24 @@ def rerank_candidates(ranking,query,exact,reranker):
         candidates=[byid[uid] for uid in order]
     return {**ranking,'candidates':candidates,'reranker_scores':scores}
 
+def temporal_score(candidate, context, config=None):
+    """Return an auditable temporal score for a catalog candidate.
+
+    The online path uses this as a guard/reranker after semantic retrieval. It
+    does not derive legal validity from a PDF or ingestion timestamp.
+    """
+    cfg=config or TemporalConfig()
+    values=temporal_compatibility(context,valid_from=candidate.get('valid_from'),valid_to=candidate.get('valid_to'),available_from=candidate.get('available_from'),eligible=candidate.get('verified',False),config=cfg)
+    semantic=candidate.get('semantic_score',0.0)
+    return values,candidate_time_score(semantic,values,config=cfg)
+
+
+def _query_time(query, query_time=None):
+    return extract_event_date(query,query_time=query_time)
+
+def _query_event_date(query, query_time=None):
+    return _query_time(query,query_time).value
+
 class RankingExecutor:
     def __init__(self):
         self.gate = asyncio.Semaphore(1)
@@ -273,17 +305,32 @@ class RankingExecutor:
         return await asyncio.wait_for(asyncio.shield(task), timeout=remaining)
 
 class RetrievalService:
-    def __init__(self,catalog, dense=None, reranker=None, tokenizer=None, profile='general', rerank_timeout=120, ranking_executor=None):
+    def __init__(self,catalog, dense=None, reranker=None, tokenizer=None, profile='general', rerank_timeout=120, ranking_executor=None, temporal_config=None):
         if profile not in ('general','legal'): raise ValueError('invalid profile')
         if not isinstance(rerank_timeout,(int,float)) or isinstance(rerank_timeout,bool) or not math.isfinite(rerank_timeout) or not 0<rerank_timeout<=600: raise ValueError('rerank timeout must be in (0,600] seconds')
         self.catalog,self.dense,self.reranker,self.tokenizer,self.profile=catalog,dense,reranker,tokenizer,profile
         self.rerank_timeout=rerank_timeout
         self.ranking_executor=ranking_executor or RankingExecutor()
-    async def retrieve(self, query, revision=None, event_date=None, max_units=8, max_evidence_tokens=6000, document_id=None, return_retrieval_trace=False):
-        start=time.monotonic(); rev=revision or self.catalog.active()
+        self.temporal_config=temporal_config or TemporalConfig()
+        self.last_version_selection=None
+    async def retrieve(self, query, revision=None, event_date=None, max_units=8, max_evidence_tokens=6000, document_id=None, return_retrieval_trace=False, query_time=None):
+        start=time.monotonic()
+        revision_choice=None
+        self.last_version_selection=None
+        if not revision and self.profile=='legal':
+            records=self.catalog.verified_temporal_versions()
+            if records:
+                revision_choice=select_version(records,event_date=event_date,query_time=query_time)
+                revision=revision_choice.get('selected')
+                self.last_version_selection=revision_choice
+        rev=revision or self.catalog.active()
         timings={};dense_rows=[]
-        if not rev or not self.catalog.revision(rev): raise LookupError('revision unavailable')
+        if not rev or not self.catalog.revision(rev):
+            if self.profile=='legal' and revision_choice and revision_choice.get('selected') is None:
+                return {'status':'insufficient_evidence','query_plan':{'mode':'no_temporally_valid_version','profile':'legal','event_date':str(event_date or _query_event_date(query,query_time)),'query_time':str(query_time or date.today()),'revision_selection':revision_choice,'applicability_review':bool(event_date or _query_event_date(query,query_time))},'corpus_revision':None,'degraded':True,'degraded_reasons':['no_temporally_valid_version'],'missing_facts':['有可核验生效日期的法律版本'],'evidence':[],'budget':{'state':'not_applicable','used_tokens':0,'omitted':[]},'token_budget_status':'not_applicable','retrieval_ms':round((time.monotonic()-start)*1000,2)}
+            raise LookupError('revision unavailable')
         manifest=__import__('json').loads(self.catalog.revision(rev)['manifest'])
+        temporal_manifest=self.catalog.temporal_version(rev) or {}
         corpus_profile=manifest.get('profile','legal')
         if corpus_profile!=self.profile: raise LookupError('revision profile mismatch')
         if self.profile=='general' and manifest.get('parser_version')!='generic-documents-v2': raise LookupError('generic revision requires reindex')
@@ -348,6 +395,33 @@ class RetrievalService:
             ranking=prepared
         timings['rank_and_rerank_ms']=round((time.monotonic()-ranking_started)*1000,2)
         candidates=ranking['candidates'];sources=ranking['sources'];rerank_scores=ranking['reranker_scores']
+        temporal_decisions={}
+        if self.profile=='legal' and manifest.get('verification_state') in ('pending','approved') and manifest.get('source_kind')!='synthetic':
+            explicit_event=event_date or _query_event_date(query,query_time)
+            context=TimeContext(query_time or date.today(), explicit_event)
+            ranked=[]
+            for index,unit in enumerate(candidates):
+                decision=temporal_compatibility(context,valid_from=temporal_manifest.get('valid_from') or manifest.get('effective_from'),valid_to=temporal_manifest.get('valid_to') or manifest.get('effective_to'),available_from=temporal_manifest.get('published_at') or manifest.get('published_at') or manifest.get('fetched_at'),eligible=True,config=self.temporal_config)
+                if (temporal_manifest.get('verification_state') or manifest.get('verification_state'))!='approved':
+                    decision={**decision,'eligible':False,'validity':'unknown'}
+                temporal_decisions[unit['unit_id']]=decision
+                if decision['eligible']:
+                    # Normalize the textual rank across the current candidate
+                    # pool, then combine validity/time. This is the online
+                    # TimelyRAG-style second stage; gold labels are not used.
+                    semantic=1.0-(index/max(1,len(candidates)-1))
+                    combo=candidate_time_score(semantic,decision,config=self.temporal_config)
+                    ranked.append((combo['final'],-index,unit))
+            ranked=[unit for _,__,unit in sorted(ranked,key=lambda row:(row[0],row[1]),reverse=True)]
+            candidates=ranked
+            sources={uid:sources[uid] for uid in (x['unit_id'] for x in candidates) if uid in sources}
+            if not candidates:
+                degraded.append('temporal_validity_unknown')
+        timings['temporal_filter_ms']=round((time.monotonic()-ranking_started)*1000,2) - timings['rank_and_rerank_ms']
+        if self.profile=='legal' and not candidates and (event_date or _query_event_date(query,query_time) or 'temporal_validity_unknown' in degraded):
+            result={'status':'insufficient_evidence','query_plan':{'mode':'temporal_validity_unknown' if 'temporal_validity_unknown' in degraded else 'temporal_filtered','profile':'legal','event_date':str(event_date or _query_event_date(query,query_time)),'query_time':str(query_time or date.today()),'applicability_review':bool(event_date or _query_event_date(query,query_time))},'corpus_revision':rev,'degraded':True,'degraded_reasons':degraded,'missing_facts':['有可核验生效日期的条文'],'evidence':[],'budget':{'state':'not_applicable','used_tokens':0,'omitted':[]},'token_budget_status':'not_applicable','retrieval_ms':round((time.monotonic()-start)*1000,2)}
+            if return_retrieval_trace:result['retrieval_trace']={'temporal':temporal_decisions,'dense_backend':'openviking' if isinstance(self.dense,OpenViking) else type(self.dense).__name__,'timings_ms':timings}
+            return result
         byid={c['unit_id']:c for c in candidates};selected=[c['unit_id'] for c in candidates[:max_units]]
         evidence=[]
         if self.profile=='legal':
@@ -355,7 +429,8 @@ class RetrievalService:
             general=bool(re.search(r'是什么|一般规定|一般如何|介绍|概念',query)) and not re.search(r'我的|我能|本人|案件|纠纷|起诉|被告',query)
             mode='source_lookup' if source_lookup else ('general_explanation' if general else 'case_question')
             applicability_review=mode=='case_question' and bool(event_date)
-            missing_facts=(['事件发生日期及具体事实'] if mode=='case_question' and not event_date else (['法律适用及过渡规定需核验'] if applicability_review else []))
+            effective_event=event_date or _query_event_date(query,query_time)
+            missing_facts=(['事件发生日期及具体事实'] if mode=='case_question' and not effective_event else (['法律适用及过渡规定需核验'] if applicability_review else []))
         else:
             source_lookup=bool(lists['exact']) and wants_source
             mode='source_lookup' if source_lookup else 'general_retrieval'
@@ -363,8 +438,8 @@ class RetrievalService:
         if source_lookup: selected=[uid for uid in selected if uid in lists['exact']]
         for i,uid in enumerate(selected,1):
             c=byid[uid];doc=c.get('document') or {}
-            item={'citation_id':f'E{i}','unit_id':uid,'document_id':doc.get('doc_id'),'title':c['title'],'text':c['text'],'source_url':doc.get('source_url') or manifest.get('source_url'),'source_kind':doc.get('source_kind') or manifest.get('source_kind'),'source_locator':c['locator'],'content_sha256':c['sha256'],'retrieval_sources':sources[uid],'reranker_score':rerank_scores.get(uid),'verification_state':manifest.get('verification_state'),'profile':self.profile}
-            if self.profile=='legal':item.update(article_label=c['label'],candidate_relations=c['relations'],effective_from=manifest.get('effective_from'),effective_to=manifest.get('effective_to'),applicability_review=applicability_review)
+            item={'citation_id':f'E{i}','unit_id':uid,'structure':c.get('structure') or [],'document_id':doc.get('doc_id'),'title':c['title'],'text':c['text'],'source_url':doc.get('source_url') or manifest.get('source_url'),'source_kind':doc.get('source_kind') or manifest.get('source_kind'),'source_locator':c['locator'],'content_sha256':c['sha256'],'retrieval_sources':sources[uid],'reranker_score':rerank_scores.get(uid),'verification_state':manifest.get('verification_state'),'profile':self.profile}
+            if self.profile=='legal':item.update(article_label=c['label'],candidate_relations=c['relations'],effective_from=temporal_manifest.get('valid_from') or manifest.get('effective_from'),effective_to=temporal_manifest.get('valid_to') or manifest.get('effective_to'),applicability_review=applicability_review,temporal=temporal_decisions.get(uid))
             elif not source_lookup and c['parts']:
                 winner=c.get('rerank_part_no')
                 part=next((p for p in c['parts'] if p['part_no']==winner),None) if winner is not None else None
@@ -381,7 +456,7 @@ class RetrievalService:
         budgeted,budget=assemble(evidence,self.tokenizer,max_evidence_tokens,query)
         # Retrieval results can be inspected without tokenizer, but are not generation-ready.
         if self.tokenizer: evidence=budgeted
-        result={'query_plan':{'mode':mode,'profile':self.profile,'event_date':str(event_date) if event_date and self.profile=='legal' else None,'applicability_review':applicability_review},'budget':budget, 'status':('insufficient_evidence' if not evidence else ('needs_clarification' if mode=='case_question' and not event_date else 'ready')),'corpus_revision':rev,'degraded':bool(degraded),'degraded_reasons':degraded,'missing_facts':missing_facts,'token_budget_status':budget['state'],'evidence':evidence,'retrieval_ms':round((time.monotonic()-start)*1000,2)}
+        result={'query_plan':{'mode':mode,'profile':self.profile,'event_date':str(event_date or _query_event_date(query,query_time)) if self.profile=='legal' else None,'query_time':str(query_time or date.today()) if self.profile=='legal' else None,'revision_selection':revision_choice,'applicability_review':applicability_review},'budget':budget, 'status':('insufficient_evidence' if not evidence else ('needs_clarification' if mode=='case_question' and not (event_date or _query_event_date(query,query_time)) else 'ready')),'corpus_revision':rev,'degraded':bool(degraded),'degraded_reasons':degraded,'missing_facts':missing_facts,'token_budget_status':budget['state'],'evidence':evidence,'retrieval_ms':round((time.monotonic()-start)*1000,2)}
         if return_retrieval_trace:
-            result['retrieval_trace']={'dense_backend':'openviking' if isinstance(self.dense,OpenViking) else type(self.dense).__name__,'dense_scope':getattr(self.dense,'scope',None),'dense_hits':dense_rows,'timings_ms':timings,'rerank_timeout_seconds':self.rerank_timeout,'candidates':[{'unit_id':item['unit_id'],'document_id':(item.get('document') or {}).get('doc_id'),'rrf_score':ranking['rrf_scores'].get(item['unit_id']),'reranker_score':rerank_scores.get(item['unit_id']),'sources':sources[item['unit_id']]} for item in candidates]}
+            result['retrieval_trace']={'temporal':{uid:value for uid,value in temporal_decisions.items()},'revision_selection':revision_choice,'dense_backend':'openviking' if isinstance(self.dense,OpenViking) else type(self.dense).__name__,'dense_scope':getattr(self.dense,'scope',None),'dense_hits':dense_rows,'timings_ms':timings,'rerank_timeout_seconds':self.rerank_timeout,'candidates':[{'unit_id':item['unit_id'],'document_id':(item.get('document') or {}).get('doc_id'),'rrf_score':ranking['rrf_scores'].get(item['unit_id']),'reranker_score':rerank_scores.get(item['unit_id']),'sources':sources[item['unit_id']]} for item in candidates]}
         return result

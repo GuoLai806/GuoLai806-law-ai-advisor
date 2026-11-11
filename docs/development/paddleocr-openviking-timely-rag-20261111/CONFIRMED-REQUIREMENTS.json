@@ -1,0 +1,20 @@
+{
+  "version": "civil-code-time-rag-20261111",
+  "user_decisions": {
+    "version_source": "automatic retrieval from verifiable public sources",
+    "query_behavior": "RAG automatically retrieves and applies relevant time/version metadata",
+    "scope": "Civil Code of the People's Republic of China only for this phase",
+    "ocr_test": "generate an image-only/scanned derivative and run PaddleOCR comparison",
+    "release_gate": "not requested; source and structural verification only"
+  },
+  "implementation_sequence": [
+    "T1 legal version source registry and acquisition",
+    "T2 deterministic parsing plus PaddleOCR adapter",
+    "T3 structural Catalog and OpenViking serialization",
+    "T4 temporal validity and Timely reranking",
+    "T5 API/UI fields",
+    "T6 tests, evidence, install and true user flow",
+    "T7 review, docs, sync, remote verification"
+  ],
+  "notes": "Original current-session requirements changed from documentation-only to implementation after user answered questions."
+}

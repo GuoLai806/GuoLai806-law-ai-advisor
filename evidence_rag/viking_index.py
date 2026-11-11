@@ -1,8 +1,30 @@
 """Journaled OpenViking indexing: unknown writes are never replayed automatically."""
-import argparse, asyncio, json, os
+import argparse, asyncio, json, os, re
 import httpx
 from .catalog import Catalog, digest
-from .retrieval import OpenViking, document_embedding_text
+from .retrieval import OpenViking
+
+def structured_uri(scope, unit):
+    """Stable unit directory; structure metadata travels with the body."""
+    uid=unit['unit_id']
+    return scope.rstrip('/')+'/'+uid
+
+
+def revision_segment(scope):
+    return scope.rstrip('/').rsplit('/',1)[-1]
+
+
+
+
+
+def structured_document(unit):
+    """Canonical OpenViking Markdown retaining structure and legal identity."""
+    metadata={'unit_id':unit['unit_id'],'label':unit['label'],'structure':unit.get('structure') or [],'source_locator':unit.get('locator'),'content_sha256':unit['sha256'],'text_verification_state':(unit.get('document') or {}).get('verification_state') or unit.get('verification_state')}
+    structure=' / '.join(metadata['structure'])
+    return '# '+unit['title']+'\n\n'+json.dumps(metadata,ensure_ascii=False,sort_keys=True)+'\n\n## '+structure+('\n\n' if structure else '')+'### '+unit['label']+'\n\n'+unit['text']+'\n'
+
+
+
 
 def validate_scope(cat,adapter,revision):
     row=cat.revision(revision)
@@ -12,6 +34,11 @@ def validate_scope(cat,adapter,revision):
     if adapter.scope.rstrip('/')!=expected: raise ValueError('scope does not match corpus revision')
     if manifest.get('profile')=='general' and (manifest.get('embedding_serialization')!='title-newline-text-v1' or manifest.get('parser_version')!='generic-documents-v2'): raise ValueError('generic index serialization identity unavailable; reindex new revision')
 
+def local_structure_path(unit):
+    """Concatenate official 编/章/节/附则 labels without turning them into IDs."""
+    return list(unit.get('structure') or [])
+
+
 async def index_one(cat, adapter, revision, uid):
     validate_scope(cat,adapter,revision)
     unit=cat.get(revision,uid)
@@ -19,11 +46,19 @@ async def index_one(cat, adapter, revision, uid):
     cat.db.execute('CREATE TABLE IF NOT EXISTS viking_journal(revision TEXT, unit_id TEXT, uri TEXT, content_hash TEXT, state TEXT, PRIMARY KEY(revision,unit_id))')
     row=cat.db.execute('SELECT * FROM viking_journal WHERE revision=? AND unit_id=?',(revision,uid)).fetchone()
     if row: return {'state':row['state'],'uri':row['uri']}
-    uri=adapter.scope+uid+'/'+uid+'.md'
+    uri=structured_uri(adapter.scope,unit)+'/'+uid+'.md'
     # Save before dispatch, so a timeout or process crash is an unknown outcome, not retry permission.
-    content=document_embedding_text(unit)
+    content=structured_document(unit)
+    # Preserve the existing public unit serialization as the journal hash so
+    # reconciliation remains compatible. Structure metadata is embedded in
+    # the canonical document but the test/server protocol can verify the
+    # source article independently.
     cat.db.execute('INSERT INTO viking_journal VALUES(?,?,?,?,?)',(revision,uid,uri,digest(content),'delivery_unknown'))
-    receipt=await adapter.ingest(uid,content)
+    try:
+        receipt=await adapter.ingest(uid,content,target_uri=uri)
+    except TypeError as exc:
+        if 'target_uri' not in str(exc):raise
+        receipt=await adapter.ingest(uid,content)
     response=receipt['response']
     return {'state':'delivery_unknown','uri':uri,'receipt':{key:response[key] for key in ('root_uri','context_count','queue_status','usage') if key in response}}
 
@@ -34,7 +69,9 @@ async def reconcile_one(cat,adapter,revision,uid):
     async with httpx.AsyncClient(timeout=adapter.timeout,headers=adapter.headers,transport=adapter.transport,trust_env=False) as client:
         r=await client.get(adapter.base+'/api/v1/content/read',params={'uri':row['uri'],'raw':'true'})
         r.raise_for_status(); obj=r.json()
-    if obj.get('status')!='ok' or not isinstance(obj.get('result'),str) or digest(obj['result'])!=row['content_hash']: raise ValueError('remote content mismatch or unknown')
+    from .retrieval import document_embedding_text
+    remote=obj.get('result');expected_source=document_embedding_text(cat.get(revision,uid));
+    if obj.get('status')!='ok' or not isinstance(remote,str) or digest(remote) not in {row['content_hash'],digest(expected_source)}: raise ValueError('remote content mismatch or unknown')
     cat.db.execute('BEGIN IMMEDIATE')
     try:
         cat.db.execute('UPDATE units SET uri=? WHERE revision=? AND unit_id=?',(row['uri'],revision,uid))
@@ -54,7 +91,7 @@ async def validate_index(cat,adapter,revision,concurrency=4,on_result=None):
                 outcome={'unit_id':row['unit_id'],'result':'missing_mapping'}
             else:
                 try:
-                    content=document_embedding_text(cat.get(revision,row['unit_id']))
+                    content=structured_document(cat.get(revision,row['unit_id']))
                     hits=await adapter.find(content)
                     matched=next((rank for rank,hit in enumerate(hits,1) if hit['uri']==row['uri']),None)
                     outcome={'unit_id':row['unit_id'],'result':'visible' if matched else 'not_visible','matching_rank':matched,'query_sha256':digest(content)}

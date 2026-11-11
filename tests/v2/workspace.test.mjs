@@ -87,3 +87,11 @@ test('partial or empty previews cannot report a normal complete result', () => {
   assert.match(partial.note, /不完整/);
   assert.equal(previewSummary({degraded: false, items: []}).status, '未找到可用资料');
 });
+
+test('legal date selection context is preserved in preview metadata', () => {
+  const bundle = {degraded:false, kind:'exploration', corpus_revision:'civil-2020',
+    query_plan:{event_date:'2015-01-01', revision_selection:{selected:'civil-old', reference_date:'2015-01-01'}},
+    items:[{title:'民法典', article_label:'第一条', temporal:{validity:'valid', valid_from:'2010-01-01', valid_to:'2020-12-31'}}]};
+  assert.equal(bundle.query_plan.revision_selection.selected, 'civil-old');
+  assert.equal(bundle.items[0].temporal.validity, 'valid');
+});

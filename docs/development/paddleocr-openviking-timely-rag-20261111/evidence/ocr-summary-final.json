@@ -1,0 +1,21 @@
+{
+  "source_pdf_sha256": "4cef5e4a1e5f82c5a52e949093ba0cfec4f7290e78d04d837c292e2a62c4065e",
+  "ocr_pages": 64,
+  "ocr_chars": 110753,
+  "ocr_min_line_score": 0.8751949071884155,
+  "native_exact_pages": 16,
+  "native_article_count": 1260,
+  "ocr_article_boundaries_found": 1260,
+  "native_ocr_comparable_articles": 1259,
+  "ocr_missing_articles": [],
+  "paddleocr": "3.7.0",
+  "paddlepaddle": "3.3.1",
+  "rendered_dpi": 200,
+  "source_pdf_has_native_text": true,
+  "scope": "Real full-page OCR. 1260/1260 article headings and boundaries located; 1259/1260 native article bodies agree by compact deterministic containment. One discrepancy retained for review. Character similarity is a difflib proxy over native-to-OCR article bodies, not a human CERT or legal correctness figure.",
+  "effective_normalized_edit_similarity": 0.9929753341977403,
+  "effective_cer_proxy": 0.007024665802259689,
+  "unmatched_for_review": [
+    "第一千零八十五条"
+  ]
+}

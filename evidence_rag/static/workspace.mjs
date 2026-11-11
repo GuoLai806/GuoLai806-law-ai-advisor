@@ -91,7 +91,7 @@ export function extractFrames(buffer) {
 
 function boot() {
   const get = id => document.getElementById(id);
-  const question = get('question'), ask = get('ask'), explore = get('explore'), stop = get('stop');
+  const question = get('question'), ask = get('ask'), explore = get('explore'), stop = get('stop'), eventDate = get('event-date');
   const state = {epoch: 0, run: null, source: null, snapshot: null, timer: null};
   const sessionId = 'web-' + crypto.randomUUID();
   const setNotice = message => { get('notice').textContent = message; get('notice').classList.toggle('hidden', !message); };
@@ -139,13 +139,22 @@ function boot() {
     const container = get('evidence'); container.replaceChildren();
     const preview = bundle.kind === 'exploration';
     const items = preview ? bundle.items : bundle.evidence;
-    get('evidence-summary').textContent = '找到 ' + items.length + ' 条资料' + (bundle.degraded ? '（部分检索）' : '') + (preview ? ' · 本次只检索，尚未生成答案' : ' · 以下为本次检索资料');
+    const selection = bundle.query_plan?.revision_selection;
+    const dateLine = selection ? '适用日期：' + selection.reference_date + (selection.selected ? ' · 版本：' + selection.selected : ' · 没有可核验的适用版本') : '';
+    get('evidence-summary').textContent = '找到 ' + items.length + ' 条资料' + (bundle.degraded ? '（部分检索）' : '') + (preview ? ' · 本次只检索，尚未生成答案' : ' · 以下为本次检索资料') + (dateLine ? ' · ' + dateLine : '');
     for (const [index, item] of items.entries()) {
       const article = document.createElement('article');
-      const heading = document.createElement('h3'); heading.textContent = '[' + (item.citation_id || '资料' + (index + 1)) + '] ' + item.title;
+      const heading = document.createElement('h3'); heading.textContent = '[' + (item.citation_id || '资料' + (index + 1)) + '] ' + item.title + (item.article_label ? ' · ' + item.article_label : '');
       const text = preview ? item.preview : item.text;
       const excerpt = document.createElement('p'); excerpt.textContent = text.slice(0, 320) + (text.length > 320 || item.preview_truncated ? '…' : '');
-      article.append(heading, excerpt);
+      article.append(heading);
+      if (item.article_label || item.temporal) {
+        const meta = document.createElement('p'); meta.className = 'muted';
+        const validity = item.temporal?.validity ? ' · 效力：' + item.temporal.validity : '';
+        const interval = item.temporal?.valid_from ? ' · 生效：' + item.temporal.valid_from + (item.temporal.valid_to ? ' 至 ' + item.temporal.valid_to : '') : '';
+        meta.textContent = (item.article_label || '') + validity + interval; article.append(meta);
+      }
+      article.append(excerpt);
       if (!preview && text.length > 320) {
         const details = document.createElement('details'); const summary = document.createElement('summary'); summary.textContent = '展开完整检索段落';
         const full = document.createElement('div'); full.className = 'full-text'; full.textContent = text;
@@ -192,7 +201,7 @@ function boot() {
     try {
       const response = await fetch(mode === 'explore' ? '/api/v2/explore' : '/api/v2/chat/stream', {
         method: 'POST', headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({query, session_id: sessionId, corpus_revision: mode === 'explore' ? null : pinned}), signal: run.controller.signal
+        body: JSON.stringify({query, session_id: sessionId, event_date: eventDate.value || null, corpus_revision: mode === 'explore' ? null : pinned}), signal: run.controller.signal
       });
       if (!response.ok) throw new Error(response.status === 401 || response.status === 403 ? '当前页面无法访问资料，请检查服务访问设置。' : '服务暂时不可用。');
       if (mode === 'explore') {

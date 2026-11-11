@@ -1,0 +1,9 @@
+usage: evidence-rag [-h]
+                    {ingest,set-temporal-version,approve-source,activate,generate-synthetic,search-official,ingest-official,attach-legal-text,evaluate}
+                    ...
+
+positional arguments:
+  {ingest,set-temporal-version,approve-source,activate,generate-synthetic,search-official,ingest-official,attach-legal-text,evaluate}
+
+options:
+  -h, --help            show this help message and exit
