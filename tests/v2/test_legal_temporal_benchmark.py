@@ -47,3 +47,21 @@ def test_timely_hard_filter_removes_pre_effective_and_preserves_valid_order(tmp_
     )
     assert valid == ids
     assert all(value["validity"] == "valid" for value in decisions.values())
+
+
+def test_timely_benchmark_preserves_a_successful_empty_filter(tmp_path):
+    catalog = Catalog(tmp_path / "db")
+    catalog.stage(
+        ["第一条 合同规则甲。"],
+        META,
+        "r1",
+    )
+    catalog.set_temporal_version("r1", valid_from="2021-01-01", published_at="2020-05-28")
+    unit_id = catalog.db.execute("SELECT unit_id FROM units").fetchone()[0]
+    ranked, _ = _temporal_rank(
+        catalog,
+        "r1",
+        [unit_id],
+        {"event_date": "2020-12-31"},
+    )
+    assert ranked == []
