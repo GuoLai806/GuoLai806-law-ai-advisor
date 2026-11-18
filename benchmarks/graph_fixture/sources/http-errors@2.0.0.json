@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "depd": "2.0.0",
+    "inherits": "2.0.4",
+    "setprototypeof": "1.2.0",
+    "statuses": "2.0.1",
+    "toidentifier": "1.0.1"
+  },
+  "gitHead": "206aa2c15635dc1212c06c279540972aa90e23ea",
+  "license": "MIT",
+  "name": "http-errors",
+  "registry_response_sha256": "c2c8751ea8f2d975c6fcd79abcb9a129e044a6b0c0cb1733b2619a1182972432",
+  "version": "2.0.0"
+}

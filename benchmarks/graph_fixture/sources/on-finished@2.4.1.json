@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "ee-first": "1.1.1"
+  },
+  "gitHead": "1111fe8e913debaf3da9bd4f6bda216ef36097fa",
+  "license": "MIT",
+  "name": "on-finished",
+  "registry_response_sha256": "ec34d8805e057bd9837bc5f1dba7b1d0db3baa5d90853fa8f77bf59e8e803d20",
+  "version": "2.4.1"
+}

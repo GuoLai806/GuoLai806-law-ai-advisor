@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "safer-buffer": ">= 2.1.2 < 3"
+  },
+  "gitHead": "efbbb0937ca8dda1c14e0b69958b9d6f20771f7a",
+  "license": "MIT",
+  "name": "iconv-lite",
+  "registry_response_sha256": "798c496f6293c37db678f44913d599856cec6fad43bfdd308c4ccb989061b0f0",
+  "version": "0.4.24"
+}

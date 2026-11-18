@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "debug": "2.6.9",
+    "depd": "2.0.0",
+    "destroy": "1.2.0",
+    "encodeurl": "~1.0.2",
+    "escape-html": "~1.0.3",
+    "etag": "~1.8.1",
+    "fresh": "0.5.2",
+    "http-errors": "2.0.0",
+    "mime": "1.6.0",
+    "ms": "2.1.3",
+    "on-finished": "2.4.1",
+    "range-parser": "~1.2.1",
+    "statuses": "2.0.1"
+  },
+  "gitHead": "b69cbb3dc4c09c37917d08a4c13fcd1bac97ade5",
+  "license": "MIT",
+  "name": "send",
+  "registry_response_sha256": "661586b09cd5d8d00900d6530d81a2cc4e5ae23990b4174eac46669e49e8f704",
+  "version": "0.18.0"
+}

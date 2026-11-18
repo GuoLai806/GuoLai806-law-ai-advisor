@@ -92,10 +92,12 @@ export function extractFrames(buffer) {
 function boot() {
   const get = id => document.getElementById(id);
   const question = get('question'), ask = get('ask'), explore = get('explore'), stop = get('stop'), eventDate = get('event-date');
+  const graphSearch = get('graph-search'), graphSeed = get('graph-seed'), graphPanel = get('graph-panel');
+  const graphNext = get('graph-next');
   const state = {epoch: 0, run: null, source: null, snapshot: null, timer: null};
   const sessionId = 'web-' + crypto.randomUUID();
   const setNotice = message => { get('notice').textContent = message; get('notice').classList.toggle('hidden', !message); };
-  const busy = value => { ask.disabled = explore.disabled = value; stop.disabled = !value; };
+  const busy = value => { ask.disabled = explore.disabled = graphSearch.disabled = value; stop.disabled = !value; };
   const seconds = value => value === null ? '—' : (value / 1000).toFixed(2) + ' 秒';
 
   function paintTiming(run) {
@@ -115,6 +117,7 @@ function boot() {
     state.run?.controller.abort(); state.source?.abort(); clearInterval(state.timer);
     state.epoch++; state.run = null; state.source = null;
     get('source-panel').classList.add('hidden');
+    graphPanel.classList.add('hidden');
   }
 
   async function hash(text) {
@@ -122,7 +125,7 @@ function boot() {
     return Array.from(new Uint8Array(bytes), x => x.toString(16).padStart(2, '0')).join('');
   }
 
-  async function showSource(item, revision, epoch) {
+  async function showSource(item, revision, epoch, span = null) {
     state.source?.abort(); const controller = new AbortController(); state.source = controller;
     const response = await fetch('/api/v2/units/' + encodeURIComponent(item.unit_id) + '?revision=' + encodeURIComponent(revision), {signal: controller.signal});
     if (!response.ok) throw new Error('该版本的原文暂时无法读取。');
@@ -131,8 +134,99 @@ function boot() {
     if (source.revision !== revision || await hash(part.text) !== item.content_sha256 || await hash(source.text) !== (item.document_sha256 || item.content_sha256)) throw new Error('原文版本或内容不一致，暂不展示。');
     if (epoch !== state.epoch || controller.signal.aborted) return;
     get('source-content').textContent = source.title + '\n\n' + source.text;
+    const match = get('source-match');
+    match.classList.toggle('hidden', span === null);
+    if (span) {
+      const excerpt = document.createElement('mark');
+      excerpt.textContent = Array.from(source.text).slice(span[0], span[1]).join('');
+      match.replaceChildren('关系依据：', excerpt);
+    } else match.replaceChildren();
     get('source-panel').classList.remove('hidden');
     get('source-panel').scrollIntoView({behavior: 'smooth', block: 'start'});
+  }
+
+  function displayGraph(bundle, epoch) {
+    const graph = bundle.graph;
+    const list = get('graph-paths');
+    list.replaceChildren();
+    graphPanel.classList.toggle('hidden', !graph);
+    graphNext.classList.toggle('hidden', !graph?.next_path_offset);
+    if (!graph) return;
+    const reasons = {
+      ambiguous_seed: '起点有歧义，请输入完整的实体名称或版本。',
+      ambiguous_date: '日期不明确，请在上方填写具体的查询日期。',
+      seed_not_found: '没有找到可核对的起点，请填写完整名称。',
+      graph_unavailable: '这批资料暂无可用关系图，下面保留普通检索结果。',
+      graph_disabled: '当前查询未启用关系检索，下面保留普通检索结果。',
+      graph_changed: '关系图已更新，请重新检索。',
+      source_revoked: '原文状态已变更，请重新检索。',
+      graph_error: '关系查询未能完成，下面显示可用资料。'
+    };
+    let status;
+    if (graph.traversal_status === 'exhausted') {
+      status = graph.evidence_status === 'sufficient'
+        ? '已查完当前图谱中有依据的依赖。'
+        : '已查完可核对的关系，资料覆盖不完整。';
+    } else if (graph.traversal_status === 'partial_budget') {
+      status = '达到查询预算，当前展示已确认的部分关系。';
+    } else {
+      status = reasons[graph.stop_reason] || '关系查询未完成。';
+    }
+    const time = Number.isFinite(graph.graph_ms) ? ' · ' + graph.graph_ms.toFixed(2) + ' 毫秒' : '';
+    const count = graph.paths.length ? ' · ' + graph.edge_count + ' 条关系 · 最深 ' + graph.max_depth_reached + ' 跳' : '';
+    const date = graph.as_of ? ' · 查询日期 ' + graph.as_of : '';
+    get('graph-status').textContent = status + count + date + time + (graph.paths_truncated ? ' · 当前展示 ' + graph.paths.length + ' 条' : '');
+    for (const path of graph.paths) {
+      const li = document.createElement('li');
+      const title = document.createElement('strong');
+      title.textContent = path.src_name + ' → ' + path.dst_name;
+      const source = document.createElement('button');
+      source.type = 'button'; source.className = 'secondary'; source.textContent = '查看原文';
+      const label = path.citation_id ? ' [' + path.citation_id + ']' : '';
+      li.append(title, ' · 第 ' + path.depth + ' 跳' + label + ' ', source);
+      source.addEventListener('click', () => {
+        const item = {unit_id: path.unit_id, content_sha256: path.content_sha256};
+        showSource(item, bundle.corpus_revision, epoch, [path.char_start,path.char_end])
+          .catch(error => { if (epoch === state.epoch && error.name !== 'AbortError') setNotice(error.message); });
+      });
+      list.append(li);
+    }
+  }
+
+  async function loadMoreGraph() {
+    const run = state.run, bundle = run?.bundle, graph = bundle?.graph;
+    if (!graph?.next_path_offset || graphNext.disabled || !run.finalSeen) return;
+    graphNext.disabled = true;
+    try {
+      const response = await fetch('/api/v2/retrieve', {
+        method:'POST', headers:{'Content-Type':'application/json'}, signal:run.controller.signal,
+        body:JSON.stringify({query:run.query, session_id:sessionId, event_date:graph.as_of,
+          corpus_revision:bundle.corpus_revision, retrieval_mode:'graph_dependency', graph_seed:graph.seed_id,
+          graph_path_offset:graph.next_path_offset, graph_expected_build_id:graph.graph_build_id})
+      });
+      if (!response.ok) throw new Error('关系图或资料版本已变更，请重新检索。');
+      const page = await response.json();
+      if (!isCurrentRun(state,run)) return;
+      const next = page.graph;
+      if (next?.graph_build_id !== graph.graph_build_id || next.as_of !== graph.as_of ||
+          page.corpus_revision !== bundle.corpus_revision || !next.paths.length) {
+        if (['graph_changed','source_revoked'].includes(next?.stop_reason)) {
+          bundle.graph=next; displayGraph(bundle,run.epoch);
+          if (next.stop_reason==='source_revoked') {
+            get('evidence').replaceChildren(); get('evidence-summary').textContent='原文状态已变更';
+            get('source-panel').classList.add('hidden'); clearAnswer('请重新检索。');
+          }
+        }
+        throw new Error('未能读取下一页关系，请重新检索。');
+      }
+      const paths = graph.paths.concat(next.paths.map(({citation_id, ...path}) => path));
+      bundle.graph = {...next, paths, paths_truncated:paths.length < next.edge_count};
+      displayGraph(bundle,run.epoch);
+    } catch (error) {
+      if (isCurrentRun(state,run) && error.name!=='AbortError') setNotice(error.message);
+    } finally {
+      graphNext.disabled=false;
+    }
   }
 
   function displayEvidence(bundle, epoch) {
@@ -142,6 +236,7 @@ function boot() {
     const selection = bundle.query_plan?.revision_selection;
     const dateLine = selection ? '适用日期：' + selection.reference_date + (selection.selected ? ' · 版本：' + selection.selected : ' · 没有可核验的适用版本') : '';
     get('evidence-summary').textContent = '找到 ' + items.length + ' 条资料' + (bundle.degraded ? '（部分检索）' : '') + (preview ? ' · 本次只检索，尚未生成答案' : ' · 以下为本次检索资料') + (dateLine ? ' · ' + dateLine : '');
+    displayGraph(bundle, epoch);
     for (const [index, item] of items.entries()) {
       const article = document.createElement('article');
       const heading = document.createElement('h3'); heading.textContent = '[' + (item.citation_id || '资料' + (index + 1)) + '] ' + item.title + (item.article_label ? ' · ' + item.article_label : '');
@@ -174,13 +269,17 @@ function boot() {
       get('decision').classList.toggle('hidden', !final.label);
       get('answer-quotes').textContent = final.quotes; get('quotes-panel').classList.toggle('hidden', !final.quotes);
       get('status').textContent = '回答已完成';
-      setNotice(run.quotesChecked ? '引用摘录已与原文核对；结论是否充分仍请结合资料判断。' : '回答已完成，请结合资料核对关键结论。');
+      setNotice(run.bundle?.graph?.uses_text_fallback ? '以下为普通检索结果，关系检索未完成。' :
+        run.quotesChecked ? '引用摘录已与原文核对；结论是否充分仍请结合资料判断。' : '回答已完成，请结合资料核对关键结论。');
     } else if (run.outcome === 'preview') {
       const preview = previewSummary(run.bundle);
       clearAnswer(preview.message); get('status').textContent = preview.status; setNotice(preview.note);
     } else if (run.outcome === 'running') {
       get('status').textContent = run.evidenceAt === null ? '正在检索资料…' : '正在生成并核验答案…';
       clearAnswer(run.evidenceAt === null ? '等待资料检索完成。' : '正在根据检索资料生成答案，完成后显示。');
+    } else if (run.mode === 'graph' && run.outcome === 'evidence_only') {
+      clearAnswer('请查看逐跳关系和原文。本次没有生成可核验的 AI 总结。');
+      get('status').textContent = '关系检索已返回'; setNotice('');
     } else {
       const stopped = run.outcome === 'stopped';
       clearAnswer(stopped ? '已停止，未完成的答案不会展示。' : '本次没有取得可交付的 AI 答案，可先查看检索资料。');
@@ -194,6 +293,7 @@ function boot() {
     const pinned = state.snapshot?.query === query ? state.snapshot.revision : null;
     invalidate(); state.snapshot = null;
     const run = newRun(mode, state.epoch, performance.now()); run.controller = new AbortController(); state.run = run;
+    run.query=query;
     busy(true); clearAnswer('等待资料检索完成。'); setNotice('');
     get('evidence').textContent = '正在检索本次问题的资料…'; get('evidence-summary').textContent = '正在检索';
     get('timing-note').textContent = mode === 'explore' ? '本次只检索，不调用生成模型；再次问答会重新计时。' : '本次点击到完成的浏览器等待；检索含重排，生成含引用核验和网络等待。';
@@ -201,7 +301,10 @@ function boot() {
     try {
       const response = await fetch(mode === 'explore' ? '/api/v2/explore' : '/api/v2/chat/stream', {
         method: 'POST', headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({query, session_id: sessionId, event_date: eventDate.value || null, corpus_revision: mode === 'explore' ? null : pinned}), signal: run.controller.signal
+        body: JSON.stringify({query, session_id: sessionId, event_date: eventDate.value || null,
+          corpus_revision: mode === 'explore' ? null : pinned,
+          ...(mode === 'graph' ? {retrieval_mode:'graph_dependency', graph_seed:graphSeed.value.trim() || null} : {})}),
+        signal: run.controller.signal
       });
       if (!response.ok) throw new Error(response.status === 401 || response.status === 403 ? '当前页面无法访问资料，请检查服务访问设置。' : '服务暂时不可用。');
       if (mode === 'explore') {
@@ -236,6 +339,14 @@ function boot() {
 
   get('question-form').addEventListener('submit', event => { event.preventDefault(); send('answer'); });
   explore.addEventListener('click', () => send('explore'));
+  graphSearch.addEventListener('click', () => send('graph'));
+  graphNext.addEventListener('click', loadMoreGraph);
+  fetch('/api/v2/models')
+    .then(response => response.ok ? response.json() : {})
+    .then(capabilities => {
+      graphSearch.classList.toggle('hidden', !capabilities.graph_available);
+      get('graph-input').classList.toggle('hidden', !capabilities.graph_available);
+    }).catch(() => {});
   stop.addEventListener('click', () => state.run?.controller.abort());
   question.addEventListener('input', () => {
     invalidate(); state.snapshot = null; busy(false); clearAnswer('等待生成答案。'); setNotice('');

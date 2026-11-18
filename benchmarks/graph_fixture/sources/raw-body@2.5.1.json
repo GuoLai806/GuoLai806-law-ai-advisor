@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "bytes": "3.1.2",
+    "http-errors": "2.0.0",
+    "iconv-lite": "0.4.24",
+    "unpipe": "1.0.0"
+  },
+  "gitHead": "67254cad860abbe8b1bbeb54e2638af702d3ac7c",
+  "license": "MIT",
+  "name": "raw-body",
+  "registry_response_sha256": "120dd9a3ca8a379728570911e4e4bca6bf725b55725d380e4b822a77bfabd71b",
+  "version": "2.5.1"
+}

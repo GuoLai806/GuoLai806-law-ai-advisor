@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "ms": "2.0.0"
+  },
+  "gitHead": "13abeae468fea297d0dccc50bc55590809241083",
+  "license": "MIT",
+  "name": "debug",
+  "registry_response_sha256": "bfefa42a017b852cd3c7e1d94d51b492cf05ab341225839df9641d2e9cd9c838",
+  "version": "2.6.9"
+}

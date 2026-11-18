@@ -14,6 +14,8 @@ from .budget import HuggingFaceTokenizer, ConservativeByteBudget
 from .answer import OpenAIStream, ModelStreamIncomplete, validate_citations, provider_events, messages_for
 from .grounding import GroundingRejected
 from .exploration import ExploreBundle, explore_bundle
+from .graph_flow import add_dependency_graph, graph_prompt, unavailable_graph
+from .time_query import extract_event_date
 
 def setting(name, default=None):
     return os.environ.get('EVIDENCE_RAG_'+name,os.environ.get('LEGAL_RAG_'+name,default))
@@ -36,11 +38,28 @@ class Query(BaseModel):
     max_evidence_tokens: int = Field(default=6000,ge=1,le=6000)
     max_evidence_items: int = Field(default_factory=default_evidence_items,ge=1,le=60)
     include_retrieval_trace: bool = False
+    retrieval_mode: Literal['text','graph_dependency'] = 'text'
+    graph_seed: str | None = Field(default=None,max_length=240)
+    graph_path_offset: int = Field(default=0,ge=0,le=150000)
+    graph_expected_build_id: str | None = Field(default=None,pattern=r'^graph_[0-9a-f]{32}$')
+
+
+def graph_enabled():
+    return setting('GRAPH_ENABLED','0') == '1'
+
+
+def graph_budget_ms():
+    value = int(setting('GRAPH_BUDGET_MS','750'))
+    if not 1 <= value <= 60000:
+        raise ValueError('GRAPH_BUDGET_MS must be between 1 and 60000')
+    return value
 
 @asynccontextmanager
 async def lifespan(app):
     current_app=app
     default_evidence_items()  # Reject invalid operator configuration at startup.
+    if graph_enabled():
+        graph_budget_ms()
     profile='legal' if getattr(app.state,'default_profile_explicit',False) else setting('DEFAULT_PROFILE','general')
     app.state.default_profile=profile
     demo_user=setting('LOCAL_DEMO_USER')
@@ -149,6 +168,11 @@ async def get_bundle(body, request, user, pinned_revision=None, *, for_explorati
     cat=Catalog(request.app.state.catalog.path)
     try:
         bind(cat.db,body.session_id,user)
+        if body.graph_path_offset and not (
+            body.retrieval_mode=='graph_dependency' and body.graph_expected_build_id
+            and body.graph_seed and body.event_date and body.corpus_revision
+        ):
+            raise HTTPException(422,'graph continuation requires the original graph, seed, revision and date')
         requested_revision=pinned_revision
         initial_profile=body.profile or getattr(request.app.state,'default_profile','legal')
         active=requested_revision or cat.active()
@@ -165,6 +189,9 @@ async def get_bundle(body, request, user, pinned_revision=None, *, for_explorati
         if active and not cat.revision(active): raise HTTPException(404,'revision unavailable')
         configured=request.app.state.service
         profile=body.profile or getattr(request.app.state,'default_profile','legal')
+        graph_requested=body.retrieval_mode=='graph_dependency' and not for_exploration
+        use_graph=graph_requested and graph_enabled() and profile=='general' and body.document_id is None
+        graph_source=cat.revision(active) if use_graph else None
         tokenizer=configured.tokenizer
         # A request without a pin lets RetrievalService select the verified
         # interval itself and retain its full revision-selection trace. A pin
@@ -219,13 +246,29 @@ async def get_bundle(body, request, user, pinned_revision=None, *, for_explorati
             maximum=min(maximum,window-framing-output)
         except ValueError: pass
         try:
-            result=await service.retrieve(body.query,selected_revision,body.event_date,max_evidence_tokens=maximum,max_units=body.max_evidence_items,document_id=body.document_id,return_retrieval_trace=body.include_retrieval_trace,query_time=body.query_time)
+            result=await service.retrieve(body.query,selected_revision,body.event_date,max_evidence_tokens=maximum,max_units=body.max_evidence_items,document_id=body.document_id,return_retrieval_trace=body.include_retrieval_trace or use_graph,query_time=body.query_time)
         except LookupError as exc: raise HTTPException(404,str(exc)) from exc
         except ValueError as exc: raise HTTPException(503,'catalog or retrieval integrity unavailable') from exc
         # The service may select another verified legal revision after the
         # API's initial check; its returned corpus_revision is authoritative.
         if pinned_revision and result.get('corpus_revision') not in (None,pinned_revision):
             raise HTTPException(409,'temporal revision changed during a pinned request')
+        if graph_requested:
+            parsed=extract_event_date(body.query,query_time=body.query_time) if not body.event_date else None
+            effective_date=body.event_date or (parsed.value if parsed else None) or body.query_time or date.today()
+            if use_graph and parsed and parsed.kind in ('invalid','partial','relative_approximate'):
+                result['graph']=unavailable_graph(effective_date,'ambiguous_date')
+                result['graph']['as_of']=None
+                if not body.include_retrieval_trace: result.pop('retrieval_trace',None)
+            else:
+                await add_dependency_graph(
+                    result,db_path=cat.path,enabled=use_graph,seed=(body.graph_seed or '').strip(),
+                    as_of=effective_date,budget_ms=graph_budget_ms() if use_graph else 750,
+                    max_items=body.max_evidence_items,tokenizer=tokenizer,max_evidence_tokens=maximum,
+                    query=body.query,expose_trace=body.include_retrieval_trace,
+                    path_offset=body.graph_path_offset,expected_build_id=body.graph_expected_build_id,
+                    expected_manifest=graph_source['manifest'] if graph_source else None,
+                )
         result['trace_id']='tr_'+uuid.uuid4().hex
         return result
     finally: cat.db.close()
@@ -289,6 +332,7 @@ def model_capabilities(request: Request,user=Depends(identity)):
     generator=request.app.state.generator
     return {'dense_configured':bool(service.dense),'reranker_loaded':bool(service.reranker),'tokenizer_loaded':bool(service.tokenizer),'generator_configured':bool(generator),'provider_health_verified':False,
             'exploration_available':setting('EXPLORE_ENABLED','1')=='1',
+            'graph_available':graph_enabled() and getattr(request.app.state,'default_profile','general')=='general',
             'runtime_identity':{'ov_reuse_client':getattr(service.dense,'reuse_client',None),'explore_enabled':setting('EXPLORE_ENABLED','1')=='1','dense_scope':getattr(service.dense,'scope',None),'reranker_revision':getattr(service.reranker,'revision',None),'reranker_batch_size':getattr(service.reranker,'batch_size',None),'rerank_timeout_seconds':service.rerank_timeout,'tokenizer_revision':getattr(service.tokenizer,'revision',None),'answer_model':getattr(generator,'model',None),'max_output_tokens':getattr(generator,'max_output_tokens',None),'thinking':getattr(generator,'thinking',None),'reasoning_effort':getattr(generator,'reasoning_effort',None),'default_evidence_items':default_evidence_items(),**generation_identity(request)}}
 
 def generation_identity(request):
@@ -313,6 +357,14 @@ def generation_identity(request):
             'generation_gate':setting('GENERATION_GATE','reranker_threshold')}
 
 def generation_allowed(bundle,body,app):
+    graph=bundle.get('graph')
+    if getattr(body,'retrieval_mode','text')=='graph_dependency' and (
+        not graph or (not graph.get('uses_text_fallback') and (
+            graph['traversal_status']!='exhausted' or graph['evidence_status']!='sufficient'
+            or not graph.get('generation_evidence_complete')
+        ))
+    ):
+        return False
     budget_state=bundle['budget']['state']
     allowed_budget=False
     if budget_state=='measured':
@@ -371,14 +423,15 @@ async def chat(body: Query,request: Request,user=Depends(identity)):
         complete=bool(usage) and set(usage_by_attempt)==expected
         source=('not_generated' if not generated else 'provider' if complete else
                 'provider_known_attempts' if usage else 'unavailable')
+        optional_graph={'graph':b['graph']} if 'graph' in b else {}
         return {'usage':usage,'usage_attempts':reported,'usage_complete':complete,'usage_source':source,
                 'generation_attempts':attempts,'generation_retries':retries,
-                'observed_answer_models':models,'grounding_validation':grounding}
+                'observed_answer_models':models,'grounding_validation':grounding,**optional_graph}
     if generation_allowed(b,body,request.app):
         generated=True
         try:
             parts=[]
-            async for event in provider_events(request.app.state.generator,body.query,b['evidence']):
+            async for event in provider_events(request.app.state.generator,graph_prompt(body.query,b.get('graph')),b['evidence']):
                 if event.get('type')=='delta': parts.append(event['delta'])
                 elif event.get('type')=='usage': usage_by_attempt[event.get('attempt',1)]=event['usage']
                 elif event.get('type')=='generation_attempt': attempts.append({key:value for key,value in event.items() if key!='type'})
@@ -398,6 +451,8 @@ async def chat(body: Query,request: Request,user=Depends(identity)):
                     'citations':b['evidence'],'verification':{'status':'not_generated'},**accounting(),
                     'budget':b['budget'],'degraded':True,'failure':safe_pipeline_error(exc,phase)}
     fallback=('目前只能展示检索到的资料，不能据此生成法律结论；请补充事实并由专业人士核验。' if b['query_plan'].get('profile','legal')=='legal' else '目前只能展示检索到的资料，尚不能生成经过核验的回答。')
+    if 'graph' in b:
+        fallback='请查看关系检索结果和逐步原文。本次没有生成可核验的 AI 总结。'
     save_turn(request,user,body.session_id,body.query,fallback,b['corpus_revision'])
     return {'trace_id':b['trace_id'],'status':'evidence_only','answer':fallback,'claims':[],'citations':b['evidence'],'verification':{'status':'not_generated'},**accounting(),'budget':b['budget'],'degraded':True}
 @app.get('/api/v2/units/{unit_id}')
@@ -442,7 +497,7 @@ async def stream(body: Query,request: Request,user=Depends(identity)):
             if generation_allowed(bundle,body,request.app):
                 phase='generation'
                 parts=[]; first_token_ms=None;usage=None;usage_attempts=[];usage_by_attempt={};attempts=[]
-                async for incoming in provider_events(request.app.state.generator,body.query,bundle['evidence']):
+                async for incoming in provider_events(request.app.state.generator,graph_prompt(body.query,bundle.get('graph')),bundle['evidence']):
                     if await request.is_disconnected(): return
                     if incoming.get('type') in ('generation_attempt','generation_retry'):
                         if incoming['type']=='generation_attempt':attempts.append({key:value for key,value in incoming.items() if key!='type'})
@@ -473,7 +528,10 @@ async def stream(body: Query,request: Request,user=Depends(identity)):
                 yield event('completed',{'status':status,'first_answer_ms':first_token_ms,'total_ms':round((time.monotonic()-started)*1000,2),'usage':usage,'usage_source':'provider' if usage_complete else 'provider_known_attempts' if usage else 'unavailable','usage_complete':usage_complete,'usage_attempts':usage_attempts,'generation_attempts':attempts})
             else:
                 yield event('verification',{'status':'not_generated'})
-                yield event('completed',{'status':'evidence_only'})
+                payload={'status':'evidence_only'}
+                if 'graph' in bundle:
+                    payload['total_ms']=round((time.monotonic()-started)*1000,2)
+                yield event('completed',payload)
         except HTTPException as e: yield event('error',{'status':e.status_code,'message':e.detail})
         except ModelStreamIncomplete as e: yield event('error',{'code':'model_incomplete','reason':e.reason,'discard_pending_answer':True})
         except asyncio.CancelledError: raise

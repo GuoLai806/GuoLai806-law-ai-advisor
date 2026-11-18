@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "bytes": "3.1.2",
+    "content-type": "~1.0.4",
+    "debug": "2.6.9",
+    "depd": "2.0.0",
+    "destroy": "1.2.0",
+    "http-errors": "2.0.0",
+    "iconv-lite": "0.4.24",
+    "on-finished": "2.4.1",
+    "qs": "6.11.0",
+    "raw-body": "2.5.1",
+    "type-is": "~1.6.18",
+    "unpipe": "1.0.0"
+  },
+  "gitHead": "830bdfbee021d540a742de857dcbd43f40563a02",
+  "license": "MIT",
+  "name": "body-parser",
+  "registry_response_sha256": "a2467cd15c925c61578edc895c34401db5939e9412e101ab34cbb497c5d67a23",
+  "version": "1.20.1"
+}

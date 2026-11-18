@@ -115,8 +115,13 @@ def parse_pages(pages):
     return result
 
 class Catalog:
-    def __init__(self, path):
+    def __init__(self, path, *, read_only=False):
         self.path = str(path)
+        if read_only:
+            self.db = sqlite3.connect(Path(path).resolve().as_uri() + '?mode=ro',
+                                      uri=True, timeout=1, isolation_level=None)
+            self.db.row_factory = sqlite3.Row
+            return
         self.db = sqlite3.connect(self.path, timeout=10, isolation_level=None, check_same_thread=False)
         self.db.row_factory = sqlite3.Row
         self.db.executescript('''PRAGMA journal_mode=WAL; PRAGMA foreign_keys=ON;

@@ -54,9 +54,14 @@
       <div class="row time-row">
         <div style="flex:1;min-width:220px"><label for="event-date">事件发生日（可选）</label><input id="event-date" type="date"><p class="muted">有具体案件时，按事件发生日自动选择当时有效的民法典版本；没有日期时询问当前有效版本。</p></div>
       </div>
+      <div id="graph-input" class="hidden">
+        <label for="graph-seed">关系起点（可选）</label>
+        <input id="graph-seed" type="text" maxlength="240" placeholder="例如 express@4.18.2">
+      </div>
       <div class="row">
         <button id="ask" type="submit">检索并生成答案</button>
         <button id="explore" type="button" class="secondary">只检索资料</button>
+        <button id="graph-search" type="button" class="secondary hidden">关系检索</button>
         <button id="stop" type="button" class="secondary" disabled>停止</button>
         <span id="status" role="status" aria-live="polite">等待提问</span>
       </div>
@@ -66,6 +71,12 @@
     <section aria-labelledby="evidence-title">
       <h2 id="evidence-title">1. 检索到的内容</h2>
       <p id="evidence-summary" class="muted section-note">这里展示知识库找到的资料。</p>
+      <section id="graph-panel" class="hidden" aria-labelledby="graph-title">
+        <h3 id="graph-title">依赖关系</h3>
+        <p id="graph-status" role="status"></p>
+        <ol id="graph-paths"></ol>
+        <button id="graph-next" type="button" class="secondary hidden">查看更多关系</button>
+      </section>
       <div id="evidence"><p class="muted">提问后，检索结果会显示在这里。</p></div>
     </section>
     <section aria-labelledby="answer-title">
@@ -91,6 +102,7 @@
   </section>
   <section id="source-panel" class="hidden">
     <h2>资料完整原文</h2>
+    <p id="source-match" class="hidden"></p>
     <div id="source-content"></div>
   </section>
 </main>

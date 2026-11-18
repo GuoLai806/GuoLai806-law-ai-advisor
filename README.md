@@ -8,6 +8,8 @@
 
 # Evidence RAG
 
+可选的[依赖关系检索](docs/development/graph-dependency-20261118/README.md)可沿经过来源校验的关系自动多跳，显示原文、版本和耗时。普通检索保持默认入口。
+
 ## bvio OpenViking 与 DeepSeek SuperAgent 调研（2026-11-07）
 
 历史只读调研（后续RAG开发见本页顶部）：比较实际 OpenViking 路径并保存 14 个合成边界实验；Agent 参考 DeepSeek SuperAgent 研究原型，建议保留 GCode 执行内核并新增持久任务控制层。企业整体性能胜负尚未验证。

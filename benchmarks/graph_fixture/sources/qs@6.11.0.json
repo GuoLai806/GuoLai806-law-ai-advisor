@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "side-channel": "^1.0.4"
+  },
+  "gitHead": "56763c12ec4fbf723333cbb32371cbd386c33cbb",
+  "license": "BSD-3-Clause",
+  "name": "qs",
+  "registry_response_sha256": "a6f4ddbdaf919660f48c69cc04f9ed5b38b679b7920beebb3e69676f1165564c",
+  "version": "6.11.0"
+}
