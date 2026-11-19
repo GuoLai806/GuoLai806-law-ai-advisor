@@ -1,6 +1,38 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {newRun, acceptEvent, finishRun, timingValues, splitFinalAnswer, extractFrames, isCurrentRun, previewSummary} from '../../evidence_rag/static/workspace.mjs';
+import {newRun, acceptEvent, finishRun, timingValues, splitFinalAnswer, extractFrames, isCurrentRun, previewSummary, retrievalStages} from '../../evidence_rag/static/workspace.mjs';
+
+test('replay preserves different source ranks and uses the recorded stage times', () => {
+  const candidates = [
+    {unit_id:'a', document_id:'alpha', rrf_score:0.035, reranker_score:0.82,
+      sources:[{source:'bm25',rank:2,raw_score:-2},{source:'dense',rank:1,raw_score:0.9}]},
+    {unit_id:'b', document_id:'beta', reranker_score:0,
+      sources:[{source:'bm25',rank:1,raw_score:-4},{source:'dense',rank:2,raw_score:0.7}]},
+  ];
+  const stages = retrievalStages({corpus_revision:'r1', evidence:[{unit_id:'a',title:'Alpha'}],
+    retrieval_trace:{dense_backend:'openviking', dense_hits:[{},{}], candidates,
+      timings_ms:{lexical_ms:0,dense_ms:18.11,rank_and_rerank_ms:202.84}},
+    graph:{as_of:'2026-11-19',paths:[],graph_build_id:'g',graph_ms:1.81,edge_count:0,
+      traversal_status:'partial_budget',evidence_status:'incomplete'}});
+  assert.deepEqual(stages.map(stage=>stage.id),['scope','lexical','dense','rank','graph','returned']);
+  assert.deepEqual(stages[1].rows.map(row=>row[1]),['beta','alpha']);
+  assert.deepEqual(stages[2].rows.map(row=>row[1]),['alpha','beta']);
+  assert.equal(stages[3].rows[1].at(-1),'0.000000');
+  assert.equal(stages[4].result,'达到预算 · 0 条已查');
+  assert.equal(stages[4].duration,1.81);
+});
+
+test('replay distinguishes a missing trace from a recorded but unavailable service', () => {
+  const missing = retrievalStages({evidence:[],corpus_revision:null});
+  assert.deepEqual(missing.map(stage=>stage.id),['scope','returned']);
+  const degraded = retrievalStages({kind:'exploration',items:[],corpus_revision:'r1',
+    degraded_reasons:['dense_not_configured','reranker_failed'],
+    retrieval_trace:{timings_ms:{lexical_ms:0.28,rank_and_rerank_ms:1}}});
+  assert.deepEqual(degraded.map(stage=>stage.id),['scope','lexical','dense','rank','returned']);
+  assert.equal(degraded[2].result,'语义服务不可用');
+  assert.equal(degraded[3].title,'合并候选');
+  assert.equal(degraded[3].result,'本次未记录候选');
+});
 
 test('real event stages preserve the whole answer and separate elapsed phases', () => {
   const run = newRun('answer', 1, 100);

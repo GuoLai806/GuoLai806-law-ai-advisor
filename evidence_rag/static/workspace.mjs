@@ -89,11 +89,117 @@ export function extractFrames(buffer) {
   return {frames, rest: buffer};
 }
 
+const missing = '—';
+const score = value => Number.isFinite(value) ? value.toFixed(6) : missing;
+const millis = value => Number.isFinite(value) && value >= 0 ? value.toFixed(2) + ' ms' : null;
+const firstNames = (rows, column = 1) => rows.slice(0, 3).map(row => row[column]).join('\n');
+
+export function retrievalStages(bundle, query = '') {
+  const trace = bundle.retrieval_trace || {};
+  const times = trace.timings_ms || {};
+  const plan = bundle.query_plan || {};
+  const items = bundle.kind === 'exploration' ? bundle.items : bundle.evidence;
+  const evidenceById = new Map(items.map(item => [item.unit_id, item]));
+  const nameFor = candidate => {
+    const evidence = evidenceById.get(candidate.unit_id);
+    return candidate.document_id || evidence?.article_label || evidence?.title || candidate.unit_id;
+  };
+  const candidates = trace.candidates || [];
+  const sourceRows = kind => candidates.flatMap(candidate => (candidate.sources || [])
+    .filter(source => source.source === kind)
+    .map(source => [source.rank, nameFor(candidate), score(source.raw_score)]))
+    .sort((a, b) => a[0] - b[0]);
+  const lexical = sourceRows('bm25');
+  const dense = sourceRows('dense');
+  const graph = bundle.graph;
+  const asOf = graph?.as_of || plan.event_date || plan.revision_selection?.reference_date;
+  const revision = bundle.corpus_revision || '未确定语料版本';
+  const stages = [{
+    id: 'scope', title: '查询范围', result: asOf ? revision + ' · ' + asOf : revision,
+    columns: ['项目', '本次查询'],
+    rows: [['语料版本', revision], ['适用日期', asOf || '未指定'],
+      ['检索方式', graph ? '关系检索' : bundle.kind === 'exploration' ? '只检索资料' : '普通检索']],
+  }];
+  if (millis(times.lexical_ms)) stages.push({
+    id: 'lexical', title: '关键词召回', duration: times.lexical_ms,
+    result: lexical.length + ' 条进入候选记录', sample: firstNames(lexical),
+    note: '这里显示合并后保留的关键词命中。BM25 原始分数越低越靠前。',
+    columns: ['关键词排名', '资料', 'BM25 分数'], rows: lexical,
+  });
+  const denseUnavailable = (bundle.degraded_reasons || []).some(reason =>
+    reason === 'dense_not_configured' || reason === 'dense_unavailable');
+  if (millis(times.dense_ms) || denseUnavailable) {
+    const hits = trace.dense_hits;
+    const total = Array.isArray(hits) ? hits.length : null;
+    stages.push({
+      id: 'dense', title: trace.dense_backend === 'openviking' ? 'OpenViking 召回' : '语义召回',
+      duration: times.dense_ms,
+      result: denseUnavailable ? '语义服务不可用' : total === null ? '本次未记录候选' : total + ' 条召回',
+      sample: firstNames(dense), columns: ['候选排名', '资料', '语义分数'], rows: dense,
+      note: denseUnavailable ? '本次检索仍可使用其他召回结果。' :
+        total !== dense.length ? '这里列出与本次语料匹配并进入候选记录的资料。' : '',
+    });
+  }
+  if (millis(times.rank_and_rerank_ms)) {
+    const rows = candidates.map((candidate, index) => {
+      const ranks = new Map((candidate.sources || []).map(source => [source.source, source.rank]));
+      return [index+1, nameFor(candidate), ranks.get('bm25') ?? missing, ranks.get('dense') ?? missing,
+        score(candidate.rrf_score), score(candidate.reranker_score)];
+    });
+    const temporal = Object.values(trace.temporal || {});
+    const rerankerUnavailable = (bundle.degraded_reasons || []).some(reason =>
+      reason === 'reranker_failed' || reason === 'reranker_not_configured');
+    stages.push({
+      id: 'rank', title: rerankerUnavailable ? '合并候选' : '合并与重排',
+      duration: times.rank_and_rerank_ms,
+      result: Array.isArray(trace.candidates) ? rows.length + ' 个最终候选' : '本次未记录候选',
+      sample: firstNames(rows),
+      note: temporal.length ? '这里按时间筛选后的候选顺序展示。' :
+        rerankerUnavailable ? '重排服务未参与最终排序，使用合并候选。' : '',
+      columns: ['最终排名', '资料', '关键词排名', '语义排名', '融合分数', '重排分数'], rows,
+    });
+    if (temporal.length) {
+      const temporalRows = Object.entries(trace.temporal).map(([unitId, decision]) => [
+        nameFor(candidates.find(item => item.unit_id === unitId) || {unit_id: unitId}),
+        decision.eligible ? '保留' : '排除', decision.valid_from || missing, decision.valid_to || missing,
+      ]);
+      stages.push({
+        id: 'time', title: '按日期筛选', duration: times.temporal_filter_ms,
+        result: temporal.filter(decision => decision.eligible).length + ' 条符合日期',
+        columns: ['资料', '日期检查', '生效日', '失效日'], rows: temporalRows,
+      });
+    }
+  }
+  if (graph) {
+    const paths = graph.paths || [];
+    const direct = paths.filter(path => path.src_id === graph.seed_id);
+    const fromRoot = new Map(direct.map(path => [path.dst_id, path]));
+    const secondHops = paths.filter(path => fromRoot.has(path.src_id) && path.dst_id !== graph.seed_id);
+    const foldedQuery = query.toLowerCase();
+    const second = secondHops.find(path => foldedQuery.includes(path.dst_name.toLowerCase())) || secondHops[0];
+    const pathExample = second
+      ? [fromRoot.get(second.src_id).src_name, second.src_name, second.dst_name].join(' → ')
+      : direct.length ? direct[0].src_name + ' → ' + direct[0].dst_name : '';
+    const sample = [Number.isFinite(graph.visited_count) && graph.visited_count ? graph.visited_count + ' 个已访问实体' : '', pathExample].filter(Boolean).join('\n');
+    const result = graph.traversal_status === 'exhausted' ? graph.edge_count + ' 条关系 · 最深 ' + graph.max_depth_reached + ' 跳' :
+      graph.traversal_status === 'partial_budget' ? '达到预算 · ' + graph.edge_count + ' 条已查' : '关系检索未完成';
+    stages.push({id: 'graph', title: '图谱逐跳', duration: graph.graph_build_id ? graph.graph_ms : null, result, sample});
+  }
+  stages.push({
+    id: 'returned', title: '返回证据', result: items.length + ' 条资料',
+    sample: graph?.evidence_status === 'incomplete' && graph.traversal_status === 'exhausted' ? '图内查完，覆盖不完整' :
+      bundle.degraded ? '部分检索' : firstNames(items.slice(0, 2).map(item => [null,item.document_id || item.title])),
+    items,
+  });
+  return stages;
+}
+
 function boot() {
   const get = id => document.getElementById(id);
   const question = get('question'), ask = get('ask'), explore = get('explore'), stop = get('stop'), eventDate = get('event-date');
   const graphSearch = get('graph-search'), graphSeed = get('graph-seed'), graphPanel = get('graph-panel');
   const graphNext = get('graph-next');
+  const replay = get('retrieval-replay'), track = get('replay-track'), detail = get('replay-detail'), replayData = get('replay-data');
   const state = {epoch: 0, run: null, source: null, snapshot: null, timer: null};
   const sessionId = 'web-' + crypto.randomUUID();
   const setNotice = message => { get('notice').textContent = message; get('notice').classList.toggle('hidden', !message); };
@@ -118,6 +224,11 @@ function boot() {
     state.epoch++; state.run = null; state.source = null;
     get('source-panel').classList.add('hidden');
     graphPanel.classList.add('hidden');
+    replay.classList.add('hidden');
+    detail.hidden = true;
+    track.replaceChildren();
+    replayData.replaceChildren();
+    get('graph-paths').replaceChildren();
   }
 
   async function hash(text) {
@@ -145,11 +256,103 @@ function boot() {
     get('source-panel').scrollIntoView({behavior: 'smooth', block: 'start'});
   }
 
+  function element(tag, value) {
+    const node = document.createElement(tag);
+    node.textContent = value;
+    return node;
+  }
+
+  function showEvidenceSource(item, bundle, epoch, span = null) {
+    return showSource(item, bundle.corpus_revision, epoch, span).catch(error => {
+      if (epoch === state.epoch && error.name !== 'AbortError') setNotice(error.message);
+    });
+  }
+
+  function replayTable(columns, rows) {
+    const table = document.createElement('table');
+    const header = table.createTHead().insertRow();
+    for (const label of columns) {
+      const th = element('th', label);
+      th.scope = 'col';
+      header.append(th);
+    }
+    const body = table.createTBody();
+    for (const row of rows) {
+      const tr = body.insertRow();
+      for (const value of row) tr.append(element('td', value));
+    }
+    return table;
+  }
+
+  function displayReplay(bundle, epoch) {
+    const query = state.run?.query || '';
+    const stages = retrievalStages(bundle, query);
+    const duration = millis(bundle.retrieval_ms);
+    get('replay-duration').hidden = !duration;
+    get('replay-duration').textContent = duration ? '服务端检索 ' + duration : '';
+    track.replaceChildren();
+    detail.hidden = true;
+    replayData.replaceChildren();
+    graphPanel.classList.add('hidden');
+    for (const stage of stages) {
+      const cell = document.createElement('li');
+      const trigger = element('button', '');
+      trigger.type = 'button';
+      trigger.dataset.stage = stage.id;
+      trigger.setAttribute('aria-controls','replay-detail');
+      trigger.setAttribute('aria-expanded','false');
+      const sample = element('span', stage.id === 'scope' ? query.slice(0, 100) + (query.length > 100 ? '…' : '') : stage.sample || '');
+      sample.className = 'replay-example';
+      trigger.append(element('strong', stage.title));
+      const elapsed = millis(stage.duration);
+      if (elapsed) trigger.append(element('i', elapsed));
+      const hint = element('small', '查看详情');
+      hint.className = 'replay-hint';
+      trigger.append(element('span', stage.result), sample, hint);
+      trigger.addEventListener('click', () => {
+        const open = trigger.getAttribute('aria-expanded') !== 'true';
+        for (const button of track.querySelectorAll('button')) {
+          const selected = open && button === trigger;
+          button.setAttribute('aria-expanded', String(selected));
+          button.querySelector('.replay-hint').textContent = selected ? '收起详情' : '查看详情';
+        }
+        detail.hidden = !open;
+        replayData.replaceChildren();
+        graphPanel.classList.toggle('hidden', !open || stage.id !== 'graph');
+        if (!open || stage.id === 'graph') return;
+        replayData.append(element('h3', stage.title));
+        if (stage.note) replayData.append(element('p', stage.note));
+        if (stage.id === 'scope') {
+          replayData.append(replayTable(stage.columns, [['问题', query], ...stage.rows]));
+        } else if (stage.rows?.length) {
+          replayData.append(replayTable(stage.columns, stage.rows));
+        } else if (stage.items?.length) {
+          const list = document.createElement('ol');
+          for (const item of stage.items) {
+            const entry = element('li', '');
+            const label = item.citation_id ? item.citation_id + ' · ' : '';
+            const source = element('button', '查看原文');
+            source.type = 'button';
+            source.className = 'secondary';
+            source.addEventListener('click', () => showEvidenceSource(item, bundle, epoch));
+            entry.append(element('strong', label + item.title), ' ', source,
+              element('div', item.text ?? item.preview ?? ''));
+            list.append(entry);
+          }
+          replayData.append(list);
+        } else replayData.append(element('p', '本阶段没有可展示的资料。'));
+      });
+      cell.append(trigger);
+      track.append(cell);
+    }
+    replay.classList.remove('hidden');
+  }
+
   function displayGraph(bundle, epoch) {
     const graph = bundle.graph;
     const list = get('graph-paths');
     list.replaceChildren();
-    graphPanel.classList.toggle('hidden', !graph);
+    graphPanel.classList.toggle('hidden', !graph || track.querySelector('[data-stage=graph]')?.getAttribute('aria-expanded') !== 'true');
     graphNext.classList.toggle('hidden', !graph?.next_path_offset);
     if (!graph) return;
     const reasons = {
@@ -174,8 +377,11 @@ function boot() {
     }
     const time = Number.isFinite(graph.graph_ms) ? ' · ' + graph.graph_ms.toFixed(2) + ' 毫秒' : '';
     const count = graph.paths.length ? ' · ' + graph.edge_count + ' 条关系 · 最深 ' + graph.max_depth_reached + ' 跳' : '';
+    const seed = graph.seed_id ? ' · 起点 ' + graph.seed_id : '';
     const date = graph.as_of ? ' · 查询日期 ' + graph.as_of : '';
-    get('graph-status').textContent = status + count + date + time + (graph.paths_truncated ? ' · 当前展示 ' + graph.paths.length + ' 条' : '');
+    get('graph-status').textContent = status + seed + count + date + time + (graph.paths_truncated ? ' · 当前展示 ' + graph.paths.length + ' 条' : '');
+    const evidence = bundle.evidence || [];
+    const parts = new Map(evidence.map(item => [item.citation_id, item]));
     for (const path of graph.paths) {
       const li = document.createElement('li');
       const title = document.createElement('strong');
@@ -183,11 +389,19 @@ function boot() {
       const source = document.createElement('button');
       source.type = 'button'; source.className = 'secondary'; source.textContent = '查看原文';
       const label = path.citation_id ? ' [' + path.citation_id + ']' : '';
-      li.append(title, ' · 第 ' + path.depth + ' 跳' + label + ' ', source);
+      li.append(title, ' · 第 ' + path.depth + ' 轮核对' + label + ' ', source);
+      const item = parts.get(path.citation_id);
+      const start = path.char_start - item?.source_locator?.char_start;
+      const end = path.char_end - item?.source_locator?.char_start;
+      if (item?.unit_id === path.unit_id &&
+          (item.document_sha256 || item.content_sha256) === path.content_sha256 &&
+          Number.isInteger(start) && start >= 0 && end > start) {
+        const chars = Array.from(item.text);
+        if (end <= chars.length) li.append(' ', element('code', chars.slice(start, end).join('')));
+      }
       source.addEventListener('click', () => {
         const item = {unit_id: path.unit_id, content_sha256: path.content_sha256};
-        showSource(item, bundle.corpus_revision, epoch, [path.char_start,path.char_end])
-          .catch(error => { if (epoch === state.epoch && error.name !== 'AbortError') setNotice(error.message); });
+        showEvidenceSource(item, bundle, epoch, [path.char_start,path.char_end]);
       });
       list.append(li);
     }
@@ -213,6 +427,8 @@ function boot() {
         if (['graph_changed','source_revoked'].includes(next?.stop_reason)) {
           bundle.graph=next; displayGraph(bundle,run.epoch);
           if (next.stop_reason==='source_revoked') {
+            state.source?.abort();
+            replay.classList.add('hidden'); track.replaceChildren(); replayData.replaceChildren();
             get('evidence').replaceChildren(); get('evidence-summary').textContent='原文状态已变更';
             get('source-panel').classList.add('hidden'); clearAnswer('请重新检索。');
           }
@@ -220,7 +436,7 @@ function boot() {
         throw new Error('未能读取下一页关系，请重新检索。');
       }
       const paths = graph.paths.concat(next.paths.map(({citation_id, ...path}) => path));
-      bundle.graph = {...next, paths, paths_truncated:paths.length < next.edge_count};
+      bundle.graph = {...next, paths, graph_ms:graph.graph_ms, paths_truncated:paths.length < next.edge_count};
       displayGraph(bundle,run.epoch);
     } catch (error) {
       if (isCurrentRun(state,run) && error.name!=='AbortError') setNotice(error.message);
@@ -236,6 +452,7 @@ function boot() {
     const selection = bundle.query_plan?.revision_selection;
     const dateLine = selection ? '适用日期：' + selection.reference_date + (selection.selected ? ' · 版本：' + selection.selected : ' · 没有可核验的适用版本') : '';
     get('evidence-summary').textContent = '找到 ' + items.length + ' 条资料' + (bundle.degraded ? '（部分检索）' : '') + (preview ? ' · 本次只检索，尚未生成答案' : ' · 以下为本次检索资料') + (dateLine ? ' · ' + dateLine : '');
+    displayReplay(bundle, epoch);
     displayGraph(bundle, epoch);
     for (const [index, item] of items.entries()) {
       const article = document.createElement('article');
@@ -256,7 +473,7 @@ function boot() {
         details.append(summary, full); article.append(details);
       }
       const button = document.createElement('button'); button.type = 'button'; button.className = 'secondary'; button.textContent = '查看完整原文';
-      button.addEventListener('click', () => showSource(item, bundle.corpus_revision, epoch).catch(error => { if (epoch === state.epoch && error.name !== 'AbortError') setNotice(error.message); }));
+      button.addEventListener('click', () => showEvidenceSource(item, bundle, epoch));
       article.append(button); container.append(article);
     }
     if (!items.length) container.textContent = '没有找到可用资料。';
@@ -301,7 +518,7 @@ function boot() {
     try {
       const response = await fetch(mode === 'explore' ? '/api/v2/explore' : '/api/v2/chat/stream', {
         method: 'POST', headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({query, session_id: sessionId, event_date: eventDate.value || null,
+        body: JSON.stringify({query, session_id: sessionId, event_date: eventDate.value || null, include_retrieval_trace: true,
           corpus_revision: mode === 'explore' ? null : pinned,
           ...(mode === 'graph' ? {retrieval_mode:'graph_dependency', graph_seed:graphSeed.value.trim() || null} : {})}),
         signal: run.controller.signal
