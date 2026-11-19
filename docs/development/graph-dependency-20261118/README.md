@@ -20,6 +20,12 @@ python -m evidence_rag.graph_index --help
 
 普通问答与关系检索从现有 `evidence_ready` 事件取数据，「只检索资料」从预览响应取数据。此界面使用既有可选追踪字段，沿用原文端点的版本与哈希核对。
 
+### BGE 重排的输入检查
+
+使用 `EVIDENCE_RAG_RERANKER=bge` 和显式 `EVIDENCE_RAG_RERANK_DEVICE=mps` 时，服务在预测实际使用的分词批次内检查每条输入长度。超过模型窗口的段落会触发现有重排降级。其余配置沿用逐条检查。可设置 `EVIDENCE_RAG_RERANK_WINDOW_CHECK=legacy` 并重启回退，`/api/v2/models` 返回实际采用的模式。
+
+用同一语料和模型比较两种模式时，运行仓库的 `benchmarks/compare_reranker_windows.py`。脚本对真实 HTTP 端点交错请求，记录候选顺序、分数、原文哈希、图谱边、耗时和失败。两端须使用同一模型、设备、精度、批大小和 OpenViking 数据快照。
+
 `POST /api/v2/retrieve`、`/api/v2/chat` 和 `/api/v2/chat/stream` 支持 `retrieval_mode=graph_dependency` 和可选 `graph_seed`。不指定模式按普通检索处理。图未建或关闭时，可转回现有普通问答。对证据不足或版本不明的图结果，单独展示已查到的路径；此时不会生成声称找全的 AI 回答。队列耗尽仅表示当前图的可达范围查完。分页显示额度、遍历运行预算和生成选用的证据预算各自独立。
 
 ## 复现开发样本

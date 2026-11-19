@@ -455,6 +455,53 @@ def test_reranker_propagates_device_and_dtype(monkeypatch):
     def create(model,**kwargs):seen.update(kwargs);return object()
     monkeypatch.setitem(sys.modules,'sentence_transformers',types.SimpleNamespace(CrossEncoder=create))
     monkeypatch.setitem(sys.modules,'torch',types.SimpleNamespace(float16='half'))
-    CrossEncoderReranker('bge',device='mps',dtype='float16')
+    CrossEncoderReranker('bge',device='mps',dtype='float16',window_check='legacy')
     assert seen['device']=='mps' and seen['model_kwargs']['dtype']=='half' and seen['local_files_only']
     with pytest.raises(ValueError):CrossEncoderReranker('bge',dtype='int8')
+
+
+def test_guarded_reranker_checks_prediction_batches_without_truncation(monkeypatch):
+    import sys
+    from types import SimpleNamespace
+    from legal_rag.retrieval import CrossEncoderReranker
+
+    class Mask:
+        ndim = 2
+
+        def __init__(self, lengths):
+            self.lengths = lengths
+            self.shape = (len(lengths), max(lengths))
+
+        def sum(self, *, dim):
+            assert dim == 1
+            return SimpleNamespace(max=lambda: max(self.lengths))
+
+    class Model:
+        max_length = 25
+
+        def __init__(self, *_args, **_kwargs):
+            self.preprocessed = []
+            self.scored = []
+
+        def preprocess(self, pairs, *, prompt, processing_kwargs):
+            assert prompt == 'predict prompt'
+            assert processing_kwargs['text']['truncation'] is False
+            assert processing_kwargs['chat_template']['truncation'] is False
+            self.preprocessed.append(len(pairs))
+            return {'attention_mask': Mask([len(query + text) for query, text in pairs])}
+
+        def predict(self, pairs, *, batch_size):
+            batch = self.preprocess(pairs, prompt='predict prompt')
+            self.scored.append(batch)
+            return [float(n) for n in batch['attention_mask'].lengths]
+
+    monkeypatch.setitem(sys.modules,'sentence_transformers',SimpleNamespace(CrossEncoder=Model))
+    reranker = CrossEncoderReranker('bge', device='mps')
+    candidates = [{'unit_id':'one','title':'Doc','label':'', 'text':'one',
+                   'parts':[{'text':'small','part_no':1},{'text':'longer passage','part_no':2}]}]
+    assert reranker.rank('q',candidates)[0][0]['rerank_part_no'] == 2
+    assert reranker.model.preprocessed == [2]
+    candidates[0]['parts'][1]['text'] = 'x' * 30
+    with pytest.raises(ValueError,match='exceeds'):
+        reranker.rank('q',candidates)
+    assert len(reranker.model.scored) == 1

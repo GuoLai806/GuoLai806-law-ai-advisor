@@ -189,36 +189,73 @@ def reranker_document_text(unit, part=None):
         return (unit.get('title') or '')+'\n'+body
     return unit['title']+' '+unit['label']+' '+body
 
+def _untruncated_processing():
+    return {'text': {'truncation': False}, 'chat_template': {'truncation': False}}
+
+
+class _GuardedWindow:
+    """Validate the same padded features that the cross encoder will score."""
+
+    def preprocess(self, inputs, prompt=None, **kwargs):
+        kwargs['processing_kwargs'] = _untruncated_processing()
+        max_length = self.max_length
+        if not max_length:
+            raise ValueError('reranker token limit unknown')
+        features = super().preprocess(inputs, prompt=prompt, **kwargs)
+        mask = features.get('attention_mask')
+        if mask is None or mask.ndim != 2 or mask.shape[0] != len(inputs):
+            raise ValueError('cannot verify reranker input windows')
+        if int(mask.sum(dim=1).max()) > max_length:
+            raise ValueError('whole paragraph exceeds reranker token limit')
+        return features
+
+
 class CrossEncoderReranker:
     MODELS={'bge':('BAAI/bge-reranker-v2-m3','953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e'), 'qwen':('Qwen/Qwen3-Reranker-4B','22e683669bc0f0bd69640a1354a6d0aebcfeede5')}
-    def __init__(self, name, device=None, dtype=None, batch_size=2):
+    def __init__(self, name, device=None, dtype=None, batch_size=2, window_check='auto'):
         from sentence_transformers import CrossEncoder
         if dtype not in (None,'float16','float32'): raise ValueError('unsupported dtype')
         if batch_size<1: raise ValueError('batch size must be positive')
+        if window_check not in ('auto','legacy'):
+            raise ValueError('reranker window check must be auto or legacy')
         self.batch_size=batch_size
         model, self.revision=self.MODELS[name]
         kwargs={'device':device,'revision':self.revision,'local_files_only':True,'max_length':4096}
         if dtype:
             import torch
             kwargs['model_kwargs']={'dtype':getattr(torch,dtype)}
-        self.model=CrossEncoder(model, **kwargs)
+        self.window_check = 'legacy'
+        if window_check == 'auto' and name == 'bge' and device in ('mps','mps:0'):
+            class GuardedCrossEncoder(_GuardedWindow, CrossEncoder):
+                pass
+
+            self.model = GuardedCrossEncoder(model, **kwargs)
+            self.window_check = 'guarded_batch'
+        else:
+            self.model = CrossEncoder(model, **kwargs)
         self.requested_dtype=dtype
+
+    def _check_windows(self, pairs):
+        max_length = self.model.max_length
+        if not max_length:
+            raise ValueError('reranker token limit unknown')
+        name = self.model.default_prompt_name
+        prompt = self.model.prompts.get(name) if name else None
+        for pair in pairs:
+            encoded = self.model.preprocess([pair], prompt=prompt,
+                                            processing_kwargs=_untruncated_processing())
+            if int(encoded['attention_mask'][0].sum()) > max_length:
+                raise ValueError('whole paragraph exceeds reranker token limit')
+
     def rank(self, query, candidates):
         pairs=[]; owners=[]; pair_parts=[]
         for i,c in enumerate(candidates):
             parts=c.get('parts') or [{'text':c['text']}]
             for part in parts:
-                document=reranker_document_text(c,part)
-                max_length=self.model.max_length
-                if not max_length: raise ValueError('reranker token limit unknown')
-                # Use the same model preprocessing and resolved prompt as predict(),
-                # including the Qwen chat template, with truncation explicitly disabled.
-                prompt=self.model.prompts.get(self.model.default_prompt_name) if self.model.default_prompt_name else None
-                encoded=self.model.preprocess([(query,document)],prompt=prompt,processing_kwargs={'text':{'truncation':False},'chat_template':{'truncation':False}})
-                length=int(encoded['attention_mask'][0].sum())
-                if length>max_length: raise ValueError('whole paragraph exceeds reranker token limit')
-                pairs.append((query,document)); owners.append(i);pair_parts.append(part.get('part_no'))
+                pairs.append((query,reranker_document_text(c,part))); owners.append(i);pair_parts.append(part.get('part_no'))
         if not pairs: return []
+        if getattr(self,'window_check','legacy') == 'legacy':
+            self._check_windows(pairs)
         scores=self.model.predict(pairs,batch_size=getattr(self,'batch_size',2))
         if len(scores)!=len(pairs) or any(not math.isfinite(float(s)) for s in scores): raise ValueError('invalid reranker output')
         best=[-math.inf]*len(candidates);best_parts=[None]*len(candidates)

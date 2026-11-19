@@ -80,7 +80,7 @@ async def lifespan(app):
     db.db.execute('CREATE TABLE IF NOT EXISTS sessions(session_id TEXT PRIMARY KEY, owner TEXT NOT NULL)')
     db.db.execute('CREATE TABLE IF NOT EXISTS turns(turn_id TEXT PRIMARY KEY, session_id TEXT NOT NULL, query TEXT NOT NULL, answer TEXT NOT NULL, revision TEXT NOT NULL, created REAL NOT NULL, FOREIGN KEY(session_id) REFERENCES sessions(session_id))')
     app.state.catalog=db
-    reranker=CrossEncoderReranker(setting('RERANKER'),device=setting('RERANK_DEVICE'),dtype=setting('RERANK_DTYPE'),batch_size=int(setting('RERANK_BATCH_SIZE','2'))) if setting('RERANKER') else None
+    reranker=CrossEncoderReranker(setting('RERANKER'),device=setting('RERANK_DEVICE'),dtype=setting('RERANK_DTYPE'),batch_size=int(setting('RERANK_BATCH_SIZE','2')),window_check=setting('RERANK_WINDOW_CHECK','auto')) if setting('RERANKER') else None
     tokenizer=HuggingFaceTokenizer(setting('TOKENIZER'),setting('TOKENIZER_REVISION')) if setting('TOKENIZER') and setting('TOKENIZER_REVISION') else None
     ov_key=os.environ.get('OPENVIKING_API_KEY')
     ov_headers={'X-API-Key':ov_key} if ov_key else {}
@@ -330,7 +330,7 @@ async def explore(body: Query,request: Request,user=Depends(identity)):
 def model_capabilities(request: Request,user=Depends(identity)):
     service=request.app.state.service
     generator=request.app.state.generator
-    return {'dense_configured':bool(service.dense),'reranker_loaded':bool(service.reranker),'tokenizer_loaded':bool(service.tokenizer),'generator_configured':bool(generator),'provider_health_verified':False,
+    return {'dense_configured':bool(service.dense),'reranker_loaded':bool(service.reranker),'reranker_window_check':getattr(service.reranker,'window_check',None),'tokenizer_loaded':bool(service.tokenizer),'generator_configured':bool(generator),'provider_health_verified':False,
             'exploration_available':setting('EXPLORE_ENABLED','1')=='1',
             'graph_available':graph_enabled() and getattr(request.app.state,'default_profile','general')=='general',
             'runtime_identity':{'ov_reuse_client':getattr(service.dense,'reuse_client',None),'explore_enabled':setting('EXPLORE_ENABLED','1')=='1','dense_scope':getattr(service.dense,'scope',None),'reranker_revision':getattr(service.reranker,'revision',None),'reranker_batch_size':getattr(service.reranker,'batch_size',None),'rerank_timeout_seconds':service.rerank_timeout,'tokenizer_revision':getattr(service.tokenizer,'revision',None),'answer_model':getattr(generator,'model',None),'max_output_tokens':getattr(generator,'max_output_tokens',None),'thinking':getattr(generator,'thinking',None),'reasoning_effort':getattr(generator,'reasoning_effort',None),'default_evidence_items':default_evidence_items(),**generation_identity(request)}}
