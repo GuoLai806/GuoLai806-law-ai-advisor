@@ -345,7 +345,11 @@ class CrossEncoderReranker:
                     best_windows.pop(owner, None)
         annotated=[{**c,'rerank_part_no':best_parts[i]} for i,c in enumerate(candidates)]
         for owner, window in best_windows.items():
-            annotated[owner]['rerank_window'] = window
+            unit = candidates[owner]
+            part = next((p for p in (unit.get('parts') or ()) if p.get('part_no') == window['part_no']), unit)
+            annotated[owner]['rerank_window'] = {
+                **window, 'part_locator': part.get('locator'), 'part_sha256': part.get('sha256')
+            }
         return sorted(zip(annotated,best),key=lambda p:p[1],reverse=True)
 
 def rrf(lists, k=60):
@@ -580,7 +584,7 @@ class RetrievalService:
                         degraded.append('reranker_part_unavailable')
                 if part:item.update(text=part['text'],source_locator=part['locator'],content_sha256=part['sha256'],part_no=part['part_no'],document_sha256=c['sha256'],has_more=len(c['parts'])>1)
             window = c.get('rerank_window')
-            if window and 'part_no' in item and item['part_no'] == window['part_no']:
+            if window and item.get('reranker_score') is not None and item.get('part_no', window['part_no']) == window['part_no']:
                 item['rerank_window'] = {k: v for k, v in window.items() if k != 'scored_spans'}
             evidence.append(item)
         from .budget import assemble

@@ -92,3 +92,52 @@ def test_unrelated_errors_are_not_retried_as_window_overflow():
         raise RuntimeError('backend unavailable')
     worker.model.predict=fail
     with pytest.raises(RuntimeError,match='backend unavailable'):worker.rank('Q',[candidate('fits')])
+
+
+@pytest.mark.parametrize('profile', ['general', 'legal'])
+def test_full_source_http_response_locates_its_winning_window(tmp_path, monkeypatch, profile):
+    import hashlib
+    import json
+    from fastapi.testclient import TestClient
+    from evidence_rag.api import app, legal_app
+
+    service_app = legal_app if profile=='legal' else app
+    monkeypatch.setenv('EVIDENCE_RAG_DB',str(tmp_path/'db'))
+    monkeypatch.setenv('EVIDENCE_RAG_AUTH',json.dumps({'local-test':'reader'}))
+    monkeypatch.setenv('EVIDENCE_RAG_DEFAULT_PROFILE',profile)
+    source = '甲乙丙丁。'*20 + 'KEY'
+    with TestClient(service_app) as client:
+        cat=service_app.state.catalog
+        request={'query':'第一条' if profile=='legal' else 'find','profile':profile,'session_id':'source'}
+        if profile=='general':
+            cat.stage_documents([{'_id':'doc','title':'T','text':'short\n\n'+source}],
+                                {'corpus_id':'demo','version_id':'v1','source_kind':'benchmark','verification_state':'provided'},'r')
+            request['document_id']='doc'
+        else:
+            cat.stage(['第一条 '+source],{'doc_id':'law','version_id':'v1','title':'测试法','source_kind':'synthetic','verification_state':'approved'},'r')
+        cat.activate('r',None)
+        service_app.state.service.reranker=ranker()
+        resp=client.post('/api/v2/retrieve',json=request,headers={'Authorization':'Bearer local-test'})
+        assert resp.status_code==200
+        result=resp.json()
+        assert 'retrieval_trace' not in result
+        item=result['evidence'][0]
+        unit=cat.get('r',item['unit_id'])
+        assert item['text']==unit['text'] and item['content_sha256']==unit['sha256']
+        window=item['rerank_window']
+        part=next(p for p in unit['parts'] if p['part_no']==window['part_no'])
+        assert item['reranker_score']==0.9 and window['window_count']>1
+        assert window['part_locator']==part['locator']
+        assert window['part_sha256']==hashlib.sha256(part['text'].encode()).hexdigest()
+        assert 'KEY' in part['text'][window['char_start']:window['char_end']]
+        assert 'scored_spans' not in window
+
+
+def test_legacy_unit_without_parts_uses_its_own_locator():
+    worker=ranker()
+    text='word '*20+'KEY'
+    unit={**candidate(text),'parts':None,'locator':{'pages':[3]},'sha256':'unit-hash'}
+    [(result,score)]=worker.rank('Q',[unit])
+    assert score==0.9 and result['rerank_window']['part_no'] is None
+    assert result['rerank_window']['part_locator']==unit['locator']
+    assert result['rerank_window']['part_sha256']==unit['sha256']
