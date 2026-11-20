@@ -62,3 +62,64 @@ def test_exact_match_remains_first_even_if_window_is_smaller_than_exact_set():
     result = rerank_candidates({'candidates': rows}, 'q', ['0', '1', '2'], ReverseReranker(), 1)
     assert [row['unit_id'] for row in result['candidates']] == ['0', '1', '2', '3', '4']
     assert set(result['reranker_scores']) == {'0'}
+
+
+def test_interleave_exact_first_deduplicates_and_keeps_rrf_tail():
+    rows = [{'unit_id': str(i)} for i in range(8)]
+    sources = {
+        '0': [{'source':'exact', 'rank':1}],
+        '1': [{'source':'bm25', 'rank':1}],
+        '2': [{'source':'dense', 'rank':1}, {'source':'bm25', 'rank':2}],
+        '3': [{'source':'dense', 'rank':2}],
+        '4': [{'source':'bm25', 'rank':3}],
+        '5': [{'source':'dense', 'rank':3}],
+        '6': [{'source':'bm25', 'rank':4}],
+        '7': [{'source':'dense', 'rank':4}],
+    }
+    ranker = ReverseReranker()
+    result = rerank_candidates({'candidates':rows, 'sources':sources}, 'q', ['0'], ranker, 5, 'interleave')
+    assert ranker.seen == ['0', '2', '1', '3', '5']
+    assert [c['unit_id'] for c in result['candidates']] == ['0', '5', '3', '1', '2', '4', '6', '7']
+    assert set(result['reranker_scores']) == {'0', '1', '2', '3', '5'}
+    assert all('rerank_part_no' not in c for c in result['candidates'][5:])
+
+
+def test_interleave_missing_one_source_then_fills_rrf():
+    rows = [{'unit_id': str(i)} for i in range(5)]
+    sources = {'2':[{'source':'dense','rank':1}], '4':[{'source':'dense','rank':2}]}
+    ranker = ReverseReranker()
+    rerank_candidates({'candidates':rows,'sources':sources}, 'q', [], ranker, 3, 'interleave')
+    assert ranker.seen == ['2', '4', '0']
+
+
+def test_selection_config_and_runtime_identity(monkeypatch):
+    from evidence_rag.api import general_rerank_selection
+    monkeypatch.delenv('EVIDENCE_RAG_GENERAL_RERANK_SELECTION', raising=False)
+    monkeypatch.delenv('LEGAL_RAG_GENERAL_RERANK_SELECTION', raising=False)
+    assert general_rerank_selection() == 'rrf'
+    monkeypatch.setenv('EVIDENCE_RAG_GENERAL_RERANK_SELECTION', 'interleave')
+    assert general_rerank_selection() == 'interleave'
+    service = SimpleNamespace(dense=None, reranker=None, tokenizer=None, rerank_timeout=120, general_rerank_selection='interleave', general_rerank_top_n=24)
+    request = SimpleNamespace(app=SimpleNamespace(state=SimpleNamespace(service=service, generator=None)))
+    assert model_capabilities(request, 'fixture')['runtime_identity']['general_rerank_selection'] == 'interleave'
+    monkeypatch.setenv('EVIDENCE_RAG_GENERAL_RERANK_SELECTION', 'bad')
+    with pytest.raises(ValueError): general_rerank_selection()
+    with pytest.raises(ValueError): RetrievalService(None, general_rerank_selection='bad')
+
+
+@pytest.mark.asyncio
+async def test_legal_ignores_general_window_and_interleave(tmp_path):
+    from evidence_rag.catalog import Catalog
+    catalog = Catalog(tmp_path/'legal.sqlite3')
+    manifest = {'doc_id':'fixture','version_id':'v1','title':'测试法','verification_state':'approved','source_kind':'synthetic','source_url':None}
+    catalog.stage(['第一条 合同成立。\n第二条 合同履行。\n第三条 合同终止。'],manifest,'r1')
+    catalog.activate('r1',None)
+    ranker = ReverseReranker()
+    try:
+        service = RetrievalService(catalog, reranker=ranker, profile='legal', general_rerank_top_n=1, general_rerank_selection='interleave')
+        result = await service.retrieve('合同', return_retrieval_trace=True)
+        assert len(ranker.seen) == 3
+        assert result['query_plan']['profile'] == 'legal'
+        assert 'reranker_failed' not in result['degraded_reasons']
+    finally:
+        catalog.db.close()

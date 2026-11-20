@@ -292,12 +292,27 @@ def rank_candidates(catalog, revision, query, lexical, dense, exact=(), reranker
     result={'candidates':candidates,'sources':dict(sources),'rrf_scores':rrf_scores,'reranker_scores':{}}
     return rerank_candidates(result,query,streams['exact'],reranker) if reranker else result
 
-def rerank_candidates(ranking,query,exact,reranker,top_n=60):
+def rerank_candidates(ranking,query,exact,reranker,top_n=60,selection='rrf'):
     """Model work uses materialized evidence, never a request-scoped database."""
     candidates=ranking['candidates'];limit=len(candidates);scores={}
     if not isinstance(top_n,int) or isinstance(top_n,bool) or not 1<=top_n<=60: raise ValueError('rerank top_n must be 1..60')
+    if selection not in ('rrf','interleave'): raise ValueError('invalid rerank selection')
     if reranker:
-        head,tail=candidates[:top_n],candidates[top_n:]
+        if selection=='interleave':
+            sources=ranking['sources']
+            def source_candidates(name):
+                rows=[(entry['rank'],c['unit_id'],c) for c in candidates for entry in sources.get(c['unit_id'],[]) if entry['source']==name]
+                return [c for _,__,c in sorted(rows,key=lambda row:(row[0],row[1]))]
+            dense=source_candidates('dense'); lexical=source_candidates('bm25')
+            byid={c['unit_id']:c for c in candidates}
+            stream=[byid[uid] for uid in exact if uid in byid]+[c for pair in zip(dense,lexical) for c in pair]+dense+lexical+candidates
+            chosen=[]; seen=set()
+            for c in stream:
+                if c['unit_id'] not in seen and len(chosen)<top_n:
+                    chosen.append(c);seen.add(c['unit_id'])
+            head=chosen;tail=[c for c in candidates if c['unit_id'] not in seen]
+        else:
+            head,tail=candidates[:top_n],candidates[top_n:]
         ranked=reranker.rank(query,head)
         expected={x['unit_id'] for x in head};returned=[x['unit_id'] for x,score in ranked]
         if len(returned)!=len(expected) or set(returned)!=expected or any(not math.isfinite(float(score)) for _,score in ranked): raise ValueError('invalid reranker response')
@@ -346,9 +361,11 @@ class RankingExecutor:
         return await asyncio.wait_for(asyncio.shield(task), timeout=remaining)
 
 class RetrievalService:
-    def __init__(self,catalog, dense=None, reranker=None, tokenizer=None, profile='general', rerank_timeout=120, ranking_executor=None, temporal_config=None, general_rerank_top_n=60):
+    def __init__(self,catalog, dense=None, reranker=None, tokenizer=None, profile='general', rerank_timeout=120, ranking_executor=None, temporal_config=None, general_rerank_top_n=60, general_rerank_selection='rrf'):
         if not isinstance(general_rerank_top_n,int) or isinstance(general_rerank_top_n,bool) or not 1<=general_rerank_top_n<=60: raise ValueError('general rerank top_n must be 1..60')
+        if general_rerank_selection not in ('rrf','interleave'): raise ValueError('invalid general rerank selection')
         self.general_rerank_top_n=general_rerank_top_n
+        self.general_rerank_selection=general_rerank_selection
         if profile not in ('general','legal'): raise ValueError('invalid profile')
         if not isinstance(rerank_timeout,(int,float)) or isinstance(rerank_timeout,bool) or not math.isfinite(rerank_timeout) or not 0<rerank_timeout<=600: raise ValueError('rerank timeout must be in (0,600] seconds')
         self.catalog,self.dense,self.reranker,self.tokenizer,self.profile=catalog,dense,reranker,tokenizer,profile
@@ -430,7 +447,7 @@ class RetrievalService:
         ranking_started=time.monotonic()
         prepared=rank_candidates(self.catalog,rev,query,lexical,dense_pairs,lists['exact'])
         try:
-            operation=lambda:rerank_candidates(prepared,query,lists['exact'],self.reranker,self.general_rerank_top_n if self.profile=='general' else 60)
+            operation=lambda:rerank_candidates(prepared,query,lists['exact'],self.reranker,self.general_rerank_top_n if self.profile=='general' else 60,self.general_rerank_selection if self.profile=='general' else 'rrf')
             ranking=await self.ranking_executor.run(operation,self.rerank_timeout)
             if not self.reranker:degraded.append('reranker_not_configured')
         except Exception:
