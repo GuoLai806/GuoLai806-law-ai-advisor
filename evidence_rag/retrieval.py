@@ -193,6 +193,13 @@ def _untruncated_processing():
     return {'text': {'truncation': False}, 'chat_template': {'truncation': False}}
 
 
+class RerankWindowExceeded(ValueError):
+    """The complete query and passage exceed the scoring window."""
+
+
+_SPLIT_BOUNDARY = re.compile(r'[\s。！？；.!?;]')
+
+
 class _GuardedWindow:
     """Validate the same padded features that the cross encoder will score."""
 
@@ -206,18 +213,23 @@ class _GuardedWindow:
         if mask is None or mask.ndim != 2 or mask.shape[0] != len(inputs):
             raise ValueError('cannot verify reranker input windows')
         if int(mask.sum(dim=1).max()) > max_length:
-            raise ValueError('whole paragraph exceeds reranker token limit')
+            raise RerankWindowExceeded('whole paragraph exceeds reranker token limit')
         return features
 
 
 class CrossEncoderReranker:
     MODELS={'bge':('BAAI/bge-reranker-v2-m3','953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e'), 'qwen':('Qwen/Qwen3-Reranker-4B','22e683669bc0f0bd69640a1354a6d0aebcfeede5')}
-    def __init__(self, name, device=None, dtype=None, batch_size=2, window_check='auto'):
+    def __init__(self, name, device=None, dtype=None, batch_size=2, window_check='auto', long_input='reject'):
         from sentence_transformers import CrossEncoder
         if dtype not in (None,'float16','float32'): raise ValueError('unsupported dtype')
         if batch_size<1: raise ValueError('batch size must be positive')
         if window_check not in ('auto','legacy'):
             raise ValueError('reranker window check must be auto or legacy')
+        if long_input not in ('reject', 'split'):
+            raise ValueError('reranker long input policy must be reject or split')
+        if long_input == 'split' and name != 'bge':
+            raise ValueError('split long input policy requires the BGE reranker')
+        self.long_input = long_input
         self.batch_size=batch_size
         model, self.revision=self.MODELS[name]
         kwargs={'device':device,'revision':self.revision,'local_files_only':True,'max_length':4096}
@@ -245,7 +257,65 @@ class CrossEncoderReranker:
             encoded = self.model.preprocess([pair], prompt=prompt,
                                             processing_kwargs=_untruncated_processing())
             if int(encoded['attention_mask'][0].sum()) > max_length:
-                raise ValueError('whole paragraph exceeds reranker token limit')
+                raise RerankWindowExceeded('whole paragraph exceeds reranker token limit')
+
+    def _fits(self, query, passage):
+        try:
+            self._check_windows([(query, passage)])
+        except RerankWindowExceeded:
+            return False
+        return True
+
+    def _score_long_part(self, query, prefix, text):
+        if not self._fits(query, prefix):
+            raise RerankWindowExceeded('query and document prefix exceed reranker token limit')
+        pending = [(0, len(text))]
+        best_score = -math.inf
+        best_span = None
+        scored_spans = []
+        while pending:
+            start, end = pending.pop()
+            passage = prefix + text[start:end]
+            if self._fits(query, passage):
+                values = self.model.predict([(query, passage)], batch_size=1)
+                if len(values) != 1 or not math.isfinite(float(values[0])):
+                    raise ValueError('invalid reranker output')
+                score = float(values[0])
+                scored_spans.append((start, end, score))
+                if score > best_score:
+                    best_score, best_span = score, (start, end)
+                continue
+            if end - start <= 1:
+                raise RerankWindowExceeded('cannot fit a source character with the query and document prefix')
+            middle = (start + end) // 2
+            radius = (end - start) // 4
+            boundaries = (m.end() for m in _SPLIT_BOUNDARY.finditer(text, middle-radius, middle+radius)
+                          if start < m.end() < end)
+            split = min(boundaries, key=lambda pos: abs(pos-middle), default=middle)
+            # Left first keeps the first matching range on a tie.
+            pending.extend([(split, end), (start, split)])
+        return best_score, {'char_start': best_span[0], 'char_end': best_span[1],
+                            'window_count': len(scored_spans), 'scored_spans': scored_spans}
+
+    def _score_with_complete_parts(self, query, pairs, owners, candidates):
+        scores = [None] * len(pairs)
+        windows = {}
+        ordinary = []
+        for i, (_, passage) in enumerate(pairs):
+            if self._fits(query, passage):
+                ordinary.append(i)
+                continue
+            prefix = reranker_document_text(candidates[owners[i]], {'text': ''})
+            if not passage.startswith(prefix):
+                raise ValueError('reranker document prefix mismatch')
+            scores[i], windows[i] = self._score_long_part(query, prefix, passage[len(prefix):])
+        if ordinary:
+            values = self.model.predict([pairs[i] for i in ordinary], batch_size=self.batch_size)
+            if len(values) != len(ordinary):
+                raise ValueError('invalid reranker output')
+            for i, score in zip(ordinary, values):
+                scores[i] = score
+        return scores, windows
 
     def rank(self, query, candidates):
         pairs=[]; owners=[]; pair_parts=[]
@@ -254,14 +324,28 @@ class CrossEncoderReranker:
             for part in parts:
                 pairs.append((query,reranker_document_text(c,part))); owners.append(i);pair_parts.append(part.get('part_no'))
         if not pairs: return []
-        if getattr(self,'window_check','legacy') == 'legacy':
-            self._check_windows(pairs)
-        scores=self.model.predict(pairs,batch_size=getattr(self,'batch_size',2))
+        windows = {}
+        try:
+            if getattr(self,'window_check','legacy') == 'legacy':
+                self._check_windows(pairs)
+            scores=self.model.predict(pairs,batch_size=getattr(self,'batch_size',2))
+        except RerankWindowExceeded:
+            if getattr(self,'long_input','reject') != 'split':
+                raise
+            scores, windows = self._score_with_complete_parts(query, pairs, owners, candidates)
         if len(scores)!=len(pairs) or any(not math.isfinite(float(s)) for s in scores): raise ValueError('invalid reranker output')
         best=[-math.inf]*len(candidates);best_parts=[None]*len(candidates)
-        for owner,score,part_no in zip(owners,scores,pair_parts):
-            if float(score)>best[owner]:best[owner]=float(score);best_parts[owner]=part_no
+        best_windows = {}
+        for index, (owner, score, part_no) in enumerate(zip(owners, scores, pair_parts)):
+            if float(score)>best[owner]:
+                best[owner]=float(score);best_parts[owner]=part_no
+                if index in windows:
+                    best_windows[owner] = {**windows[index], 'part_no': part_no}
+                else:
+                    best_windows.pop(owner, None)
         annotated=[{**c,'rerank_part_no':best_parts[i]} for i,c in enumerate(candidates)]
+        for owner, window in best_windows.items():
+            annotated[owner]['rerank_window'] = window
         return sorted(zip(annotated,best),key=lambda p:p[1],reverse=True)
 
 def rrf(lists, k=60):
@@ -495,6 +579,9 @@ class RetrievalService:
                         item['reranker_score']=None
                         degraded.append('reranker_part_unavailable')
                 if part:item.update(text=part['text'],source_locator=part['locator'],content_sha256=part['sha256'],part_no=part['part_no'],document_sha256=c['sha256'],has_more=len(c['parts'])>1)
+            window = c.get('rerank_window')
+            if window and 'part_no' in item and item['part_no'] == window['part_no']:
+                item['rerank_window'] = {k: v for k, v in window.items() if k != 'scored_spans'}
             evidence.append(item)
         from .budget import assemble
         budgeted,budget=assemble(evidence,self.tokenizer,max_evidence_tokens,query)
@@ -503,4 +590,7 @@ class RetrievalService:
         result={'query_plan':{'mode':mode,'profile':self.profile,'event_date':str(event_date or _query_event_date(query,query_time)) if self.profile=='legal' else None,'query_time':str(query_time or date.today()) if self.profile=='legal' else None,'revision_selection':revision_choice,'applicability_review':applicability_review},'budget':budget, 'status':('insufficient_evidence' if not evidence else ('needs_clarification' if mode=='case_question' and not (event_date or _query_event_date(query,query_time)) else 'ready')),'corpus_revision':rev,'degraded':bool(degraded),'degraded_reasons':degraded,'missing_facts':missing_facts,'token_budget_status':budget['state'],'evidence':evidence,'retrieval_ms':round((time.monotonic()-start)*1000,2)}
         if return_retrieval_trace:
             result['retrieval_trace']={'temporal':{uid:value for uid,value in temporal_decisions.items()},'revision_selection':revision_choice,'dense_backend':'openviking' if isinstance(self.dense,OpenViking) else type(self.dense).__name__,'dense_scope':getattr(self.dense,'scope',None),'dense_hits':dense_rows,'timings_ms':timings,'rerank_timeout_seconds':self.rerank_timeout,'candidates':[{'unit_id':item['unit_id'],'document_id':(item.get('document') or {}).get('doc_id'),'rrf_score':ranking['rrf_scores'].get(item['unit_id']),'reranker_score':rerank_scores.get(item['unit_id']),'sources':sources[item['unit_id']]} for item in candidates]}
+            for entry, candidate in zip(result['retrieval_trace']['candidates'], candidates):
+                if 'rerank_window' in candidate:
+                    entry['rerank_window'] = candidate['rerank_window']
         return result
