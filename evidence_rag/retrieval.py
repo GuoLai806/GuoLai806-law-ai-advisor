@@ -416,12 +416,13 @@ class RetrievalService:
                 if not self.catalog.db.execute('SELECT 1 FROM settings WHERE key=? AND value=?',('dense_validated:'+rev,'yes')).fetchone(): raise ValueError('dense index not validated')
                 rows=await self.dense.find(query); ids=[]
                 dense_rows=[{'uri':x['uri'],'score':x.get('score') if isinstance(x.get('score'),numbers.Real) and math.isfinite(x['score']) else None} for x in rows]
+                mapped=self.catalog.unit_ids_for_uris(rev,(row['uri'] for row in rows))
                 for x in rows:
-                    r=self.catalog.db.execute('SELECT unit_id FROM units WHERE revision=? AND uri=?',(rev,x['uri'])).fetchone()
-                    if r:
-                        ids.append(r[0])
+                    uid=mapped.get(x['uri'])
+                    if uid is not None:
+                        ids.append(uid)
                         score=x.get('score')
-                        if isinstance(score,numbers.Real) and math.isfinite(score): raw_scores['dense'].setdefault(r[0],score)
+                        if isinstance(score,numbers.Real) and math.isfinite(score): raw_scores['dense'].setdefault(uid,score)
                 lists['dense']=ids
             except Exception: degraded.append('dense_unavailable')
             timings['dense_ms']=round((time.monotonic()-dense_started)*1000,2)

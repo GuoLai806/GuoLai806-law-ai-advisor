@@ -276,6 +276,34 @@ class Catalog:
         except Exception:self.db.execute('ROLLBACK');raise
         return {'job_id':jid,'idem':idem,'revision':rev,'state':'indexed','error':None}
 
+    def unit_ids_for_uris(self, revision, uris):
+        """Resolve dense hits in one scoped read for a normal top-40 response."""
+        unique = list(dict.fromkeys(uris))
+        resolved = {}
+        for start in range(0, len(unique), 128):
+            batch = unique[start:start+128]
+            placeholders = ','.join('?' for _ in batch)
+            rows = self.db.execute(
+                f'SELECT uri,unit_id FROM units WHERE revision=? AND uri IN ({placeholders})',
+                (revision, *batch),
+            )
+            ambiguous = set()
+            for uri, uid in rows:
+                if uri in resolved:
+                    ambiguous.add(uri)
+                resolved[uri] = uid
+            # Legacy catalogs did not enforce URI uniqueness. Preserve the
+            # original point-lookup choice only for those exceptional keys.
+            for uri in ambiguous:
+                row = self.db.execute(
+                    'SELECT unit_id FROM units WHERE revision=? AND uri=?', (revision, uri)
+                ).fetchone()
+                if row is None:
+                    resolved.pop(uri, None)
+                else:
+                    resolved[uri] = row[0]
+        return resolved
+
     def best_part(self, rev, uid, query):
         unit=self.get(rev,uid)
         if not unit:return None
