@@ -26,6 +26,12 @@ def default_evidence_items():
         raise ValueError('DEFAULT_EVIDENCE_ITEMS must be between 1 and 60')
     return value
 
+def general_rerank_top_n():
+    value=int(setting('GENERAL_RERANK_TOP_N','60'))
+    if not 1<=value<=60:
+        raise ValueError('GENERAL_RERANK_TOP_N must be between 1 and 60')
+    return value
+
 class Query(BaseModel):
     query: str = Field(min_length=1,max_length=4000)
     session_id: str = Field(min_length=1,max_length=128,pattern=r'^[A-Za-z0-9_-]+$')
@@ -58,6 +64,7 @@ def graph_budget_ms():
 async def lifespan(app):
     current_app=app
     default_evidence_items()  # Reject invalid operator configuration at startup.
+    general_rerank_top_n()
     if graph_enabled():
         graph_budget_ms()
     profile='legal' if getattr(app.state,'default_profile_explicit',False) else setting('DEFAULT_PROFILE','general')
@@ -87,7 +94,7 @@ async def lifespan(app):
     dense=OpenViking(setting('OV_URL'),setting('OV_SCOPE'),headers=ov_headers,timeout=float(setting('OV_TIMEOUT','30')),reuse_client=setting('OV_REUSE_CLIENT','1')=='1') if setting('OV_URL') and setting('OV_SCOPE') else None
     temporal_config=TemporalConfig(retention_days=int(setting('TEMPORAL_RETENTION_DAYS','0')),decay_days=int(setting('TEMPORAL_DECAY_DAYS','3650')),decay_gamma=float(setting('TEMPORAL_DECAY_GAMMA','2.0')))
     current_app.state.default_profile=profile
-    current_app.state.service=RetrievalService(db,dense,reranker,tokenizer,profile=profile,rerank_timeout=float(setting('RERANK_TIMEOUT','120')),temporal_config=temporal_config)
+    current_app.state.service=RetrievalService(db,dense,reranker,tokenizer,profile=profile,rerank_timeout=float(setting('RERANK_TIMEOUT','120')),temporal_config=temporal_config,general_rerank_top_n=general_rerank_top_n())
     app.state.generator=OpenAIStream(setting('MODEL_URL'),setting('MODEL_NAME'),setting('MODEL_KEY',''),timeout=float(setting('MODEL_TIMEOUT','90')),include_usage=setting('STREAM_INCLUDE_USAGE')=='1',max_output_tokens=int(setting('MAX_OUTPUT_TOKENS')) if setting('MAX_OUTPUT_TOKENS') else None,temperature=float(setting('MODEL_TEMPERATURE')) if setting('MODEL_TEMPERATURE') is not None else None,thinking=setting('MODEL_THINKING'),reasoning_effort=setting('MODEL_REASONING_EFFORT'),empty_retry_thinking=setting('MODEL_EMPTY_RETRY_THINKING'),retry_timeout=float(setting('MODEL_RETRY_TIMEOUT')) if setting('MODEL_RETRY_TIMEOUT') else None,retry_max_output_tokens=int(setting('MODEL_RETRY_MAX_OUTPUT_TOKENS')) if setting('MODEL_RETRY_MAX_OUTPUT_TOKENS') else None) if setting('MODEL_URL') and setting('MODEL_NAME') else None
     if current_app.state.generator:
         current_app.state.generator.answer_format=answer_format
@@ -239,7 +246,7 @@ async def get_bundle(body, request, user, pinned_revision=None, *, for_explorati
             # Exploration never measures or supplies a generation prompt. Keep the
             # complete selected paragraphs, including those too large to generate.
             tokenizer=None
-        service=RetrievalService(cat,configured.dense,configured.reranker,tokenizer,profile=profile,rerank_timeout=configured.rerank_timeout,ranking_executor=configured.ranking_executor,temporal_config=getattr(configured,'temporal_config',None))
+        service=RetrievalService(cat,configured.dense,configured.reranker,tokenizer,profile=profile,rerank_timeout=configured.rerank_timeout,ranking_executor=configured.ranking_executor,temporal_config=getattr(configured,'temporal_config',None),general_rerank_top_n=getattr(configured,'general_rerank_top_n',60))
         maximum=body.max_evidence_tokens
         try:
             window,framing,output=generation_limits()
@@ -333,7 +340,7 @@ def model_capabilities(request: Request,user=Depends(identity)):
     return {'dense_configured':bool(service.dense),'reranker_loaded':bool(service.reranker),'reranker_window_check':getattr(service.reranker,'window_check',None),'tokenizer_loaded':bool(service.tokenizer),'generator_configured':bool(generator),'provider_health_verified':False,
             'exploration_available':setting('EXPLORE_ENABLED','1')=='1',
             'graph_available':graph_enabled() and getattr(request.app.state,'default_profile','general')=='general',
-            'runtime_identity':{'ov_reuse_client':getattr(service.dense,'reuse_client',None),'explore_enabled':setting('EXPLORE_ENABLED','1')=='1','dense_scope':getattr(service.dense,'scope',None),'reranker_revision':getattr(service.reranker,'revision',None),'reranker_batch_size':getattr(service.reranker,'batch_size',None),'rerank_timeout_seconds':service.rerank_timeout,'tokenizer_revision':getattr(service.tokenizer,'revision',None),'answer_model':getattr(generator,'model',None),'max_output_tokens':getattr(generator,'max_output_tokens',None),'thinking':getattr(generator,'thinking',None),'reasoning_effort':getattr(generator,'reasoning_effort',None),'default_evidence_items':default_evidence_items(),**generation_identity(request)}}
+            'runtime_identity':{'ov_reuse_client':getattr(service.dense,'reuse_client',None),'explore_enabled':setting('EXPLORE_ENABLED','1')=='1','dense_scope':getattr(service.dense,'scope',None),'reranker_revision':getattr(service.reranker,'revision',None),'reranker_batch_size':getattr(service.reranker,'batch_size',None),'rerank_timeout_seconds':service.rerank_timeout,'general_rerank_top_n':getattr(service,'general_rerank_top_n',60),'general_rerank_window_enabled':getattr(service,'general_rerank_top_n',60)<60,'tokenizer_revision':getattr(service.tokenizer,'revision',None),'answer_model':getattr(generator,'model',None),'max_output_tokens':getattr(generator,'max_output_tokens',None),'thinking':getattr(generator,'thinking',None),'reasoning_effort':getattr(generator,'reasoning_effort',None),'default_evidence_items':default_evidence_items(),**generation_identity(request)}}
 
 def generation_identity(request):
     """Public operational identity: hashes/configuration, never credentials or prompts."""
@@ -378,6 +385,7 @@ def generation_allowed(bundle,body,app):
             allowed_budget=isinstance(maximum,int) and not isinstance(maximum,bool) and 0<maximum<=config.output_reserve
         except ValueError: allowed_budget=False
     if not (app.state.generator and bundle['status']=='ready' and not bundle['query_plan']['applicability_review'] and bundle['evidence'] and not bundle['degraded'] and allowed_budget and not bundle['budget']['omitted']): return False
+    if bundle['query_plan'].get('profile')=='general' and getattr(getattr(app.state,'service',None),'general_rerank_top_n',60)<60 and any(item.get('reranker_score') is None for item in bundle['evidence']): return False
     if bundle['query_plan']['mode']=='source_lookup': return True
     if bundle['query_plan'].get('profile')=='general' and setting('GENERATION_GATE','reranker_threshold')=='grounded_evidence':
         # Relevance logits do not establish entailment. The opt-in provider must
