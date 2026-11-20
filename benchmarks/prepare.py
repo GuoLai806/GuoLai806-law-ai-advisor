@@ -24,12 +24,15 @@ def extract_safe(archive,dest,name):
   z.extractall(dest)
 
 def jsonl(path):
- result={}
- for line in Path(path).read_text(encoding='utf-8').splitlines():
-  x=json.loads(line);key=x['_id']
-  if not isinstance(key,str) or not key or key in result:raise ValueError('duplicate or invalid identifier')
-  result[key]=x
- return result
+    result = {}
+    with Path(path).open(encoding='utf-8') as source:
+        for line in source:
+            row = json.loads(line)
+            key = row['_id']
+            if not isinstance(key, str) or not key or key in result:
+                raise ValueError('duplicate or invalid identifier')
+            result[key] = row
+    return result
 
 def qrels(path):
  result={}
