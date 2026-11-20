@@ -212,6 +212,8 @@ class _GuardedWindow:
 
 class CrossEncoderReranker:
     MODELS={'bge':('BAAI/bge-reranker-v2-m3','953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e'), 'qwen':('Qwen/Qwen3-Reranker-4B','22e683669bc0f0bd69640a1354a6d0aebcfeede5')}
+    MODELS['qwen06'] = ('Qwen/Qwen3-Reranker-0.6B', 'e61197ed45024b0ed8a2d74b80b4d909f1255473')
+
     def __init__(self, name, device=None, dtype=None, batch_size=2, window_check='auto'):
         from sentence_transformers import CrossEncoder
         if dtype not in (None,'float16','float32'): raise ValueError('unsupported dtype')
