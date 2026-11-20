@@ -588,7 +588,10 @@ class RetrievalService:
                 item['rerank_window'] = {k: v for k, v in window.items() if k != 'scored_spans'}
             evidence.append(item)
         from .budget import assemble
-        budgeted,budget=assemble(evidence,self.tokenizer,max_evidence_tokens,query)
+        scored_source_parts = None
+        if source_lookup and self.profile == 'general' and getattr(self.reranker, 'long_input', None) == 'split':
+            scored_source_parts = {uid: byid[uid].get('rerank_part_no') for uid in selected}
+        budgeted,budget=assemble(evidence,self.tokenizer,max_evidence_tokens,query,scored_source_parts=scored_source_parts)
         # Retrieval results can be inspected without tokenizer, but are not generation-ready.
         if self.tokenizer: evidence=budgeted
         result={'query_plan':{'mode':mode,'profile':self.profile,'event_date':str(event_date or _query_event_date(query,query_time)) if self.profile=='legal' else None,'query_time':str(query_time or date.today()) if self.profile=='legal' else None,'revision_selection':revision_choice,'applicability_review':applicability_review},'budget':budget, 'status':('insufficient_evidence' if not evidence else ('needs_clarification' if mode=='case_question' and not (event_date or _query_event_date(query,query_time)) else 'ready')),'corpus_revision':rev,'degraded':bool(degraded),'degraded_reasons':degraded,'missing_facts':missing_facts,'token_budget_status':budget['state'],'evidence':evidence,'retrieval_ms':round((time.monotonic()-start)*1000,2)}

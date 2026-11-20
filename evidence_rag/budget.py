@@ -20,7 +20,7 @@ class ConservativeByteBudget:
     def measure_content(self,messages):
         return sum(len(str(m['content']).encode('utf-8')) for m in messages)
 
-def assemble(evidence, tokenizer, max_tokens, framing=''):
+def assemble(evidence, tokenizer, max_tokens, framing='', *, scored_source_parts=None):
     if tokenizer is None: return [], {'state':'tokenizer_unavailable','used_tokens':None,'omitted':[e['unit_id'] for e in evidence]}
     from .answer import messages_for
     if isinstance(tokenizer,ConservativeByteBudget):
@@ -30,7 +30,12 @@ def assemble(evidence, tokenizer, max_tokens, framing=''):
             parts=source.get('parts',[]) if source else []
             if len(parts)>1:
                 for part in parts:
-                    units.append({**original,'text':part['text'],'content_sha256':part['sha256'],'source_locator':part['locator'],'document_sha256':original['content_sha256'],'part_no':part['part_no'],'has_more':True})
+                    item={**original,'text':part['text'],'content_sha256':part['sha256'],'source_locator':part['locator'],'document_sha256':original['content_sha256'],'part_no':part['part_no'],'has_more':True}
+                    if scored_source_parts is not None and original['unit_id'] in scored_source_parts:
+                        if scored_source_parts[original['unit_id']] != part['part_no']:
+                            item['reranker_score'] = None
+                            item.pop('rerank_window', None)
+                    units.append(item)
             else: units.append(dict(original))
         def size(items): return tokenizer.measure_content(messages_for(framing,items))
         capacity=min(max_tokens,tokenizer.context_window-tokenizer.framing_reserve-tokenizer.output_reserve)

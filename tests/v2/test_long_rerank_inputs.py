@@ -141,3 +141,49 @@ def test_legacy_unit_without_parts_uses_its_own_locator():
     assert score==0.9 and result['rerank_window']['part_no'] is None
     assert result['rerank_window']['part_locator']==unit['locator']
     assert result['rerank_window']['part_sha256']==unit['sha256']
+
+
+@pytest.mark.parametrize('winner_is_long', [False, True])
+def test_source_expansion_only_attributes_score_to_its_own_paragraph(tmp_path, monkeypatch, winner_is_long):
+    import json
+    from types import SimpleNamespace
+    from fastapi.testclient import TestClient
+    from evidence_rag.api import app, generation_allowed, Query
+
+    for k,v in {'DB':str(tmp_path/'db'),'AUTH':json.dumps({'local-test':'reader'}),'DEFAULT_PROFILE':'general',
+                'ALLOW_CONSERVATIVE_BYTES':'1','MODEL_CONTEXT_WINDOW':'16000','FRAMING_RESERVE':'1024',
+                'OUTPUT_RESERVE':'2048','GENERAL_RERANK_TOP_N':'24','RERANK_THRESHOLD':'0.1'}.items():
+        monkeypatch.setenv('EVIDENCE_RAG_'+k,v)
+    short='short' if winner_is_long else 'short KEY'
+    long='word '*24+('KEY' if winner_is_long else 'plain')
+    class Dense:
+        scope='viking://resources/rag/demo/r/'
+        async def find(self,q): return []
+    with TestClient(app) as client:
+        cat=app.state.catalog
+        cat.stage_documents([{'_id':'doc','title':'T','text':short+'\n\n'+long}],
+                            {'corpus_id':'demo','version_id':'v1','source_kind':'benchmark','verification_state':'provided'},'r')
+        cat.activate('r',None)
+        uid=cat.exact_documents('r','',doc_id='doc')[0]
+        cat.db.execute('UPDATE units SET uri=? WHERE revision=? AND unit_id=?',(Dense.scope+uid+'/'+uid+'.md','r',uid))
+        cat.db.execute("INSERT INTO settings VALUES('dense_validated:r','yes')")
+        app.state.service.dense=Dense()
+        app.state.service.reranker=ranker()
+        request={'query':'find','profile':'general','document_id':'doc','session_id':'budget','budget_mode':'conservative_bytes'}
+        reply=client.post('/api/v2/retrieve',json=request,headers={'Authorization':'Bearer local-test'})
+        assert reply.status_code==200
+        data=reply.json()
+        assert not data['degraded'] and not data['budget']['omitted']
+        assert len(data['evidence'])==2
+        for item in data['evidence']:
+            if 'KEY' in item['text']:
+                assert item['reranker_score']==0.9
+                if winner_is_long:
+                    window=item['rerank_window']
+                    assert window['part_no']==item['part_no'] and window['part_locator']==item['source_locator']
+                    assert window['part_sha256']==item['content_sha256']
+                else: assert 'rerank_window' not in item
+            else:
+                assert item['reranker_score'] is None and 'rerank_window' not in item
+        app.state.generator=SimpleNamespace(max_output_tokens=512)
+        assert not generation_allowed(data,Query(**request),app)
