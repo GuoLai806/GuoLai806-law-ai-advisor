@@ -39,3 +39,16 @@ python -m benchmarks.graph_fixture.collect_runtime --url http://127.0.0.1:19445 
 ```
 
 复现实验只对经过明确配置的 loopback 测试服务运行。`prepare_runtime` 要求新数据库，索引失败时检查 journal 和服务端实际写入，再决定如何继续。原始索引不受图开关影响，关闭开关并重启即可回到旧的普通查询。
+
+## Android 公开检索对照的可选配置
+
+已启用完整长段落打分时，BGE 每批由 8 调为 4，在完整 BEIR CQADupStack Android 的 22,998 篇、699 道题上，HTTP 检索 P95 从 1,381.06 降至 879.38 ms，降幅 36.33%。两端各 699 次计时请求均成功，nDCG@10 同为 0.496506，返回文档顺序逐题相同。直接与未修复的开发线比较，组合配置的 P95 从 812.51 升至 865.96 ms，降级从 36 次变为 0 次；组合未通过开发线合并条件。测量范围为 Apple M5 Pro、MPS float16、通用检索及固定 RRF24。
+
+在本实验分支运行服务时，可在已配置好本地 Catalog、已验证 OpenViking scope 和服务认证的终端，加载以下可选配置。模型与数据路径沿用当前服务环境。完整回答生成的模型、用量与时延需单独验证。
+
+```sh
+. ./docs/development/graph-dependency-20261118/general-mps-split4.env
+python -m uvicorn evidence_rag.api:app --host 127.0.0.1 --port 8000
+```
+
+在 /api/v2/models 核对 general_rerank_top_n=24、reranker_batch_size=4 和 reranker_long_input=split。[可选环境配置](general-mps-split4.env)
