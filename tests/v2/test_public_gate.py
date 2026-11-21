@@ -116,3 +116,30 @@ def test_full_train_uses_separate_labels_and_never_promotes(tmp_path, monkeypatc
     assert conf['label_split']=='train' and conf['development_slice'] and conf['selected_query_count']==1
     assert conf['dataset_hashes']['qrels']==filehash(labels) and not result['eligible'] and not result['passed']
     assert result['metrics']['candidate']['mean_mrr_at_10']==.5
+
+
+def test_pinned_dev_missing_zero_judgments_are_retained_and_never_promote(tmp_path, monkeypatch):
+    import hashlib
+    a = args(tmp_path)
+    a.label_split = 'dev'
+    labels = a.data_dir / 'qrels/dev.tsv'
+    labels.write_text('query-id\tcorpus-id\tscore\nq1\ta\t1\nq1\toutside\t0\n')
+    pin = {'rows': 1, 'sha256': hashlib.sha256(b'["q1","outside"]\n').hexdigest()}
+    manifest = json.loads(a.manifest.read_text())
+    manifest['qrels']['dev'] = {'sha256': filehash(labels), 'qids': 1, 'missing_zero_relevance': pin}
+    a.manifest.write_text(json.dumps(manifest))
+    _, rel, _ = gate.load_data(a.data_dir, a.manifest, 'dev')
+    assert rel == {'q1': {'a': 1, 'outside': 0}}
+    monkeypatch.setattr(gate, 'request', lambda url, *rest: (
+        100 if ':9000/' in url else 60, 200, json.dumps(response()), response(), None))
+    report = gate.run(a)
+    assert not report['passed'] and not report['eligible']
+    for split, grades, key in [
+        ('test', rel, pin), ('train', rel, pin), ('dev', rel, None),
+        ('dev', {'q1': {'a': 1, 'different': 0}}, pin),
+        ('dev', {'q1': {'a': 1, 'outside': 1}}, pin),
+        ('dev', {'q1': {'a': 1}}, pin),
+        ('dev', {'q1': {'outside': 0}}, pin),
+    ]:
+        with pytest.raises(ValueError):
+            gate.validate_relevance(grades, {'a', 'b'}, {'q1': 'query'}, split, key)

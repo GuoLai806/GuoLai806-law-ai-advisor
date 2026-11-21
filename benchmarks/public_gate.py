@@ -29,6 +29,30 @@ def loopback_url(value):
     return value
 
 
+def validate_relevance(rel, documents, queries, split, pinned_missing):
+    if not rel or not rel.keys() <= queries.keys():
+        raise ValueError('invalid qrels query references')
+    missing_zero = []
+    for qid, grades in rel.items():
+        if not any(value > 0 for value in grades.values()):
+            raise ValueError('query has no positive relevance')
+        for doc_id in grades.keys() - documents:
+            if grades[doc_id] != 0:
+                raise ValueError('missing document with nonzero relevance')
+            missing_zero.append((qid, doc_id))
+    if not missing_zero and pinned_missing is None:
+        return
+    if split != 'dev' or not missing_zero:
+        raise ValueError('invalid qrels references or unexpected missing-zero manifest')
+    # Preserve every official judgment. Bind any missing zero rows to their
+    # exact identities on a development split, which can never promote a change.
+    digest = hashlib.sha256()
+    for pair in sorted(missing_zero):
+        digest.update((json.dumps(pair, ensure_ascii=False, separators=(',', ':')) + '\n').encode('utf-8'))
+    if pinned_missing != {'rows': len(missing_zero), 'sha256': digest.hexdigest()}:
+        raise ValueError('missing zero-relevance rows differ from the frozen dev manifest')
+
+
 def load_data(root, manifest_path, label_split='test'):
     root = Path(root)
     manifest = json.loads(Path(manifest_path).read_text(encoding='utf-8'))
@@ -44,8 +68,7 @@ def load_data(root, manifest_path, label_split='test'):
     if len(corpus) != manifest['corpus_count'] or len(queries) != manifest['query_count_total'] or len(rel) != label_info['qids']:
         raise ValueError('manifest count mismatch')
     docs = set(corpus); lookup = {qid: value['text'] for qid, value in queries.items()}
-    if not rel or set(rel) - set(lookup) or any(set(d) - docs or not any(v > 0 for v in d.values()) for d in rel.values()):
-        raise ValueError('invalid qrels references or no positive relevance')
+    validate_relevance(rel, docs, lookup, label_split, label_info.get('missing_zero_relevance'))
     return lookup, rel, hashes
 
 
