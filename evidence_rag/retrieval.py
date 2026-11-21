@@ -346,8 +346,9 @@ class RankingExecutor:
         return await asyncio.wait_for(asyncio.shield(task), timeout=remaining)
 
 class RetrievalService:
-    def __init__(self,catalog, dense=None, reranker=None, tokenizer=None, profile='general', rerank_timeout=120, ranking_executor=None, temporal_config=None, general_rerank_top_n=60):
+    def __init__(self,catalog, dense=None, reranker=None, tokenizer=None, profile='general', rerank_timeout=120, ranking_executor=None, temporal_config=None, general_rerank_top_n=60, general_filter_common_terms=False):
         if not isinstance(general_rerank_top_n,int) or isinstance(general_rerank_top_n,bool) or not 1<=general_rerank_top_n<=60: raise ValueError('general rerank top_n must be 1..60')
+        self.general_filter_common_terms=general_filter_common_terms
         self.general_rerank_top_n=general_rerank_top_n
         if profile not in ('general','legal'): raise ValueError('invalid profile')
         if not isinstance(rerank_timeout,(int,float)) or isinstance(rerank_timeout,bool) or not math.isfinite(rerank_timeout) or not 0<rerank_timeout<=600: raise ValueError('rerank timeout must be in (0,600] seconds')
@@ -378,7 +379,11 @@ class RetrievalService:
         if corpus_profile!=self.profile: raise LookupError('revision profile mismatch')
         if self.profile=='general' and manifest.get('parser_version')!='generic-documents-v2': raise LookupError('generic revision requires reindex')
         lexical_started=time.monotonic()
-        lexical=self.catalog.lexical_scored(rev,query); raw_scores={'bm25':dict(lexical),'dense':{}}
+        if self.profile == 'general' and self.general_filter_common_terms:
+            lexical = self.catalog.lexical_scored(rev, query, filter_common=True)
+        else:
+            lexical = self.catalog.lexical_scored(rev, query)
+        raw_scores={'bm25':dict(lexical),'dense':{}}
         timings['lexical_ms']=round((time.monotonic()-lexical_started)*1000,2)
         lists={'exact':[], 'bm25':[uid for uid,score in lexical]}; degraded=[]
         wants_source=False

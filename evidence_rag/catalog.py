@@ -446,11 +446,42 @@ class Catalog:
                 if not isinstance(start,int) or not isinstance(end,int) or not 0<=start<=end<=len(v['text']) or v['text'][start:end]!=part['text']:raise ValueError('catalog paragraph locator mismatch')
         v['relations']=[dict(x) for x in self.db.execute('SELECT to_id,relation,char_start,char_end,verified FROM relations WHERE revision=? AND from_id=?',(rev,uid))]
         return v
-    def lexical_scored(self, rev, query, limit=40):
+    def lexical_scored(self, rev, query, limit=40, *, filter_common=False):
         terms = list(dict.fromkeys(tokens(query).split()))[:30]
-        if not terms: return []
-        expression = ' OR '.join('"'+x.replace('"','""')+'"' for x in terms)
-        return [(r[0],r[1]) for r in self.db.execute('SELECT unit_id,bm25(unit_fts) AS score FROM unit_fts WHERE unit_fts MATCH ? AND revision=? ORDER BY score LIMIT ?', (expression,rev,limit))]
+        if not terms:
+            return []
+
+        def search(words):
+            expression = ' OR '.join('"' + word.replace('"', '""') + '"' for word in words)
+            sql = ('SELECT unit_id,bm25(unit_fts) AS score FROM unit_fts '
+                   'WHERE unit_fts MATCH ? AND revision=? ORDER BY score LIMIT ?')
+            return [(uid, score) for uid, score in self.db.execute(sql, (expression, rev, limit))]
+
+        words = [t.lower() for t in terms if t.isascii() and t.isalpha()] if filter_common else []
+        if not words:
+            return search(terms)
+        # The vocabulary view follows the live FTS index, including other revisions
+        # used by BM25 to compute document frequency. No persisted cache to invalidate.
+        self.db.execute("CREATE VIRTUAL TABLE IF NOT EXISTS temp.lexical_vocab USING fts5vocab(main,unit_fts,'row')")
+        self.db.execute('SAVEPOINT common_term_read')
+        try:
+            parameters = ','.join('?' for _ in words)
+            sql = (f'SELECT term FROM temp.lexical_vocab WHERE term IN ({parameters}) '
+                   'AND doc > (SELECT count(*) / 2 FROM unit_fts)')
+            common = {row[0] for row in self.db.execute(sql, words)}
+            kept = [t for t in terms if not (t.isascii() and t.isalpha() and t.lower() in common)]
+            if kept and len(kept) < len(terms):
+                hits = search(kept)
+                if len(hits) < limit:
+                    hits = search(terms)
+            else:
+                hits = search(terms)
+        except BaseException:
+            self.db.execute('ROLLBACK TO common_term_read')
+            raise
+        finally:
+            self.db.execute('RELEASE common_term_read')
+        return hits
     def lexical(self, rev, query, limit=40):
         return [uid for uid,score in self.lexical_scored(rev,query,limit)]
     def exact(self, rev, query):
