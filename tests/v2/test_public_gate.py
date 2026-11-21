@@ -102,3 +102,17 @@ def test_warmup_failure_invalidates_formal_run(tmp_path, monkeypatch):
     result = gate.run(a)
     assert not result['eligible'] and result['warmup_failures'] == 2
     assert result['metrics']['baseline']['failures'] == 0
+
+
+def test_full_train_uses_separate_labels_and_never_promotes(tmp_path, monkeypatch):
+    a=args(tmp_path);a.label_split='train'
+    labels=a.data_dir/'qrels/train.tsv'
+    labels.write_text('query-id\tcorpus-id\tscore\nq1\tb\t1\n')
+    m=json.loads(a.manifest.read_text());m['qrels']['train']={'sha256':filehash(labels),'qids':1}
+    a.manifest.write_text(json.dumps(m))
+    (a.data_dir/'qrels/test.tsv').unlink()
+    monkeypatch.setattr(gate,'request',lambda url,*rest: (100 if ':9000/' in url else 60,200,json.dumps(response()),response(),None))
+    result=gate.run(a);conf=json.loads((a.output_dir/'config.json').read_text())
+    assert conf['label_split']=='train' and conf['development_slice'] and conf['selected_query_count']==1
+    assert conf['dataset_hashes']['qrels']==filehash(labels) and not result['eligible'] and not result['passed']
+    assert result['metrics']['candidate']['mean_mrr_at_10']==.5

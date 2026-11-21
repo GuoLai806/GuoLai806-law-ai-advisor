@@ -29,16 +29,19 @@ def loopback_url(value):
     return value
 
 
-def load_data(root, manifest_path):
+def load_data(root, manifest_path, label_split='test'):
     root = Path(root)
     manifest = json.loads(Path(manifest_path).read_text(encoding='utf-8'))
-    paths = {'corpus': root / 'corpus.jsonl', 'queries': root / 'queries.jsonl', 'qrels': root / 'qrels/test.tsv'}
+    if label_split not in ('train', 'dev', 'test') or label_split not in manifest['qrels']:
+        raise ValueError('unavailable qrels split')
+    label_info = manifest['qrels'][label_split]
+    paths = {'corpus': root / 'corpus.jsonl', 'queries': root / 'queries.jsonl', 'qrels': root / 'qrels' / (label_split+'.tsv')}
     hashes = {k: filehash(p) for k, p in paths.items()}
-    for key, expected in [('corpus', manifest['corpus_sha256']), ('queries', manifest['queries_sha256']), ('qrels', manifest['qrels']['test']['sha256'])]:
+    for key, expected in [('corpus', manifest['corpus_sha256']), ('queries', manifest['queries_sha256']), ('qrels', label_info['sha256'])]:
         if hashes[key] != expected:
             raise ValueError(f'{key} hash mismatch')
     corpus = jsonl(paths['corpus']); queries = jsonl(paths['queries']); rel = qrels(paths['qrels'])
-    if len(corpus) != manifest['corpus_count'] or len(queries) != manifest['query_count_total'] or len(rel) != manifest['qrels']['test']['qids']:
+    if len(corpus) != manifest['corpus_count'] or len(queries) != manifest['query_count_total'] or len(rel) != label_info['qids']:
         raise ValueError('manifest count mismatch')
     docs = set(corpus); lookup = {qid: value['text'] for qid, value in queries.items()}
     if not rel or set(rel) - set(lookup) or any(set(d) - docs or not any(v > 0 for v in d.values()) for d in rel.values()):
@@ -128,7 +131,8 @@ def run(args):
     limits = {'baseline': args.baseline_rerank_limit, 'candidate': args.candidate_rerank_limit}
     if any(limit < 1 for limit in limits.values()):
         raise ValueError('rerank limits must be positive')
-    lookup, rel, hashes = load_data(args.data_dir, args.manifest)
+    label_split = getattr(args, 'label_split', 'test')
+    lookup, rel, hashes = load_data(args.data_dir, args.manifest, label_split)
     warmup_query = 'Explain how ocean currents transport heat.'
     if warmup_query in lookup.values():
         raise ValueError('synthetic warmup overlaps dataset queries')
@@ -143,7 +147,7 @@ def run(args):
     rng.shuffle(orders)
     config = {'version': 2, 'endpoints': urls, 'revision': args.revision, 'dataset_hashes': hashes,
               'manifest_sha256': filehash(args.manifest), 'full_qrels_query_count': len(rel), 'selected_query_count': len(qids),
-              'development_slice': args.max_queries is not None, 'max_queries': args.max_queries, 'seed': args.seed,
+              'label_split': label_split, 'development_slice': args.max_queries is not None or label_split != 'test', 'max_queries': args.max_queries, 'seed': args.seed,
               'timeout_seconds': args.timeout, 'max_evidence_items': 10, 'rerank_limits': limits,
               'warmup_query': warmup_query, 'warmups_per_arm': 1, 'order': 'balanced randomized AB/BA; odd count differs by one', 'metric': 'TREC ndcg_cut_10 linear gain, BEIR self-id filtering',
               'latency': 'HTTP request through complete body read, nearest-rank p95, includes errors',
@@ -196,6 +200,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for flag in ('data-dir', 'manifest', 'baseline', 'candidate', 'revision', 'output-dir'):
         parser.add_argument('--' + flag, required=True)
+    parser.add_argument('--label-split', choices=('train','dev','test'), default='test',
+                        help='Train and dev are always ineligible for promotion, even when complete.')
     parser.add_argument('--seed', type=int, default=20261121)
     parser.add_argument('--timeout', type=float, default=180)
     parser.add_argument('--baseline-rerank-limit', type=int, default=60)
