@@ -247,16 +247,19 @@ class CrossEncoderReranker:
             self.model = CrossEncoder(model, **kwargs)
         self.requested_dtype=dtype
 
-    def _check_windows(self, pairs):
-        max_length = self.model.max_length
-        if not max_length:
-            raise ValueError('reranker token limit unknown')
+    def _pair_tokens(self, query, passage):
         name = self.model.default_prompt_name
         prompt = self.model.prompts.get(name) if name else None
-        for pair in pairs:
-            encoded = self.model.preprocess([pair], prompt=prompt,
-                                            processing_kwargs=_untruncated_processing())
-            if int(encoded['attention_mask'][0].sum()) > max_length:
+        encoded = self.model.preprocess([(query, passage)], prompt=prompt,
+                                        processing_kwargs=_untruncated_processing())
+        return int(encoded['attention_mask'][0].sum())
+
+    def _check_windows(self, pairs):
+        maximum = self.model.max_length
+        if not maximum:
+            raise ValueError('reranker token limit unknown')
+        for query, passage in pairs:
+            if self._pair_tokens(query, passage) > maximum:
                 raise RerankWindowExceeded('whole paragraph exceeds reranker token limit')
 
     def _fits(self, query, passage):
@@ -266,24 +269,36 @@ class CrossEncoderReranker:
             return False
         return True
 
-    def _score_long_part(self, query, prefix, text):
-        if not self._fits(query, prefix):
+    def _long_batches(self, query, prefix, text):
+        maximum = self.model.max_length
+        prefix_tokens = self._pair_tokens(query, prefix)
+        if prefix_tokens > maximum:
             raise RerankWindowExceeded('query and document prefix exceed reranker token limit')
+        capacity = min(self.batch_size, 4)
+        # Bound total padded positions by the previous one-window allowance.
+        # Keep at least half the window available to the source when possible.
+        target = min(maximum, max(maximum // capacity, 2 * prefix_tokens))
+        capacity = min(capacity, maximum // target)
+        if capacity == 1:
+            target = maximum
+
         pending = [(0, len(text))]
-        best_score = -math.inf
-        best_span = None
-        scored_spans = []
+        batch = []
+        longest = 0
         while pending:
             start, end = pending.pop()
             passage = prefix + text[start:end]
-            if self._fits(query, passage):
-                values = self.model.predict([(query, passage)], batch_size=1)
-                if len(values) != 1 or not math.isfinite(float(values[0])):
-                    raise ValueError('invalid reranker output')
-                score = float(values[0])
-                scored_spans.append((start, end, score))
-                if score > best_score:
-                    best_score, best_span = score, (start, end)
+            try:
+                length = self._pair_tokens(query, passage)
+            except RerankWindowExceeded:
+                length = maximum + 1
+            if length <= target or (end - start == 1 and length <= maximum):
+                if batch and (len(batch) == capacity or (len(batch) + 1) * max(longest, length) > maximum):
+                    yield batch
+                    batch = []
+                    longest = 0
+                batch.append((start, end, passage))
+                longest = max(longest, length)
                 continue
             if end - start <= 1:
                 raise RerankWindowExceeded('cannot fit a source character with the query and document prefix')
@@ -292,9 +307,21 @@ class CrossEncoderReranker:
             boundaries = (m.end() for m in _SPLIT_BOUNDARY.finditer(text, middle-radius, middle+radius)
                           if start < m.end() < end)
             split = min(boundaries, key=lambda pos: abs(pos-middle), default=middle)
-            # Left first keeps the first matching range on a tie.
             pending.extend([(split, end), (start, split)])
-        return best_score, {'char_start': best_span[0], 'char_end': best_span[1],
+        if batch:
+            yield batch
+
+    def _score_long_part(self, query, prefix, text):
+        scored_spans = []
+        for batch in self._long_batches(query, prefix, text):
+            pairs = [(query, passage) for _, _, passage in batch]
+            values = self.model.predict(pairs, batch_size=len(pairs))
+            if len(values) != len(batch) or any(not math.isfinite(float(v)) for v in values):
+                raise ValueError('invalid reranker output')
+            scored_spans.extend((start, end, float(value)) for (start, end, _), value in zip(batch, values))
+        # Ranges arrive in source order, so ties retain the earliest occurrence.
+        start, end, best_score = max(scored_spans, key=lambda span: span[2])
+        return best_score, {'char_start': start, 'char_end': end,
                             'window_count': len(scored_spans), 'scored_spans': scored_spans}
 
     def _score_with_complete_parts(self, query, pairs, owners, candidates):

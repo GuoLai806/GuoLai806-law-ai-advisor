@@ -187,3 +187,27 @@ def test_source_expansion_only_attributes_score_to_its_own_paragraph(tmp_path, m
                 assert item['reranker_score'] is None and 'rerank_window' not in item
         app.state.generator=SimpleNamespace(max_output_tokens=512)
         assert not generation_allowed(data,Query(**request),app)
+
+
+def test_long_sublists_are_batched_within_original_padded_size():
+    worker = ranker()
+    worker.model.max_length = 128
+    worker.batch_size = 4
+    text = 'This paragraph has many words. ' * 20
+    batches = list(worker._long_batches('Q', 'T\n', text))
+    assert any(len(batch)>1 for batch in batches)
+    assert all(len(batch)<=4 for batch in batches)
+    assert ''.join(text[start:end] for group in batches for start,end,_ in group)==text
+    for group in batches:
+        lengths = [worker.model.length(('Q',p)) for _,_,p in group]
+        assert max(lengths)<=32 and len(group)*max(lengths)<=128
+
+
+def test_long_prefix_uses_full_window_when_two_inputs_cannot_fit():
+    worker = ranker()
+    worker.model.max_length = 128
+    worker.batch_size = 4
+    groups = list(worker._long_batches('q'*61, 'T\n', 'source '*35))
+    assert all(len(group)==1 for group in groups)
+    assert max(worker.model.length(('q'*61,p)) for group in groups for _,_,p in group)>64
+    assert ''.join(p[2:] for group in groups for _,_,p in group)=='source '*35
