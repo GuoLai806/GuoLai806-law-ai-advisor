@@ -219,6 +219,8 @@ class _GuardedWindow:
 
 class CrossEncoderReranker:
     MODELS={'bge':('BAAI/bge-reranker-v2-m3','953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e'), 'qwen':('Qwen/Qwen3-Reranker-4B','22e683669bc0f0bd69640a1354a6d0aebcfeede5')}
+    MODELS['bge-base'] = ('BAAI/bge-reranker-base', '2cfc18c9415c912f9d8155881c133215df768a70')
+
     def __init__(self, name, device=None, dtype=None, batch_size=2, window_check='auto', long_input='reject'):
         from sentence_transformers import CrossEncoder
         if dtype not in (None,'float16','float32'): raise ValueError('unsupported dtype')
@@ -227,17 +229,17 @@ class CrossEncoderReranker:
             raise ValueError('reranker window check must be auto or legacy')
         if long_input not in ('reject', 'split'):
             raise ValueError('reranker long input policy must be reject or split')
-        if long_input == 'split' and name != 'bge':
+        if long_input == 'split' and name not in ('bge', 'bge-base'):
             raise ValueError('split long input policy requires the BGE reranker')
         self.long_input = long_input
         self.batch_size=batch_size
         model, self.revision=self.MODELS[name]
-        kwargs={'device':device,'revision':self.revision,'local_files_only':True,'max_length':4096}
+        kwargs={'device':device,'revision':self.revision,'local_files_only':True,'max_length':512 if name == 'bge-base' else 4096}
         if dtype:
             import torch
             kwargs['model_kwargs']={'dtype':getattr(torch,dtype)}
         self.window_check = 'legacy'
-        if window_check == 'auto' and name == 'bge' and device in ('mps','mps:0'):
+        if window_check == 'auto' and name in ('bge', 'bge-base') and device in ('mps','mps:0'):
             class GuardedCrossEncoder(_GuardedWindow, CrossEncoder):
                 pass
 
