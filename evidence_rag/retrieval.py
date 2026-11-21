@@ -431,7 +431,14 @@ class RetrievalService:
         ranking_started=time.monotonic()
         prepared=rank_candidates(self.catalog,rev,query,lexical,dense_pairs,lists['exact'])
         try:
-            operation=lambda:rerank_candidates(prepared,query,lists['exact'],self.reranker,self.general_rerank_top_n if self.profile=='general' else 60)
+            top_n = self.general_rerank_top_n if self.profile == 'general' else 60
+            if (self.profile == 'general' and document_id is not None and not return_retrieval_trace
+                    and type(self.reranker) is CrossEncoderReranker
+                    and getattr(self.reranker, 'revision', None) == CrossEncoderReranker.MODELS['bge'][1]):
+                # Only exact IDs can appear in this source response. Keep the full
+                # scoring pool for detailed traces and for potentially listwise rankers.
+                top_n = min(top_n, len(lists['exact']))
+            operation=lambda:rerank_candidates(prepared,query,lists['exact'],self.reranker,top_n)
             ranking=await self.ranking_executor.run(operation,self.rerank_timeout)
             if not self.reranker:degraded.append('reranker_not_configured')
         except Exception:
