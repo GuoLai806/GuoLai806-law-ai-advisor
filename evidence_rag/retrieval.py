@@ -1,3 +1,4 @@
+from contextvars import ContextVar
 import asyncio, math, time, re, numbers
 from datetime import date
 from collections import defaultdict
@@ -200,12 +201,16 @@ class RerankWindowExceeded(ValueError):
 _SPLIT_BOUNDARY = re.compile(r'[\s。！？；.!?;]')
 
 
+_LONG_WINDOW_CONTEXT = ContextVar('reranker_long_window', default=None)
+
+
 class _GuardedWindow:
     """Validate the same padded features that the cross encoder will score."""
 
     def preprocess(self, inputs, prompt=None, **kwargs):
         kwargs['processing_kwargs'] = _untruncated_processing()
-        max_length = self.max_length
+        override = _LONG_WINDOW_CONTEXT.get()
+        max_length = override[1] if override is not None and override[0] is self else self.max_length
         if not max_length:
             raise ValueError('reranker token limit unknown')
         features = super().preprocess(inputs, prompt=prompt, **kwargs)
@@ -225,10 +230,12 @@ class CrossEncoderReranker:
         if batch_size<1: raise ValueError('batch size must be positive')
         if window_check not in ('auto','legacy'):
             raise ValueError('reranker window check must be auto or legacy')
-        if long_input not in ('reject', 'split'):
-            raise ValueError('reranker long input policy must be reject or split')
-        if long_input == 'split' and name != 'bge':
+        if long_input not in ('reject', 'split', 'split_8192'):
+            raise ValueError('reranker long input policy must be reject, split, or split_8192')
+        if long_input in ('split', 'split_8192') and name != 'bge':
             raise ValueError('split long input policy requires the BGE reranker')
+        if long_input == 'split_8192' and (window_check != 'auto' or device not in ('cpu', 'mps', 'mps:0')):
+            raise ValueError('split_8192 requires guarded auto window check and CPU or MPS')
         self.long_input = long_input
         self.batch_size=batch_size
         model, self.revision=self.MODELS[name]
@@ -237,7 +244,7 @@ class CrossEncoderReranker:
             import torch
             kwargs['model_kwargs']={'dtype':getattr(torch,dtype)}
         self.window_check = 'legacy'
-        if window_check == 'auto' and name == 'bge' and device in ('mps','mps:0'):
+        if window_check == 'auto' and name == 'bge' and (device in ('mps','mps:0') or (device == 'cpu' and long_input == 'split_8192')):
             class GuardedCrossEncoder(_GuardedWindow, CrossEncoder):
                 pass
 
@@ -246,6 +253,13 @@ class CrossEncoderReranker:
         else:
             self.model = CrossEncoder(model, **kwargs)
         self.requested_dtype=dtype
+        if long_input == 'split_8192':
+            config = self.model[0].auto_model.config
+            if (self.window_check != 'guarded_batch' or self.model.max_length != 4096
+                    or getattr(config, 'model_type', None) != 'xlm-roberta'
+                    or getattr(config, 'max_position_embeddings', 0) < 8194
+                    or getattr(config, 'pad_token_id', None) != 1):
+                raise ValueError('split_8192 requires a compatible guarded XLM-R model and tokenizer')
 
     def _check_windows(self, pairs):
         max_length = self.model.max_length
@@ -269,6 +283,30 @@ class CrossEncoderReranker:
     def _score_long_part(self, query, prefix, text):
         if not self._fits(query, prefix):
             raise RerankWindowExceeded('query and document prefix exceed reranker token limit')
+        if self.long_input == 'split_8192':
+            # The context is local to this execution and this exact model object;
+            # no shared model/tokenizer limit is ever mutated.
+            token = _LONG_WINDOW_CONTEXT.set((self.model, 8192))
+            try:
+                name = self.model.default_prompt_name
+                prompt = self.model.prompts.get(name) if name else None
+                try:
+                    encoded = self.model.preprocess([(query, prefix + text)], prompt=prompt,
+                                                    processing_kwargs=_untruncated_processing())
+                except RerankWindowExceeded:
+                    encoded = None
+                if encoded is not None:
+                    length = int(encoded['attention_mask'][0].sum())
+                    if not 4096 < length <= 8192:
+                        raise ValueError('invalid extended-window routing')
+                    values = self.model.predict([(query, prefix + text)], batch_size=1)
+                    if len(values) != 1 or not math.isfinite(float(values[0])):
+                        raise ValueError('invalid reranker output')
+                    score = float(values[0])
+                    return score, {'char_start': 0, 'char_end': len(text), 'window_count': 1,
+                                   'scored_spans': [(0, len(text), score)]}
+            finally:
+                _LONG_WINDOW_CONTEXT.reset(token)
         pending = [(0, len(text))]
         best_score = -math.inf
         best_span = None
@@ -330,7 +368,7 @@ class CrossEncoderReranker:
                 self._check_windows(pairs)
             scores=self.model.predict(pairs,batch_size=getattr(self,'batch_size',2))
         except RerankWindowExceeded:
-            if getattr(self,'long_input','reject') != 'split':
+            if getattr(self,'long_input','reject') not in ('split','split_8192'):
                 raise
             scores, windows = self._score_with_complete_parts(query, pairs, owners, candidates)
         if len(scores)!=len(pairs) or any(not math.isfinite(float(s)) for s in scores): raise ValueError('invalid reranker output')
@@ -589,7 +627,7 @@ class RetrievalService:
             evidence.append(item)
         from .budget import assemble
         scored_source_parts = None
-        if source_lookup and self.profile == 'general' and getattr(self.reranker, 'long_input', None) == 'split':
+        if source_lookup and self.profile == 'general' and getattr(self.reranker, 'long_input', None) in ('split','split_8192'):
             scored_source_parts = {uid: byid[uid].get('rerank_part_no') for uid in selected}
         budgeted,budget=assemble(evidence,self.tokenizer,max_evidence_tokens,query,scored_source_parts=scored_source_parts)
         # Retrieval results can be inspected without tokenizer, but are not generation-ready.
